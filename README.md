@@ -345,10 +345,10 @@ por projetos anteriores e/ou organizar os arquivos seguindo uma estrutura de
 [Model-View-Controller](https://developer.mozilla.org/es/docs/Glossary/MVC).
 
 Neste projeto vamos utilizar uma ferramenta chamada
-[Vite](https://es.vitejs.dev/) para empacotar nossos módulos e iniciar
+[Vite](https://vitejs.dev/) para empacotar nossos módulos e iniciar
 o servidor de desenvolvimento, que disponibiliza nossos arquivos usando
 a estratégia `Hot Module Replacement`
-[(HMR)](https://en.vitejs.dev/guide/features.html#hot-module-replacement),
+[(HMR)](https://vitejs.dev/guide/features.html#hot-module-replacement),
 isso significa que quando você faz alterações em arquivos que estão sendo
 hosteados, o navegador será atualizado automaticamente sem a necessidade
 de fazê-lo manualmente para recarregar todo o site. Você deve ter um
@@ -400,7 +400,7 @@ aplicativo e, com isso, criar a interface do usuário (UI) que siga este fluxo.
 
 Deve funcionar bem em dispositivos de tela grande (computadores, laptops etc.) e
 pequena (_tablets_, telefones celulares etc.). Sugerimos seguir a técnica
-_`mobile first`_ (mais detalhes sobre essa técnica ao final).
+[_`mobile first`_](#mobile-first) (mais detalhes sobre essa técnica ao final).
 
 ### 5.6 Considerações sobre o comportamento da Interface do Usuário (UI)
 
@@ -417,7 +417,6 @@ H.U.:
 * Validações:
   - Somente usuários com contas válidas têm acesso permitido.
   - Não haver usuários repetidos.
-  - A conta do usuário deve ser um email válido.
   - O que o usuário digita no campo de senha (_input_) deve ser secreto.
 * Comportamento:
   - Quando o formulário de registro ou login é enviado, ele deve ser validado.
@@ -464,7 +463,7 @@ H.U.:
 ### 5.8 Considerações técnicas UX
 
 * Faça pelo menos 2 entrevistas com os usuários.
-* Faça um protótipo de baixa fidelidade.
+* Faça um protótipo de baixa e alta fidelidade.
 * Verifique se a implementação do código segue as diretrizes do protótipo.
 * Faça sessões de teste de usabilidade com o produto em HTML.
 
@@ -532,12 +531,13 @@ criar (salvar) novos dados, além de ler, atualizar e modificar os dados
 existentes. Esses dados podem ser salvos remotamente usando o
 [Firebase](https://firebase.google.com/).
 
-Para usar o Firebase, você deve criar um projeto no console do Firebase e
+Para usar o Firebase, você deve criar um projeto no [console](https://console.firebase.google.com/) do Firebase e
 instale a dependência `firebase` usando `npm`.
 Leia [instruções passo a passo aqui](https://firebase.google.com/docs/web/setup).
 
 Outras:
 
+* [Evento hashchange ](https://developer.mozilla.org/es/docs/Web/API/Window/hashchange_event)
 * [Mobile
   First](https://tableless.com.br/mobile-first-a-arte-de-pensar-com-foco/)
 * [Mobile First Is NOT Mobile Only - Nielsen Norman
