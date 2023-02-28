@@ -1,0 +1,100 @@
+* {
+  font-family: 'Quicksand', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+height: 100vh;
+}
+
+body {
+  background-image: url(./img/teste2.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.form-content {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+#logo {
+width: 200px;
+padding: 0 50px;
+margin-top: 150px;
+margin-bottom: 25px;
+}
+
+.register {
+background-color: #F2E2C4;
+box-shadow: 0px 0px 12px #878181;
+margin: auto;
+border-radius: 10px;
+justify-content: center;
+align-items: center;
+padding: 0px 45px;
+}
+
+.input-field {
+background-color: #fff;
+width: 210px;
+padding: 12px;
+border-radius: 80px;
+margin: 25px 0;
+display: grid;
+grid-template-columns: 15% 85%;
+}
+
+.input-field i {  
+font-size: 20px;
+color:#C4661F;
+}
+
+.input-field input {
+border-style: none;
+border: 0;
+outline: 0;
+padding: 0;
+font-size: 16px;
+color: #783d19;
+}
+
+.input-field input::placeholder {
+color: #783d19;
+}
+
+.btn-register {
+background-color: #783d19;
+border: 10px solid #783d19;
+padding: 0 10px;
+border-radius: 20px;
+color: #fefae0;
+margin: 0 55px 25px 55px;
+cursor: pointer;
+}
+
+.text-social {
+display: flex;
+justify-content: center;
+align-items: center;
+color:#C4661F;
+margin-bottom: 25px;
+}
+
+.icon-google {
+display: flex;
+justify-content: center;
+align-items: center;
+margin-bottom: 25px;
+font-size: 25px;
+text-decoration: none;
+border-radius: 20%;
+cursor: pointer;
+}
+
+.social-network i {
+color:#C4661F;
+}
