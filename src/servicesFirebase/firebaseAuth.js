@@ -1,14 +1,34 @@
+//import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js";
+c
+// const auth = getAuth();
 
-const provider = new firebase.auth.GoogleAuthProvider();  //criar uma instância do provedor
+// //cadastro de usuarios novos
+// export const createUser = () => {
 
-firebase.auth().signInWithPopup(provider) //Metodo de autenticacao atraves da janela dentro do proprio sistema
+//     createUserWithEmailAndPassword(auth, email, password)
+//         .then((userCredential) => {
+//             // Signed in
+//             const user = userCredential.user;
+//             // ...
+//         })
+//         .catch((error) => {
+//             const errorCode = error.code;
+//             const errorMessage = error.message;
+//             // ..
+//         });
+// }
 
-firebase.auth().signInWithPopup(provider).then(result => {  //Tratamento da resposta do login atraves da pop-up:
-  const token = result.credential.accessToken;
-  const user = result.user;
-}).catch(error => {
-  const errorCode = error.code;
-  const errorMessage = error.message;
-  const email = error.email;
-  const credential = error.credential;
-});
+
+// //login de usuarios existentes
+// export const SingIn = () => {
+//     signInWithEmailAndPassword(auth, email, password)
+//         .then((userCredential) => {
+//             // Signed in
+//             const user = userCredential.user;
+//             // ...
+//         })
+//         .catch((error) => {
+//             const errorCode = error.code;
+//             const errorMessage = error.message;
+//         });
+// }
