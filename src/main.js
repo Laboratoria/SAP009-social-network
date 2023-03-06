@@ -1,6 +1,6 @@
-import register from "./pages/register/register.js";
+import registro from "./pages/registro/registro.js";
 import login from "./pages/login/login.js";
-import reset from "./pages/reset-password/reset-login";
+import redefinirSenha from "./pages/redefinir-senha/redefinir-senha";
 import feed from "./pages/feed/feed";
 
 const main = document.querySelector("#root")
@@ -14,15 +14,18 @@ const init = () => {
             case "#login":
                 main.appendChild(login());
                 break;
-            case "#reset":
-                main.appendChild(reset());
+            case "#redefinir-senha":
+                main.appendChild(redefinirSenha());
                 break;
-            case "#register":
-                main.appendChild(register());
+            case "#registro":
+                main.appendChild(registro());
                 break;
             case "#feed":
-            main.appendChild(feed());    
+                main.appendChild(feed());
+                break;
         }
+        inputsRequired()
+        // "método padrão HTMl para chamar os inputs com required e exibir mensagem"
     })
 }
 
@@ -31,12 +34,5 @@ window.addEventListener("load", () => {
     init()
 })
 // para requisitar preenchimento de dados corretos no input
-const camposDoFormulario = document.querySelectorAll("[required]");
-camposDoFormulario.forEach((campo) => {
-    campo.addEventListener("blur", () => verificaCampo(campo));
-});
 
-function verificaCampo(campo) {
-
-}
 

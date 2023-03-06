@@ -2,7 +2,7 @@ export default () => {
   const container = document.createElement("div")
   const template = `
   <div class="main">
-  <div class="txt-voltar">
+   <div class="txt-voltar">
   <button class="btn-voltar"><a href="index.html">Voltar</a></button>
   <img src="./img/illustrations/dog_pop.png" class="ilustracao-redefinir-senha" alt="ilustração-redefinir-senha">
   </div>
@@ -27,7 +27,7 @@ export default () => {
   </div>
 `
   container.innerHTML = template;
-
+  //msg confirmação de pedido redefinição de senha
   const botaoRedefinir = container.querySelector('.btn-redefinir-senha');
   botaoRedefinir.addEventListener('click', function (e) {
     e.preventDefault();
