@@ -21,10 +21,10 @@ body {
 
 :root {
   --bege: #FEFAE0;
-  --nude: #F9EBC7; 
-  --marromclaro: #B99470; 
-  --laranja: #C4661F; 
-  --marrom:#783D19; 
+  --nude: #F9EBC7;
+  --marromclaro: #B99470;
+  --laranja: #C4661F;
+  --marrom: #783D19;
 }
 
 main {
@@ -32,45 +32,45 @@ main {
   width: 100%;
 }
 
-.logo-tela > img {
+.logo-tela>img {
   width: 200px;
   margin-top: 16px;
   margin-bottom: 30px;
 
 }
 
-  .estilo-card {
+.estilo-card {
   color: var(--laranja);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   padding: 15px 17px;
-  background-color: #F2E2C4; 
+  background-color: #F2E2C4;
   border-radius: 20px;
   box-shadow: 0px 0px 12px #878181;
   box-sizing: border-box;
-  }
+}
 
-  .tela-principal {
+.tela-principal {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   padding: 0 0 20px;
-  }
+}
 
-  h3 {
+h3 {
   color: var(--bege);
   display: inline-block;
   padding: 10px 0px 10px 0px;
-  }
+}
 
-  .cadastro-google {
-    margin-top: 10px;
-  }
+.cadastro-google {
+  margin-top: 10px;
+}
 
-  .icon-google {
+.icon-google {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,25 +78,25 @@ main {
   text-decoration: none;
   border-radius: 20%;
   cursor: pointer;
-  color:#C4661F;
+  color: #C4661F;
 }
 
 
-/*Página de Login*/ 
+/*Página de Login*/
 
 .txt-novo-usuario {
   color: var(--bege);
   text-align: center;
   padding: 0px 5px 0px 5px;
   font-size: 14px;
-} 
+}
 
 .ilustracao-login {
   display: none;
 }
 
 .ilustracao-cadastro {
-  display:none;
+  display: none;
 }
 
 .ilustracao-redefinir-senha {
@@ -113,7 +113,7 @@ main {
   grid-template-columns: 15% 85%;
 }
 
-.input-card > input {
+.input-card>input {
   border-style: none;
   border: 0;
   outline: 0;
@@ -124,7 +124,7 @@ main {
 
 .input-card i {
   font-size: 20px;
-  color:#C4661F;
+  color: #C4661F;
 }
 
 .btn-registrar {
@@ -148,12 +148,12 @@ main {
   padding: 0 10px;
   border-radius: 20px;
   color: #fefae0;
-  cursor: pointer; 
+  cursor: pointer;
   margin-top: 5px;
   margin-bottom: 10px;
 }
 
-.espaço-acessar{
+.espaço-acessar {
   margin: 5px;
   justify-content: center;
   text-align: center;
@@ -167,127 +167,127 @@ a {
   cursor: pointer;
 }
 
-  /*Página de Cadastro*/
-  
-  .cadastrar {
+/*Página de Cadastro*/
+
+.cadastrar {
   background-color: #F2E2C4;
   margin: auto;
   border-radius: 10px;
   justify-content: center;
   align-items: center;
   padding: 0px 45px;
-  }
+}
 
-  .btn-entrar {
-    width: 40%;
-    padding: 10px 0px;
-    border: none;
-    border-radius: 20px;
-    outline: none;
-    text-transform: uppercase;
-    font-weight: bold;
-    letter-spacing: 3px;
-    color: #783d19;
-    background: #F2E2C4;
-    cursor: pointer;
-    margin-top: 10px;
-  }
-  
-  .btn-cadastrar {
+.btn-entrar {
+  width: 40%;
+  padding: 10px 0px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 3px;
+  color: #783d19;
+  background: #F2E2C4;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.btn-cadastrar {
   background-color: #783d19;
   border: 10px solid #783d19;
   padding: 0 10px;
   border-radius: 20px;
   color: #fefae0;
   cursor: pointer;
-  }
-  
-  .txt-entrar {
-    color: var(--bege);
-    text-align: center;
-    padding: 0px 5px 0px 5px;
-    font-size: 15px;
-    padding: 10px;
-  }
-
-  .espaço-entrar {
-    margin: 5px;
-    justify-content: center;
-    text-align: center;
-  }
-
-  a:link {
-    text-decoration: none;
-  }
-
-  a {
-    color: currentColor
-  }
-
-  /*Ressetar Senha*/
-  
-  .logo-tela-redefinir > img {
-    width: 200px;
-    margin-top: 165px;
-    margin-bottom: 30px;
 }
-  
-  .btn-voltar {
-    width: 23%;
-    padding: 10px 0px;
-    border: none;
-    border-radius: 20px;
-    outline: none;
-    text-transform: uppercase;
-    font-weight: bold;
-    letter-spacing: 3px;
-    color: #783d19;
-    background: #F2E2C4;
-    cursor: pointer;
-    margin-top: 25px;
-    margin-left: 25px;
-  }
 
-  .label-esqueceu-senha {
-      color: #BF5B21;
-      display: flex;
-      text-align: center;
-  }
+.txt-entrar {
+  color: var(--bege);
+  text-align: center;
+  padding: 0px 5px 0px 5px;
+  font-size: 15px;
+  padding: 10px;
+}
 
-  .btn-redefinir-senha {
-    background-color: #783d19;
-    border: 10px solid #783d19;
-    padding: 0 10px;
-    border-radius: 20px;
-    color: #fefae0;
-    cursor: pointer;
-    margin-top: 5px;
-    margin-bottom: 10px;
-  }
+.espaço-entrar {
+  margin: 5px;
+  justify-content: center;
+  text-align: center;
+}
 
-  .estilo-card-redefir-senha {
-    max-width: 268px;
-    color: var(--laranja);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 15px 17px;
-    background-color: #F2E2C4; 
-    border-radius: 20px;
-    box-shadow: 0px 0px 12px #878181;
-    box-sizing: border-box;
-  }
+a:link {
+  text-decoration: none;
+}
 
-  .espaço-redefinir {
-    justify-content: center;
-    display: flex;
+a {
+  color: currentColor
+}
+
+/*Ressetar Senha*/
+
+.logo-tela-redefinir>img {
+  width: 200px;
+  margin-top: 165px;
+  margin-bottom: 30px;
+}
+
+.btn-voltar {
+  width: 23%;
+  padding: 10px 0px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 3px;
+  color: #783d19;
+  background: #F2E2C4;
+  cursor: pointer;
+  margin-top: 25px;
+  margin-left: 25px;
+}
+
+.label-esqueceu-senha {
+  color: #BF5B21;
+  display: flex;
+  text-align: center;
+}
+
+.btn-redefinir-senha {
+  background-color: #783d19;
+  border: 10px solid #783d19;
+  padding: 0 10px;
+  border-radius: 20px;
+  color: #fefae0;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.estilo-card-redefir-senha {
+  max-width: 268px;
+  color: var(--laranja);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 15px 17px;
+  background-color: #F2E2C4;
+  border-radius: 20px;
+  box-shadow: 0px 0px 12px #878181;
+  box-sizing: border-box;
+}
+
+.espaço-redefinir {
+  justify-content: center;
+  display: flex;
 }
 
 /*Ajustando para telas maiores*/
 @media screen and (min-width: 460px) {
-  .logo-tela > img {
-  margin-top: 50px;
+  .logo-tela>img {
+    margin-top: 50px;
   }
 
   .btn-registrar {
@@ -308,7 +308,7 @@ a {
     margin-top: 25px;
   }
 
-  .txt-novo-usuario > p {
+  .txt-novo-usuario>p {
     font-size: 16px;
   }
 }
@@ -352,7 +352,7 @@ a {
     font-size: 20px;
   }
 
-  .txt-novo-usuario > p {
+  .txt-novo-usuario>p {
     font-size: 16px;
     padding: 0 15px 0 15px;
   }
@@ -361,12 +361,12 @@ a {
     font-size: 16px;
   }
 
-  .logo-tela > img {
+  .logo-tela>img {
     margin: 100px 0 30px 0;
     width: 260px;
   }
 
-  .logo-tela-redefinir > img {
+  .logo-tela-redefinir>img {
     width: 260px;
     margin: 30px 0 30px 0;
   }
@@ -381,7 +381,7 @@ a {
 }
 
 @media screen and (min-width: 1200px) {
-  .txt-novo-usuario > p {
+  .txt-novo-usuario>p {
     padding: 0 20px 0 15px;
   }
 
@@ -403,7 +403,7 @@ a {
     margin: 220px 0 0 150px;
   }
 
-  .logo-tela > img {
+  .logo-tela>img {
     margin: 0 0 30px 0;
     width: 320px;
   }
@@ -412,7 +412,7 @@ a {
     padding: 20px 35px;
   }
 
-  .logo-tela-redefinir > img {
+  .logo-tela-redefinir>img {
     width: 320px;
     margin: 0 65px 30px 0;
   }
@@ -421,4 +421,75 @@ a {
     margin-right: 90px;
     padding: 25px 20px;
   }
+}
+
+/*FEED*/
+
+.barra-feed {
+  color: var(--bege);
+}
+.icon-menu {
+  display: flex;
+  color: var(--bege);
+  margin-left: 20px;
+  margin-top: 15px;
+}
+
+h2 {
+  display: flex;
+  color: var(--bege);
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.icon-usuário {
+  display: flex;
+  justify-content: center;
+}
+
+.texto-feed {
+  display: inline-flex;
+ 
+}
+
+menu{
+  display: none;
+  z-index: -9999;
+  position:absolute
+}
+
+i#burguer {
+  display: block;
+}
+
+#itens{
+  background-color: var(--bege);
+  z-index: 9999;
+  height: 12vh;
+  width: 40%;
+  padding: 15px;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--laranja);
+  font-weight: bold;
+}
+
+ul{
+  list-style: none;
+}
+
+.cao {
+  flex-direction: column;
+  display: flex;
+}
+
+.tutor {
+  flex-direction: column;
+  display: flex;
+}
+
+.perfil {
+    display: inline-flex;
+    gap: 30px;
+    margin-left: 120px;
 }
