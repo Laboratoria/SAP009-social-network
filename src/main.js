@@ -27,12 +27,6 @@ const init = () => {
   });
 }
 
-git commit -m "Estilização css e add das pages com SPA.
-
-
-Co-authored-by:analeticiabacha <ana_leticia@geb.inatel.br>
-Co-authored-by:ajuliamm <ajuliammelo@gmail.com>"
-
 
 window.addEventListener('load', () => {
   main.appendChild(home());
