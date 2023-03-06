@@ -1,5 +1,5 @@
-import { autenticarUsuario } from "../../firebase/firebase";
-import { redirecionarPagina } from "../../redirecionar-pagina"
+import { autenticarUsuario, logarGoogle } from "../../firebase/firebase";
+import { redirecionarPagina } from "../../redirecionar-pagina";
 
 export default () => {
     const container = document.createElement("div")
@@ -74,5 +74,10 @@ export default () => {
         }
     });
 
+    const selecionarGoogle = container.querySelector("#registro-google")
+    selecionarGoogle.addEventListener('click', () => {
+        logarGoogle();
+
+    });
     return container;
 }
