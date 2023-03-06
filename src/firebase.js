@@ -1,12 +1,13 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth'
-import { getFirestore } from 'firebase/'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
+import { getFirestore} from 'firebase/'
+
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
+
 const firebaseConfig = {
   apiKey: "AIzaSyDIYlqYI_G6ucr-Kq3tFC0lE69LJ5lr4Ts",
   authDomain: "code-girls-35638.firebaseapp.com",
@@ -17,7 +18,21 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
-const auth = getAuth();
-const db = getFirestore();
+
+
+const provider = new firebase.auth.GoogleAuthProvider();  //criar uma instância do provedor
+
+firebase.auth().signInWithPopup(provider) //Metodo de autenticacao atraves da janela dentro do proprio sistema
+
+firebase.auth().signInWithPopup(provider).then(result => {  //Tratamento da resposta do login através da pop-up:
+  const token = result.credential.accessToken;
+  const user = result.user;
+}).catch(error => {
+  const errorCode = error.code;
+  const errorMessage = error.message;
+  const email = error.email;
+  const credential = error.credential;
+});
+
