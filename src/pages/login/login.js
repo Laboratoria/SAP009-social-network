@@ -11,7 +11,7 @@ export default () => {
                 experiências! Você poderá seguir todos seus amigos e fazer novos. 
                 Além de registrar a vida do seu cão, você poderá acompanhar 
                 a vida de outros cãezinhos e interagir nas publicações. </p>
-                <a href="#register">
+                <a href="#registro">
                     <button class="btn-registrar">registre-se</button>
                 </a>
                 <img src="./img/illustrations/social_update.png" class="ilustracao-login" alt="ilustração-login">
@@ -21,7 +21,7 @@ export default () => {
                     <img src="./img/logo/logo.png" class="img-logo" alt="logo-dogTips">
                 </div>
                 <div class="estilo-card">
-                    <form>
+                    <form id="formulario-login">
                         <label for="email">E-mail:</label>
                         <div class="input-card">
                             <i class="fas fa-envelope"></i>
@@ -30,16 +30,17 @@ export default () => {
                         <label for="password">Senha:</label>
                         <div class="input-card">
                             <i class="fas fa-lock"></i>
-                            <input type="password" id="senha" placeholder="******" required/>
+                            <input type="password" id="senha" placeholder="••••••" required/>
                         </div>
                         <p class="texto-centralizado"> Esqueceu sua senha?</p> 
-                        <p class="texto-centralizado"><a href="#reset"id="clique-esqueceu">Clique aqui!</a></p>
+                        <p class="texto-centralizado"><a href="#redefinirSenha"id="clique-esqueceu">Clique aqui!</a></p>
                         <div class="espaço-acessar">
                             <button class="btn-acessar">ACESSAR</button>
                         </div>
+                        <div class="texto-centralizado" id="mensagem-erro"> </div>
                         <p class="texto-centralizado">Ou faça login com o Google</p>
                         <div class="cadastro-google"> 
-                            <a href="#" id="register-google" class="icon-google">
+                            <a href="#" id="registro-google" class="icon-google">
                             <i class="fa-brands fa-google"></i>
                         </div>
                     </form>
@@ -48,21 +49,30 @@ export default () => {
         </div>
     `
     container.innerHTML = template;
+    // aqui estamos autenticando usuario com e-mail e senha (testar olhando console).
     const botaoLogin = container.querySelector(".btn-acessar");
+    const formulario = container.querySelector("#formulario-login");
+    const mensagemErro = container.querySelector("#mensagem-erro");
+
     botaoLogin.addEventListener('click', async function (e) {
-        e.preventDefault();
-        const email = container.querySelector("#email").value;
-        const senha = container.querySelector("#senha").value;
-        try{
-            console.log("autenticando usuario")
-            await autenticarUsuario(email,senha);
-            console.log("usuario autenticado")
-            redirecionarPagina('#feed')    
-        }catch(error){
-            console.log("usuario ou senha invalido")
-            console.log(error)
+        mensagemErro.innerHTML = "";
+        if (formulario.checkValidity()) {
+            e.preventDefault();
+            const email = container.querySelector("#email").value;
+            const senha = container.querySelector("#senha").value;
+
+            try {
+                console.log("autenticando usuario")
+                await autenticarUsuario(email, senha);
+                console.log("usuario autenticado")
+                redirecionarPagina('#feed')
+            } catch (error) {
+                console.log('usuário ou senha inválidos');
+                mensagemErro.innerHTML = "<p>Usuário ou senha inválidos</p>";
+                console.log(error);
+            }
         }
-    }
-    )
+    });
+
     return container;
 }
