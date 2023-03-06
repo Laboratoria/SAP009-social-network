@@ -14,7 +14,7 @@ const init = () => {
             case "#login":
                 main.appendChild(login());
                 break;
-            case "#redefinir-senha":
+            case "#redefinirSenha":
                 main.appendChild(redefinirSenha());
                 break;
             case "#registro":
@@ -24,8 +24,6 @@ const init = () => {
                 main.appendChild(feed());
                 break;
         }
-        inputsRequired()
-        // "método padrão HTMl para chamar os inputs com required e exibir mensagem"
     })
 }
 
