@@ -1,0 +1,49 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    width: 18rem;
+}
+
+input, button {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(225, 223, 223);
+    width: -webkit-fill-available;
+    /*text-align: center;*/
+
+}
+
+/*::placeholder {
+    text-align: center;
+}*/
+
+button {
+    cursor: pointer;
+}
+
+button:active {
+    opacity: 0.8;
+}
+
+#register, #forgot-password {
+    background-color: transparent;
+    border: none;
+    font-weight:bold
+
+}
+
+#login {
+   font-weight:bold
+}
+
+p {
+    text-align: center;
+}
+
