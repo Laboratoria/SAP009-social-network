@@ -43,6 +43,7 @@ export default () => {
                     <div class="cadastro-google"> 
                         <a href="#" id="registro-google" class="icon-google">
                             <i class="fa-brands fa-google"></i>
+                        <p id="txtAlert"><p>
                         </a>
                     </div>
                 </form>
