@@ -1,4 +1,6 @@
 import login from './login/login.js';
+
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
 import {
   getAuth,
@@ -7,14 +9,24 @@ import {
   signOut,
   createUserWithEmailAndPassword,
 } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
-//import {getAuth } from '/firebase/compat/auth';
+
+
+
+// const main = document.querySelector('#root');
+
+// window.addEventListener('load', () => {
+//   main.appendChild(login());
+// });
 
 
 const main = document.querySelector('#root');
 
-window.addEventListener('load', () => {
-  main.appendChild(login());
-});
+const loginPage = login(); 
+
+main.appendChild(loginPage);
+
+
+const loginButton = loginPage.querySelector("#sign-in"); 
 
 const firebaseApp = initializeApp({
   apiKey: "AIzaSyDxT35_dol3gw5dunaZUvJN4CuxkFXRnrI",
@@ -30,26 +42,26 @@ const auth = getAuth(firebaseApp);
 
 const inputEmail = document.getElementById("email");
 const inputPassword = document.getElementById("password");
-const registerButton = document.getElementById("register");
-const loginButton = document.getElementById("sign-in");
+// const registerButton = document.getElementById("register");
+// const loginButton = document.getElementById("sign-in");
 const signOutButton = document.getElementById("sign-out");
 
-registerButton.addEventListener("click", function () {
-  const email = inputEmail.value;
-  const password = inputPassword.value;
+// registerButton.addEventListener("click", function () {
+//   const email = inputEmail.value;
+//   const password = inputPassword.value;
 
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
-      console.log("User created:", user.email);
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log("Error creating user:", errorMessage);
-    });
-});
+//   createUserWithEmailAndPassword(auth, email, password)
+//     .then((userCredential) => {
+//       // Signed in
+//       const user = userCredential.user;
+//       console.log("User created:", user.email);
+//     })
+//     .catch((error) => {
+//       const errorCode = error.code;
+//       const errorMessage = error.message;
+//       console.log("Error creating user:", errorMessage);
+//     });
+// });
 
 loginButton.addEventListener("click", function () {
   const email = inputEmail.value;
@@ -59,11 +71,22 @@ loginButton.addEventListener("click", function () {
     .then((userCredential) => {
       // Signed in
       console.log("login");
+
       const user = userCredential.user;
+      console.log(user);
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
+    });
+
+    onAuthStateChanged(auth, (user) => {
+      console.log(user);
+      if (user) {
+        console.log(`Logged in as ${user.email}`);
+      } else {
+        console.log("No user");
+      }
     });
 });
 
@@ -78,11 +101,11 @@ signOutButton.addEventListener("click", function () {
   });
 });
 
-onAuthStateChanged(auth, (user) => {
-  console.log(user);
-  if (user) {
-    console.log(`Logged in as ${user.email}`);
-  } else {
-    console.log("No user");
-  }
-});
+// onAuthStateChanged(auth, (user) => {
+//   console.log(user);
+//   if (user) {
+//     console.log(`Logged in as ${user.email}`);
+//   } else {
+//     console.log("No user");
+//   }
+// });
