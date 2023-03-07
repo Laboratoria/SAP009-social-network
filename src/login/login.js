@@ -4,13 +4,13 @@ export default () => {
   const template = `
       <form>
           <div>
-              <input type="email" name="email" placeholder="nome@email.com"/>
+              <input type="email" name="email" placeholder="nome@email.com" id="email"/>
           </div>
           <div>
-              <input type="password" name="password" placeholder="Senha"/>
+              <input type="password" name="password" placeholder="Senha" id="password"/>
           </div>
           <div>
-              <button class="btn" id="login">Login</button>
+              <button type="button" class="btn" id="sign-in">Login</button>
           </div>
           <div>
               <p>ou</p><br/>
@@ -26,7 +26,7 @@ export default () => {
       </form>
       `;
 
-  container.innerHTML = template;
+  container.innerHTML = template;  
 
   return container;
 };
