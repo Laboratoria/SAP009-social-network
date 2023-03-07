@@ -1,6 +1,6 @@
 import firebaseConfig from './firebase-config.js';
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, sendPasswordResetEmail } from "firebase/auth";
 // os imports acima são de funções do firebase
 import { redirecionarPagina } from "../redirecionar-pagina";
 
@@ -51,5 +51,7 @@ function logarGoogle() {
     });
 }
 
-export {autenticarUsuario, cadastro, logarGoogle};
+const redefinirSenha = (email) => sendPasswordResetEmail(auth, email);
+
+export {autenticarUsuario, cadastro, logarGoogle, redefinirSenha};
 

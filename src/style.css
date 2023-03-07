@@ -167,6 +167,13 @@ a {
   cursor: pointer;
 }
 
+.mensagem-erro {
+  text-align: center;
+  color: #5F6F52;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
 /*Página de Cadastro*/
 
 .cadastrar {
@@ -284,6 +291,13 @@ a {
   display: flex;
 }
 
+.msg-redefine-senha {
+  color: #BF5B21;
+  display: flex;
+  text-align: center;
+  padding: 25px 30px 0 30px;
+}
+
 /*Ajustando para telas maiores*/
 @media screen and (min-width: 460px) {
   .logo-tela>img {
@@ -362,22 +376,26 @@ a {
   }
 
   .logo-tela>img {
-    margin: 100px 0 30px 0;
+    margin: 100px 0px 30px 110px;
     width: 260px;
   }
 
   .logo-tela-redefinir>img {
     width: 260px;
-    margin: 30px 0 30px 0;
+    margin: 30px 0 30px 60px;
   }
 
   .estilo-card {
-    margin-right: 30px;
+    margin-left: 80px;
   }
 
   .estilo-card-redefir-senha {
-    margin-right: 30px;
+    margin-left: 35px;
   }
+
+  .msg-redefine-senha {
+    padding: 25px 20px 0 30px;
+}
 }
 
 @media screen and (min-width: 1200px) {
@@ -410,6 +428,7 @@ a {
 
   .estilo-card {
     padding: 20px 35px;
+    margin-right: 110px;
   }
 
   .logo-tela-redefinir>img {
@@ -418,9 +437,13 @@ a {
   }
 
   .estilo-card-redefir-senha {
-    margin-right: 90px;
+    margin-right: 130px;
     padding: 25px 20px;
   }
+
+  .msg-redefine-senha {
+    padding: 26px 130px 0px 30px;
+}
 }
 
 /*FEED*/
