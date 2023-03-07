@@ -101,11 +101,11 @@ signOutButton.addEventListener("click", function () {
   });
 });
 
-onAuthStateChanged(auth, (user) => {
-  console.log(user);
-  if (user) {
-    console.log(`Logged in as ${user.email}`);
-  } else {
-    console.log("No user");
-  }
-});
+// onAuthStateChanged(auth, (user) => {
+//   console.log(user);
+//   if (user) {
+//     console.log(`Logged in as ${user.email}`);
+//   } else {
+//     console.log("No user");
+//   }
+// });
