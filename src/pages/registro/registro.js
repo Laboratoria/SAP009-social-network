@@ -1,4 +1,4 @@
-import { cadastro } from "../../firebase/firebase"
+import { cadastro, logarGoogle } from "../../firebase/firebase"
 
 export default () => {
     const container = document.createElement("div")
@@ -39,9 +39,10 @@ export default () => {
                     <div class="espaço-entrar">
                         <button type="submit" value="cadastrar" id="cadastrar" class="btn-cadastrar">CADASTRAR</button>
                     </div>
+                    <p id="txtAlert" class="mensagem-vazia"><p>
                     <p class="text-cadastro-google">Ou cadastre-se com o Google</p>
                     <div class="cadastro-google"> 
-                        <a href="#" id="registro-google" class="icon-google">
+                        <a href="#registro" id="registro-google" class="icon-google">
                             <i class="fa-brands fa-google"></i>
                         </a>
                     </div>
@@ -57,9 +58,23 @@ export default () => {
     btnCadastrar.addEventListener("click", (event) => {
         const email = document.querySelector("#email").value;
         const senha = document.querySelector("#senha").value;
+        const nomeCao = document.querySelector("#nomecao").value;
+        const nomeTutor =document.querySelector("#nometutor").value;
+
+
+        if (!email || !senha || !nomeCao || !nomeTutor) {
+            // exibe uma mensagem de erro
+            const msgCampoVazio = container.querySelector("#txtAlert");
+        msgCampoVazio.innerHTML = "Preencha todos os campos!";
+            return;
+          }
 
         cadastro(event, email, senha);
     });
+    const selecionarGoogle = container.querySelector("#registro-google")
+    selecionarGoogle.addEventListener('click', () => {
+        logarGoogle();
+});
 
     return container;
 }
