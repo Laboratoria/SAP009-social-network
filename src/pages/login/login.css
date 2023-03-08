@@ -47,3 +47,8 @@ p {
     text-align: center;
 }
 
+.error {
+    background-color: red;
+    color: white;
+    display: none;
+}
