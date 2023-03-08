@@ -37,7 +37,7 @@ export default () => {
                         <div class="espaço-acessar">
                             <button class="btn-acessar">ACESSAR</button>
                         </div>
-                        <div class="texto-centralizado" id="mensagem-erro"> </div>
+                        <div class="mensagem-erro" id="mensagem-erro"> </div>
                         <p class="texto-centralizado">Ou faça login com o Google</p>
                         <div class="cadastro-google"> 
                             <a href="#" id="registro-google" class="icon-google">
