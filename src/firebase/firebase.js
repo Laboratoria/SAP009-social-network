@@ -23,32 +23,23 @@ function cadastro(event, email, senha) {
 
     createUserWithEmailAndPassword(auth, email, senha)
         .then((userCredential) => {
-            console.log("Usuário registrado: ", userCredential.user)
+            console.log("Usuário registrado: ", userCredential.user);
             redirecionarPagina('#feed');
         })
         .catch((error) => {
-            console.log("Erro: ", error)
+            console.log("Erro: ", error);
         })
 }
 
 // login com google
 function logarGoogle() {
     signInWithPopup(auth, provider)
-    .then((result) => {
-
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-
-      const token = credential.accessToken;
-      const user = result.user;
-      redirecionarPagina('#feed');
-    }).catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      const email = error.customData.email;
-
-      const credential = GoogleAuthProvider.credentialFromError(error);
-      
-    });
+        .then(() => {
+            redirecionarPagina('#feed');
+        })
+        .catch((error) => {
+            console.log(error);
+        });
 }
 
 const redefinirSenha = (email) => sendPasswordResetEmail(auth, email);
