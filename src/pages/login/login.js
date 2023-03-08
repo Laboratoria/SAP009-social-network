@@ -40,7 +40,7 @@ export default () => {
                         <div class="mensagem-erro" id="mensagem-erro"> </div>
                         <p class="texto-centralizado">Ou faça login com o Google</p>
                         <div class="cadastro-google"> 
-                            <a href="#" id="registro-google" class="icon-google">
+                            <a href="#login" id="registro-google" class="icon-google">
                             <i class="fa-brands fa-google"></i>
                         </div>
                     </form>

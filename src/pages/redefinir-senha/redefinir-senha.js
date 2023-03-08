@@ -5,7 +5,7 @@ export default () => {
   const template = `
   <div class="main">
    <div class="txt-voltar">
-  <button class="btn-voltar"><a href="index.html">Voltar</a></button>
+  <button class="btn-voltar"><a href="#login">Voltar</a></button>
   <img src="./img/illustrations/dog_pop.png" class="ilustracao-redefinir-senha" alt="ilustração-redefinir-senha">
   </div>
   <div class="tela-principal">

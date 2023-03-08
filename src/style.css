@@ -230,6 +230,13 @@ a:link {
 a {
   color: currentColor
 }
+.mensagem-vazia {
+  text-align: center;
+  color: #5F6F52;
+  margin-bottom: 10px;
+  font-weight: bold;
+  margin-top: 10px;
+}
 
 /*Ressetar Senha*/
 
@@ -516,3 +523,68 @@ ul{
     gap: 30px;
     margin-left: 120px;
 }
+.div-postagem-tutor{
+  flex-direction: column;
+  display: flex;
+ }
+ .texto-tutor{
+  background-color: var(--nude);
+  border-style: none;
+  border-radius: 20px;
+ }
+ .btn-publicar{
+  text-transform: uppercase;
+  background-color: #783d19;
+  border: 10px solid #783d19;
+  border-radius: 20px;
+  color: #fefae0;
+  cursor: pointer;
+  width: 30%;
+  margin-top: 5px;
+  margin-left: 220px;
+ }
+ .div-postagem-anteriores-tutor{
+  background-color: var(--nude);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  margin-bottom: 5px;
+ }
+ #icone-superiores{
+  display: inline-flex;
+  margin-top: 4px;
+  margin-left: 4px;
+ }
+ .icon-usuario-txt{
+  color:var(--marrom);
+ }
+ .tutor-txt-area{
+  color: var(--laranja);
+  font-size: 15px
+ }
+ .data-postagem{
+ color: var(--laranja);
+ font-size: 15px;
+ margin-left: 170px;
+ }
+ textarea{
+  color: grey;
+  margin: 4px;
+  padding: 5px;
+ }
+ .texto-tutor-postado{
+  padding: 5px;
+  background-color: var(--nude);
+  border-style: none;
+ }
+ #icones-inferiores{
+  display: inline-flex;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  color:var(--marrom);
+  justify-content: space-between;
+  margin-left: 50px;
+  margin-right: 50px;
+ }
+ 
