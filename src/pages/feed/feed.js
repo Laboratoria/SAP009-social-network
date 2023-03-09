@@ -1,6 +1,6 @@
 export default () => {
-    const container = document.createElement("div")
-    const template = `
+  const container = document.createElement('div');
+  const template = `
         <div class="main">
             <div class="barra-feed">
                 <i class="fa-solid fa-bars fa-2x icon-menu" id="burguer"></i>
@@ -47,17 +47,18 @@ export default () => {
                 </div>
             </div>
         </div>
-        `
-    container.innerHTML = template;
+        `;
+  container.innerHTML = template;
 
-    const iconeMenu = container.querySelector("#burguer")
-        iconeMenu.addEventListener('click', function() {
-            if(itens.style.display == 'block'){
-                itens.style.display = 'none';
-            } else{
-                itens.style.display = 'block' 
-            }
-        });
-                
-    return container;
-}
+  const iconeMenu = container.querySelector('#burguer');
+  iconeMenu.addEventListener('click', () => {
+    const itens = container.querySelector('#itens');
+    if (itens.style.display === 'block') {
+      itens.style.display = 'none';
+    } else {
+      itens.style.display = 'block';
+    }
+  });
+
+  return container;
+};

@@ -1,9 +1,9 @@
-import { autenticarUsuario, logarGoogle } from "../../firebase/firebase";
-import { redirecionarPagina } from "../../redirecionar-pagina";
+import { autenticarUsuario, logarGoogle } from '../../firebase/firebase';
+import { redirecionarPagina } from '../../redirecionar-pagina';
 
 export default () => {
-    const container = document.createElement("div")
-    const template = `
+  const container = document.createElement('div');
+  const template = `
         <div class="main">
             <div class="txt-novo-usuario"> 
                 <h3>Primeira vez aqui?</h3>
@@ -49,38 +49,34 @@ export default () => {
                 </div>
             </div>
         </div>
-        `
+        `;
 
-    container.innerHTML = template;
-    // aqui estamos autenticando usuario com e-mail e senha (testar olhando console).
-    const botaoLogin = container.querySelector(".btn-acessar");
-    const formulario = container.querySelector("#formulario-login");
-    const mensagemErro = container.querySelector("#mensagem-erro");
+  container.innerHTML = template;
+  // aqui estamos autenticando usuario com e-mail e senha (testar olhando console).
+  const botaoLogin = container.querySelector('.btn-acessar');
+  const formulario = container.querySelector('#formulario-login');
+  const mensagemErro = container.querySelector('#mensagem-erro');
 
-    botaoLogin.addEventListener('click', async function (e) {
-        mensagemErro.innerHTML = "";
-        if (formulario.checkValidity()) {
-            e.preventDefault();
-            const email = container.querySelector("#email").value;
-            const senha = container.querySelector("#senha").value;
+  botaoLogin.addEventListener('click', async (e) => {
+    mensagemErro.innerHTML = '';
+    if (formulario.checkValidity()) {
+      e.preventDefault();
+      const email = container.querySelector('#email').value;
+      const senha = container.querySelector('#senha').value;
 
-            try {
-                console.log("autenticando usuario")
-                await autenticarUsuario(email, senha);
-                console.log("usuario autenticado")
-                redirecionarPagina('#feed')
-            } catch (error) {
-                console.log('usuário ou senha inválidos');
-                mensagemErro.innerHTML = "<p>Usuário ou senha inválidos</p>";
-                console.log(error);
-            }
-        }
-    });
+      try {
+        await autenticarUsuario(email, senha);
+        redirecionarPagina('#feed');
+      } catch (error) {
+        mensagemErro.innerHTML = '<p>Usuário ou senha inválidos</p>';
+      }
+    }
+  });
 
-    const selecionarGoogle = container.querySelector("#registro-google")
-        selecionarGoogle.addEventListener('click', () => {
-            logarGoogle();
-    });
+  const selecionarGoogle = container.querySelector('#registro-google');
+  selecionarGoogle.addEventListener('click', () => {
+    logarGoogle();
+  });
 
-    return container;
-}
+  return container;
+};

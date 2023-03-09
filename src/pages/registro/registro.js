@@ -1,9 +1,9 @@
-import { criarUsuario, logarGoogle } from "../../firebase/firebase";
-import { redirecionarPagina } from "../../redirecionar-pagina";
+import { criarUsuario, logarGoogle } from '../../firebase/firebase';
+import { redirecionarPagina } from '../../redirecionar-pagina';
 
 export default () => {
-    const container = document.createElement("div")
-    const template = `
+  const container = document.createElement('div');
+  const template = `
         <div class="main">
             <div class="txt-entrar"> 
                 <h3>Já possui cadastro?</h3>
@@ -55,39 +55,36 @@ export default () => {
                 </div>
             </div>
         </div>
-        `
-    container.innerHTML = template;
+        `;
+  container.innerHTML = template;
 
-    const btnCadastrar = container.querySelector("#cadastrar");
-    btnCadastrar.addEventListener("click", function (e) {
-        e.preventDefault();
-        const email = document.querySelector("#email").value;
-        const senha = document.querySelector("#senha").value;
-        const nomeCao = document.querySelector("#nomecao").value;
-        const nomeTutor =document.querySelector("#nometutor").value;
-      
-        if (!email || !senha || !nomeCao || !nomeTutor) {
-          // exibe uma mensagem de erro
-          const msgCampoVazio = container.querySelector("#txtAlert");
-          msgCampoVazio.innerHTML = "Preencha todos os campos!";
-          return;
-        }
-      
-        criarUsuario(email, senha)
-          .then((userCredential) => {
-            console.log("Usuário registrado: ", userCredential.user);
-            redirecionarPagina('#feed');
-          })
-          .catch((error) => {
-            console.log("Erro: ", error);
-          });
+  const btnCadastrar = container.querySelector('#cadastrar');
+  btnCadastrar.addEventListener('click', (e) => {
+    e.preventDefault();
+    const email = document.querySelector('#email').value;
+    const senha = document.querySelector('#senha').value;
+    const nomeCao = document.querySelector('#nomecao').value;
+    const nomeTutor = document.querySelector('#nometutor').value;
+
+    if (!email || !senha || !nomeCao || !nomeTutor) {
+      // exibe uma mensagem de erro
+      const msgCampoVazio = container.querySelector('#txtAlert');
+      msgCampoVazio.innerHTML = 'Preencha todos os campos!';
+      return;
+    }
+
+    criarUsuario(email, senha)
+      .then(() => {
+        redirecionarPagina('#feed');
       })
+      .catch(() => {
+      });
+  });
 
-    
-    const selecionarGoogle = container.querySelector("#registro-google")
-        selecionarGoogle.addEventListener('click', () => {
-            logarGoogle();
-    });
+  const selecionarGoogle = container.querySelector('#registro-google');
+  selecionarGoogle.addEventListener('click', () => {
+    logarGoogle();
+  });
 
-    return container;
-}
+  return container;
+};
