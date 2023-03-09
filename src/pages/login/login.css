@@ -26,7 +26,9 @@ input, button {
     border: none;
     outline-color: #FF4F5A;
     background-color: rgb(225, 223, 223);
-    width: -webkit-fill-available;
+    width: -moz-available;          /* WebKit-based browsers will ignore this. */
+    width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+ 
 }
 
 #login-button {

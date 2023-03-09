@@ -1,10 +1,18 @@
+//importacao da funcao que criamos em auth.js abrigando a funcao pronta do firebase
+import { createUserWithEmail, signIn} from '../../firebase/auth.js'
+
+//chamando a funcao que importamos
+createUserWithEmail();
+signIn();
+
+
 export default () => {
   const container = document.createElement('div');
 
   const template = `
   <div class="form-wrapper">
-  <img src="../assets/ada-image.png" id="ada-image" alt="mulher mexendo no notebook">
-  <img src="../assets/ada-logo.png" id="ada-logo" alt="logo da ConectAda">
+  <img src="./assets/ada-image.png" id="ada-image" alt="mulher mexendo no notebook">
+  <img src="./assets/ada-logo.png" id="ada-logo" alt="logo da ConectAda">
   <form>
     <div>
       <input type="email" name="email" id="email" placeholder="seu@email.com">
@@ -24,7 +32,7 @@ export default () => {
     <p>ou</p>
 
     <div>
-      <button type="button" id="google-button"><img src="../assets/google-logo.png" id="google-logo" alt="logo do Google">Continue com o Google</button>
+      <button type="button" id="google-button"><img src="./assets/google-logo.png" id="google-logo" alt="logo do Google">Continue com o Google</button>
     </div>
 
     <div>
