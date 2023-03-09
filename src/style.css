@@ -113,7 +113,7 @@ h3 {
   grid-template-columns: 15% 85%;
 }
 
-.input-card>input {
+label > input {
   border-style: none;
   border: 0;
   outline: 0;
@@ -298,11 +298,16 @@ a {
   display: flex;
 }
 
+.msg-email-redefinir-senha {
+  display: flex;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 .msg-redefine-senha {
   color: #BF5B21;
   display: flex;
   text-align: center;
-  padding: 25px 30px 0 30px;
 }
 
 /*Ajustando para telas maiores*/
@@ -399,10 +404,6 @@ a {
   .estilo-card-redefir-senha {
     margin-left: 35px;
   }
-
-  .msg-redefine-senha {
-    padding: 25px 20px 0 30px;
-}
 }
 
 @media screen and (min-width: 1200px) {
@@ -447,10 +448,6 @@ a {
     margin-right: 130px;
     padding: 25px 20px;
   }
-
-  .msg-redefine-senha {
-    padding: 26px 130px 0px 30px;
-}
 }
 
 /*FEED*/

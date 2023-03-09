@@ -22,22 +22,24 @@ export default () => {
                 </div>
                 <div class="estilo-card">
                     <form id="formulario-login">
-                        <label for="email">E-mail:</label>
                         <div class="input-card">
                             <i class="fas fa-envelope"></i>
-                            <input type="email" id="email" placeholder="nome@hotmail.com" minlength="4" required />
+                            <label for="email">
+                                <input type="email" id="email" placeholder="nome@hotmail.com" minlength="4" required/>
+                            </label>
                         </div>
-                        <label for="password">Senha:</label>
                         <div class="input-card">
                             <i class="fas fa-lock"></i>
-                            <input type="password" id="senha" placeholder="••••••" required/>
+                            <label for="password">
+                                <input type="password" id="senha" placeholder="••••••" minlength="6" required/>
+                            </label>
                         </div>
-                        <p class="texto-centralizado"> Esqueceu sua senha?</p> 
-                        <p class="texto-centralizado"><a href="#redefinirSenha"id="clique-esqueceu">Clique aqui!</a></p>
+                        <p class="texto-centralizado">Esqueceu sua senha?</p> 
+                        <p class="texto-centralizado"><a href="#redefinirSenha" id="clique-esqueceu">Clique aqui!</a></p>
                         <div class="espaço-acessar">
                             <button class="btn-acessar">ACESSAR</button>
                         </div>
-                        <div class="mensagem-erro" id="mensagem-erro"> </div>
+                        <div class="mensagem-erro" id="mensagem-erro"></div>
                         <p class="texto-centralizado">Ou faça login com o Google</p>
                         <div class="cadastro-google"> 
                             <a href="#login" id="registro-google" class="icon-google">
@@ -47,7 +49,8 @@ export default () => {
                 </div>
             </div>
         </div>
-    `
+        `
+
     container.innerHTML = template;
     // aqui estamos autenticando usuario com e-mail e senha (testar olhando console).
     const botaoLogin = container.querySelector(".btn-acessar");
@@ -75,9 +78,9 @@ export default () => {
     });
 
     const selecionarGoogle = container.querySelector("#registro-google")
-    selecionarGoogle.addEventListener('click', () => {
-        logarGoogle();
-
+        selecionarGoogle.addEventListener('click', () => {
+            logarGoogle();
     });
+
     return container;
 }
