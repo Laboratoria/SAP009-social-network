@@ -1,4 +1,5 @@
-import { cadastro, logarGoogle } from "../../firebase/firebase"
+import { criarUsuario, logarGoogle } from "../../firebase/firebase";
+import { redirecionarPagina } from "../../redirecionar-pagina";
 
 export default () => {
     const container = document.createElement("div")
@@ -48,7 +49,6 @@ export default () => {
                         <div class="cadastro-google"> 
                             <a href="#registro" id="registro-google" class="icon-google">
                                 <i class="fa-brands fa-google"></i>
-                                <p id="txtAlert"><p>
                             </a>
                         </div>
                     </form>
@@ -59,20 +59,30 @@ export default () => {
     container.innerHTML = template;
 
     const btnCadastrar = container.querySelector("#cadastrar");
-        btnCadastrar.addEventListener("click", (event) => {
-            const email = document.querySelector("#email").value;
-            const senha = document.querySelector("#senha").value;
-            const nomeCao = document.querySelector("#nomecao").value;
-            const nomeTutor =document.querySelector("#nometutor").value;
+    btnCadastrar.addEventListener("click", function (e) {
+        e.preventDefault();
+        const email = document.querySelector("#email").value;
+        const senha = document.querySelector("#senha").value;
+        const nomeCao = document.querySelector("#nomecao").value;
+        const nomeTutor =document.querySelector("#nometutor").value;
+      
+        if (!email || !senha || !nomeCao || !nomeTutor) {
+          // exibe uma mensagem de erro
+          const msgCampoVazio = container.querySelector("#txtAlert");
+          msgCampoVazio.innerHTML = "Preencha todos os campos!";
+          return;
+        }
+      
+        criarUsuario(email, senha)
+          .then((userCredential) => {
+            console.log("Usuário registrado: ", userCredential.user);
+            redirecionarPagina('#feed');
+          })
+          .catch((error) => {
+            console.log("Erro: ", error);
+          });
+      })
 
-            if (!email || !senha || !nomeCao || !nomeTutor) {
-                const msgCampoVazio = container.querySelector("#txtAlert");
-                msgCampoVazio.innerHTML = "Preencha todos os campos!";
-                return;
-            }
-
-        cadastro(event, email, senha);
-        });
     
     const selecionarGoogle = container.querySelector("#registro-google")
         selecionarGoogle.addEventListener('click', () => {
