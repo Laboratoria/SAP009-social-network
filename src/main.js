@@ -1,5 +1,11 @@
-// Este es el punto de entrada de tu aplicacion
+import login from './pages/login/login.js';
 
-import { minhasFuncoes } from './lib/index.js';
+const main = document.querySelector('#main');
 
-minhasFuncoes();
+const exibirLogin = () => {
+  // const paginaLogin = login();
+
+  main.appendChild(login());
+};
+
+exibirLogin();
