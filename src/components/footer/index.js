@@ -2,7 +2,6 @@ export default () => {
 const footerContainer = document.createElement('footer');
 
 const footerContent = `
-
     <div>
         <p>Desenvolvido por:</p>
     </div>
