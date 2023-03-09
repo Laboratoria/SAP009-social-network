@@ -3,21 +3,66 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-color: #0C4767;
 }
-
-form {
+/*
+.form-wrapper {
+    background-color: #0C4767;
     width: 18rem;
+    padding: 2rem 2rem;
+    border-radius: 40px;
+}*/
+
+img {
+    display: block;
+    margin: 5px auto;
+    margin-bottom: 2rem;
 }
 
 input, button {
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 0.7rem;
+    margin-bottom: 0.7rem;
     border-radius: 10px;
     border: none;
+    outline-color: #FF4F5A;
     background-color: rgb(225, 223, 223);
     width: -webkit-fill-available;
-    /*text-align: center;*/
+}
 
+#login-button {
+    background-color: #FF4F5A;
+    border: none;
+    color: #FFF;
+    font-weight: bolder;
+}
+
+#google-button {
+    display: flex;
+    height: 2.3rem;
+    color: #0C4767;
+    font-weight: bolder;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    align-items: center;
+}
+
+#google-logo {
+    height: 1.8rem;
+    width: 1.8rem;
+    margin: 0 1.8rem 0 0;
+}
+
+#register-button {
+    background: none;
+    border: none;
+    color: #FFF;
+    margin-top: 1rem;
+}
+
+#register-link {
+    color:#FF4F5A;
+    font-weight: bolder;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 /*::placeholder {
@@ -28,23 +73,19 @@ button {
     cursor: pointer;
 }
 
+button:hover {
+    opacity: 0.9;
+}
+
 button:active {
     opacity: 0.8;
 }
 
-#register, #forgot-password {
-    background-color: transparent;
-    border: none;
-    font-weight:bold
-
-}
-
-#login {
-   font-weight:bold
-}
-
 p {
     text-align: center;
+    color: #FFF;
+    margin-bottom: 1.5rem;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .error {
