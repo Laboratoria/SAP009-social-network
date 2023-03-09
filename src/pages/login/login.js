@@ -2,6 +2,9 @@ export default () => {
   const container = document.createElement('div');
 
   const template = `
+  <div class="form-wrapper">
+  <img src="../assets/ada-image.png" id="ada-image" alt="mulher mexendo no notebook">
+  <img src="../assets/ada-logo.png" id="ada-logo" alt="logo da ConectAda">
   <form>
     <div>
       <input type="email" name="email" id="email" placeholder="seu@email.com">
@@ -21,15 +24,13 @@ export default () => {
     <p>ou</p>
 
     <div>
-      <button type="button">Continue com o Google</button>
+      <button type="button" id="google-button"><img src="../assets/google-logo.png" id="google-logo" alt="logo do Google">Continue com o Google</button>
     </div>
 
     <div>
-      <button type="button" id="register-button">Não tem uma conta? <a>Registre-se</a></button>
+      <button type="button" id="register-button">Não tem uma conta? <a id="register-link" href="/#register">Registre-se</a></button>
     </div>
 
-    <div>
-      <button type="button" id="recover-password-button">Esqueceu a sua senha?</button>
     </div>
     </form>
       `;
