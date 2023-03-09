@@ -18,18 +18,10 @@ function autenticarUsuario(email,senha) {
 }
 
 //registrar novo usuário
-function cadastro(event, email, senha) {
-    event.preventDefault();
+function criarUsuario(email, senha) {
+    return createUserWithEmailAndPassword(auth, email, senha);
+  }
 
-    createUserWithEmailAndPassword(auth, email, senha)
-        .then((userCredential) => {
-            console.log("Usuário registrado: ", userCredential.user);
-            redirecionarPagina('#feed');
-        })
-        .catch((error) => {
-            console.log("Erro: ", error);
-        })
-}
 
 // login com google
 function logarGoogle() {
@@ -44,5 +36,5 @@ function logarGoogle() {
 
 const redefinirSenha = (email) => sendPasswordResetEmail(auth, email);
 
-export {autenticarUsuario, cadastro, logarGoogle, redefinirSenha};
+export {autenticarUsuario, criarUsuario, logarGoogle, redefinirSenha};
 
