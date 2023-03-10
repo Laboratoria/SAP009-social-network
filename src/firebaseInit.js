@@ -1,22 +1,25 @@
-// // Import the functions you need from the SDKs you need
-
-import { getStorage } from "firebase/storage";
+import { getFirestore } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 
-
 const firebaseConfig = {
-  apiKey: "AIzaSyDIYlqYI_G6ucr-Kq3tFC0lE69LJ5lr4Ts",
-  authDomain: "code-girls-35638.firebaseapp.com",
-  projectId: "code-girls-35638",
-  storageBucket: "code-girls-35638.appspot.com",
-  messagingSenderId: "123433307591",
-  appId: "1:123433307591:web:5728eb81118ae6f3bfdde2",
-  //storageBucket: "gs://code-girls-35638.appspot.com" 
+  apiKey: "AIzaSyBcEY81KA3E-cZ4On7i9mHUFDO21uvbniE",
+  authDomain: "code-girlsio.firebaseapp.com",
+  projectId: "code-girlsio",
+  storageBucket: "code-girlsio.appspot.com",
+  messagingSenderId: "422411686703",
+  appId: "1:422411686703:web:ef4d398502f4e6f7a747da"
+   
 };
-
+  
 const app = initializeApp(firebaseConfig);
-// Initialize Cloud Storage and get a reference to the service
-const storage = getStorage(app);
+
+// Initialize Cloud Firestore and get a reference to the service
+export const db = getFirestore(app);
+
+
+
+
+
 
 
 

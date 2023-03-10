@@ -1,5 +1,6 @@
 import register from "../cadastrar/index.js"
 import { login, googleLogin } from  "../../servicesFirebase/firebaseAuth.js"
+import { printPost } from "../../servicesFirebase/firebaseStore.js";
 
 
 
@@ -44,6 +45,7 @@ export default () => {
         login(email.value, senha.value);
         console.log(email.value, senha.value);
         alert("login ok");
+        printPost();
     });
 
     const googleButton = loginContainer.querySelector('.button-google');
