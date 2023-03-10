@@ -23,7 +23,7 @@ const headerContent = `
             <a href="#Publicar">Publicar</a> 
           </li>
           <li> 
-            <a href="#Login">Login</a> 
+            <a href="#Login">Sair</a> 
           </li>
         </ul>
       </nav>
@@ -45,10 +45,14 @@ const headerContent = `
     nav.classList.toggle('active');
     });
 
+    
     return headerContainer;
 }
 
 
-
+// export const changeName = (name) => {
+//   const nameUser = headerContainer.querySelector('#user-name');
+//   nameUser.innerHTML = name;
+// }
 
 
