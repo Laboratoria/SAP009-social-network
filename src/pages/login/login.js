@@ -2,6 +2,10 @@ const login = () => {
   const criarLogin = document.createElement('section');
 
   const template = `
+    <header class="header">
+      <img src="imagens/logo-removebg-preview.png" alt="logo do site com desenho de dois cachos de uva envolvendo o nome mães e vinhos"> 
+    </header>
+
     <div class="caixa-login">
         <form class="form-login">
           <input type="email"  placeholder="E-mail" required/>
