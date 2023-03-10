@@ -1,0 +1,75 @@
+body {
+  font-family: "Cagliostro", sans-serif;
+  display: flex;
+  box-sizing: border-box;
+  height: 100vh;
+  color: white;
+  background: linear-gradient(180deg, #83152d 8.85%, #ad1d45 88.54%);
+  flex-direction: column;
+  margin: 0 1rem;
+}
+.header {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+.header img {
+  width: 90%;
+  text-align: center;
+}
+.btn-sair {
+  display: flex;
+  align-items: center;
+  width: 40px;
+  height: 20px;
+  padding: 4px;
+  justify-content: flex-start;
+  margin-top: 1rem;
+  background-color: #ebafac;
+  border: transparent;
+  border-radius: 10px;
+}
+.mensagem-ola {
+  text-align: center;
+  font-size: 1.2rem;
+}
+.paragrafo {
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+}
+.novo-post {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+#novo-texto,
+.postagem-anteriores {
+  width: 275px;
+  height: 140px;
+  text-align: center;
+  background-color: #facfce;
+  border: transparent;
+}
+.btn-postar {
+  display: flex;
+  background-color: #ebafac;
+  border: transparent;
+  border-radius: 5px;
+  padding: 5px;
+}
+.icones-inferiores,
+.perfil-usuaria {
+  display: none;
+}
+.footer {
+  color: white;
+  text-align: center;
+  position: relative;
+  top: 2rem;
+}
+.footer a {
+  color: white;
+  text-decoration: none;
+}

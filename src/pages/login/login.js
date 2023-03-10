@@ -1,11 +1,11 @@
 const login = () => {
-  const criaConteudo = document.createElement('section');
+  const criarLogin = document.createElement('section');
 
   const template = `
     <div class="caixa-login">
         <form class="form-login">
           <input type="email"  placeholder="E-mail" required/>
-
+  
           <input type="password" id="password" placeholder="Senha" required/>
 
           <input class="btn-entrar " type="submit" value="Entrar">
@@ -15,16 +15,16 @@ const login = () => {
         <section class="login-com">
           <p class="login-google">Login com</p>
 
-          <button class="btn-google" type="button"><img src="./imagens/icone google.png" alt="icone google"></button>
+<button class="btn-google" type="button"><img src="./imagens/icone google.png" alt="icone google"></button>
 
           <p>Ainda não possui cadastro? <br> <a href="/#cadastro">Crie sua conta!</a></p>
         </section>
     </div>
 `;
 
-  criaConteudo.innerHTML = template;
+  criarLogin.innerHTML = template;
 
-  return criaConteudo;
+  return criarLogin;
 };
 
 export default login;
