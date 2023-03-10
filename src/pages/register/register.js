@@ -1,3 +1,5 @@
+import { createUserWithEmail } from '../../firebase/auth.js';
+
 export default () => {
   const container = document.createElement('div');
 
@@ -8,18 +10,15 @@ export default () => {
   <form>
     <div>
       <input type="text" name="user-name" id="user-name" placeholder="nome completo">
-      <input type="email" name="email" id="email" placeholder="seu@email.com">
-      <div class="error" id="email-required-error">E-mail é obrigatório</div>
-      <div class="error" id="email-invalid-error">E-mail é inválido</div>
+      <input type="email" name="email" id="register-email" placeholder="seu@email.com">
     </div>
 
     <div>
-      <input type="password" name="password" id="password" placeholder="senha">
-      <div class="error" id="password-required-error">Senha obrigatória</div>
+      <input type="password" name="password" id="register-password" placeholder="senha">
     </div>
 
     <div>
-      <button type="button" id="login-button" href="#timeline">Login</button>
+      <button type="button" id="register-button" href="#timeline">Registre-se</button>
     </div>
 
     <div>
@@ -31,6 +30,17 @@ export default () => {
 `;
 
   container.innerHTML = template;
+
+  const registerButton = container.querySelector('#register-button');
+  const registerEmail = container.querySelector('#register-email');
+  const registerPassword = container.querySelector('#register-password');
+
+  registerButton.addEventListener('click', () => {
+    const email = registerEmail.value;
+    const password = registerPassword.value;
+
+    createUserWithEmail(email, password);
+  });
 
   return container;
 };
