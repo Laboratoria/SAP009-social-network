@@ -5,22 +5,26 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 
 //cadastro de usuarios novos
-export const createUser = (email, senha) => {
+export const createUser = (email, senha, nome, sobrenome, displayName) => { //colocar dados faltantes aqui, displayname é o username
   const auth = getAuth();
   createUserWithEmailAndPassword(auth, email, senha)
     .then((userCredential) => {
       // Signed in
+      console.log(userCredential);
       window.location.hash = "#Home";
-      const user = userCredential.user;
+      const user = userCredential.user; //aqui atualizar o perfil do usuario
+      updateProfile(user, { nome, sobrenome, displayName } )
 
       // ...
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
+      console.error(error);
       // ..
     });
 };
