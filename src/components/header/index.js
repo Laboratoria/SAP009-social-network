@@ -1,3 +1,4 @@
+import {logOut} from "../../servicesFirebase/firebaseAuth";
 
 export default () => {
 const headerContainer = document.createElement('header');
@@ -23,7 +24,7 @@ const headerContent = `
             <a href="#Publicar">Publicar</a> 
           </li>
           <li> 
-            <a href="#Login">Sair</a> 
+            <a href="#Sair" id="btnSair">Sair</a> 
           </li>
         </ul>
       </nav>
@@ -36,17 +37,23 @@ const headerContent = `
   </svg> <span id="user-name">Fulana</span></p>
 `;
 
-    headerContainer.innerHTML += headerContent;
+  headerContainer.innerHTML += headerContent;
 
-    //responsividade
-    const btn = headerContainer.querySelector('.container');
-    btn.addEventListener('click', () => {
+  //responsividade
+  const btn = headerContainer.querySelector('.container');
+  btn.addEventListener('click', () => {
     const nav = headerContainer.querySelector('.nav');
     nav.classList.toggle('active');
-    });
-
+  });
     
-    return headerContainer;
+  const sair = headerContainer.querySelector('#btnSair');
+  sair.addEventListener('click', () => {
+    console.log('sair ok');
+    logOut();
+    
+  });
+
+  return headerContainer;
 }
 
 

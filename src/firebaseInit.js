@@ -1,5 +1,7 @@
 // // Import the functions you need from the SDKs you need
-import { initializeApp } from 'firebase/app';
+
+import { getStorage } from "firebase/storage";
+import { initializeApp } from "firebase/app";
 
 
 const firebaseConfig = {
@@ -8,10 +10,16 @@ const firebaseConfig = {
   projectId: "code-girls-35638",
   storageBucket: "code-girls-35638.appspot.com",
   messagingSenderId: "123433307591",
-  appId: "1:123433307591:web:5728eb81118ae6f3bfdde2"
+  appId: "1:123433307591:web:5728eb81118ae6f3bfdde2",
+  //storageBucket: "gs://code-girls-35638.appspot.com" 
 };
 
 const app = initializeApp(firebaseConfig);
+// Initialize Cloud Storage and get a reference to the service
+const storage = getStorage(app);
+
+
+
 
 
 
