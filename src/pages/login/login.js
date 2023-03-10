@@ -1,8 +1,6 @@
-import { createUserWithEmail, signIn} from '../../firebase/auth.js'
+import { createUserWithEmail, signIn } from '../../firebase/auth.js';
 
-
-export function load() {
-
+export default () => {
   const container = document.createElement('div');
 
   const template = `
@@ -22,7 +20,7 @@ export function load() {
         </div>
 
         <div>
-          <button type="button" id="login-button">Login</button>
+          <button type="button" id="login-button" href="#timeline">Login</button>
         </div>
 
         <p>ou</p>
@@ -32,7 +30,7 @@ export function load() {
         </div>
 
         <div>
-          <button type="button" id="register-button">Não tem uma conta? <a id="register-link" href="./pages/register/register.js">Registre-se</a></button>
+          <button type="button" id="register-button">Não tem uma conta? <a id="register-link" href="#register">Registre-se</a></button>
         </div>
 
       </form>
@@ -41,19 +39,21 @@ export function load() {
 
   container.innerHTML = template;
 
- 
- //Adiciona um listener de evento no botão de login
- const loginButton = container.querySelector("#login-button");
- const emailInput = container.querySelector("#email");
- const passwordInput = container.querySelector("#password");
- 
-loginButton.addEventListener("click", function() {
-let email = emailInput.value;
-let password = passwordInput.value;
-console.log(email);
-signIn(email, password);
-  //Adicione aqui o código que deve ser executado quando o botão de login é clicado
- });
+  // Adiciona um listener de evento no botão de login
+  const loginButton = container.querySelector('#login-button');
+  const emailInput = container.querySelector('#email');
+  const passwordInput = container.querySelector('#password');
+
+  loginButton.addEventListener('click', () => {
+    const email = emailInput.value;
+    const password = passwordInput.value;
+    console.log(email);
+    const logged = signIn(email, password);
+    console.log(logged);
+  // Adicione aqui o código que deve ser executado quando o botão de login é clicado
+
+  window.location.replace('#timeline');
+  });
 
   return container;
 };
