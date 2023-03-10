@@ -1,5 +1,7 @@
 // nosso app importado de app.js
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js';
+import {
+  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup
+} from 'https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js';
 import { app } from './app.js';
 
 // importacao das funcoes da autenticação de usuários do arquivo js do firebase referenciado nessa url
@@ -41,5 +43,30 @@ export function signIn(email, password) {
       console.log('tchau-sig');
       const errorCode = error.code;
       const errorMessage = error.message;
+    });
+}
+
+const provider = new GoogleAuthProvider();
+console.log(provider);
+
+export function loginGoogle() {
+  signInWithPopup(auth, provider)
+    .then((result) => {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      // The signed-in user info.
+      const user = result.user;
+    // IdP data available using getAdditionalUserInfo(result)
+    // ...
+    }).catch((error) => {
+    // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.customData.email;
+      // The AuthCredential type that was used.
+      const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
     });
 }
