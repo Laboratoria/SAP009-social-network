@@ -2,7 +2,7 @@
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 
-// nossas credenciais do site firebase e o aplicativo que criamos
+// nossas credenciais do site firebase e do aplicativo que criamos
 const firebaseConfig = {
     apiKey: 'AIzaSyDxT35_dol3gw5dunaZUvJN4CuxkFXRnrI',
   authDomain: 'social-network-5b156.firebaseapp.com',

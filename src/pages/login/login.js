@@ -1,9 +1,8 @@
 //importacao da funcao que criamos em auth.js abrigando a funcao pronta do firebase
 import { createUserWithEmail, signIn} from '../../firebase/auth.js'
-
 //chamando a funcao que importamos
 createUserWithEmail();
-signIn();
+//signIn();
 
 
 export default () => {
@@ -44,6 +43,21 @@ export default () => {
       `;
 
   container.innerHTML = template;
+
+  
+const emailInput = document.querySelector("#email");
+const passwordInput = document.querySelector("#password");
+const loginButton = document.querySelector("#login-button");
+
+
+
+loginButton.addEventListener("click", f);
+
+function f(){
+  const email = emailInput.value;
+  console.log(email);
+}
+
 
   return container;
 };

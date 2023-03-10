@@ -1,7 +1,7 @@
 // nosso app importado de app.js
 import {app} from "./app.js"
 
-// importacao das funcoes da autenticação de usuários do firebase 
+// importacao das funcoes da autenticação de usuários do arquivo js do firebase referenciado nessa url
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
 
 // variável executa a funcao getAuth em cima do nosso app
@@ -30,7 +30,8 @@ export function createUserWithEmail() {
 }
 
 export function signIn() {
-signInWithEmailAndPassword(auth, "email@email.com", "123456")
+    console.log('click');
+signInWithEmailAndPassword(auth, email, "123456")
   .then((userCredential) => {
     console.log('oi-signi');
     console.log(userCredential);
