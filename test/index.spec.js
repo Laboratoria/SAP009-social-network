@@ -2,11 +2,13 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signInWithPopup,
+  sendPasswordResetEmail,
 } from 'firebase/auth';
 import {
   criarUsuario,
   autenticarUsuario,
   logarGoogle,
+  redefinirSenha,
 } from '../src/firebase/firebase';
 
 jest.mock('firebase/auth', () => ({
@@ -15,6 +17,7 @@ jest.mock('firebase/auth', () => ({
   signInWithEmailAndPassword: jest.fn(),
   createUserWithEmailAndPassword: jest.fn(),
   signInWithPopup: jest.fn(),
+  sendPasswordResetEmail: jest.fn(),
 }));
 
 // função de autenticar usuário
@@ -44,5 +47,14 @@ describe('logarGoogle', () => {
     signInWithPopup.mockResolvedValue();
     logarGoogle();
     expect(signInWithPopup).toHaveBeenCalledTimes(1);
+  });
+});
+
+// redefinir senha
+describe('redefinirSenha', () => {
+  it('a função deve logar usuário com a sua conta google', () => {
+    sendPasswordResetEmail.mockResolvedValue();
+    redefinirSenha();
+    expect(sendPasswordResetEmail).toHaveBeenCalledTimes(1);
   });
 });
