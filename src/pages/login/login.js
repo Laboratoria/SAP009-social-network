@@ -1,4 +1,4 @@
-import { createUserWithEmail, signIn } from '../../firebase/auth.js';
+import { signIn, loginGoogle } from '../../firebase/auth.js';
 
 export default () => {
   const container = document.createElement('div');
@@ -43,6 +43,7 @@ export default () => {
   const loginButton = container.querySelector('#login-button');
   const emailInput = container.querySelector('#email');
   const passwordInput = container.querySelector('#password');
+  const loginWithGoogle = container.querySelector('#google-button');
 
   loginButton.addEventListener('click', () => {
     const email = emailInput.value;
@@ -50,9 +51,15 @@ export default () => {
     console.log(email);
     const logged = signIn(email, password);
     console.log(logged);
-  // Adicione aqui o código que deve ser executado quando o botão de login é clicado
+    // Adicione aqui o código que deve ser executado quando o botão de login é clicado
 
-  window.location.replace('#timeline');
+    window.location.replace('#timeline');
+  });
+
+  loginWithGoogle.addEventListener('click', () => {
+    loginGoogle();
+
+    window.location.replace('#timeline');
   });
 
   return container;
