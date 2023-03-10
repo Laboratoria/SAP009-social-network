@@ -10,8 +10,8 @@ const auth = getAuth(app);
 console.log(auth);
 
 // funcao que criamos para abrigar a funcao de criar usuario com email e senha (já criada pelo firebase)
-export function createUserWithEmail() {
-  createUserWithEmailAndPassword(auth, 'email@email.com', '123456')
+export function createUserWithEmail(email, password) {
+  createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in
       console.log('oi');
