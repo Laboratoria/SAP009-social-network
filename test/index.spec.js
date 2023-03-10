@@ -1,21 +1,27 @@
 import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  signInWithPopup,
+} from 'firebase/auth';
+import {
   criarUsuario,
   autenticarUsuario,
   logarGoogle,
 } from '../src/firebase/firebase';
 
-import {
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  signInWithPopup,
-} from '../src/mocks/export.js';
-
-jest.mock('../src/mocks/export.js');
+jest.mock('firebase/auth', () => ({
+  getAuth: jest.fn(),
+  GoogleAuthProvider: jest.fn(),
+  signInWithEmailAndPassword: jest.fn(),
+  createUserWithEmailAndPassword: jest.fn(),
+  signInWithPopup: jest.fn(),
+}));
 
 // função de autenticar usuário
 describe('autenticarUsuario', () => {
   it('autentica dados do login e libera a página do feed ', () => {
-    autenticarUsuario(signInWithEmailAndPassword);
+    signInWithEmailAndPassword.mockResolvedValue();
+    autenticarUsuario('luiginho@test.com', 'fofo');
     expect(signInWithEmailAndPassword).toHaveBeenCalledTimes(1);
   });
 });
