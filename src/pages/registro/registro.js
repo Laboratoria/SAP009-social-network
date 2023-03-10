@@ -70,14 +70,22 @@ export default () => {
       // exibe uma mensagem de erro
       const msgCampoVazio = container.querySelector('#txtAlert');
       msgCampoVazio.innerHTML = 'Preencha todos os campos!';
-      return;
     }
 
     criarUsuario(email, senha)
       .then(() => {
         redirecionarPagina('#feed');
       })
-      .catch(() => {
+      .catch((error) => {
+        console.log(error);
+
+        const emailCadastrado = container.querySelector('#txtAlert');
+
+        if (error.code === 'auth/email-already-in-use') {
+          emailCadastrado.innerHTML = 'Esse e-mail já está registrado!';
+        } else {
+          emailCadastrado.innerHTML = 'Não é possível criar uma conta!';
+        }
       });
   });
 

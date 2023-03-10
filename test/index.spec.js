@@ -1,21 +1,30 @@
 import {
-  criarUsuario,
-  autenticarUsuario,
-  logarGoogle,
-} from '../src/firebase/firebase';
-
-import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signInWithPopup,
-} from '../src/mocks/export.js';
+  sendPasswordResetEmail,
+} from 'firebase/auth';
+import {
+  criarUsuario,
+  autenticarUsuario,
+  logarGoogle,
+  redefinirSenha,
+} from '../src/firebase/firebase';
 
-jest.mock('../src/mocks/export.js');
+jest.mock('firebase/auth', () => ({
+  getAuth: jest.fn(),
+  GoogleAuthProvider: jest.fn(),
+  signInWithEmailAndPassword: jest.fn(),
+  createUserWithEmailAndPassword: jest.fn(),
+  signInWithPopup: jest.fn(),
+  sendPasswordResetEmail: jest.fn(),
+}));
 
 // função de autenticar usuário
 describe('autenticarUsuario', () => {
   it('autentica dados do login e libera a página do feed ', () => {
-    autenticarUsuario(signInWithEmailAndPassword);
+    signInWithEmailAndPassword.mockResolvedValue();
+    autenticarUsuario('luiginho@test.com', 'fofo');
     expect(signInWithEmailAndPassword).toHaveBeenCalledTimes(1);
   });
 });
@@ -38,5 +47,14 @@ describe('logarGoogle', () => {
     signInWithPopup.mockResolvedValue();
     logarGoogle();
     expect(signInWithPopup).toHaveBeenCalledTimes(1);
+  });
+});
+
+// redefinir senha
+describe('redefinirSenha', () => {
+  it('a função deve logar usuário com a sua conta google', () => {
+    sendPasswordResetEmail.mockResolvedValue();
+    redefinirSenha();
+    expect(sendPasswordResetEmail).toHaveBeenCalledTimes(1);
   });
 });
