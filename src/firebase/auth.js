@@ -29,9 +29,9 @@ export function createUserWithEmail() {
     });
 }
 
-export function signIn() {
+export function signIn(email, password) {
     console.log('click');
-signInWithEmailAndPassword(auth, email, "123456")
+signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     console.log('oi-signi');
     console.log(userCredential);
