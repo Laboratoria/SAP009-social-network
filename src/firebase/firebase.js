@@ -1,4 +1,6 @@
-import { initializeApp } from 'firebase/app';
+import {
+  initializeApp
+} from 'firebase/app';
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -7,9 +9,21 @@ import {
   signInWithPopup,
   sendPasswordResetEmail,
 } from 'firebase/auth';
-import { firebaseConfig } from './firebase-config';
+import {
+  firebaseConfig
+} from './firebase-config';
 // os imports acima são de funções do firebase
-import { redirecionarPagina } from '../redirecionar-pagina';
+import {
+  redirecionarPagina
+} from '../redirecionar-pagina';
+
+//import do Firestore
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+} from "firebase/firestore";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -34,15 +48,43 @@ function logarGoogle() {
     .then(() => {
       redirecionarPagina('#feed');
     })
-    .catch(() => {
-    });
+    .catch(() => {});
 }
 
 const redefinirSenha = (email) => sendPasswordResetEmail(auth, email);
+
+//FIRESTORE 
+const db = getFirestore(app);
+
+//FEED 
+
+//o código define uma função que cria um novo documento na coleção "posts" do Firestore 
+//com o autor definido como o usuário atualmente autenticado e o texto do post definido como o valor do parâmetro "textPost". A função retorna uma referência ao documento criado.
+const criarPost = async (textPost) => {
+  const docRef = await addDoc(collection(db, 'posts'), {
+    author: auth.currentUser.uid,
+    texto: textPost,
+  });
+  return docRef;
+};
+
+// o código define uma função que obtém todos os documentos da coleção "posts" do Firestore, extrai o valor do campo "texto" de cada documento 
+//e retorna um array contendo todos os textos dos documentos.
+const obterPosts = async () => {
+  const teste = await getDocs(collection(db, 'posts'));
+  const textos = [];
+  teste.forEach((doc) => {
+    const data = doc.data();
+    textos.push(data.texto);
+  });
+  return textos;
+}
 
 export {
   autenticarUsuario,
   criarUsuario,
   logarGoogle,
   redefinirSenha,
+  criarPost,
+  obterPosts,
 };
