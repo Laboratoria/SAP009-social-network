@@ -566,16 +566,34 @@
    font-size: 15px;
    margin-left: 170px;
    }
+
    textarea{
     color: grey;
     margin: 4px;
     padding: 5px;
    }
+
    .texto-tutor-postado{
-    padding: 5px;
+    color: var(--laranja);
+    width: 342px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 15px 17px;
     background-color: var(--nude);
-    border-style: none;
+    border-radius: 20px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    margin-left: 20px;
    }
+
+   .postagens{
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+  }
+
    #icones-inferiores{
     display: inline-flex;
     margin-top: 4px;
@@ -585,3 +603,12 @@
     margin-left: 50px;
     margin-right: 50px;
    }
+
+   .alertaPublicação {
+    text-align: center;
+    color: #5F6F52;
+    margin-bottom: 10px;
+    font-weight: bold;
+    margin-top: 10px;
+   }
+   
