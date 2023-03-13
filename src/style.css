@@ -500,6 +500,7 @@
     text-transform: uppercase;
     color: var(--laranja);
     font-weight: bold;
+    border-radius: 10px;
   }
   
   ul{
@@ -548,6 +549,8 @@
     flex-direction: column;
     margin-top: 5px;
     margin-bottom: 5px;
+    margin-right: 17px;
+    margin-left: 17px;
    }
    #icone-superiores{
     display: inline-flex;
@@ -575,7 +578,6 @@
 
    .texto-tutor-postado{
     color: var(--laranja);
-    width: 342px;
     display: flex;
     justify-content: center;
     align-items: center;

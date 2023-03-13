@@ -1,9 +1,10 @@
 import {
     criarPost,
-    obterPosts
+    obterPosts,
+    obterNomeUsuario,
 } from "../../firebase/firebase";
-
-export default () => {
+export default async () => {
+    const usuarioLogado = await obterNomeUsuario();
     const container = document.createElement('div');
     const template = `
         <div class="main">
@@ -21,11 +22,11 @@ export default () => {
                 <div class="perfil">
                     <div class="tutor">
                         <i class="fa-solid fa-circle-user fa-3x icon-usuário"></i>
-                        <p class="texto-feed">@Tutor</p>
+                        <p class="texto-feed">@${usuarioLogado.displayName}</p>
                     </div>
                     <div class="cao">
                         <i class="fa-solid fa-paw fa-3x icon-cão"></i>
-                        <p class="texto-feed">@Cão</p>
+                        <p class="texto-feed">@cão</p>
                     </div>
                 </div>
                 <div class="tela-principal">
@@ -39,11 +40,6 @@ export default () => {
                         <span id="alertaPublicação" class="alertaPublicação"></span>
                         </div>
                         <div id="postagens" class="postagens"></div>
-                        <div id="icones-inferiores">
-                            <i class="fa-sharp fa-regular fa-heart icon-coracao"></i>
-                            <i class="fa-sharp fa-solid fa-pencil"></i>
-                            <i class="fa-solid fa-trash-can"></i>
-                        </div>
                 </div>
             </div>
         </div>
@@ -60,36 +56,49 @@ export default () => {
         }
     });
 
-// cria-se uma nova div que contém o valor passado como parâmetro e adiciona essa div à seção com o id "postagens" no documento HTML.
-    const exibirPost = (valor) => {
+    // cria-se uma nova div que contém o valor passado como parâmetro e adiciona essa div à seção com o id "postagens" no documento HTML.
+    const exibirPost = (post) => {
         const posts = document.querySelector('#postagens')
         const container = document.createElement('div');
-        const template = `<div class="texto-tutor-postado">${valor}</div>`;
+        const template = `
+        <div class="div-postagem-anteriores-tutor">
+                        <div id="icone-superiores">
+                            <i class="fa-solid fa-circle-user fa-2x icon-usuario-txt"></i>
+                            <p class="tutor-txt-area">${post.nomeTutor}</p>
+                            <p class="data-postagem">xx/xx/xxxx</p>
+                        </div>
+        <div class="texto-tutor-postado">${post.texto}</div>
+        <div id="icones-inferiores">
+        <i class="fa-solid fa-paw"></i>
+        <i class="fa-sharp fa-solid fa-pencil"></i>
+        <i class="fa-solid fa-trash-can"></i>
+        </div>
+        </div>`;
         container.innerHTML = template;
         posts.appendChild(container);
     }
-// o código obtém uma lista de posts usando a função "obterPosts" e exibe cada post na página chamando a função "exibirPost" para cada valor resolvido da promessa.
-    obterPosts().then(values => {
-        values.forEach(value => exibirPost(value))
-    })
-
-// o código define um evento de clique para o botão "btnPublicar" que cria um novo post com o texto inserido no campo de texto "texto-tutor". Se a criação do post
-// for bem-sucedida, o novo post é exibido na página. Se ocorrer um erro, uma mensagem de erro é exibida. Se o campo de texto estiver vazio, uma mensagem de aviso é exibida.
+    // o código obtém uma lista de posts usando a função "obterPosts" e exibe cada post na página chamando a função "exibirPost" para cada valor resolvido da promessa.
+    obterPosts().then(posts => {
+        posts.forEach(post => exibirPost(post))
+    });
+    // o código define um evento de clique para o botão "btnPublicar" que cria um novo post com o texto inserido no campo de texto "texto-tutor". Se a criação do post
+    // for bem-sucedida, o novo post é exibido na página. Se ocorrer um erro, uma mensagem de erro é exibida. Se o campo de texto estiver vazio, uma mensagem de aviso é exibida.
 
     const btnPublicar = container.querySelector('#btn-publicar');
-    btnPublicar.addEventListener('click', () => {
+    btnPublicar.addEventListener('click', async () => {
         const textoTutor = container.querySelector('#texto-tutor');
         const textPost = textoTutor.value;
 
         if (textPost !== '') {
-            criarPost(textPost)
-                .then(() => {
-                    exibirPost(textPost)
-                })
-                .catch(() => {
-                    alertaPublicação.setAttribute('style', 'display: block');
-                    alertaPublicação.innerHTML = 'Ocorreu um erro, tente novamente.';
-                });
+            try {
+                const novoPost = await criarPost(textPost);
+                // espera o criarPost e dps exibe o post
+                exibirPost(novoPost);
+                textoTutor.value = '';
+            } catch (error) {
+                alertaPublicação.setAttribute('style', 'display: block');
+                alertaPublicação.innerHTML = 'Ocorreu um erro, tente novamente.';
+            }
         } else {
             alertaPublicação.setAttribute('style', 'display: block');
             alertaPublicação.innerHTML = 'Por favor, escreva algo antes de publicar!';

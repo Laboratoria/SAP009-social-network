@@ -1,5 +1,5 @@
 import {
-  initializeApp
+  initializeApp,
 } from 'firebase/app';
 import {
   getAuth,
@@ -8,6 +8,8 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   sendPasswordResetEmail,
+  updateProfile,
+  onAuthStateChanged
 } from 'firebase/auth';
 import {
   firebaseConfig
@@ -38,8 +40,9 @@ function autenticarUsuario(email, senha) {
 }
 
 // registrar novo usuário
-function criarUsuario(email, senha) {
-  return createUserWithEmailAndPassword(auth, email, senha);
+async function criarUsuario(email, senha, nomeTutor) {
+  await createUserWithEmailAndPassword(auth, email, senha);
+  await updateProfile(auth.currentUser, {displayName: nomeTutor});
 }
 
 // login com google
@@ -60,25 +63,42 @@ const db = getFirestore(app);
 
 //o código define uma função que cria um novo documento na coleção "posts" do Firestore 
 //com o autor definido como o usuário atualmente autenticado e o texto do post definido como o valor do parâmetro "textPost". A função retorna uma referência ao documento criado.
+
 const criarPost = async (textPost) => {
-  const docRef = await addDoc(collection(db, 'posts'), {
+  const post = {
+    // retornando esse objeto  a const post
     author: auth.currentUser.uid,
+    nomeTutor: auth.currentUser.displayName,
     texto: textPost,
-  });
-  return docRef;
+  }
+  const docRef = await addDoc(collection(db, 'posts'), post);
+  post.id = docRef.id;
+  return post;
 };
 
 // o código define uma função que obtém todos os documentos da coleção "posts" do Firestore, extrai o valor do campo "texto" de cada documento 
 //e retorna um array contendo todos os textos dos documentos.
 const obterPosts = async () => {
+  console.log(auth.currentUser)
   const teste = await getDocs(collection(db, 'posts'));
   const textos = [];
   teste.forEach((doc) => {
     const data = doc.data();
-    textos.push(data.texto);
+    console.log(data)
+    textos.push(data);
   });
   return textos;
 }
+
+// colocar nome do tutor no feed
+const obterNomeUsuario = async () => {
+  return auth.currentUser;
+}
+
+// chamando o onAuth QUE é o firebase
+const verificaUsuarioLogado = (check) => {
+  onAuthStateChanged(auth, check);
+};
 
 export {
   autenticarUsuario,
@@ -87,4 +107,6 @@ export {
   redefinirSenha,
   criarPost,
   obterPosts,
+  obterNomeUsuario, 
+  verificaUsuarioLogado,
 };
