@@ -40,26 +40,40 @@ export default () => {
   container.innerHTML = template;
 
   // Adiciona um listener de evento no botão de login
-  const loginButton = container.querySelector('#login-button');
-  const emailInput = container.querySelector('#email');
-  const passwordInput = container.querySelector('#password');
-  const loginWithGoogle = container.querySelector('#google-button');
+  const loginButton = container.querySelector("#login-button");
+  const emailInput = container.querySelector("#email");
+  const passwordInput = container.querySelector("#password");
+  const loginWithGoogle = container.querySelector("#google-button");
 
-  loginButton.addEventListener('click', () => {
+  loginButton.addEventListener("click", () => {
     const email = emailInput.value;
     const password = passwordInput.value;
-    console.log(email);
-    const logged = signIn(email, password);
-    console.log(logged);
-    // Adicione aqui o código que deve ser executado quando o botão de login é clicado
+   // console.log(email);
 
-    window.location.replace('#timeline');
+    signIn(email, password).then((isAuthenticated) => {
+      if (isAuthenticated) {
+        console.log("Usuário autenticado!");
+        window.location.replace("#timeline");
+      } else {
+        console.log("Usuário não autenticado.");
+        window.location.replace("#login");
+      }
+    });
+  
   });
 
-  loginWithGoogle.addEventListener('click', () => {
-    loginGoogle();
+  loginWithGoogle.addEventListener("click", () => {
+    loginGoogle().then((isAuthenticated) => {
+      if (isAuthenticated) {
+        console.log("google: Usuário autenticado!");
+        window.location.replace("#timeline");
+      } else {
+        console.log("google: Usuário não autenticado.");
+        window.location.replace("#login");
+      }
+    });
 
-    window.location.replace('#timeline');
+    //  window.location.replace('#timeline');
   });
 
   return container;

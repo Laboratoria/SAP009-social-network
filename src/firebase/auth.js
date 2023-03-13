@@ -1,10 +1,16 @@
 // nosso app importado de app.js
-import {
-  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup
-} from 'https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js';
-import { app } from './app.js';
+import { app } from "./app.js";
 
 // importacao das funcoes da autenticação de usuários do arquivo js do firebase referenciado nessa url
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+  onAuthStateChanged,
+} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
 
 // variável executa a funcao getAuth em cima do nosso app
 // variável recebe nosso app e permite que a gente execute as funcões autenticação em cima do nosso app
@@ -16,13 +22,13 @@ export function createUserWithEmail(email, password) {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in
-      console.log('oi');
+      console.log("email-criado");
       console.log(userCredential);
       const user = userCredential.user;
       // ...
     })
     .catch((error) => {
-      console.log('tchau');
+      console.log("email-nao-criado");
       const errorCode = error.code;
       const errorMessage = error.message;
       // ..
@@ -30,43 +36,57 @@ export function createUserWithEmail(email, password) {
 }
 
 export function signIn(email, password) {
-  console.log('click');
-  signInWithEmailAndPassword(auth, email, password)
+  return signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      console.log('oi-signi');
-      console.log(userCredential);
-      // Signed in
-      const user = userCredential.user;
-    // ...
+
+      return true;
     })
     .catch((error) => {
-      console.log('tchau-sig');
-      const errorCode = error.code;
-      const errorMessage = error.message;
+      return false;
     });
-}
+    }
 
 const provider = new GoogleAuthProvider();
-console.log(provider);
+//console.log(provider);
 
 export function loginGoogle() {
-  signInWithPopup(auth, provider)
+  return signInWithPopup(auth, provider)
     .then((result) => {
-    // This gives you a Google Access Token. You can use it to access the Google API.
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
-      // The signed-in user info.
       const user = result.user;
-    // IdP data available using getAdditionalUserInfo(result)
-    // ...
-    }).catch((error) => {
-    // Handle Errors here.
+      // Retornar true se a autenticação foi bem-sucedida
+      return true;
+    })
+    .catch((error) => {
+      // Handle Errors here.
       const errorCode = error.code;
       const errorMessage = error.message;
-      // The email of the user's account used.
       const email = error.customData.email;
-      // The AuthCredential type that was used.
       const credential = GoogleAuthProvider.credentialFromError(error);
-    // ...
+      // Retornar false se houver um erro na autenticação
+      return false;
     });
 }
+
+
+export function LogOut() {
+  signOut(auth, (user) => {
+    console.log(user);
+    if (user) {
+      console.log(`Logout: Logged in as ${user.email}`);
+    } else {
+      console.log("Logout: No user");
+    }
+  });
+}
+
+onAuthStateChanged(auth, (user) => {
+  console.log(user);
+  if (user) {
+    console.log(`onAuthStateChange: Logged in as ${user.email}`);
+  } else {
+    console.log("onAuthStateChange: No user");
+  }
+});
+
