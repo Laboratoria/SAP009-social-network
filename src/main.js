@@ -6,6 +6,7 @@ const main = document.querySelector('#main');
 
 const iniciaTela = () => {
   window.addEventListener('hashchange', () => {
+    main.innerHTML = '';
     switch (window.location.hash) {
       case '#cadastro':
         main.appendChild(cadastro());
@@ -23,38 +24,3 @@ window.addEventListener('load', () => {
   main.appendChild(login());
   iniciaTela();
 });
-
-// const iniciaPagina = () => {
-//   window.addEventListener('hashchange', () => {
-//     main.innerHTML = login();
-//     switch (window.location.hash) {
-//       case '#cadastro':
-//         main.appendChild(cadastro());
-//         // ASSIM MUDA DE PÁGINA
-//         // break;
-//       // case '#postagem':
-//       //   main.appendChild(postagem());
-//       //   break;
-//     }
-//   });
-// };
-
-// window.addEventListener('load', () => {
-//   main.appendChild(login());
-//   iniciaPagina();
-// });
-
-// const exibirLogin = () => {
-//   main.appendChild(login());
-// };
-// exibirLogin();
-
-// const exibirCadastro = () => {
-//   main.appendChild(cadastro());
-// };
-// exibirCadastro();
-
-// const exibirPostagem = () => {
-//   main.appendChild(postagem());
-// };
-// exibirPostagem();

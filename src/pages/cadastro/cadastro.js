@@ -7,6 +7,7 @@ const cadastro = () => {
     <div class="mensagem-cadastro">
       <h3>Bem-vinda à nossa área de cadastro. Por favor, preencha as informações abaixo</h3>
     </div>
+    
     <div class="caixa-cadastro">
       <form class="form-cadastro">
         <label for="nome">Nome e Sobrenome</label>
@@ -24,9 +25,6 @@ const cadastro = () => {
         <input class="btn-enviar" type="submit" value="Enviar">
       </form>
     </div>
-    <footer class="footer" data-footer>
-      <h5>Desenvolvido por <a href="https://github.com/VieiraAriane">Ariane</a>  e <a href="https://github.com/Geice-Sousa">Geice</a>, 2023.</h5>
-    </footer>
   `;
 
   //   header.textContent = '';
