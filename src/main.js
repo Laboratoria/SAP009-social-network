@@ -8,6 +8,9 @@ const iniciaTela = () => {
   window.addEventListener('hashchange', () => {
     main.innerHTML = '';
     switch (window.location.hash) {
+      case '':
+        main.appendChild(login());
+        break;
       case '#cadastro':
         main.appendChild(cadastro());
         break;
