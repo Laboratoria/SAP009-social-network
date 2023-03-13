@@ -1,36 +1,37 @@
-// import { myFunction } from './pages/index.js';
-// myFunction();
+import home from './pages/home/index.js';
+import publicar from './pages/publicar/index.js';
+import login from './pages/login/index.js';
+import register from './pages/cadastrar/index.js';
 
-import home from "./pages/home/index.js";
-import publicar from "./pages/publicar/index.js";
-import login from "./pages/login/index.js";
-import register from "./pages/cadastrar/index.js";
-
-const main = document.querySelector("#root");
+const main = document.querySelector('#root');
 
 const init = () => {
-  window.addEventListener("hashchange", () => {
-    main.innerHTML = " ";
+  window.addEventListener('hashchange', () => {
+    main.innerHTML = ' ';
     switch (window.location.hash) {
-      case "#Home":
+      case '#Home':
         main.appendChild(home());
         break;
-      case "#Publicar":
+      case '#Publicar':
         main.appendChild(publicar());
         break;
-      case "#Login":
+      case '#Login':
         main.appendChild(login());
         break;
-      case "#Sair":
+      case '#Sair':
         main.appendChild(login());
         break;
-      case "#Register": 
+      case '#Register':
         main.appendChild(register());
+        break;
+      default:
+        main.appendChild(login());
+        break;
     }
   });
 };
 
-window.addEventListener("load", () => {
+window.addEventListener('load', () => {
   main.appendChild(home());
   init();
 });

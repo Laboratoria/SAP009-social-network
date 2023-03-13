@@ -1,54 +1,46 @@
-import { collection, addDoc } from "firebase/firestore";
-import { db } from "../firebaseInit";
-import { getDocs } from "firebase/firestore";
+/* eslint-disable no-console */
+import { collection, addDoc, getDocs } from 'firebase/firestore';
+import { db } from '../firebaseInit';
 
-
-export const userData = async (name, lastname, username, email) =>{
-    
-    try {
-    const docRef = await addDoc(collection(db, "users"), {
-        nome: name,
-        sobrenome: lastname,
-        usuario: username,
-        Email: email,
+export const userData = async (name, lastname) => {
+  try {
+    const docRef = await addDoc(collection(db, 'infos-add'), {
+      nome: name,
+      sobrenome: lastname,
     });
-    
-    console.log("Document written with ID: ", docRef.id);
-    } catch (e) {
-    console.error("Error adding document: ", e);
-    }
+
+    // eslint-disable-next-line no-console
+    console.log('Document written with ID: ', docRef.id);
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.error('Error adding document: ', e);
+  }
 };
-export const newPost = async (postagem) =>{
-    
-    try {
-    const docRef = await addDoc(collection(db, "posts"), {
-        //Username: username,
-        //data: dataPostagem,
-        post: postagem,
+export const newPost = async (postagem) => { // colocar data da postagem
+  try {
+    const docRef = await addDoc(collection(db, 'posts'), {
+      // Username: username,
+      // data: dataPostagem,
+      post: postagem,
     });
-    
-    console.log("Document written with ID: ", docRef.id);
-    } catch (e) {
-    console.error("Error adding document: ", e);
-    }
+    console.log('Document written with ID: ', docRef.id);
+  } catch (e) {
+    console.error('Error adding document: ', e);
+  }
 };
 
-//criar colecao nova e guardar quando usuario digitar a postagem, guardar na colecao posts
-//quando apertar botao postar, acontece o de cima ^
-
-
+// criar colecao nova e guardar quando usuario digitar a postagem, guardar na colecao posts
+// quando apertar botao postar, acontece o de cima ^
 
 export const printPost = async () => {
-
-    const querySnapshot = await getDocs(collection(db, "users"));
-    querySnapshot.forEach((doc) => {
+  const querySnapshot = await getDocs(collection(db, 'posts'));
+  querySnapshot.forEach((doc) => {
     console.log(`${doc.id} => ${doc.data()}`);
     console.log(doc);
-    });
-    
+    console.log(doc.value);
+  });
 };
 
-// const firebase = require("firebase");
+// const firebase = require("firebase")
 // // Required for side-effects
-// require("firebase/firestore");
-
+// require("firebase/firestore

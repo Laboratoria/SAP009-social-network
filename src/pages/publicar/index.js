@@ -1,8 +1,8 @@
-import Header from '../../components/header/index.js'
-import Footer from '../../components/footer/index.js'
+import Header from '../../components/header/index.js';
+import Footer from '../../components/footer/index.js';
 import { newPost } from '../../servicesFirebase/firebaseStore.js';
 
-  export default() => {
+export default () => {
   const container = document.createElement('div');
 
   container.append(Header());
@@ -21,24 +21,16 @@ import { newPost } from '../../servicesFirebase/firebaseStore.js';
   </div>   
   </main>
   `;
-    
   sectionMain.innerHTML = template;
 
   container.append(sectionMain);
   container.append(Footer());
 
-
   const buttomPost = container.querySelector('#botao-postar');
   buttomPost.addEventListener('click', () => {
-
-    const texto = container.querySelector('.textarea');
-    newPost(texto.value);
-
+    const text = container.querySelector('.textarea');
+    // const username = container.querySelector('.username');
+    newPost(text.value); // colocar data da postagem
   });
-  
-  
   return container;
-  }
-
-
- 
+};
