@@ -1,0 +1,25 @@
+@import url(../css/login.css);
+@import url(../css/home.css);
+
+
+:root{
+    --white:#FFF3FC;
+    --red:#C53F3F;
+    --grey:#455A64;
+    --bg: #364850; 
+    --bg2:#263238 ;
+    --bgHeader:#213037;
+   
+}
+.timeline {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 15px;
+    align-items: center;
+
+}
+#timeline-post{
+justify-content: center;
+}
+
+
