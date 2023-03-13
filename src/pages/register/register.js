@@ -11,18 +11,15 @@ export default () => {
     <div class="inputs-div">
       <input type="text" name="user-name" id="user-name" placeholder="nome completo">
       <input type="email" name="email" id="register-email" placeholder="seu@email.com">
-    </div>
-
-    <div>
       <input type="password" name="password" id="register-password" placeholder="senha">
     </div>
 
     <div>
-      <button type="button" id="register-button" href="#timeline">Registre-se</button>
+      <button type="button" id="register-btn" href="#timeline">Registre-se</button>
     </div>
 
     <div>
-      <button type="button" id="login-button">Já tem uma conta? <a id="login-link" href="#login">Login</a></button>
+      <button type="button" id="login-btn">Já tem uma conta? <a id="login-link" href="#login">Login</a></button>
     </div>
 
   </form>
@@ -31,7 +28,7 @@ export default () => {
 
   container.innerHTML = template;
 
-  const registerButton = container.querySelector('#register-button');
+  const registerButton = container.querySelector('#register-btn');
   const registerEmail = container.querySelector('#register-email');
   const registerPassword = container.querySelector('#register-password');
 
