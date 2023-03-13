@@ -25,7 +25,7 @@ export default () => {
   </form>
 </div>
 `;
-
+ 
   container.innerHTML = template;
 
   const registerButton = container.querySelector('#register-btn');

@@ -31,7 +31,7 @@ export default () => {
 
         <div>
           <button type="button" id="register-button">Não tem uma conta? <a id="register-link" href="#register">Registre-se</a></button>
-        </div>
+        </div> 
 
       </form>
     </div>
