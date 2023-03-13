@@ -1,6 +1,13 @@
 import { criarUsuario, logarGoogle } from '../../firebase/firebase';
 import { redirecionarPagina } from '../../redirecionar-pagina';
 
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+  } from "firebase/firestore";
+
 export default () => {
   const container = document.createElement('div');
   const template = `
@@ -72,7 +79,7 @@ export default () => {
       msgCampoVazio.innerHTML = 'Preencha todos os campos!';
     }
 
-    criarUsuario(email, senha)
+    criarUsuario(email, senha, nomeTutor)
       .then(() => {
         redirecionarPagina('#feed');
       })
