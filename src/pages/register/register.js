@@ -5,10 +5,10 @@ export default () => {
 
   const template = `
   <div class="form-wrapper">
-  <img src="./assets/ada-image.png" id="ada-image" alt="mulher mexendo no notebook">
+  <img src="./assets/wifi-logo.png" id="ada-image" alt="mulher mexendo no notebook">
   <img src="./assets/ada-logo.png" id="ada-logo" alt="logo da ConectAda">
   <form>
-    <div>
+    <div class="inputs-div">
       <input type="text" name="user-name" id="user-name" placeholder="nome completo">
       <input type="email" name="email" id="register-email" placeholder="seu@email.com">
     </div>
