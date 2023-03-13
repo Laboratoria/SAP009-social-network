@@ -26,8 +26,9 @@ input, button {
     border: none;
     outline-color: #FF4F5A;
     background-color: rgb(225, 223, 223);
-    width: -moz-available;          /* WebKit-based browsers will ignore this. */
-    width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+    /* width: -moz-available;          /* WebKit-based browsers will ignore this. */
+ /*   width: -webkit-fill-available;  Mozilla-based browsers will ignore this. */
+ width: 15rem;
  
 }
 
@@ -94,4 +95,9 @@ p {
     background-color: red;
     color: white;
     display: none;
+}
+
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
 }
