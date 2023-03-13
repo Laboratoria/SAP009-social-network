@@ -1,15 +1,12 @@
-import register from "../cadastrar/index.js"
-import { login, googleLogin } from  "../../servicesFirebase/firebaseAuth.js"
-import { printPost } from "../../servicesFirebase/firebaseStore.js";
-
-
-
+// import register from '../cadastrar/index.js';
+import { login, googleLogin } from '../../servicesFirebase/firebaseAuth.js';
+import { printPost } from '../../servicesFirebase/firebaseStore.js';
 
 export default () => {
-    const loginContainer = document.createElement('div');
-    loginContainer.classList.add('login-container');
+  const loginContainer = document.createElement('div');
+  loginContainer.classList.add('login-container');
 
-    const content = `
+  const content = `
     
         <header class='header-login display'>
             <img src='./imagens/logo3.png' alt='logo-code-girls' class='logo-code-girls'>
@@ -17,8 +14,8 @@ export default () => {
         </header>
         <form class='section-login display'>
             <h1> LOGIN </h1>
-            <input type='email' name="email" id="email-login"  placeholder='Email'>
-            <input type='password' name="password" id="senha-login" placeholder='Senha'>
+            <input type='email' name='email' id='email-login'  placeholder='Email'>
+            <input type='password' name='password' id='senha-login' placeholder='Senha'>
             <button class='button-login' id='button-login' type='button'> LOGIN </button>
             <span class='txt-login'> ou faça login com sua conta Google: </span>
             <button type='button' class='button-google'>
@@ -31,31 +28,43 @@ export default () => {
         </form>
    
     `;
-    loginContainer.innerHTML = content;
+  loginContainer.innerHTML = content;
 
-    const buttonRegister = loginContainer.querySelector("#button-cadastro");
-    buttonRegister.addEventListener('click', () => {
-        window.location.hash = "#Register";
-    });
+  const buttonRegister = loginContainer.querySelector('#button-cadastro');
+  buttonRegister.addEventListener('click', () => {
+    window.location.hash = '#Register';
+  });
 
-    const buttonLogin = loginContainer.querySelector("#button-login");
-    buttonLogin.addEventListener('click', () => {
-        const email = loginContainer.querySelector("#email-login");
-        const senha = loginContainer.querySelector("#senha-login");
-        login(email.value, senha.value);
-        console.log(email.value, senha.value);
-        alert("login ok");
-        printPost();
-    });
+  const buttonLogin = loginContainer.querySelector('#button-login');
+  buttonLogin.addEventListener('click', () => {
+    const email = loginContainer.querySelector('#email-login');
+    const senha = loginContainer.querySelector('#senha-login');
+    login(email.value, senha.value)
+      .then(() => {
+        window.location.hash = '#Home';
+      })
+    // eslint-disable-next-line no-unused-vars
+      .catch((error) => {
+        // eslint-disable-next-line no-alert
+        alert('Erro ao efetuar login!');
+      });
+    // console.log(email.value, senha.value);
+    // alert('login ok');
+    printPost();
+  });
 
-    const googleButton = loginContainer.querySelector('.button-google');
-    googleButton.addEventListener('click', () => {
-        alert('botão google ok');
-        googleLogin();
-        //window.location.hash = "#Home";
-    });
+  const googleButton = loginContainer.querySelector('.button-google');
+  googleButton.addEventListener('click', () => {
+    // alert('botão google ok');
+    googleLogin()
+      .then(() => {
+        window.location.hash = '#Home';
+      })
+      // eslint-disable-next-line no-unused-vars
+      .catch((error) => {
 
-    return loginContainer;
+      });
+  });
+
+  return loginContainer;
 };
-
-
