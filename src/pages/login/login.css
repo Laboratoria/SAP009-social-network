@@ -26,10 +26,7 @@ input, button {
     border: none;
     outline-color: #FF4F5A;
     background-color: rgb(225, 223, 223);
-    /* width: -moz-available;          /* WebKit-based browsers will ignore this. */
- /*   width: -webkit-fill-available;  Mozilla-based browsers will ignore this. */
- width: 15rem;
- 
+    width: 15rem;
 }
 
 #login-button {
@@ -37,22 +34,22 @@ input, button {
     border: none;
     color: #FFF;
     font-weight: bolder;
+    width: 16.5rem;
 }
-
+ 
 #google-button {
     display: flex;
     height: 2.3rem;
     color: #0C4767;
     font-weight: bolder;
-    padding-right: 2rem;
-    padding-left: 2rem;
     align-items: center;
+    width: 16.5rem;
 }
 
 #google-logo {
     height: 1.8rem;
     width: 1.8rem;
-    margin: 0 1.8rem 0 0;
+    margin: 0 1.3rem 0 1rem;
 }
 
 #register-button {
@@ -60,6 +57,7 @@ input, button {
     border: none;
     color: #FFF;
     margin-top: 1rem;
+    width: 16.5rem;
 }
 
 #register-link {
