@@ -7,6 +7,9 @@ import {
   signOut,
   updateProfile,
 } from 'firebase/auth';
+import { app } from '../firebaseInit.js';
+
+export const Auth = getAuth(app);
 
 // cadastro de usuarios novos
 export const createUser = (email, senha, nome, sobrenome, displayName) => {

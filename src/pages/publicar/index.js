@@ -16,7 +16,7 @@ export default () => {
     <p class='username' id='username' >Username</p>
     <textarea class='textarea' placeholder='Digite aqui a sua mensagem'></textarea>
     <div class='icons display'>
-      <button type='button' id='botao-postar'>Postar</button>
+      <button type='button' id='botao-postar' class='botao-postar'>Postar</button>
     </div>
   </div>   
   </main>

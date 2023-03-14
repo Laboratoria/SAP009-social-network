@@ -1,6 +1,7 @@
 @import url(../css/login.css);
 @import url(../css/home.css);
 
+
 :root{
     --white:#FFF3FC;
     --red:#C53F3F;
@@ -10,3 +11,15 @@
     --bgHeader:#213037;
    
 }
+.timeline {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 15px;
+    align-items: center;
+
+}
+#timeline-post{
+justify-content: center;
+}
+
+

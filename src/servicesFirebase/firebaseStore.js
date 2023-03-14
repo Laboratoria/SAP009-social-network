@@ -29,16 +29,16 @@ export const newPost = async (postagem) => { // colocar data da postagem
   }
 };
 
-// criar colecao nova e guardar quando usuario digitar a postagem, guardar na colecao posts
-// quando apertar botao postar, acontece o de cima ^
-
 export const printPost = async () => {
   const querySnapshot = await getDocs(collection(db, 'posts'));
+  const messages = [];
   querySnapshot.forEach((doc) => {
-    console.log(`${doc.id} => ${doc.data()}`);
-    console.log(doc);
-    console.log(doc.value);
+    const data = doc.data();
+    messages.push(data);
+    console.log(data);
   });
+  console.log(messages);
+  return messages;
 };
 
 // const firebase = require("firebase")

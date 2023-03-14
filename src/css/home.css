@@ -200,6 +200,26 @@ li {
     color: var(--white);
     
 }
+.botao-postar{
+    background-color: var(--red);
+    border-radius: 20px;
+    border: 5px solid var(--red);
+    align-self: self-start;
+    color: var(--white);
+    cursor: pointer;
+
+}
+.botao-postar:hover{
+    opacity: 0.5;
+
+}
+.botao-postar:active{
+    opacity: 0.8;
+
+
+}
+
+
 .textarea{
     background-color: var(--bg2);
     border-color: var(--red);
