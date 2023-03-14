@@ -3,6 +3,7 @@ import {
     obterPosts,
     obterNomeUsuario,
 } from "../../firebase/firebase";
+
 export default async () => {
     const usuarioLogado = await obterNomeUsuario();
     const container = document.createElement('div');
@@ -18,6 +19,7 @@ export default async () => {
                         <li><a href="#">sair</a></li>
                     </ul>
                 </menu>
+                <div class="info-usuario">
                 <h2>Seja bem-vindo(a)!</h2>
                 <div class="perfil">
                     <div class="tutor">
@@ -26,9 +28,11 @@ export default async () => {
                     </div>
                     <div class="cao">
                         <i class="fa-solid fa-paw fa-3x icon-cão"></i>
-                        <p class="texto-feed">@cão</p>
+                        <p class="texto-feed">@Cao</p>
                     </div>
+                </div>    
                 </div>
+            </div>
                 <div class="tela-principal">
                     <div class="logo-tela">
                         <img src="./img/logo/logo.png" class="img-logo" alt="logo-dogTips">
@@ -41,7 +45,6 @@ export default async () => {
                         </div>
                         <div id="postagens" class="postagens"></div>
                 </div>
-            </div>
         </div>
         `;
     container.innerHTML = template;
@@ -56,7 +59,7 @@ export default async () => {
         }
     });
 
-    // cria-se uma nova div que contém o valor passado como parâmetro e adiciona essa div à seção com o id "postagens" no documento HTML.
+    
     const exibirPost = (post) => {
         const posts = document.querySelector('#postagens')
         const container = document.createElement('div');
@@ -77,13 +80,13 @@ export default async () => {
         container.innerHTML = template;
         posts.appendChild(container);
     }
-    // o código obtém uma lista de posts usando a função "obterPosts" e exibe cada post na página chamando a função "exibirPost" para cada valor resolvido da promessa.
+
     obterPosts().then(posts => {
         posts.forEach(post => exibirPost(post))
     });
+
     // o código define um evento de clique para o botão "btnPublicar" que cria um novo post com o texto inserido no campo de texto "texto-tutor". Se a criação do post
     // for bem-sucedida, o novo post é exibido na página. Se ocorrer um erro, uma mensagem de erro é exibida. Se o campo de texto estiver vazio, uma mensagem de aviso é exibida.
-
     const btnPublicar = container.querySelector('#btn-publicar');
     btnPublicar.addEventListener('click', async () => {
         const textoTutor = container.querySelector('#texto-tutor');

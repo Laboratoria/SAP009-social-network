@@ -520,17 +520,21 @@
   .perfil {
       display: inline-flex;
       gap: 30px;
-      margin-left: 120px;
+      justify-content: center;
   }
+
   .div-postagem-tutor{
     flex-direction: column;
     display: flex;
    }
+   
    .texto-tutor{
     background-color: var(--nude);
     border-style: none;
     border-radius: 20px;
+    padding: 10px;
    }
+
    .btn-publicar{
     text-transform: uppercase;
     background-color: #783d19;
@@ -542,6 +546,7 @@
     margin-top: 5px;
     margin-left: 220px;
    }
+
    .div-postagem-anteriores-tutor{
     background-color: var(--nude);
     border-radius: 20px;
@@ -552,22 +557,27 @@
     margin-right: 17px;
     margin-left: 17px;
    }
+
    #icone-superiores{
     display: inline-flex;
     margin-top: 4px;
     margin-left: 4px;
    }
+
    .icon-usuario-txt{
     color:var(--marrom);
+    margin-right: 8px;
    }
+
    .tutor-txt-area{
     color: var(--laranja);
     font-size: 15px
    }
+
    .data-postagem{
    color: var(--laranja);
    font-size: 15px;
-   margin-left: 170px;
+   margin-left: 140px;
    }
 
    textarea{
@@ -614,3 +624,9 @@
     margin-top: 10px;
    }
    
+   .info-usuario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
