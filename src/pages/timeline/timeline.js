@@ -17,5 +17,5 @@ export default () => {
 
     window.location.replace('#login');
   });
-  return container;
+  return container; 
 };

@@ -32,12 +32,31 @@ export default () => {
   const registerEmail = container.querySelector('#register-email');
   const registerPassword = container.querySelector('#register-password');
 
-  registerButton.addEventListener('click', () => {
+  /* registerButton.addEventListener('click', () => {
     const email = registerEmail.value;
     const password = registerPassword.value;
 
-    createUserWithEmail(email, password);
+    createUserWithEmail(email, password)
+  }); */
+
+  registerButton.addEventListener('click', () => {
+    const email = registerEmail.value;
+    const password = registerPassword.value;
+  
+    createUserWithEmail(email, password)
+      .then((isCreated) => {
+        console.log('Usuário cadastrado - register');
+        window.location.replace('#timeline');
+      })
+      .catch((error) => {
+        console.log('Erro de cadastro');
+        window.location.replace('#register');
+      })
+      .finally(() => {
+        console.log('Cadastro autenticado no register');
+      }); 
   });
 
   return container;
 };
+
