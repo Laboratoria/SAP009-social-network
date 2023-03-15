@@ -37,7 +37,7 @@ export default () => {
                         </div>
                         <p class="texto-centralizado">Esqueceu sua senha?</p> 
                         <p class="texto-centralizado"><a href="#redefinirSenha" id="clique-esqueceu">Clique aqui!</a></p>
-                        <div class="espaço-acessar">
+                        <div class="espaco-acessar">
                             <button class="btn-acessar">ACESSAR</button>
                         </div>
                         <div class="mensagem-erro" id="mensagem-erro"></div>
