@@ -1,0 +1,30 @@
+@import url(../css/login.css);
+
+* {
+    background: #02000D;
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+    padding: 0;
+   
+}
+
+body {
+    background-size: 100% 650px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-repeat: no-repeat;
+}
+
+.containe-login {
+    width: 237px;
+    height: 237px;
+    margin-top: 61px;
+    left: 99px;
+}
+
+.logo-escrita-clara{
+    width: 100%;
+}
+
