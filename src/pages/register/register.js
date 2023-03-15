@@ -25,24 +25,17 @@ export default () => {
   </form>
 </div>
 `;
- 
+
   container.innerHTML = template;
 
   const registerButton = container.querySelector('#register-btn');
   const registerEmail = container.querySelector('#register-email');
   const registerPassword = container.querySelector('#register-password');
 
-  /* registerButton.addEventListener('click', () => {
-    const email = registerEmail.value;
-    const password = registerPassword.value;
-
-    createUserWithEmail(email, password)
-  }); */
-
   registerButton.addEventListener('click', () => {
     const email = registerEmail.value;
     const password = registerPassword.value;
-  
+
     createUserWithEmail(email, password)
       .then((isCreated) => {
         console.log('Usuário cadastrado - register');
@@ -54,9 +47,8 @@ export default () => {
       })
       .finally(() => {
         console.log('Cadastro autenticado no register');
-      }); 
+      });
   });
 
   return container;
 };
-

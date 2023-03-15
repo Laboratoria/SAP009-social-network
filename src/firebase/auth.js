@@ -71,7 +71,7 @@ export function loginGoogle() {
         console.log('Logou com o google')
         // Retornar true se a autenticação foi bem-sucedida
         return true;
-      }) 
+      })
       .catch((error) => {
       // Handle Errors here.
         reject(error);
@@ -105,4 +105,4 @@ onAuthStateChanged(auth, (user) => {
   } else {
     console.log('onAuthStateChange: No user');
   }
-}); 
+});

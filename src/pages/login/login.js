@@ -48,7 +48,7 @@ export default () => {
   loginButton.addEventListener('click', () => {
     const email = emailInput.value;
     const password = passwordInput.value;
-    // console.log(email);
+
     signIn(email, password)
       .then((isAuthenticated) => {
         console.log('Usuário autenticado!');
@@ -61,23 +61,22 @@ export default () => {
       .finally(() => {
         console.log('Processo de autenticação finalizado em login');
       });
-  }); 
+  });
 
   loginWithGoogle.addEventListener('click', () => {
     loginGoogle()
-      .then((isAuthenticated) => {
+      .then((isLogged) => {
         console.log('google: Usuário autenticado!');
         window.location.replace('#timeline');
       })
-      .catch((isAuthenticated) => {
+      .catch((error) => {
         console.log('google: Usuário não autenticado.');
         window.location.replace('#login');
+      })
+      .finally(() => {
+        console.log('Autenticação com o google finalizada em login');
       });
-      /* .finally(() => {
-        console.log('Autenticação com o google finalizada em login')
-      }); */
   });
 
-  //  window.location.replace('#timeline');
   return container;
 };
