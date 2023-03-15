@@ -1,0 +1,16 @@
+
+
+h1 {
+    font-size: 16px;
+    color:rgba(217, 217, 217, 0.5);
+    width: 144px;
+    height: 40px;
+        
+}
+
+.container-login {
+    width: 200px;
+    height: 200px;
+    margin-top: 61px;
+    left: 99px;
+}
