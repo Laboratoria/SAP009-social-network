@@ -8,19 +8,19 @@ const login = () => {
 
         <input type="password" id="password" placeholder="Senha" required/>
 
-        <input class="btn-entrar " type="submit" value="Entrar"  href="/#postagem>
+        <input class="btn-entrar " type="submit" value="Entrar">
       </form>
 
-      <section class="login-com">
-        <p class="login-google">Login com</p>
+    <section class="login-com">
+      <p class="login-google">Login com</p>
 
-        <button class="btn-google" type="button">
-          <img src="./imagens/icone google.png" alt="icone google">
-        </button>
+      <button class="btn-google" type="button">
+        <img src="./imagens/icone google.png" alt="icone google">
+      </button>
 
-        <p>Ainda não possui cadastro? <br> <a href="/#cadastro">Crie sua conta!</a></p>
-      </section>
-    </div>
+      <p>Ainda não possui cadastro? <br> <a href="/#cadastro">Crie sua conta!</a></p>
+    </section>
+  </div> 
 `;
 
   criarLogin.innerHTML = template;

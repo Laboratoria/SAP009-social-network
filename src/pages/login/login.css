@@ -1,42 +1,18 @@
-body {
-  font-family: "Cagliostro", sans-serif;
-  box-sizing: border-box;
-  height: 100vh;
-  color: white;
-  background: linear-gradient(180deg, #83152d 8.85%, #ad1d45 88.54%);
+body{
+ margin: .5rem 2rem 2rem 2rem;
 }
-
-.header {
-  text-align: center;
-}
-
-.header img {
-  width: 80%;
-}
-
-.footer {
-  color: white;
-  text-align: center;
-  position: relative;
-  top: 2rem;
-}
-
-.footer a {
-  color: white;
-  text-decoration: none;
-}
-.main {
-  margin: -5% 10%;
+section {
+  margin: 5%;
   margin-top: 0;
-  height: 20;
   font-size: 1.1rem;
-}
+} 
 .caixa-login {
   padding: 18% 10%;
   background-color: #44000d;
   display: flex;
   flex-direction: column;
   margin: auto;
+  margin-bottom: 1.5rem;
   text-align: center;
   border-radius: 15px;
   gap: 2rem;
@@ -69,9 +45,14 @@ input[type="submit"] {
 .login-com {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.5rem;
 }
 
+.login-com p {
+  line-height: 1.5rem;
+  vertical-align: text-bottom;
+
+}
 .login-com p a {
   color: white;
 }
@@ -86,7 +67,7 @@ input[type="submit"] {
 }
 
 .btn-google img {
-  width: 12%;
+  width: 15%;
   padding: 3%;
 }
 

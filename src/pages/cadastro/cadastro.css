@@ -1,45 +1,31 @@
-*{
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  border: 0;
+body{
+  margin: 2rem;
 }
-
-body {
-  font-family: "Cagliostro", sans-serif;
-  height: 100vh;
-  color: white;
-  background: linear-gradient(180deg, #83152d 8.85%, #ad1d45 88.54%);
-  display: flex;
-  flex-direction: column;
-   /*margin: 0; 
-  box-sizing: border-box;
-  */
-}
-
-.main{
+section{
   width: 90%;
-  position: absolute;
   margin: 2% auto;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-around;
-  gap: 3rem;
+  position: relative;
+  gap: 1rem;
 }
 
 .img-fundo{
+  position: absolute;
+  display: flex;
   width: 100%;
   opacity: 40%;
-  position: relative;
-  margin: 60% auto 0% auto;
+  margin: 60% auto 10% auto;
 }
 
 .caixa-cadastro{
   display: flex;
-  margin: -2.5rem auto;
+  margin: .5rem auto;
   width: 100%;
   margin-bottom: 1.5rem;
+  position: relative;
 }
 
 .mensagem-cadastro{
@@ -67,53 +53,18 @@ body {
   background-color: #FACFCE;
   border: transparent;
   padding: 8px;
-
 }
 
 input[type=submit]{
   width: 30%;
-  margin: auto;
+  margin: 0 auto;
   background-color: #EBAFAC;
   border-radius: 15px;
   padding: 5px;
 }
 
-
-.footer { 
-  width: 50%;
-  color: white;
-  text-align: center;
-  margin: 0 auto;
+.footer{
   position: relative;
-  top: 17%;
-  display: flex;
-  justify-content:center;
+
 }
-
-.footer a {
-  color: white;
-  text-decoration: none;
-} 
-
-
-  /* .header{
-    text-align: center;
-  }
-  
-  .header img{
-    width: 80%;
-  }
-  .main{
-  width: 90%;
-  margin: auto;
-  position: relative;
-}
-
-.img-fundo{
-  width: 100%;
-  opacity: 40%;
-  position: absolute;
-  
-} */
-  
  
