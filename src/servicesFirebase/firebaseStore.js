@@ -22,6 +22,7 @@ export const newPost = async (postagem) => { // colocar data da postagem
       // Username: username,
       // data: dataPostagem,
       post: postagem,
+      // add atributo usuario
     });
     console.log('Document written with ID: ', docRef.id);
   } catch (e) {
@@ -35,9 +36,7 @@ export const printPost = async () => {
   querySnapshot.forEach((doc) => {
     const data = doc.data();
     messages.push(data);
-    console.log(data);
   });
-  console.log(messages);
   return messages;
 };
 
