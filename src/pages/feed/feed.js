@@ -12,10 +12,9 @@ export default async () => {
     
     <section class="body-tela-feed">
     <section class="header-desk">
-   
     <div class="main">
             <div class="barra-feed">
-            <div id="icon-desk">
+            <div class="menu">
                 <i class="fa-solid fa-bars fa-2x icon-menu" id="burguer"></i>
                 </div>
                 <menu id="itens">
@@ -23,11 +22,10 @@ export default async () => {
                         <li><a href="#">feed</a></li>
                         <li><a href="#">perfil</a></li>
                         <li><a href="#">sobre</a></li>
-                        <li><a href="#">sair</a></li>
+                        <li><button id="btnSair" class="btn-sair"type="button"> sair</button></li>
                     </ul>
                 </menu>
                 </section>
-                <section id="body-desk">
                 <div class="info-usuario">
                 <h2 class="h2-desk">Seja bem-vindo(a)!</h2>
                 <div class="perfil">
@@ -56,7 +54,7 @@ export default async () => {
                         <div id="postagens" class="postagens"></div>
                 </div>
         </div>
-        </section>
+       
         </section>
         `;
     container.innerHTML = template;

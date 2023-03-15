@@ -170,10 +170,11 @@
     margin-bottom: 10px;
   }
   
-  .espaço-acessar {
+  .espaco-acessar {
     margin: 5px;
     justify-content: center;
     text-align: center;
+    display: flex;
   }
   
   .texto-centralizado {
@@ -688,4 +689,13 @@ i#burguer {
     flex-direction: column;
     justify-content: center;
     text-align: center;
+}
+.btn-sair {
+  font-size: 15px;
+  border: 0;
+  background-color: transparent;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--laranja);
+  font-weight: bold;
 }
