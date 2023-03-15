@@ -9,7 +9,16 @@
     background-color: var(--bege);
   }
   
-  body {
+  .body-telas-iniciais {
+    background-image: url(./img/img-fundo/pagina_inicial_mobile.png);
+    background-size: 100% 650px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-repeat: no-repeat;
+  }
+  .body-tela-feed {
     background-image: url(./img/img-fundo/pagina_inicial_mobile.png);
     background-size: 100% 650px;
     margin: 0;
@@ -37,6 +46,14 @@
     margin-top: 16px;
     margin-bottom: 30px;
   
+  }
+  .logo-tela-feed>img{
+    width: 200px;
+    margin-top: 16px;
+    margin-bottom: 30px;
+  }
+  .info-usuario{
+    color: var(--bege);
   }
   
   .estilo-card {
@@ -338,20 +355,48 @@
     .txt-novo-usuario>p {
       font-size: 16px;
     }
+    #itens{
+      background-color: var(--nude);
+    }
   }
   
   @media screen and (min-width: 1000px) {
-    body {
-      background-image: none;
-    }
-  
-    html {
+.info-usuario{
+  color: var(--marrom);
+}
+i#burguer {
+  position: relative;
+}
+#itens{ 
+  background-color: var(--marromclaro);
+  display: flex;
+}
+
+.h2-desk{
+  color: var(--marrom);
+}
+.header-desk{
+  background-color: var(--marromclaro);
+  width: 100%;
+  height: 5rem;
+}
+.body{
+  background-image: none;
+}
+.body-tela-feed{
+  background-image: none;
+  display: flex;
+}
+  .body-telas-iniciais{
       background-image: url(./img/img-fundo/pagina_login.png);
       min-height: 100%;
       background-size: cover;
       background-repeat: no-repeat;
     }
-  
+    .img-logo-feed{
+      align-items: flex-start;
+    }
+ 
     .main {
       display: grid;
       grid-template-columns: 60% 40%;
@@ -397,6 +442,11 @@
       width: 260px;
       margin: 30px 0 30px 60px;
     }
+    .logo-tela-feed{
+      width: 260px;
+      margin: 30px 0 30px 60px;
+      display: none;
+    }
   
     .estilo-card {
       margin-left: 80px;
@@ -405,6 +455,13 @@
     .estilo-card-redefir-senha {
       margin-left: 35px;
     }
+
+    .texto-tutor{
+      background-color: var(--nude);
+      border-style: none;
+      border-radius: 20px;
+      padding: 10px;
+     }
   }
   
   @media screen and (min-width: 1200px) {
@@ -494,7 +551,7 @@
     background-color: var(--bege);
     z-index: 9999;
     height: 12vh;
-    width: 40%;
+    width: calc(100% - 14px);
     padding: 15px;
     text-align: center;
     text-transform: uppercase;
@@ -570,14 +627,16 @@
    }
 
    .tutor-txt-area{
-    color: var(--laranja);
-    font-size: 15px
+    color: var(--marrom);
+    font-size: 15px;
+    font-weight: bold;
    }
 
    .data-postagem{
-   color: var(--laranja);
+   color: var(--marrom);
    font-size: 15px;
    margin-left: 140px;
+   font-weight: bold;
    }
 
    textarea{

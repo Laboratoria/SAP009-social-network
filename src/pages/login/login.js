@@ -4,6 +4,7 @@ import { redirecionarPagina } from '../../redirecionar-pagina';
 export default () => {
   const container = document.createElement('div');
   const template = `
+  <section class="body-telas-iniciais">
         <div class="main">
             <div class="txt-novo-usuario"> 
                 <h3>Primeira vez aqui?</h3>
@@ -49,6 +50,7 @@ export default () => {
                 </div>
             </div>
         </div>
+        </section>
         `;
 
   container.innerHTML = template;

@@ -11,6 +11,7 @@ import {
 export default () => {
   const container = document.createElement('div');
   const template = `
+  <section class="body-telas-iniciais">
         <div class="main">
             <div class="txt-entrar"> 
                 <h3>Já possui cadastro?</h3>
@@ -62,6 +63,7 @@ export default () => {
                 </div>
             </div>
         </div>
+        </section>
         `;
   container.innerHTML = template;
 
@@ -79,7 +81,7 @@ export default () => {
       msgCampoVazio.innerHTML = 'Preencha todos os campos!';
     }
 
-    criarUsuario(email, senha, nomeTutor)
+    criarUsuario(email, senha, nomeTutor, nomeCao)
       .then(() => {
         redirecionarPagina('#feed');
       })
