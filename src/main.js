@@ -26,4 +26,5 @@ const iniciaTela = () => {
 window.addEventListener('load', () => {
   main.appendChild(login());
   iniciaTela();
+  window.location.hash = '';
 });
