@@ -10,7 +10,8 @@ import {
   signInWithPopup,
   sendPasswordResetEmail,
   updateProfile,
-  onAuthStateChanged
+  onAuthStateChanged,
+  signOut,
 } from 'firebase/auth';
 
 import {
