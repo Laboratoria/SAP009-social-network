@@ -200,6 +200,14 @@ li {
     color: var(--white);
     
 }
+.userNameDate{
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    color: var(--red);
+}
+
+
 .botao-postar{
     background-color: var(--red);
     border-radius: 20px;

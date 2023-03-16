@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import { collection, addDoc, getDocs } from 'firebase/firestore';
 import { db } from '../firebaseInit';
+import { Auth } from './firebaseAuth';
 
 export const userData = async (name, lastname) => {
   try {
@@ -16,12 +17,18 @@ export const userData = async (name, lastname) => {
     console.error('Error adding document: ', e);
   }
 };
+
 export const newPost = async (postagem) => { // colocar data da postagem
   try {
+    const timeElapsed = Date.now();
+    const today = new Date(timeElapsed);
+    const dataPostagem = today.toLocaleDateString();
+    console.log(Auth.currentUser.uid);
     const docRef = await addDoc(collection(db, 'posts'), {
-      // userName: nameUser,
-      // data: dataPostagem,
+      userName: Auth.currentUser.displayName,
+      data: dataPostagem,
       post: postagem,
+      idUser: Auth.currentUser.uid,
     });
     console.log('Document written with ID: ', docRef.id);
   } catch (e) {
@@ -29,7 +36,7 @@ export const newPost = async (postagem) => { // colocar data da postagem
   }
 };
 
-export const printPost = async () => {
+export const accessPost = async () => {
   const querySnapshot = await getDocs(collection(db, 'posts'));
   const messages = [];
   querySnapshot.forEach((doc) => {
@@ -39,6 +46,7 @@ export const printPost = async () => {
   return messages;
 };
 
-// const firebase = require("firebase")
-// // Required for side-effects
-// require("firebase/firestore
+// export const datePost = async
+//   const timeElapsed = Date.now();
+//   const today = new Date(timeElapsed);
+//   const dataPostagem = today.toLocaleDateString();

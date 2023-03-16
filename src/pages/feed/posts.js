@@ -1,14 +1,16 @@
-import { printPost } from '../../servicesFirebase/firebaseStore.js';
+import { accessPost } from '../../servicesFirebase/firebaseStore.js';
 
 export default (timelinePost) => {
   const container = document.createElement('div');
   container.classList.add('timeline');
 
-  printPost().then((allPosts) => {
+  accessPost().then((allPosts) => {
     container.innerHTML = allPosts.map((post) => `
-    
         <div class='feed display'>
-        <p class='username'> Username </p>
+        <div class='display userNameDate'>
+          <p class='username'> ${post.userName} </p>
+          <p class='date'> ${post.data} </p>
+        </div>
         <textarea disabled class='textarea'> ${post.post} </textarea>
         <div class='icons display'>
         <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-heart' viewBox='0 0 16 16'>
@@ -23,11 +25,11 @@ export default (timelinePost) => {
         </svg>
         </div>
         </div> 
-        
     `).join('');
   });
   // message.value = post.post;
   // });
   // });
+
   timelinePost.appendChild(container);
 };

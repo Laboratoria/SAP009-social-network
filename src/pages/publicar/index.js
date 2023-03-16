@@ -1,7 +1,8 @@
 import Header from '../../components/header/index.js';
 import Footer from '../../components/footer/index.js';
 import { newPost } from '../../servicesFirebase/firebaseStore.js';
-import { nameUser } from '../../servicesFirebase/firebaseAuth.js';
+import { Auth } from '../../servicesFirebase/firebaseAuth';
+// import { nameUser } from '../../servicesFirebase/firebaseAuth.js';
 
 export default () => {
   const container = document.createElement('div');
@@ -13,7 +14,7 @@ export default () => {
   const template = ` 
   <main class='display' >
   <div class='feed display'>
-    <p class='username' id='username' >Username</p>
+    <p class='username' id='username' >${Auth.currentUser.displayName}</p>
     <textarea class='textarea' placeholder='Digite aqui a sua mensagem'></textarea>
     <div class='icons display'>
       <button type='button' id='botao-postar' class='botao-postar'>Postar</button>
@@ -29,8 +30,6 @@ export default () => {
   const buttomPost = container.querySelector('#botao-postar');
   buttomPost.addEventListener('click', () => {
     const text = container.querySelector('.textarea');
-    const userNamePub = nameUser();
-    console.log(userNamePub);
     newPost(text.value); // colocar data da postagem
   });
   return container;
