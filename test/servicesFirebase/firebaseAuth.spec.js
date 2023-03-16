@@ -1,14 +1,63 @@
 /* eslint-disable no-unused-vars */
 import {
-  getAuth,
   createUserWithEmailAndPassword,
   updateProfile,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
 } from 'firebase/auth';
-import { createUser } from '../../src/servicesFirebase/firebaseAuth';
+import {
+  createUser, login, googleLogin, logOut,
+} from '../../src/servicesFirebase/firebaseAuth';
 
-it('deve criar usuario e atualizar perfil com sucesso', () => {
-  // console.log(createUser);
-  // console.log(updateProfile);
-  // console.log(getAuth);
-  expect(1).toBe(1);
-}); // instalar plugin do eslint nas exten
+jest.mock('firebase/auth');
+
+it('deve criar usuario e atualizar perfil com sucesso', async () => {
+  const mockUserCredential = {
+    user: {},
+  };
+  createUserWithEmailAndPassword.mockResolvedValueOnce(mockUserCredential);
+  updateProfile.mockResolvedValueOnce();
+
+  const email = 'qualquer@email.com';
+  const senha = 'senhafacil';
+  const nome = 'nometeste';
+  const sobrenome = 'sobrenometeste';
+  const displayName = 'usernameteste';
+  await createUser(email, senha, nome, sobrenome, displayName);
+
+  expect(createUserWithEmailAndPassword).toHaveBeenCalledTimes(1);
+  expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(undefined, email, senha);
+  expect(updateProfile).toHaveBeenCalledTimes(1);
+  // eslint-disable-next-line max-len
+  expect(updateProfile).toHaveBeenCalledWith(mockUserCredential.user, { nome, sobrenome, displayName });
+});
+
+it('deve logar com o usuario criado', async () => {
+  signInWithEmailAndPassword.mockResolvedValueOnce();
+
+  const email = 'qualquer@email.com';
+  const senha = 'senhafacil';
+  await login(email, senha);
+
+  expect(signInWithEmailAndPassword).toHaveBeenCalledTimes(1);
+  expect(signInWithEmailAndPassword).toHaveBeenCalledWith(undefined, email, senha);
+});
+
+it('deve logar com o google', async () => {
+  signInWithPopup.mockResolvedValueOnce();
+
+  const provider = {};
+  await googleLogin(undefined, provider);
+
+  expect(signInWithPopup).toHaveBeenCalledTimes(1);
+  expect(signInWithPopup).toHaveBeenCalledWith(undefined, provider);
+});
+
+it('deve realizar logout do usuário', async () => {
+  signOut.mockResolvedValueOnce();
+  await logOut();
+
+  expect(signOut).toHaveBeenCalledTimes(1);
+  expect(signOut).toHaveBeenCalledWith(undefined);
+});

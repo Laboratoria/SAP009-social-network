@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable no-alert */
 // import register from '../cadastrar/index.js';
 import { login, googleLogin } from '../../servicesFirebase/firebaseAuth.js';
 // import { printPost } from '../../servicesFirebase/firebaseStore.js';
@@ -46,10 +48,9 @@ export default () => {
     // eslint-disable-next-line no-unused-vars
       .catch((error) => {
         // eslint-disable-next-line no-alert
+        console.log(error);
         alert('Erro ao efetuar login!');
       });
-    // console.log(email.value, senha.value);
-    // alert('login ok');
   });
 
   const googleButton = loginContainer.querySelector('.button-google');
@@ -61,7 +62,8 @@ export default () => {
       })
       // eslint-disable-next-line no-unused-vars
       .catch((error) => {
-
+        console.log(error);
+        alert('Erro ao efetuar login com o Google!');
       });
   });
 

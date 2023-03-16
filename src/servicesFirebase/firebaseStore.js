@@ -19,7 +19,7 @@ export const userData = async (name, lastname) => {
 export const newPost = async (postagem) => { // colocar data da postagem
   try {
     const docRef = await addDoc(collection(db, 'posts'), {
-      // Username: username,
+      // userName: nameUser,
       // data: dataPostagem,
       post: postagem,
     });
@@ -35,9 +35,7 @@ export const printPost = async () => {
   querySnapshot.forEach((doc) => {
     const data = doc.data();
     messages.push(data);
-    console.log(data);
   });
-  console.log(messages);
   return messages;
 };
 

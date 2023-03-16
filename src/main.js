@@ -9,14 +9,14 @@ const init = () => {
   window.addEventListener('hashchange', () => {
     main.innerHTML = ' ';
     switch (window.location.hash) {
-      case '#Home':
-        main.appendChild(home());
+      case '/':
+        main.appendChild(login());
         break;
       case '#Publicar':
         main.appendChild(publicar());
         break;
-      case '#Login':
-        main.appendChild(login());
+      case '#Home':
+        main.appendChild(home());
         break;
       case '#Sair':
         main.appendChild(login());
@@ -32,6 +32,6 @@ const init = () => {
 };
 
 window.addEventListener('load', () => {
-  main.appendChild(home());
+  main.appendChild(login());
   init();
 });

@@ -1,3 +1,7 @@
+
+body{
+    background: var(--bg);
+}
 .section-login{
     flex-direction: column;
     width: 100vw ;
