@@ -19,10 +19,9 @@ export const userData = async (name, lastname) => {
 export const newPost = async (postagem) => { // colocar data da postagem
   try {
     const docRef = await addDoc(collection(db, 'posts'), {
-      // Username: username,
+      // userName: nameUser,
       // data: dataPostagem,
       post: postagem,
-      // add atributo usuario
     });
     console.log('Document written with ID: ', docRef.id);
   } catch (e) {

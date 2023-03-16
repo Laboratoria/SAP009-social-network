@@ -7,7 +7,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
-  updateProfile,
+  updateProfile, onAuthStateChanged,
 } from 'firebase/auth';
 import { app } from '../firebaseInit.js';
 
@@ -30,3 +30,22 @@ export const googleLogin = () => {
 };
 
 export const logOut = () => signOut(Auth);
+
+export const nameUser = async () => {
+  let username;
+  await new Promise((resolve, reject) => {
+    onAuthStateChanged(Auth, (user) => {
+      if (user) {
+        console.log(user);
+        console.log(user.displayName);
+        username = user.displayName;
+        console.log(username);
+        resolve();
+      } else {
+        alert('usuário não entrou ainda');
+        reject();
+      }
+    });
+  });
+  return username;
+};

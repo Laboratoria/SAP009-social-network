@@ -20,8 +20,7 @@ export default () => {
         <input type='text' placeholder='Usuário' id='usuario-fulana'>
         <input type='email' placeholder='Email' id='email-cadastro'>
         <input type='password' placeholder='Senha' id='senha-cadastro'>           
-        <button class='button-login' id='cadastro-firebase' type='button' > CADASTRAR </button>    
-        
+        <button class='button-login' id='cadastro-firebase' type='button' > CADASTRAR </button>          
     </form>
     `;
   loginContainer.innerHTML = content;
@@ -30,8 +29,6 @@ export default () => {
   register.addEventListener('click', () => {
     const email = loginContainer.querySelector('#email-cadastro');
     const senha = loginContainer.querySelector('#senha-cadastro');
-    // const name = loginContainer.querySelector('#nome-fulana');
-    // changeName(name.value)
     const nome = loginContainer.querySelector('#nome-fulana');
     const sobrenome = loginContainer.querySelector('#sobrenome-fulana');
     const usuario = loginContainer.querySelector('#usuario-fulana');
@@ -41,13 +38,13 @@ export default () => {
 
     createUser(email.value, senha.value, nome.value, sobrenome.value, usuario.value)
       .then(() => {
-        window.location.hash = '#Home';
+        window.location.hash = '#login';
       })
       .catch((error) => {
         // const errorCode = error.code;
         // const errorMessage = error.message;
         // eslint-disable-next-line no-console, no-alert
-        alert('Erro ao cadastrar usuário!');
+        alert('Erro ao cadastrar usuário, verifique os campos preenchidos!');
         // eslint-disable-next-line no-console
         console.error(error);
         // ..
