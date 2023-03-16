@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  GoogleAuthProvider,
 } from 'firebase/auth';
 import {
   createUser, login, googleLogin, logOut,
@@ -46,9 +47,10 @@ it('deve logar com o usuario criado', async () => {
 
 it('deve logar com o google', async () => {
   signInWithPopup.mockResolvedValueOnce();
+  const provider = 'google';
+  GoogleAuthProvider.mockReturnValueOnce(provider);
 
-  const provider = {};
-  await googleLogin(undefined, provider);
+  await googleLogin();
 
   expect(signInWithPopup).toHaveBeenCalledTimes(1);
   expect(signInWithPopup).toHaveBeenCalledWith(undefined, provider);
