@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-console */
 import { signIn, loginGoogle } from '../../firebase/auth.js';
 
 export default () => {
@@ -5,11 +7,10 @@ export default () => {
 
   const template = `
     <div class="form-wrapper">
-      <img src="./assets/ada-image.png" id="ada-image" alt="mulher mexendo no notebook">
-      <img src="./assets/ada-logo.png" id="ada-logo" alt="logo da ConectAda">
+      <img src="./assets/logo-hamtaro.png" id="logo-hamtaro" alt="imagem do Hamtaro">
       <form>
         <div>
-          <input type="email" name="email" id="email" placeholder="seu@email.com">
+          <input type="email" name="email" id="email" placeholder="nome@email.com">
           <div class="error" id="email-required-error">E-mail é obrigatório</div>
           <div class="error" id="email-invalid-error">E-mail é inválido</div>
         </div> 

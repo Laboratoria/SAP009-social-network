@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-console */
 import { createUserWithEmail } from '../../firebase/auth.js';
 
 export default () => {
@@ -5,13 +7,14 @@ export default () => {
 
   const template = `
   <div class="form-wrapper">
-  <img src="./assets/wifi-logo.png" id="ada-image" alt="mulher mexendo no notebook">
-  <img src="./assets/ada-logo.png" id="ada-logo" alt="logo da ConectAda">
+  <img src="./assets/logo-kyuubi.png" id="logo-kyuubi" alt="imagem da Kyuubi">
   <form>
     <div class="inputs-div">
-      <input type="text" name="user-name" id="user-name" placeholder="nome completo">
-      <input type="email" name="email" id="register-email" placeholder="seu@email.com">
+      <input type="text" name="user-name" id="user-name" placeholder="Nome completo">
+      <input type="email" name="email" id="register-email" placeholder="nome@email.com">
+      <input type="email" name="email" id="confirm-email" placeholder="Confirme seu email">
       <input type="password" name="password" id="register-password" placeholder="senha">
+      <input type="password" name="email" id="confirm-password" placeholder="Confirme sua senha">
     </div>
 
     <div>
