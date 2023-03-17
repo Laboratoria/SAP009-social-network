@@ -1,12 +1,14 @@
-const login = () => {
-  const criarLogin = document.createElement('section');
+import { fazerLogin } from '../../firebase/firebase';
 
+const criarLogin = document.createElement('section');
+
+const login = () => {
   const template = `
     <div class="caixa-login">
       <form class="form-login">
-        <input type="email"  placeholder="E-mail" required/>
+        <input id="login-email" type="email"  placeholder="E-mail" required/>
 
-        <input type="password" id="password" placeholder="Senha" required/>
+        <input id="login-senha" type="password" id="password" placeholder="Senha" required/>
 
         <input class="btn-entrar " type="submit" value="Entrar">
       </form>
@@ -30,4 +32,19 @@ const login = () => {
 
 export default login;
 
+<<<<<<< HEAD
 
+=======
+// const inputLoginEmail = criarLogin.querySelector('#login-email');
+
+// const inputLoginSenha = criarLogin.querySelector('#login-senha');
+
+// const btnEntrar = criarLogin.querySelector('.btn-entrar');
+
+// btnEntrar.addEventListener('submit', () => {
+//   const loginEmail = inputLoginEmail.value;
+//   const loginSenha = inputLoginSenha.value;
+
+//   fazerLogin(loginEmail, loginSenha);
+// });
+>>>>>>> 48b7a314841e0a3b68488da1ad3e266294e37336

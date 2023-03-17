@@ -67,4 +67,8 @@ input[type=submit]{
   position: relative;
 
 }
+
+.cursor-block{
+  cursor:not-allowed;
+}
  

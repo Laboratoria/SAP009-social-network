@@ -1,4 +1,11 @@
+<<<<<<< HEAD
  const cadastro = () => {
+=======
+/* eslint-disable max-len */
+import { criarCadastro } from '../../firebase/firebase';
+
+const cadastro = () => {
+>>>>>>> 48b7a314841e0a3b68488da1ad3e266294e37336
   const criaCadastro = document.createElement('section');
   const header = document.querySelector('.header');
   const template = ` 
@@ -20,7 +27,7 @@
         <input type="email" name="" id="email" required>
 
         <label for="senha">Crie uma senha</label>
-        <input type="password" name="" id="senha" required>
+        <input type="password" name="" id="senha" minlength="6" required>
 
         <label for="tel">Telefone</label>
         <input type="tel" name="" id="tel">
@@ -35,6 +42,31 @@
 
   header.textContent = '';
   criaCadastro.innerHTML = template;
+
+  // criação de cadastro com o firebase
+
+  const nome = 
+
+  const dataNascimento =
+
+  const inputEmail = criaCadastro.querySelector('#email');
+
+  const inputSenha = criaCadastro.querySelector('#senha');
+  const senha = inputSenha.value; // usar para dizer que tem que ser > 6 caracters
+
+  const btnEnviar = criaCadastro.querySelector('.btn-enviar');
+
+  btnEnviar.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const email = inputEmail.value;
+    const senha = inputSenha.value;
+    console.log(email, senha);
+
+    criarCadastro(email, senha);
+
+    // se o email já tiver cadastrado: "Esse email já foi cadastrado anteriormente, basta fazer o login"
+  });
 
   return criaCadastro;
 };
