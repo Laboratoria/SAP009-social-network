@@ -1,5 +1,4 @@
-
-// importacao das funcoes 25 autenticação de usuários do arquivo js do firebase referenciado nessa url
+// importacao das funcoes de autenticação de usuários do modulo firebase
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -10,16 +9,14 @@ import {
   onAuthStateChanged,
 } from 'firebase/auth';
 
-
-// nosso app importado de app.js
+// meu app importado de app.js
 import { app } from './app.js';
 
 // variável executa a funcao getAuth em cima do nosso app
-// variável recebe nosso app e permite que a gente execute as funcões autenticação em cima do nosso app
 const auth = getAuth(app);
-console.log(auth);
+// console.log(auth);
 
-// funcao que criamos para abrigar a funcao de criar usuario com email e senha (já criada pelo firebase)
+// funcao para abrigar a funcao de criar usuario com email e senha (da documentação do firebase)
 export function createUserWithEmail(email, password) {
   return new Promise((resolve, reject) => {
     createUserWithEmailAndPassword(auth, email, password)
