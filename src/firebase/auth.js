@@ -161,7 +161,7 @@ export function loginGoogle() {
   });
 }
 
-export function LogOut() {
+export function logOut() {
   signOut(auth, (user) => {
     console.log(user);
     if (user) {
