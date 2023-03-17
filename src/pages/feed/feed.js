@@ -2,6 +2,7 @@ import {
     criarPost,
     obterPosts,
     obterNomeUsuario,
+    deletarPost,
 } from "../../firebase/firebase";
 
 export default async () => {
@@ -61,30 +62,37 @@ export default async () => {
         }
     });
 
-    
+
     const exibirPost = (post) => {
         const posts = document.querySelector('#postagens')
         const container = document.createElement('div');
         const template = `
-        <div class="div-postagem-anteriores-tutor">
-                        <div id="icone-superiores">
-                            <i class="fa-solid fa-circle-user fa-2x icon-usuario-txt"></i>
-                            <p class="tutor-txt-area">${post.nomeTutor}</p>
-                            <p class="data-postagem">xx/xx/xxxx</p>
-                        </div>
-                    <div class="texto-tutor-postado">${post.texto}</div>
-                        <div id="icones-inferiores">
-                            <i class="fa-solid fa-paw"></i>
-                            <i class="fa-sharp fa-solid fa-pencil"></i>
-                            <button>
-                            <i class="fa-solid fa-trash-can" id="btn-deletar"></i>
-                            </button>
-                        </div>
-                     </div>
+          <div class="div-postagem-anteriores-tutor">
+            <div id="icone-superiores">
+              <i class="fa-solid fa-circle-user fa-2x icon-usuario-txt"></i>
+              <p class="tutor-txt-area">${post.nomeTutor}</p>
+              <p class="data-postagem">xx/xx/xxxx</p>
+            </div>
+            <div class="texto-tutor-postado">${post.texto}</div>
+            <div id="icones-inferiores">
+              <i class="fa-solid fa-paw"></i>
+              <i class="fa-sharp fa-solid fa-pencil"></i>
+              <button>
+                <i class="fa-solid fa-trash-can" id="btn-deletar"></i>
+              </button>
+            </div>
+          </div>
         `;
         container.innerHTML = template;
         posts.appendChild(container);
-    }
+      
+        const btnDeletar = container.querySelector('#btn-deletar');
+        btnDeletar.addEventListener('click', () => {
+            console.log(post.uid);
+          deletarPost(post.id);
+          container.remove(); // removendo a postagem da interface após excluí-la do banco de dados
+        });
+      };
 
     obterPosts().then(posts => {
         postagens.innerHTML = '';
@@ -103,6 +111,7 @@ export default async () => {
                 const novoPost = await criarPost(textPost);
                 // espera o criarPost e dps exibe o post
                 exibirPost(novoPost);
+                console.log(novoPost);
                 textoTutor.value = '';
             } catch (error) {
                 alertaPublicação.setAttribute('style', 'display: block');
