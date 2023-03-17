@@ -62,10 +62,15 @@ const redefinirSenha = (email) => sendPasswordResetEmail(auth, email);
 const db = getFirestore(app); 
 
 const criarPost = async (textPost) => {
+  const dataCriacao = Date.now();
+  const dataAtual = new Date(dataCriacao);
+  const dataPostagem = dataAtual.toLocaleDateString();
+
   const post = {
     author: auth.currentUser.uid,
     nomeTutor: auth.currentUser.displayName,
     texto: textPost,
+    data: dataPostagem,
   }
   const docRef = await addDoc(collection(db, 'posts'), post);
   post.id = docRef.id;
