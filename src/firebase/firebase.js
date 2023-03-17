@@ -26,6 +26,8 @@ import {
   collection,
   addDoc,
   getDocs,
+  deleteDoc,
+  doc,
 } from "firebase/firestore";
 
 const app = initializeApp(firebaseConfig);
@@ -77,6 +79,7 @@ const obterPosts = async () => {
   const textos = [];
     colecaoPosts.forEach((post) => {
   const data = post.data();
+  data.id = post.id;
     textos.push(data);
   });
   return textos;
@@ -97,6 +100,12 @@ const verificaUsuarioLogado = () => {
   });
 };
 
+//excluir post
+const deletarPost = (postId) => {
+  const postRef = doc(db, 'posts', postId);
+  deleteDoc(postRef);
+};
+
 export {
   autenticarUsuario,
   criarUsuario,
@@ -106,4 +115,5 @@ export {
   obterPosts,
   obterNomeUsuario, 
   verificaUsuarioLogado,
+  deletarPost,
 };
