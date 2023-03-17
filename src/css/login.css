@@ -123,3 +123,7 @@ h1 {
     font-family: var(--fonte-titulo);
     font-size: 15px;
 }
+
+.logo-escrita-clara {
+    width: 100%;
+}
