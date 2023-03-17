@@ -1,4 +1,4 @@
-const cadastro = () => {
+ const cadastro = () => {
   const criaCadastro = document.createElement('section');
   const header = document.querySelector('.header');
   const template = ` 
@@ -40,3 +40,15 @@ const cadastro = () => {
 };
 
 export default cadastro;
+const formCadastro = document.querySelector('#form-cadastro');
+const inputEmail = document.querySelector('#email');
+const inputSenha = document.querySelector('#senha');
+const btnEnviar = document.querySelector('.btn-enviar');
+
+formCadastro.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const email = inputEmail.value;
+  const senha = inputSenha.value;
+
+btnEnviar(email, senha);
+});
