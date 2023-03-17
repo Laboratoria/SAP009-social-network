@@ -1,4 +1,4 @@
-import { LogOut } from '../../firebase/auth.js';
+import { logOut } from '../../firebase/auth.js';
 
 export default () => {
   const container = document.createElement('div');
@@ -12,7 +12,7 @@ export default () => {
 
   const logoutButton = container.querySelector('#logout-button');
   logoutButton.addEventListener('click', () => {
-    LogOut();
+    logOut();
     // Adicione aqui o código que deve ser executado quando o botão de login é clicado
 
     window.location.replace('#login');
