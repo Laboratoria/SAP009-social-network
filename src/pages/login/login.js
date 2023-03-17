@@ -4,7 +4,6 @@ import { redirecionarPagina } from '../../redirecionar-pagina';
 export default () => {
   const container = document.createElement('div');
   const template = `
-  <section class="body-telas-iniciais">
         <div class="main">
             <div class="txt-novo-usuario"> 
                 <h3>Primeira vez aqui?</h3>
@@ -37,7 +36,7 @@ export default () => {
                         </div>
                         <p class="texto-centralizado">Esqueceu sua senha?</p> 
                         <p class="texto-centralizado"><a href="#redefinirSenha" id="clique-esqueceu">Clique aqui!</a></p>
-                        <div class="espaco-acessar">
+                        <div class="espaço-acessar">
                             <button class="btn-acessar">ACESSAR</button>
                         </div>
                         <div class="mensagem-erro" id="mensagem-erro"></div>
@@ -50,7 +49,6 @@ export default () => {
                 </div>
             </div>
         </div>
-        </section>
         `;
 
   container.innerHTML = template;
