@@ -3,7 +3,6 @@ import { redefinirSenha } from '../../firebase/firebase';
 export default () => {
   const container = document.createElement('div');
   const template = `
-  <section class="body-telas-iniciais">
     <div class="main">
       <div class="txt-voltar">
         <button class="btn-voltar"><a href="#login">Voltar</a></button>
@@ -30,7 +29,6 @@ export default () => {
         </div>
       </div>
     </div>
-    </section>
     `;
   container.innerHTML = template;
 
