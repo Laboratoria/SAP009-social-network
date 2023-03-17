@@ -29,8 +29,18 @@ export default () => {
 
   const buttomPost = container.querySelector('#botao-postar');
   buttomPost.addEventListener('click', () => {
+    alert('Publicação efetuada com sucesso!');
     const text = container.querySelector('.textarea');
-    newPost(text.value); // colocar data da postagem
+    const timeElapsed = Date.now();
+    const today = new Date(timeElapsed);
+    const dataPostagem = today.toLocaleDateString();
+    const username = Auth.currentUser.displayName;
+    newPost(text.value, dataPostagem, username);
+    try {
+      window.location.hash = '#Home';
+    } catch (e) {
+      // console.log(e);
+    }
   });
   return container;
 };

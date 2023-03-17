@@ -47,13 +47,12 @@ it('deve logar com o usuario criado', async () => {
 
 it('deve logar com o google', async () => {
   signInWithPopup.mockResolvedValueOnce();
-  const provider = 'google';
-  GoogleAuthProvider.mockReturnValueOnce(provider);
+  GoogleAuthProvider.mockReturnValueOnce();
 
   await googleLogin();
 
   expect(signInWithPopup).toHaveBeenCalledTimes(1);
-  expect(signInWithPopup).toHaveBeenCalledWith(undefined, provider);
+  expect(signInWithPopup).toHaveBeenCalledWith(undefined, {});
 });
 
 it('deve realizar logout do usuário', async () => {
