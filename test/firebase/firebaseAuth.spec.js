@@ -2,7 +2,6 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signInWithPopup,
-  onAuthStateChanged,
   signOut,
 } from 'firebase/auth';
 import {
@@ -11,9 +10,7 @@ import {
 
 jest.mock('firebase/auth');
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
+jest.clearAllMocks();
 
 // Teste função de cadastro
 describe('createUserWithEmail', () => {
@@ -28,7 +25,7 @@ describe('createUserWithEmail', () => {
 
 // Teste função de login
 describe('signIn', () => {
-  it('logar com e-mail e senha', () => {
+  it('should login with and email and password', () => {
     signInWithEmailAndPassword.mockResolvedValue({
       user: {},
       password: {},
@@ -40,7 +37,7 @@ describe('signIn', () => {
 
 // Teste login com o Google
 describe('loginGoogle', () => {
-  it('logar com a conta do Google', () => {
+  it('should login with a Google account', () => {
     signInWithPopup.mockResolvedValue();
     loginGoogle();
     expect(signInWithPopup).toHaveBeenCalledTimes(1);
@@ -49,18 +46,9 @@ describe('loginGoogle', () => {
 
 // Função para saber se a pessoa fez logout
 describe('logOut', () => {
-  it('saber se o usuário saiu do servidor', () => {
+  it('should show if the user is logged out', () => {
     signOut.mockResolvedValue();
     logOut();
     expect(signOut).toHaveBeenCalledTimes(1);
-  });
-});
-
-// Função para saber se a pessoa está conectada
-describe('onAuthStateChanged', () => {
-  it('saber se o usuário está conectado', () => {
-    onAuthStateChanged.mockResolvedValue();
-    onAuthStateChanged();
-    expect(onAuthStateChanged).toHaveBeenCalledTimes(1);
   });
 });
