@@ -83,9 +83,7 @@ export default () => {
 
         if (error.code === 'auth/email-already-in-use') {
           emailCadastrado.innerHTML = 'Esse e-mail já está registrado!';
-        } else {
-          emailCadastrado.innerHTML = 'Não é possível criar uma conta!';
-        }
+        } 
       });
   });
 

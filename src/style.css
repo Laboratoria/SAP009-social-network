@@ -441,6 +441,13 @@ a:link {
     margin-top: -111px;
     margin-bottom: 30px;
   }
+
+  #icone-superiores {
+    display: grid;
+    margin-top: 4px;
+    margin-left: 4px;
+    grid-template-columns: 7% 53% 40%;
+  }
 }
 
 @media screen and (min-width: 1200px) {
@@ -530,13 +537,14 @@ i#burguer {
   background-color: var(--bege);
   z-index: 9999;
   height: 12vh;
-  width: 40%;
+  width: 22%;
   padding: 15px;
   text-align: center;
   text-transform: uppercase;
   color: var(--laranja);
   font-weight: bold;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 ul{
@@ -595,9 +603,10 @@ ul{
  }
 
  #icone-superiores{
-  display: inline-flex;
+  display: grid;
   margin-top: 4px;
   margin-left: 4px;
+  grid-template-columns: 11% 62% 22%;
  }
 
  .icon-usuario-txt{
@@ -606,14 +615,15 @@ ul{
  }
 
  .tutor-txt-area{
-  color: var(--laranja);
-  font-size: 15px
+  color: var(--marrom);
+  font-size: 15px;
+  font-weight: bold;
  }
 
  .data-postagem{
- color: var(--laranja);
+ color: var(--marrom);
  font-size: 15px;
- margin-left: 140px;
+ font-weight: bold;
  }
 
  textarea{
@@ -669,4 +679,15 @@ ul{
 
 textarea:focus {
   outline: 0;
+}
+  .btn-deletar {
+    border: 0;
+    background-color: #F9EBC7;
+    color: #783D19;
+    cursor: pointer;
+  }
+
+  .fa-solid, .fas {
+    font-weight: 900;
+    cursor: pointer;
 }
