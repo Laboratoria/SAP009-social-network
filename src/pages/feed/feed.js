@@ -7,6 +7,7 @@ import {
 
 export default async () => {
     const usuarioLogado = await obterNomeUsuario();
+    console.log('usuario', usuarioLogado.uid)
     const container = document.createElement('div');
     const template = `
     <div class="feed-desktop>"
@@ -62,42 +63,45 @@ export default async () => {
         }
     });
 
-
     const exibirPost = (post) => {
-        const posts = document.querySelector('#postagens')
+        const posts = document.querySelector('#postagens');
         const container = document.createElement('div');
+        console.log('posti', post.author)
         const template = `
           <div class="div-postagem-anteriores-tutor">
             <div id="icone-superiores">
               <i class="fa-solid fa-circle-user fa-2x icon-usuario-txt"></i>
               <p class="tutor-txt-area">${post.nomeTutor}</p>
-              <p class="data-postagem">xx/xx/xxxx</p>
+              <p class="data-postagem">${post.data}</p>
             </div>
             <div class="texto-tutor-postado">${post.texto}</div>
             <div id="icones-inferiores">
               <i class="fa-solid fa-paw"></i>
               <i class="fa-sharp fa-solid fa-pencil"></i>
-              <button>
-                <i class="fa-solid fa-trash-can" id="btn-deletar"></i>
-              </button>
+              ${post.author === usuarioLogado.uid ? `
+                <button class="btn-deletar">
+                  <i class="fa-solid fa-trash-can" id="btn-deletar" type="button"></i>
+                </button>
+              ` : ''}
             </div>
           </div>
         `;
         container.innerHTML = template;
         posts.appendChild(container);
       
-        const btnDeletar = container.querySelector('#btn-deletar');
-        btnDeletar.addEventListener('click', () => {
-            console.log(post.uid);
-          deletarPost(post.id);
-          container.remove(); // removendo a postagem da interface após excluí-la do banco de dados
-        });
+        if (post.author === usuarioLogado.uid) {
+          const btnDeletar = container.querySelector('#btn-deletar');
+          btnDeletar.addEventListener('click', () => {
+            deletarPost(post.id);
+            container.remove(); // removendo a postagem da interface após excluí-la do banco de dados
+          });
+        }
       };
 
-    obterPosts().then(posts => {
+      obterPosts().then(posts => {
         postagens.innerHTML = '';
-        posts.forEach(post => exibirPost(post))
-    });
+        posts.forEach(post => exibirPost(post));
+      });
 
     // o código define um evento de clique para o botão "btnPublicar" que cria um novo post com o texto inserido no campo de texto "texto-tutor". Se a criação do post
     // for bem-sucedida, o novo post é exibido na página. Se ocorrer um erro, uma mensagem de erro é exibida. Se o campo de texto estiver vazio, uma mensagem de aviso é exibida.
