@@ -29,7 +29,7 @@ export function fazerLogin(email, password) {
       console.log(errorCode, errorMessage);
     });
 }
-export function observador() {
+export function observador() { // NÃO CHAMEI EM JS NENHUM
   onAuthStateChanged(auth, (user) => {
     if (user) {
     // O usuário está conectado, consulte os documentos para obter uma lista de propriedades disponíveis;

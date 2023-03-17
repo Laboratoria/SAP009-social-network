@@ -1,4 +1,5 @@
 import { fazerLogin } from '../../firebase/firebase';
+import postagem from '../postagem/postagem';
 
 const criarLogin = document.createElement('section');
 
@@ -27,20 +28,25 @@ const login = () => {
 
   criarLogin.innerHTML = template;
 
+  const form = criarLogin.querySelector('.form-login');
+  const loginEmail = criarLogin.querySelector('#login-email');
+  const loginSenha = criarLogin.querySelector('#login-senha');
+  const btnEntrar = criarLogin.querySelector('.btn-entrar');
+
+  btnEntrar.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    if (loginEmail.value === '' || loginSenha.value === '') {
+      form.reportValidity();
+      console.log('preencha');
+    } else {
+      fazerLogin(loginEmail.value, loginSenha.value);
+      console.log('funciona');
+      // window.location.hash = postagem(); // não tá indo
+    }
+  });
+
   return criarLogin;
 };
 
 export default login;
-
-// const inputLoginEmail = criarLogin.querySelector('#login-email');
-
-// const inputLoginSenha = criarLogin.querySelector('#login-senha');
-
-// const btnEntrar = criarLogin.querySelector('.btn-entrar');
-
-// btnEntrar.addEventListener('submit', () => {
-//   const loginEmail = inputLoginEmail.value;
-//   const loginSenha = inputLoginSenha.value;
-
-//   fazerLogin(loginEmail, loginSenha);
-// });
