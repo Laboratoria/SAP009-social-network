@@ -1,8 +1,60 @@
-// importamos la funcion que vamos a testear
-import { myFunction } from '../src/lib/index';
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  signInWithPopup,
+  sendPasswordResetEmail,
+} from 'firebase/auth';
+import {
+  criarUsuario,
+  autenticarUsuario,
+  logarGoogle,
+  redefinirSenha,
+} from '../src/firebase/firebase';
 
-describe('myFunction', () => {
-  it('debería ser una función', () => {
-    expect(typeof myFunction).toBe('function');
+jest.mock('firebase/auth', () => ({
+  getAuth: jest.fn(),
+  GoogleAuthProvider: jest.fn(),
+  signInWithEmailAndPassword: jest.fn(),
+  createUserWithEmailAndPassword: jest.fn(),
+  signInWithPopup: jest.fn(),
+  sendPasswordResetEmail: jest.fn(),
+}));
+
+// função de autenticar usuário
+describe('autenticarUsuario', () => {
+  it('autentica dados do login e libera a página do feed ', () => {
+    signInWithEmailAndPassword.mockResolvedValue();
+    autenticarUsuario('luiginho@test.com', 'fofo');
+    expect(signInWithEmailAndPassword).toHaveBeenCalledTimes(1);
+  });
+});
+
+// função de criar usuário
+
+describe('criarUsuario', () => {
+  it('deve criar um usuário', () => {
+    createUserWithEmailAndPassword.mockResolvedValue({
+      user: {},
+    });
+    criarUsuario('teste@teste.com', 'teste123');
+    expect(createUserWithEmailAndPassword).toHaveBeenCalledTimes(1);
+  });
+});
+
+// logar com o google
+describe('logarGoogle', () => {
+  it('a função deve logar usuário com a sua conta google', () => {
+    signInWithPopup.mockResolvedValue();
+    logarGoogle();
+    expect(signInWithPopup).toHaveBeenCalledTimes(1);
+  });
+});
+
+// redefinir senha
+describe('redefinirSenha', () => {
+  it('a função deve logar usuário com a sua conta google', () => {
+    sendPasswordResetEmail.mockResolvedValue();
+    redefinirSenha();
+    expect(sendPasswordResetEmail).toHaveBeenCalledTimes(1);
   });
 });
