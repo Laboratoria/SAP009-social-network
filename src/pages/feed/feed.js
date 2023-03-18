@@ -83,19 +83,64 @@ export default async () => {
                   <i class="fa-solid fa-trash-can" id="btn-deletar" type="button"></i>
                 </button>
               ` : ''}
+            <div class="caixa-deletar" id="caixa-deletar-${post.id}">
+                <div class="modal">
+                    <p class="txt-excluir">Tem certeza que deseja excluir?</p>
+                    <div class="btn-caixa">
+                        <button class="btn-excluir" id='btn-excluir'>Excluir</button>
+                        <button class="btn-cancelar" id="btn-cancelar">Cancelar</button>
+                    </div>
+                </div>
             </div>
           </div>
         `;
         container.innerHTML = template;
         posts.appendChild(container);
-      
+        
         if (post.author === usuarioLogado.uid) {
-          const btnDeletar = container.querySelector('#btn-deletar');
-          btnDeletar.addEventListener('click', () => {
-            deletarPost(post.id);
-            container.remove(); // removendo a postagem da interface após excluí-la do banco de dados
-          });
-        }
+            const btnDeletar = container.querySelector('#btn-deletar');
+            btnDeletar.addEventListener('click', () => {
+                const modal = document.getElementById(`caixa-deletar-${post.id}`);
+                modal.style.display = 'block';
+
+            const btnCancelar = modal.querySelector('#btn-cancelar');
+            btnCancelar.addEventListener('click', () => {
+                modal.style.display = 'none';
+            }); 
+
+            const btnExcluir = modal.querySelector('#btn-excluir');
+            btnExcluir.addEventListener('click', () => {
+                deletarPost(post.id);
+                container.remove();
+                modal.style.display = 'none';
+            });
+        }); 
+        };
+        // para disparar a caixa modal 
+        // const btnDeletar = container.querySelector('#btn-deletar');
+        // const caixaDeletar = container.querySelector('#caixa-deletar');
+        
+        // if (post.author === usuarioLogado.uid) {
+        //   if (btnDeletar) {
+        //     btnDeletar.addEventListener('click', () => {
+        //         caixaDeletar.style.display = 'flex';
+        //     })
+        //   }
+
+        //   // para fechar a caixa modal 
+        //   const btnCancelar = container.querySelector('#btn-cancelar');
+        //   if (btnCancelar) {
+        //     btnCancelar.addEventListener('click', () => {
+        //         caixaDeletar.style.display = 'none';
+        //     })
+        //   }
+
+        //   // para deletar post
+        //   btnDeletar.addEventListener('click', () => {
+        //     deletarPost(post.id);
+        //     container.remove(); // removendo a postagem da interface após excluí-la do banco de dados
+        //   });
+        // }
       };
 
       obterPosts().then(posts => {
