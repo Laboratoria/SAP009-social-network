@@ -35,7 +35,8 @@ export default () => {
     const today = new Date(timeElapsed);
     const dataPostagem = today.toLocaleDateString();
     const username = Auth.currentUser.displayName;
-    newPost(text.value, dataPostagem, username);
+    const idUser = Auth.currentUser.uid;
+    newPost(text.value, dataPostagem, username, idUser);
     try {
       window.location.hash = '#Home';
     } catch (e) {

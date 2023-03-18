@@ -17,6 +17,7 @@ main{
     padding: 10px;
     gap: 10px;
 }
+
 .display{
     display: flex;
 }
