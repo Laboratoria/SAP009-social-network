@@ -74,8 +74,8 @@ export default () => {
   });
 
   const selecionarGoogle = container.querySelector('#registro-google');
-  selecionarGoogle.addEventListener('click', () => {
-    logarGoogle();
+  selecionarGoogle.addEventListener('click', async () => {
+    await logarGoogle();
   });
 
   return container;
