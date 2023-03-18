@@ -691,3 +691,52 @@ textarea:focus {
     font-weight: 900;
     cursor: pointer;
 }
+
+.caixa-deletar {
+  position: fixed;
+  z-index: 1;
+  left: 12%;
+  top: 35%;
+  width: 75%;
+  overflow: auto;
+  background-color: #783d19;
+  border-radius: 25px;
+  display: none;
+ }
+
+.modal {
+  background-color: #f9ebc7;
+  margin: 35px;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+}
+
+.txt-excluir {
+  font-weight: bold;
+  margin-bottom: 20px;
+} 
+
+.btn-excluir {
+  background-color: #783d19;
+  border: 10px solid #783d19;
+  border-radius: 20px;
+  color: #fefae0;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: 45%;
+  /*margin-top: 5px;
+  margin-left: 220px;*/
+}
+
+.btn-cancelar {
+  background-color: #783d19;
+  border: 10px solid #783d19;
+  border-radius: 20px;
+  color: #fefae0;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: 50%;
+}
