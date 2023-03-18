@@ -2,7 +2,7 @@
 /* eslint-disable no-alert */
 // import register from '../cadastrar/index.js';
 import { login, googleLogin } from '../../servicesFirebase/firebaseAuth.js';
-// import { printPost } from '../../servicesFirebase/firebaseStore.js';
+// import { editPost } from '../../servicesFirebase/firebaseStore.js';
 
 export default () => {
   const loginContainer = document.createElement('div');
@@ -41,6 +41,7 @@ export default () => {
   buttonLogin.addEventListener('click', () => {
     const email = loginContainer.querySelector('#email-login');
     const senha = loginContainer.querySelector('#senha-login');
+    // editPost();
     login(email.value, senha.value)
       .then(() => {
         window.location.hash = '#Home';

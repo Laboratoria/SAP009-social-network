@@ -19,7 +19,18 @@
 
 }
 #timeline-post{
-justify-content: center;
+    justify-content: center;
+    flex-direction: column-reverse;
+    gap: 20px;
+}
+.hidden{
+    display: none;
 }
 
-
+#btn-salvar{
+    background-color: var(--red);
+    border-radius: 20px;
+    border: 5px solid var(--red);
+    align-self: self-start;
+    color: var(--white);
+}
