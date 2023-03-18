@@ -31,7 +31,7 @@ export default async () => {
                     </div>
                     <div class="cao">
                         <i class="fa-solid fa-paw fa-3x icon-cão"></i>
-                        <p class="texto-feed">@Cao</p>
+                        <p class="texto-feed">@${usuarioLogado.nomeCao}</p>
                     </div>
                 </div>    
                 </div>
