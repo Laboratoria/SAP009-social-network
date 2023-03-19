@@ -2,7 +2,7 @@ import { LogOut } from '../../firebase/auth.js';
 
 export default () => {
   const container = document.createElement('div');
-  container.classList.add("container");
+  container.classList.add('container');
   const template = `
   <div class="form-wrapper">
   <div class= "div-logo">

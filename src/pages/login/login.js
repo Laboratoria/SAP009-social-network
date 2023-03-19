@@ -1,4 +1,5 @@
-import { signIn, loginGoogle } from '../../firebase/auth.js';
+/* eslint-disable */
+import { signIn, loginGoogle, authStateChanged } from '../../firebase/auth.js';
 
 export default () => {
   const container = document.createElement('div');
@@ -84,5 +85,10 @@ export default () => {
       });
   });
 
+  
+
   return container;
 };
+
+
+authStateChanged();
