@@ -11,14 +11,9 @@
 
 }
 .logo-escrita-clara{
-    width: 350px;
+    width: 200px;
+    margin: 30px;
 }
-
-/* testando para dar commit
-comenáriossssssssssss
-oi oi oio 
-lalalal
- */
 
 .container{
     display: flex;
@@ -93,6 +88,11 @@ h1 {
     color:#500B19;
     text-transform: uppercase;
     transition: 0.5s;
+}
+
+.btn-login a {
+    color: #500B19;
+    text-decoration: none;
 }
 
 .btn-login:hover{
