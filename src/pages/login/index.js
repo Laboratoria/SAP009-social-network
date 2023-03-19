@@ -5,11 +5,11 @@ export default () => {
     <section class="container">
       <section class="imagem-logo">
           <img class="logo-escrita-clara" src="./img/logo-escrita-clara.png">;
-      </section>>
+      </section>
       
       <section class="texto-entrada">
-        <p>A sua rede social para compartilhar dicas e receitas de dar água na boca</p>
-        <h1>Seja bem - vindo</h1>
+        <p>A sua rede social para compartilhar dicas e receitas de dar água na boca!</p>
+        <h1>Seja bem - vindo!</h1>
       </section>
       <form class="form-login">
           <div class="email-and-password-container">
