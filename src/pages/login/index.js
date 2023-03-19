@@ -25,7 +25,7 @@ export default () => {
            </div>
           </div>
           <div>
-            <button id="btnLogin" type="button" class="btn-login">Entrar</button>
+          <a href="/#feed"><button id="btnLogin" type="button" class="btn-login">Entrar</a></button>
           </div>
           <div>
             <button id="btnCadastrar" type="button" class="btn-cadastrar">Cadastrar</button>
