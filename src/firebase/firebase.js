@@ -10,16 +10,8 @@ import {
   signInWithPopup,
   sendPasswordResetEmail,
   updateProfile,
-  onAuthStateChanged
+  onAuthStateChanged,
 } from 'firebase/auth';
-
-import {
-  firebaseConfig
-} from './firebase-config';
-
-import {
-  redirecionarPagina
-} from '../redirecionar-pagina';
 
 import {
   getFirestore,
@@ -30,29 +22,38 @@ import {
   setDoc,
   deleteDoc,
   doc,
-} from "firebase/firestore";
+} from 'firebase/firestore';
+
+import {
+  firebaseConfig,
+} from './firebase-config';
+
+import {
+  redirecionarPagina,
+} from '../redirecionar-pagina';
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider(app);
-//FIRESTORE 
+// FIRESTORE
 const db = getFirestore(app);
 
-
-//autenticar usuário
+// autenticar usuário
 function autenticarUsuario(email, senha) {
   return signInWithEmailAndPassword(auth, email, senha);
 }
 
-//registrar novo usuário
+// registrar novo usuário
 async function criarUsuario(email, senha, nomeTutor, nomeCao) {
   await createUserWithEmailAndPassword(auth, email, senha);
-  await updateProfile(auth.currentUser, { displayName: nomeTutor });
+  await updateProfile(auth.currentUser, {
+    displayName: nomeTutor,
+  });
 
   const usuario = {
-    email: email,
-    nomeTutor: nomeTutor,
-    nomeCao: nomeCao
+    email,
+    nomeTutor,
+    nomeCao,
   };
 
   await setDoc(doc(db, 'usuarios', auth.currentUser.uid), usuario);
@@ -65,15 +66,14 @@ async function logarGoogle() {
   const usuarioGoogle = {
     email: auth.currentUser.email,
     nomeTutor: auth.currentUser.displayName,
-    nomeCao: 'insira o nome do seu cãozinho'
+    nomeCao: 'insira o nome do seu cãozinho',
   };
 
   await setDoc(doc(db, 'usuarios', auth.currentUser.uid), usuarioGoogle);
   redirecionarPagina('#feed');
-
 }
 
-//redefinir senha
+// redefinir senha
 const redefinirSenha = (email) => sendPasswordResetEmail(auth, email);
 
 const criarPost = async (textPost) => {
@@ -86,14 +86,15 @@ const criarPost = async (textPost) => {
     nomeTutor: auth.currentUser.displayName,
     texto: textPost,
     data: dataPostagem,
-  }
+  };
   const docRef = await addDoc(collection(db, 'posts'), post);
   post.id = docRef.id;
   return post;
 };
 
-// o código define uma função que obtém todos os documentos da coleção "posts" do Firestore, extrai o valor do campo "texto" de cada documento 
-//e retorna um array contendo todos os textos dos documentos.
+// o código define uma função que obtém todos os documentos da coleção "posts" do Firestore,
+// extrai o valor do campo "texto" de cada documento
+// e retorna um array contendo todos os textos dos documentos.
 const obterPosts = async () => {
   const colecaoPosts = await getDocs(collection(db, 'posts'));
   const textos = [];
@@ -103,7 +104,7 @@ const obterPosts = async () => {
     textos.push(data);
   });
   return textos;
-}
+};
 
 // coleta todas as informações do usuário
 const obterNomeUsuario = async () => {
@@ -118,18 +119,18 @@ const obterNomeUsuario = async () => {
     email: usuarioRef.data().email,
     nomeTutor: usuarioRef.data().nomeTutor,
     nomeCao: usuarioRef.data().nomeCao,
-  }
-  
+  };
+
   console.log(usuario);
 
   return usuario;
-}
+};
 
 // função p/ verificar se o usuario existe, se existir manda p/ o feed
-//se não existir manda p/ o loggin
+// se não existir manda p/ o loggin
 const verificaUsuarioLogado = () => {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
+  onAuthStateChanged(auth, (users) => {
+    if (users) {
       redirecionarPagina('#feed');
     } else {
       redirecionarPagina('');
@@ -137,7 +138,7 @@ const verificaUsuarioLogado = () => {
   });
 };
 
-//excluir post
+// excluir post
 const deletarPost = (postId) => {
   const postRef = doc(db, 'posts', postId);
   deleteDoc(postRef);
