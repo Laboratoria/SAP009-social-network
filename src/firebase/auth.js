@@ -8,6 +8,7 @@ import {
   signInWithPopup,
   signOut,
   onAuthStateChanged,
+  updateProfile
 } from 'firebase/auth';
 
 // meu app importado de app.js
@@ -16,24 +17,58 @@ import { app } from './app.js';
 // variável executa a funcao getAuth em cima do nosso app
 export const auth = getAuth(app);
 // console.log(auth);
+const uid = auth.uid
+import {db} from '../firestore/firestore.js';
+import {setDoc, doc , getDoc} from 'firebase/firestore';
 
 // funcao para abrigar a funcao de criar usuario com email e senha (da documentação do firebase)
-export function createUserWithEmail(email, password) {
+// export function createUserWithEmail(email, password) {
+//   return new Promise((resolve, reject) => {
+//     createUserWithEmailAndPassword(auth, email, password)
+//       .then((userCredential) => {
+//         // Signed in
+//         console.log('email-criado');
+//         console.log(userCredential);
+//         const user = userCredential.user;
+//         resolve(true);
+
+//         // ...
+//       })
+//       .catch((error) => {
+//         console.log('email-nao-criado');
+//         const errorCode = error.code;
+//         const errorMessage = error.message;
+
+//         console.log(errorMessage);
+//         reject(false);
+//         // ..
+//       })
+//       .finally(() => {
+//         console.log('Processo de criação de conta finalizado em auth.');
+//       });
+//   });
+// }
+export async function createUserWithEmail(email, password, name) {
   return new Promise((resolve, reject) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         console.log('email-criado');
         console.log(userCredential);
-        const user = userCredential.user;
+       // const user = userCredential.user;
         resolve(true);
-        // ...
-      })
+          const user = {
+          email: email,
+          name: name,
+                };
+      
+        setDoc(doc(db, 'users', auth.currentUser.uid), user);
+        updateProfile(auth.currentUser, { displayName: name });
+        })
       .catch((error) => {
         console.log('email-nao-criado');
         const errorCode = error.code;
         const errorMessage = error.message;
-
         console.log(errorMessage);
         reject(false);
         // ..
@@ -43,24 +78,6 @@ export function createUserWithEmail(email, password) {
       });
   });
 }
-
-// export function signIn(email, password) {
-//   return new Promise((resolve, reject) => {
-//     signInWithEmailAndPassword(auth, email, password)
-//       .then((userCredential) => {
-//         resolve(true);
-//       })
-//       .catch((error) => {
-//         const errorMessage = error.message;
-//         console.log(errorMessage);
-//         reject(errorMessage);
-//         return false;
-//       })
-//       .finally(() => {
-//         console.log('Processo de login finalizado em auth.');
-//       });
-//   });
-// }
 
 export function signIn(email, password) {
   return new Promise((resolve, reject) => {
@@ -90,7 +107,6 @@ export function loginGoogle() {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         // const token = credential.accessToken;
         // const user = result.user;
-        // Retornar true se a autenticação foi bem-sucedida
         resolve(true);
       })
       .catch((error) => {
@@ -99,10 +115,8 @@ export function loginGoogle() {
         const errorMessage = error.message;
        // const email = error.customData.email;
         const credential = GoogleAuthProvider.credentialFromError(error);
-        // Retornar false se houver um erro na autenticação
         console.log(error.message);
-        reject(new Error(error.message));
-        
+        reject(new Error(error.message));        
         return false;
       })
       .finally(() => {
@@ -110,6 +124,44 @@ export function loginGoogle() {
       });
   });
 }
+
+export function LogOut() {
+  console.log(  'oi');
+  console.log(auth);
+  signOut(auth, (user) => {
+    console.log(auth);
+     console.log(user); //NÃO VOLTA NADA?
+    if (user) {
+      console.log(`Logout: Logged in as ${user.email}`);
+    } else {
+      console.log('Logout: No user');
+    }
+  });
+}
+
+export function authStateChanged(){
+  onAuthStateChanged(auth, (user) => {
+    // console.log(user);
+    if (user) {
+      console.log(`onAuthStateChange: Logged in as ${user.email}`);
+    } else {
+      console.log('onAuthStateChange: No user');
+    }
+  })};
+
+// export function LogOut() {
+//   return new Promise((resolve, reject) => { 
+//    signOut(auth, (user)
+//       .then((result) => {
+//        console.log(`Logout: Logged in as ${user.email}`);
+//        resolve(true)
+//      })
+//      .catch((error) => {
+//        console.log('Logout: No user');
+//        resolve(error);
+//      }) )
+//      })
+//          }
 
 // export function LogOut() {
 //   return new Promise((resolve, reject) => {
@@ -140,37 +192,24 @@ export function loginGoogle() {
 //   });
 // }
 
-export function LogOut() {
-  console.log(  'oi');
-  signOut(auth, (user) => {
-     console.log(user); //NÃO VOLTA NADA?
-    if (userCredential.user) {
-      console.log(`Logout: Logged in as ${user.email}`);
-    } else {
-      console.log('Logout: No user');
-    }
-  });
-}
+// function get(auth){
+  
+//   const uid = auth.uid;
+//   console.log(uid);
+// const getUserData = async () => {
+//   const userRef = await getDoc(doc(db, 'users', uid));
 
-// export function LogOut() {
-//   return new Promise((resolve, reject) => { 
-//    signOut(auth, (user)
-//       .then((result) => {
-//        console.log(`Logout: Logged in as ${user.email}`);
-//        resolve(true)
-//      })
-//      .catch((error) => {
-//        console.log('Logout: No user');
-//        resolve(error);
-//      }) )
-//      })
-//          }
-export function authStateChanged(){
-onAuthStateChanged(auth, (user) => {
-  // console.log(user);
-  if (user) {
-    console.log(`onAuthStateChange: Logged in as ${user.email}`);
-  } else {
-    console.log('onAuthStateChange: No user');
-  }
-})};
+//   console.log(auth.currentUser);
+//   console.log(userRef);
+
+//   const user = {
+//     uid: auth.currentUser.uid,
+//     displayName: auth.currentUser.displayName,
+//     email: userRef.data().email,
+//     name: userRef.data().name,
+//     }
+  
+//   console.log(user);
+
+//   //return usuario;
+// }}

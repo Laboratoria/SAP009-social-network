@@ -1,6 +1,6 @@
 /* eslint-disable */
-import { signIn, loginGoogle, LogOut, auth } from '../src/firebase/auth';
-import { signInWithEmailAndPassword, signInWithPopup, signOut, getAuth } from 'firebase/auth';
+import { signIn, loginGoogle, LogOut, createUserWithEmail, auth } from '../src/firebase/auth';
+import { signInWithEmailAndPassword, signInWithPopup, signOut, createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 
 jest.mock('firebase/auth');
 
@@ -43,7 +43,7 @@ describe('signIn', () => {
       await signIn('valid-email@example.com', 'invalid-password');
     } catch (error) {
       console.log(error);
-      expect(signInWithEmailAndPassword).toHaveBeenCalledTimes(3);
+      expect(signInWithEmailAndPassword).toHaveBeenCalledTimes(3); //entendi, mas devia?
       expect(error).toEqual(new Error(mockedError));
     }
   });  
@@ -71,14 +71,14 @@ describe('loginGoogle', () => {
   }); 
 });
 
-// Função para saber se a pessoa fez logout
+//testa apenas a chamada 
 describe('logOut', () => {
-  it('should show if the user is logged out', async () => {
+  it('should log out the user', async () => {
    // signOut.mockResolvedValue();
    // signOut.mockResolvedValueOnce({});
     const result = await LogOut();
     expect(signOut).toHaveBeenCalledTimes(1);
-    //expect(result).toBe(true);
+   // expect(result).toBe(true);
     
     // try {
     //   await LogOut();
@@ -90,17 +90,14 @@ describe('logOut', () => {
   });
 });
 
-// describe('LogOut', () => {
-//   it('returns true when the user successfully logs in', async () => {
-//     signOut.mockResolvedValueOnce({});
-   
+describe('createUserWithEmail', () => {
+  it('creates a new user', async () => {
+    createUserWithEmailAndPassword.mockResolvedValue({
+      user: {},
+    });
+    const result = await createUserWithEmail('mail@mail.com', '123456');
     
-//     const result = await LogOut();
-//     expect(signOut).toHaveBeenCalledTimes(1);
-//     expect(result).toBe(true);
-    
-//   });
-//});
-
-
-
+    expect(createUserWithEmailAndPassword).toHaveBeenCalledTimes(1);
+    expect(result).toBe(true);
+  });
+});

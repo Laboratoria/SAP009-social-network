@@ -19,7 +19,7 @@ export default () => {
 
   const logoutButton = container.querySelector('#logout-button');
   logoutButton.addEventListener('click', () => {
-    LogOut();
+    LogOut(); // aqui eu deveria passar o id do user pra poder fazer uma promise em auth?
     window.location.replace('#login');
   });
   return container;
