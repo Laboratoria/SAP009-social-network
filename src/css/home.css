@@ -8,6 +8,7 @@
 
 .section-main{
     background-color: var(--bg);
+    padding: 20px 0;
 }
 main{
     background-color: var(--bg);
@@ -136,6 +137,10 @@ main{
 .user-name{
     text-align: center;
     color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
     
 }
 

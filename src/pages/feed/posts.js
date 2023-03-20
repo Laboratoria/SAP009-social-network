@@ -1,4 +1,6 @@
-import { accessPost, editPost } from '../../servicesFirebase/firebaseStore.js';
+import {
+  accessPost, editPost, likeCounter, deslikeCounter, deletePost,
+} from '../../servicesFirebase/firebaseStore.js';
 import { Auth } from '../../servicesFirebase/firebaseAuth.js';
 
 export default (timelinePost) => {
@@ -6,18 +8,23 @@ export default (timelinePost) => {
     allPosts.forEach((post) => {
       const container = document.createElement('div');
       container.classList.add('timeline');
+      let countLikes = post.likes;
       const template = `
         <div class='feed display'>
           <div class='display userNameDate'>
             <p class='username'> ${post.userName} </p>
             <p class='date'> ${post.data} </p>
           </div>
-          <textarea disabled class='textarea'> ${post.post} </textarea>
+          <textarea class='textarea'> ${post.post} </textarea>
           <div class='icons display'>
-            <div id='like'>
-              <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-heart' viewBox='0 0 16 16'>
+            <div id='like' class='display'>
+              <svg id='heart' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-heart' viewBox='0 0 16 16'>
                   <path d='m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z'/>
               </svg>
+              <svg id='heart-fill' class='hidden' xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+              </svg>
+              <p id='likes-counter'>${countLikes}</p>
             </div>
             <div id='edit'>
               <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil-square' viewBox='0 0 16 16'>
@@ -38,10 +45,50 @@ export default (timelinePost) => {
       container.innerHTML = template;
       const btnDelete = container.querySelector('#delete');
       const btnLike = container.querySelector('#like');
+      const heart = container.querySelector('#heart');
+      const heartFill = container.querySelector('#heart-fill');
+      const likesCounterTela = container.querySelector('#likes-counter');
       // console.log(like);
-      btnLike.addEventListener('click', () => {
-        console.log('deu certo a curtida');
-        // alert('curtido');
+      // btnLike.addEventListener('click', (e) => {
+      //   console.log(e);
+
+      // se o usuário logado curtiu então tem que aparecer apenas o coração branco pra ele;
+      // se userCurrent curtiu guardar o id do post curtido num bd;
+      // coleção curtidasUsers => id do documento para cada usuário =>;
+      // post ter um campo com likesUsers que guarda quem curtiu esse post em uma array;
+      // se o currentUser tiver curtido;
+      // console.log(postsLiked);
+      const likesArray = post.likesUsers;
+      if (likesArray.includes(Auth.currentUser.displayName)) {
+        heart.classList.add('hidden');
+        heartFill.classList.remove('hidden');
+      }
+      heart.addEventListener('click', () => {
+        if (!likesArray.includes(Auth.currentUser.displayName)) {
+          heart.classList.add('hidden');
+          heartFill.classList.remove('hidden');
+          countLikes += 1;
+          likesCounterTela.innerHTML = countLikes;
+          // const liked = post.likes + 1;
+          const liked = countLikes;
+          likeCounter(liked, post.id, Auth.currentUser.displayName);
+          console.log('curtido');
+          console.log(liked);
+          // window.location.hash = '#Home';
+        }
+      });
+      heartFill.addEventListener('click', () => {
+        if (likesArray.includes(Auth.currentUser.displayName)) {
+          heart.classList.remove('hidden');
+          heartFill.classList.add('hidden');
+          countLikes -= 1;
+          likesCounterTela.innerHTML = countLikes;
+          const deslike = countLikes;
+          // const deslike = post.likes - 1;
+          deslikeCounter(deslike, post.id, Auth.currentUser.displayName);
+          console.log('descurtido');
+          console.log(deslike);
+        }
       });
 
       const btnEditPost = container.querySelector('#edit');
@@ -65,6 +112,19 @@ export default (timelinePost) => {
         btnEditPost.removeAttribute('class');
         btnSavePost.setAttribute('class', 'hidden');
       });
+      if (post.idUser !== Auth.currentUser.uid) {
+        btnDelete.setAttribute('class', 'hidden');
+      }
+      btnDelete.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (window.confirm('Tem certeza de que deseja excluir a publicação?')) { //eslint-disable-line
+          deletePost(post.id)
+            .then(() => {
+              window.location.hash = '#Home';
+            });
+        }
+      });
+
       timelinePost.appendChild(container);
     });
   });

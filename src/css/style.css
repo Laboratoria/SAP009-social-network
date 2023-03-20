@@ -16,6 +16,7 @@
     flex-direction: column-reverse;
     gap: 15px;
     align-items: center;
+   
 
 }
 #timeline-post{
@@ -33,4 +34,10 @@
     border: 5px solid var(--red);
     align-self: self-start;
     color: var(--white);
+}
+
+#like{
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
 }
