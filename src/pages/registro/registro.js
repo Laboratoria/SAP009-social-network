@@ -83,12 +83,12 @@ export default () => {
 
         if (error.code === 'auth/email-already-in-use') {
           emailCadastrado.innerHTML = 'Esse e-mail já está registrado!';
-        } 
+        }
       });
   });
 
   const selecionarGoogle = container.querySelector('#registro-google');
-  selecionarGoogle.addEventListener('click', async() => {
+  selecionarGoogle.addEventListener('click', async () => {
     await logarGoogle();
   });
 
