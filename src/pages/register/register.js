@@ -7,14 +7,15 @@ export default () => {
 
   const template = `
   <div class="form-wrapper">
-  <img src="./assets/logo-kyuubi.png" id="logo-kyuubi" alt="imagem da Kyuubi">
+  <img src="./assets/logo.png" id="logo" alt="Logo da Anime-se">
+
   <form>
     <div class="inputs-div">
-      <input type="text" name="user-name" id="user-name" placeholder="Nome completo">
-      <input type="email" name="email" id="register-email" placeholder="nome@email.com">
-      <input type="email" name="email" id="confirm-email" placeholder="Confirme seu email">
-      <input type="password" name="password" id="register-password" placeholder="senha">
-      <input type="password" name="email" id="confirm-password" placeholder="Confirme sua senha">
+      <input type="text" class="inputs-register" id="user-name" placeholder="Nome completo">
+      <input type="email" class="inputs-register" id="register-email" placeholder="nome@email.com">
+      <input type="email" class="inputs-register" id="confirm-email" placeholder="Confirme seu email">
+      <input type="password" class="inputs-register" id="register-password" placeholder="senha">
+      <input type="password" class="inputs-register" id="confirm-password" placeholder="Confirme sua senha"> 
     </div>
 
     <div>
