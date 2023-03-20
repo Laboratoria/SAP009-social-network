@@ -1,43 +1,33 @@
 .form-wrapper {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
     height: 100vh;
-    background-image: url('../../assets/bg-image.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    overflow: hidden;
+    background-color: rgba(0, 9, 14, 0.9);
 } 
-
-/*
-.form-wrapper {
-    background-color: #0C4767;
-    width: 18rem;
-    padding: 2rem 2rem;
-    border-radius: 40px;
-}*/
 
 img {
     display: block;
-    margin: 15px auto;
-    margin-bottom: 1.5rem;
+    margin: 20px auto;
+    margin-top: 5rem;
     height: 5rem;
 }
 
-.bg-container {
-    background-color: rgba(0, 9, 14, 0.9);
-    
+form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2.5vh;
+    margin: 4vh 0 5vh 0;
 }
 
 input, button {
     padding: 0.7rem;
-    margin-bottom: 0.7rem;
     border-radius: 10px;
     border: solid 1px;
     border-color: #00B154;
     outline-color: #00B154;
     background-color: #FFF;
     width: 15rem;
+    text-align: left;
 }
 
 #login-button {
@@ -45,7 +35,7 @@ input, button {
     border: none;
     color: #FFF;
     font-weight: bolder;
-    width: 16.5rem;
+    text-align: center;
 }
  
 #google-button {
@@ -54,14 +44,13 @@ input, button {
     color: #000;
     font-weight: bolder;
     align-items: center;
-    width: 16.5rem;
     border: none;
 }
 
 #google-logo {
     height: 1.8rem;
     width: 1.8rem;
-    margin: 0 1.3rem 0 1rem;
+    margin: 0 1rem;
 }
 
 #register-button {
@@ -69,18 +58,15 @@ input, button {
     border: none;
     color: #fff;
     margin-top: 1rem;
-    width: 16.5rem;
+    text-align: center;
 }
 
 #register-link {
     color:#00B154;
     font-weight: bolder;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
 }
-
-/*::placeholder {
-    text-align: center;
-}*/
 
 button {
     cursor: pointer;
@@ -97,7 +83,7 @@ button:active {
 p {
     text-align: center;
     color: #fff;
-    margin-bottom: 1.5rem;
+    margin: 1rem 0;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -107,7 +93,10 @@ p {
     display: none;
 }
 
-.form-wrapper {
-    display: flex;
-    flex-direction: column;
+@media screen and (min-width: 650px) {
+    .form-wrapper {
+      margin: 0;
+      height: 100vh;
+      width: 50vw;
+    }
 }

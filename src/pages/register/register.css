@@ -1,32 +1,29 @@
-.form-wrapper {
+.inputs-register {
     display: flex;
     flex-direction: column;
-    align-items: center;
-}
-
-.inputs-div {
-    display: flex;
-    flex-direction: column;
+    margin-bottom: 1rem;
 }
 
 #register-btn {
-    background-color: #2E783B;
+    background-color: #00B154;
     border: none;
     color: #FFF;
     font-weight: bolder;
-    width: 16.5rem;
+    text-align: center;
+    margin-top: -1rem;
 }
 
 #login-btn {
     background: none;
     border: none;
-    color: #431F01;
+    color: #FFF;
     margin-top: 1rem;
-    width: 16.5rem;
+    text-align: center;
 }
  
 #login-link {
-    color:#2E783B;
+    color: #00B154;
     font-weight: bolder;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
 }

@@ -1,0 +1,15 @@
+@import './pages/login/login.css';
+@import './pages/register/register.css';
+@import './pages/timeline/timeline.css';
+
+* {
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+}
+
+body {
+  background-image: url('../../assets/bg-image.jpg');
+  background-repeat: no-repeat;
+}
