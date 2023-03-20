@@ -268,5 +268,67 @@ footer{
 .footer-names{
     
     text-align: center;
+}
+.girls-home{
+    display:none;
+}
 
+@media (min-width: 650px){
+
+    .feed{
+        width: 500px;
+    }
+    
+    .textarea{
+        width: 400px;
+    }
+    
+}
+
+@media (min-width: 900px){
+    .section-main{
+        display: grid;
+        grid-template-areas: 'girls timeline';
+        grid-template-columns: 40% 60%;
+        position: relative;
+    }
+
+    .section-timeline{
+        grid-area: timeline;
+    }
+
+    .girls-home{
+        display:block;
+        grid-area: girls;
+        width: 380px;
+        position: fixed;
+        bottom: 20%;
+        left: -50px;
+
+    }
+    .feed{
+        width: 450px;
+    }
+}
+@media(min-width:1000px){
+    .feed{
+        width: 500px;
+    }
+    .girls-home{
+        width: 420px;
+        left: -20px;
+    }
+}
+@media(min-width:1300px){
+    .girls-home{
+        width: 600px;
+        left: 0px;
+    }
+    .feed{
+        width: 550px;
+    }
+    .textarea{
+        width: 480px;
+        font-size:18px;
+    }
 }

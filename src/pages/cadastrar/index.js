@@ -13,6 +13,7 @@ export default () => {
         <img src='./imagens/logo3.png' alt='logo-code-girls' class='logo-code-girls'>
         <p> CONECTANDO MULHERES NA TECNOLOGIA </p>
     </header>
+    <img class='girl-login' src='../../imagens/girlRegister.svg' alt='Desenho-de-desenvolvedora'>
     <form class='section-login section-register display'>
         <h1> CADASTRE-SE </h1>
         <input type='text' placeholder='Nome' id='nome-fulana'>
