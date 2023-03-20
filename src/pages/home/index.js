@@ -14,7 +14,6 @@ export default () => {
 
     </form>
     `;
-
   container.innerHTML = template;
   return container;
 };

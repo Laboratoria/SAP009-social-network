@@ -1,5 +1,5 @@
-import home from './home/index.js';
-import sobre from './sobre/index.js';
+import home from './pages/home/index.js';
+import sobre from './pages/sobre/index.js';
 
 const main = document.querySelector('#root');
 
