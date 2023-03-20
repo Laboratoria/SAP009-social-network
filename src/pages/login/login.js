@@ -7,7 +7,9 @@ export default () => {
 
   const template = `
     <div class="form-wrapper">
-      <img src="./assets/logo-hamtaro.png" id="logo-hamtaro" alt="imagem do Hamtaro">
+    <div class="bg-container">
+      <img src="./assets/logo.png" id="logo" alt="Logo da Anime-se">
+
       <form>
         <div>
           <input type="email" name="email" id="email" placeholder="nome@email.com">
@@ -33,8 +35,8 @@ export default () => {
         <div>
           <button type="button" id="register-button">Não tem uma conta? <a id="register-link" href="#register">Registre-se</a></button>
         </div> 
-
       </form>
+      </div>
     </div>
   `;
 
