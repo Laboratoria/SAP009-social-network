@@ -3,6 +3,9 @@ import {
   obterPosts,
   obterNomeUsuario,
   deletarPost,
+  editarPost,
+  curtir,
+  descurtir,
 } from '../../firebase/firebase';
 
 export default async () => {
@@ -74,10 +77,15 @@ export default async () => {
               <p class="tutor-txt-area">${post.nomeTutor}</p>
               <p class="data-postagem">${post.data}</p>
             </div>
-            <div class="texto-tutor-postado">${post.texto}</div>
+            <textarea class="texto-tutor-postado" id="texto-tutor-postado" style='resize:none' disabled>${post.texto}</textarea>
             <div id="icones-inferiores">
-              <i class="fa-solid fa-paw"></i>
-              <i class="fa-sharp fa-solid fa-pencil"></i>
+              <button class="btn-curtir" id="btn-curtir"><img src="img/icones-feed/like-pata-3.png">${post.likes}</button>
+              <p class="numero-curtidas"></p>
+              ${post.author === usuarioLogado.uid ? `
+              <button class="btn-editar">
+              <i class="fa-sharp fa-solid fa-pencil" id="btn-editar" type="button"></i>
+              </button>
+              ` : ''}
               ${post.author === usuarioLogado.uid ? `
                 <button class="btn-deletar">
                   <i class="fa-solid fa-trash-can" id="btn-deletar" type="button"></i>
@@ -116,6 +124,35 @@ export default async () => {
         });
       });
     }
+
+    if (post.author === usuarioLogado.uid) {
+      const btnEditar = containerPost.querySelector('#btn-editar');
+      btnEditar.addEventListener('click', (e) => {
+        const textArea = containerPost.querySelector('#texto-tutor-postado');
+        textArea.removeAttribute('disabled');
+        btnEditar.removeEventListener('click', e);
+        btnEditar.addEventListener('click', () => {
+          textArea.setAttribute('disabled', 'true');
+          editarPost(post.id, textArea.value);
+        });
+      });
+    }
+
+    const btnCurtir = containerPost.querySelector('#btn-curtir');
+    btnCurtir.addEventListener('click', () => {
+      if (post.likes.includes(usuarioLogado.uid)) {
+        descurtir(post.id, usuarioLogado.uid);
+        post.likes.splice(post.likes.indexOf(usuarioLogado.uid));
+        btnCurtir.innerHTML = `<img class='btn-curtir' src='img/icones-feed/like-pata-3.png' alt='descurtir'><p class='numero-curtidas'>${post.likes.length}</p>`;
+      } else {
+        curtir(post.id, usuarioLogado.uid);
+        post.likes.push(usuarioLogado.uid);
+        btnCurtir.innerHTML = `<img class='btn-curtir' src='img/icones-feed/like-pata-2.png' alt='curtido'><p class='numero-curtidas'>${post.likes.length}</p>`;
+      }
+      btnCurtir.querySelector('p').innerText = post.likes.length;
+    });
+
+
   };
 
   obterPosts().then((posts) => {

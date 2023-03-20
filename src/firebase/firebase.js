@@ -22,6 +22,9 @@ import {
   setDoc,
   deleteDoc,
   doc,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
 } from 'firebase/firestore';
 
 import {
@@ -85,6 +88,7 @@ const criarPost = async (textPost) => {
     author: auth.currentUser.uid,
     nomeTutor: auth.currentUser.displayName,
     texto: textPost,
+    likes: [],
     data: dataPostagem,
   };
   const docRef = await addDoc(collection(db, 'posts'), post);
@@ -144,6 +148,33 @@ const deletarPost = (postId) => {
   deleteDoc(postRef);
 };
 
+// editar Post
+const editarPost = (postId, textPost) => {
+  const dataCriacao = Date.now();
+  const dataAtual = new Date(dataCriacao);
+  const dataPostagem = dataAtual.toLocaleDateString();
+  updateDoc(doc(db, 'posts', postId), {
+    texto: textPost,
+    data: dataPostagem,
+  });
+};
+
+// curtit post
+function curtir(postId, uid) {
+  const docRef = doc(db, 'posts', postId);
+  updateDoc(docRef, {
+    likes: arrayUnion(uid),
+  });
+}
+
+//descurtir 
+function descurtir(postId, uid) {
+  const docRef = doc(db, 'posts', postId);
+  updateDoc(docRef, {
+    likes: arrayRemove(uid),
+  });
+}
+
 export {
   autenticarUsuario,
   criarUsuario,
@@ -154,4 +185,7 @@ export {
   obterNomeUsuario,
   verificaUsuarioLogado,
   deletarPost,
+  editarPost,
+  curtir,
+  descurtir,
 };

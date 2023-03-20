@@ -343,6 +343,12 @@ a:link {
   .txt-novo-usuario>p {
     font-size: 16px;
   }
+
+  .caixa-deletar {
+    left: 23%;
+    top: 39%;
+    width: 52%;
+  }
 }
 
 @media screen and (min-width: 1000px) {
@@ -644,6 +650,7 @@ ul{
   box-sizing: border-box;
   margin-bottom: 10px;
   margin-left: 20px;
+  border: none;
  }
 
  .postagens{
@@ -695,9 +702,8 @@ textarea:focus {
 .caixa-deletar {
   position: fixed;
   z-index: 1;
-  left: 12%;
-  top: 35%;
-  width: 75%;
+  left: 28%;
+  top: 50%;
   overflow: auto;
   background-color: #783d19;
   border-radius: 25px;
@@ -727,8 +733,6 @@ textarea:focus {
   text-transform: uppercase;
   cursor: pointer;
   width: 45%;
-  /*margin-top: 5px;
-  margin-left: 220px;*/
 }
 
 .btn-cancelar {
@@ -739,4 +743,33 @@ textarea:focus {
   text-transform: uppercase;
   cursor: pointer;
   width: 50%;
+}
+
+.btn-editar {
+  border: 0;
+  background-color: #F9EBC7;
+  color: #783D19;
+  cursor: pointer;
+}
+
+.btn-curtir > img {
+  width: 20px;
+}
+
+.btn-curtir {
+  border: 0;
+  background-color: #F9EBC7;
+  color: #783D19;
+  cursor: pointer;
+  margin-right: 5px;
+  font-weight: bold;
+}
+
+.numero-curtidas {
+  display: inline-block;
+  border: 0;
+  background-color: #F9EBC7;
+  color: #783D19;
+  font-weight: bold;
+  font-size: 15px;
 }
