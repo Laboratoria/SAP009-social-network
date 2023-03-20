@@ -72,7 +72,7 @@ export default () => {
       msgCampoVazio.innerHTML = 'Preencha todos os campos!';
     }
 
-    criarUsuario(email, senha, nomeTutor)
+    criarUsuario(email, senha, nomeTutor, nomeCao)
       .then(() => {
         redirecionarPagina('#feed');
       })
@@ -88,8 +88,8 @@ export default () => {
   });
 
   const selecionarGoogle = container.querySelector('#registro-google');
-  selecionarGoogle.addEventListener('click', () => {
-    logarGoogle();
+  selecionarGoogle.addEventListener('click', async() => {
+    await logarGoogle();
   });
 
   return container;

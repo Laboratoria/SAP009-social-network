@@ -26,6 +26,8 @@ import {
   collection,
   addDoc,
   getDocs,
+  getDoc,
+  setDoc,
   deleteDoc,
   doc,
 } from "firebase/firestore";
@@ -33,6 +35,8 @@ import {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider(app);
+//FIRESTORE 
+const db = getFirestore(app);
 
 
 //autenticar usuário
@@ -41,25 +45,36 @@ function autenticarUsuario(email, senha) {
 }
 
 //registrar novo usuário
-async function criarUsuario(email, senha, nomeTutor) {
+async function criarUsuario(email, senha, nomeTutor, nomeCao) {
   await createUserWithEmailAndPassword(auth, email, senha);
-  await updateProfile(auth.currentUser, {displayName: nomeTutor});
+  await updateProfile(auth.currentUser, { displayName: nomeTutor });
+
+  const usuario = {
+    email: email,
+    nomeTutor: nomeTutor,
+    nomeCao: nomeCao
+  };
+
+  await setDoc(doc(db, 'usuarios', auth.currentUser.uid), usuario);
 }
 
 // login com google
-function logarGoogle() {
-  signInWithPopup(auth, provider)
-    .then(() => {
-      redirecionarPagina('#feed');
-    })
-    .catch(() => {});
+async function logarGoogle() {
+  await signInWithPopup(auth, provider);
+
+  const usuarioGoogle = {
+    email: auth.currentUser.email,
+    nomeTutor: auth.currentUser.displayName,
+    nomeCao: 'insira o nome do seu cãozinho'
+  };
+
+  await setDoc(doc(db, 'usuarios', auth.currentUser.uid), usuarioGoogle);
+  redirecionarPagina('#feed');
+
 }
 
 //redefinir senha
 const redefinirSenha = (email) => sendPasswordResetEmail(auth, email);
-
-//FIRESTORE 
-const db = getFirestore(app); 
 
 const criarPost = async (textPost) => {
   const dataCriacao = Date.now();
@@ -82,16 +97,33 @@ const criarPost = async (textPost) => {
 const obterPosts = async () => {
   const colecaoPosts = await getDocs(collection(db, 'posts'));
   const textos = [];
-    colecaoPosts.forEach((post) => {
-  const data = post.data();
-  data.id = post.id;
+  colecaoPosts.forEach((post) => {
+    const data = post.data();
+    data.id = post.id;
     textos.push(data);
   });
   return textos;
 }
 
 // coleta todas as informações do usuário
-const obterNomeUsuario = () => auth.currentUser;
+const obterNomeUsuario = async () => {
+  const usuarioRef = await getDoc(doc(db, 'usuarios', auth.currentUser.uid));
+
+  console.log(auth.currentUser);
+  console.log(usuarioRef);
+
+  const usuario = {
+    uid: auth.currentUser.uid,
+    displayName: auth.currentUser.displayName,
+    email: usuarioRef.data().email,
+    nomeTutor: usuarioRef.data().nomeTutor,
+    nomeCao: usuarioRef.data().nomeCao,
+  }
+  
+  console.log(usuario);
+
+  return usuario;
+}
 
 // função p/ verificar se o usuario existe, se existir manda p/ o feed
 //se não existir manda p/ o loggin
@@ -118,7 +150,7 @@ export {
   redefinirSenha,
   criarPost,
   obterPosts,
-  obterNomeUsuario, 
+  obterNomeUsuario,
   verificaUsuarioLogado,
   deletarPost,
 };
