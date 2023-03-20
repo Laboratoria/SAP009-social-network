@@ -12,7 +12,8 @@ export default () => {
   sectionMain.classList.add('section-main');
 
   const template = ` 
-  <section class='display' id='timeline-post' >
+  <img class='girls-home' src='../../imagens/Women.svg' alt='Desenho-de-desenvolvedora'>
+  <section class='display section-timeline' id='timeline-post' >
     
   </section>
   `;

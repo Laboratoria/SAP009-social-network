@@ -8,6 +8,10 @@ import {
   arrayUnion,
   arrayRemove,
   deleteDoc,
+  onSnapshot,
+  query,
+  orderBy,
+  // limit,
 } from 'firebase/firestore';
 import { db } from '../firebaseInit';
 
@@ -26,13 +30,14 @@ export const newPost = async (postagem, dataPostagem, username, id) => addDoc(co
 });
 
 export const accessPost = async () => {
-  const querySnapshot = await getDocs(collection(db, 'posts'));
   const messages = [];
+  const queryOrder = query(collection(db, 'posts'), orderBy('data'));
+  const querySnapshot = await getDocs(queryOrder);
   querySnapshot.forEach((item) => {
     const data = item.data();
     data.id = item.id;
-    // console.log(data);
-    // console.log(item);
+    console.log(data);
+    console.log(item);
     messages.push(data);
   });
   return messages;
@@ -61,18 +66,8 @@ export const deslikeCounter = async (likePost, postId, usernameUser) => updateDo
 
 export const deletePost = async (postId) => {
   await deleteDoc(doc(db, 'posts', postId));
+  const snap = onSnapshot(doc(db, 'posts', postId), (doc3) => {
+    console.log('Current data: ', doc3.data());
+  });
+  return snap;
 };
-
-// export const likeArray = async (currentUser) => {
-//   const postsRef = collection(db, 'posts');
-//   const q = query(postsRef, where('likes', '==', 0));
-//   const querySnapshot2 = await getDocs(q);
-//   const arrayLikes = [];
-//   querySnapshot2.forEach((doc2) => {
-//     // doc.data() is never undefined for query doc snapshot;
-//     const dataLikes = doc2.data();
-//     arrayLikes.push(dataLikes);
-//   });
-//   console.log(arrayLikes);
-//   return arrayLikes;
-// };

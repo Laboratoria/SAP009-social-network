@@ -27,8 +27,8 @@ export default () => {
   container.append(sectionMain);
   container.append(Footer());
 
-  const buttomPost = container.querySelector('#botao-postar');
-  buttomPost.addEventListener('click', () => {
+  const buttonPost = container.querySelector('#botao-postar');
+  buttonPost.addEventListener('click', () => {
     alert('Publicação efetuada com sucesso!');
     const text = container.querySelector('.textarea');
     const timeElapsed = Date.now();

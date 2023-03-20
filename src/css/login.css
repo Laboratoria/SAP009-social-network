@@ -2,6 +2,7 @@
 body{
     background: var(--bg);
 }
+
 .section-login{
     flex-direction: column;
     width: 100vw ;
@@ -11,11 +12,12 @@ body{
     align-items: center;
     padding: 20px 0;
     margin-top: 4vh;
+}
 
-}
 .section-register{
-    gap:5vh
+    gap:5vh;
 }
+
 .section-login h1{
     color: var(--red);
 }
@@ -28,7 +30,9 @@ body{
     padding: 5px 0 ;
     color: var(--white);
     outline: none;
+
 }
+
 .login-container{
     background-color: var(--bg);
     height: 100vh;
@@ -42,7 +46,6 @@ body{
     flex-direction: column;
     align-items: center;
     color: white;   
-    
 }
 
 .button-login{
@@ -54,6 +57,7 @@ body{
     cursor: pointer;
     width: 80vw;
 }
+
 .button-google{
     background: none;
     border: none;
@@ -61,8 +65,7 @@ body{
 }
 
 .txt-login, .txt-conta{
-    color:white;
-    
+    color:white; 
 }
 
 .hr-login{
@@ -70,6 +73,62 @@ body{
     border: 1px solid var(--grey);
 }
 
+.girl-login{
+    display: none;
+}
 
+@media (min-width: 500px){
+
+    .section-login{
+        max-width: 400px;
+    }
+
+    .section-login input,
+    .button-google, 
+    .button-login,
+    .hr-login{
+        width: 350px;
+    }
+    .login-container{
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (min-width: 900px){
+    .login-container{
+        display: grid;
+        grid-template-areas: 'header forms'
+                             'imagem forms';
+        grid-template-columns: 1.2fr 1fr;
+    }
+    .girl-login{
+        display: block;
+        grid-area: imagem;
+        width: 450px;
+        justify-self: center;
+    }
+    .header-login{
+        grid-area: header;
+    }
+    .section-login{
+        grid-area: forms;
+    }
+    .logo-code-girls{
+        width:180px;
+    }
+    .slogan{
+        font-size:13px;
+    }
+    .section-login{
+        height: 500px;
+        gap:30px;
+    }
+    .section-register{
+        gap:45px;
+    }
+
+}
 
 
