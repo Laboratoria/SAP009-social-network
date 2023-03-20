@@ -1,10 +1,11 @@
-body {
+.form-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-color: #FCEAD6;
-}
+} 
+
 /*
 .form-wrapper {
     background-color: #0C4767;
