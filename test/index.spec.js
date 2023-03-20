@@ -29,8 +29,11 @@ describe('autenticarUsuario', () => {
   });
 });
 
-// função de criar usuário
 
+
+
+
+// função de criar usuário
 describe('criarUsuario', () => {
   it('deve criar um usuário', () => {
     createUserWithEmailAndPassword.mockResolvedValue({
@@ -41,6 +44,11 @@ describe('criarUsuario', () => {
   });
 });
 
+
+
+
+
+
 // logar com o google
 describe('logarGoogle', () => {
   it('a função deve logar usuário com a sua conta google', () => {
@@ -50,6 +58,10 @@ describe('logarGoogle', () => {
   });
 });
 
+
+
+
+
 // redefinir senha
 describe('redefinirSenha', () => {
   it('a função deve logar usuário com a sua conta google', () => {
@@ -58,3 +70,57 @@ describe('redefinirSenha', () => {
     expect(sendPasswordResetEmail).toHaveBeenCalledTimes(1);
   });
 });
+
+
+//botão de deletar 
+
+
+
+
+
+
+
+
+
+
+//like
+
+
+
+
+
+
+
+
+
+//deslike
+
+
+
+
+
+
+
+
+
+//editar 
+
+
+
+
+
+
+
+
+
+//sair
+
+
+
+
+
+
+
+
+
+

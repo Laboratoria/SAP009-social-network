@@ -161,16 +161,14 @@ const editarPost = (postId, textPost) => {
 
 // curtit post
 function curtir(postId, uid) {
-  const docRef = doc(db, 'posts', postId);
-  updateDoc(docRef, {
+  updateDoc(doc(db, 'posts', postId), {
     likes: arrayUnion(uid),
   });
 }
 
 //descurtir 
 function descurtir(postId, uid) {
-  const docRef = doc(db, 'posts', postId);
-  updateDoc(docRef, {
+  updateDoc(doc(db, 'posts', postId), {
     likes: arrayRemove(uid),
   });
 }
