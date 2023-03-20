@@ -3,7 +3,10 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #FCEAD6;
+    background-image: url('../../assets/bg-image.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
 } 
 
 /*
@@ -18,7 +21,12 @@ img {
     display: block;
     margin: 15px auto;
     margin-bottom: 1.5rem;
-    height: 15rem;
+    height: 5rem;
+}
+
+.bg-container {
+    background-color: rgba(0, 9, 14, 0.9);
+    
 }
 
 input, button {
@@ -26,14 +34,14 @@ input, button {
     margin-bottom: 0.7rem;
     border-radius: 10px;
     border: solid 1px;
-    border-color: #FF7908;
-    outline-color: #FF7908;
+    border-color: #00B154;
+    outline-color: #00B154;
     background-color: #FFF;
     width: 15rem;
 }
 
 #login-button {
-    background-color: #2E783B;
+    background-color: #00B154;    ;
     border: none;
     color: #FFF;
     font-weight: bolder;
@@ -43,7 +51,7 @@ input, button {
 #google-button {
     display: flex;
     height: 2.3rem;
-    color: #431F01;
+    color: #000;
     font-weight: bolder;
     align-items: center;
     width: 16.5rem;
@@ -59,13 +67,13 @@ input, button {
 #register-button {
     background: none;
     border: none;
-    color: #431F01;
+    color: #fff;
     margin-top: 1rem;
     width: 16.5rem;
 }
 
 #register-link {
-    color:#2E783B;
+    color:#00B154;
     font-weight: bolder;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -88,7 +96,7 @@ button:active {
 
 p {
     text-align: center;
-    color: #431F01;
+    color: #fff;
     margin-bottom: 1.5rem;
     font-family: Arial, Helvetica, sans-serif;
 }
