@@ -1,15 +1,15 @@
 import {
-    criarPost,
-    obterPosts,
-    obterNomeUsuario,
-    deletarPost,
-} from "../../firebase/firebase";
+  criarPost,
+  obterPosts,
+  obterNomeUsuario,
+  deletarPost,
+} from '../../firebase/firebase';
 
 export default async () => {
-    const usuarioLogado = await obterNomeUsuario();
-    console.log('usuario', usuarioLogado.uid)
-    const container = document.createElement('div');
-    const template = `
+  const usuarioLogado = await obterNomeUsuario();
+  console.log('usuario', usuarioLogado.uid);
+  const container = document.createElement('div');
+  const template = `
     <div class="feed-desktop>"
         <div class="main">
             <div class="barra-feed">
@@ -44,30 +44,30 @@ export default async () => {
                         <textarea class="texto-tutor" id="texto-tutor"name="texto-tutor" cols="50" rows="4" ></textarea>
                         <button class="btn-publicar" id="btn-publicar">publicar</button>
                     </div>
-                        <span id="alertaPublicação" class="alertaPublicação"></span>
+                        <span id="alerta-publicacao" class="alerta-publicacao"></span>
                         </div>
                         <div id="postagens" class="postagens"></div>
                 </div>
         </div>
     </div>
         `;
-    container.innerHTML = template;
+  container.innerHTML = template;
 
-    const iconeMenu = container.querySelector('#burguer');
-    iconeMenu.addEventListener('click', () => {
-        const itens = container.querySelector('#itens');
-        if (itens.style.display === 'block') {
-            itens.style.display = 'none';
-        } else {
-            itens.style.display = 'block';
-        }
-    });
+  const iconeMenu = container.querySelector('#burguer');
+  iconeMenu.addEventListener('click', () => {
+    const itens = container.querySelector('#itens');
+    if (itens.style.display === 'block') {
+      itens.style.display = 'none';
+    } else {
+      itens.style.display = 'block';
+    }
+  });
 
-    const exibirPost = (post) => {
-        const posts = document.querySelector('#postagens');
-        const container = document.createElement('div');
-        console.log('posti', post.author)
-        const template = `
+  const exibirPost = (post) => {
+    const posts = document.querySelector('#postagens');
+    const containerPost = document.createElement('div');
+    console.log('posti', post.author);
+    const templatePost = `
           <div class="div-postagem-anteriores-tutor">
             <div id="icone-superiores">
               <i class="fa-solid fa-circle-user fa-2x icon-usuario-txt"></i>
@@ -94,84 +94,57 @@ export default async () => {
             </div>
           </div>
         `;
-        container.innerHTML = template;
-        posts.appendChild(container);
-        
-        if (post.author === usuarioLogado.uid) {
-            const btnDeletar = container.querySelector('#btn-deletar');
-            btnDeletar.addEventListener('click', () => {
-                const modal = document.getElementById(`caixa-deletar-${post.id}`);
-                modal.style.display = 'block';
+    containerPost.innerHTML = templatePost;
+    posts.appendChild(containerPost);
 
-            const btnCancelar = modal.querySelector('#btn-cancelar');
-            btnCancelar.addEventListener('click', () => {
-                modal.style.display = 'none';
-            }); 
+    if (post.author === usuarioLogado.uid) {
+      const btnDeletar = containerPost.querySelector('#btn-deletar');
+      btnDeletar.addEventListener('click', () => {
+        const modal = document.getElementById(`caixa-deletar-${post.id}`);
+        modal.style.display = 'block';
 
-            const btnExcluir = modal.querySelector('#btn-excluir');
-            btnExcluir.addEventListener('click', () => {
-                deletarPost(post.id);
-                container.remove();
-                modal.style.display = 'none';
-            });
-        }); 
-        };
-        // para disparar a caixa modal 
-        // const btnDeletar = container.querySelector('#btn-deletar');
-        // const caixaDeletar = container.querySelector('#caixa-deletar');
-        
-        // if (post.author === usuarioLogado.uid) {
-        //   if (btnDeletar) {
-        //     btnDeletar.addEventListener('click', () => {
-        //         caixaDeletar.style.display = 'flex';
-        //     })
-        //   }
+        const btnCancelar = modal.querySelector('#btn-cancelar');
+        btnCancelar.addEventListener('click', () => {
+          modal.style.display = 'none';
+        });
 
-        //   // para fechar a caixa modal 
-        //   const btnCancelar = container.querySelector('#btn-cancelar');
-        //   if (btnCancelar) {
-        //     btnCancelar.addEventListener('click', () => {
-        //         caixaDeletar.style.display = 'none';
-        //     })
-        //   }
-
-        //   // para deletar post
-        //   btnDeletar.addEventListener('click', () => {
-        //     deletarPost(post.id);
-        //     container.remove(); // removendo a postagem da interface após excluí-la do banco de dados
-        //   });
-        // }
-      };
-
-      obterPosts().then(posts => {
-        postagens.innerHTML = '';
-        posts.forEach(post => exibirPost(post));
+        const btnExcluir = modal.querySelector('#btn-excluir');
+        btnExcluir.addEventListener('click', () => {
+          deletarPost(post.id);
+          containerPost.remove();
+          modal.style.display = 'none';
+        });
       });
+    }
+  };
 
-    // o código define um evento de clique para o botão "btnPublicar" que cria um novo post com o texto inserido no campo de texto "texto-tutor". Se a criação do post
-    // for bem-sucedida, o novo post é exibido na página. Se ocorrer um erro, uma mensagem de erro é exibida. Se o campo de texto estiver vazio, uma mensagem de aviso é exibida.
-    const btnPublicar = container.querySelector('#btn-publicar');
-    btnPublicar.addEventListener('click', async () => {
-        const textoTutor = container.querySelector('#texto-tutor');
-        const textPost = textoTutor.value;
+  obterPosts().then((posts) => {
+    posts.innerHTML = '';
+    posts.forEach((post) => exibirPost(post));
+  });
 
-        if (textPost !== '') {
-            try {
-                const novoPost = await criarPost(textPost);
-                // espera o criarPost e dps exibe o post
-                exibirPost(novoPost);
-                console.log(novoPost);
-                textoTutor.value = '';
-            } catch (error) {
-                alertaPublicação.setAttribute('style', 'display: block');
-                alertaPublicação.innerHTML = 'Ocorreu um erro, tente novamente.';
-            }
-        } else {
-            alertaPublicação.setAttribute('style', 'display: block');
-            alertaPublicação.innerHTML = 'Por favor, escreva algo antes de publicar!';
-        }
-    });
+  const btnPublicar = container.querySelector('#btn-publicar');
+  const alertaPublicacao = container.querySelector('#alerta-publicacao');
+  btnPublicar.addEventListener('click', async () => {
+    const textoTutor = container.querySelector('#texto-tutor');
+    const textPost = textoTutor.value;
 
+    if (textPost !== '') {
+      try {
+        const novoPost = await criarPost(textPost);
+        // espera o criarPost e dps exibe o post
+        exibirPost(novoPost);
+        console.log(novoPost);
+        textoTutor.value = '';
+      } catch (error) {
+        alertaPublicacao.setAttribute('style', 'display: block');
+        alertaPublicacao.innerHTML = 'Ocorreu um erro, tente novamente.';
+      }
+    } else {
+      alertaPublicacao.setAttribute('style', 'display: block');
+      alertaPublicacao.innerHTML = 'Por favor, escreva algo antes de publicar!';
+    }
+  });
 
-    return container;
+  return container;
 };
