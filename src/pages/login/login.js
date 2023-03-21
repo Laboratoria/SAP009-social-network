@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { signIn, loginGoogle, authStateChanged } from '../../firebase/auth.js';
+import { signIn, loginGoogle, authStateChanged, userLogged  } from '../../firebase/auth.js';
 
 export default () => {
   const container = document.createElement('div');
@@ -45,7 +45,8 @@ export default () => {
 
   container.innerHTML = template;
 
-
+ 
+  
   const loginButton = container.querySelector('#login-button');
   const emailInput = container.querySelector('#email');
   const passwordInput = container.querySelector('#password');
@@ -58,8 +59,11 @@ export default () => {
 
     signIn(email, password)
       .then((isAuthenticated) => {
+        console.log(isAuthenticated);
+      
         console.log('Usuário autenticado!');
         window.location.replace('#timeline');
+    
       })
       .catch((error) => {
         console.log('Usuário não autenticado.');

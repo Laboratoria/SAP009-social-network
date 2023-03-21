@@ -22,6 +22,10 @@ const init = () => {
         main.appendChild(login());
     }
   });
+
+  // if (window.location.hash) {
+  //   history.replaceState(null, '', window.location.href.split('#')[0]);
+  // }
 };
 
 window.addEventListener('load', () => {

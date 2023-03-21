@@ -9,3 +9,43 @@
 h1 {
     text-align: center;
 }
+
+p {
+    color: #FFF;
+    font-size: 1rem;
+}
+
+.container-timeline { 
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+  
+}
+
+.header-site{
+    background-color:#04DDCC;
+   display: flex;
+   width: 80vw;
+    height: 10vh;
+    
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    
+}
+
+.logo-image-timeline {
+    width: 14rem;
+    padding: 1rem;
+}
+
+/* .div-logo-timeline {
+  
+} */
+
+.menu {
+    padding-right: 1rem;
+}

@@ -1,26 +1,44 @@
-import { LogOut } from '../../firebase/auth.js';
+import { LogOut, auth } from '../../firebase/auth.js';
+
+import createHeader from '../../components/header.js';
 
 export default () => {
+  const user = auth.currentUser;
+
+  // if (user !== null) {
+  //   const displayName = user.displayName;
+  //   const email = user.email;
+  //   const photoURL = user.photoURL;
+  //   const emailVerified = user.emailVerified;
+  //   const uid = user.uid;
+  //   console.log(email);
+  // }
+
   const container = document.createElement('div');
-  container.classList.add('container');
+  container.classList.add('container-timeline');
+
+  const header = createHeader();
+  header.classList.add('header-site');
+  container.appendChild(header);
+
   const template = `
-  <div class="form-wrapper">
-  <div class= "div-logo">
-  <img src="./assets/conectadas-logo.png" id="ada-logo" class="logo-image" alt="logo da ConectAda">
-    </div>
-    <div>
-    <h1>Timeline</h1>
-    <button type="button" id="logout-button" class="button logout-btn" href="#login">Sair</button>
-    </div>
+    <div class="form-wrapper">
+       <div>        
+        <p>Olá, ${user.displayName}</p>
+        <p>${user.email}</p>
+      </div>
+      <div> <button type="button" id="logout-button" class="button logout-btn" href="#login">Sair</button></div>
     </div>
   `;
 
-  container.innerHTML = template;
+  container.innerHTML += template;
 
   const logoutButton = container.querySelector('#logout-button');
+
   logoutButton.addEventListener('click', () => {
-    LogOut(); // aqui eu deveria passar o id do user pra poder fazer uma promise em auth?
+    LogOut(user);
     window.location.replace('#login');
   });
+
   return container;
 };
