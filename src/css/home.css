@@ -9,6 +9,12 @@
 .section-main{
     background-color: var(--bg);
     padding: 20px 0;
+    
+}
+.section-main2{
+    background-color: var(--bg);
+    padding: 20px 0;
+    
 }
 main{
     background-color: var(--bg);
@@ -266,12 +272,26 @@ footer{
 }
 
 .footer-names{
-    
+    display: none;
+    text-align: center;
+}
+.footer-mobile{
     text-align: center;
 }
 .girls-home{
     display:none;
 }
+
+::-webkit-scrollbar-track {
+    background-color: var(--bg2);
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    background: var(--bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--bg);
+  }
 
 @media (min-width: 650px){
 
@@ -281,6 +301,73 @@ footer{
     
     .textarea{
         width: 400px;
+    }
+    
+}
+@media (min-width:850px ){
+    .container{ 
+        display: none;
+    }
+    li{
+        display: block;
+        border: 5px solid transparent;
+    }
+    li:hover{
+        background-color: var(--red);
+        border-radius: 10px; 
+        border: 5px solid var(--red);
+    }
+    li:active{
+        background-color: var(--white);
+        border-radius: 10px; 
+        border: 5px solid var(--white);
+        color: var(--red);
+    }
+    a:active{
+        color: var(--red);
+    }
+    ul {
+        gap: 85px; 
+        flex-direction: row;
+        justify-content: center;
+        position: static;
+        background-color: transparent;
+        width: auto;
+        align-items: center;
+        
+    }
+    header{
+        padding: 0;
+        font-size: 25px;
+    }
+    .teste-header{
+        display: grid;
+        grid-template-areas: 'logoNav username';
+        grid-template-columns: 75% 25%;
+        background-color: var(--bg2);
+    }
+    .hr{
+        display: none;
+    }
+    .logo{
+        grid-area: logo;
+        justify-self: center;
+    }
+    .section-topo{
+        display: grid;
+        justify-content: stretch;
+        grid-area: logoNav;
+        grid-template-areas: 'logo nav';
+    }
+    .user-name{
+        grid-area: username;
+    }
+    nav{
+       
+        grid-area: nav;
+        width: auto;
+        align-self: center;
+        justify-self: center;
     }
     
 }
@@ -304,12 +391,18 @@ footer{
         position: fixed;
         bottom: 20%;
         left: -50px;
-
     }
     .feed{
         width: 450px;
     }
+    .footer-mobile{
+        display: none;
+    }
+    .footer-names{
+        display: block;
+    }
 }
+
 @media(min-width:1000px){
     .feed{
         width: 500px;
@@ -319,6 +412,7 @@ footer{
         left: -20px;
     }
 }
+
 @media(min-width:1300px){
     .girls-home{
         width: 600px;

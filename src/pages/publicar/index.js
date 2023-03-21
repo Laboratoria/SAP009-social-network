@@ -9,7 +9,7 @@ export default () => {
   container.append(Header());
 
   const sectionMain = document.createElement('section');
-  sectionMain.classList.add('section-main');
+  sectionMain.classList.add('section-main2');
 
   const template = ` 
   <main class='display' >

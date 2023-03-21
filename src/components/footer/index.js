@@ -5,6 +5,9 @@ export default () => {
     <div>
         <p>Desenvolvido por:</p>
     </div>
+    <div class='footer-mobile'>
+        <p> Ana Leticia, Angelina e Patricia, 2023. </p>
+    </div>
     <div class='footer-names'>
         <p>Ana Leticia B. Prince </p>
         <a href='https://github.com/analeticiabacha' target='_blank'>

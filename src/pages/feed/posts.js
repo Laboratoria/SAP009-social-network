@@ -94,6 +94,7 @@ export default (timelinePost) => {
         btnLike.removeAttribute('class');
         btnEditPost.removeAttribute('class');
         btnSavePost.setAttribute('class', 'hidden');
+        textArea.setAttribute('disabled');
       });
       if (post.idUser !== Auth.currentUser.uid) {
         btnDelete.setAttribute('class', 'hidden');

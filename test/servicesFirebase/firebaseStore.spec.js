@@ -1,12 +1,7 @@
-import query from 'esquery';
-import { addDoc, collection, getDocs, QuerySnapshot } from 'firebase/firestore';
+import { addDoc, collection, getDocs } from 'firebase/firestore';
 import { newPost, userData, accessPost } from '../../src/servicesFirebase/firebaseStore';
-// import { db } from "../../src/firebaseInit";
-// import { Auth } from "../../src/servicesFirebase/firebaseAuth";
 
 jest.mock('firebase/firestore');
-
-// tirar consoles e catchs
 
 it('deve acessar os dados do usuário e guardar na coleção', async () => {
   // userData
@@ -54,7 +49,7 @@ it('deve acessar a publicação criada', async () => {
   getDocs.mockResolvedValueOnce();
   const mockCollection = ['1', '2', '3'];
   collection.mockReturnValueOnce(mockCollection);
-  const querySnapshot = mockCollection;
+  // const querySnapshot = mockCollection;
   // const data;
   // const messages = [];
   await accessPost();
