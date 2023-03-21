@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+
+:root {
+    --fonte-logo: 'Montserrat', sans-serif;
+    --fonte-titulo: 'Noto Serif', serif;
+    --cor-de-fundo: #00172C;
+    --amarelinho: #F1CC9A;
+    --azul-botao: #034072;
+    --vermelho: #500B19;
+}
+
+.cadastro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-cadastro {
+    background: #D9D9D9;
+    border-radius: 20px;
+    width: 336px;
+    height: 592px;
+    margin-top: 100px;
+    
+}
+
+.imagem-fundo {
+    width: 428px;
+    height: 926px;
+    opacity: 20%;
+} 
+/* 
+.fundo-de-tela {
+    background: #D9D9D9;
+    border-radius: 20px;
+    width: 360px;
+    height: 150px;
+} */
+
+.logo-escrita-escura {
+    width: 315px;
+    height: 330px;
+    margin: 0px;
+    margin-top: -58px;
+}
+
+
+
+.form-cadastro {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.nome-email-senha-container-cadastro {
+    gap: 50px;
+}
+
+.input-nome, .input-login, .input-senha {
+    background-color: #474053;
+    width: 342px;
+    height: 48px;
+    border-radius: 15px;
+   
+} 
+
+.btnCadastro{
+    width: 262px;
+    height: 44px;
+    border-radius: 15px;
+}
