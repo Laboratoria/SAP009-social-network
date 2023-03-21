@@ -11,6 +11,7 @@ import {
   sendPasswordResetEmail,
   updateProfile,
   onAuthStateChanged,
+  signOut,
 } from 'firebase/auth';
 
 import {
@@ -48,18 +49,22 @@ function autenticarUsuario(email, senha) {
 
 // registrar novo usuário
 async function criarUsuario(email, senha, nomeTutor, nomeCao) {
-  await createUserWithEmailAndPassword(auth, email, senha);
-  await updateProfile(auth.currentUser, {
-    displayName: nomeTutor,
-  });
+  try {
+    await createUserWithEmailAndPassword(auth, email, senha);
+    await updateProfile(auth.currentUser, {
+      displayName: nomeTutor,
+    });
 
-  const usuario = {
-    email,
-    nomeTutor,
-    nomeCao,
-  };
+    const usuario = {
+      email,
+      nomeTutor,
+      nomeCao,
+    };
 
-  await setDoc(doc(db, 'usuarios', auth.currentUser.uid), usuario);
+    await setDoc(doc(db, 'usuarios', auth.currentUser.uid), usuario);
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 // login com google
@@ -173,6 +178,9 @@ function descurtir(postId, uid) {
   });
 }
 
+//opção de sair
+const sair = () => signOut(auth);
+
 export {
   autenticarUsuario,
   criarUsuario,
@@ -186,4 +194,5 @@ export {
   editarPost,
   curtir,
   descurtir,
+  sair,
 };

@@ -6,6 +6,7 @@ import {
   editarPost,
   curtir,
   descurtir,
+  sair,
 } from '../../firebase/firebase';
 
 export default async () => {
@@ -22,7 +23,7 @@ export default async () => {
                         <li><a href="#">feed</a></li>
                         <li><a href="#">perfil</a></li>
                         <li><a href="#">sobre</a></li>
-                        <li><a href="#">sair</a></li>
+                        <li><a id="btnSair" class="btn-sair"type="button"> sair</a></li>
                     </ul>
                 </menu>
                 <div class="info-usuario">
@@ -184,6 +185,17 @@ export default async () => {
       alertaPublicacao.innerHTML = 'Por favor, escreva algo antes de publicar!';
     }
   });
+
+  const btnSair = container.querySelector('#btnSair');
+  btnSair.addEventListener('click', () => {
+      sair()
+        .then(() => {
+          window.location.hash = '#login';
+        })
+        .catch(() => {
+          alert('Ocorreu um erro, tente novamente.');
+        });
+    });
 
   return container;
 };
