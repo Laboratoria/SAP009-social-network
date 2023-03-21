@@ -8,12 +8,11 @@ import {
 } from 'firebase/auth';
 
 import {
-  //getFirestore,
-  //collection,
-  //addDoc,
-  //getDocs,
+  // getFirestore,
+  // collection,
+  // addDoc,
+  // getDocs,
   // getDoc,
-  //setDoc,
   deleteDoc,
   doc,
   updateDoc,
@@ -29,11 +28,14 @@ import {
   deletarPost,
   curtir,
   descurtir,
-  editarPost
+  editarPost,
 } from '../src/firebase/firebase';
 
 jest.mock('firebase/auth', () => ({
-  getAuth: jest.fn(),
+  getAuth: jest.fn(() => ({
+    currentUser: {
+    },
+  })),
   GoogleAuthProvider: jest.fn(),
   signInWithEmailAndPassword: jest.fn(),
   createUserWithEmailAndPassword: jest.fn(),
@@ -49,15 +51,13 @@ jest.mock('firebase/firestore', () => ({
   updateDoc: jest.fn(),
   arrayUnion: jest.fn(),
   arrayRemove: jest.fn(),
+  setDoc: jest.fn(),
 }));
-
-import { mockAuth } from '../src/mocks/export';
-
 
 // função de autenticar usuário
 describe('autenticarUsuario', () => {
   it('deve ser uma função', () => {
-    expect(typeof autenticarUsuario).toBe('function')
+    expect(typeof autenticarUsuario).toBe('function');
   });
   it('autentica dados do login e libera a página do feed ', async () => {
     signInWithEmailAndPassword.mockResolvedValue();
@@ -69,35 +69,28 @@ describe('autenticarUsuario', () => {
 // função de criar usuário
 
 describe('criarUsuario', () => {
-  it('a função deve criar uma conta de usuário utilizando o seu nome, nome do seu cão, email e senha', async () => {
+  it('a função deve criar uma conta de usuário utilizando o seu nome, email e senha', async () => {
+    const mockGetAuth = {
+      currentUser: {},
+    };
 
-    getAuth.mockReturnValueOnce(mockAuth);
+    getAuth.mockReturnValueOnce(mockGetAuth);
     createUserWithEmailAndPassword.mockResolvedValueOnce();
 
-    const email = 'teste@teste.com';
-    const password = '12345678';
-    const nomeTutor = 'teste';
-    const nomeCao = 'luigi'
-    await criarUsuario(nomeTutor, nomeCao, email, password);
+    const email = 'bella@gmail.com';
+    const senha = '12345678';
+    const nomeTutor = 'bella';
+    const nomeCao = 'bello';
+    await criarUsuario(email, senha, nomeTutor, nomeCao);
 
     expect(createUserWithEmailAndPassword).toHaveBeenCalledTimes(1);
-    expect(createUserWithEmailAndPassword.jest.fn()).toHaveBeenCalledWith(mockAuth, email, password);
+    expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(mockGetAuth, email, senha);
     expect(updateProfile).toHaveBeenCalledTimes(1);
-    expect(updateProfile).toHaveBeenCalledWith(mockAuth.currentUser, {
+    expect(updateProfile).toHaveBeenCalledWith(mockGetAuth.currentUser, {
       displayName: nomeTutor,
     });
   });
 });
-
-// describe('criarUsuario', () => {
-//   it('deve criar um usuário', () => {
-//     createUserWithEmailAndPassword.mockResolvedValue({
-//       user: {},
-//     });
-//     criarUsuario('teste@teste.com', 'teste123');
-//     expect(createUserWithEmailAndPassword).toHaveBeenCalledTimes(1);
-//   });
-// });
 
 // logar com o google
 describe('logarGoogle', () => {
@@ -108,7 +101,6 @@ describe('logarGoogle', () => {
   });
 });
 
-
 // redefinir senha
 describe('redefinirSenha', () => {
   it('a função deve logar usuário com a sua conta google', () => {
@@ -117,7 +109,6 @@ describe('redefinirSenha', () => {
     expect(sendPasswordResetEmail).toHaveBeenCalledTimes(1);
   });
 });
-
 
 // botão de deletar
 describe('deletarPost', () => {
@@ -131,7 +122,7 @@ describe('deletarPost', () => {
         postId: '1234',
       },
     };
-    
+
     doc.mockReturnValueOnce(mockPostRef);
     deleteDoc.mockResolvedValueOnce(mockPostRef);
 
@@ -144,7 +135,7 @@ describe('deletarPost', () => {
   });
 });
 
-//botão de curtir
+// botão de curtir
 describe('curtir', () => {
   it('deve ser uma função', () => {
     expect(typeof curtir).toBe('function');
@@ -154,12 +145,11 @@ describe('curtir', () => {
     expect(arrayUnion).toHaveBeenCalledTimes(1);
     expect(arrayUnion).toHaveBeenCalledWith('testUserName');
     expect(updateDoc).toHaveBeenCalledTimes(1);
-    expect(updateDoc).toHaveBeenCalledWith(undefined, { 'likes': undefined });
+    expect(updateDoc).toHaveBeenCalledWith(undefined, { likes: undefined });
   });
 });
 
-
-//descurtir 
+// descurtir
 describe('descurtir', () => {
   it('deve ser uma função', () => {
     expect(typeof descurtir).toBe('function');
@@ -169,10 +159,9 @@ describe('descurtir', () => {
     expect(arrayRemove).toHaveBeenCalledTimes(1);
     expect(arrayRemove).toHaveBeenCalledWith('testUserName');
     expect(updateDoc).toHaveBeenCalledTimes(1);
-    expect(updateDoc).toHaveBeenCalledWith(undefined, { 'likes': undefined });
+    expect(updateDoc).toHaveBeenCalledWith(undefined, { likes: undefined });
   });
 });
-
 
 // editar
 describe('editarPost', () => {
@@ -195,21 +184,4 @@ describe('editarPost', () => {
   });
 });
 
-
-
-
-
-
-
-
-//sair
-
-
-
-
-
-
-
-
-
-
+// sair

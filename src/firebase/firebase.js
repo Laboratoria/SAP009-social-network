@@ -49,22 +49,18 @@ function autenticarUsuario(email, senha) {
 
 // registrar novo usuário
 async function criarUsuario(email, senha, nomeTutor, nomeCao) {
-  try {
-    await createUserWithEmailAndPassword(auth, email, senha);
-    await updateProfile(auth.currentUser, {
-      displayName: nomeTutor,
-    });
+  await createUserWithEmailAndPassword(auth, email, senha);
+  await updateProfile(auth.currentUser, {
+    displayName: nomeTutor,
+  });
 
-    const usuario = {
-      email,
-      nomeTutor,
-      nomeCao,
-    };
+  const usuario = {
+    email,
+    nomeTutor,
+    nomeCao,
+  };
 
-    await setDoc(doc(db, 'usuarios', auth.currentUser.uid), usuario);
-  } catch (error) {
-    console.error(error);
-  }
+  await setDoc(doc(db, 'usuarios', auth.currentUser.uid), usuario);
 }
 
 // login com google
@@ -171,14 +167,14 @@ function curtir(postId, uid) {
   });
 }
 
-//descurtir 
+// descurtir
 function descurtir(postId, uid) {
   updateDoc(doc(db, 'posts', postId), {
     likes: arrayRemove(uid),
   });
 }
 
-//opção de sair
+// opção de sair
 const sair = () => signOut(auth);
 
 export {
