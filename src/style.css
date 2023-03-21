@@ -86,7 +86,6 @@ h3 {
   width: 250px;
 }
 
-
 /*Página de Login*/
 
 .txt-novo-usuario {
@@ -345,8 +344,7 @@ a:link {
   }
 
   .caixa-deletar {
-    left: 23%;
-    top: 39%;
+    left: 200px;
     width: 52%;
   }
 }
@@ -433,17 +431,13 @@ a:link {
     margin-top: 129px;
   }
 
-  .postagens {
-    margin-left: 200px;
-  }
-
   .div-postagem-anteriores-tutor {
     width: 600px;
 }
 
   .img-logo-feed {
-    margin: 0px -5000px 0px 213px;
-    width: 260px;
+    margin: 0px -5000px 0px 210px;
+    width: 236px;
     margin-top: -111px;
     margin-bottom: 30px;
   }
@@ -453,6 +447,12 @@ a:link {
     margin-top: 4px;
     margin-left: 4px;
     grid-template-columns: 7% 53% 40%;
+  }
+
+  .postagens {
+    display: grid;
+    justify-items: center;
+    align-items: center;
   }
 }
 
@@ -497,6 +497,14 @@ a:link {
   .estilo-card-redefir-senha {
     margin-right: 130px;
     padding: 25px 20px;
+  }
+
+  .img-logo-feed {
+    width: 235px;
+  }
+
+  .texto-tutor {
+    width: 100%;
   }
 }
 
@@ -576,6 +584,7 @@ ul{
 .div-postagem-tutor{
   flex-direction: column;
   display: flex;
+ align-items: flex-end;
  }
  
  .texto-tutor{
@@ -583,6 +592,7 @@ ul{
   border-style: none;
   border-radius: 20px;
   padding: 10px;
+  resize: none;
  }
 
  .btn-publicar{
@@ -594,7 +604,6 @@ ul{
   cursor: pointer;
   width: 30%;
   margin-top: 5px;
-  margin-left: 220px;
  }
 
  .div-postagem-anteriores-tutor{
@@ -602,10 +611,10 @@ ul{
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  margin-right: 17px;
-  margin-left: 17px;
+  justify-content: center;
+  margin-bottom: 15px;
+  margin-left: 20px;
+  margin-right: 20px;
  }
 
  #icone-superiores{
@@ -702,12 +711,15 @@ textarea:focus {
 .caixa-deletar {
   position: fixed;
   z-index: 1;
-  left: 28%;
+  left: 50%;
   top: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
   overflow: auto;
   background-color: #783d19;
   border-radius: 25px;
   display: none;
+  width: 300px;
  }
 
 .modal {
@@ -772,4 +784,8 @@ textarea:focus {
   color: #783D19;
   font-weight: bold;
   font-size: 15px;
+}
+
+.texto-tutor-postado:focus {
+  border: 1px solid var(--laranja);
 }
