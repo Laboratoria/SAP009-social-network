@@ -5,7 +5,7 @@ export default () => {
 
   const template = `
     <header>
-      <h1>Anime-se</h1>
+      <img src="./assets/logo.png" id="logo-timeline" alt="Logo da Anime-se">
       <span id="burger" class="material-symbols-outlined">menu</span>
       <nav id="menu">
         <ul>

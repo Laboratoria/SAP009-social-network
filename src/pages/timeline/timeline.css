@@ -15,10 +15,10 @@ header {
     background-color: #000000; 
 }
 
-header > h1 {
+#logo-timeline {
+    margin-top: 0;
+    margin-bottom: 0;
     padding: 10px;
-    text-align: center;
-    color: #fff;
 }
 
 nav {

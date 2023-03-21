@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 import { signIn, loginGoogle } from '../../firebase/auth.js';
+import { errorsFirebase, validateLogin } from '../../validations';
 
 export default () => {
   const container = document.createElement('div');
@@ -34,6 +35,7 @@ export default () => {
         <div>
           <button type="button" id="register-button">Não tem uma conta? <a id="register-link" href="#register">Registre-se</a></button>
         </div> 
+        <p class="msg-error"></p>
       </form>
     </div>
   `;
@@ -45,37 +47,36 @@ export default () => {
   const emailInput = container.querySelector('#email');
   const passwordInput = container.querySelector('#password');
   const loginWithGoogle = container.querySelector('#google-button');
+  const errorMessage = container.querySelector('.msg-error');
 
   loginButton.addEventListener('click', () => {
     const email = emailInput.value;
     const password = passwordInput.value;
 
-    signIn(email, password)
-      .then((isAuthenticated) => {
-        console.log('Usuário autenticado!');
-        window.location.replace('#timeline');
-      })
-      .catch((error) => {
-        console.log('Usuário não autenticado.');
-        window.location.replace('#login');
-      })
-      .finally(() => {
-        console.log('Processo de autenticação finalizado em login');
-      });
+    const validation = validateLogin(email, password);
+    if (validation === '') {
+      signIn(email, password)
+        .then(() => {
+          window.location.replace('#timeline');
+        })
+        .catch((error) => {
+          const errorFirebase = errorsFirebase(error.code);
+          errorMessage.innerHTML = errorFirebase;
+        });
+    } else {
+      errorMessage.innerHTML = validation;
+    }
   });
 
   loginWithGoogle.addEventListener('click', () => {
     loginGoogle()
-      .then((isLogged) => {
+      .then(() => {
         console.log('google: Usuário autenticado!');
         window.location.replace('#timeline');
       })
       .catch((error) => {
         console.log('google: Usuário não autenticado.');
         window.location.replace('#login');
-      })
-      .finally(() => {
-        console.log('Autenticação com o google finalizada em login');
       });
   });
 
