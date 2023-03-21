@@ -1,5 +1,5 @@
 /* eslint-disable */
-// importacao das funcoes de autenticação de usuários do modulo firebase
+// importacao das funcoes de autenticação de usuários do modulo /firebase
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -9,7 +9,7 @@ import {
   signOut,
   onAuthStateChanged,
   updateProfile
-} from 'firebase/auth';
+} from '/firebase/auth';
 
 // meu app importado de app.js
 import { app } from './app.js';
@@ -20,9 +20,9 @@ export const auth = getAuth(app);
 // const uid = auth.uid;
 // console.log(uid);
 import {db} from '../firestore/firestore.js';
-import {setDoc, doc , getDoc} from 'firebase/firestore';
+import {setDoc, doc , getDoc} from '/firebase/firestore';
 export let userLogged = null;
-// funcao para abrigar a funcao de criar usuario com email e senha (da documentação do firebase)
+// funcao para abrigar a funcao de criar usuario com email e senha (da documentação do /firebase)
 // export function createUserWithEmail(email, password) {
 //   return new Promise((resolve, reject) => {
 //     createUserWithEmailAndPassword(auth, email, password)

@@ -90,7 +90,6 @@ describe('createUserWithEmail', () => {
   });
 });
 
-//testa apenas a chamada 
 describe('logOut', () => {
   it('should log out the user', async () => {
    // signOut.mockResolvedValue();
