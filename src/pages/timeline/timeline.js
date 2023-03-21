@@ -9,16 +9,37 @@ export default () => {
       <span id="burger" class="material-symbols-outlined">menu</span>
       <nav id="menu">
         <ul>
-          <li><a href="#login">Sobre as criadoras</a></li>
+          <li><a href="#login">Sobre as desenvolvedoras</a></li>
           <li><a href="#login">Indicações exclusivas</a></li>
           <li><a href="#login" id="logout">Sair</a></li>
         </ul>
       </nav>
     </header>
+
     <main>
-      <article>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Soluta quaerat quo rerum. Dolore eius numquam temporibus eaque in delectus magnam, recusandae sint voluptas. Deserunt suscipit fugit aut ratione in id.</p>
-      </article>
+      <button id="open-modal">Recomende seu anime aqui!</button>
+      <div id="fade" class="hide"></div>
+      <div id="modal" class="hide">
+      <div class="modal-header">
+        <button id="close-modal">X</button>
+      </div>
+
+      <div class="modal-body">
+        <form class ="modal-form">
+          <div class="single-input">
+            <input required type="text" id="anime" class="input">
+            <label for="anime">Nome do anime</label>
+          </div>
+
+          <div class="single-input">
+          <input required type="text" id="episodes" class="input">
+          <label for="episodes">Quantidade de episódios</label>
+        </div>
+        </form>
+
+        <textarea id="post-area" placeholder="Fale sobre o anime aqui"></textarea>
+        <button id="post-button">Publicar</button>
+        </div>
     </main>
   `;
 
@@ -41,6 +62,19 @@ export default () => {
     } else {
       menu.style.display = 'block';
     }
+  });
+
+  const openModalButton = container.querySelector('#open-modal');
+  const closeModalButton = container.querySelector('#close-modal');
+  const modal = container.querySelector('#modal');
+  const fade = container.querySelector('#fade');
+
+  const toggleModal = () => {
+    [modal, fade].forEach((el) => el.classList.toggle('hide'));
+  };
+
+  [openModalButton, closeModalButton, fade].forEach((el) => {
+    el.addEventListener('click', () => toggleModal());
   });
 
   return container;
