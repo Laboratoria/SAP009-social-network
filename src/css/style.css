@@ -1,5 +1,6 @@
-@import url(../pages/login/login.css);
 
+@import url(../pages/feed/feed.css);
+@import url(../pages/cadastro/cadastro.css);
 * {
     margin: 0;
     padding: 0;
@@ -9,8 +10,7 @@
     --cor-de-fundo: #00172C;
 }
 
+
 body {
     background-color: var(--cor-de-fundo);
 }
-
-
