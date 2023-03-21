@@ -1,7 +1,11 @@
+/* eslint-disable no-duplicate-case */
+/* eslint-disable default-case */
+/* eslint-disable padded-blocks */
 /* eslint-disable no-unneeded-ternary */
 /* eslint-disable no-alert */
 /* eslint-disable max-len */
-import { criarCadastro } from '../../firebase/firebase';
+import { criarCadastro, observador, verificarEmail } from '../../firebase/firebase';
+import { maiorDe18, exibeErros } from '../../firebase/funcoes-acessorias';
 
 const cadastro = () => {
   const criaCadastro = document.createElement('section');
@@ -50,8 +54,10 @@ const cadastro = () => {
   const telefone = criaCadastro.querySelector('#tel');
   const filhx = criaCadastro.querySelector('#filhos');
   // const senha = inputSenha.value; // usar para dizer que tem que ser > 6 caracters
-
   const btnEnviar = criaCadastro.querySelector('.btn-enviar');
+
+  observador(); // mostra se to conectada a pag
+
   btnEnviar.addEventListener('click', (e) => {
     e.preventDefault();
 
@@ -63,14 +69,28 @@ const cadastro = () => {
     else if (inputSenha.value.length < 6) {
       alert('sua senha precisa ter mais de 6 digítos');
     }
-    else if (dataNascimento.value !== maiorDe18()) {
-      alert('Infelizmente vc não pode acessar essa plataforma/rede social, ela é destinada para > 18 por conter fazer apologia ao uso de bebida alcoólica');
-    }
+    // else if (dataNascimento.value !== maiorDe18()) {
+    //   alert('Infelizmente vc não pode acessar essa plataforma/rede social, ela é destinada para maiores de 18 anos por fazer apologia e incentivar o uso de bebida alcoólica');
+    // }
+
     else {
-      criarCadastro(inputEmail.value, inputSenha.value);
-      alert('Parabéns, seu cadastro foi realizado com sucesso! Agora basta fazer o login');
-      // window.location.hash = '';
-      // header.style.display = 'block';
+      criarCadastro(inputEmail.value, inputSenha.value)
+        .then(() => {
+          verificarEmail()
+            .then(() => {
+              alert('Parabéns, seu cadastro foi realizado com sucesso! Agora basta fazer o login');
+              console.log('email de confirmação enviado');
+              // window.location.hash = '';
+              // header.style.display = 'block';
+            }) // CONTINUA PASSANDO MESMO COM O EMAIL JÁ CADASTRADO
+            .catch((error) => {
+              exibeErros(error);
+            });
+        })
+        .catch((error) => {
+          console.log(error);
+
+        });
     }
     // se o email já tiver cadastrado: "Esse email já foi cadastrado anteriormente, basta fazer o login"
   });
@@ -79,30 +99,3 @@ const cadastro = () => {
 };
 
 export default cadastro;
-
-function maiorDe18() { // parametro não ta sendo aceito pq tem mesmo nome da const
-  // verificar se é maior de 18
-  const criaCadastro = document.createElement('section');
-  const nascimento = criaCadastro.querySelector('#data');
-  const dataNascimento = nascimento.value;
-  const dataAtual = new Date();
-  console.log(dataAtual);
-
-  const idadeAtual = dataNascimento.split('-');
-  console.log(idadeAtual);
-
-  const anos = dataAtual.getFullYear() - idadeAtual[2];
-
-  // if (anos >= 19) {
-  //   console.log('passa');
-  //   console.log(anos);
-  //   return true;
-  // }
-  return anos >= 19 ? true : false;
-  // console.log('não passa');
-  // console.log(anos);
-  // return false;
-}
-  // const mes = idadeAtual[1] - dataAtual.getMonth();
-  // const dia = idadeAtual[0] - dataAtual.getDay();
-  // console.log(ano, mes, dia);

@@ -1,11 +1,32 @@
-.btn-sair {
+
+div:first-child{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+/* .main{
   display: flex;
   align-items: center;
+  width: 100%;
+} */
+.botao{
+  display: flex;
+  justify-content: flex-end;
+  text-align: center;
+}
+.btn-sair {
+  display: flex;
+  margin-left: 12rem;
+
   width: 40px;
   height: 20px;
   padding: 4px;
-  justify-content: flex-start;
-  margin-top: 1rem;
+  text-align: center;
+  align-items: center;
+  margin-top: -5rem;
   background-color: #ebafac;
   border: transparent;
   border-radius: 10px;
@@ -31,11 +52,17 @@
 
 #novo-texto,
 .postagem-anteriores {
-  width: 275px;
+  width: 280px;
   height: 140px;
   text-align: center;
   background-color: #facfce;
   border: transparent;
+}
+#novo-texto{
+  text-align: center;
+  margin: auto;
+  align-items: center;
+  margin-right: 2.2rem; /* alinha no meio */
 }
 
 .btn-postar {
@@ -44,6 +71,8 @@
   border: transparent;
   border-radius: 5px;
   padding: 5px;
+  margin-left: 12rem;
+
 }
 
 .icones-inferiores,

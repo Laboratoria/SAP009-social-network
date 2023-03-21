@@ -1,6 +1,9 @@
 const postagem = () => {
   const criarPostagem = document.createElement('div');
   const template = `
+    <div class="botao">
+    <button class="btn-sair">Sair</button></div>
+
     <div class="postagem">
       <div class="mensagem-ola">
         <p class="paragrafo">Olá usúaria, seja bem-vinda! <br> O que você deseja compartilhar?</p>
@@ -33,6 +36,9 @@ const postagem = () => {
 `;
 
   criarPostagem.innerHTML = template;
+
+// botaosair 
+
   return criarPostagem;
 };
 
