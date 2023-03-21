@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 import { createUserWithEmail } from '../../firebase/auth.js';
+import { errorsFirebase, validateRegister } from '../../validations.js';
 
 export default () => {
   const container = document.createElement('div');
@@ -26,6 +27,8 @@ export default () => {
       <button type="button" id="login-btn">Já tem uma conta? <a id="login-link" href="#login">Login</a></button>
     </div>
 
+    <p class="msg-error"></p>
+
   </form>
 </div>
 `;
@@ -33,25 +36,35 @@ export default () => {
   container.innerHTML = template;
 
   const registerButton = container.querySelector('#register-btn');
+  const registerName = container.querySelector('#user-name');
   const registerEmail = container.querySelector('#register-email');
+  const repeatEmail = container.querySelector('#confirm-email');
   const registerPassword = container.querySelector('#register-password');
+  const repeatPassword = container.querySelector('#confirm-password');
+  const errorMessage = container.querySelector('.msg-error');
 
   registerButton.addEventListener('click', () => {
+    const name = registerName.value;
     const email = registerEmail.value;
+    const emailRepeat = repeatEmail.value;
     const password = registerPassword.value;
+    const passwordRepeat = repeatPassword.value;
 
-    createUserWithEmail(email, password)
-      .then((isCreated) => {
-        console.log('Usuário cadastrado - register');
-        window.location.replace('#timeline');
-      })
-      .catch((error) => {
-        console.log('Erro de cadastro');
-        window.location.replace('#register');
-      })
-      .finally(() => {
-        console.log('Cadastro autenticado no register');
-      });
+    const register = validateRegister(name, email, emailRepeat, password, passwordRepeat);
+    if (register === '') {
+      createUserWithEmail(email, password)
+        .then(() => {
+          console.log('Usuário cadastrado - register');
+          window.location.replace('#timeline');
+        })
+        .catch((error) => {
+          console.log('Erro de cadastro');
+          const errorFirebase = errorsFirebase(error.code);
+          errorMessage.innerHTML = errorFirebase;
+        });
+    } else {
+      errorMessage.innerHTML = register;
+    }
   });
 
   return container;
