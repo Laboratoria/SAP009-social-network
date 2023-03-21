@@ -154,8 +154,6 @@ export default async () => {
       }
       btnCurtir.querySelector('p').innerText = post.likes.length;
     });
-
-
   };
 
   obterPosts().then((posts) => {
@@ -188,14 +186,14 @@ export default async () => {
 
   const btnSair = container.querySelector('#btnSair');
   btnSair.addEventListener('click', () => {
-      sair()
-        .then(() => {
-          window.location.hash = '#login';
-        })
-        .catch(() => {
-          alert('Ocorreu um erro, tente novamente.');
-        });
-    });
+    sair()
+      .then(() => {
+        window.location.hash = '#login';
+      })
+      .catch(() => {
+        alert('Ocorreu um erro, tente novamente.');
+      });
+  });
 
   return container;
 };
