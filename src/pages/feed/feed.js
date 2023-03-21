@@ -1,8 +1,7 @@
 export default () => {
   const container = document.createElement('div');
 
-  const template = `
-      
+  const template = `     
     <div class="home">
         <header>   
             <section class="container-feed">
