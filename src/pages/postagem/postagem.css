@@ -1,4 +1,5 @@
 
+/* tava impedindo os inputs de se ajustarem de acordo com o tamanho da tela*/
 div:first-child{
   display: flex;
   flex-direction: column;
@@ -6,7 +7,7 @@ div:first-child{
   justify-content: center;
   align-items: center;
   margin: auto;
-}
+} 
 /* .main{
   display: flex;
   align-items: center;

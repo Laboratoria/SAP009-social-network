@@ -1,6 +1,7 @@
-import { observador, sair } from "../../firebase/firebase";
+import { observador, sair, fazerLogin } from '../../firebase/firebase';
 
 const postagem = () => {
+  const header = document.querySelector('.header');
   const criarPostagem = document.createElement('div');
   const template = `
     <div class="botao">
@@ -36,6 +37,7 @@ const postagem = () => {
     </div>
   </div>
 `;
+  header.style.display = 'block';
 
   criarPostagem.innerHTML = template;
 
@@ -45,6 +47,7 @@ const postagem = () => {
 
   btnSair.addEventListener('click', () => {
     sair();
+    window.location.hash = fazerLogin();
   });
 
   return criarPostagem;

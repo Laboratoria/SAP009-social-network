@@ -9,21 +9,11 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, on
 const auth = getAuth(app);
 
 export function criarCadastro(email, password) {
-  return createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      console.log(user);
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode);
-      console.log(errorMessage);
-    });
+  return createUserWithEmailAndPassword(auth, email, password);
 }
 
 export function fazerLogin(email, password) {
-  signInWithEmailAndPassword(auth, email, password)
+  return signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
       console.log(user);

@@ -25,6 +25,7 @@ section {
   align-items: center;
   text-align: center;
   gap: 1.8rem;
+  width: 100%;
 }
 
 .form-login input {

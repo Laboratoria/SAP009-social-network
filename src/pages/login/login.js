@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable indent */
 import { fazerLogin, loginComGoogle, observador } from '../../firebase/firebase';
 import postagem from '../postagem/postagem';
 
@@ -43,14 +45,20 @@ const login = () => {
       form.reportValidity();
       console.log('preencha');
     } else {
-      fazerLogin(loginEmail.value, loginSenha.value); // usar then e catch
-      console.log('funciona');
-      // window.location.hash = postagem(); // não tá indo
+      fazerLogin(loginEmail.value, loginSenha.value)
+      .then(() => {
+        console.log('funciona');
+        window.location.hash = postagem(); // não tá indo
+      }).catch((error) => {
+        console.log(error);
+        console.log('deu errado');
+      });
     }
   });
 
   btnGoogle.addEventListener('click', () => {
     loginComGoogle();
+    window.location.hash = postagem(); // colocar num then/catch?
   });
 
   return criarLogin;

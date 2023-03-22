@@ -29,7 +29,3 @@ window.addEventListener('load', () => {
   iniciaTela();
   window.location.hash = '';
 });
-// export const direcionarPagina = (hash) => {
-//   window.location.hash = hash;
-//   window.dispatchEvent(new HashChangeEvent('hashchance'));
-// }

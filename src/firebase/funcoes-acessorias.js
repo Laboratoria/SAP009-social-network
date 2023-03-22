@@ -1,32 +1,17 @@
-export function maiorDe18() { // parametro não ta sendo aceito pq tem mesmo nome da const
+export function maiorDe18(dataNascimento) {
   // verificar se é maior de 18
-  const criaCadastro = document.createElement('section');
-  const nascimento = criaCadastro.querySelector('#data');
-  const dataNascimento = '08-12-2011' || nascimento.value;
   const dataAtual = new Date();
-  console.log(dataAtual);
-
   const idadeAtual = dataNascimento.split('-');
-  console.log(idadeAtual);
-
   const anos = dataAtual.getFullYear() - idadeAtual[2];
 
   if (anos >= 19) {
-    console.log('passa');
-    console.log(anos);
     return true;
   }
-  // return anos >= 19 ? true : false;
-  console.log('não passa');
-  console.log(anos);
   return false;
-  // const mes = idadeAtual[1] - dataAtual.getMonth();
-  // const dia = idadeAtual[0] - dataAtual.getDay();
-  // console.log(ano, mes, dia);
 }
 
-export function exibeErros(error) {
-  switch (error) {
+export function exibeErros(erro) {
+  switch (erro) {
     case 'auth/email-already-exists':
       console.log('este email já está em uso, utilize outro email ou faça login');
       break;
@@ -54,8 +39,8 @@ export function exibeErros(error) {
     case 'auth/invalid-email':
       console.log('o email fornecido é inválido, tente novamente');
       break;
-    case '':
-      console.log('');
+    case 'auth/missing-email':
+      console.log('digite um email para fazer login');
       break;
     default:
       console.log('ocorreu um erro inesperado');

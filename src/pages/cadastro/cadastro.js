@@ -67,26 +67,24 @@ const cadastro = () => {
       form.reportValidity();
     } else if (inputSenha.value.length < 6) {
       alert('sua senha precisa ter mais de 6 digítos');
-    } // else if (dataNascimento.value !== maiorDe18()) {
-    //   alert('Infelizmente vc não pode acessar essa plataforma/rede social, ela é destinada para maiores de 18 anos por fazer apologia e incentivar o uso de bebida alcoólica');
-    // }
-    else {
+    } else if (maiorDe18(dataNascimento.value) === false) {
+      alert('Infelizmente vc não pode acessar essa plataforma/rede social, ela é destinada para maiores de 18 anos por fazer apologia e incentivar o uso de bebida alcoólica');
+    } else {
       criarCadastro(inputEmail.value, inputSenha.value)
         .then(() => {
+          console.log('cadastrou');
           verificarEmail()
             .then(() => {
               alert('Parabéns, seu cadastro foi realizado com sucesso! Agora basta fazer o login');
               console.log('email de confirmação enviado');
-              // window.location.hash = '';
-              // header.style.display = 'block';
-            }) // CONTINUA PASSANDO MESMO COM O EMAIL JÁ CADASTRADO
-            .catch((error) => {
-              exibeErros(error);
+              window.location.hash = '';
+              header.style.display = 'block';
             });
         })
         .catch((error) => {
           console.log(error);
-
+          exibeErros(error);
+          alert('error, chegou aqui');
         });
     }
     // se o email já tiver cadastrado: "Esse email já foi cadastrado anteriormente, basta fazer o login"
@@ -96,3 +94,5 @@ const cadastro = () => {
 };
 
 export default cadastro;
+
+
