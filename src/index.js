@@ -1,4 +1,4 @@
-import login from './pages/login/index.js';
+import login from './pages/login/login.js';
 import sobre from './pages/sobre/index.js';
 import './auth.js';
 

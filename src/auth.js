@@ -1,8 +1,6 @@
-import './pages/login/index.js';
-import './index';
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword, signInWithCredential, signInWithEmailAndPassword } from 'firebase/auth';
-//import { loginEmail, loginSenha, loginBotao } from './ui';
+// import { loginEmail, loginSenha, loginBotao } from './ui';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
