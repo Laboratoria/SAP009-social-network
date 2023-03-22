@@ -32,7 +32,7 @@ body{
 }
 
 img{
-  width: 40%;
+  width: 15em;
   display: block;
   margin-right: auto;
   margin-left: auto; 
@@ -42,7 +42,7 @@ img{
   text-align: center;  
   color: #FFFFFF;
   font-family: var(--fonte-geral);
-  font-size: 12px;
+  font-size: 15px;
   margin-bottom: 25px;
  }
 
@@ -72,7 +72,6 @@ a{
 .descricao{
   font-size: 18px;
   padding: 15px;
-  /* max-width: 500px; */
   text-align: center;
   margin-bottom: 21px;
   font-weight: bold;
@@ -92,7 +91,6 @@ a{
 .titulo-login{
   font-size: 24px;
   padding: 20px;
-  
 }
 
 .email-login{
@@ -149,6 +147,7 @@ a{
 
 .menina-lemos{
   display: none;
+  margin-top: 50px;
 }
 
 .rodape{
@@ -159,14 +158,24 @@ a{
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 4rem;
+  height: 5%;
+}
+
+.sobre{
+  font-size: 15px;
+  margin-top: 5px;
+}
+
+.texto-rodape{
+  font-size: 12px;
+  margin-top: 5px;
 }
 
 
-@media screen and (min-width: 600px) 
+@media screen and (min-width: 1000px) 
 {
   .img{
-    width: 20%;
+    width: 15em;
     display: block;
     margin-right: auto;
     margin-left: auto; 
@@ -176,7 +185,7 @@ a{
     text-align: center;  
     color: #FFFFFF;
     font-family: var(--fonte-geral);
-    font-size: 20px;
+    font-size: 15px;
     margin-bottom: 25px;
    }
 
@@ -203,5 +212,17 @@ a{
   .menina-lemos{
     display:flex;
     width: 40%;
+  }
+
+  .rodape{
+    background-color: #085560;
+    text-align: center;
+    padding: 10px 0px 10px;
+    /* margin-top: 30px; */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 5%;
+    margin-top: 20px;
   }
 }
