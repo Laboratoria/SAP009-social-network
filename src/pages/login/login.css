@@ -11,7 +11,7 @@
 
 }
 .logo-escrita-clara{
-    width: 200px;
+    width: 50%;
     margin: 30px;
 }
 
@@ -101,7 +101,7 @@ h1 {
 }
 
 .btn-cadastrar{
-    width: 357px;
+    width: 240px;
     height: 47px;
     border: none;
     border-radius: 10px;
