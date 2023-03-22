@@ -1,5 +1,10 @@
-// Este es el punto de entrada de tu aplicacion
+// import { myFunction } from '../lib/index.js';
+import headers from './components/headers/header-initial';
 
-import { myFunction } from '../lib/index.js';
+const main = document.querySelector('#root');
 
-myFunction();
+window.addEventListener('load', () => {
+  main.appendChild(headers());
+});
+
+// myFunction();
