@@ -1,0 +1,44 @@
+
+header{
+    width: 100%;
+}
+.header-initial{
+    display: flex;
+    background: #004AAD;
+    width: 102%;
+    height: 70px;
+    top: 0px;
+    position: fixed;
+
+}
+.header-nav{
+    width: 100%;
+}
+.header-nav ul{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    align-content: center;
+    width: 100%;
+}
+#logo-icon{
+    position: absolute;
+    width: 77px;
+    height: 55px;
+    top: 7px;
+}
+#header-btn{
+    position: absolute;
+    width: 87px;
+    height: 32px;
+    top: 20px;
+    background: #EF681A;
+    border-radius: 10px;
+    right: 10%;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    color: #004AAD;
+    border: 1px solid #F0EBE8(30, 30, 30, 0.2);
+}
