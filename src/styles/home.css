@@ -1,0 +1,133 @@
+.home-section {
+    width: 100%;
+    height: 100%;
+}
+.home-main {
+    background: #F0EBE8;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/*logo principal*/
+#logo-complete{
+    position: relative;
+    width: 20em;
+    height: 12em;
+    top: 93px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    display: flex;
+}
+
+.home-initial-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 35%;
+}
+
+/*título principal em azul*/
+.home-initial-text h1 {
+    position: absolute;
+    height: 118px;
+    top: 261px;
+    font-size: 2em;
+    line-height: 39px;
+    color: #004AAD;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*título secundário em laranja*/
+.home-initial-text h2 {
+    position: absolute;
+    height: 118px;
+    top: 365px;
+    font-size: 1.75em;
+    line-height: 34px;
+    text-align: center;
+    color: #EF681A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*div de todas as duplas img e texto*/
+.main-content-home {
+    width: 70%;
+    flex-direction: column;
+    display: flex;
+    position: relative;
+    margin-left: 3em;
+    margin-right: auto;
+}
+
+/* divs de cada ícone e texto*/
+.icons-text-home {
+    width: 100%;
+    height: 50px;
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+/*texto ao lado dos ícones*/
+.text-home {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    left: 85px;
+    display: flex;
+    font-size: 1.25em;
+    line-height: 24px;
+    color: #000000; 
+    align-items: center;  
+    text-align: justify;
+}
+
+/*ícones ao lado dos textos*/
+.icons-home {
+    position:absolute;
+    width: 40px;
+    height: 40px;
+}
+
+/* div botão*/
+#button-home {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    display: grid;
+    justify-items: center;
+    margin-top: 3em;
+}
+
+/* texto do botão*/
+#sign-in-home-button {
+    position: absolute;
+    width: 150px;
+    height: 60px;
+    color: #004AAD;
+    background: #EF681A;
+    border-radius: 10px;
+    border: 1px solid #F0EBE8(30, 30, 30, 0.2);
+    backdrop-filter: blur(2px);
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 15px;
+}
+

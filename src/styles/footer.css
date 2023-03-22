@@ -29,7 +29,7 @@ footer h1 {
 }
 
 footer {
-    position: fixed;
+    position: relative;
     bottom: 0;
     background-color: #004AAD;
     width: 100%;
