@@ -1,5 +1,7 @@
-// Este es el punto de entrada de tu aplicacion
+import footer from "./components/footer.js";
 
-import { myFunction } from '../lib/index.js';
+const main = document.querySelector("#root");
 
-myFunction();
+window.addEventListener("load", () => {
+  main.appendChild(footer());
+});
