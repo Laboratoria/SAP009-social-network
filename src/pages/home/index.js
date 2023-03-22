@@ -1,4 +1,4 @@
-
+import { fazerLogin } from '../../auth';
 export default () => {
   const container = document.createElement('div');
 
@@ -23,5 +23,23 @@ export default () => {
     `;
 
   container.innerHTML = template;
+  const loginEmail = container.querySelector('#email-login');
+  console.log(loginEmail);
+
+  const loginSenha = container.querySelector('#senha-login');
+  console.log(loginSenha);
+
+  const botaoEntrar = container.querySelector('.botao-entrar');
+  console.log(botaoEntrar);
+
+  botaoEntrar.addEventListener('click', () => {
+    const email = loginEmail.value;
+    const senha = loginSenha.value;
+    fazerLogin(email, senha);
+    console.log(email, senha)
+});
+
+
   return container;
 };
+

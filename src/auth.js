@@ -21,10 +21,9 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-// onAuthStateChanged(auth, user => { /* check status */ });
 
-export function fazerLogin(email, senha) {
-  signInWithEmailAndPassword(auth, email, senha)
+export function fazerLogin(email, password) {
+  signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
       console.log(user);
@@ -35,14 +34,6 @@ export function fazerLogin(email, senha) {
       console.log(errorCode, errorMessage);
     });
 }
-
-// export const loginEmailSenha = async () => {
-//   const usuarioCadastro = await signInWithEmailAndPassword(auth, loginEmail, loginSenha);
-//   return usuarioCadastro;
-// }
-
-//loginBotao.addEventListener('click', loginEmailSenha);
-
 
 // createUserWithEmailAndPassword(auth, 'teste@gmail.com', '123456')
 //   .then((userCredential) => {
