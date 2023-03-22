@@ -53,27 +53,21 @@ export async function createUserWithEmail(email, password, name) {
   return new Promise((resolve, reject) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
-        console.log('email-criado');
         console.log(userCredential);
        // const user = userCredential.user;
         resolve(true);
           const user = {
           email: email,
           name: name,
-                };
-      
+                };      
         setDoc(doc(db, 'users', auth.currentUser.uid), user);
         updateProfile(auth.currentUser, { displayName: name });
         })
       .catch((error) => {
-        console.log('email-nao-criado');
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorMessage);
-        reject(false);
-        // ..
-      })
+        reject(errorMessage);
+        })
       .finally(() => {
         console.log('Processo de criação de conta finalizado em auth.');
       });

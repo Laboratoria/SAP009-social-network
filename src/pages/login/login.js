@@ -60,8 +60,6 @@ export default () => {
     signIn(email, password)
       .then((isAuthenticated) => {
         console.log(isAuthenticated);
-      
-        console.log('Usuário autenticado!');
         window.location.replace('#timeline');
     
       })

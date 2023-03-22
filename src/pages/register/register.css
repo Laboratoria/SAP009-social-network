@@ -20,3 +20,7 @@ h1 {
     color:#04ddcc;
     padding-bottom: 3rem;
 }
+
+.label-error {
+    color: #FF4F5A ;
+}
