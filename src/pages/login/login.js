@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { signIn, loginGoogle, authStateChanged, userLogged  } from '../../firebase/auth.js';
+import { showErrorMessage } from '../errorHandling.js';
 
 export default () => {
   const container = document.createElement('div');
@@ -7,10 +8,12 @@ export default () => {
 
   const template = `
     <div class= "form-wrapper">
-    <div class= "div-logo">
-    <img src="./assets/conectadas-logo.png" id="ada-logo" class="logo-image" alt="logo da ConectAda">
+      <div class= "div-logo">
+        <img src="./assets/conectadas-logo.png" id="ada-logo" class="logo-image" alt="logo da ConectAda">
       </div>
-
+      <div>
+        <label id='error-label' class='label-error'>op</label>
+      </div> 
       <form>
         <div>
           <input type="email" name="email" id="email" class="input" placeholder="Digite seu e-mail">
@@ -28,48 +31,50 @@ export default () => {
         </div>
 
         <div class="google-div">
-        <button type="button" id="google-button" class="google-btn">
-        <p>ou continue com o</p> 
-        <img src="./assets/googleLogoPB.png" class="google-logo" alt="logo do Google">
-    </button>
+          <button type="button" id="google-button" class="google-btn">
+          <p>ou continue com o</p> 
+          <img src="./assets/googleLogoPB.png" class="google-logo" alt="logo do Google">
+          </button>
         </div>
 
         <div class="register-div">
-        <p>Não tem uma conta?</p>
-        <a id="register-link" href="#register">Registre-se</a>        
+          <p>Não tem uma conta?</p>
+          <a id="register-link" href="#register">Registre-se</a>        
         </div> 
-
       </form>
     </div>
   `;
 
-  container.innerHTML = template;
-
- 
+  container.innerHTML = template; 
   
   const loginButton = container.querySelector('#login-button');
   const emailInput = container.querySelector('#email');
   const passwordInput = container.querySelector('#password');
   const loginWithGoogle = container.querySelector('#google-button');
+  const errorLabel = container.querySelector('#error-label');
 
-  // Adiciona um listener de evento no botão de login
   loginButton.addEventListener('click', () => {
     const email = emailInput.value;
     const password = passwordInput.value;
 
-    signIn(email, password)
-      .then((isAuthenticated) => {
-        console.log(isAuthenticated);
-        window.location.replace('#timeline');
-    
-      })
-      .catch((error) => {
-        console.log('Usuário não autenticado.');
-        window.location.replace('#login');
-      })
-      .finally(() => {
-        console.log('Processo de autenticação finalizado em login.');
-      });
+    if (email !== '' && password !== '') {
+      signIn(email, password)
+        .then((isAuthenticated) => {
+          console.log(isAuthenticated);
+          window.location.replace('#timeline');    
+        })
+        .catch((error) => {
+          console.log(error);
+          showErrorMessage(error);
+          window.location.replace('#login');
+        })
+        .finally(() => {
+          console.log('Processo de autenticação finalizado em login.');
+        });
+      }
+    else {
+      errorLabel.innerHTML = 'Preencha todos os campos';
+    }
   });
 
   loginWithGoogle.addEventListener('click', () => {

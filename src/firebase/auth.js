@@ -86,7 +86,7 @@ export function signIn(email, password) {
       })
       .catch((error) => {
         console.log(error.message);
-        reject(new Error(error.message));
+        reject(error.message);
       })
       .finally(() => {
         console.log('Processo de login finalizado em auth.');
