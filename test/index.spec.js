@@ -26,7 +26,7 @@ describe('signIn', () => {
   });
  // jest.clearAllMocks();
   it('returns error when user email is invalid', async () => {
-    const mockedError = 'auth/user-not-found';
+    const mockedError = 'Error: Firebase: Error (auth/user-not-found).';
     signInWithEmailAndPassword.mockRejectedValueOnce({ message: mockedError });
     try {
       await signIn('invalid-email', 'password');
@@ -34,12 +34,12 @@ describe('signIn', () => {
     //  console.log(error);
       expect(signInWithEmailAndPassword).toHaveBeenCalledTimes(2);
       expect(signInWithEmailAndPassword).toHaveBeenCalledWith(undefined, 'invalid-email', 'password'); // CALLS 2 TIMES. PQ???
-      expect(error).toEqual(new Error(mockedError));      
+      expect(error).toEqual(mockedError);      
     }
   });
   //jest.clearAllMocks();
   it('returns error when user password is invalid', async () => {
-    const mockedError = 'auth/wrong-password';
+    const mockedError = 'Error: Firebase: Error (auth/wrong-password).';
     signInWithEmailAndPassword.mockRejectedValueOnce({ message: mockedError});
     try {
       await signIn('valid-email', 'invalid-password');
@@ -47,7 +47,7 @@ describe('signIn', () => {
       console.log(error);
       expect(signInWithEmailAndPassword).toHaveBeenCalledTimes(3); //entendi, mas devia?
       expect(signInWithEmailAndPassword).toHaveBeenCalledWith(undefined, 'valid-email', 'invalid-password'); // CALLS 2 TIMES. PQ???
-      expect(error).toEqual(new Error(mockedError));
+      expect(error).toEqual(mockedError);
     }
   });  
 });
