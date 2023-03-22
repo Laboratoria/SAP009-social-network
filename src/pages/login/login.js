@@ -1,5 +1,4 @@
 import { fazerLogin } from '../../auth';
-
 export default () => {
   const container = document.createElement('div');
 
