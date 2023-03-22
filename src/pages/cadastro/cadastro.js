@@ -65,8 +65,7 @@ const cadastro = () => {
         || inputEmail === '' || inputSenha === ''
           || telefone === '' || filhx.value === '') {
       form.reportValidity();
-    }
-    else if (inputSenha.value.length < 6) {
+    } else if (inputSenha.value.length < 6) {
       alert('sua senha precisa ter mais de 6 digítos');
     }
     // else if (dataNascimento.value !== maiorDe18()) {
