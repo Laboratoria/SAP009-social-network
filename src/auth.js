@@ -1,8 +1,5 @@
-import './pages/login/index.js';
-import './index';
 import { initializeApp } from 'firebase/app';
-import { getAuth, createUserWithEmailAndPassword, signInWithCredential, signInWithEmailAndPassword } from 'firebase/auth';
-//import { loginEmail, loginSenha, loginBotao } from './ui';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -21,10 +18,9 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-// onAuthStateChanged(auth, user => { /* check status */ });
 
-export function fazerLogin(email, senha) {
-  signInWithEmailAndPassword(auth, email, senha)
+export function fazerLogin(email, password) {
+  signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
       console.log(user);
@@ -35,14 +31,6 @@ export function fazerLogin(email, senha) {
       console.log(errorCode, errorMessage);
     });
 }
-
-// export const loginEmailSenha = async () => {
-//   const usuarioCadastro = await signInWithEmailAndPassword(auth, loginEmail, loginSenha);
-//   return usuarioCadastro;
-// }
-
-//loginBotao.addEventListener('click', loginEmailSenha);
-
 
 // createUserWithEmailAndPassword(auth, 'teste@gmail.com', '123456')
 //   .then((userCredential) => {
