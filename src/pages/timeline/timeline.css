@@ -10,9 +10,14 @@ h1 {
     text-align: center;
 }
 
+.greeting {
+    color: #323232;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
 p {
     color: #FFF;
-    font-size: 1rem;
 }
 
 .container-timeline { 
@@ -21,13 +26,13 @@ p {
     align-items: center;
     height: 100vh;
     flex-direction: column;
-  
+    background-color: #e8e8e8;
 }
 
 .header-site{
-    background-color:#04DDCC;
-   display: flex;
-   width: 80vw;
+    background-color:#323232;
+    display: flex;
+    width: 100vw;
     height: 10vh;
     
     align-items: center;
@@ -38,8 +43,8 @@ p {
 }
 
 .logo-image-timeline {
-    width: 14rem;
-    padding: 1rem;
+  
+    padding-left: 1rem;
 }
 
 /* .div-logo-timeline {
@@ -48,4 +53,14 @@ p {
 
 .menu {
     padding-right: 1rem;
+}
+
+.form-wrapper-timeline {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+  
+    margin: 0 auto;
+    align-items: left;
+    padding-bottom: 10rem;
 }

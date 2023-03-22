@@ -22,13 +22,15 @@ export default () => {
   container.appendChild(header);
 
   const template = `
-    <div class="form-wrapper">
+    <div class="form-wrapper-timeline">
        <div>        
-        <p>Olá, ${user.displayName}</p>
-        <p>${user.email}</p>
+        <p class="greeting">Olá,</p> 
+        <p class="greeting">${user.displayName}</p>
+    
       </div>
-      <div> <button type="button" id="logout-button" class="button logout-btn" href="#login">Sair</button></div>
+      
     </div>
+    <div> <button type="button" id="logout-button" class="button logout-btn" href="#login">Sair</button></div>
   `;
 
   container.innerHTML += template;

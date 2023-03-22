@@ -5,7 +5,7 @@ export default function createHeader() {
   const template = `
      
         <div class= "div-logo-timeline">
-          <img src="./assets/conectadas-logo.png" id="ada-logo" class="logo-image-timeline" alt="logo da ConectAda">
+          <img src="./assets/logo-horizontal.png" id="ada-logo-timeline" class="logo-image-timeline" alt="logo da ConectAda">
         </div>
         <div class="menu">
         <p>Menu</p>
