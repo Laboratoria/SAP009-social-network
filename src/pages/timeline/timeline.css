@@ -11,6 +11,13 @@
     padding: 0px;
 }
 
+.black-bg {
+    background-color: rgba(0, 9, 14, 0.9);
+    margin: 1rem 1.5rem 1rem 1.5rem;
+    height: 40rem;
+    border-radius: .5rem;
+}
+
 header {
     background-color: #000000; 
 }
@@ -43,6 +50,7 @@ nav > ul > li > a {
     background-color: #38EB8D;
     text-align: center;
     font-weight: bold;
+    margin-top: 2rem;
 }
 
 #close-modal {
@@ -177,6 +185,7 @@ div.single-input .input:valid ~ label {
 }
 
 #post-button {
+    display: flex;
     background-color: #00B154;
     color: #FFF;
     font-weight: bold;
@@ -191,4 +200,13 @@ div.single-input .input:valid ~ label {
 
 #post-button:active {
     opacity: 0.8;
+}
+
+@media screen and (min-width: 1024px) {
+    .black-bg {
+        background-color: rgba(0, 9, 14, 0.9);
+        margin: 2% 20% 2% 20%;
+        /* margin: 1rem 20rem 1rem 20rem; */
+        height: 40rem;
+    }
 }

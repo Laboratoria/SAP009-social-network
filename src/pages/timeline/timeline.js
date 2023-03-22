@@ -16,7 +16,7 @@ export default () => {
       </nav>
     </header>
 
-    <main>
+    <main class="black-bg">
       <button id="open-modal">Recomende seu anime aqui!</button>
       <div id="fade" class="hide"></div>
       <div id="modal" class="hide">
