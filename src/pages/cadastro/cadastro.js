@@ -67,11 +67,9 @@ const cadastro = () => {
       form.reportValidity();
     } else if (inputSenha.value.length < 6) {
       alert('sua senha precisa ter mais de 6 digítos');
-    }
-    // else if (dataNascimento.value !== maiorDe18()) {
+    } // else if (dataNascimento.value !== maiorDe18()) {
     //   alert('Infelizmente vc não pode acessar essa plataforma/rede social, ela é destinada para maiores de 18 anos por fazer apologia e incentivar o uso de bebida alcoólica');
     // }
-
     else {
       criarCadastro(inputEmail.value, inputSenha.value)
         .then(() => {

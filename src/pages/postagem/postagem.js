@@ -1,3 +1,5 @@
+import { observador, sair } from "../../firebase/firebase";
+
 const postagem = () => {
   const criarPostagem = document.createElement('div');
   const template = `
@@ -37,7 +39,13 @@ const postagem = () => {
 
   criarPostagem.innerHTML = template;
 
-// botaosair 
+  const btnSair = criarPostagem.querySelector('.btn-sair');
+
+  observador();
+
+  btnSair.addEventListener('click', () => {
+    sair();
+  });
 
   return criarPostagem;
 };

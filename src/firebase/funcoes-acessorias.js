@@ -2,7 +2,7 @@ export function maiorDe18() { // parametro não ta sendo aceito pq tem mesmo nom
   // verificar se é maior de 18
   const criaCadastro = document.createElement('section');
   const nascimento = criaCadastro.querySelector('#data');
-  const dataNascimento = '08-12-2011';
+  const dataNascimento = '08-12-2011' || nascimento.value;
   const dataAtual = new Date();
   console.log(dataAtual);
 

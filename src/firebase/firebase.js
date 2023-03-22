@@ -4,7 +4,7 @@
 /* eslint-disable max-len */
 import { app } from './firebase.config.js';
 // eslint-disable-next-line no-unused-vars, import/order, object-curly-newline
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, sendEmailVerification, GoogleAuthProvider, deleteUser, signInWithPopup } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, sendEmailVerification, GoogleAuthProvider, deleteUser, signInWithPopup, signOut } from 'firebase/auth';
 // Inicialize o Firebase Authentication e obtenha uma referência para o serviço
 const auth = getAuth(app);
 
@@ -42,6 +42,7 @@ export function observador() { // CHAMEI no login ver como funciona
     // O usuário está conectado, consulte os documentos para obter uma lista de propriedades disponíveis;
     // https://firebase.google.com/docs/reference/js/firebase.User
       const uid = user.uid;
+      console.log(uid);
     } else {
       // O usuário está desconectado
     }
@@ -82,6 +83,14 @@ export function loginComGoogle() {
       console.log(credential);
     });
   // após fazer a validação do google precisa mandar para pg de login com o firebase ou pode ser com windonw location hash?
+}
+
+export function sair() {
+  return signOut(auth).then(() => {
+    // saiu
+  }).catch((error) => {
+    console.log(error);
+  });
 }
 
 export function deletarUsuaria() {
