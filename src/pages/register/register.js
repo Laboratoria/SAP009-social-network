@@ -5,7 +5,7 @@ export default () => {
   const container = document.createElement('div');
   container.classList.add('container');
   const template = `
-  <div class='form-wrapper-register'>  
+  <div class='form-wrapper'>  
   <div class= "div-logo">
   <div>
     <img src="./assets/logo-icon.png" id="ada-icon" class="logo-icon" alt="icone da ConectAda">

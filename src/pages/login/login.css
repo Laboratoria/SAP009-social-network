@@ -23,7 +23,7 @@ body {
   }
   
   .div-logo {
-    padding-bottom: 3rem;
+    padding-bottom: 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -63,7 +63,7 @@ body {
     background-color: #04ddcc;
     color: #1e1e1e;
     font-weight: bolder;
-    width: 15rem;
+    width: 16rem;
     cursor: pointer;
     transition: background-color 0.2s ease;
   }
@@ -85,6 +85,7 @@ body {
   .google-div p {
     color: #7d7d7d;
     padding-bottom: 0.1rem;
+    margin: 0;
   }
   
   .google-btn {
