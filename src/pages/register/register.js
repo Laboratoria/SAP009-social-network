@@ -6,9 +6,14 @@ export default () => {
   container.classList.add('container');
   const template = `
   <div class='form-wrapper-register'>  
-    <div class= 'div-logo'>
-      <img src='./assets/conectadas-logo.png' id='ada-logo' class='logo-image' alt='logo da ConectAda'>
+  <div class= "div-logo">
+  <div>
+    <img src="./assets/logo-icon.png" id="ada-icon" class="logo-icon" alt="icone da ConectAda">
     </div>
+    <div>
+    <img src="./assets/conectadas-logo.png" id="ada-logo" class="logo-image" alt="logo da ConectAda">
+    </div>
+  </div>
     <h1>Crie sua conta</h1>
     <div>
       <label id='error-label' class='label-error'></label>

@@ -9,10 +9,15 @@ export default () => {
   const template = `
     <div class= "form-wrapper">
       <div class= "div-logo">
+      <div>
+        <img src="./assets/logo-icon.png" id="ada-icon" class="logo-icon" alt="icone da ConectAda">
+        </div>
+        <div>
         <img src="./assets/conectadas-logo.png" id="ada-logo" class="logo-image" alt="logo da ConectAda">
+        </div>
       </div>
       <div>
-        <label id='error-label' class='label-error'>op</label>
+        <label id='error-label' class='label-error'></label>
       </div> 
       <form>
         <div>
@@ -90,12 +95,9 @@ export default () => {
       .finally(() => {
         console.log('Processo de autenticação do google  finalizado em login.');
       });
-  });
-
-  
+  });  
 
   return container;
 };
-
 
 authStateChanged();
