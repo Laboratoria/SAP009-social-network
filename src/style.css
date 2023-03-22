@@ -5,8 +5,7 @@
 * {
     margin: 0;
     padding: 0;
-    /* box-sizing: border-box; */
-}
+  }
 
 :root{
   --fonte-geral: 'Mulish';
@@ -73,7 +72,7 @@ a{
 .descricao{
   font-size: 18px;
   padding: 15px;
-  max-width: 500px;
+  /* max-width: 500px; */
   text-align: center;
   margin-bottom: 21px;
   font-weight: bold;
@@ -155,7 +154,7 @@ a{
 .rodape{
   background-color: #085560;
   text-align: center;
-  /* padding: 10px; */
+  padding: 10px 0px 10px;
   /* margin-top: 30px; */
   position: fixed;
   bottom: 0;
@@ -205,5 +204,4 @@ a{
     display:flex;
     width: 40%;
   }
-  
 }

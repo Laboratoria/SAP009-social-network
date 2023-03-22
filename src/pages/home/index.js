@@ -1,7 +1,7 @@
-import { fazerLogin } from "../../auth";
 
 export default () => {
   const container = document.createElement('div');
+
   const template = ` 
     <div class="conteudo-login">
     <div class = "figura-menina-texto">
@@ -10,10 +10,10 @@ export default () => {
     </div>
     <form class="form-login">
         <h1 class="titulo-login">Login</h1>
-        <input type="email" class="email-login" id="emailLogin" placeholder="E-MAIL" required><br>
-        <input type="password" class="senha-login" id="senhaLogin" placeholder="SENHA" required><br>
+        <input type="text" class="email-login" id="email-login" placeholder="E-MAIL" required><br>
+        <input type="password" class="senha-login" id="senha-login" placeholder="SENHA" required><br>
         <p class="texto-senha"> Esqueci a senha </p>
-        <button type="submit" class="botao-entrar" id="botaoEntrar">Entrar</button>
+        <button type="submit" class="botao-entrar">Entrar</button>
         <p class="texto-ou"> ou </p>
         <img class="botao-google" src="imagens/figura-google.png">
         <p class="texto-cadastro">Ainda não faz parte? <br> Cadastre-se aqui!</p>
@@ -21,17 +21,7 @@ export default () => {
     
     </div>
     `;
-  container.innerHTML = template;
-  const loginEmail = container.querySelector('.emailLogin');
-const loginSenha = container.querySelector('.senhaLogin');
-const loginBotao = container.querySelector('.botaoEntrar');
 
-loginBotao.addEventListener('click', () => {
-  const email = loginEmail.value;
-  const senha = loginSenha.value;
-  fazerLogin(email, senha);
-});
+  container.innerHTML = template;
   return container;
 };
-
-
