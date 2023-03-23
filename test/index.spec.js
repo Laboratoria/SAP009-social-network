@@ -6,13 +6,14 @@ import {
   updateProfile,
   getAuth,
   signOut,
+  onAuthStateChanged,
 } from 'firebase/auth';
 
 import {
   // getFirestore,
   collection,
   addDoc,
-  // getDocs,
+  getDocs,
   // getDoc,
   deleteDoc,
   doc,
@@ -20,6 +21,7 @@ import {
   arrayUnion,
   arrayRemove,
   // getDocs,
+  db,
 } from 'firebase/firestore';
 
 import {
@@ -28,9 +30,9 @@ import {
   logarGoogle,
   redefinirSenha,
   criarPost,
-  // obterPosts,
+  obterPosts,
   // obterNomeUsuario,
-  // verificaUsuarioLogado,
+  verificaUsuarioLogado,
   deletarPost,
   editarPost,
   curtir,
@@ -52,6 +54,7 @@ jest.mock('firebase/auth', () => ({
   sendPasswordResetEmail: jest.fn(),
   updateProfile: jest.fn(),
   signOut: jest.fn(),
+  onAuthStateChanged: jest.fn(),
 }));
 
 jest.mock('firebase/firestore', () => ({
@@ -65,6 +68,8 @@ jest.mock('firebase/firestore', () => ({
   signOut: jest.fn(),
   addDoc: jest.fn(),
   collection: jest.fn(),
+  getDocs: jest.fn(),
+  db: jest.fn(),
 }));
 
 describe('firebase', () => {
@@ -147,12 +152,38 @@ describe('firebase', () => {
     expect(collection).toHaveBeenCalledTimes(1);
     await expect(collection).toHaveBeenCalledWith(undefined, 'posts');
   });
-
-  // obterPosts
+  // obter post
+  describe('obterPosts', () => {
+    it('deve retornar um array de posts', async () => {
+      getDocs.mockResolvedValue([
+        {
+          id: 'PwGTKDq5TzR072lIieVOUCEtwcP2',
+          data: () => ({ texto: 'Post 1' }),
+        },
+        {
+          id: 'Ii0jdAZ99BUQIpW9sCRNKavigUR2',
+          data: () => ({ texto: 'Post 2' }),
+        },
+      ]);
+      const posts = await obterPosts();
+      expect(posts).toEqual([
+        { id: 'PwGTKDq5TzR072lIieVOUCEtwcP2', texto: 'Post 1' },
+        { id: 'Ii0jdAZ99BUQIpW9sCRNKavigUR2', texto: 'Post 2' },
+      ]);
+      expect(getDocs).toHaveBeenCalledWith(collection(db, 'posts'));
+    });
+  });
 
   // obterNomeUsuario
 
   // verificaUsuarioLogado
+  describe('verificarUsuarioLogado', () => {
+    it('deve redirecionar para o feed se o usuário estiver logado', () => {
+      onAuthStateChanged.mockResolvedValue();
+      verificaUsuarioLogado();
+      expect(onAuthStateChanged).toHaveBeenCalledTimes(1);
+    });
+  });
 
   // botão de deletar
   describe('deletarPost', () => {
@@ -239,4 +270,5 @@ describe('firebase', () => {
       expect(signOut).toHaveBeenCalledTimes(1);
     });
   });
+  // redirecionarPagina
 });
