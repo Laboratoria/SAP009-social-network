@@ -1,10 +1,4 @@
-.logout-btn {
-    background-color: #FF4F5A;
-    border: none;
-    color: #FFF;
-    font-weight: bolder;
-    width: 16.5rem;
-}
+
 
 h1 {
     text-align: center;
@@ -26,6 +20,8 @@ h1 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1.5rem;
 }
 
 p {
@@ -34,19 +30,26 @@ p {
 
 .container-timeline { 
     display: flex;
-    justify-content: flex-start;
+    /* justify-content: flex-start; */
     align-items: center;
     height: 100vh;
+   
     flex-direction: column;
     background-color: #e8e8e8;
+    justify-items: center;
+    align-content: center;
+ 
+
 }
+
+
 
 .header-site{
     background-color:#323232;
     display: flex;
-    width: 100vw;
-    height: 10vh;
     
+    height: 15vh;
+    width: 100vw;
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
@@ -71,13 +74,29 @@ p {
     display: flex;
     flex-direction: column;
     width: 80vw;
-  
-    margin: 0 auto;
+    height: 50vh;
+    margin: 0;
     align-items: left;
     padding-bottom: 10rem;
+    /* background-color: blueviolet; */
+   
 }
 
 .post {
-    width: 30rem;
+    width: 18rem;
     background-color: aquamarine;
+    margin-bottom: 1.5rem;
+}
+
+.div-logout-btn {
+    display: flex;
+    justify-content: center;
+}
+
+.logout-btn {
+    background-color: #FF4F5A;
+    border: none;
+    color: #FFF;
+    font-weight: bolder;
+    width: 16.5rem;
 }

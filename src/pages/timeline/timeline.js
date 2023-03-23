@@ -5,7 +5,7 @@ import { createNewPost, getLoggedUserAllPosts } from '../../firestore/DBFunction
 
 export default () => {
   const user = auth.currentUser;
-  
+  // console.log(user);
   // if (user !== null) {
   //   const displayName = user.displayName;
   //   const email = user.email;
@@ -15,10 +15,10 @@ export default () => {
   //   console.log(email);
   // }
 
-  //TESTANDO FUNCAO MANUALMENTE
-  createNewPost('text example');
+  // TESTANDO FUNCAO MANUALMENTE
+  createNewPost('tegravou omdele');
 
-  //FUNCIONA
+  // FUNCIONA
   getLoggedUserAllPosts();
 
   const container = document.createElement('div');
@@ -40,7 +40,8 @@ export default () => {
       <div class="post">
       lalal
     </div>
-    <div> <button type="button" id="logout-button" class="button logout-btn" href="#login">Sair</button></div>
+
+    <div class="div-logout-btn"> <button type="button" id="logout-button" class="button logout-btn" href="#login">Sair</button></div>
   `;
 
   container.innerHTML += template;

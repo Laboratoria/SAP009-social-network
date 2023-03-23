@@ -1,8 +1,8 @@
+import { getDocs, collection, addDoc } from 'firebase/firestore';
+
 import { db } from './firestore.js';
-import {setDoc, doc , getDoc, getDocs, collection, addDoc } from 'firebase/firestore';
 
 import { auth } from '../firebase/auth';
-
 
 export const createNewPost = async (textPost) => {
   const post = {
@@ -12,8 +12,11 @@ export const createNewPost = async (textPost) => {
     message: 'fabicon',
 
   };
-  const docReference = await addDoc(collection(db, 'posts'), post);
-  post.id = docReference.id;
+  // grava o post com o UID na collection posts independente de users
+  // const docReference = await addDoc(collection(db, 'posts'), post);
+  const teste = await addDoc(collection(db, 'users', auth.currentUser.uid, 'posts'), post);
+  post.id = teste.id;
+  // post.id = docReference.id;
   return post;
 };
 
