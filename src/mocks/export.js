@@ -11,7 +11,8 @@ export const mockAuth = {
     uid: 'abc123',
     email: 'teste@teste.com',
     password: '12345678',
-    nomeTutor: 'teste',
-    nomeCao: 'luigi',
+    nomeTutor: 'João',
+    nomeCao: 'Luigi',
   },
 };
+export const signOut = jest.fn();
