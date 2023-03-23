@@ -150,7 +150,6 @@ describe('firebase', () => {
 
   // obterPosts
 
-
   // obterNomeUsuario
 
   // verificaUsuarioLogado
