@@ -5,12 +5,13 @@ import {
   sendPasswordResetEmail,
   updateProfile,
   getAuth,
+  signOut,
 } from 'firebase/auth';
 
 import {
   // getFirestore,
-  // collection,
-  // addDoc,
+  collection,
+  addDoc,
   // getDocs,
   // getDoc,
   deleteDoc,
@@ -18,22 +19,30 @@ import {
   updateDoc,
   arrayUnion,
   arrayRemove,
+  // getDocs,
 } from 'firebase/firestore';
 
 import {
-  criarUsuario,
   autenticarUsuario,
+  criarUsuario,
   logarGoogle,
   redefinirSenha,
+  criarPost,
+  // obterPosts,
+  // obterNomeUsuario,
+  // verificaUsuarioLogado,
   deletarPost,
+  editarPost,
   curtir,
   descurtir,
-  editarPost,
+  sair,
 } from '../src/firebase/firebase';
 
 jest.mock('firebase/auth', () => ({
   getAuth: jest.fn(() => ({
     currentUser: {
+      uid: '5555',
+      displayName: 'Usuário de teste',
     },
   })),
   GoogleAuthProvider: jest.fn(),
@@ -42,6 +51,7 @@ jest.mock('firebase/auth', () => ({
   signInWithPopup: jest.fn(),
   sendPasswordResetEmail: jest.fn(),
   updateProfile: jest.fn(),
+  signOut: jest.fn(),
 }));
 
 jest.mock('firebase/firestore', () => ({
@@ -52,136 +62,181 @@ jest.mock('firebase/firestore', () => ({
   arrayUnion: jest.fn(),
   arrayRemove: jest.fn(),
   setDoc: jest.fn(),
+  signOut: jest.fn(),
+  addDoc: jest.fn(),
+  collection: jest.fn(),
 }));
 
-// função de autenticar usuário
-describe('autenticarUsuario', () => {
-  it('deve ser uma função', () => {
-    expect(typeof autenticarUsuario).toBe('function');
+describe('firebase', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
   });
-  it('autentica dados do login e libera a página do feed ', async () => {
-    signInWithEmailAndPassword.mockResolvedValue();
-    await autenticarUsuario('teste@teste.com', '123456');
-    expect(signInWithEmailAndPassword).toHaveBeenCalledTimes(1);
-  });
-});
 
-// função de criar usuário
-
-describe('criarUsuario', () => {
-  it('a função deve criar uma conta de usuário utilizando o seu nome, email e senha', async () => {
-    const mockGetAuth = {
-      currentUser: {},
-    };
-
-    getAuth.mockReturnValueOnce(mockGetAuth);
-    createUserWithEmailAndPassword.mockResolvedValueOnce();
-
-    const email = 'bella@gmail.com';
-    const senha = '12345678';
-    const nomeTutor = 'bella';
-    const nomeCao = 'bello';
-    await criarUsuario(email, senha, nomeTutor, nomeCao);
-
-    expect(createUserWithEmailAndPassword).toHaveBeenCalledTimes(1);
-    expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(mockGetAuth, email, senha);
-    expect(updateProfile).toHaveBeenCalledTimes(1);
-    expect(updateProfile).toHaveBeenCalledWith(mockGetAuth.currentUser, {
-      displayName: nomeTutor,
+  // função de autenticarUsuario
+  describe('autenticarUsuario', () => {
+    it('deve ser uma função', () => {
+      expect(typeof autenticarUsuario).toBe('function');
+    });
+    it('autentica dados do login e libera a página do feed ', async () => {
+      signInWithEmailAndPassword.mockResolvedValue();
+      await autenticarUsuario('teste@teste.com', '123456');
+      expect(signInWithEmailAndPassword).toHaveBeenCalledTimes(1);
     });
   });
-});
 
-// logar com o google
-describe('logarGoogle', () => {
-  it('a função deve logar usuário com a sua conta google', () => {
-    signInWithPopup.mockResolvedValue();
-    logarGoogle();
-    expect(signInWithPopup).toHaveBeenCalledTimes(1);
-  });
-});
+  // função de criar usuário
 
-// redefinir senha
-describe('redefinirSenha', () => {
-  it('a função deve logar usuário com a sua conta google', () => {
-    sendPasswordResetEmail.mockResolvedValue();
-    redefinirSenha();
-    expect(sendPasswordResetEmail).toHaveBeenCalledTimes(1);
-  });
-});
+  describe('criarUsuario', () => {
+    it('a função deve criar uma conta de usuário utilizando o seu nome, email e senha', async () => {
+      createUserWithEmailAndPassword.mockResolvedValueOnce();
 
-// botão de deletar
-describe('deletarPost', () => {
-  it('deve ser uma função', () => {
-    expect(typeof deletarPost).toBe('function');
-  });
-  it('a função deve deletar uma publicação a partir do id do usuário', () => {
-    const mockPostRef = {};
-    const mockPostColecao = {
-      posts: {
-        postId: '1234',
-      },
-    };
+      const email = 'teste@teste.com';
+      const senha = '12345678';
+      const nomeTutor = 'João';
+      const nomeCao = 'Luigi';
+      await criarUsuario(email, senha, nomeTutor, nomeCao);
 
-    doc.mockReturnValueOnce(mockPostRef);
-    deleteDoc.mockResolvedValueOnce(mockPostRef);
+      expect(createUserWithEmailAndPassword).toHaveBeenCalledTimes(1);
+      expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(getAuth(), email, senha);
+      expect(updateProfile).toHaveBeenCalledTimes(1);
+      expect(updateProfile).toHaveBeenCalledWith(getAuth().currentUser, { displayName: nomeTutor });
+    });
+  });
 
-    deletarPost(mockPostColecao.posts.postId);
+  // logar com o google
+  describe('logarGoogle', () => {
+    it('a função deve logar usuário com a sua conta google', () => {
+      signInWithPopup.mockResolvedValue();
+      logarGoogle();
+      expect(signInWithPopup).toHaveBeenCalledTimes(1);
+    });
+  });
 
-    expect(doc).toHaveBeenCalledTimes(1);
-    expect(doc).toHaveBeenCalledWith(undefined, 'posts', mockPostColecao.posts.postId);
-    expect(deleteDoc).toHaveBeenCalledTimes(1);
-    expect(deleteDoc).toHaveBeenCalledWith(mockPostRef);
+  // redefinir senha
+  describe('redefinirSenha', () => {
+    it('a função deve logar usuário com a sua conta google', () => {
+      sendPasswordResetEmail.mockResolvedValue();
+      redefinirSenha();
+      expect(sendPasswordResetEmail).toHaveBeenCalledTimes(1);
+    });
   });
-});
 
-// botão de curtir
-describe('curtir', () => {
-  it('deve ser uma função', () => {
-    expect(typeof curtir).toBe('function');
-  });
-  it('a função deve adicionar uma curtida no post', () => {
-    curtir('testIdPost', 'testUserName');
-    expect(arrayUnion).toHaveBeenCalledTimes(1);
-    expect(arrayUnion).toHaveBeenCalledWith('testUserName');
-    expect(updateDoc).toHaveBeenCalledTimes(1);
-    expect(updateDoc).toHaveBeenCalledWith(undefined, { likes: undefined });
-  });
-});
+  // criarPost
 
-// descurtir
-describe('descurtir', () => {
-  it('deve ser uma função', () => {
-    expect(typeof descurtir).toBe('function');
-  });
-  it('a função deve remover a curtida de um post', () => {
-    descurtir('testIdPost', 'testUserName');
-    expect(arrayRemove).toHaveBeenCalledTimes(1);
-    expect(arrayRemove).toHaveBeenCalledWith('testUserName');
-    expect(updateDoc).toHaveBeenCalledTimes(1);
-    expect(updateDoc).toHaveBeenCalledWith(undefined, { likes: undefined });
-  });
-});
+  it('deve criar um post e guardar na coleção', async () => {
+    addDoc.mockResolvedValueOnce({ id: '1234' });
+    const mockCollection = 'collection';
+    collection.mockReturnValueOnce(mockCollection);
 
-// editar
-describe('editarPost', () => {
-  it('deve ser uma função', () => {
-    expect(typeof editarPost).toBe('function');
-  });
-  it('a função deve editar uma publicação', () => {
-    const userId = 'id do usuario';
-    const postParaSerEditado = 'texto a ser editado';
-    const dataPostagem = '21/03/2023';
-    updateDoc.mockResolvedValue();
-    editarPost(userId, postParaSerEditado);
-    expect(doc).toHaveBeenCalledTimes(1);
-    expect(doc).toHaveBeenCalledWith(undefined, 'posts', userId);
-    expect(updateDoc).toHaveBeenCalledTimes(1);
-    expect(updateDoc).toHaveBeenCalledWith(undefined, {
-      texto: postParaSerEditado,
+    const texto = 'postagem teste';
+    const dataPostagem = new Date(Date.now()).toLocaleDateString();
+
+    const post = {
+      author: getAuth().currentUser.uid,
       data: dataPostagem,
+      nomeTutor: getAuth().currentUser.displayName,
+      texto,
+      likes: [],
+      id: '1234',
+    };
+
+    await criarPost(texto);
+
+    expect(addDoc).toHaveBeenCalledTimes(1);
+    expect(addDoc).toHaveBeenCalledWith(mockCollection, post);
+    expect(collection).toHaveBeenCalledTimes(1);
+    await expect(collection).toHaveBeenCalledWith(undefined, 'posts');
+  });
+
+  // obterPosts
+
+  // obterNomeUsuario
+
+  // verificaUsuarioLogado
+
+  // botão de deletar
+  describe('deletarPost', () => {
+    it('deve ser uma função', () => {
+      expect(typeof deletarPost).toBe('function');
+    });
+    it('a função deve deletar uma publicação a partir do id do usuário', () => {
+      const mockPostRef = {};
+      const mockPostColecao = {
+        posts: {
+          postId: '1234',
+        },
+      };
+
+      doc.mockReturnValueOnce(mockPostRef);
+      deleteDoc.mockResolvedValueOnce(mockPostRef);
+
+      deletarPost(mockPostColecao.posts.postId);
+
+      expect(doc).toHaveBeenCalledTimes(1);
+      expect(doc).toHaveBeenCalledWith(undefined, 'posts', mockPostColecao.posts.postId);
+      expect(deleteDoc).toHaveBeenCalledTimes(1);
+      expect(deleteDoc).toHaveBeenCalledWith(mockPostRef);
+    });
+  });
+
+  // editar
+  describe('editarPost', () => {
+    it('deve ser uma função', () => {
+      expect(typeof editarPost).toBe('function');
+    });
+    it('a função deve editar uma publicação', () => {
+      const userId = 'id do usuario';
+      const postParaSerEditado = 'texto a ser editado';
+      const dataPostagem = new Date(Date.now()).toLocaleDateString();
+      updateDoc.mockResolvedValue();
+      editarPost(userId, postParaSerEditado);
+      expect(doc).toHaveBeenCalledTimes(1);
+      expect(doc).toHaveBeenCalledWith(undefined, 'posts', userId);
+      expect(updateDoc).toHaveBeenCalledTimes(1);
+      expect(updateDoc).toHaveBeenCalledWith(undefined, {
+        texto: postParaSerEditado,
+        data: dataPostagem,
+      });
+    });
+  });
+
+  // botão de curtir
+  describe('curtir', () => {
+    it('deve ser uma função', () => {
+      expect(typeof curtir).toBe('function');
+    });
+    it('a função deve adicionar uma curtida no post', () => {
+      curtir('testIdPost', 'testUserName');
+      expect(arrayUnion).toHaveBeenCalledTimes(1);
+      expect(arrayUnion).toHaveBeenCalledWith('testUserName');
+      expect(updateDoc).toHaveBeenCalledTimes(1);
+      expect(updateDoc).toHaveBeenCalledWith(undefined, { likes: undefined });
+    });
+  });
+
+  // descurtir
+  describe('descurtir', () => {
+    it('deve ser uma função', () => {
+      expect(typeof descurtir).toBe('function');
+    });
+    it('a função deve remover a curtida de um post', () => {
+      descurtir('testIdPost', 'testUserName');
+      expect(arrayRemove).toHaveBeenCalledTimes(1);
+      expect(arrayRemove).toHaveBeenCalledWith('testUserName');
+      expect(updateDoc).toHaveBeenCalledTimes(1);
+      expect(updateDoc).toHaveBeenCalledWith(undefined, { likes: undefined });
+    });
+  });
+
+  // sair
+
+  describe('sair', () => {
+    it(' a função deve deslogar o usuario', () => {
+      signOut.mockResolvedValue({
+        user: {},
+      });
+      sair();
+      expect(signOut).toHaveBeenCalledTimes(1);
     });
   });
 });
-
-// sair

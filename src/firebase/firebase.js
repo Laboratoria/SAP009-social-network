@@ -74,12 +74,12 @@ async function logarGoogle() {
   };
 
   await setDoc(doc(db, 'usuarios', auth.currentUser.uid), usuarioGoogle);
-  redirecionarPagina('#feed');
 }
 
 // redefinir senha
 const redefinirSenha = (email) => sendPasswordResetEmail(auth, email);
 
+// criando um post
 const criarPost = async (textPost) => {
   const dataCriacao = Date.now();
   const dataAtual = new Date(dataCriacao);
