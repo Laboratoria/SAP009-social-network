@@ -2,9 +2,9 @@ export function maiorDe18(dataNascimento) {
   // verificar se é maior de 18
   const dataAtual = new Date();
   const idadeAtual = dataNascimento.split('-');
-  const anos = dataAtual.getFullYear() - idadeAtual[2];
-
-  if (anos >= 19) {
+  const anos = dataAtual.getFullYear() - idadeAtual[0];
+  console.log(anos, idadeAtual);
+  if (anos >= 18) {
     return true;
   }
   return false;

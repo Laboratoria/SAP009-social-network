@@ -13,19 +13,10 @@ export function criarCadastro(email, password) {
 }
 
 export function fazerLogin(email, password) {
-  return signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      console.log(user);
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode, errorMessage);
-    });
+  return signInWithEmailAndPassword(auth, email, password);
 }
 
-export function observador() { // CHAMEI no login ver como funciona
+export function observador() {
   onAuthStateChanged(auth, (user) => {
     console.log(user);
     if (user) {

@@ -64,12 +64,16 @@ const cadastro = () => {
     if (nome.value === '' || dataNascimento.value === ''
         || inputEmail === '' || inputSenha === ''
           || telefone === '' || filhx.value === '') {
+
       form.reportValidity();
     } else if (inputSenha.value.length < 6) {
+
       alert('sua senha precisa ter mais de 6 digítos');
     } else if (maiorDe18(dataNascimento.value) === false) {
+
       alert('Infelizmente vc não pode acessar essa plataforma/rede social, ela é destinada para maiores de 18 anos por fazer apologia e incentivar o uso de bebida alcoólica');
     } else {
+      console.log(dataNascimento.value);
       criarCadastro(inputEmail.value, inputSenha.value)
         .then(() => {
           console.log('cadastrou');
@@ -94,5 +98,3 @@ const cadastro = () => {
 };
 
 export default cadastro;
-
-

@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable indent */
 import { fazerLogin, loginComGoogle, observador } from '../../firebase/firebase';
+import { exibeErros } from '../../firebase/funcoes-acessorias';
 import postagem from '../postagem/postagem';
 
 const criarLogin = document.createElement('section');
@@ -48,17 +49,18 @@ const login = () => {
       fazerLogin(loginEmail.value, loginSenha.value)
       .then(() => {
         console.log('funciona');
-        window.location.hash = postagem(); // não tá indo
+        window.location.hash = '#postagem';
       }).catch((error) => {
         console.log(error);
         console.log('deu errado');
+        exibeErros(error);
       });
     }
   });
 
   btnGoogle.addEventListener('click', () => {
     loginComGoogle();
-    window.location.hash = postagem(); // colocar num then/catch?
+    window.location.hash = '#postagem';
   });
 
   return criarLogin;
