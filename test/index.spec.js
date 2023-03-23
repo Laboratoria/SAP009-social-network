@@ -69,7 +69,9 @@ describe('loginGoogle', () => {
    try {
      await loginGoogle('invalid-email', 'password');
    } catch (error) {
+    
      expect(signInWithPopup).toHaveBeenCalledTimes(2);
+     //jest.clearAllMocks();
      expect(signInWithPopup).toHaveBeenCalledWith(undefined, {}); // CALLS 2 TIMES. PQ???
 
      expect(error).toEqual(new Error(mockedError));      

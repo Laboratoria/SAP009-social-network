@@ -12,8 +12,20 @@ h1 {
 
 .greeting {
     color: #323232;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 700;
+}
+
+.greeting-name {
+    color: #323232;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.div-greeting-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 p {
@@ -63,4 +75,9 @@ p {
     margin: 0 auto;
     align-items: left;
     padding-bottom: 10rem;
+}
+
+.post {
+    width: 30rem;
+    background-color: aquamarine;
 }

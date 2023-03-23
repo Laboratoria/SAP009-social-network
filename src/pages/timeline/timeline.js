@@ -1,10 +1,11 @@
+import { } from 'firebase/firestore';
 import { LogOut, auth } from '../../firebase/auth.js';
-
 import createHeader from '../../components/header.js';
+import { createNewPost, getLoggedUserAllPosts } from '../../firestore/DBFunctions';
 
 export default () => {
   const user = auth.currentUser;
-
+  
   // if (user !== null) {
   //   const displayName = user.displayName;
   //   const email = user.email;
@@ -13,6 +14,12 @@ export default () => {
   //   const uid = user.uid;
   //   console.log(email);
   // }
+
+  //TESTANDO FUNCAO MANUALMENTE
+  createNewPost('text example');
+
+  //FUNCIONA
+  getLoggedUserAllPosts();
 
   const container = document.createElement('div');
   container.classList.add('container-timeline');
@@ -24,17 +31,19 @@ export default () => {
   const template = `
     <div class="form-wrapper-timeline">
        <div>        
-        <p class="greeting">Olá,</p> 
-        <p class="greeting">${user.displayName}</p>
-    
+          <p class="greeting">Olá,</p> 
+          <div class="div-greeting-button">
+            <p class="greeting-name">${user.displayName}</p>
+            <img src="./assets/bt-new-post.png" id="ada-logo" class="" alt="logo da ConectAda">
+          </div>
       </div>
-      
+      <div class="post">
+      lalal
     </div>
     <div> <button type="button" id="logout-button" class="button logout-btn" href="#login">Sair</button></div>
   `;
 
   container.innerHTML += template;
-
   const logoutButton = container.querySelector('#logout-button');
 
   logoutButton.addEventListener('click', () => {

@@ -8,47 +8,20 @@ import {
   signInWithPopup,
   signOut,
   onAuthStateChanged,
-  updateProfile
+  updateProfile,
+  
 } from 'firebase/auth';
 
-// meu app importado de app.js
+// app importado de app.js
 import { app } from './app.js';
 
-// variável executa a funcao getAuth em cima do nosso app
+// variável executa a funcao getAuth em cima do app
 export const auth = getAuth(app);
-//  console.log(auth);
-// const uid = auth.uid;
-// console.log(uid);
 import {db} from '../firestore/firestore.js';
-import {setDoc, doc , getDoc} from 'firebase/firestore';
+import {setDoc, doc , getDoc, getDocs, collection, addDoc } from 'firebase/firestore';
 export let userLogged = null;
 // funcao para abrigar a funcao de criar usuario com email e senha (da documentação do firebase)
-// export function createUserWithEmail(email, password) {
-//   return new Promise((resolve, reject) => {
-//     createUserWithEmailAndPassword(auth, email, password)
-//       .then((userCredential) => {
-//         // Signed in
-//         console.log('email-criado');
-//         console.log(userCredential);
-//         const user = userCredential.user;
-//         resolve(true);
 
-//         // ...
-//       })
-//       .catch((error) => {
-//         console.log('email-nao-criado');
-//         const errorCode = error.code;
-//         const errorMessage = error.message;
-
-//         console.log(errorMessage);
-//         reject(false);
-//         // ..
-//       })
-//       .finally(() => {
-//         console.log('Processo de criação de conta finalizado em auth.');
-//       });
-//   });
-// }
 export async function createUserWithEmail(email, password, name) {
   return new Promise((resolve, reject) => {
     createUserWithEmailAndPassword(auth, email, password)
@@ -64,7 +37,6 @@ export async function createUserWithEmail(email, password, name) {
         updateProfile(auth.currentUser, { displayName: name });
         })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
         reject(errorMessage);
         })
@@ -79,10 +51,7 @@ export function signIn(email, password) {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         userLogged = userCredential.user;
-        console.log(userLogged);
         resolve(true);
-      
-
       })
       .catch((error) => {
         console.log(error.message);
@@ -124,11 +93,7 @@ export function loginGoogle() {
 
 
 export function LogOut(user) {
-  console.log('oi');
-  console.log(userLogged);
-console.log(auth);
- 
-return signOut(auth).then(() => {
+ return signOut(auth).then(() => {
   console.log(`Logout: Logged in as ${user.email}`);
   return auth;
 }).catch((error) => {
@@ -147,38 +112,21 @@ export function authStateChanged(){
     }
   })};
 
+//  export const getUserData = async () => {
+//   const userReference = await getDoc(doc(db, 'users', auth.currentUser.uid));
+//   const messageRef = doc(db, "users", auth.currentUser.uid, "posts");
+//   console.log(userReference);
+//   console.log(messageRef);
 
-// export function LogOut() {
-//   return new Promise((resolve, reject) => {
-//     signOut(auth)
-//       .then(() => {
-//         console.log('Logout: No user');
-//         resolve();
-//       })
-//       .catch((error) => {
-//         console.log(`Logout: Logged in as ${auth.currentUser.email}`);
-//         reject(error);
-//       });
-//   });
-// // }
+//   const user = {
+//     uid: auth.currentUser.uid,
+//     displayName: auth.currentUser.displayName,
+//     email: userReference.data().email,
+//     name: userReference.data().name,    
+//   };
 
+//   console.log(user);
+//   return user;
+// }
 
-
- export const getUserData = async () => {
-  const usuarioRef = await getDoc(doc(db, 'users', auth.currentUser.uid));
-
-  console.log(auth.currentUser);
-  console.log(usuarioRef);
-
-  const user = {
-    uid: auth.currentUser.uid,
-    displayName: auth.currentUser.displayName,
-    email: usuarioRef.data().email,
-    name: usuarioRef.data().name,    
-  };
-
-  console.log(user);
-
-  return user;
-}
 
