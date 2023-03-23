@@ -15,8 +15,8 @@ export const createNewPost = async (textPost) => {
   // grava o post com o UID na collection posts independente de users
   // const docReference = await addDoc(collection(db, 'posts'), post);
   const docReference = await addDoc(collection(db, 'users', auth.currentUser.uid, 'posts'), post);
-  //post.id = teste.id;
-   post.id = docReference.id;
+  // post.id = teste.id;
+  post.id = docReference.id;
   return post;
 };
 

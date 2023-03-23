@@ -4,7 +4,11 @@ import { signInWithEmailAndPassword, signInWithPopup, signOut, createUserWithEma
 
 jest.mock('firebase/auth');
 
-jest.clearAllMocks();
+
+
+afterEach(() => {
+  jest.clearAllMocks();
+});
 
 // jest.mock('firebase/auth', () => ({
 //    getAuth: jest.fn(),
@@ -24,7 +28,7 @@ describe('signIn', () => {
     expect(result).toBe(true);
     
   });
- // jest.clearAllMocks();
+   
   it('returns error when user email is invalid', async () => {
     const mockedError = 'Error: Firebase: Error (auth/user-not-found).';
     signInWithEmailAndPassword.mockRejectedValueOnce({ message: mockedError });
@@ -32,7 +36,7 @@ describe('signIn', () => {
       await signIn('invalid-email', 'password');
     } catch (error) {
     //  console.log(error);
-      expect(signInWithEmailAndPassword).toHaveBeenCalledTimes(2);
+      expect(signInWithEmailAndPassword).toHaveBeenCalledTimes(1);
       expect(signInWithEmailAndPassword).toHaveBeenCalledWith(undefined, 'invalid-email', 'password'); // CALLS 2 TIMES. PQ???
       expect(error).toEqual(mockedError);      
     }
@@ -45,7 +49,7 @@ describe('signIn', () => {
       await signIn('valid-email', 'invalid-password');
     } catch (error) {
       console.log(error);
-      expect(signInWithEmailAndPassword).toHaveBeenCalledTimes(3); //entendi, mas devia?
+      expect(signInWithEmailAndPassword).toHaveBeenCalledTimes(1); //entendi, mas devia?
       expect(signInWithEmailAndPassword).toHaveBeenCalledWith(undefined, 'valid-email', 'invalid-password'); // CALLS 2 TIMES. PQ???
       expect(error).toEqual(mockedError);
     }
@@ -70,7 +74,7 @@ describe('loginGoogle', () => {
      await loginGoogle('invalid-email', 'password');
    } catch (error) {
     
-     expect(signInWithPopup).toHaveBeenCalledTimes(2);
+     expect(signInWithPopup).toHaveBeenCalledTimes(1);
      //jest.clearAllMocks();
      expect(signInWithPopup).toHaveBeenCalledWith(undefined, {}); // CALLS 2 TIMES. PQ???
 
