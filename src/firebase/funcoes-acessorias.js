@@ -3,7 +3,7 @@ export function maiorDe18(dataNascimento) {
   const dataAtual = new Date();
   const idadeAtual = dataNascimento.split('-');
   const anos = dataAtual.getFullYear() - idadeAtual[0];
-  console.log(anos, idadeAtual);
+
   if (anos >= 18) {
     return true;
   }

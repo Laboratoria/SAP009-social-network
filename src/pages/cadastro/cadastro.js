@@ -73,9 +73,10 @@ const cadastro = () => {
 
       alert('Infelizmente vc não pode acessar essa plataforma/rede social, ela é destinada para maiores de 18 anos por fazer apologia e incentivar o uso de bebida alcoólica');
     } else {
-      console.log(dataNascimento.value);
+
       criarCadastro(inputEmail.value, inputSenha.value)
         .then(() => {
+
           console.log('cadastrou');
           verificarEmail()
             .then(() => {
@@ -86,6 +87,7 @@ const cadastro = () => {
             });
         })
         .catch((error) => {
+
           console.log(error);
           exibeErros(error);
           alert('error, chegou aqui');
