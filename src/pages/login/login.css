@@ -16,26 +16,28 @@
     background-color: white;
     border-radius: 5%;
     width: 100%;
-    height: 350px;
+    height: 400px;
     padding-bottom: 5%;
 }
 
 #email{
+    display: flex;
     border-radius:7px;
     padding: 10px;
-    width: 120%;
+    width: 100%;
     border-style: solid;
     border-color: #3A7B50;
-    margin-left: -30px;
+    margin-left: -10px;
 }
 
 #password{
+    display: flex;
     border-radius:7px;
     padding: 10px;
-    width: 120%;
+    width: 100%;
     border-style: solid;
     border-color: #3A7B50;
-    margin-left: -30px;
+    margin-left: -10px;
 }
 
 #submitLogin{
@@ -45,7 +47,7 @@
     margin: 15px;
     padding: 7px;
     width: 120px;
-    margin-left: 20px;
+    margin-left: 29%;
     color: white;
     font-size: 15px;
     font-weight: bold;
@@ -54,6 +56,37 @@
 p{
     color: #EB5F07;
     font-weight: bold;
-    margin-left: -30px;
+    margin-left: -10px;
 }
 
+.cadastre{
+    margin-left: 36%;
+    color: #3A7B50;
+}
+
+#linhaHor1{
+    width: 100px;
+    border: 1px solid #EB5F07;
+    margin-top: -3%;
+}
+
+#submitGoogle{
+    color: #EB5F07;
+    margin-left: 38%;
+}
+
+#linhaHor2{
+    width: 100px;
+    border: 1px solid #EB5F07;
+    margin-left: 200px;
+    margin-top: -20%;
+}
+
+#googleButton{
+    width: 120px;
+    padding: 7px;
+    margin-left: 30%;
+    margin-top: 30px;
+    border-radius: 10px;
+    background-color: white;
+}

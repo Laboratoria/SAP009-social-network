@@ -22,7 +22,14 @@ export default () => {
     </section>
 
     <section class='buttons'>
-    <a id='submitGoogle' class='btn' href='#login'>Entrar com o Google</a>
+    <a id='submitGoogle' class='btn' href='#login'>Login with</a>
+    <section class='buttons'>
+      <div id="linhaHor1"></div>
+      <button id='googleButton'>Google</button>
+      <div id="linhaHor2"></div>
+    </section>
+
+
     </section>
     </section>
    
