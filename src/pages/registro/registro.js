@@ -1,5 +1,7 @@
 import { criarUsuario, logarGoogle } from '../../firebase/firebase';
 import { redirecionarPagina } from '../../redirecionar-pagina';
+import ilustracaoLogo from '../../img/logo/logo.png';
+import ilustracaoRegistro from '../../img/illustrations/good_dogg.png';
 
 export default () => {
   const container = document.createElement('div');
@@ -9,11 +11,11 @@ export default () => {
                 <h3>Já possui cadastro?</h3>
                 <p class="txt-entrar">Clique no botão abaixo e veja as últimas atualizações dos seus amigos.</p>
                 <button class="btn-entrar"><a href="#login">Entrar</a></button>
-                <img src="./img/illustrations/good_dogg.png" class="ilustracao-cadastro" alt="ilustração-cadastro">
+                <img src="${ilustracaoRegistro}" class="ilustracao-cadastro" alt="ilustração-cadastro">
             </div>
             <div class="tela-principal">
                 <div class="logo-tela">
-                    <img src="./img/logo/logo.png" id="logo" alt="logo-dogTips">
+                    <img src="${ilustracaoLogo}" id="logo" alt="logo-dogTips">
                 </div>
                 <div class="estilo-card">
                     <form>
