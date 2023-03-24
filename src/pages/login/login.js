@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable indent */
 import { fazerLogin, loginComGoogle, observador } from '../../firebase/firebase';
@@ -67,10 +68,8 @@ const login = () => {
       window.location.hash = '#postagem';
     }).catch((error) => {
       console.log(error);
-      // exibeErros(error);
       window.location.hash = '#';
       console.log('não foi possivel concluir o login');
-      // tá indo para pag de post mesmo sem finalizar o cadastro
     });
   });
 

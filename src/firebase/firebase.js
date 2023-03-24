@@ -42,24 +42,7 @@ export function verificarEmail(){
 }
 
 export function loginComGoogle() {
-  const provider = new GoogleAuthProvider();
-
-  return signInWithPopup(auth, provider)
-    .then((result) => {
-      // fornece um token de acesso do google, usado para acessar o Google API.
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken; // informações da usuária conectada
-      const user = result.user; // dados do IdP disponíveis usando getAdditionalUserInfo(result)
-    }).catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message; // email da conta da usuária usado
-      console.log(errorCode);
-      console.log(errorMessage);
-      const email = error.customData.email; // o AuthCredential usado
-      console.log(email);
-      const credential = GoogleAuthProvider.credentialFromError(error);
-    });
-  // após fazer a validação do google precisa mandar para pg de login com o firebase ou pode ser com windonw location hash?
+  return signInWithPopup(auth, new GoogleAuthProvider());
 }
 
 export function sair() {
