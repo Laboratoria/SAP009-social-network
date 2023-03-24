@@ -30,8 +30,8 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    width: 428px;
-    height: 926px;
+    width: 100vw;
+    height: 100vh;
 } 
 
 .logo-escrita-escura {

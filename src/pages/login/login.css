@@ -12,6 +12,10 @@
 
 }
 
+.body-login{
+   display: flex;
+}
+
 .logo-escrita-clara{
    width: 200px;
    margin: 30px;
@@ -138,4 +142,43 @@ h1 {
 .logo-escrita-clara {
  width:50%;
  
+}
+
+.imagem-login{
+   width: 50%;
+   height: 100vh;
+   display:none;
+}
+
+
+@media (min-width:800px) {
+   .container{
+      float: right;
+      width: 50%;
+   }
+
+   .imagem-login{
+      display: flex;
+   }
+
+   .texto-entrada > p{
+      color: var(--vermelho);
+      font-size: 23px;
+      font-weight: bold;
+   }
+   
+   .fundo-form{
+      background: #d9d9d98c;
+      border-radius: 20px;
+      width: 49vh;
+      height: 599px;
+     
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center
+   }
+   .imagem-logo{
+      margin-top:50px;
+   }
 }
