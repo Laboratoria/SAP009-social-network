@@ -25,7 +25,7 @@ export default () => {
                         <div class="input-card">
                             <i class="fas fa-envelope"></i>
                             <label for="email">
-                                <input type="email" id="email" placeholder="nome@hotmail.com" minlength="4" required/>
+                                <input type="email" id="email" placeholder="nome@dominio.com" minlength="4" required/>
                             </label>
                         </div>
                         <div class="input-card">
