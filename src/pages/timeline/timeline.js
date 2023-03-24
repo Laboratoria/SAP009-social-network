@@ -42,7 +42,7 @@ export default () => {
             </div>
           </form>
   
-          <textarea id="post-area" placeholder="Fale sobre o anime aqui"></textarea>
+          <textarea id="post-area" placeholder="Fale sobre o anime aqui" class="input"></textarea>
           <button id="post-button">Publicar</button>
         </div>
       </main>
@@ -55,13 +55,11 @@ export default () => {
     const postsTemplate = showing.map((post) => {
       const postTemplate = `
       <div class='post'>
-        <section class='box-post-timeline' data-section-post-id=${post.id}>
+        <section class='box-post-timeline'>
           <div class='box-complete-post'>
             <div class='box-info-post'>
-              <p id='user-name'>${post.name}</p>
               <p id='anime-name'>${post.anime}</p>
               <p id='anime-episodes'>${post.episodes}</p>
-              <p id='post-date'>${post.date}</p>
             </div>
             <div class='box-text-post'>
               <p id='post-description'>${post.description}</p>
@@ -71,7 +69,29 @@ export default () => {
       </div>
       </br>
     `;
-
+/*
+    const showPosts = async () => {
+      const showing = await accessPost();
+      const postsTemplate = showing.map((post) => {
+        const postTemplate = `
+        <div class='post'>
+          <section class='box-post-timeline' data-section-post-id=${post.id}>
+            <div class='box-complete-post'>
+              <div class='box-info-post'>
+                <p id='user-name'>${post.name}</p>
+                <p id='anime-name'>${post.anime}</p>
+                <p id='anime-episodes'>${post.episodes}</p>
+                <p id='post-date'>${post.date}</p>
+              </div>
+              <div class='box-text-post'>
+                <p id='post-description'>${post.description}</p>
+              </div>
+            </div>
+          </section>
+        </div>
+        </br>
+      `;
+*/
       return postTemplate;
     }).join('');
 
@@ -126,19 +146,13 @@ export default () => {
   */
 
   postButton.addEventListener('click', () => {
+    console.log('clicou');
     const anime = animePost.value;
     const episodes = episodesPost.value;
     const description = descriptionPost.value;
 
-    const testPost = createPost(anime, episodes, description)
-      .collection('posts')
-      .then(() => {
-        window.location.replace('#timeline');
-        console.log(testPost);
-      })
-      .catch((error) => {
-        console.log('Erro de criação');
-      });
+    createPost(anime, episodes, description);
+    window.location.replace('#timeline');
   });
 
   showPosts();
