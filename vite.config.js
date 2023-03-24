@@ -16,6 +16,8 @@ export default defineConfig(({ command }) => {
       // https://vitejs.dev/guide/static-deploy.html#github-pages
       // ejemplo base: '/social-network/',
       base: '/SAP009-social-network/',
+      // vazio se tiver rodando local, 
+      // /SAP009-social-network/ incluir quano for p/ GitPages
       build: {
         minify: false,
         rollupOptions: {
