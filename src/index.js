@@ -1,6 +1,9 @@
+import './firebase/firebase.js';
 import login from './pages/login/login.js';
-import sobre from './pages/sobre/index.js';
-import './auth.js';
+import cadastro from './pages/cadastro/cadastro.js';
+import feed from './pages/feed/feed.js';
+import sobre from './pages/sobre/sobre.js';
+import './firebase/auth.js';
 
 const main = document.querySelector('#root');
 
@@ -8,8 +11,17 @@ const init = () => {
   window.addEventListener('hashchange', () => {
     main.innerHTML = '';
     switch (window.location.hash) {
-      case ' ':
+      case '':
         main.appendChild(login());
+        break;
+      case '#login':
+        main.appendChild(login());
+        break;
+      case '#cadastro':
+        main.appendChild(cadastro());
+        break;
+      case '#feed':
+        main.appendChild(feed());
         break;
       case '#sobre':
         main.appendChild(sobre());
