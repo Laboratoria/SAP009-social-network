@@ -100,3 +100,28 @@ p {
     font-weight: bolder;
     width: 16.5rem;
 }
+
+li {
+    list-style: none;
+}
+
+#modal-wrapper {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+
+#modal-wrapper.show {
+    opacity: 1;
+    pointer-events: auto;
+  }

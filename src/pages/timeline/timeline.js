@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 import {} from 'firebase/firestore';
 import { LogOut, auth } from '../../firebase/auth.js';
 import createHeader from '../../components/header.js';
@@ -19,13 +20,14 @@ export default () => {
   // }
 
   // TESTANDO FUNCAO MANUALMENTE
-  createNewPost('tegravou omdele');
+  // createNewPost('tegravou omdele');
 
   const container = document.createElement('div');
   container.classList.add('container-timeline');
   const header = createHeader();
   header.classList.add('header-site');
   container.appendChild(header);
+
 
   let loggedUserAllPosts = [];
 
@@ -60,7 +62,7 @@ export default () => {
           <p class="greeting">Olá,</p> 
           <div class="div-greeting-button">
             <p class="greeting-name">${user.displayName}</p>
-            <img src="./assets/bt-new-post.png" id="ada-logo" class="" alt="logo da ConectAda">
+            <img src="./assets/bt-new-post.png" id="btn-new-post" class="" alt="logo da ConectAda">
           </div>
         <div id="post-list">
         </div>
@@ -78,6 +80,25 @@ export default () => {
     LogOut(user);
     window.location.replace('#login');
   });
+  const newPostButton = container.querySelector('#btn-new-post');
+  newPostButton.addEventListener('click', showDescription);
 
-  return container;
-};
+  function showDescription() {
+    const modalContainer = document.getElementById('post-list');
+
+    modalContainer.innerHTML = `
+    <div class="modal">
+    <p>oi</p>
+    </div>`;
+
+    modalContainer.classList.add('show');
+
+    // const close = document.getElementById('close');
+    // close.addEventListener('click', () => {
+    //   modalContainer.classList.remove('show');
+    // });
+
+  }
+    return container;
+  };
+
