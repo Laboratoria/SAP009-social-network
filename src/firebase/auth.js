@@ -4,11 +4,11 @@
 import {
   getAuth,
   createUserWithEmailAndPassword,
+  updateProfile,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
-  onAuthStateChanged,
 // eslint-disable-next-line import/no-unresolved
 } from 'firebase/auth';
 import { app } from './app.js';
@@ -22,10 +22,11 @@ const auth = getAuth(app);
 // funcao que criamos para abrigar a funcao de criar user com email/senha (já criada pelo firebase)
 
 // eslint-disable-next-line max-len
-export const createUserWithEmail = (email, password) => createUserWithEmailAndPassword(auth, email, password)
+export const createUserWithEmail = (name, displayName, email, password) => createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     const user = userCredential.user;
     console.log(user);
+    return updateProfile(user, { name, displayName });
   });
 
 export const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);
