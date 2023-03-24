@@ -10,6 +10,10 @@ import {
   editarNomeCao,
 } from '../../firebase/firebase';
 
+import ilustracaoLogo from '../../img/logo/logo.png';
+import coracaoDeslike from '../../img/icones-feed/like-pata-3.png'
+import coracaoPreenchido from '../../img/icones-feed/like-pata-2.png'
+
 export default async () => {
   const usuarioLogado = await obterNomeUsuario();
   const container = document.createElement('div');
@@ -42,7 +46,7 @@ export default async () => {
             </div>
                 <div class="tela-principal">
                     <div class="logo-tela-feed">
-                        <img src="./img/logo/logo.png" class="img-logo-feed" alt="logo-dogTips">
+                        <img src="${ilustracaoLogo}" class="img-logo-feed" alt="logo-dogTips">
                     </div>
                     <div class="div-postagem-tutor">
                         <textarea class="texto-tutor" id="texto-tutor"name="texto-tutor" cols="50" rows="4" placeholder="O que gostaria de compartilhar?"></textarea>
@@ -94,7 +98,7 @@ export default async () => {
             <textarea class="texto-tutor-postado" id="texto-tutor-postado" style='resize:none' disabled>${post.texto}</textarea>
             <div id="icones-inferiores">
               <button class="btn-curtir" id="btn-curtir" >
-              <img ${post.likes.includes(usuarioLogado.uid) ? 'src="img/icones-feed/like-pata-2.png"' : 'src="img/icones-feed/like-pata-3.png"'}>  ${post.likes.length}
+              <img ${post.likes.includes(usuarioLogado.uid) ? 'src="${coracaoPreenchido}"' : 'src="${coracaoDeslike}"'}>  ${post.likes.length}
               </button>
               <p class="numero-curtidas"></p>
               ${post.author === usuarioLogado.uid ? `
@@ -159,11 +163,11 @@ export default async () => {
       if (post.likes.includes(usuarioLogado.uid)) {
         descurtir(post.id, usuarioLogado.uid);
         post.likes.splice(post.likes.indexOf(usuarioLogado.uid));
-        btnCurtir.innerHTML = `<img class='btn-curtir' src='img/icones-feed/like-pata-3.png' alt='descurtir'><p class='numero-curtidas'>${post.likes.length}</p>`;
+        btnCurtir.innerHTML = `<img class='btn-curtir' src='${coracaoDeslike}' alt='descurtir'><p class='numero-curtidas'>${post.likes.length}</p>`;
       } else {
         curtir(post.id, usuarioLogado.uid);
         post.likes.push(usuarioLogado.uid);
-        btnCurtir.innerHTML = `<img class='btn-curtir' src='img/icones-feed/like-pata-2.png' alt='curtido'><p class='numero-curtidas'>${post.likes.length}</p>`;
+        btnCurtir.innerHTML = `<img class='btn-curtir' src='${coracaoPreenchido}' alt='curtido'><p class='numero-curtidas'>${post.likes.length}</p>`;
       }
       btnCurtir.querySelector('p').innerText = post.likes.length;
     });

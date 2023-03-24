@@ -1,4 +1,6 @@
 import { redefinirSenha } from '../../firebase/firebase';
+import ilustracaoRedefinir from '../../img/illustrations/dog_pop.png';
+import ilustracaoLogo from '../../img/logo/logo.png';
 
 export default () => {
   const container = document.createElement('div');
@@ -6,11 +8,11 @@ export default () => {
     <div class="main">
       <div class="txt-voltar">
         <button class="btn-voltar"><a href="#login">Voltar</a></button>
-        <img src="./img/illustrations/dog_pop.png" class="ilustracao-redefinir-senha" alt="ilustração-redefinir-senha">
+        <img src="${ilustracaoRedefinir}" class="ilustracao-redefinir-senha" alt="ilustração-redefinir-senha">
       </div>
       <div class="tela-principal">
         <div class="logo-tela-redefinir">
-          <img src="./img/logo/logo.png" class="img-logo" alt="logo-dogTips">
+          <img src="${ilustracaoLogo}" class="img-logo" alt="logo-dogTips">
         </div>
         <div class="estilo-card-redefir-senha">
           <form>
