@@ -1,22 +1,23 @@
+.menu-superior{
+  top: 0;
+  background-color: #085560;
+  width: 100%;
+  height: 100%;
+}
+
+.img-logo{
+  display: flex;
+  width: 15em;
+  margin-top: 10px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .conteudo{
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-}
-
-.menu-superior{
-    top: 0;
-    background-color: #085560;
-    width: 100%;
-    height: 100%;
-}
-
-img{
-  width: 15em;
-  display: block;
-  margin-right: auto;
-  margin-left: auto; 
 }
 
  .subtitulo{
@@ -53,8 +54,9 @@ a{
   font-size: 18px;
   padding: 15px;
   text-align: center;
-  margin-bottom: 21px;
+  margin-bottom: 15px;
   font-weight: bold;
+  max-width: fit-content;
 }
 
 .form-login{ 
@@ -65,7 +67,6 @@ a{
   font-size: 20px;
   border-radius: 10px;
   align-items: center; 
-  /* margin-bottom: 30px; */
   margin: 2%;
 }
 
@@ -127,8 +128,11 @@ a{
 }
 
 .menina-lemos{
+  width: 15em;
   display: none;
-  margin-top: 50px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 30px;
 }
 
 .rodape{
@@ -136,11 +140,10 @@ a{
   text-align: center;
   padding: 10px 0px 10px;
   margin-top: 30px;
-  position: fixed;
   bottom: 0;
   width: 100%;
   height: 5%;
-} */
+}
 
 .sobre{
   font-size: 15px;
@@ -148,9 +151,9 @@ a{
 }
 
 
-@media screen and (min-width: 1000px) 
+@media screen and (min-width: 800px) 
 {
-  .img{
+  .img-logo{
     width: 15em;
     display: block;
     margin-right: auto;
@@ -182,12 +185,10 @@ a{
     font-size: 20px;
     border-radius: 10px;
     align-items: center;
-    /* margin-top: 50px; */
   } 
   
   .menina-lemos{
-    display:flex;
+    display: flex;
     width: 40%;
-    
   }
 } 

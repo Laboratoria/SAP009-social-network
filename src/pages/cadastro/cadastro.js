@@ -4,6 +4,11 @@ export default () => {
   const container = document.createElement('div');
 
   const template = `
+  <header class="conteudo">
+    <div class="cabecalho">
+      <img class="logo-cadastro" src="/imagens/logo-lemos.png" href="/#login">
+    </div>
+  </header>
   <section class = "cadastro">
     <form class="form-cadastro">
       <h2 class="bem-vinda"> Seja bem-vinda! </h2>
