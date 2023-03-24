@@ -17742,8 +17742,8 @@ const registro = () => {
   });
   return container;
 };
-const ilustracaoLogin = "" + new URL("social_update.043052e6.png", import.meta.url).href;
-const ilustracaoLogo = "" + new URL("logo.3d941cc1.png", import.meta.url).href;
+const ilustracaoLogin = "/SAP009-social-network/assets/social_update.043052e6.png";
+const ilustracaoLogo = "/SAP009-social-network/assets/logo.3d941cc1.png";
 const login = () => {
   const container = document.createElement("div");
   const template = `
