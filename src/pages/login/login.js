@@ -1,5 +1,7 @@
 import { autenticarUsuario, logarGoogle } from '../../firebase/firebase';
 import { redirecionarPagina } from '../../redirecionar-pagina';
+import ilustracaoLogin from '../../img/illustrations/social_update.png';
+import ilustracaoLogo from '../../img/logo/logo.png';
 
 export default () => {
   const container = document.createElement('div');
@@ -14,11 +16,11 @@ export default () => {
                 <a href="#registro">
                     <button class="btn-registrar">registre-se</button>
                 </a>
-                <img src="./img/illustrations/social_update.png" class="ilustracao-login" alt="ilustração-login">
+                <img src="${ilustracaoLogin}" class="ilustracao-login" alt="ilustração-login">
             </div>
             <div class="tela-principal">
                 <div class="logo-tela">
-                    <img src="./img/logo/logo.png" class="img-logo" alt="logo-dogTips">
+                    <img src="${ilustracaoLogo}" class="img-logo" alt="logo-dogTips">
                 </div>
                 <div class="estilo-card">
                     <form id="formulario-login">
