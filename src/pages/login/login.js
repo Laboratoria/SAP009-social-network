@@ -42,25 +42,36 @@ const login = () => {
   btnEntrar.addEventListener('click', (e) => {
     e.preventDefault();
 
+    // validação de preenchimento do form
+
     if (loginEmail.value === '' || loginSenha.value === '') {
       form.reportValidity();
-      console.log('preencha');
     } else {
+      // validação das informações para realizar login
+
       fazerLogin(loginEmail.value, loginSenha.value)
       .then(() => {
-        console.log('funciona');
         window.location.hash = '#postagem';
       }).catch((error) => {
-        console.log(error);
-        console.log('deu errado');
-        exibeErros(error);
+        alert(exibeErros(error));
+        // CRIAR UM MODAL PARA EXIBIR OS ERROS
       });
     }
   });
 
+  // login com google
+
   btnGoogle.addEventListener('click', () => {
-    loginComGoogle();
-    window.location.hash = '#postagem';
+    loginComGoogle()
+    .then(() => {
+      window.location.hash = '#postagem';
+    }).catch((error) => {
+      console.log(error);
+      // exibeErros(error);
+      window.location.hash = '#';
+      console.log('não foi possivel concluir o login');
+      // tá indo para pag de post mesmo sem finalizar o cadastro
+    });
   });
 
   return criarLogin;

@@ -37,6 +37,8 @@ const cadastro = () => {
         <label for="filhos">Nº de filhas/os</label>
         <input type="tel" name="" id="filhos" required> <!-- tel pq aparece o teclado de nº  -->
         
+        <span class="modal mensagem-erro"><a href="">Okay X</a></span>
+
         <input class="btn-enviar" type="submit" value="Enviar">
       </form>
     </div>
@@ -53,13 +55,15 @@ const cadastro = () => {
   const inputSenha = criaCadastro.querySelector('#senha');
   const telefone = criaCadastro.querySelector('#tel');
   const filhx = criaCadastro.querySelector('#filhos');
-  // const senha = inputSenha.value; // usar para dizer que tem que ser > 6 caracters
+  const erro = criaCadastro.querySelector('.mensagem-erro');
   const btnEnviar = criaCadastro.querySelector('.btn-enviar');
 
   observador(); // mostra se to conectada a pag
 
   btnEnviar.addEventListener('click', (e) => {
     e.preventDefault();
+
+    // validações de preenchimemto do form
 
     if (nome.value === '' || dataNascimento.value === ''
         || inputEmail === '' || inputSenha === ''
@@ -74,6 +78,8 @@ const cadastro = () => {
       alert('Infelizmente vc não pode acessar essa plataforma/rede social, ela é destinada para maiores de 18 anos por fazer apologia e incentivar o uso de bebida alcoólica');
     } else {
 
+      // criação de cadastro
+
       criarCadastro(inputEmail.value, inputSenha.value)
         .then(() => {
 
@@ -87,13 +93,13 @@ const cadastro = () => {
             });
         })
         .catch((error) => {
-
-          console.log(error);
           exibeErros(error);
-          alert('error, chegou aqui');
+          erro.innerHTML = exibeErros(error);
+          console.log(error);
+          // erro.textContent = ''; não funcionou, mas tem que apagar a mensagem de erro qndo o usuário começar a digitar
+          // CRIAR UM MODAL PARA EXIBIR OS ERROS
         });
     }
-    // se o email já tiver cadastrado: "Esse email já foi cadastrado anteriormente, basta fazer o login"
   });
 
   return criaCadastro;

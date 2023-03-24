@@ -47,7 +47,7 @@ const postagem = () => {
 
   btnSair.addEventListener('click', () => {
     sair();
-    window.location.hash = fazerLogin();
+    window.location.hash = '#';
   });
 
   return criarPostagem;

@@ -1,6 +1,5 @@
 *{
   box-sizing: border-box;
-  
 }
 
 body {
@@ -11,7 +10,6 @@ body {
   display: flex;
   flex-direction: column;
   margin: 1rem;
- 
 }
 
 .header {
@@ -35,4 +33,11 @@ body {
 /* gerais - que se aplicam a todas pags */
 .btn{
   flex-grow: 1; /* pra ajustar de acordo com a pag  */
+}
+
+/* no media query colocar em body fonte-size 1.12/15rem para tablet e x-larger para desktop, ajustar o size do footer sozinho */
+
+.modal{
+  background-color: black;
+  color:#ad1d45;
 }
