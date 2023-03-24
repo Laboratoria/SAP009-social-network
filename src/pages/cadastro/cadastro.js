@@ -5,26 +5,40 @@ export default () => {
 
   const template = `
   <section class = "cadastro">
-    <h2> Seja bem-vinda!! </h2>
-    <form class = "form-cadastro"> 
-        <input type = "text" class = "nome-usuaria" placeholder = "NOME/APELIDO" required> <br>
-        <input type="text" class="email-cadastro" placeholder="E-MAIL" required>
-        <p> Como você se identifica? </p>
-        <div class="radio-buttons">
-            <input type="radio"> <label for="cis">Mulher cis</label>
-            <input type="radio"> <label for="trans">Mulher trans</label>
-            <input type="radio"> <label for="binaria">Não binária</label>
-        </div>
-        <input type = "password" placeholder = "SENHA" class = "senha-cadastro" required> <br>
-        <input type="password" placeholder="REPITA SUA SENHA" class = "senha-cadastro" required> <br>
+    <form class="form-cadastro">
+      <h2 class="bem-vinda"> Seja bem-vinda! </h2>
+      <div>
+        <p class="textos-cadastro">Nome / Apelido</p>
+        <input type="text" class="input-cadastro" id="nome-usuaria" required>
+      </div>
+      <div>
+        <p class="textos-cadastro">E-mail</p>
+        <input type="text" class="input-cadastro" id="e-mail-cadastro" required>
+      </div>
+      <div class="radio-buttons">
+      <p> Como você se identifica? </p>
+          <div><input type="radio"> <label for="cis">Mulher cis</label></div>
+          <div><input type="radio"> <label for="trans">Mulher trans</label></div>
+          <div><input type="radio"> <label for="binaria">Não binária</label></div>
+      </div>
+      <div>
+        <p class="textos-cadastro">Senha</p>
+        <input type="password" class="input-cadastro" id = "senha-cadastro" required>
+      </div>
+      <div>
+        <p class="textos-cadastro">Repita sua senha</p>
+        <input type="password" class="input-cadastro" required>
+      </div>
         <button type="submit" class="botao-cadastrar">Cadastrar</button>
+    </form>
+   </section> 
   `;
 
   container.innerHTML = template;
 
-  const cadastroNome = container.querySelector('.nome-usuaria');
-  const cadastroEmail = container.querySelector('.email-cadastro');
-  const cadastroSenha = container.querySelector('.senha-cadastro');
+  const cadastroNome = container.querySelector('#nome-usuaria');
+  const cadastroEmail = container.querySelector('#email-cadastro');
+  const cadastroSenha = container.querySelector('#senha-cadastro');
   const botaoCadastrar = container.querySelector('.botao-cadastrar');
   const mensagemErro = container.querySelector('.texto-erro');
 

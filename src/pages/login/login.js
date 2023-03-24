@@ -3,6 +3,7 @@ import { fazerLogin, loginGoogle} from '../../firebase/auth.js';
 export default () => {
   const container = document.createElement('div');
   const template = ` 
+
     <section class="conteudo-login">
     <div class = "figura-menina-texto">
       <p class="descricao">Faça parte da Le<span style= "color:#FF7373;">m</span>os , a maior rede social de incentivo e compartilhamento de leitura feminista! </p>
