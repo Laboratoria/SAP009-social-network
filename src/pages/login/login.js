@@ -1,9 +1,15 @@
-import { fazerLogin, loginGoogle} from '../../firebase/auth.js';
+import { fazerLogin, loginGoogle } from '../../firebase/auth.js';
 
 export default () => {
   const container = document.createElement('div');
   const template = ` 
 
+  <header class="conteudo">
+    <div class="menu-superior">
+      <img class="img-logo" src="/imagens/logo-lemos.png" href="/#login">
+     <h2 class="subtitulo">Incentivando a leitura feminista</h2> 
+    </div>
+  </header>
     <section class="conteudo-login">
     <div class = "figura-menina-texto">
       <p class="descricao">Faça parte da Le<span style= "color:#FF7373;">m</span>os , a maior rede social de incentivo e compartilhamento de leitura feminista! </p>
@@ -55,7 +61,7 @@ export default () => {
       .catch(() => {
         mensagemErro.innerHTML = 'Erro ao logar com Google';
       });
-});
+  });
 
   return container;
 };
