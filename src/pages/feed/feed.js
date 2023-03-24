@@ -7,12 +7,11 @@ import {
   curtir,
   descurtir,
   sair,
-  //editarNomeCao,
+  editarNomeCao,
 } from '../../firebase/firebase';
 
 export default async () => {
   const usuarioLogado = await obterNomeUsuario();
-  console.log('usuario', usuarioLogado.uid);
   const container = document.createElement('div');
   const template = `
     <div class="feed-desktop>"
@@ -68,24 +67,23 @@ export default async () => {
     }
   });
 
-  // if (usuarioLogado.nomeCao === '') {
-  //   const divInptNomeCao = container.querySelector('.input-nome-cao');
-  //   divInptNomeCao.innerHTML = ` <input type="text" id="nome-cao" placeholder="insira o nome do cão">
-  //   <button class="perfil button">Salvar</button>`;
+  if (usuarioLogado.nomeCao === '') {
+    const divInptNomeCao = container.querySelector('.input-nome-cao');
+    divInptNomeCao.innerHTML = ` <input type="text" class="nome-cao" id="nome-cao" placeholder=" insira o nome do cão">
+    <button class="btn-salvar-nome-cao" id="btn-salvar-nome-cao">salvar</button>`;
 
-  //   const salvarBtn = divInptNomeCao.querySelector('.perfil button');
-  //   salvarBtn.addEventListener('click', async () => {
-  //     const novoNomeCao = divInptNomeCao.querySelector('#nome-cao').value;
-  //     await editarNomeCao(novoNomeCao);
-  //     container.querySelector('#cadastro-cao').textContent = '@' + novoNomeCao;
-  //     divInptNomeCao.setAttribute('style', 'display: none'); 
-  //   });
-  // };
+    const salvarBtn = divInptNomeCao.querySelector('.btn-salvar-nome-cao');
+    salvarBtn.addEventListener('click', async () => {
+      const novoNomeCao = divInptNomeCao.querySelector('#nome-cao').value;
+      await editarNomeCao(novoNomeCao);
+      container.querySelector('#cadastro-cao').textContent = `@${novoNomeCao}`;
+      divInptNomeCao.setAttribute('style', 'display: none');
+    });
+  }
 
   const exibirPost = (post) => {
     const posts = document.querySelector('#postagens');
     const containerPost = document.createElement('div');
-    console.log('posti', post.author);
     const templatePost = `
           <div class="div-postagem-anteriores-tutor">
             <div id="icone-superiores">
@@ -187,7 +185,6 @@ export default async () => {
         const novoPost = await criarPost(textPost);
         // espera o criarPost e dps exibe o post
         exibirPost(novoPost);
-        console.log(novoPost);
         textoTutor.value = '';
       } catch (error) {
         alertaPublicacao.setAttribute('style', 'display: block');

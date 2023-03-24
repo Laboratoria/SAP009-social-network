@@ -70,11 +70,18 @@ async function logarGoogle() {
   const usuarioGoogle = {
     email: auth.currentUser.email,
     nomeTutor: auth.currentUser.displayName,
-    nomeCao: 'insira o nome do seu cãozinho',
+    nomeCao: '',
   };
 
   await setDoc(doc(db, 'usuarios', auth.currentUser.uid), usuarioGoogle);
 }
+
+// editar nomeCao login com google
+const editarNomeCao = async (novoNomeCao) => {
+  await updateDoc(doc(db, 'usuarios', auth.currentUser.uid), {
+    nomeCao: novoNomeCao,
+  });
+};
 
 // redefinir senha
 const redefinirSenha = (email) => sendPasswordResetEmail(auth, email);
@@ -115,9 +122,6 @@ const obterPosts = async () => {
 const obterNomeUsuario = async () => {
   const usuarioRef = await getDoc(doc(db, 'usuarios', auth.currentUser.uid));
 
-  console.log(auth.currentUser);
-  console.log(usuarioRef);
-
   const usuario = {
     uid: auth.currentUser.uid,
     displayName: auth.currentUser.displayName,
@@ -125,8 +129,6 @@ const obterNomeUsuario = async () => {
     nomeTutor: usuarioRef.data().nomeTutor,
     nomeCao: usuarioRef.data().nomeCao,
   };
-
-  console.log(usuario);
 
   return usuario;
 };
@@ -174,13 +176,6 @@ function descurtir(postId, uid) {
   });
 }
 
-// editar nomeCao login com google
-// const editarNomeCao = async (novoNomeCao) => {
-//   await updateDoc(doc(db, 'usuarios', auth.currentUser.uid), {
-//     nomeCao: novoNomeCao,
-//   });
-// };
-
 // opção de sair
 const sair = () => signOut(auth);
 
@@ -198,5 +193,5 @@ export {
   curtir,
   descurtir,
   sair,
-  //editarNomeCao,
+  editarNomeCao,
 };
