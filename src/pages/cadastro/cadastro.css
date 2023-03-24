@@ -69,4 +69,9 @@
   margin-top: 10px;
   margin-bottom: 15px;
   align-self: center;
+  cursor: pointer;
+}
+
+.botao-cadastrar:hover{
+  background-color:#085560;
 }
