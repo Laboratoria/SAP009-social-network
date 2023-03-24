@@ -174,6 +174,13 @@ function descurtir(postId, uid) {
   });
 }
 
+// editar nomeCao login com google
+// const editarNomeCao = async (novoNomeCao) => {
+//   await updateDoc(doc(db, 'usuarios', auth.currentUser.uid), {
+//     nomeCao: novoNomeCao,
+//   });
+// };
+
 // opção de sair
 const sair = () => signOut(auth);
 
@@ -191,4 +198,5 @@ export {
   curtir,
   descurtir,
   sair,
+  //editarNomeCao,
 };

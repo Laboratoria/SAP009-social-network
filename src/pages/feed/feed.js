@@ -7,6 +7,7 @@ import {
   curtir,
   descurtir,
   sair,
+  //editarNomeCao,
 } from '../../firebase/firebase';
 
 export default async () => {
@@ -20,10 +21,9 @@ export default async () => {
                 <i class="fa-solid fa-bars fa-2x icon-menu" id="burguer"></i>
                 <menu id="itens">
                     <ul>
-                        <li><a href="#">feed</a></li>
-                        <li><a href="#">perfil</a></li>
-                        <li><a href="#">sobre</a></li>
-                        <li><a id="btnSair" class="btn-sair"type="button"> sair</a></li>
+                        <li class="barra-itens"><a href="#">feed</a></li>
+                        <li class="barra-itens"><a href="#sobre">sobre</a></li>
+                        <li class="barra-itens"><a id="btnSair" class="btn-sair"type="button">sair</a></li>
                     </ul>
                 </menu>
                 <div class="info-usuario">
@@ -35,7 +35,8 @@ export default async () => {
                     </div>
                     <div class="cao">
                         <i class="fa-solid fa-paw fa-3x icon-cão"></i>
-                        <p class="texto-feed">@${usuarioLogado.nomeCao}</p>
+                        <p class="texto-feed" id="cadastro-cao">@${usuarioLogado.nomeCao}</p>
+                        <div class="input-nome-cao"></div>
                     </div>
                 </div>    
                 </div>
@@ -66,6 +67,20 @@ export default async () => {
       itens.style.display = 'block';
     }
   });
+
+  // if (usuarioLogado.nomeCao === '') {
+  //   const divInptNomeCao = container.querySelector('.input-nome-cao');
+  //   divInptNomeCao.innerHTML = ` <input type="text" id="nome-cao" placeholder="insira o nome do cão">
+  //   <button class="perfil button">Salvar</button>`;
+
+  //   const salvarBtn = divInptNomeCao.querySelector('.perfil button');
+  //   salvarBtn.addEventListener('click', async () => {
+  //     const novoNomeCao = divInptNomeCao.querySelector('#nome-cao').value;
+  //     await editarNomeCao(novoNomeCao);
+  //     container.querySelector('#cadastro-cao').textContent = '@' + novoNomeCao;
+  //     divInptNomeCao.setAttribute('style', 'display: none'); 
+  //   });
+  // };
 
   const exibirPost = (post) => {
     const posts = document.querySelector('#postagens');

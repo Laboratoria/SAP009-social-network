@@ -316,146 +316,6 @@ a:link {
 }
 
 /*Ajustando para telas maiores*/
-@media screen and (min-width: 460px) {
-  .logo-tela>img {
-    margin-top: 50px;
-  }
-
-  .btn-registrar {
-    margin-top: 10px;
-  }
-
-  h3 {
-    margin-top: 10px;
-  }
-}
-
-@media screen and (min-width: 842px) {
-  .btn-registrar {
-    margin-top: 20px;
-  }
-
-  .btn-entrar {
-    margin-top: 25px;
-  }
-
-  .txt-novo-usuario>p {
-    font-size: 16px;
-  }
-
-  .caixa-deletar {
-    left: 200px;
-    width: 52%;
-  }
-}
-
-@media screen and (min-width: 1000px) {
-   body {
-    background-image: none;
-    overflow: hidden;
-  }
-
-  .principal {
-    width: 100vw;
-    height: 100vh;
-    background-image: url(./img/img-fundo/pagina_login.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    overflow: auto;
-  }
-  
-  html {
-    min-height: 100%;
-  }
-
-  .main {
-    display: grid;
-    grid-template-columns: 60% 40%;
-  }
-
-  .ilustracao-login {
-    display: block;
-    width: 530px;
-  }
-
-  .ilustracao-cadastro {
-    display: block;
-    width: 530px;
-    margin-top: 45px;
-  }
-
-  .ilustracao-redefinir-senha {
-    display: block;
-    width: 500px;
-    margin: 179px 0 0 80px;
-  }
-
-  h3 {
-    margin: 20px 0 20px 0;
-    font-size: 20px;
-  }
-
-  .txt-novo-usuario>p {
-    font-size: 16px;
-    padding: 0 15px 0 15px;
-  }
-
-  .txt-entrar {
-    font-size: 16px;
-  }
-
-  .logo-tela>img {
-    margin-left: 50px;
-    width: 260px;
-  }
-
-  .logo-tela-redefinir>img {
-    width: 260px;
-    margin: 30px 0 30px 60px;
-  }
-
-  .estilo-card {
-    margin-left: 13px;
-  }
-
-  .estilo-card-redefir-senha {
-    margin-left: 35px;
-  }
-
-  .info-usuario {
-    margin-right: 600px;
-  }
-
-  .texto-tutor {
-    resize:none;
-    margin-top: 129px;
-  }
-
-  .div-postagem-anteriores-tutor {
-    width: 600px;
-}
-
-  .img-logo-feed {
-    margin: 0px -5000px 0px 210px;
-    width: 236px;
-    margin-top: -111px;
-    margin-bottom: 30px;
-  }
-
-  #icone-superiores {
-    display: grid;
-    margin-top: 4px;
-    margin-left: 4px;
-    grid-template-columns: 7% 53% 40%;
-  }
-
-  .postagens {
-    display: grid;
-    justify-items: center;
-    align-items: center;
-  }
-}
-
 @media screen and (min-width: 1200px) {
   .txt-novo-usuario>p {
     padding: 0 20px 0 15px;
@@ -486,7 +346,6 @@ a:link {
 
   .estilo-card {
     padding: 20px 35px;
-    margin-right: 110px;
   }
 
   .logo-tela-redefinir>img {
@@ -495,7 +354,6 @@ a:link {
   }
 
   .estilo-card-redefir-senha {
-    margin-right: 130px;
     padding: 25px 20px;
   }
 
@@ -505,6 +363,182 @@ a:link {
 
   .texto-tutor {
     width: 100%;
+  }
+
+  #info-rede-social > p {
+    margin-left: 5px;
+    padding: 0 40px 0 40px;
+   }
+  
+  #img-logo-sobre {
+    margin-left: 20px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  body {
+   background-image: none;
+   overflow: hidden;
+ }
+
+ .principal {
+   width: 100vw;
+   height: 100vh;
+   background-image: url(./img/img-fundo/pagina_login.png);
+   background-size: cover;
+   background-repeat: no-repeat;
+   overflow: auto;
+ }
+ 
+ html {
+   min-height: 100%;
+ }
+
+ .main {
+   display: grid;
+   grid-template-columns: 60% 40%;
+ }
+
+ .ilustracao-login {
+   display: block;
+   width: 530px;
+ }
+
+ .ilustracao-cadastro {
+   display: block;
+   width: 530px;
+   margin-top: 45px;
+ }
+
+ .ilustracao-redefinir-senha {
+   display: block;
+   width: 500px;
+   margin: 179px 0 0 80px;
+ }
+
+ h3 {
+   margin: 20px 0 20px 0;
+   font-size: 20px;
+ }
+
+ .txt-novo-usuario>p {
+   font-size: 16px;
+   padding: 0 15px 0 15px;
+ }
+
+ .txt-entrar {
+   font-size: 16px;
+ }
+
+ .logo-tela>img {
+   margin-left: 50px;
+   width: 260px;
+ }
+
+ .logo-tela-redefinir>img {
+   width: 260px;
+   margin: 30px 0 30px 60px;
+ }
+
+ .estilo-card {
+   margin-left: 13px;
+ }
+
+ .estilo-card-redefir-senha {
+   margin-left: 35px;
+ }
+
+ .info-usuario {
+   margin-right: 380px;
+ }
+
+ .texto-tutor {
+   resize:none;
+   margin-top: 129px;
+ }
+
+ .div-postagem-anteriores-tutor {
+   width: 600px;
+}
+
+ .img-logo-feed {
+   margin: 0px -5000px 0px 210px;
+   width: 236px;
+   margin-top: -111px;
+   margin-bottom: 30px;
+ }
+
+ #icone-superiores {
+   display: grid;
+   margin-top: 4px;
+   margin-left: 4px;
+   grid-template-columns: 7% 53% 40%;
+ }
+
+ .postagens {
+   display: grid;
+   justify-items: center;
+   align-items: center;
+ }
+
+ .img-logo-sobre {
+  margin-left: 85px;
+ }
+
+ .info-rede-social > p {
+  margin-left: 63px;
+ }
+
+ #cards-devs {
+  display: flex;
+  flex-direction: row;
+ }
+
+ #card-ana, #card-paola {
+  margin-right: 30px;
+ }
+ 
+ .txt-devs {
+  display: none;
+ }
+
+ #txt-devs-desktop {
+  display: block;
+  margin: 50px 0 50px 137px;
+  font-size: 25px;
+ }
+}
+
+@media screen and (min-width: 842px) {
+  .btn-registrar {
+    margin-top: 20px;
+  }
+
+  .btn-entrar {
+    margin-top: 25px;
+  }
+
+  .txt-novo-usuario>p {
+    font-size: 16px;
+  }
+
+  .caixa-deletar {
+    left: 200px;
+    width: 52%;
+  }
+}
+
+@media screen and (min-width: 460px) {
+  .logo-tela>img {
+    margin-top: 50px;
+  }
+
+  .btn-registrar {
+    margin-top: 10px;
+  }
+
+  h3 {
+    margin-top: 10px;
   }
 }
 
@@ -550,7 +584,7 @@ i#burguer {
 #itens{
   background-color: var(--bege);
   z-index: 9999;
-  height: 12vh;
+  /* height: 12vh; */
   width: 22%;
   padding: 15px;
   text-align: center;
@@ -563,6 +597,10 @@ i#burguer {
 
 ul{
   list-style: none;
+}
+
+.barra-itens {
+  padding-bottom: 10px;
 }
 
 .cao {
@@ -788,4 +826,68 @@ textarea:focus {
 
 .texto-tutor-postado:focus {
   border: 1px solid var(--laranja);
+}
+
+/*Página Sobre*/
+.info-rede-social > p {
+  padding: 0 15px 0 15px;
+  margin-top: 25px;
+  text-align: center;
+}
+
+.img-logo-sobre {
+  width: 250px;
+  margin-top: 80px;
+}
+
+.txt-devs {
+  color: var(--laranja);
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.img-ana, .img-paola, .img-thai, .img-tieta, .img-juca, .img-luigi {
+  width: 125px;
+}
+
+.card-ana, .card-paola, .card-thai {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 15px 17px;
+  background-color: #F2E2C4;
+  border-radius: 20px;
+  margin: 35px 0 25px 0;
+  box-shadow: 0px 0px 12px #878181;
+  box-sizing: border-box;
+}
+
+.img-ana-tieta, .img-paola-juca, .img-thai-luigi {
+  margin-bottom: 15px;
+}
+
+.tutora-ana, .cadela-tieta, .tutora-paola, .cachorro-juca, .tutora-thai, .cachorro-luigi {
+  color: var(--laranja);
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.img-linkedin, .img-github {
+  margin-top: 10px;
+  width: 60px;
+}
+
+.tela-principal-sobre, .cards-devs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 0 20px;
+}
+
+.txt-devs-desktop {
+  display: none;
 }

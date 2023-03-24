@@ -14,7 +14,7 @@ import {
   collection,
   addDoc,
   getDocs,
-  // getDoc,
+  getDoc,
   deleteDoc,
   doc,
   updateDoc,
@@ -31,7 +31,7 @@ import {
   redefinirSenha,
   criarPost,
   obterPosts,
-  // obterNomeUsuario,
+  obterNomeUsuario,
   verificaUsuarioLogado,
   deletarPost,
   editarPost,
@@ -70,6 +70,7 @@ jest.mock('firebase/firestore', () => ({
   collection: jest.fn(),
   getDocs: jest.fn(),
   db: jest.fn(),
+  getDoc: jest.fn(),
 }));
 
 describe('firebase', () => {
@@ -271,4 +272,31 @@ describe('firebase', () => {
     });
   });
   // redirecionarPagina
+
+  // obter nome usuário
+  describe('obterNomeUsuario', () => {
+    it('deve retornar um objeto com as informações do usuário', async () => {
+      const uid = '5555';
+      const displayName = 'Usuário de teste';
+      const email = 'usuario123@example.com';
+      const nomeTutor = 'Tutor do Cão';
+      const nomeCao = 'Rex';
+      getDoc.mockReturnValue({
+        data: jest.fn().mockReturnValue({
+          email,
+          nomeTutor,
+          nomeCao,
+        }),
+      });
+
+      const resultado = await obterNomeUsuario();
+      expect(resultado).toEqual({
+        uid,
+        displayName,
+        email,
+        nomeTutor,
+        nomeCao,
+      });
+    });
+  });
 });
