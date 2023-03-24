@@ -10,6 +10,7 @@
 }
 
 body {
-  background-image: url('../../assets/bg-image.jpg');
-  background-repeat: no-repeat;
-}
+    background-image: url('../../assets/bg-image.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+} 
