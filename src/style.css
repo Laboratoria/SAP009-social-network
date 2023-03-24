@@ -507,6 +507,18 @@ a:link {
   margin: 50px 0 50px 137px;
   font-size: 25px;
  }
+
+ #nome-cao{
+  background-color: var(--bege);
+  border: 5px solid var(--bege);
+ }
+
+ #btn-salvar-nome-cao{
+  background-color: var(--nude);
+  border: 5px solid var(--nude);
+  color: var(--marrom);
+  font-weight: bolder;
+ }
 }
 
 @media screen and (min-width: 842px) {
@@ -890,4 +902,27 @@ textarea:focus {
 
 .txt-devs-desktop {
   display: none;
+}
+
+.nome-cao{
+  background-color: var(--nude);
+  border-style: none;
+  border-radius: 20px;
+  color: var(--laranja);
+  border: 5px solid var(--nude);
+}
+
+#nome-cao::placeholder{
+  color: var(--marrom);
+}
+
+.btn-salvar-nome-cao{
+  background-color: var(--marrom);
+  color: var(--bege);
+  cursor: pointer;
+  text-transform: uppercase;
+  border: 5px solid var(--marrom);
+  border-radius: 20px;
+  width: 50%;
+  margin-top: 10px;
 }
