@@ -4,7 +4,7 @@ export default () => {
   const container = document.createElement('div');
 
   const template = `
-  <header class="conteudo">
+  <header class="conteudo-feed">
     <div class="cabecalho">
       <img class="logo-cadastro" src="/imagens/logo-lemos.png" href="/#login">
     </div>
@@ -28,13 +28,13 @@ export default () => {
       </div>
       <div>
         <p class="textos-cadastro">Senha</p>
-        <input type="password" class="input-cadastro" id = "senha-cadastro" required>
+        <input type="password" class="input-cadastro" id="senha-cadastro" required>
       </div>
       <div>
         <p class="textos-cadastro">Repita sua senha</p>
         <input type="password" class="input-cadastro" required>
       </div>
-        <button type="submit" class="botao-cadastrar">Cadastrar</button>
+        <button type="submit" class="botao-cadastrar"> <a href= "#feed"> Cadastrar </a> </button>
     </form>
    </section> 
   `;
@@ -52,6 +52,7 @@ export default () => {
       .then(() => {
         window.location.hash = '#feed';
       })
+
       .catch(() => {
         mensagemErro.innerHTML = 'Erro ao criar cadastro';
       });

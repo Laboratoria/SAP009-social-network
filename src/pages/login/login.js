@@ -23,7 +23,7 @@ export default () => {
         <p class="texto-erro" id="textoErro"></p>
         <button type="submit" class="botao-entrar">Entrar</button>
         <p class="texto-ou"> ou </p>
-        <img class="botao-google" src="imagens/figura-google.png">
+        <img class="botao-google" a href="#feed" src="imagens/figura-google.png"></a>
         <p class="texto-cadastro">Ainda não faz parte? <br> <a href="#cadastro">Cadastre-se aqui!</p></a>
     </form>
     

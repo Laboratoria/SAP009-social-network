@@ -111,6 +111,11 @@ a{
   border: 0.5px solid #FFFFFF;
   border-radius: 10px;
   margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.botao-entrar:hover{
+  background-color:#085560;
 }
 
 .texto-ou{
