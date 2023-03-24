@@ -1,6 +1,7 @@
 // Este es el punto de entrada de tu aplicacion
-import login from './pages/login/index.js';
+import login from './pages/login/login';
 import feed from './pages/feed/feed.js';
+import cadastro from './pages/cadastro/index';
 
 const main = document.querySelector('#root');
 
@@ -13,6 +14,9 @@ const init = () => {
         break;
       case '#feed':
         main.appendChild(feed());
+        break;
+      case '#cadastro':
+        main.appendChild(cadastro());
         break;
       default:
         main.appendChild(login());
