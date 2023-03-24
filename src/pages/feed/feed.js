@@ -45,7 +45,7 @@ export default async () => {
                         <img src="./img/logo/logo.png" class="img-logo-feed" alt="logo-dogTips">
                     </div>
                     <div class="div-postagem-tutor">
-                        <textarea class="texto-tutor" id="texto-tutor"name="texto-tutor" cols="50" rows="4" ></textarea>
+                        <textarea class="texto-tutor" id="texto-tutor"name="texto-tutor" cols="50" rows="4" placeholder="O que gostaria de compartilhar?"></textarea>
                         <button class="btn-publicar" id="btn-publicar">publicar</button>
                     </div>
                         <span id="alerta-publicacao" class="alerta-publicacao"></span>

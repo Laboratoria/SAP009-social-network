@@ -1,13 +1,8 @@
+<div align="center">
 <img src="..img/../src/img/logo/readmeLogo.png">
-
-| :bust_in_silhouette: Usuário teste: :computer: |
-| --------------------- |
-| :e-mail: Email: dog@teste.com |
-| :lock: Password: 123456 |
-
+</div>
 
 ## :round_pushpin: Índice
-
 
 - [:round\_pushpin: Índice](#round_pushpin-índice)
 - [1. Sobre o Projeto :computer: :dog:](#1-sobre-o-projeto-computer-dog)
@@ -28,7 +23,6 @@
   - [👩🏻‍🎨 Paola Oliveira](#-paola-oliveira)
   - [👩🏻‍🎨 Thainara Tabile](#-thainara-tabile)
 
-*
 
 ## 1. Sobre o Projeto :computer: :dog:
 
@@ -53,19 +47,21 @@ Com base nesses perfis, conseguimos guiar as tomadas de decisão do projeto, des
 ## 3. Histórias de Usuários :book: 
 Após termos compreendido melhor as necessidades de nossos usuários, determinamos as Histórias de Usuário que representam suas necessidades na Rede Social.
 
-<img src="..img/../src/img/readme/historiaUsuario.png">
+<img src="..img/../src/img/readme/hist-usuario.png">
 
 ## 4. Protótipos para Mobile 📱
 <h5>📌 Tela de Login e de Cadastro</h5>
 <img src="..img/../src/img/readme/login-cadastro.png">
 <h5>📌 Tela de Redefinir Senha e Feed</h5>
 <img src="..img/../src/img/readme/redefinir-senha-feed.png">
+<h5>📌 Feed (Menu) e página Sobre</h5>
+<img src="..img/../src/img/readme/feed-sobre.png">
 
 ## 5. Protótipos para Desktop :computer: 
 <h5>📌 Tela de Login</h5>
 <img src="..img/../src/img/readme/login.png">
 <h5>📌 Tela de Cadastro</h5>
-<img src="..img/../src/img/readme/cadastro.png">
+<img src="..img/../src/img/readme/cadastro-desktop.png">
 <h5>📌 Tela de Redefinir Senha</h5>
 <img src="..img/../src/img/readme/redefinirSenha.png">
 <h5>📌 Feed</h5>
