@@ -2,6 +2,7 @@ import registro from './pages/registro/registro.js';
 import login from './pages/login/login.js';
 import redefinirSenha from './pages/redefinir-senha/redefinir-senha';
 import feed from './pages/feed/feed';
+import sobre from './pages/sobre/sobre';
 import { verificaUsuarioLogado } from './firebase/firebase.js';
 
 const main = document.querySelector('#root');
@@ -19,6 +20,9 @@ const init = async () => {
       break;
     case '#registro':
       main.appendChild(registro());
+      break;
+    case '#sobre':
+      main.appendChild(sobre());
       break;
     case '#feed':
       main.appendChild(await feed());
