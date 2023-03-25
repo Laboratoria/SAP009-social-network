@@ -12,6 +12,10 @@
 
 }
 
+.body-login{
+   display: block;
+}
+
 .logo-escrita-clara{
    width: 200px;
    margin: 30px;
@@ -139,22 +143,28 @@ h1 {
  width:50%;
  
 }
-
-.imagem-login{
-    background-image: url(../../img/imagem-tela-login.jpg);
-    background-position: center;
+.imagem-login {
     display: none;
 }
 
-@media screen and (min-width: 800px){
-    
-    .imagem-login{
-        display: block;
-        width: 681vw;
-        height: 982vh;
+@media  (min-width:900px){
+    .body-login {
+        display: flex;
+    }
 
-    } 
-    .fundo-form{
+    .coluna-1, .coluna-2 {
+        width: 50%;
+    }
+    .coluna-2 .container{
+        height: 100%;
+    }
+    .imagem-login {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .fundo-form {
         background: #d9d9d98c;
         border-radius: 20px;
         width: 49vh;
@@ -165,12 +175,16 @@ h1 {
         align-items: center;
         justify-content: center
     }
-    .texto-entrada > p{
+    
+    .texto-entrada>p {
         color: var(--vermelho);
         font-size: 23px;
         font-weight: bold;
     }
-    .imagem-logo{
+    
+    .imagem-logo {
         margin-top: 50px;
     }
+
 }
+

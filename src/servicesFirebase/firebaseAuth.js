@@ -1,17 +1,15 @@
-/* import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import { btnCadastro } from '../../src/pages/cadastro/index';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebaseInit';
 
-const auth = getAuth(app);
-
-export const btnCadastro = (email, senha) => {
+export const createUser = (email, senha) => {
   createUserWithEmailAndPassword(auth, email, senha)
     .then((userCredential) => {
       const user = userCredential.user;
-      console.log('foi')
+      console.log('foi');
       window.location.hash = '#login';
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
     });
-}; */
+}

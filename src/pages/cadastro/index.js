@@ -1,5 +1,4 @@
-/* import { createUserWithEmailAndPassword } from "firebase/auth";
-import { btnCadastro } from "../../servicesFirebase/firebaseAuth"; */
+import { createUser } from '../../servicesFirebase/firebaseAuth';
 
 export default () => {
   const container = document.createElement('div');
@@ -30,7 +29,7 @@ export default () => {
                                 placeholder="Password" minlength="8" required>
                         </div>
                         <div>
-                            <a href="/#cadastro"><button id="btnCadastro" type="button"
+                            <a href="/#cadastro"><button id="btnCreateUser" type="button"
                                 class="btn-cadastrar">Cadastrar</button>
                         </div>
                         <span class="txt-error hide" id="txtError"></span>
@@ -42,7 +41,16 @@ export default () => {
         </div>
         `;
   container.innerHTML = template;
-  return container
-};
 
- 
+  const criarCadastro = () => {
+    const email = container.querySelector('#txtEmail').value;
+    const senha = container.querySelector('#txtPassword').value;
+    createUser(email, senha);
+    console.log(email, senha);
+    container.addEventListener('click', function (event) {
+    if (event.target.id === 'btnCreateUser' && event.target.nodeName == 'BUTTON') criarCadastro()
+});
+  };
+  criarCadastro();
+  return container;
+};
