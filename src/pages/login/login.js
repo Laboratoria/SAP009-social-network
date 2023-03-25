@@ -1,3 +1,4 @@
+import { valuesLogin} from '../../servicesFirebase/firebaseAuth'
 export default () => {
   const container = document.createElement('div');
 
@@ -44,5 +45,15 @@ export default () => {
     `;
 
   container.innerHTML = template;
+  const fazerLogin = () => {
+    const email = container.querySelector('#txtEmail').value;
+    const senha = container.querySelector('#txtPassword').value;
+    valuesLogin(email, senha);
+    console.log(email, senha);
+    container.addEventListener('click', function (event) {
+    if (event.target.id === 'btnLogin' && event.target.nodeName == 'BUTTON') fazerLogin()
+});
+  };
+  fazerLogin();
   return container;
 };
