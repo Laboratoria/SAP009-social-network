@@ -19,20 +19,20 @@
 .container-cadastro {
     background: #d9d9d98c;
     border-radius: 20px;
-    width: 336px;
-    height: 592px;
+    width: 48vh;
+    height: 530px;
     margin-top: 100px;
-    
+   
 }
-
 .cadastro{
-    background-image: url(../../img/imagem-fundo-cadastro.png);
+    background-image: url(../../img/plano-fundo-page-cadastro.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     width: 100vw;
     height: 100vh;
 } 
+
 
 .logo-escrita-escura {
     width: 315px;

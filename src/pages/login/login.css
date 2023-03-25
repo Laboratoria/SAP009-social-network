@@ -13,7 +13,7 @@
 }
 
 .body-login{
-   display: flex;
+   display: block;
 }
 
 .logo-escrita-clara{
@@ -143,42 +143,48 @@ h1 {
  width:50%;
  
 }
-
-.imagem-login{
-   width: 50%;
-   height: 100vh;
-   display:none;
+.imagem-login {
+    display: none;
 }
 
+@media  (min-width:900px){
+    .body-login {
+        display: flex;
+    }
 
-@media (min-width:800px) {
-   .container{
-      float: right;
-      width: 50%;
-   }
+    .coluna-1, .coluna-2 {
+        width: 50%;
+    }
+    .coluna-2 .container{
+        height: 100%;
+    }
+    .imagem-login {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .fundo-form {
+        background: #d9d9d98c;
+        border-radius: 20px;
+        width: 49vh;
+        height: 599px;
+        margin-top: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center
+    }
+    
+    .texto-entrada>p {
+        color: var(--vermelho);
+        font-size: 23px;
+        font-weight: bold;
+    }
+    
+    .imagem-logo {
+        margin-top: 50px;
+    }
 
-   .imagem-login{
-      display: flex;
-   }
-
-   .texto-entrada > p{
-      color: var(--vermelho);
-      font-size: 23px;
-      font-weight: bold;
-   }
-   
-   .fundo-form{
-      background: #d9d9d98c;
-      border-radius: 20px;
-      width: 49vh;
-      height: 599px;
-     
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center
-   }
-   .imagem-logo{
-      margin-top:50px;
-   }
 }
+

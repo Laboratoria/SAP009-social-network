@@ -2,8 +2,11 @@ export default () => {
   const container = document.createElement('div');
 
   const template = `
-  <body class="body-login">
-    <img class="imagem-login" src="./img/imagem-login.jpg">
+    <div class="body-login">
+    <div class="coluna-1">  
+        <img class="imagem-login" src="./img/imagem-login.jpg"/>
+    </div>
+    <div class="coluna-2">
       <section class="container">
         <section class="imagem-logo">
           <img class="logo-escrita-clara" src="./img/logo-escrita-clara.png">
@@ -36,7 +39,8 @@ export default () => {
             </form>
     </section>
       </section>
-  </body>
+    </div>
+  </div>   
     `;
 
   container.innerHTML = template;
