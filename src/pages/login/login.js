@@ -2,6 +2,7 @@
 /* eslint-disable no-console */
 import { signIn, loginGoogle } from '../../firebase/auth.js';
 import { errorsFirebase, validateLogin } from '../../validations';
+import { redirect } from '../../redirect.js';
 
 export default () => {
   const container = document.createElement('div');
@@ -57,7 +58,7 @@ export default () => {
     if (validation === '') {
       signIn(email, password)
         .then(() => {
-          window.location.replace('#timeline');
+          redirect('#timeline');
         })
         .catch((error) => {
           const errorFirebase = errorsFirebase(error.code);
@@ -72,11 +73,11 @@ export default () => {
     loginGoogle()
       .then(() => {
         console.log('google: Usuário autenticado!');
-        window.location.replace('#timeline');
+        redirect('#timeline');
       })
       .catch((error) => {
         console.log('google: Usuário não autenticado.');
-        window.location.replace('#login');
+        redirect('#login');
       });
   });
 

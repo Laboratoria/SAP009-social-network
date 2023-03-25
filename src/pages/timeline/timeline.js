@@ -1,51 +1,32 @@
 import { logOut } from '../../firebase/auth.js';
-import { accessPost, createPost } from '../../firebase/firestore.js';
+import { accessPost } from '../../firebase/firestore.js';
+import posts from './posts.js';
+import { redirect } from '../../redirect.js';
 
 export default () => {
   const container = document.createElement('div');
   // container.classList.add('container-timeline');
 
   const template = `
-      <header>
-        <img src="./assets/logo.png" id="logo-timeline" alt="Logo da Anime-se">
-        <span id="burger" class="material-symbols-outlined">menu</span>
-        <nav id="menu">
-          <ul>
-            <li><a href="#login">Sobre as desenvolvedoras</a></li>
-            <li><a href="#login">Indicações exclusivas</a></li>
-            <li><a href="#login" id="logout">Sair</a></li>
-          </ul>
-        </nav>
-      </header>
+  <header>
+    <img src="./assets/logo.png" id="logo-timeline" alt="Logo da Anime-se">
+    <span id="burger" class="material-symbols-outlined">menu</span>
+    <nav id="menu">
+      <ul>
+        <li><a href="#login">Sobre as desenvolvedoras</a></li>
+        <li><a href="#login">Indicações exclusivas</a></li>
+        <li><a href="#login" id="logout">Sair</a></li>
+      </ul>
+    </nav>
+  </header>
   
-      <main class="black-bg">
-        <button id="open-modal">Recomende seu anime aqui!</button>
+  <main class="black-bg">
+    <button id="open-modal">Recomende seu anime aqui!</button>
+    <section id="div-modal"></section>
+  
+    <section id='show-timeline'></section>
+  </main>
 
-        <section id='show-timeline'></section>
-  
-        <div id="fade" class="hide"></div>
-        <div id="modal" class="hide">
-        <div class="modal-header">
-          <button id="close-modal">X</button>
-        </div>
-  
-        <div class="modal-body">
-          <form class ="modal-form">
-            <div class="single-input">
-              <input required type="text" id="anime" class="input">
-              <label for="anime">Nome do anime</label>
-            </div>
-  
-            <div class="single-input">
-            <input required type="text" id="episodes" class="input">
-            <label for="episodes">Quantidade de episódios</label>
-            </div>
-          </form>
-  
-          <textarea id="post-area" placeholder="Fale sobre o anime aqui" class="input"></textarea>
-          <button id="post-button">Publicar</button>
-        </div>
-      </main>
     `;
 
   container.innerHTML = template;
@@ -69,7 +50,7 @@ export default () => {
       </div>
       </br>
     `;
-/*
+      /*
     const showPosts = async () => {
       const showing = await accessPost();
       const postsTemplate = showing.map((post) => {
@@ -102,8 +83,7 @@ export default () => {
 
   logoutButton.addEventListener('click', () => {
     logOut();
-    window.location.replace('#login');
-    console.log('saiu');
+    redirect('#login');
   });
 
   const menu = container.querySelector('#menu');
@@ -117,6 +97,13 @@ export default () => {
     }
   });
 
+  const btnModal = container.querySelector('#open-modal');
+  btnModal.addEventListener('click', () => {
+    const divModal = container.querySelector('#div-modal');
+    divModal.appendChild(posts());
+  });
+
+  /*
   const openModalButton = container.querySelector('#open-modal');
   const closeModalButton = container.querySelector('#close-modal');
   const modal = container.querySelector('#modal');
@@ -134,7 +121,7 @@ export default () => {
   const animePost = container.querySelector('#anime');
   const episodesPost = container.querySelector('#episodes');
   const descriptionPost = container.querySelector('#post-area');
-  /*
+
   function publishPost() {
     const posts = {
       anime: animePost.value,
@@ -143,7 +130,6 @@ export default () => {
     };
     console.log(posts);
   }
-  */
 
   postButton.addEventListener('click', () => {
     console.log('clicou');
@@ -154,7 +140,7 @@ export default () => {
     createPost(anime, episodes, description);
     window.location.replace('#timeline');
   });
-
+*/
   showPosts();
 
   return container;
