@@ -15,7 +15,6 @@ export const createUser = (email, senha) => {
     });
 };
 
-//Entrar com email e senha//
 export const valuesLogin = (email, senha) => {
   signInWithEmailAndPassword(auth, email, senha)
     .then((userCredential) => {
