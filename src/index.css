@@ -1,6 +1,7 @@
 @import './pages/login/login.css';
 @import './pages/register/register.css';
 @import './pages/timeline/timeline.css';
+@import './pages/timeline/posts.css';
 
 * {
     box-sizing: border-box;

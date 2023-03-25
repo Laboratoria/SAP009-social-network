@@ -2,6 +2,7 @@
 /* eslint-disable no-console */
 import { createUserWithEmail } from '../../firebase/auth.js';
 import { errorsFirebase, validateRegister } from '../../validations.js';
+import { redirect } from '../../redirect.js';
 
 export default () => {
   const container = document.createElement('div');
@@ -55,7 +56,7 @@ export default () => {
       createUserWithEmail(email, password)
         .then(() => {
           console.log('Usuário cadastrado - register');
-          window.location.replace('#timeline');
+          redirect('#timeline');
         })
         .catch((error) => {
           console.log('Erro de cadastro');

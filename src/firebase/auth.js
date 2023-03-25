@@ -9,6 +9,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
+  onAuthStateChanged,
 // eslint-disable-next-line import/no-unresolved
 } from 'firebase/auth';
 import { app } from './app.js';
@@ -37,3 +38,7 @@ export const loginGoogle = () => {
 };
 
 export const logOut = () => signOut(auth);
+
+export const checkLoggedUser = (check) => {
+  onAuthStateChanged(auth, check);
+};
