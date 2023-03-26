@@ -39,13 +39,20 @@ export default () => {
         <section class='box-post-timeline'>
           <div class='box-complete-post'>
             <div class='box-info-post'>
+              <p id='user'>Fulana<p/>
               <p id='anime-name'>${post.anime}</p>
               <p id='anime-episodes'>${post.episodes}</p>
             </div>
-            <div class='box-text-post'>
-              <p id='post-description'>${post.description}</p>
-            </div>
-          </div>
+          <details>
+            <summary class='view-description'>Ver mais</summary>
+               <div class='box-description'>
+                  <p id='post-description'>${post.description}</p>
+               </div>
+          </details>
+              <div class="posts-btn">
+                <button class='btn-posts' id='btn-edit'>Editar</button>
+                <button class='btn-posts' id='btn-del'>Excluir</button>
+              </div>
         </section>
       </div>
       </br>

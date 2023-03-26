@@ -4,6 +4,8 @@
     text-align: center;
     font-weight: bold;
     margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 90%;
 }
 
 #close-modal {
@@ -126,4 +128,23 @@ div.single-input .input:valid ~ label {
 
 #post-button:active {
     opacity: 0.8;
+}
+
+@media screen and (min-width: 700px) {
+     #modal {
+        width: 54%;
+        height: 70%;
+    }
+
+    #post-area {
+        width: 90%;
+        max-width: 90%;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+
+    #open-modal {
+        width: 50%;
+    } 
 }
