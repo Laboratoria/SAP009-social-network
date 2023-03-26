@@ -5,6 +5,7 @@ import { defineConfig } from 'vite';
 // https://vitejs.dev/config/#conditional-config
 // https://vitejs.dev/config/shared-options.html#root
 
+
 export default defineConfig(({ command }) => {
   if (command === 'build') {
     return {
