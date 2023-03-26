@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Bona+Nova:ital,wght@0,400;0,700;1,400&display=swap');
+
+body {
+background-image: linear-gradient(to bottom, #999999 , #DADADA  , #ffffff);
+background-attachment: fixed;
+font-family: 'Bona Nova';
+font-style: italic;
+}    
