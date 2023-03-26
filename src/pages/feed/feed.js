@@ -98,7 +98,7 @@ export default async () => {
             <textarea class="texto-tutor-postado" id="texto-tutor-postado" style='resize:none' disabled>${post.texto}</textarea>
             <div id="icones-inferiores">
               <button class="btn-curtir" id="btn-curtir" >
-              <img ${post.likes.includes(usuarioLogado.uid) ? 'src="${coracaoPreenchido}"' : 'src="${coracaoDeslike}"'}>  ${post.likes.length}
+              <img ${post.likes.includes(usuarioLogado.uid) ? `src="${coracaoPreenchido}"` : `src="${coracaoDeslike}"`}>  ${post.likes.length}
               </button>
               <p class="numero-curtidas"></p>
               ${post.author === usuarioLogado.uid ? `
