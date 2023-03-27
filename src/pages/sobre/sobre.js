@@ -9,7 +9,6 @@ import luigi from '../../img/devs/luigi.png';
 import iconeLinkedin from '../../img/icones-feed/linkedin.png';
 import iconeGitHub from '../../img/icones-feed/github.png';
 
-
 export default () => {
   const container = document.createElement('div');
   const template = `

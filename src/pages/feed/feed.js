@@ -11,8 +11,8 @@ import {
 } from '../../firebase/firebase';
 
 import ilustracaoLogo from '../../img/logo/logo.png';
-import coracaoDeslike from '../../img/icones-feed/like-pata-3.png'
-import coracaoPreenchido from '../../img/icones-feed/like-pata-2.png'
+import coracaoDeslike from '../../img/icones-feed/like-pata-3.png';
+import coracaoPreenchido from '../../img/icones-feed/like-pata-2.png';
 
 export default async () => {
   const usuarioLogado = await obterNomeUsuario();
@@ -207,7 +207,7 @@ export default async () => {
         window.location.hash = '#login';
       })
       .catch(() => {
-        alert('Ocorreu um erro, tente novamente.');
+        window.location.hash = '#feed';
       });
   });
 

@@ -67,7 +67,7 @@ async function criarUsuario(email, senha, nomeTutor, nomeCao) {
 async function logarGoogle() {
   await signInWithPopup(auth, provider);
 
-  // Verifica se o usuário que acabou de logar com o google já existe na collection de usuarios. 
+  // Verifica se o usuário que acabou de logar com o google já existe na collection de usuarios.
   // Caso não exista cria o usuário na collection
   const usuario = await getDoc(doc(db, 'usuarios', auth.currentUser.uid));
   if (!usuario.exists()) {
@@ -134,8 +134,6 @@ const obterNomeUsuario = async () => {
     nomeTutor: usuarioRef.data().nomeTutor,
     nomeCao: usuarioRef.data().nomeCao,
   };
-
-
 
   return usuario;
 };
