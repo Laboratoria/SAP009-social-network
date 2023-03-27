@@ -1,29 +1,11 @@
 /* eslint-disable */
-import { signIn, loginGoogle, verifyUserLogged  } from '../../firebase/auth.js';
-import { showErrorMessage } from '../errorHandling.js';
-//import { redirectToPage } from './../../redirectToPage.js';
-//import { auth } from './../../firebase/auth';
+import { signIn, loginGoogle  } from '../../firebase/auth.js';
+
 
 export default () => {
 
-  //let x = location.hash;
-
-  
-  // if (window.location.hash === '#login' && verifyUserLogged()) {
-  // //  window.location.replace('#timeline');
-  // }
-
-  // window.addEventListener('hashchange', () => {
-      
-  //   if (auth.currentUser) {
-  //     redirectToPage('#timeline');
-  //   }
-  // });
- 
-
   const container = document.createElement('div');
-  container.classList.add('container');
-  
+  container.classList.add('container');  
 
   const template = `
     <div class= "form-wrapper">

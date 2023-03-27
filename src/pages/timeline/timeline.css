@@ -105,28 +105,12 @@ li {
     list-style: none;
 }
 
-/* 
-.modal-wrapper {
-    position: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.3);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-  } */
-
 
 .show {
     opacity: 1;
     pointer-events: auto;
   }
-
+/* 
   .modal {
     display: flex;
     flex-direction: row;
@@ -139,7 +123,7 @@ li {
     border: #e85b64;
     border-style: solid;
    
-  }
+  } */
   
   .modal-content {
     position: relative;
@@ -221,19 +205,19 @@ li {
   opacity: 1;
   pointer-events: auto;
 }
-/* .modal {
+.modal {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   background-color: #fff;
-  width: 26rem;
+  width: 22rem;
   height: 20rem;
   border-radius: 1rem;
   overflow: auto;
   border: #e85b64;
   border-style: solid;
   background-color: #fcf8ee;
-} */
+}
 
 .modal-title {
   font-family: "Eyad Al-Samman - Ghibli", Arial, Helvetica, sans-serif;
@@ -243,19 +227,6 @@ li {
   text-align: center;
   padding-bottom: 1rem;
 }
-/* 
-.modal-side-left {
-  position: relative;
-  padding: 2rem;
-  width: 30rem;
-}
-
-.modal-side-right {
-  position: relative;
-  padding: 2rem;
-  width: 50rem;
-} */
-
 
 #close {
   position: absolute;

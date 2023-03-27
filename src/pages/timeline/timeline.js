@@ -6,7 +6,6 @@ import createHeader from '../../components/header.js';
 import {
   getLoggedUserAllPosts,
 } from '../../firestore/DBFunctions';
-// import{ redirectToPage } from '../../redirectToPage.js';
 
 export default () => {
   const user = auth.currentUser;
@@ -22,10 +21,6 @@ export default () => {
 
   // TESTANDO FUNCAO MANUALMENTE
   // createNewPost('tegravou omdele');
-
-  // if (window.location.hash === '#timeline' && verifyUserLogged()) {
-  //   redirectToPage('#timeline');
-  // }
 
   const container = document.createElement('div');
   container.classList.add('container-timeline');
@@ -93,8 +88,7 @@ export default () => {
 
     modalContainer.innerHTML = `
     <div class="modal">
-    <div class="modal-content">
-    <div class="modal-side-left">
+    <div class="modal-content">  
       <p class="greeting-modal">O que você busca/oferece hoje?</p>   
        <input type='text' name='post-title' class='input' id='post-title' placeholder='Digite o título'> 
       <input type='text' name='post-text' class='input-post-text' id='post-text' placeholder='Digite o conteúdo do post'> 
