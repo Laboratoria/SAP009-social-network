@@ -45,6 +45,7 @@
     "commit": "ffa75c8b2bede153844195479abeff01f3e34227"
   },
   "dependencies": {
-    "firebase": "^9.17.1"
+    "firebase": "^9.17.1",
+    "jsdom": "^21.1.1"
   }
 }

@@ -11,8 +11,8 @@ import {
 } from '../../firebase/firebase';
 
 import ilustracaoLogo from '../../img/logo/logo.png';
-import coracaoDeslike from '../../img/icones-feed/like-pata-3.png'
-import coracaoPreenchido from '../../img/icones-feed/like-pata-2.png'
+import coracaoDeslike from '../../img/icones-feed/like-pata-3.png';
+import coracaoPreenchido from '../../img/icones-feed/like-pata-2.png';
 
 export default async () => {
   const usuarioLogado = await obterNomeUsuario();
@@ -98,7 +98,7 @@ export default async () => {
             <textarea class="texto-tutor-postado" id="texto-tutor-postado" style='resize:none' disabled>${post.texto}</textarea>
             <div id="icones-inferiores">
               <button class="btn-curtir" id="btn-curtir" >
-              <img ${post.likes.includes(usuarioLogado.uid) ? 'src="${coracaoPreenchido}"' : 'src="${coracaoDeslike}"'}>  ${post.likes.length}
+              <img ${post.likes.includes(usuarioLogado.uid) ? `src="${coracaoPreenchido}"` : `src="${coracaoDeslike}"`}>  ${post.likes.length}
               </button>
               <p class="numero-curtidas"></p>
               ${post.author === usuarioLogado.uid ? `
@@ -207,7 +207,7 @@ export default async () => {
         window.location.hash = '#login';
       })
       .catch(() => {
-        alert('Ocorreu um erro, tente novamente.');
+        window.location.hash = '#feed';
       });
   });
 

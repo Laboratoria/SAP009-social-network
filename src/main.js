@@ -8,6 +8,7 @@ import { verificaUsuarioLogado } from './firebase/firebase.js';
 const main = document.querySelector('#root');
 
 const init = async () => {
+  main.innerHTML = '';
   switch (window.location.hash) {
     case ' ':
       main.appendChild(login());

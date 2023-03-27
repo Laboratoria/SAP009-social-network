@@ -26,6 +26,8 @@ import {
   updateDoc,
   arrayUnion,
   arrayRemove,
+  orderBy,
+  query,
 } from 'firebase/firestore';
 
 import {
@@ -67,13 +69,18 @@ async function criarUsuario(email, senha, nomeTutor, nomeCao) {
 async function logarGoogle() {
   await signInWithPopup(auth, provider);
 
-  const usuarioGoogle = {
-    email: auth.currentUser.email,
-    nomeTutor: auth.currentUser.displayName,
-    nomeCao: '',
-  };
+  // Verifica se o usuário que acabou de logar com o google já existe na collection de usuarios.
+  // Caso não exista cria o usuário na collection
+  const usuario = await getDoc(doc(db, 'usuarios', auth.currentUser.uid));
+  if (!usuario.exists()) {
+    const usuarioGoogle = {
+      email: auth.currentUser.email,
+      nomeTutor: auth.currentUser.displayName,
+      nomeCao: '',
+    };
 
-  await setDoc(doc(db, 'usuarios', auth.currentUser.uid), usuarioGoogle);
+    await setDoc(doc(db, 'usuarios', auth.currentUser.uid), usuarioGoogle);
+  }
 }
 
 // editar nomeCao login com google
@@ -108,8 +115,9 @@ const criarPost = async (textPost) => {
 // extrai o valor do campo "texto" de cada documento
 // e retorna um array contendo todos os textos dos documentos.
 const obterPosts = async () => {
-  const colecaoPosts = await getDocs(collection(db, 'posts'));
   const textos = [];
+  const ordenarPost = query(collection(db, 'posts'), orderBy('data', 'desc'));
+  const colecaoPosts = await getDocs(ordenarPost);
   colecaoPosts.forEach((post) => {
     const data = post.data();
     data.id = post.id;
