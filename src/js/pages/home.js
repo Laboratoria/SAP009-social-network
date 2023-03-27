@@ -1,4 +1,3 @@
-
 export default () => {
   const homeContainer = document.createElement('section');
   homeContainer.classList.add('home-section');
@@ -37,7 +36,6 @@ export default () => {
   `;
 
   homeContainer.innerHTML = homeTemplate;
-  
 
   return homeContainer;
 };

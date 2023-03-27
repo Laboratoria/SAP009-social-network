@@ -1,7 +1,9 @@
-import home from './pages/home.js';
 import headerInitial from './components/headers/header-initial.js';
+// import headerLogin from './components/headers/header-login.js';
 import footer from './components/footer.js';
-import signUp from './pages/sign-up.js';
+import home from './pages/home.js';
+// import login from './pages/login.js';
+import signup from './pages/sign-up.js';
 
 const main = document.querySelector('#root');
 const init = () => {
