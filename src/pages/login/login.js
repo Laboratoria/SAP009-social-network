@@ -47,4 +47,4 @@ export default () => {
 
 // <p class='form'>
 // <a href='#paracadastro' class='cadastre'>Cadastre-se</a>
-// </p> */}
+// </p>
