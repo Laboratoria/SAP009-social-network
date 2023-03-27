@@ -1,7 +1,6 @@
-// aqui exportaras las funciones que necesites
-//export const myFunction = () => {aqui tu codigo};
+// aqui exportaras las funciones que necesites //export const myFunction = () => {aqui tu codigo};
 
-import home from "./pages/cadastro/home.js";
+import home from "./home.js";
 
 const main = document.querySelector("#root");
 

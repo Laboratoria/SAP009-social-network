@@ -1,5 +1,5 @@
 export default () => {
-  const container = document.createElementNS("div");
+  const container = document.createElement("section");
 
   const template = `
    <h2 id="Bem-vindo">Bem vindo (a) !</h2>
