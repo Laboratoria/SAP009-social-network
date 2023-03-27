@@ -3,7 +3,6 @@ export default () => {
 
   const loginScreen = `
   <section id='login-content'
-
     <section id='background-orange'>
       <h2 id='welcome'> Bem vindo (a) !</h2>
       <p id='quality'> 'A sua qualidade de vida é como um <span>bumerangue</span>, precisa ter movimento. Todas as ações que você lançar, voltarão em sua direção ainda mais fortes.' </p>
@@ -35,5 +34,6 @@ export default () => {
  //COLOCAR AQUI OS AS MANIPULAÇÕES DINAMICAS DO DOM, PEGANDO OS IDS DO HTML E/OU CSS
   // COLOCAR OS EVENTOS DOS BOTOES DE ENTRAR, ENTRAR C/ GOOGLE E CADASTRAR
   // CRIAR AS CONDICIONAIS SE O EMAIL E/OU SENHA ESTIVEREM ERRADOS, OU SE O EMAIL JÁ FOR OU NÃO CADASTRADO, ETC...
-  return loginContainer;
+   return loginContainer;
 };
+
