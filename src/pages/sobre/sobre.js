@@ -93,7 +93,7 @@ export default () => {
         window.location.hash = '#login';
       })
       .catch(() => {
-        alert('Ocorreu um erro, tente novamente.');
+        window.location.hash = '#feed';
       });
   });
 

@@ -22,6 +22,9 @@ import {
   arrayRemove,
   // getDocs,
   db,
+  orderBy,
+  query,
+  setDoc,
 } from 'firebase/firestore';
 
 import {
@@ -39,6 +42,8 @@ import {
   descurtir,
   sair,
 } from '../src/firebase/firebase';
+
+import { redirecionarPagina } from '../src/redirecionar-pagina';
 
 jest.mock('firebase/auth', () => ({
   getAuth: jest.fn(() => ({
@@ -71,6 +76,8 @@ jest.mock('firebase/firestore', () => ({
   getDocs: jest.fn(),
   db: jest.fn(),
   getDoc: jest.fn(),
+  orderBy: jest.fn(),
+  query: jest.fn(),
 }));
 
 describe('firebase', () => {
@@ -111,10 +118,19 @@ describe('firebase', () => {
 
   // logar com o google
   describe('logarGoogle', () => {
-    it('a função deve logar usuário com a sua conta google', () => {
+    it('deve logar usuário com a sua conta google e criar usuário na coleção se não existir', async () => {
+      // mock da função getDoc que retorna um usuário que não existe na coleção
+      getDoc.mockResolvedValue({ exists: () => false });
+
       signInWithPopup.mockResolvedValue();
-      logarGoogle();
+      setDoc.mockResolvedValue();
+
+      await logarGoogle();
+
       expect(signInWithPopup).toHaveBeenCalledTimes(1);
+      expect(getDoc).toHaveBeenCalledTimes(1);
+      expect(getDoc).toHaveBeenCalledWith(doc(db, 'usuarios', getAuth().currentUser.uid));
+      expect(setDoc).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -128,7 +144,6 @@ describe('firebase', () => {
   });
 
   // criarPost
-
   it('deve criar um post e guardar na coleção', async () => {
     addDoc.mockResolvedValueOnce({ id: '1234' });
     const mockCollection = 'collection';
@@ -159,19 +174,19 @@ describe('firebase', () => {
       getDocs.mockResolvedValue([
         {
           id: 'PwGTKDq5TzR072lIieVOUCEtwcP2',
-          data: () => ({ texto: 'Post 1' }),
+          data: () => ({ texto: 'Post 1', data: new Date(2023, 3, 15) }),
         },
         {
           id: 'Ii0jdAZ99BUQIpW9sCRNKavigUR2',
-          data: () => ({ texto: 'Post 2' }),
+          data: () => ({ texto: 'Post 2', data: new Date(2023, 3, 14) }),
         },
       ]);
       const posts = await obterPosts();
       expect(posts).toEqual([
-        { id: 'PwGTKDq5TzR072lIieVOUCEtwcP2', texto: 'Post 1' },
-        { id: 'Ii0jdAZ99BUQIpW9sCRNKavigUR2', texto: 'Post 2' },
+        { id: 'PwGTKDq5TzR072lIieVOUCEtwcP2', texto: 'Post 1', data: new Date(2023, 3, 15) },
+        { id: 'Ii0jdAZ99BUQIpW9sCRNKavigUR2', texto: 'Post 2', data: new Date(2023, 3, 14) },
       ]);
-      expect(getDocs).toHaveBeenCalledWith(collection(db, 'posts'));
+      expect(getDocs).toHaveBeenCalledWith(query(collection(db, 'posts'), orderBy('data', 'desc')));
     });
   });
 
@@ -298,5 +313,20 @@ describe('firebase', () => {
         nomeCao,
       });
     });
+  });
+});
+
+const jsdom = require('jsdom');
+
+const { JSDOM } = jsdom;
+const dom = new JSDOM('<!doctype html><html><body></body></html>');
+
+global.window = dom.window;
+global.document = dom.window.document;
+
+describe('redirecionarPagina', () => {
+  it('deve redirecionar para a página correta', () => {
+    redirecionarPagina('#pagina');
+    expect(window.location.hash).toEqual('#pagina');
   });
 });

@@ -26,6 +26,8 @@ import {
   updateDoc,
   arrayUnion,
   arrayRemove,
+  orderBy,
+  query,
 } from 'firebase/firestore';
 
 import {
@@ -113,8 +115,9 @@ const criarPost = async (textPost) => {
 // extrai o valor do campo "texto" de cada documento
 // e retorna um array contendo todos os textos dos documentos.
 const obterPosts = async () => {
-  const colecaoPosts = await getDocs(collection(db, 'posts'));
   const textos = [];
+  const ordenarPost = query(collection(db, 'posts'), orderBy('data', 'desc'));
+  const colecaoPosts = await getDocs(ordenarPost);
   colecaoPosts.forEach((post) => {
     const data = post.data();
     data.id = post.id;
