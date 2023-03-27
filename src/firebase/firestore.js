@@ -1,5 +1,5 @@
 import {
-  getFirestore, addDoc, collection, getDocs, orderBy,
+  getFirestore, addDoc, collection, getDocs, doc, updateDoc, deleteDoc,
 } from 'firebase/firestore';
 import { app } from './app';
 
@@ -13,13 +13,23 @@ export const createPost = (anime, episodes, description) => { //eslint-disable-l
   });
 };
 
-export const accessPost = async () => {
-  const querySnapshot = await getDocs(collection(db, 'posts'), orderBy('date'));
-  const posts = [];
-  querySnapshot.forEach((doc) => {
-    const data = doc.data();
-    data.id = doc.id;
-    posts.push(data);
+export async function accessPost() {
+  const allPosts = [];
+  const querySnapshot = await getDocs(collection(db, 'posts'));
+  querySnapshot.forEach((post) => {
+    const data = post.data();
+    data.id = post.id;
+    allPosts.push(data);
   });
-  return posts;
-};
+  return allPosts;
+}
+
+export async function editPost(idPost, newPost) {
+  const docRef = doc(db, 'posts', idPost);
+  return updateDoc(docRef, newPost);
+}
+
+export async function deletePost(idPost) {
+  const docRef = doc(db, 'posts', idPost);
+  return deleteDoc(docRef);
+}

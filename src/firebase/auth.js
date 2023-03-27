@@ -22,6 +22,8 @@ const auth = getAuth(app);
 
 // funcao que criamos para abrigar a funcao de criar user com email/senha (já criada pelo firebase)
 
+export const getUserId = () => auth.currentUser.uid;
+
 // eslint-disable-next-line max-len
 export const createUserWithEmail = (name, displayName, email, password) => createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
