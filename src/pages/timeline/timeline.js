@@ -1,11 +1,12 @@
+/* eslint-disable camelcase */
 /* eslint-disable no-use-before-define */
 import {} from 'firebase/firestore';
 import { LogOut, auth } from '../../firebase/auth.js';
 import createHeader from '../../components/header.js';
 import {
-  createNewPost,
   getLoggedUserAllPosts,
 } from '../../firestore/DBFunctions';
+// import{ redirectToPage } from '../../redirectToPage.js';
 
 export default () => {
   const user = auth.currentUser;
@@ -22,15 +23,17 @@ export default () => {
   // TESTANDO FUNCAO MANUALMENTE
   // createNewPost('tegravou omdele');
 
+  // if (window.location.hash === '#timeline' && verifyUserLogged()) {
+  //   redirectToPage('#timeline');
+  // }
+
   const container = document.createElement('div');
   container.classList.add('container-timeline');
   const header = createHeader();
   header.classList.add('header-site');
   container.appendChild(header);
 
-
   let loggedUserAllPosts = [];
-
   function showAllPosts() {
     if (loggedUserAllPosts) {
       const mappedPosts = loggedUserAllPosts.map((post) => post);
@@ -64,12 +67,13 @@ export default () => {
             <p class="greeting-name">${user.displayName}</p>
             <img src="./assets/bt-new-post.png" id="btn-new-post" class="" alt="logo da ConectAda">
           </div>
-        <div id="post-list">
+        <div id="post-list"></div>
+        <div id="modal-wrapper">
+        <div id="modal-container"></div>
         </div>
+        <div class="div-logout-btn"> <button type="button" id="logout-button" class="button logout-btn" href="#login">Sair</button></div>
       </div>
     
-
-    <div class="div-logout-btn"> <button type="button" id="logout-button" class="button logout-btn" href="#login">Sair</button></div>
   `;
 
   container.innerHTML += template;
@@ -84,21 +88,31 @@ export default () => {
   newPostButton.addEventListener('click', showDescription);
 
   function showDescription() {
-    const modalContainer = document.getElementById('post-list');
+    const modal_container = document.getElementById('modal-wrapper');
+    const modalContainer = document.getElementById('modal-container');
 
     modalContainer.innerHTML = `
     <div class="modal">
-    <p>oi</p>
+    <div class="modal-content">
+    <div class="modal-side-left">
+      <p class="greeting-modal">O que você busca/oferece hoje?</p>   
+       <input type='text' name='post-title' class='input' id='post-title' placeholder='Digite o título'> 
+      <input type='text' name='post-text' class='input-post-text' id='post-text' placeholder='Digite o conteúdo do post'> 
+       <p class="max-char"> Máximo 300 caracteres</p>
+      <button type='button' id='post-button' class='button' href='#timeline'>Post</button>
+      <button class="buttons" id="close">Go back</button>
+    
+    
+    </div> 
+  
     </div>`;
 
-    modalContainer.classList.add('show');
+    modal_container.classList.add('show');
 
-    // const close = document.getElementById('close');
-    // close.addEventListener('click', () => {
-    //   modalContainer.classList.remove('show');
-    // });
-
+    const close = document.getElementById('close');
+    close.addEventListener('click', () => {
+      modal_container.classList.remove('show');
+    });
   }
-    return container;
-  };
-
+  return container;
+};
