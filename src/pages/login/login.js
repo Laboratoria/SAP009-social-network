@@ -1,4 +1,17 @@
+import api from '../api';
+
 export default () => {
+
+  const actionLoginGoogle = async () {
+    let result = api.googleLogin();
+
+    if(result){
+
+    }else{
+      alert("Error");
+    }
+  }
+
   const container = document.createElement('div');
   const template = `  
     <p class='logo'>
@@ -25,7 +38,7 @@ export default () => {
     <a id='submitGoogle' class='btn' href='#login'>Login with</a>
     <section class='buttons'>
       <div id="linhaHor1"></div>
-      <button id='googleButton'>Google</button>
+      <button onClick={actionLoginGoogle} id='googleButton'>Google</button>
       <div id="linhaHor2"></div>
     </section>
 
