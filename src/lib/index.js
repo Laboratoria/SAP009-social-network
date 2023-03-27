@@ -4,3 +4,5 @@ export const myFunction = () => {
   // aqui tu codigo
   console.log('Hola mundo!');
 };
+import()
+ window.addEventListener("load")
