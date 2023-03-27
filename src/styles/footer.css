@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    
 }
 
 footer h1 {
@@ -72,9 +73,7 @@ footer {
     footer h1 {
         justify-content: center;
     }
-
     footer {
         height: 5rem;
     }
-    
 } 

@@ -6,10 +6,12 @@ export default () => {
 <div class="header-nav">
   <ul>
     <li id="header-link">
-      <a href="/#"><img src="./img/logo-icon-no-background.png" alt="logo-icon" id="logo-icon"></a>
+      <a href="/#home"><img src="./img/logo-icon-no-background.png" alt="logo-icon" id="logo-icon"></a>
     </li>
     <li id="li-header-btn">
-      <button href="/#login" id="header-btn">SIGN IN</button>
+      <button id="header-btn">
+       <a href="/#signup">SIGN IN</a>
+      </button>
     </li>
   </ul>
 </div>
