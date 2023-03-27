@@ -2,6 +2,7 @@
 @import './pages/register/register.css';
 @import './pages/timeline/timeline.css';
 @import './pages/timeline/posts.css';
+@import './pages/timeline/postsTm.css';
 
 * {
     box-sizing: border-box;

@@ -20,10 +20,10 @@ export default () => {
           <input required type="text" id="episodes" class="input">
           <label for="episodes">Quantidade de episódios</label>
         </div>
+
+        <textarea style="resize: none" id="post-area" placeholder="Fale sobre o anime aqui" class="input"></textarea>
+        <button id="post-button">Publicar</button>
       </form>
-  
-      <textarea id="post-area" placeholder="Fale sobre o anime aqui" class="input"></textarea>
-      <button id="post-button">Publicar</button>
     </div>
   </section>
 

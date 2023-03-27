@@ -1,6 +1,6 @@
 import login from './pages/login/login';
 import register from './pages/register/register';
-import timeline from './pages/timeline/timeline';
+import { timeline } from './pages/timeline/timeline';
 import post from './pages/timeline/posts';
 import { checkLoggedUser } from './firebase/auth.js';
 import { redirect } from './redirect.js';
@@ -10,6 +10,7 @@ const main = document.querySelector('#root');
 const redirectLogUser = (user) => {
   if (user) {
     redirect('#timeline');
+    console.log(user);
   } else {
     redirect('');
   }
@@ -25,7 +26,13 @@ const renderPage = () => {
       main.appendChild(register());
       break;
     case '#timeline':
-      main.appendChild(timeline());
+      checkLoggedUser(async (logged) => {
+        if (logged) {
+          main.appendChild(await timeline());
+        } else {
+          main.appendChild(login());
+        }
+      });
       break;
     case '#post':
       main.appendChild(post());

@@ -1,0 +1,53 @@
+.post {
+    background-color: #fff;
+    max-width: 90%;
+    height: 30%;
+    border-radius: 10px;
+    border: solid 2px;
+    border-color: #D82934;
+    
+}
+
+#user {
+    color: #D82934;
+    font-weight: 700;
+    font-size: medium;
+}
+
+#anime-name, #anime-episodes, #post-description {
+    color: #431F01;
+}
+
+.view-description {
+    color: #00B154;
+    cursor: pointer;
+}
+
+.box-description {
+    background-color: #38EB8D;
+    width: 90%;
+    height: 90%;
+    padding: 5%;
+    border-radius: 10px;
+    margin-top: 1rem;
+}
+
+#post-description {
+    text-align: left;
+}
+
+.btn-posts {
+    width: 5rem;
+    background-color: #00B154;
+    color: #fff;
+    border-radius: 10px;
+    padding: 0.5rem;
+    display: inline-block;
+    margin-bottom: 1rem;
+    margin-top: 1rem;   
+    text-align: center; 
+}
+
+#btn-edit {
+    margin-right: 2rem;
+}
