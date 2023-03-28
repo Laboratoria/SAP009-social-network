@@ -1,25 +1,102 @@
-@import url('https://fonts.googleapis.com/css2?family=Bona+Nova:ital,wght@0,400;0,700;1,400&display=swap');
-
-* {
-font-family: 'Bona Nova';
-font-style: italic;
-margin: 0px;
-padding: 0px;
-box-sizing: border-box;
+#login-content-desktop {
+display: none;    
 }
 
-body , html {
+.login-container {
 width: 100vw;
 height: 100vh;    
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+justify-content: space-evenly;
 }
 
-body {
-display: flex;
-background-image: linear-gradient(to bottom, #999999 , #DADADA  , #ffffff);
-background-attachment: fixed;
-}    
+#login-logo {
+display: flex;  
+width: 380px;
+}
 
-#image-logo{
+.padding-inputs {
 display: flex;
 justify-content: center;
+align-items: center;
+width: 350px;
+height: 50px;
+background: #DADADA;
+border: 3px solid #000000;
+border-radius: 10px;
+text-align: center;
+font-size: 18px;
+}
+
+#email {
+margin-top: 80px;  
+background-image: url('/src/imagens/email.png') !important;;
+background-repeat: no-repeat;
+}
+
+#password {
+background-image: url('/src/imagens/cadeado.png') !important;;
+background-repeat: no-repeat;
+}
+
+#enter-button {
+display: flex;    
+width: 350px;
+height: 65px;
+margin-top: 30px;
+background: #EE8100;
+border-radius: 10px;
+text-decoration: none;
+}
+
+#enter {
+display: flex;    
+color: #ffffff;
+align-items: center;
+margin-left: 135px;
+}
+
+#or-google{
+display: flex;   
+font-size: 18px;
+margin-top: 30px;  
+}
+
+.login-google {
+display: flex;   
+font-size: 22px; 
+}
+
+.google-account {
+display: flex;   
+font-size: 22px; 
+margin-left: -100px;
+margin-bottom: 100px;
+}
+
+#image-google {
+display: flex;  
+justify-content: center;
+align-items: center;
+width: 150px;
+margin-bottom: 100px;
+}
+
+#register {
+display: flex;  
+color: #EE8100;
+margin-left: 250px;
+margin-top: -138px;
+}
+
+#register-link {
+text-decoration-color: #EE8100;    
+}
+
+footer {
+display: flex;  
+font-size: 12px;
 }
