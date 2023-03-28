@@ -1,7 +1,3 @@
-body {
-    margin: 0;
-}
-
 footer h1 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
@@ -33,8 +29,6 @@ footer {
     bottom: 0;
     background-color: #004AAD;
     width: 100%;
-    height: 10rem;
-    padding: 0.3px;    
     text-align: center;
     justify-content: center;
     display: flex;

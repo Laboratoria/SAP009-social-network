@@ -1,9 +1,9 @@
 .home-section {
     width: 100%;
     height: 100%;
+    margin-bottom: 10em;
 }
 .home-main {
-    background: #F0EBE8;
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     width: 100%;
@@ -14,10 +14,9 @@
 
 /*logo principal*/
 #logo-complete{
-    position: relative;
     width: 20em;
     height: 12em;
-    top: 93px;
+    margin-top: 93px;
     margin-left: auto;
     margin-right: auto;
     justify-content: center;
@@ -30,7 +29,7 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 35%;
+    height: 270px;
 }
 
 /*título principal em azul*/
@@ -66,29 +65,28 @@
 
 /*div de todas as duplas img e texto*/
 .main-content-home {
-    width: 70%;
+    width: 70vw;
     flex-direction: column;
     display: flex;
-    position: relative;
-    margin-left: 3em;
+    margin-left: auto;
     margin-right: auto;
 }
 
 /* divs de cada ícone e texto*/
 .icons-text-home {
-    width: 100%;
+    width: 70vw;
     height: 50px;
     flex-direction: row;
     display: flex;
     align-items: center;
-    padding: 10px;
+    margin-bottom: 5em;
 }
 
 /*texto ao lado dos ícones*/
 .text-home {
     position: relative;
     height: 100%;
-    width: 100%;
+    width: 50vw;
     left: 85px;
     display: flex;
     font-size: 1.25em;

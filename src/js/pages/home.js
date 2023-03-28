@@ -1,6 +1,3 @@
-import headerInitial from '../components/headers/header-initial.js';
-import footer from '../components/footer.js';
-
 export default () => {
   const homeContainer = document.createElement('section');
   homeContainer.classList.add('home-section');
@@ -39,8 +36,6 @@ export default () => {
   `;
 
   homeContainer.innerHTML = homeTemplate;
-  homeContainer.appendChild(headerInitial());
-  homeContainer.appendChild(footer());
 
   return homeContainer;
 };
