@@ -1,0 +1,108 @@
+.form-login{
+    font-family: 'Montserrat', sans-serif;
+}
+.card-login{
+    display: flex;
+    flex-direction: column;
+}
+.card-top{
+    display: flex;
+    flex-direction: column;
+}
+.logo-login{
+    width: 12em;
+    height: 8em;
+    margin-top: 93px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    display: flex;
+}
+.card-top h1{
+    font-size: 2em;
+    color: #004AAD;
+    text-align: center;
+}
+.input-group{
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    margin-left: 1em;
+}
+.input-group label{
+    font-size: 20px;
+}
+.input-group input{
+    height: 3em;
+    background: #D8E8FE;
+    width: 80vw;
+    border: none;
+}
+.input-group input:hover{
+    border: solid;
+    border-width: thin;
+    border-color: #004AAD;
+}
+.login-links a{
+    color: black;
+    font-size: 15px;
+    line-height: 19px;
+    display: flex;
+    justify-content: center;
+}
+#button-login{
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
+#login-btn{
+    width: 150px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #EF681A;
+    border-radius: 10px;
+    color: #004AAD;
+    font-weight: 700;
+    font-size: 24px;
+}
+.separation-or{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+   padding: 1em;
+}
+hr{
+    width: 40vw;
+}
+.separation-or h2{
+    font-weight: 400;
+    font-size: 12px;
+}
+.btn-group{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5em;
+}
+.login-google{
+    width: 260px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #4285F4;
+    color: #F6F7F8;
+    font-size: 20px;
+    font-weight: 700;
+}   
+.login-google span{
+    display: flex;
+    align-items: center;
+    
+}
+#logo-google{
+    width: 35px;
+    background-color: #FFFFFF;
+    margin-right: 15px;
+}
