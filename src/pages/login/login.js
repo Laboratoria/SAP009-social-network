@@ -1,14 +1,18 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-console */
 /* eslint-disable max-len */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable indent */
 import { fazerLogin, loginComGoogle, observador } from '../../firebase/firebase';
 import { exibeErros } from '../../firebase/funcoes-acessorias';
-import postagem from '../postagem/postagem';
+// import postagem from '../postagem/postagem';
 
 const criarLogin = document.createElement('section');
 
 const login = () => {
   const template = `
+    <img class="background-desktop" src="imagens\background_desktop_preto-removebg-preview.png" alt="">
+
     <div class="caixa-login">
       <form class="form-login">
         <input id="login-email" type="email"  placeholder="E-mail" required/>
@@ -28,7 +32,10 @@ const login = () => {
       <p>Ainda não possui cadastro? <br> <a href="/#cadastro">Crie sua conta!</a></p>
     </section>
   </div> 
-`;
+
+  <img class="imagem-footer" src="./imagens/brinde_taças-removebg-preview.png" alt="duas mãos próximas segurando taças com vinho simulando um brinde">
+  
+  `;
 
   criarLogin.innerHTML = template;
 

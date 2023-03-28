@@ -33,8 +33,7 @@ logar-se com ela, criar, editar, deletar e dar _likes_ em publicações.
 
 O objetivo principal de aprendizagem deste projeto é construir uma Single-page
 Application (SPA) 
-Responsiva
-é possível **ler e escrever dados**.
+Responsiva é possível **ler e escrever dados**.
 
 ## 3. Objetivos de aprendizagem
 
@@ -58,8 +57,6 @@ Reflita e depois enumere os objetivos que quer alcançar e aplique no seu projet
 
 - [ ] **Uso de seletores de DOM**
 
-  <details><summary>Links</summary><p>
-
 - [ ] **Manipulação de eventos de DOM (listeners, propagação, delegação)**
 
 - [ ] **Manipulação dinâmica de DOM**
@@ -69,19 +66,19 @@ Reflita e depois enumere os objetivos que quer alcançar e aplique no seu projet
 
 ### JavaScript
 
-- [ ] **Arrays (arranjos)**
+- [ ok ] **Arrays (arranjos)**
 
-- [ ] **Objetos (key, value)**
+- [ ok ] **Objetos (key, value)**
 
-- [ ] **Diferenciar entre tipos de dados primitivos e não primitivos**
+- [ ok ] **Diferenciar entre tipos de dados primitivos e não primitivos**
 
-- [ ] **Variáveis (declaração, atribuição, escopo)**
+- [ ok ] **Variáveis (declaração, atribuição, escopo)**
 
-- [ ] **Uso de condicionais (if-else, switch, operador ternário, lógica booleana)**
+- [ ok ] **Uso de condicionais (if-else, switch, operador ternário, lógica booleana)**
 
-- [ ] **Uso de laços (while, for, for..of)**
+- [ ok ] **Uso de laços (while, for, for..of)**
 
-- [ ] **Funções (params, args, return)**
+- [ ok ] **Funções (params, args, return)**
 
 - [ ] **Testes unitários (unit tests)**
 
@@ -104,19 +101,19 @@ Reflita e depois enumere os objetivos que quer alcançar e aplique no seu projet
 
 ### Controle de Versões (Git e GitHub)
 
-- [ ] **Git: Instalação e configuração**
+- [ ok ] **Git: Instalação e configuração**
 
-- [ ] **Git: Controle de versão com git (init, clone, add, commit, status, push, pull, remote)**
+- [ ok ] **Git: Controle de versão com git (init, clone, add, commit, status, push, pull, remote)**
 
-- [ ] **Git: Integração de mudanças entre ramos (branch, checkout, fetch, merge, reset, rebase, tag)**
+- [ ok ] **Git: Integração de mudanças entre ramos (branch, checkout, fetch, merge, reset, rebase, tag)**
 
-- [ ] **GitHub: Criação de contas e repositórios, configuração de chave SSH**
+- [ ok ] **GitHub: Criação de contas e repositórios, configuração de chave SSH**
 
-- [ ] **GitHub: Implantação com GitHub Pages**
+- [ ok ] **GitHub: Implantação com GitHub Pages**
 
-- [ ] **GitHub: Colaboração pelo Github (branches | forks | pull requests | code review | tags)**
+- [ ok ] **GitHub: Colaboração pelo Github (branches | forks | pull requests | code review | tags)**
 
-- [ ] **GitHub: Organização pelo Github (projects | issues | labels | milestones | releases)**
+- [  ] **GitHub: Organização pelo Github (projects | issues | labels | milestones | releases)**
 
 ### Centrado no usuário
 
@@ -134,20 +131,12 @@ Reflita e depois enumere os objetivos que quer alcançar e aplique no seu projet
 
 ### Firebase
 
-- [ ] **Firebase Auth**
+- [ ok ] **Firebase Auth**
 
 - [ ] **Firestore**
 
 
 ## 4. Considerações gerais
-
-* Este projeto deve ser desenvolvido em trios.
-
-* O intervalo de tempo estimado para concluir o projeto é de 4 a 5 Sprints.
-
-* A lógica do projeto deve estar implementada completamente em JavaScript
-  (ES6+), HTML e CSS :smiley:. Para este projeto **não está permitido** o uso de
-  _frameworks_ ou bibliotecas de CSS e JS.
 
 * A divisão e organização do trabalho deve permitir, sem exceção, que **cada
   integrante** da equipe pratique a aprendizagem de tudo que está envolvido em
@@ -226,7 +215,7 @@ Deve funcionar bem em dispositivos de tela grande (computadores, laptops etc.) e
 
 Essas considerações ajudarão você a escrever as definições de pronto de sua H.U.:
 
-#### Criação e login de conta de usuário
+#### Criação e login de conta de usuário - ok
 
 * _Login_ com Firebase:
   - Para o _login_ e postagens na timeline, você pode usar o
@@ -305,8 +294,6 @@ interface será exibida usando páginas do GitHub ou outro serviço de hospedage
 Verifica a [Documentação Vite](https://vitejs.dev/guide/static-deploy.html)
 para orientá-lo sobre isso.
 
-***
-
 ## 8. Guias, dicas e leituras complementares
 
 ### Mobile first
@@ -323,7 +310,7 @@ A motivação aqui é se assegurar que desde o começo sejam desenhadas telas
 _responsivas_. Dessa forma, começamos com a aparência e o comportamento do
 aplicativo em uma tela e ambiente móvel.
 
-### Múltiplas telas
+### Múltiplas telas ok
 
 Em projetos anteriores, nossas aplicações eram compostas de apenas uma tela
 _principal_ (uma só _página_). Neste projeto, precisaremos dividir nossa

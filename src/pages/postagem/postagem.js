@@ -1,4 +1,8 @@
-import { observador, sair, fazerLogin } from '../../firebase/firebase';
+/* eslint-disable no-unused-vars */
+import { async } from 'regenerator-runtime';
+import { observador, sair } from '../../firebase/firebase';
+import { paraPostar, mostraPostagens, quandoDadosForemAdicionados } from '../../firebase/firebase-storage';
+import { imprimePosts } from '../../firebase/funcoes-acessorias';
 
 const postagem = () => {
   const header = document.querySelector('.header');
@@ -13,7 +17,7 @@ const postagem = () => {
       </div>
       
       <section class="novo-post">
-        <textarea name="novo-texto" id="novo-texto" cols="30%" rows="4%"></textarea>
+        <textarea name="novo-texto" id="novo-texto" class="novo-texto" cols="30%" rows="4%"></textarea>
         <button class="btn-postar">Postar</button>
       </section>
       
@@ -24,13 +28,13 @@ const postagem = () => {
   </div>
 
   <div class="postagem-amigas">
-    <div class="postagens-anteriores">
+    <div class="container">
       <section class="postagem-data">
         <p class="data-postagem">xx/xx/xxxx</p>
       </section>
       <section class="ultimo-post">
-        <div class="postagens-anteriores">
-          <span class="perfil-usuaria">@nome</span>
+        <div class="" id="postagens-anteriores">
+          <span class="postagens-anteriores"></span>
           <i class="fa-solid fa-circle-heart"></i>
         </div>
       </section>
@@ -48,6 +52,21 @@ const postagem = () => {
   btnSair.addEventListener('click', () => {
     sair();
     window.location.hash = '#';
+  });
+
+  // CRIAR AQUI A MANIPULAÇÃO DO DOM PARA CRIAR POSTS E TUDO O MAIS
+
+  const novoTexto = criarPostagem.querySelector('#novo-texto');
+
+  const btnPostar = criarPostagem.querySelector('.btn-postar');
+
+  const postagensAnteriores = criarPostagem.querySelector('.postagens-anteriores');
+
+  btnPostar.addEventListener('click', async () => {
+    paraPostar(novoTexto.value); // cria a memoria de arq p/ postar
+    postagensAnteriores.innerHTML += imprimePosts(await mostraPostagens());
+    console.log(postagensAnteriores);
+    console.log(novoTexto.value);
   });
 
   return criarPostagem;

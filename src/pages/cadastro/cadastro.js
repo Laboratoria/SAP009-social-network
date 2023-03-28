@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-duplicate-case */
 /* eslint-disable default-case */
 /* eslint-disable padded-blocks */
@@ -37,7 +38,7 @@ const cadastro = () => {
         <label for="filhos">Nº de filhas/os</label>
         <input type="tel" name="" id="filhos" required> <!-- tel pq aparece o teclado de nº  -->
         
-        <span class="modal mensagem-erro"><a href="">Okay X</a></span>
+        <span class="modal mensagem-erro"><a href=""></a></span>
 
         <input class="btn-enviar" type="submit" value="Enviar">
       </form>
@@ -48,6 +49,7 @@ const cadastro = () => {
   criaCadastro.innerHTML = template;
 
   // criação de cadastro com o firebase
+
   const form = criaCadastro.querySelector('.form-cadastro');
   const nome = criaCadastro.querySelector('#nome');
   const dataNascimento = criaCadastro.querySelector('#data');

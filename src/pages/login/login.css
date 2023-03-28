@@ -76,3 +76,30 @@ input::-webkit-input-placeholder {
   font-size: 1rem;
   color: #62615d;
 }
+
+.imagem-footer, .background-desktop{
+  display: none;
+}
+
+@media screen and (min-width: 600px){
+  body{
+    display: flex;
+    background: linear-gradient(180deg, #83152d 8.85%, #ad1d45 88.54%);
+    /* background-image: url('/src/imagens/background_desktop_preto-removebg-preview.png'); */
+  }
+  .header img{
+    display: none;
+  }
+  .imagem-footer{
+    display: block;
+    margin: auto;
+    width: 25%;
+  }
+  .caixa-login {
+    width: 60%;
+  }
+  .background-desktop{
+    display: flex;
+    width: 100vw;
+  }  
+}

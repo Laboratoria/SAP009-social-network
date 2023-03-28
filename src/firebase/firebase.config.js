@@ -18,3 +18,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
+
+// TODO: Replace the following with your app's Firebase project configuration (pertence a storage)
+// See: https://support.google.com/firebase/answer/7015592
+
+// Initialize Cloud Firestore and get a reference to the service export const db = getFirestore(app);

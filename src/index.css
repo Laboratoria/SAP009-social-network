@@ -36,8 +36,17 @@ body {
 }
 
 /* no media query colocar em body fonte-size 1.12/15rem para tablet e x-larger para desktop, ajustar o size do footer sozinho */
-
-.modal{
+/* mensagens de erro */
+.mensagem-erro{
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-family: monospace;
+  border: 3px #44000d solid;
+  border-radius: 5px;
+}
+/* .modal{
   background-color: black;
   color:#ad1d45;
-}
+} */

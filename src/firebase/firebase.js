@@ -18,12 +18,12 @@ export function fazerLogin(email, password) {
 
 export function observador() {
   onAuthStateChanged(auth, (user) => {
-    console.log(user);
+    // console.log(user);
     if (user) {
     // O usuário está conectado, consulte os documentos para obter uma lista de propriedades disponíveis;
     // https://firebase.google.com/docs/reference/js/firebase.User
       const uid = user.uid;
-      console.log(uid);
+      // console.log(uid);
     } else {
       // O usuário está desconectado
     }

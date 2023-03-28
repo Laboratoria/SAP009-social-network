@@ -55,3 +55,7 @@ export function exibeErros(erro) {
 export function modal(mensagem) {
   console.log(mensagem);
 }
+
+export function imprimePosts(querySnapshot) { // pega tudo oq for descrição na coleção
+  querySnapshot.forEach((doc) => doc.data());
+}
