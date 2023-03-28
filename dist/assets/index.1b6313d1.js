@@ -39,7 +39,6 @@
     fetch(link.href, fetchOpts);
   }
 })();
-const index = "";
 const login$1 = "";
 const register$1 = "";
 const timeline$1 = "";
@@ -3473,9 +3472,9 @@ class AuthMiddlewareQueue {
     });
     wrappedCallback.onAbort = onAbort;
     this.queue.push(wrappedCallback);
-    const index2 = this.queue.length - 1;
+    const index = this.queue.length - 1;
     return () => {
-      this.queue[index2] = () => Promise.resolve();
+      this.queue[index] = () => Promise.resolve();
     };
   }
   async runMiddleware(nextUser) {
@@ -17381,6 +17380,13 @@ function of(t2, e) {
   }, "PUBLIC").setMultipleInstances(true)), registerVersion(P, "3.9.0", t2), registerVersion(P, "3.9.0", "esm2017");
 }();
 const db = hh(app);
+const redirectToPage = (hash) => {
+  if (window.location.hash !== hash) {
+    window.location.hash = hash;
+  } else {
+    window.dispatchEvent(new HashChangeEvent("hashchange"));
+  }
+};
 const auth = getAuth(app);
 async function createUserWithEmail(email, password, name2) {
   return new Promise((resolve, reject) => {
@@ -17441,41 +17447,16 @@ function LogOut(user) {
     return null;
   });
 }
-function authStateChanged() {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      console.log(`onAuthStateChange: Logged in as ${user.email}`);
+const verifyUserLogged = () => {
+  onAuthStateChanged(auth, (users) => {
+    if (users) {
+      console.log(`logged as ${users.email}`);
+      redirectToPage("#timeline");
     } else {
-      console.log("onAuthStateChange: No user");
+      redirectToPage("#login");
     }
   });
-}
-function showErrorMessage(error) {
-  const errorLabel = document.querySelector("#error-label");
-  switch (error) {
-    case "Firebase: Error (auth/email-already-in-use).":
-      errorLabel.innerHTML = "E-mail j\xE1 cadastrado";
-      break;
-    case "Firebase: Error (auth/invalid-email).":
-      errorLabel.innerHTML = "E-mail inv\xE1lido";
-      break;
-    case "Firebase: Password should be at least 6 characters (auth/weak-password).":
-      errorLabel.innerHTML = "A senha deve ter mais de 6 caracteres";
-      break;
-    case "Firebase: Error (auth/wrong-password).":
-      errorLabel.innerHTML = "Senha inv\xE1lida";
-      break;
-    case "Firebase: Error (auth/user-not-found).":
-      errorLabel.innerHTML = "E-mail n\xE3o cadastrado";
-      break;
-    case "Firebase: Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later. (auth/too-many-requests).":
-      errorLabel.innerHTML = "O acesso \xE0 sua conta foi temporariamente desabilitado por excesso de tentativas. Tente novamente mais tarde.";
-      break;
-    default:
-      errorLabel.innerHTML = "";
-      break;
-  }
-}
+};
 const login = () => {
   const container = document.createElement("div");
   container.classList.add("container");
@@ -17559,7 +17540,6 @@ const login = () => {
   });
   return container;
 };
-authStateChanged();
 function createHeader() {
   const header = document.createElement("div");
   const template = `
@@ -17623,12 +17603,13 @@ const timeline = () => {
             <p class="greeting-name">${user.displayName}</p>
             <img src="./assets/bt-new-post.png" id="btn-new-post" class="" alt="logo da ConectAda">
           </div>
-        <div id="post-list">
+        <div id="post-list"></div>
+        <div id="modal-wrapper">
+        <div id="modal-container"></div>
         </div>
+        <div class="div-logout-btn"> <button type="button" id="logout-button" class="button logout-btn" href="#login">Sair</button></div>
       </div>
     
-
-    <div class="div-logout-btn"> <button type="button" id="logout-button" class="button logout-btn" href="#login">Sair</button></div>
   `;
   container.innerHTML += template;
   const logoutButton = container.querySelector("#logout-button");
@@ -17639,15 +17620,56 @@ const timeline = () => {
   const newPostButton = container.querySelector("#btn-new-post");
   newPostButton.addEventListener("click", showDescription);
   function showDescription() {
-    const modalContainer = document.getElementById("post-list");
+    const modal_container = document.getElementById("modal-wrapper");
+    const modalContainer = document.getElementById("modal-container");
     modalContainer.innerHTML = `
     <div class="modal">
-    <p>oi</p>
+    <div class="modal-content">  
+      <p class="greeting-modal">O que voc\xEA busca/oferece hoje?</p>   
+       <input type='text' name='post-title' class='input' id='post-title' placeholder='Digite o t\xEDtulo'> 
+      <input type='text' name='post-text' class='input-post-text' id='post-text' placeholder='Digite o conte\xFAdo do post'> 
+       <p class="max-char"> M\xE1ximo 300 caracteres</p>
+      <button type='button' id='post-button' class='button' href='#timeline'>Post</button>
+      <button class="buttons" id="close">Go back</button>
+    
+    
+    </div> 
+  
     </div>`;
-    modalContainer.classList.add("show");
+    modal_container.classList.add("show");
+    const close = document.getElementById("close");
+    close.addEventListener("click", () => {
+      modal_container.classList.remove("show");
+    });
   }
   return container;
 };
+function showErrorMessage$1(error) {
+  const errorLabel = document.querySelector("#error-label");
+  switch (error) {
+    case "Firebase: Error (auth/email-already-in-use).":
+      errorLabel.innerHTML = "E-mail j\xE1 cadastrado";
+      break;
+    case "Firebase: Error (auth/invalid-email).":
+      errorLabel.innerHTML = "E-mail inv\xE1lido";
+      break;
+    case "Firebase: Password should be at least 6 characters (auth/weak-password).":
+      errorLabel.innerHTML = "A senha deve ter mais de 6 caracteres";
+      break;
+    case "Firebase: Error (auth/wrong-password).":
+      errorLabel.innerHTML = "Senha inv\xE1lida";
+      break;
+    case "Firebase: Error (auth/user-not-found).":
+      errorLabel.innerHTML = "E-mail n\xE3o cadastrado";
+      break;
+    case "Firebase: Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later. (auth/too-many-requests).":
+      errorLabel.innerHTML = "O acesso \xE0 sua conta foi temporariamente desabilitado por excesso de tentativas. Tente novamente mais tarde.";
+      break;
+    default:
+      errorLabel.innerHTML = "";
+      break;
+  }
+}
 const register = () => {
   const container = document.createElement("div");
   container.classList.add("container");
@@ -17699,7 +17721,7 @@ const register = () => {
         console.log(isRegistered);
         window.location.replace("#login");
       }).catch((error) => {
-        showErrorMessage(error);
+        showErrorMessage$1(error);
       }).finally(() => {
         console.log("Processo de autentica\xE7\xE3o finalizado em login.");
       });
@@ -17711,24 +17733,26 @@ const register = () => {
 };
 const main = document.querySelector("#root");
 const init = () => {
-  window.addEventListener("hashchange", () => {
-    main.innerHTML = "";
-    switch (window.location.hash) {
-      case " ":
-        main.appendChild(login());
-        break;
-      case "#timeline":
-        main.appendChild(timeline());
-        break;
-      case "#register":
-        main.appendChild(register());
-        break;
-      default:
-        main.appendChild(login());
-    }
-  });
+  switch (window.location.hash) {
+    case "#timeline":
+      main.appendChild(timeline());
+      break;
+    case "#register":
+      main.appendChild(register());
+      break;
+    default:
+      main.appendChild(login());
+  }
 };
+window.addEventListener("hashchange", () => {
+  main.innerHTML = "";
+  if (window.location.hash === "#login" && auth.currentUser) {
+    redirectToPage("#timeline");
+  } else {
+    init();
+  }
+});
 window.addEventListener("load", () => {
-  main.appendChild(login());
+  verifyUserLogged();
   init();
 });

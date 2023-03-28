@@ -1,10 +1,10 @@
 /* eslint-disable camelcase */
 /* eslint-disable no-use-before-define */
-import {} from 'firebase/firestore';
+import { doc } from 'firebase/firestore';
 import { LogOut, auth } from '../../firebase/auth.js';
 import createHeader from '../../components/header.js';
 import {
-  getLoggedUserAllPosts,
+  getLoggedUserAllPosts, createNewPost
 } from '../../firestore/DBFunctions';
 
 export default () => {
@@ -19,8 +19,7 @@ export default () => {
   //   console.log(email);
   // }
 
-  // TESTANDO FUNCAO MANUALMENTE
-  // createNewPost('tegravou omdele');
+  
 
   const container = document.createElement('div');
   container.classList.add('container-timeline');
@@ -103,10 +102,28 @@ export default () => {
 
     modal_container.classList.add('show');
 
+  
     const close = document.getElementById('close');
     close.addEventListener('click', () => {
       modal_container.classList.remove('show');
     });
+   
+    
+
+      const postButton = document.getElementById('post-button');
+
+    postButton.addEventListener('click', () => {
+      const inputTitle = document.querySelector('#post-title').value;
+      const inputTextPost = document.querySelector('#post-text').value;
+    // const text = inputTextPost.value;
+    //   console.log('click');
+      console.log(inputTextPost.value);
+    //   console.log(text);
+     createNewPost(inputTitle, inputTextPost);
+     modal_container.classList.remove('show');
+    });
+
+    // TESTANDO FUNCAO MANUALMENTE
   }
   return container;
 };

@@ -1,3 +1,7 @@
+@import './pages/login/login.css';
+@import './pages/register/register.css';
+@import './pages/timeline/timeline.css';
+
 *{
     margin: 0;
     padding: 0;

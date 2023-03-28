@@ -4,13 +4,14 @@ import { db } from './firestore.js';
 
 import { auth } from '../firebase/auth';
 
-export const createNewPost = async (textPost) => {
+export const createNewPost = async (title, textPost) => {
+  console.log('create');
   const post = {
     uid: auth.currentUser.uid,
     displayName: auth.currentUser.displayName,
-    title: 'vendo guitarra',
+    title,
     textPost,
-    dateTime: '2023-03-24 00:08',
+    dateTime: new Date().toLocaleString(),
     updateDateTime: '',
     likes: [1],
   };

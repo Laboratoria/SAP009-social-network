@@ -209,7 +209,7 @@ li {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: #fff;
+  
   width: 22rem;
   height: 20rem;
   border-radius: 1rem;
