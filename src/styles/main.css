@@ -8,7 +8,7 @@
 html {
     margin: 0;
     width: 100vw;
-    height: 1000px;
+    /* height: 1000px; */
     background: #F0EBE8;
 }
 
@@ -22,3 +22,4 @@ body {
     width: 100vw;
     height: 100%;
 }
+
