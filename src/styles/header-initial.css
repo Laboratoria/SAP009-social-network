@@ -42,4 +42,5 @@ header{
     line-height: 15px;
     color: #004AAD;
     border: 1px solid #F0EBE8(30, 30, 30, 0.2);
+    cursor: pointer;
 }

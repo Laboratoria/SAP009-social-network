@@ -10,7 +10,7 @@ export default () => {
     </li>
     <li id="li-header-btn">
       <button id="header-btn">
-        <a href="/#login">SIGN IN</a>
+       <a href="/#signup">SIGN IN</a>
       </button>
     </li>
   </ul>
