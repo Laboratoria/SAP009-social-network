@@ -11,11 +11,11 @@ export default () => {
     </div>
     <div class="input-group">
       <label>Email:</label>
-      <input type="text" name="email" placeholder="Type your email">
+      <input type="text" id="email" name="email" placeholder="Type your email">
     </div>
     <div class="input-group">
       <label>Password:</label>
-      <input type="password" name="password" placeholder="Type your password">
+      <input type="password" id="password" name="password" placeholder="Type your password">
     </div>
     <div class="login-links">
       <a href="">Click here if you forgot your password.</a>
@@ -30,7 +30,14 @@ export default () => {
       <hr>
       <h2>OR</h2>
       <hr>
-      <div id="my-signin2"></div>
+    </div>
+    <div class="btn-group">
+      <button class="login-google">
+        <span>
+          <img id="logo-google" src="./img/google-37.png" alt="google">
+          Sign in with Google
+        </span>
+      </button>
     </div>
   </div>
 </form>  
