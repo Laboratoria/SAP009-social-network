@@ -1,11 +1,8 @@
-/* eslint-disable camelcase */
 /* eslint-disable no-use-before-define */
-import { doc } from 'firebase/firestore';
+
 import { LogOut, auth } from '../../firebase/auth.js';
 import createHeader from '../../components/header.js';
-import {
-  getLoggedUserAllPosts, createNewPost
-} from '../../firestore/DBFunctions';
+import { getLoggedUserAllPosts, createNewPost } from '../../firestore/DBFunctions';
 
 export default () => {
   const user = auth.currentUser;
@@ -19,8 +16,6 @@ export default () => {
   //   console.log(email);
   // }
 
-  
-
   const container = document.createElement('div');
   container.classList.add('container-timeline');
   const header = createHeader();
@@ -31,13 +26,14 @@ export default () => {
   function showAllPosts() {
     if (loggedUserAllPosts) {
       const mappedPosts = loggedUserAllPosts.map((post) => post);
+      console.log(mappedPosts);
       const postsList = document.createElement('div');
       container.appendChild(postsList);
-      mappedPosts.forEach((post) => {
-        const postElement = document.createElement('li');
-        postElement.innerText = post.title;
-        postsList.appendChild(postElement);
-      });
+      postsList.innerHTML = mappedPosts.map((post) => `<div>
+            <h2>${post.title}</h2>
+            <p><strong>Author:</strong> ${post.displayName}</p>
+            <p>${post.postText}</p>
+          </div>`).join('');
     }
   }
 
@@ -66,8 +62,7 @@ export default () => {
         <div id="modal-container"></div>
         </div>
         <div class="div-logout-btn"> <button type="button" id="logout-button" class="button logout-btn" href="#login">Sair</button></div>
-      </div>
-    
+      </div>    
   `;
 
   container.innerHTML += template;
@@ -87,12 +82,19 @@ export default () => {
     modalContainer.classList.add('modal-container');
     modalContainer.innerHTML = `    
     <div class="modal-content">  
+    <div class = "top-content">
       <p class="greeting-modal">O que você busca/oferece hoje?</p>   
-       <input type='text' name='post-title' class='input' id='post-title' placeholder='Digite o título'> 
+      <button class="buttons" id="close">X</button>
+      </div>
+      <div class="form">
+     <form>
+       <input type='text' name='post-title' class='input-post-title' id='post-title' placeholder='Digite o título'> 
       <input type='text' name='post-text' class='input-post-text' id='post-text' placeholder='Digite o conteúdo do post'> 
        <p class="max-char"> Máximo 300 caracteres</p>
       <button type='button' id='post-button' class='button' href='#timeline'>Post</button>
-      <button class="buttons" id="close">Go back</button>
+      </form>
+      </div>
+      
     </div>`;
 
     modalWrapper.classList.add('show');
@@ -106,15 +108,10 @@ export default () => {
     postButton.addEventListener('click', () => {
       const inputTitle = document.querySelector('#post-title').value;
       const inputTextPost = document.querySelector('#post-text').value;
-      // const text = inputTextPost.value;
-      //   console.log('click');
       console.log(inputTextPost.value);
-      //   console.log(text);
       createNewPost(inputTitle, inputTextPost);
       modalWrapper.classList.remove('show');
     });
-
-    // TESTANDO FUNCAO MANUALMENTE
   }
   return container;
 };
