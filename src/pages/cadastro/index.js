@@ -53,19 +53,13 @@ export default () => {
       if (event.target.id === 'btnCreateUser' && event.target.nodeName === 'BUTTON') criarCadastro()
 });
 };*/
-  criarCadastro();
+
   const criarCadastro = container.querySelector('#btnCreateUser');
   criarCadastro.addEventListener('click', (e) => {
     e.preventDefault();
     const email = container.querySelector('#txtEmail').value;
     const senha = container.querySelector('#txtPassword').value;
     createUser(email, senha);
-    /* .then(() => {
-        window
-    }
-
-    /* ) */
-  }
-  )
+});
   return container;
-};
+}

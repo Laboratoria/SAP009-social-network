@@ -36,7 +36,7 @@ export default () => {
               <button id="btnLogin" type="button" class="btn-login">Entrar</button>
               </div>
               <div>
-              <a href="/#cadastro"><button id="btnCadastrar" type="button" class="btn-cadastrar">Cadastrar</button>
+              <a href="#cadastro"><button id="btnCadastrar" type="button" class="btn-cadastrar">Cadastrar</button>
               </div>
               <p class="entrar-google">Entrar com Google</p>
             </form>
