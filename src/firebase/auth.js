@@ -41,6 +41,8 @@ export const loginGoogle = () => {
 
 export const logOut = () => signOut(auth);
 
-export const checkLoggedUser = (check) => {
-  onAuthStateChanged(auth, check);
-};
+export function checkLoggedUser(status) {
+  return onAuthStateChanged(auth, (user) => {
+    status(user !== null);
+  });
+}

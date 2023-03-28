@@ -51,9 +51,9 @@ export default () => {
     const password = registerPassword.value;
     const passwordRepeat = repeatPassword.value;
 
-    const register = validateRegister(name, email, emailRepeat, password, passwordRepeat);
-    if (register === '') {
-      createUserWithEmail(email, password)
+    const registerAccount = validateRegister(name, email, emailRepeat, password, passwordRepeat);
+    if (registerAccount === '') {
+      createUserWithEmail(name, email, emailRepeat, password, passwordRepeat)
         .then(() => {
           console.log('Usuário cadastrado - register');
           redirect('#timeline');
@@ -64,7 +64,7 @@ export default () => {
           errorMessage.innerHTML = errorFirebase;
         });
     } else {
-      errorMessage.innerHTML = register;
+      errorMessage.innerHTML = registerAccount;
     }
   });
 

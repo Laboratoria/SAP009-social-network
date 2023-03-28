@@ -33,7 +33,9 @@ export default (post) => {
 
   const closeModalButton = modalEdit.querySelector('#close-modal');
   closeModalButton.addEventListener('click', () => {
-    modalEdit.style.display = 'none';
+    if (window.confirm('Tem certeza que deseja sair? Caso você saia, as alterações não serão salvas')) {
+      modalEdit.style.display = 'none';
+    }
   });
 
   const postButton = modalEdit.querySelector('#post-button');
