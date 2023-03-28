@@ -16,8 +16,10 @@ const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
 const fazerLogin = (email, password) => signInWithEmailAndPassword(auth, email, password);
+
 // const loginGoogle = () => signInWithRedirect(auth, provider);
 const loginGoogle = () => signInWithPopup(auth, provider);
+
 const fazerLogout = () => signOut(auth, provider);
 const fazerCadastro = async (name, email, password) => {
   const autenticarCadastro = getAuth(app);
@@ -27,6 +29,7 @@ const fazerCadastro = async (name, email, password) => {
     displayName: name,
   });
 };
+
 // const checkUserLogin = (callback) => {
 //   onAuthStateChanged(auth, (user) => {
 //     console.log(user)
