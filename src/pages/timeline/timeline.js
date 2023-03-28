@@ -27,13 +27,17 @@ export default () => {
     if (loggedUserAllPosts) {
       const mappedPosts = loggedUserAllPosts.map((post) => post);
       console.log(mappedPosts);
-      const postsList = document.createElement('div');
-      container.appendChild(postsList);
-      postsList.innerHTML = mappedPosts.map((post) => `<div>
+      //const postsList = document.createElement('div');
+      const postsList = document.querySelector('#post-list');
+      
+      
+
+     // container.appendChild(postsList);
+      postsList.innerHTML = mappedPosts.map((post) => `<article>
             <h2>${post.title}</h2>
             <p><strong>Author:</strong> ${post.displayName}</p>
-            <p>${post.postText}</p>
-          </div>`).join('');
+            <p>${post.textPost}</p>
+          </article>`).join('');
     }
   }
 
@@ -57,7 +61,8 @@ export default () => {
             <p class="greeting-name">${user.displayName}</p>
             <img src="./assets/bt-new-post.png" id="btn-new-post" class="" alt="logo da ConectAda">
           </div>
-        <div id="post-list"></div>
+          <div id="post-type"><p>Seus posts / Todos os posts</p></div>
+        <section id="post-list"></section>
         <div id="modal-wrapper">
         <div id="modal-container"></div>
         </div>

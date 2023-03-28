@@ -6,7 +6,7 @@
   background-color: aqua;
   justify-items: center;
   align-content: center;
-  width: 100vw;
+  width: 34rem;
 }
 
 .header-site {
@@ -67,7 +67,7 @@ p {
 .form-wrapper-timeline {
   display: flex;
   flex-direction: column;
-  width: 80vw;
+  width: 30rem;
   height: 50vh;
   margin: 0;
   align-items: left;
@@ -112,7 +112,7 @@ li {
   flex-direction: row;
   justify-content: space-between;
 
-  width: 28rem;
+  width: 30rem;
   height: 22rem;
   border-radius: 1rem;
   overflow: auto;

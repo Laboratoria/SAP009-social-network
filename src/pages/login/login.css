@@ -23,49 +23,52 @@ body {
   }
   
   .div-logo {
-    padding-bottom: 1.5rem;
+    padding-bottom: 4rem;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   .logo-image {
-    width: 16rem;
+    width: 26rem;
   }
 
   .logo-icon {
     width: 7rem;
     padding-top: 2rem;
   }
+
+  .form-login {
+    width: 32rem;
+  }
   
   
   .input {
-    height: 2.4rem;
-    
+    height: 3.8rem;    
     border-radius: 5rem;
     border: none;
     outline-color: #ff4f5a;
     background-color: rgb(225, 223, 223);
-    width: 15rem;
-    margin-bottom: 1.3rem;
-    padding-left: 1rem;
+    width: 24rem;
+    margin-bottom: 1.9rem;
+    padding-left: 1.6rem;
   }
   
   ::placeholder {
-    color: #1e1e1e;
-    padding: 5rem;
+    color: #1e1e1e;   
   }
   
   .button {
-    height: 2.4rem;
+    height: 3.8rem;
     border-radius: 5rem;
     border: none;
     outline-color: #04ddcc;
     background-color: #04ddcc;
     color: #1e1e1e;
     font-weight: bolder;
-    width: 15rem;
+    width: 24rem;
     cursor: pointer;
     transition: background-color 0.2s ease;
+    
   }
   
   .button:hover {
@@ -80,6 +83,8 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 1.5rem;
+    
+    background-color: #e29358;
   }  
   
   .google-div p {
@@ -90,8 +95,8 @@ body {
   
   .google-btn {
     border-radius: 5rem;
-    width: 15rem;
-    height: 3.7rem;
+    width: 24rem;
+    height: 6.4rem;
     background-color: #323232;
     padding: 0.5rem;
     transition: background-color 0.2s ease;
@@ -103,7 +108,7 @@ body {
     }
   
   .google-logo {
-    width: 5rem;
+    width: 8rem;
   }
   
   .register-div {
@@ -112,6 +117,7 @@ body {
     align-items: center;
     font-size: 0.8rem;
     padding: 3rem 0 1rem 0;
+    background-color: #ff4f5a;
   }
   
   .register-div p {
