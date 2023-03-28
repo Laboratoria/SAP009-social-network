@@ -123,6 +123,7 @@
     background: #EF681A;
     border-radius: 10px;
     border: 1px solid #F0EBE8(30, 30, 30, 0.2);
+    cursor: pointer;
     backdrop-filter: blur(2px);
     font-weight: 700;
     font-size: 24px;

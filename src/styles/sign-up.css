@@ -1,0 +1,67 @@
+.form-signup {
+    margin-top: 93px;
+    /* justify-content: center; */
+}
+
+.signup-h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2em;
+    /* padding: 1em; */
+    text-align: center;
+    color: #004AAD;
+}
+
+.signup-group {
+    padding: 8px;
+    margin-left: 6vw;
+    
+}
+
+.signup-group label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: black;
+}
+
+.signup-group input {
+    display: flex;
+    width: 80vw;
+    height: 3em;
+    background: #D8E8FE;
+    border: none;
+}
+
+.signup-group input:hover {
+    border: solid;
+    border-width: thin;
+    border-color: #004AAD;
+}
+
+#signup-botao {
+    width: 150px;
+    height: 60px;
+    background: #EF681A;
+    color: #004AAD;
+    border-radius: 10px;
+    border: 1px solid #F0EBE8(30, 30, 30, 0.2);
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 15px;
+}  
+
+.signup-button {
+    display: flex;
+    justify-content: center;
+    padding: 3em;
+}
+
+@media screen and (min-width: 600px) {
+    .signup-group input {
+        width: 50vw;
+    }
+    .signup-group {
+        margin-left: 25vw;
+    }
+}
