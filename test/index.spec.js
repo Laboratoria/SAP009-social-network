@@ -41,6 +41,7 @@ import {
   curtir,
   descurtir,
   sair,
+  editarNomeCao,
 } from '../src/firebase/firebase';
 
 import { redirecionarPagina } from '../src/redirecionar-pagina';
@@ -286,7 +287,26 @@ describe('firebase', () => {
       expect(signOut).toHaveBeenCalledTimes(1);
     });
   });
-  // redirecionarPagina
+
+  // editar nome do cão
+
+  describe('editarNomeCao', () => {
+    it('deve atualizar o nome do cachorro no banco de dados', async () => {
+      // definir o novo nome do cachorro
+      const novoNomeCao = 'Bolinha';
+
+      // definir o documento a ser atualizado
+      const documento = doc(db, 'usuarios', getAuth().currentUser.uid);
+
+      // chamar a função editarNomeCao
+      await editarNomeCao(novoNomeCao);
+
+      // verificar se a função updateDoc foi chamada com os argumentos corretos
+      expect(updateDoc).toHaveBeenCalledWith(documento, {
+        nomeCao: novoNomeCao,
+      });
+    });
+  });
 
   // obter nome usuário
   describe('obterNomeUsuario', () => {
@@ -316,6 +336,7 @@ describe('firebase', () => {
   });
 });
 
+// redirecionarPagina
 const jsdom = require('jsdom');
 
 const { JSDOM } = jsdom;

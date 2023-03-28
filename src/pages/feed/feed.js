@@ -9,6 +9,7 @@ import {
   sair,
   editarNomeCao,
 } from '../../firebase/firebase';
+import { redirecionarPagina } from '../../redirecionar-pagina';
 
 import ilustracaoLogo from '../../img/logo/logo.png';
 import coracaoDeslike from '../../img/icones-feed/like-pata-3.png';
@@ -17,6 +18,7 @@ import coracaoPreenchido from '../../img/icones-feed/like-pata-2.png';
 export default async () => {
   const usuarioLogado = await obterNomeUsuario();
   const container = document.createElement('div');
+  // TESTAR a limpeza do container
   const template = `
     <div class="feed-desktop>"
         <div class="main">
@@ -172,7 +174,7 @@ export default async () => {
       btnCurtir.querySelector('p').innerText = post.likes.length;
     });
   };
-
+  // limpar a parte das postagens antes de chamar a função obterPosts
   obterPosts().then((posts) => {
     posts.innerHTML = '';
     posts.forEach((post) => exibirPost(post));
@@ -204,10 +206,10 @@ export default async () => {
   btnSair.addEventListener('click', () => {
     sair()
       .then(() => {
-        window.location.hash = '#login';
+        redirecionarPagina('#login');
       })
       .catch(() => {
-        window.location.hash = '#feed';
+        redirecionarPagina('#feed');
       });
   });
 

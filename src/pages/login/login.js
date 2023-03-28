@@ -78,6 +78,7 @@ export default () => {
   const selecionarGoogle = container.querySelector('#registro-google');
   selecionarGoogle.addEventListener('click', async () => {
     await logarGoogle();
+    console.log('redirecionao p/ o feed');
     redirecionarPagina('#feed');
   });
 
