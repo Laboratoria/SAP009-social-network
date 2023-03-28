@@ -1,5 +1,5 @@
 import api from '../api';
-
+import {criandoUsuário, loginComEmail, sair} from '../api';
 export default () => {
 
   const actionLoginGoogle = async () {
@@ -52,3 +52,7 @@ export default () => {
   container.innerHTML = template;
   return container;
 };
+
+const email = document.getElementById('email')
+const password = document.getElementById('password')
+
