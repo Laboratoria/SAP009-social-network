@@ -2,13 +2,14 @@ export default () => {
   const registerContainer = document.createElement('div');
 
   const registerScreen = `
-  <section>
+  <section id='register-content-desktop'>
   <a href='#login'> <img src='imagens/logout.png' alt='Botão sair' id='image-logout'> </a>
   <div id='register'> <h2> Cadastre-se </h2> </div>
-  <figure> <img src='imagens/logo.png' id='register-logo' alt='Logotipo QA- Qualidade de ações'> </figure>
   </section>
  
-  <section>  
+  <section class='register-container'>  
+  <figure> <img src='imagens/logo.png' id='register-logo' alt='Logotipo QA- Qualidade de ações'> </figure>
+  
   <form>
     <label class='registration-description' for='nome'> NOME COMPLETO </label>
     <input class='registration-content' name='nome' required> </input>
@@ -22,16 +23,16 @@ export default () => {
     <label class='registration-description' for='confirmar-senha'> CONFIRMAR SENHA </label>
     <input class='registration-content'name='confirmar-senha' required> </input>
 
-    <a id= 'register-button' type='button' href='#login'> CRIAR CONTA </a>
+    </form>
 
-<p id= confirmation-message> </p>
+    <a id= 'register-button' type='button' href='#login'> <h2 id='account-creation'> CRIAR CONTA </h2> </a>
 
-  </form>
+    <p id= confirmation-message> </p>
+
+  <footer> <strong> © BOOMERANG </strong> </footer>
+
   </section>
 
-  <footer>
-    <p>© BOOMERANG </p>
-  </footer>
   `;
 
   registerContainer.innerHTML = registerScreen;
