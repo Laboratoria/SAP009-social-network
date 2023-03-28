@@ -52,7 +52,6 @@ export default () => {
       .then(() => {
         window.location.hash = '#feed';
       })
-
       .catch(() => {
         mensagemErro.innerHTML = 'Erro ao criar cadastro';
       });

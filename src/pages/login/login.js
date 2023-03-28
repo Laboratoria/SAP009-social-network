@@ -45,11 +45,11 @@ export default () => {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
-
         window.location.hash = '#feed';
       })
       .catch(() => {
         mensagemErro.innerHTML = 'Usuário ou senha incorretos';
+
       });
   });
 
@@ -62,6 +62,5 @@ export default () => {
         mensagemErro.innerHTML = 'Erro ao logar com Google';
       });
   });
-
   return container;
 };

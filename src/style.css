@@ -45,6 +45,7 @@ main{
 @media screen and (min-width: 800px) 
 {
   .rodape{
+    display: block;
     background-color: #085560;
     text-align: center;
     padding: 10px 0px 10px;
