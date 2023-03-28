@@ -34,9 +34,9 @@ import {
   firebaseConfig,
 } from './firebase-config';
 
-import {
-  redirecionarPagina,
-} from '../redirecionar-pagina';
+// import {
+//   redirecionarPagina,
+// } from '../redirecionar-pagina';
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -68,7 +68,6 @@ async function criarUsuario(email, senha, nomeTutor, nomeCao) {
 // login com google
 async function logarGoogle() {
   await signInWithPopup(auth, provider);
-
   // Verifica se o usuário que acabou de logar com o google já existe na collection de usuarios.
   // Caso não exista cria o usuário na collection
   const usuario = await getDoc(doc(db, 'usuarios', auth.currentUser.uid));
@@ -80,6 +79,7 @@ async function logarGoogle() {
     };
 
     await setDoc(doc(db, 'usuarios', auth.currentUser.uid), usuarioGoogle);
+    console.log('usuarioCriado');
   }
 }
 
@@ -128,8 +128,10 @@ const obterPosts = async () => {
 
 // coleta todas as informações do usuário
 const obterNomeUsuario = async () => {
+  console.log(auth.currentUser);
   const usuarioRef = await getDoc(doc(db, 'usuarios', auth.currentUser.uid));
-
+  console.log(auth.currentUser.uid);
+  console.log(usuarioRef);
   const usuario = {
     uid: auth.currentUser.uid,
     displayName: auth.currentUser.displayName,
@@ -141,16 +143,10 @@ const obterNomeUsuario = async () => {
   return usuario;
 };
 
-// função p/ verificar se o usuario existe, se existir manda p/ o feed
-// se não existir manda p/ o loggin
-const verificaUsuarioLogado = () => {
-  onAuthStateChanged(auth, (users) => {
-    if (users) {
-      redirecionarPagina('#feed');
-    } else {
-      redirecionarPagina('');
-    }
-  });
+// ao invés de definir uma função anonimima 'user',
+// estamos recebendo a função'verificando'como parametro
+const verificaUsuarioLogado = (verificando) => {
+  onAuthStateChanged(auth, verificando);
 };
 
 // excluir post

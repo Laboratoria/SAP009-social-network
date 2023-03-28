@@ -4,10 +4,12 @@ import redefinirSenha from './pages/redefinir-senha/redefinir-senha';
 import feed from './pages/feed/feed';
 import sobre from './pages/sobre/sobre';
 import { verificaUsuarioLogado } from './firebase/firebase.js';
+import { redirecionarPagina } from './redirecionar-pagina.js';
 
 const main = document.querySelector('#root');
 
 const init = async () => {
+  console.log(`passando pelo init ${window.location.hash}`);
   main.innerHTML = '';
   switch (window.location.hash) {
     case ' ':
@@ -29,14 +31,23 @@ const init = async () => {
       main.appendChild(await feed());
       break;
     default: main.appendChild(login());
+      break;
   }
 };
 
-window.addEventListener('hashchange', () => {
-  main.innerHTML = '';
-  init();
+window.addEventListener('hashchange', async () => {
+  console.log('hash changed');
+  await init();
 });
 
-window.addEventListener('load', () => {
-  verificaUsuarioLogado();
+window.addEventListener('load', async () => {
+  verificaUsuarioLogado(async (user) => {
+    if (user) {
+      // verifica se usuario ta logado, se tiver ele chama init p/ carregar a pag q está
+      await init();
+    } else {
+      // se nao tiver logado, manda p/ o login
+      redirecionarPagina('#login');
+    }
+  });
 });
