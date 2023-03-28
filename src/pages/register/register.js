@@ -5,9 +5,9 @@ import { errorsFirebase, validateRegister } from '../../validations.js';
 import { redirect } from '../../redirect.js';
 
 export default () => {
-  const container = document.createElement('div');
+  const containerRegister = document.createElement('div');
 
-  const template = `
+  const templateRegister = `
   <div class="form-wrapper">
   <img src="./assets/logo.png" id="logo" alt="Logo da Anime-se">
 
@@ -34,15 +34,15 @@ export default () => {
 </div>
 `;
 
-  container.innerHTML = template;
+  containerRegister.innerHTML = templateRegister;
 
-  const registerButton = container.querySelector('#register-btn');
-  const registerName = container.querySelector('#user-name');
-  const registerEmail = container.querySelector('#register-email');
-  const repeatEmail = container.querySelector('#confirm-email');
-  const registerPassword = container.querySelector('#register-password');
-  const repeatPassword = container.querySelector('#confirm-password');
-  const errorMessage = container.querySelector('.msg-error');
+  const registerButton = containerRegister.querySelector('#register-btn');
+  const registerName = containerRegister.querySelector('#user-name');
+  const registerEmail = containerRegister.querySelector('#register-email');
+  const repeatEmail = containerRegister.querySelector('#confirm-email');
+  const registerPassword = containerRegister.querySelector('#register-password');
+  const repeatPassword = containerRegister.querySelector('#confirm-password');
+  const errorMessage = containerRegister.querySelector('.msg-error');
 
   registerButton.addEventListener('click', () => {
     const name = registerName.value;
@@ -68,5 +68,5 @@ export default () => {
     }
   });
 
-  return container;
+  return containerRegister;
 };

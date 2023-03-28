@@ -5,9 +5,9 @@ import { errorsFirebase, validateLogin } from '../../validations';
 import { redirect } from '../../redirect.js';
 
 export default () => {
-  const container = document.createElement('div');
+  const containerLogin = document.createElement('div');
 
-  const template = `
+  const templateLogin = `
     <div class="form-wrapper">
       <img src="./assets/logo.png" id="logo" alt="Logo da Anime-se">
 
@@ -41,14 +41,14 @@ export default () => {
     </div>
   `;
 
-  container.innerHTML = template;
+  containerLogin.innerHTML = templateLogin;
 
   // Adiciona um listener de evento no botão de login
-  const loginButton = container.querySelector('#login-button');
-  const emailInput = container.querySelector('#email');
-  const passwordInput = container.querySelector('#password');
-  const loginWithGoogle = container.querySelector('#google-button');
-  const errorMessage = container.querySelector('.msg-error');
+  const loginButton = containerLogin.querySelector('#login-button');
+  const emailInput = containerLogin.querySelector('#email');
+  const passwordInput = containerLogin.querySelector('#password');
+  const loginWithGoogle = containerLogin.querySelector('#google-button');
+  const errorMessage = containerLogin.querySelector('.msg-error');
 
   loginButton.addEventListener('click', () => {
     const email = emailInput.value;
@@ -81,5 +81,5 @@ export default () => {
       });
   });
 
-  return container;
+  return containerLogin;
 };

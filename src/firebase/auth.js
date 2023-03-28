@@ -25,11 +25,13 @@ const auth = getAuth(app);
 export const getUserId = () => auth.currentUser.uid;
 
 // eslint-disable-next-line max-len
-export const createUserWithEmail = (name, displayName, email, password) => createUserWithEmailAndPassword(auth, email, password)
+export const createUserWithEmail = (name, email, password) => createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     const user = userCredential.user;
     console.log(user);
-    return updateProfile(user, { name, displayName });
+    updateProfile(auth.currentUser, {
+      displayName: name,
+    });
   });
 
 export const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);
@@ -41,8 +43,6 @@ export const loginGoogle = () => {
 
 export const logOut = () => signOut(auth);
 
-export function checkLoggedUser(status) {
-  return onAuthStateChanged(auth, (user) => {
-    status(user !== null);
-  });
-}
+export const checkLoggedUser = (check) => {
+  onAuthStateChanged(auth, check);
+};

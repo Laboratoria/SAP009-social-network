@@ -46,9 +46,16 @@ export default () => {
     const episodes = episodesPost.value;
     const description = descriptionPost.value;
 
-    createPost(anime, episodes, description);
-    alert('Publicação efetuada com sucesso');
-    redirect('#timeline');
+    createPost(anime, episodes, description)
+      .then(() => {
+        alert('Publicação efetuada com sucesso');
+        redirect('#timeline');
+      });
+    /* alert('Publicação efetuada com sucesso');
+    //redirect('#timeline');
+    // modal.style.display = 'none';
+    window.location.replace('#timeline');
+    window.location.reload(); */
   });
 
   return modal;
