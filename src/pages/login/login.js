@@ -45,7 +45,6 @@ export default () => {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
-
         window.location.hash = '#feed';
       })
       .catch(() => {

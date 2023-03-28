@@ -26,6 +26,7 @@
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
+  
   width: 310px;
   height: 600px;
   background-color: #085560;
@@ -45,7 +46,6 @@
   height: 30px;
   background: #FFFFFF;
   border-radius: 10px;
-  display: flex;
   margin-bottom: 18px;
 }
 
