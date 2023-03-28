@@ -25,7 +25,7 @@ export default () => {
   container.classList.add('container-timeline');
   const header = createHeader();
   header.classList.add('header-site');
-  container.appendChild(header);
+  container.append(header);
 
   let loggedUserAllPosts = [];
   function showAllPosts() {
@@ -82,11 +82,10 @@ export default () => {
   newPostButton.addEventListener('click', showDescription);
 
   function showDescription() {
-    const modal_container = document.getElementById('modal-wrapper');
+    const modalWrapper = document.getElementById('modal-wrapper');
     const modalContainer = document.getElementById('modal-container');
-
-    modalContainer.innerHTML = `
-    <div class="modal">
+    modalContainer.classList.add('modal-container');
+    modalContainer.innerHTML = `    
     <div class="modal-content">  
       <p class="greeting-modal">O que você busca/oferece hoje?</p>   
        <input type='text' name='post-title' class='input' id='post-title' placeholder='Digite o título'> 
@@ -94,33 +93,25 @@ export default () => {
        <p class="max-char"> Máximo 300 caracteres</p>
       <button type='button' id='post-button' class='button' href='#timeline'>Post</button>
       <button class="buttons" id="close">Go back</button>
-    
-    
-    </div> 
-  
     </div>`;
 
-    modal_container.classList.add('show');
-
-  
+    modalWrapper.classList.add('show');
     const close = document.getElementById('close');
     close.addEventListener('click', () => {
-      modal_container.classList.remove('show');
+      modalWrapper.classList.remove('show');
     });
-   
-    
 
-      const postButton = document.getElementById('post-button');
+    const postButton = document.getElementById('post-button');
 
     postButton.addEventListener('click', () => {
       const inputTitle = document.querySelector('#post-title').value;
       const inputTextPost = document.querySelector('#post-text').value;
-    // const text = inputTextPost.value;
-    //   console.log('click');
+      // const text = inputTextPost.value;
+      //   console.log('click');
       console.log(inputTextPost.value);
-    //   console.log(text);
-     createNewPost(inputTitle, inputTextPost);
-     modal_container.classList.remove('show');
+      //   console.log(text);
+      createNewPost(inputTitle, inputTextPost);
+      modalWrapper.classList.remove('show');
     });
 
     // TESTANDO FUNCAO MANUALMENTE
