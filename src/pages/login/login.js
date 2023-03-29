@@ -42,14 +42,11 @@ export default () => {
     e.preventDefault();
 
     fazerLogin(loginEmail.value, loginSenha.value)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
+      .then(() => {
         window.location.hash = '#feed';
       })
       .catch(() => {
         mensagemErro.innerHTML = 'Usuário ou senha incorretos';
-
       });
   });
 
@@ -59,7 +56,6 @@ export default () => {
         window.location.hash = '#feed';
       })
       .catch(() => {
-        mensagemErro.innerHTML = 'Erro ao logar com Google';
       });
   });
   return container;

@@ -46,8 +46,6 @@ export default () => {
         window.location.hash = '#login';
       })
       .catch(() => {
-
-        alert('Obrigada por visitar a Lemos!');
       });
   });
 
