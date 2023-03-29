@@ -1,13 +1,10 @@
 import {
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  updateProfile,
   getAuth,
 } from 'firebase/auth';
 
 import {
   createUser,
-  valuesLogin,
 } from '../src/servicesFirebase/firebaseAuth';
 
 // função de criar usuário//
