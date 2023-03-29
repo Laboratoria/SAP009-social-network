@@ -1,51 +1,43 @@
-import firebase from 'firebase/app';
-import 'firebase/firebase-auth';
-import 'firebase/firebase-firestore';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { async } from 'regenerator-runtime';
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
+import 'firebase/firestore';
+import {
+  getAuth, createUserWithEmailAndPassword, updateProfile,
+  signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup,
 
+} from 'firebase/auth';
+import { initializeApp } from 'firebase/app';
 import firebaseConfig from './firebaseConfig';
 
-const firebaseApp = firebase.initializeApp(firebaseConfig);
-const db = firebaseApp.firestore();
+const firebaseApp = initializeApp(firebaseConfig);
 
-export default {
-    googleLogin: async () =>{
-        const provider = new firebase.auth.GoogleAuthProvider();
-        let result = await firebase.auth().signInWithPopup(provider);
-        return results;
+//  função para criar cadastro
+export function cadastrar(name, email, senha) {
+  const auth = getAuth(firebaseApp);
+  createUserWithEmailAndPassword(auth, email, senha)
+    .then(() => updateProfile(auth.currentUser, {
+      displayName: name,
+    }));
+}
 
-    };
-};
+// função de login do usuário
+export function loginUser(email, senha) {
+  const auth = getAuth(firebaseApp);
+  return signInWithEmailAndPassword(auth, email, senha);
+}
 
-const auth = getAuth();
+// função de login com Google
+export function loginGoogle() {
+  const provider = new GoogleAuthProvider();
+  const auth = getAuth();
+  signInWithPopup(auth, provider)
+    .then(() => {
 
-export const criandoUsuário = createUserWithEmailAndPassword (auth, email, password)
-    .then((userCredential) => {
-    // Signed in
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ..
-});
+    }).catch(() => {
 
-export const loginComEmail = signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-});
+    });
+}
 
-export const sair = signOut(auth).then(() => {
-  // Sign-out successful.
-}).catch((error) => {
-  // An error happened.
-});
+// export const sair = signOut(auth).then(() => {
+//   // Sign-out successful.
+// }).catch((error) => {
+//   // An error happened.
+// });

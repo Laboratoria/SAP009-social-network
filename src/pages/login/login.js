@@ -1,17 +1,6 @@
-import api from '../api';
-import {criandoUsuário, loginComEmail, sair} from '../api';
+import { loginUser, loginGoogle } from '../api';
+
 export default () => {
-
-  const actionLoginGoogle = async () {
-    let result = api.googleLogin();
-
-    if(result){
-
-    }else{
-      alert("Error");
-    }
-  }
-
   const container = document.createElement('div');
   const template = `  
     <p class='logo'>
@@ -24,7 +13,7 @@ export default () => {
     <input id='email' class='user-login' type='email' required placeholder='seuemail@dominio.com'>
 
     <p>Senha</p>
-    <input  id='password' class='user-login' type='password' required placeholder='Senha'>
+    <input  id='senha' class='user-login' type='password' required placeholder='Senha'>
     
 
     <section class='buttons'>
@@ -48,11 +37,29 @@ export default () => {
    
     </form>
     `;
-
   container.innerHTML = template;
+
+  const btnLogin = container.querySelector('#submitLogin');
+  const email = container.querySelector('#email');
+  const password = container.querySelector('#senha');
+  const btnGoogle = container.querySelector('#googleButton');
+
+  btnGoogle.addEventListener('click', (e) => {
+    e.preventDefault();
+    loginGoogle();
+  });
+
+  btnLogin.addEventListener('click', (e) => {
+    e.preventDefault();
+    loginUser(email.value, password.value)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        location.hash = '#home';
+      })
+      .catch(() => {
+        alert('Email ou senha inválidos');
+      });
+  });
+
   return container;
 };
-
-const email = document.getElementById('email')
-const password = document.getElementById('password')
-
