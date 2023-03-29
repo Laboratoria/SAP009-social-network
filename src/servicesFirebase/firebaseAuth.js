@@ -3,6 +3,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
+  signInWithPopup,
+  GoogleAuthProvider,
   getAuth,
 } from 'firebase/auth';
 import { firebaseConfig } from './firebaseconfig';
@@ -35,4 +37,12 @@ export const valuesLogin = (email, senha) => {
       txtError.innerHTML = 'Usuário ou senha incorretos';
     /* senha.focus(); */
     });
+};
+
+/* Login com Google */
+
+const provider = new GoogleAuthProvider();
+
+export function googleLogin(){
+  return signInWithPopup(auth, provider)
 };

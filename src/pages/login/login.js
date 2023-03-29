@@ -1,4 +1,4 @@
-import { valuesLogin } from '../../servicesFirebase/firebaseAuth';
+import { valuesLogin, googleLogin } from '../../servicesFirebase/firebaseAuth';
 
 export default () => {
   const container = document.createElement('div');
@@ -6,7 +6,7 @@ export default () => {
   const template = `
     <div class="body-login">
     <div class="coluna-1">  
-        <img class="imagem-login" src="./img/imagem-login.jpg"/>
+        <picture class="imagem-login"></picture>
     </div>
     <div class="coluna-2">
       <section class="container">
@@ -36,9 +36,13 @@ export default () => {
               <button id="btnLogin" type="button" class="btn-login">Entrar</button>
               </div>
               <div>
-              <a href="#cadastro"><button id="btnCadastrar" type="button" class="btn-cadastrar">Cadastrar</button>
+              <a href="#cadastro"><button id="btnCadastrar" type="button" class="btn-cadastrar">Cadastrar</button></a>
               </div>
+              <div class="action-google">
+              <span class="erro-google hide" id="erro-google"></span>
               <p class="entrar-google">Entrar com Google</p>
+              <button class="btn-google" id="btn-google"></button>
+              </div>
             </form>
     </section>
       </section>
@@ -47,16 +51,23 @@ export default () => {
     `;
 
   container.innerHTML = template;
+  const email = container.querySelector('#txtEmail');
+  const senha = container.querySelector('#txtPassword');
+  const txtError = container.querySelector('#txtError');
+  const btn = container.querySelector('#btnLogin');
+  const btnGoogle = container.querySelector('#btn-google');
+  const erroGoogle = container.querySelector('#erro-google');
+
   const fazerLogin = () => {
-    const email = container.querySelector('#txtEmail');
-    const senha = container.querySelector('#txtPassword');
-    const txtError = container.querySelector('#txtError');
-    const btn = container.querySelector('#btnLogin');
     console.log(email, senha);
     btn.addEventListener('click', (event) => {
       valuesLogin(email.value, senha.value);
     });
   };
+
   fazerLogin();
+
+  btnGoogle.addEventListener('click', () => googleLogin()
+  .then(()=> window.location.hash = '#feed'));
   return container;
 };
