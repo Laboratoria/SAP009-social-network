@@ -46,6 +46,12 @@ h1 {
    margin-bottom: 25px;
 }
 
+.fundo-form{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
 .form-login {
    display: flex;
    flex-direction: column;
@@ -144,7 +150,25 @@ h1 {
  
 }
 .imagem-login {
-    display: none;
+   background-image: url(../../img/imagem-login.jpg);
+   background-position: center center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   display: none;
+}
+
+.action-google{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.btn-google{
+   width: 40px;
+   height: 40px;
+   border-radius: 50%;
+   border: none;
+   margin: 10px;
 }
 
 @media  (min-width:900px){
@@ -156,20 +180,19 @@ h1 {
         width: 50%;
     }
     .coluna-2 .container{
-        height: 100%;
+        height: 100vh;
     }
     .imagem-login {
         display: block;
         width: 100%;
-        height: 100%;
+        height: 100vh;
     }
     
     .fundo-form {
         background: #d9d9d98c;
         border-radius: 20px;
-        width: 49vh;
+        width: 380px;
         height: 599px;
-        margin-top: 100px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -179,11 +202,11 @@ h1 {
     .texto-entrada>p {
         color: var(--vermelho);
         font-size: 23px;
-        font-weight: bold;
+        font-weight: 400;
     }
     
     .imagem-logo {
-        margin-top: 50px;
+        margin-top: 20px;
     }
 
 }

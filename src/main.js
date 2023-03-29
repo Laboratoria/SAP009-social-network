@@ -28,8 +28,3 @@ window.addEventListener('load', () => {
   main.appendChild(login());
   init();
 });
-
-/* import { myFunction } from './lib/index.js';
-
-myFunction();
- */
