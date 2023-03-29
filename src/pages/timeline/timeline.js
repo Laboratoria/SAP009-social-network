@@ -25,8 +25,8 @@ export default () => {
   let loggedUserAllPosts = [];
   function showAllPosts() {
     if (loggedUserAllPosts) {
-      const mappedPosts = loggedUserAllPosts.map((post) => post);
-      const datepost = mappedPosts.sort((a, b) => b.dateTime.localeCompare(a.dateTime));
+      const allPosts = loggedUserAllPosts.map((post) => post);
+      const postsByDateAscOrder = allPosts.sort((a, b) => b.dateTime.localeCompare(a.dateTime));
       console.log(mappedPosts);
       //const postsList = document.createElement('div');
       const postsList = document.querySelector('#post-list');
@@ -34,7 +34,7 @@ export default () => {
       
 
      // container.appendChild(postsList);
-      postsList.innerHTML = datepost.map((post) => `<article class="post-article">
+      postsList.innerHTML = postsByDateAscOrder.map((post) => `<article class="post-article">
             <div class="post-header">
             <h2>${post.title} </h2>
             <p class="dateTime">${post.dateTime}</p>
