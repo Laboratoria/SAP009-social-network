@@ -37,6 +37,11 @@ input, button {
     font-weight: bolder;
     text-align: center;
 }
+
+.msg-error {
+    margin-top: 0.6rem;
+    margin-bottom: -1rem;
+}
  
 #google-button {
     display: flex;

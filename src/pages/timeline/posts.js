@@ -33,14 +33,16 @@ export default () => {
 
   const closeModalButton = modal.querySelector('#close-modal');
   closeModalButton.addEventListener('click', () => {
-    modal.style.display = 'none';
+    if (window.confirm('Tem certeza que deseja fechar? As alterações não serão salvas')) {
+      modal.style.display = 'none';
+    }
   });
 
   const postButton = modal.querySelector('#post-button');
   const animePost = modal.querySelector('#anime');
   const episodesPost = modal.querySelector('#episodes');
   const descriptionPost = modal.querySelector('#post-area');
-
+  /*
   postButton.addEventListener('click', () => {
     const anime = animePost.value;
     const episodes = episodesPost.value;
@@ -51,11 +53,23 @@ export default () => {
         alert('Publicação efetuada com sucesso');
         redirect('#timeline');
       });
-    /* alert('Publicação efetuada com sucesso');
-    //redirect('#timeline');
-    // modal.style.display = 'none';
-    window.location.replace('#timeline');
-    window.location.reload(); */
+  });
+  */
+
+  postButton.addEventListener('click', () => {
+    const anime = animePost.value;
+    const episodes = episodesPost.value;
+    const description = descriptionPost.value;
+
+    if (!anime || !episodes || !description) {
+      alert('Favor preencher os campos');
+    } else {
+      createPost(anime, episodes, description)
+        .then(() => {
+          alert('Publicação efetuada com sucesso');
+          redirect('#timeline');
+        });
+    }
   });
 
   return modal;

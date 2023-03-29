@@ -24,11 +24,11 @@ export default () => {
       <button type="button" id="register-btn" href="#timeline">Registre-se</button>
     </div>
 
+    <p class="msg-error"></p>
+
     <div>
       <button type="button" id="login-btn">Já tem uma conta? <a id="login-link" href="#login">Login</a></button>
     </div>
-
-    <p class="msg-error"></p>
 
   </form>
 </div>
@@ -51,12 +51,13 @@ export default () => {
     const password = registerPassword.value;
     const passwordRepeat = repeatPassword.value;
 
-    const registerAccount = validateRegister(name, email, emailRepeat, password, passwordRepeat);
+    const registerAccount = validateRegister(name, email, password);
     if (registerAccount === '') {
-      createUserWithEmail(name, email, emailRepeat, password, passwordRepeat)
+      createUserWithEmail(name, email, password)
         .then(() => {
           console.log('Usuário cadastrado - register');
           redirect('#timeline');
+          window.location.reload();
         })
         .catch((error) => {
           console.log('Erro de cadastro');
