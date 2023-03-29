@@ -15,7 +15,6 @@ import { app } from './firebase.js';
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 const fazerLogin = (email, password) => signInWithEmailAndPassword(auth, email, password);
-// const loginGoogle = () => signInWithRedirect(auth, provider);
 const loginGoogle = () => signInWithPopup(auth, provider);
 
 const fazerLogout = () => signOut(auth, provider);

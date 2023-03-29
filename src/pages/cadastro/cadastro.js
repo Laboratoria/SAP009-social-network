@@ -18,7 +18,7 @@ export default () => {
       </div>
       <div>
         <p class="textos-cadastro">E-mail</p>
-        <input type="text" class="input-cadastro" id="e-mail-cadastro" required>
+        <input type="text" class="input-cadastro" id="email-cadastro" required>
       </div>
       <div class="radio-buttons">
       <p> Como você se identifica? </p>
