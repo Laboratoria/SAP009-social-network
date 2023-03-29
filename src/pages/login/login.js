@@ -1,4 +1,5 @@
-import { valuesLogin} from '../../servicesFirebase/firebaseAuth'
+import { valuesLogin } from '../../servicesFirebase/firebaseAuth';
+
 export default () => {
   const container = document.createElement('div');
 
