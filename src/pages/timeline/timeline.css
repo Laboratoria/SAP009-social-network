@@ -1,12 +1,15 @@
+/* body{
+  background-color: #eaeaea;
+} */
 .container-timeline {
   display: flex;
   align-items: center;
-  height: 100vh;
   flex-direction: column;
-  background-color: aqua;
+  background-color: #EAEAEA;
   justify-items: center;
   align-content: center;
-  width: 34rem;
+  width: 100vw;
+  
 }
 
 .header-site {
@@ -45,7 +48,7 @@ h1 {
 
 .greeting-name {
   color: #323232;
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 700;
 }
 
@@ -62,30 +65,68 @@ p {
   font-size: 1.6rem;
 }
 
+.post-type {
+  color: #E29358;
+}
+
 
 /*TIMELINE ----------------------------------------------------------*/
 .form-wrapper-timeline {
   display: flex;
   flex-direction: column;
-  width: 30rem;
-  height: 50vh;
+  width: 90%;
+ 
   margin: 0;
   align-items: left;
   padding-bottom: 10rem;
-  background-color: blueviolet;
+  background-color: #EAEAEA;
 }
 
 .post {
   width: 18rem;
   background-color: aquamarine;
   margin-bottom: 1.5rem;
+  width: 100%;
+ 
 }
 
-li {
-  list-style: none;
+.post-list {
+  background-color: #EAEAEA;
+  padding-top: 1rem;
 }
 
+.post-article {
+  border-radius: 1rem;
+  background-color: #FFFFFF;
+  word-wrap: break-word;
+  margin-bottom: 2.5rem;
+  
+}
 
+.post-header {
+background-color: #04DDCC;
+border-radius: .8rem;
+margin-top: 1rem;
+display: flex;
+justify-content: space-between;
+padding: 1rem;
+justify-items: center;
+font-size: 1rem;
+}
+
+.dateTime {
+  font-size: 1.2rem;
+}
+
+h2 {
+  color: #FFFFFF;
+}
+
+.post-body {
+  padding: 1rem;
+  color: #323232;
+  
+}
 /* MODAL ------------------------------------------------------------- */
 
 #modal-wrapper {
@@ -96,7 +137,7 @@ li {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 80vh;
   background-color: rgba(0, 0, 0, 0.3);
   opacity: 0;
   pointer-events: none;
@@ -111,20 +152,19 @@ li {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
-  width: 30rem;
+  width: 90%;
   height: 22rem;
   border-radius: 1rem;
   overflow: auto;
-  border: #e85b64;
+  border: #FC5D9A;
   border-style: solid;
-  background-color: #fcf8ee;
+  background-color: #EAEAEA;
 }
 
 .modal-content {
   position: relative;
-  padding: 1rem;
-  width: 30rem;
+  padding: .5rem;  
+  width: 100%;
 }
 
 .show {
@@ -136,7 +176,7 @@ li {
 .top-content {
   display: flex;
   flex-direction: row;
-  background-color: #288a99;
+  
   justify-content: space-between;
   
   align-items: center;
@@ -147,7 +187,7 @@ display: flex;
 flex-direction: column;
 justify-content: space-between;
 padding: 1rem;
-background-color: aquamarine;
+background-color:#EAEAEA;
 height: 87%;
 }
 
@@ -157,28 +197,36 @@ height: 87%;
   font-weight: bold;
   font-size: 2rem;
   text-align: center;
-  padding-bottom: 1rem;
+  padding-bottom: 3rem;
 }
 
 .greeting-modal {
   padding-left: 0.5rem;
-  font-size: 1.1rem;
+  font-size: 1.4rem;
+  color: #FC5D9A;
+  font-weight: 700;
+ 
 }
 
 .max-char {
-  padding-left: 0.5rem;
+  padding-top: 0.5rem;
+  padding-right: 1rem;
   font-size: 0.9rem;
+  padding-bottom: 1rem;
+  color: #323232;
+  
 }
 
 .input-post-title {
-  height: 2.4rem;
+  height: 3rem;
   border-radius: 1rem;
   border: none;
   outline-color: #ff4f5a;
-  background-color: rgb(225, 223, 223);
-  width: 24rem;
+  background-color: #FFFFFF;
+  width: 100%;
   margin-bottom: 1.3rem;
   padding-left: 1rem;
+  
 }
 
 .input-post-text {
@@ -186,19 +234,32 @@ height: 87%;
   border-radius: 1rem;
   border: none;
   outline-color: #ff4f5a;
-  background-color: rgb(225, 223, 223);
-  width: 24rem;
+  background-color: #FFFFFF;
+  width: 100%;
   padding-left: 1rem;
-  padding-bottom: 5rem;
+  padding-bottom: 4rem;
+  word-wrap: break-word;
+  word-break: break-all;
+  height: 7rem;
 }
 
+.div-post-button {
+display: flex;
+flex-direction: column;
+text-align: right;
+}
+
+.bt {
+  display: flex;
+  justify-content: right;
+}
 .post-button {
   height: 2.4rem;
   border-radius: 5rem;
   border: none;
   outline-color: #04ddcc;
   background-color: #04ddcc;
-  color: #1e1e1e;
+  color: #ffffff;
   font-weight: bolder;
   width: 15rem;
   cursor: pointer;

@@ -17459,6 +17459,7 @@ const verifyUserLogged = () => {
     }
   });
 };
+const logo = "/assets/conectadas-logo.f85e642f.png";
 const login = () => {
   const container = document.createElement("div");
   container.classList.add("container");
@@ -17466,10 +17467,10 @@ const login = () => {
     <div class= "form-wrapper">
       <div class= "div-logo">
       <div>
-        <img src="./assets/logo-icon.png" id="ada-icon" class="logo-icon" alt="icone da ConectAda">
+        <Image src="assets/logo-icon.png" id="ada-icon" class="logo-icon" alt="icone da ConectAda">
         </div>
         <div>
-        <img src="./assets/conectadas-logo.png" id="ada-logo" class="logo-image" alt="logo da ConectAda">
+        <Image src="${logo}" id="ada-logo" class="logo-image" alt="logo da ConectAda">
         </div>
       </div>
       <div>
@@ -17594,13 +17595,14 @@ const timeline = () => {
     if (loggedUserAllPosts) {
       const mappedPosts = loggedUserAllPosts.map((post) => post);
       console.log(mappedPosts);
-      const postsList = document.createElement("div");
-      container.appendChild(postsList);
-      postsList.innerHTML = mappedPosts.map((post) => `<div>
-            <h2>${post.title}</h2>
-            <p><strong>Author:</strong> ${post.displayName}</p>
-            <p>${post.postText}</p>
-          </div>`).join("");
+      const postsList = document.querySelector("#post-list");
+      postsList.innerHTML = mappedPosts.map((post) => `<article class="post-article">
+            <div class="post-header">
+            <h2>${post.title} </h2>
+            <p class="dateTime">${post.dateTime}</p>
+            </div>
+            <p class="post-body">${post.textPost}</p>
+          </article>`).join("");
     }
   }
   getLoggedUserAllPosts().then((posts) => {
@@ -17619,7 +17621,8 @@ const timeline = () => {
             <p class="greeting-name">${user.displayName}</p>
             <img src="./assets/bt-new-post.png" id="btn-new-post" class="" alt="logo da ConectAda">
           </div>
-        <div id="post-list"></div>
+          <div id="post-type"><p class="post-type">Seus posts / Todos os posts</p></div>
+        <section id="post-list" class="post-list"></section>
         <div id="modal-wrapper">
         <div id="modal-container"></div>
         </div>
@@ -17647,9 +17650,9 @@ const timeline = () => {
       <div class="form">
      <form>
        <input type='text' name='post-title' class='input-post-title' id='post-title' placeholder='Digite o t\xEDtulo'> 
-      <input type='text' name='post-text' class='input-post-text' id='post-text' placeholder='Digite o conte\xFAdo do post'> 
+      <input type='textarea' name='post-text' class='input-post-text' id='post-text' placeholder='Digite o conte\xFAdo do post'> 
        <p class="max-char"> M\xE1ximo 300 caracteres</p>
-      <button type='button' id='post-button' class='button' href='#timeline'>Post</button>
+      <button type='button' id='post-button' class='post-button' href='#timeline'>Post</button>
       </form>
       </div>
       
@@ -17666,6 +17669,7 @@ const timeline = () => {
       console.log(inputTextPost.value);
       createNewPost(inputTitle, inputTextPost);
       modalWrapper.classList.remove("show");
+      location.reload();
     });
   }
   return container;

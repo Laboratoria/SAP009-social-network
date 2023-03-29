@@ -39,8 +39,7 @@ body {
 
   .form-login {
     width: 32rem;
-  }
-  
+  }  
   
   .input {
     height: 3.8rem;    
@@ -67,8 +66,7 @@ body {
     font-weight: bolder;
     width: 24rem;
     cursor: pointer;
-    transition: background-color 0.2s ease;
-    
+    transition: background-color 0.2s ease;    
   }
   
   .button:hover {
@@ -83,8 +81,6 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 1.5rem;
-    
-    background-color: #e29358;
   }  
   
   .google-div p {
@@ -103,8 +99,7 @@ body {
   }
   
   .google-btn:hover{ 
-      background-color:#474747;
-      
+      background-color:#474747;      
     }
   
   .google-logo {
@@ -117,7 +112,7 @@ body {
     align-items: center;
     font-size: 0.8rem;
     padding: 3rem 0 1rem 0;
-    background-color: #ff4f5a;
+    
   }
   
   .register-div p {
@@ -128,6 +123,8 @@ body {
   #register-link {
     color: #e29358;
     font-weight: bold;
+    font-size: 1.4rem;
+    text-decoration: none;
   }
   
   .error {

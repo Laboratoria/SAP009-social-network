@@ -26,6 +26,7 @@ export default () => {
   function showAllPosts() {
     if (loggedUserAllPosts) {
       const mappedPosts = loggedUserAllPosts.map((post) => post);
+      const datepost = mappedPosts.sort((a, b) => b.dateTime.localeCompare(a.dateTime));
       console.log(mappedPosts);
       //const postsList = document.createElement('div');
       const postsList = document.querySelector('#post-list');
@@ -33,10 +34,12 @@ export default () => {
       
 
      // container.appendChild(postsList);
-      postsList.innerHTML = mappedPosts.map((post) => `<article>
-            <h2>${post.title}</h2>
-            <p><strong>Author:</strong> ${post.displayName}</p>
-            <p>${post.textPost}</p>
+      postsList.innerHTML = datepost.map((post) => `<article class="post-article">
+            <div class="post-header">
+            <h2>${post.title} </h2>
+            <p class="dateTime">${post.dateTime}</p>
+            </div>
+            <p class="post-body">${post.textPost}</p>
           </article>`).join('');
     }
   }
@@ -61,8 +64,8 @@ export default () => {
             <p class="greeting-name">${user.displayName}</p>
             <img src="./assets/bt-new-post.png" id="btn-new-post" class="" alt="logo da ConectAda">
           </div>
-          <div id="post-type"><p>Seus posts / Todos os posts</p></div>
-        <section id="post-list"></section>
+          <div id="post-type"><p class="post-type">Seus posts / Todos os posts</p></div>
+        <section id="post-list" class="post-list"></section>
         <div id="modal-wrapper">
         <div id="modal-container"></div>
         </div>
@@ -94,9 +97,15 @@ export default () => {
       <div class="form">
      <form>
        <input type='text' name='post-title' class='input-post-title' id='post-title' placeholder='Digite o título'> 
-      <input type='text' name='post-text' class='input-post-text' id='post-text' placeholder='Digite o conteúdo do post'> 
+      <input type='textarea' name='post-text' class='input-post-text' id='post-text' placeholder='Digite o conteúdo do post'> 
+      <div class="div-post-button">
+      
        <p class="max-char"> Máximo 300 caracteres</p>
-      <button type='button' id='post-button' class='button' href='#timeline'>Post</button>
+       <div class="bt">
+      <button type='button' id='post-button' class='post-button' href='#timeline'>Post</button>
+      </div>
+      </div>
+      </div>
       </form>
       </div>
       
@@ -116,6 +125,7 @@ export default () => {
       console.log(inputTextPost.value);
       createNewPost(inputTitle, inputTextPost);
       modalWrapper.classList.remove('show');
+      location.reload();
     });
   }
   return container;

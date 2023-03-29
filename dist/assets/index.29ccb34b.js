@@ -39,9 +39,7 @@
     fetch(link.href, fetchOpts);
   }
 })();
-const login$1 = "";
-const register$1 = "";
-const timeline$1 = "";
+const index = "";
 /**
  * @license
  * Copyright 2017 Google LLC
@@ -3472,9 +3470,9 @@ class AuthMiddlewareQueue {
     });
     wrappedCallback.onAbort = onAbort;
     this.queue.push(wrappedCallback);
-    const index = this.queue.length - 1;
+    const index2 = this.queue.length - 1;
     return () => {
-      this.queue[index] = () => Promise.resolve();
+      this.queue[index2] = () => Promise.resolve();
     };
   }
   async runMiddleware(nextUser) {
@@ -17359,6 +17357,10 @@ function Xl(t2, e, n) {
   const s = Qa(t2.firestore, ch), i = Nl(t2.converter, e, n);
   return of(s, [Fh(Oh(s), "setDoc", t2._key, i, null !== t2.converter, n).toMutation(t2._key, Hn.none())]);
 }
+function nf(t2, e) {
+  const n = Qa(t2.firestore, ch), s = eh(t2), i = Nl(t2.converter, e);
+  return of(n, [Fh(Oh(t2.firestore), "addDoc", s._key, i, null !== t2.converter, {}).toMutation(s._key, Hn.exists(false))]).then(() => s);
+}
 function of(t2, e) {
   return function(t3, e2) {
     const n = new q();
@@ -17464,10 +17466,10 @@ const login = () => {
     <div class= "form-wrapper">
       <div class= "div-logo">
       <div>
-        <img src="./assets/logo-icon.png" id="ada-icon" class="logo-icon" alt="icone da ConectAda">
+        <Image src="assets/logo-icon.png" id="ada-icon" class="logo-icon" alt="icone da ConectAda">
         </div>
         <div>
-        <img src="./assets/conectadas-logo.png" id="ada-logo" class="logo-image" alt="logo da ConectAda">
+        <Image src="assets/conectadas-logo.png" id="ada-logo" class="logo-image" alt="logo da ConectAda">
         </div>
       </div>
       <div>
@@ -17542,19 +17544,32 @@ const login = () => {
 };
 function createHeader() {
   const header = document.createElement("div");
-  const template = `
-     
+  const template = `     
         <div class= "div-logo-timeline">
           <img src="./assets/logo-horizontal.png" id="ada-logo-timeline" class="logo-image-timeline" alt="logo da ConectAda">
         </div>
         <div class="menu">
         <p>Menu</p>
-        </div>
-     
+        </div>     
     `;
   header.innerHTML = template;
   return header;
 }
+const createNewPost = async (title, textPost) => {
+  console.log("create");
+  const post = {
+    uid: auth.currentUser.uid,
+    displayName: auth.currentUser.displayName,
+    title,
+    textPost,
+    dateTime: new Date().toLocaleString(),
+    updateDateTime: "",
+    likes: [1]
+  };
+  const docReference = await nf(Xa(db, "posts"), post);
+  post.id = docReference.id;
+  return post;
+};
 const getLoggedUserAllPosts = async () => {
   const postsCollection = await Jl(Xa(db, "posts"));
   const posts = [];
@@ -17573,18 +17588,21 @@ const timeline = () => {
   container.classList.add("container-timeline");
   const header = createHeader();
   header.classList.add("header-site");
-  container.appendChild(header);
+  container.append(header);
   let loggedUserAllPosts = [];
   function showAllPosts() {
     if (loggedUserAllPosts) {
       const mappedPosts = loggedUserAllPosts.map((post) => post);
-      const postsList = document.createElement("div");
-      container.appendChild(postsList);
-      mappedPosts.forEach((post) => {
-        const postElement = document.createElement("li");
-        postElement.innerText = post.title;
-        postsList.appendChild(postElement);
-      });
+      const datepost = mappedPosts.sort((a, b2) => b2.dateTime.localeCompare(a.dateTime));
+      console.log(mappedPosts);
+      const postsList = document.querySelector("#post-list");
+      postsList.innerHTML = datepost.map((post) => `<article class="post-article">
+            <div class="post-header">
+            <h2>${post.title} </h2>
+            <p class="dateTime">${post.dateTime}</p>
+            </div>
+            <p class="post-body">${post.textPost}</p>
+          </article>`).join("");
     }
   }
   getLoggedUserAllPosts().then((posts) => {
@@ -17603,13 +17621,13 @@ const timeline = () => {
             <p class="greeting-name">${user.displayName}</p>
             <img src="./assets/bt-new-post.png" id="btn-new-post" class="" alt="logo da ConectAda">
           </div>
-        <div id="post-list"></div>
+          <div id="post-type"><p class="post-type">Seus posts / Todos os posts</p></div>
+        <section id="post-list" class="post-list"></section>
         <div id="modal-wrapper">
         <div id="modal-container"></div>
         </div>
         <div class="div-logout-btn"> <button type="button" id="logout-button" class="button logout-btn" href="#login">Sair</button></div>
-      </div>
-    
+      </div>    
   `;
   container.innerHTML += template;
   const logoutButton = container.querySelector("#logout-button");
@@ -17620,26 +17638,44 @@ const timeline = () => {
   const newPostButton = container.querySelector("#btn-new-post");
   newPostButton.addEventListener("click", showDescription);
   function showDescription() {
-    const modal_container = document.getElementById("modal-wrapper");
+    const modalWrapper = document.getElementById("modal-wrapper");
     const modalContainer = document.getElementById("modal-container");
-    modalContainer.innerHTML = `
-    <div class="modal">
+    modalContainer.classList.add("modal-container");
+    modalContainer.innerHTML = `    
     <div class="modal-content">  
+    <div class = "top-content">
       <p class="greeting-modal">O que voc\xEA busca/oferece hoje?</p>   
-       <input type='text' name='post-title' class='input' id='post-title' placeholder='Digite o t\xEDtulo'> 
-      <input type='text' name='post-text' class='input-post-text' id='post-text' placeholder='Digite o conte\xFAdo do post'> 
+      <button class="buttons" id="close">X</button>
+      </div>
+      <div class="form">
+     <form>
+       <input type='text' name='post-title' class='input-post-title' id='post-title' placeholder='Digite o t\xEDtulo'> 
+      <input type='textarea' name='post-text' class='input-post-text' id='post-text' placeholder='Digite o conte\xFAdo do post'> 
+      <div class="div-post-button">
+      
        <p class="max-char"> M\xE1ximo 300 caracteres</p>
-      <button type='button' id='post-button' class='button' href='#timeline'>Post</button>
-      <button class="buttons" id="close">Go back</button>
-    
-    
-    </div> 
-  
+       <div class="bt">
+      <button type='button' id='post-button' class='post-button' href='#timeline'>Post</button>
+      </div>
+      </div>
+      </div>
+      </form>
+      </div>
+      
     </div>`;
-    modal_container.classList.add("show");
+    modalWrapper.classList.add("show");
     const close = document.getElementById("close");
     close.addEventListener("click", () => {
-      modal_container.classList.remove("show");
+      modalWrapper.classList.remove("show");
+    });
+    const postButton = document.getElementById("post-button");
+    postButton.addEventListener("click", () => {
+      const inputTitle = document.querySelector("#post-title").value;
+      const inputTextPost = document.querySelector("#post-text").value;
+      console.log(inputTextPost.value);
+      createNewPost(inputTitle, inputTextPost);
+      modalWrapper.classList.remove("show");
+      location.reload();
     });
   }
   return container;
