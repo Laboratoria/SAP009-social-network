@@ -34,7 +34,7 @@ export default () => {
         <p class="textos-cadastro">Repita sua senha</p>
         <input type="password" class="input-cadastro" required>
       </div>
-        <button type="submit" class="botao-cadastrar"> <a href= "#feed"> Cadastrar </a> </button>
+        <button type="submit" class="botao-cadastrar"> Cadastrar </a> </button>
     </form>
    </section> 
   `;
@@ -44,10 +44,12 @@ export default () => {
   const cadastroNome = container.querySelector('#nome-usuaria');
   const cadastroEmail = container.querySelector('#email-cadastro');
   const cadastroSenha = container.querySelector('#senha-cadastro');
-  const botaoCadastrar = container.querySelector('.botao-cadastrar');
+  const formCadastro = container.querySelector('.form-cadastro');
   const mensagemErro = container.querySelector('.texto-erro');
 
-  botaoCadastrar.addEventListener('click', () => {
+  formCadastro.addEventListener('submit', (event) => {
+    event.preventDefault();
+    console.log(cadastroNome.value, cadastroEmail.value, cadastroSenha.value);
     fazerCadastro(cadastroNome.value, cadastroEmail.value, cadastroSenha.value)
       .then(() => {
         window.location.hash = '#feed';
