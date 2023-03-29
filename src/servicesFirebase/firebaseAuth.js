@@ -1,11 +1,10 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
-import { createUserWithEmailAndPassword,
-signInWithEmailAndPassword,
-/*  GoogleAuthProvider,
-signInWithPopup
-*/ 
-updateProfile, } from 'firebase/auth';
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+  getAuth,
+} from 'firebase/auth';
 import { firebaseConfig } from './firebaseconfig';
 
 const app = initializeApp(firebaseConfig);
@@ -18,7 +17,7 @@ export const createUser = (email, senha) => {
       console.log('foi');
       window.location.hash = '#login';
     });
-   /*  .catch((error) => {
+  /*  .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
     }); */
@@ -27,33 +26,13 @@ export const createUser = (email, senha) => {
 
 export const valuesLogin = (email, senha) => {
   signInWithEmailAndPassword(auth, email, senha)
-    .then((userCredential) => {
+    .then(() => {
       window.location.href = '#feed';
       console.log('foi');
     })
     .catch(() => {
-    /*  txtError.setAttribute('style', 'display: block');
-      txtError.innerHTML = 'Usuário ou senha incorretos' */;
-      /* senha.focus(); */
+      txtError.setAttribute('style', 'display: block');
+      txtError.innerHTML = 'Usuário ou senha incorretos';
+    /* senha.focus(); */
     });
 };
-/* signInWithPopup(auth, provider);
-    .then((result) => {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    // The signed-in user info.
-    const user = result.user;
-    // IdP data available using getAdditionalUserInfo(result)
-    // ...
-  }).catch((error) => {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // The email of the user's account used.
-    const email = error.customData.email;
-    // The AuthCredential type that was used.
-    const credential = GoogleAuthProvider.credentialFromError(error);
-    // ...
-  });
- */

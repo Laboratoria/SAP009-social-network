@@ -44,22 +44,12 @@ export default () => {
     `;
   container.innerHTML = template;
 
-/*  const criarCadastro = () => {
-    const email = container.querySelector('#txtEmail').value;
-    const senha = container.querySelector('#txtPassword').value;
-    createUser(email, senha);
-    console.log(email, senha);
-    container.addEventListener('click', function (event) {
-      if (event.target.id === 'btnCreateUser' && event.target.nodeName === 'BUTTON') criarCadastro()
-});
-};*/
-
   const criarCadastro = container.querySelector('#btnCreateUser');
   criarCadastro.addEventListener('click', (e) => {
     e.preventDefault();
     const email = container.querySelector('#txtEmail').value;
     const senha = container.querySelector('#txtPassword').value;
     createUser(email, senha);
-});
+  });
   return container;
-}
+};
