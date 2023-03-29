@@ -1,30 +1,38 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebaseInit';
+import { initializeApp } from 'firebase/app';
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+  getAuth,
+} from 'firebase/auth';
+import { firebaseConfig } from './firebaseconfig';
 
-/*Cadastrar usuários*/
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+/* Cadastrar usuários */
 export const createUser = (email, senha) => {
   createUserWithEmailAndPassword(auth, email, senha)
-    .then((userCredential) => {
-      const user = userCredential.user;
+    .then(() => {
       console.log('foi');
       window.location.hash = '#login';
-    })
-    .catch((error) => {
+    });
+  /*  .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-    });
+    }); */
+  return updateProfile({ email, senha });
 };
 
 export const valuesLogin = (email, senha) => {
   signInWithEmailAndPassword(auth, email, senha)
-    .then((userCredential) => {
-      window.location.href = "pages/feed/index.html";
-      console.log("foi");
-      const user = userCredential.user;
+    .then(() => {
+      window.location.href = '#feed';
+      console.log('foi');
     })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorMessage);
+    .catch(() => {
+      txtError.setAttribute('style', 'display: block');
+      txtError.innerHTML = 'Usuário ou senha incorretos';
+    /* senha.focus(); */
     });
 };

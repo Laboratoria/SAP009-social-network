@@ -32,10 +32,11 @@ export default () => {
                </div>
               </div>
               <div>
-              <a href="/#feed"><button id="btnLogin" type="button" class="btn-login">Entrar</a></button>
+              <span class="txt-error hide" id="txtError"></span>
+              <button id="btnLogin" type="button" class="btn-login">Entrar</button>
               </div>
               <div>
-              <a href="/#cadastro"><button id="btnCadastrar" type="button" class="btn-cadastrar">Cadastrar</button>
+              <a href="#cadastro"><button id="btnCadastrar" type="button" class="btn-cadastrar">Cadastrar</button>
               </div>
               <p class="entrar-google">Entrar com Google</p>
             </form>
@@ -47,13 +48,14 @@ export default () => {
 
   container.innerHTML = template;
   const fazerLogin = () => {
-    const email = container.querySelector('#txtEmail').value;
-    const senha = container.querySelector('#txtPassword').value;
-    valuesLogin(email, senha);
+    const email = container.querySelector('#txtEmail');
+    const senha = container.querySelector('#txtPassword');
+    const txtError = container.querySelector('#txtError');
+    const btn = container.querySelector('#btnLogin');
     console.log(email, senha);
-    container.addEventListener('click', function (event) {
-    if (event.target.id === 'btnLogin' && event.target.nodeName == 'BUTTON') fazerLogin()
-});
+    btn.addEventListener('click', (event) => {
+      valuesLogin(email.value, senha.value);
+    });
   };
   fazerLogin();
   return container;
