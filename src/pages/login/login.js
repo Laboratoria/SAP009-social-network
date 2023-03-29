@@ -11,10 +11,10 @@ export default () => {
     <div class= "form-wrapper">
       <div class= "div-logo">
       <div>
-        <img src="./assets/logo-icon.png" id="ada-icon" class="logo-icon" alt="icone da ConectAda">
+        <Image src="assets/logo-icon.png" id="ada-icon" class="logo-icon" alt="icone da ConectAda">
         </div>
         <div>
-        <img src="./assets/conectadas-logo.png" id="ada-logo" class="logo-image" alt="logo da ConectAda">
+        <Image src="assets/conectadas-logo.png" id="ada-logo" class="logo-image" alt="logo da ConectAda">
         </div>
       </div>
       <div>

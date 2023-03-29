@@ -16,7 +16,7 @@ export default defineConfig(({ command }) => {
       // https://vitejs.dev/guide/static-deploy.html#github-pages
       // ejemplo
     
-      base: '/SAP009-social-network/',
+      base: './SAP009-social-network/',
       build: {
         minify: false,
         rollupOptions: {
