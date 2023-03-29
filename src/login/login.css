@@ -21,7 +21,7 @@ html {
   justify-content: center;
   align-items: center;
   justify-content: center;
-  gap: 40px;
+  gap: 30px;
 }
 
 #login-logo {
@@ -68,9 +68,10 @@ html {
 #info {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
-  gap: 3px;
+  margin-top: 50px;
+  gap: 5px;
 }
 
 #or-google {
