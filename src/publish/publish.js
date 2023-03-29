@@ -3,17 +3,19 @@ export default () => {
 
   const publishScreen = `
 
-  <section>
+  <section id='time-line'>
+  <div>
   <img id='bumerangue-gif' src='imagens/bumerangue.gif'>
 
     <input id='publication' type='text' placeholder= 'O que deseja compartilhar?'> </input>
 
     <a id='cancel-button' type='button'  href='#feed'> Cancelar </a>
     <a id='publication-button'type='button'href='#feed'> Publicar </a>
-
+  <div>
     <!--icones emojis reações-->
     <h2> Entendendo as reações</h2>
     <img id='reactions-gif' src='imagens/reacoes.gif'>
+    </div>
   </section>
   
       `;

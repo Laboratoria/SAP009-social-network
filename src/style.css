@@ -1,20 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Bona+Nova:ital,wght@0,400;0,700;1,400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bona+Nova:ital,wght@0,400;0,700;1,400&display=swap");
 
 * {
-font-family: 'Bona Nova';
-font-style: italic;
-margin: 0px;
-padding: 0px;
-box-sizing: border-box;
+  font-family: "Bona Nova";
+  font-style: italic;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
 }
 
-body , html {
-width: 100vw;
-height: 100vh;    
+body,
+html {
+  width: 100vw;
+  height: 100vh;
 }
 
 body {
-display: flex;
-background-image: linear-gradient(to bottom, #999999 , #DADADA  , #ffffff);
-background-attachment: fixed;
-} 
+  display: flex;
+  background-image: linear-gradient(to bottom, #999999, #dadada, #ffffff);
+  background-attachment: fixed;
+}
