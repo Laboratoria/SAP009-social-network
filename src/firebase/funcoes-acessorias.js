@@ -57,5 +57,11 @@ export function modal(mensagem) {
 }
 
 export function imprimePosts(querySnapshot) { // pega tudo oq for descrição na coleção
-  querySnapshot.forEach((doc) => doc.data());
+  const recebeDados = [];
+  querySnapshot.forEach((doc) => {
+    doc.data();
+    recebeDados.push(doc.data());
+  });
+  console.log(recebeDados);
+  return recebeDados;
 }

@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { async } from 'regenerator-runtime';
+// import { async } from 'regenerator-runtime';
 import { observador, sair } from '../../firebase/firebase';
 import { paraPostar, mostraPostagens, quandoDadosForemAdicionados } from '../../firebase/firebase-storage';
 import { imprimePosts } from '../../firebase/funcoes-acessorias';
@@ -34,7 +34,7 @@ const postagem = () => {
       </section>
       <section class="ultimo-post">
         <div class="" id="postagens-anteriores">
-          <span class="postagens-anteriores"></span>
+          <span class="postagens-anteriores">@@ </span>
           <i class="fa-solid fa-circle-heart"></i>
         </div>
       </section>
@@ -48,7 +48,7 @@ const postagem = () => {
   const btnSair = criarPostagem.querySelector('.btn-sair');
 
   observador();
-
+  // DESLOGAR
   btnSair.addEventListener('click', () => {
     sair();
     window.location.hash = '#';
@@ -64,9 +64,14 @@ const postagem = () => {
 
   btnPostar.addEventListener('click', async () => {
     paraPostar(novoTexto.value); // cria a memoria de arq p/ postar
+
+    // manipular o array de objetos par tranformar em hmtl com ts
+
     postagensAnteriores.innerHTML += imprimePosts(await mostraPostagens());
-    console.log(postagensAnteriores);
-    console.log(novoTexto.value);
+    // postagensAnteriores.textContent = '';
+    const funcao = mostraPostagens();
+
+    console.log(funcao);
   });
 
   return criarPostagem;

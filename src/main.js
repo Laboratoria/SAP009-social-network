@@ -3,8 +3,9 @@
 import login from './pages/login/login.js';
 import cadastro from './pages/cadastro/cadastro.js';
 import postagem from './pages/postagem/postagem.js';
-import { mostraPostagens, quandoDadosForemAdicionados } from './firebase/firebase-storage.js';
-import { imprimePosts } from './firebase/funcoes-acessorias.js';
+import { mostraPostagens } from './firebase/firebase-storage.js';
+import { async } from 'regenerator-runtime';
+// import { imprimePosts } from './firebase/funcoes-acessorias.js';
 
 const main = document.querySelector('#main');
 
@@ -28,16 +29,16 @@ const iniciaTela = () => {
 };
 
 window.addEventListener('load', () => {
-  // main.appendChild(postagem());
-  main.appendChild(login());
+  main.appendChild(postagem());
+  // main.appendChild(login());
   iniciaTela();
   window.location.hash = '';
 });
 
-window.addEventListener('DOMContentLoaded', async () => {
-  console.log('pegando');
+// window.addEventListener('DOMContentLoaded', () => {
+//   console.log('pegando');
 
-  const querySnapshot = await mostraPostagens();
+  // const querySnapshot = mostraPostagens();
 
   // imprimePosts(querySnapshot); // esta na função acessoria fazendo o foreach
 
@@ -50,19 +51,19 @@ window.addEventListener('DOMContentLoaded', async () => {
   //   });
   //   // aqui tinha que ficar o innerHTML = posts
   // });
-});
-
-// window.addEventListener('DOMContentLoaded', async () => {
-//   console.log('pegando');
-
-//   const querySnapshot = await mostraPostagens();
-
-//   let posts = '';
-
-//   querySnapshot.forEach((doc) => {
-//     const descricao = doc.data();
-//     posts += descricao;
-//   });
-
-//   postagensAnteriores.innerHTML += querySnapshot;
 // });
+
+window.addEventListener('DOMContentLoaded', async () => {
+  console.log('pegando');
+
+  const querySnapshot = await mostraPostagens();
+
+  // let posts = '';
+
+  // querySnapshot.forEach((doc) => {
+  //   const descricao = doc.data();
+  //   posts += descricao;
+  // });
+
+  // postagensAnteriores.innerHTML += querySnapshot;
+});
