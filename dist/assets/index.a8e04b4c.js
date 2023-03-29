@@ -17459,7 +17459,6 @@ const verifyUserLogged = () => {
     }
   });
 };
-const logo = "/assets/conectadas-logo.f85e642f.png";
 const login = () => {
   const container = document.createElement("div");
   container.classList.add("container");
@@ -17470,7 +17469,7 @@ const login = () => {
         <Image src="assets/logo-icon.png" id="ada-icon" class="logo-icon" alt="icone da ConectAda">
         </div>
         <div>
-        <Image src="${logo}" id="ada-logo" class="logo-image" alt="logo da ConectAda">
+        <Image src="assets/conectadas-logo.png" id="ada-logo" class="logo-image" alt="logo da ConectAda">
         </div>
       </div>
       <div>
@@ -17568,7 +17567,9 @@ const createNewPost = async (title, textPost) => {
     likes: [1]
   };
   const docReference = await nf(Xa(db, "posts"), post);
+  console.log(docReference);
   post.id = docReference.id;
+  console.log(post);
   return post;
 };
 const getLoggedUserAllPosts = async () => {
@@ -17585,6 +17586,7 @@ const getLoggedUserAllPosts = async () => {
 };
 const timeline = () => {
   const user = auth.currentUser;
+  console.log(user);
   const container = document.createElement("div");
   container.classList.add("container-timeline");
   const header = createHeader();
@@ -17594,9 +17596,10 @@ const timeline = () => {
   function showAllPosts() {
     if (loggedUserAllPosts) {
       const mappedPosts = loggedUserAllPosts.map((post) => post);
+      const datepost = mappedPosts.sort((a, b2) => b2.dateTime.localeCompare(a.dateTime));
       console.log(mappedPosts);
       const postsList = document.querySelector("#post-list");
-      postsList.innerHTML = mappedPosts.map((post) => `<article class="post-article">
+      postsList.innerHTML = datepost.map((post) => `<article class="post-article">
             <div class="post-header">
             <h2>${post.title} </h2>
             <p class="dateTime">${post.dateTime}</p>
@@ -17651,8 +17654,14 @@ const timeline = () => {
      <form>
        <input type='text' name='post-title' class='input-post-title' id='post-title' placeholder='Digite o t\xEDtulo'> 
       <input type='textarea' name='post-text' class='input-post-text' id='post-text' placeholder='Digite o conte\xFAdo do post'> 
+      <div class="div-post-button">
+      
        <p class="max-char"> M\xE1ximo 300 caracteres</p>
+       <div class="bt">
       <button type='button' id='post-button' class='post-button' href='#timeline'>Post</button>
+      </div>
+      </div>
+      </div>
       </form>
       </div>
       
