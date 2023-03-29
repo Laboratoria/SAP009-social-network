@@ -48,6 +48,34 @@
     text-align: center; 
 }
 
-#btn-edit {
-    margin-right: 2rem;
+.btns {
+    display: flex;
+    display: inline-flex;
+}
+
+.btn-edit, .btn-del {
+    background-color: #00B154;
+    color: #fff;
+    width: 5rem;
+    text-align: center;
+    margin-bottom: 5%;
+    font-weight: bold;
+}
+
+.btn-edit {
+    margin-left: -20%;
+}
+
+.btn-del {
+    margin-left: 12%;
+}
+
+.btn-edit:hover,
+.btn-del:hover {
+    opacity: 0.9;
+}
+
+.btn-edit:active ,
+.btn-del:active {
+    opacity: 0.8;
 }

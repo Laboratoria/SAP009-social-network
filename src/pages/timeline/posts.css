@@ -109,7 +109,7 @@ div.single-input .input:valid ~ label {
 }
 
 #post-button {
-    display: flex;
+    position: relative;
     background-color: #00B154;
     color: #FFF;
     font-weight: bold;

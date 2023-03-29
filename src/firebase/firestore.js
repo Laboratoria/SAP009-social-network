@@ -25,24 +25,13 @@ export async function accessPost() {
   });
   return allPosts;
 }
-/*
+
 export async function editPost(idPost, newPost) {
   const docRef = doc(db, 'posts', idPost);
   return updateDoc(docRef, newPost);
 }
-*/
 
-export const editPost = async (postId, anime, episodes, description) => {
-  const post = doc(db, 'posts', postId);
-
-  await updateDoc(post, {
-    anime,
-    episodes,
-    description,
-  });
-};
-
-export async function deletePost(idPost) {
-  const docRef = doc(db, 'posts', idPost);
+export async function deletePost(postId) {
+  const docRef = doc(db, 'posts', postId);
   return deleteDoc(docRef);
 }

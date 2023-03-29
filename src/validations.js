@@ -9,9 +9,9 @@ export function errorsFirebase(error) {
     case 'auth/weak-password':
       return 'A senha deve ter 6 ou mais caracteres';
     case 'auth/invalid-password':
-      return 'Senha incorreta';
+      return 'Senha inválida';
     case 'auth/wrong-password':
-      return 'E-mail ou senha incorretos';
+      return 'Senha incorreta';
     default:
       return '';
   }
@@ -27,8 +27,8 @@ export function validateLogin(email, password) {
   return '';
 }
 
-export function validateRegister(name, email, emailRepeat, password, passwordRepeat) {
-  if (!name && !email && !emailRepeat && !password && !passwordRepeat) {
+export function validateRegister(name, email, password) {
+  if (!name && !email && !password) {
     return 'Preencha todos os campos';
   }
 
@@ -42,18 +42,18 @@ export function validateRegister(name, email, emailRepeat, password, passwordRep
   if (email === false) {
     return 'Insira um e-mail válido (ex: nome@email.com)';
   }
-
+  /*
   if (email !== emailRepeat) {
     return 'Os e-mails não correspondem';
   }
-
+*/
   if (password === '') {
     return 'Digite sua senha';
   }
-
+  /*
   if (password !== passwordRepeat) {
     return 'As senhas não correspondem';
   }
-
+*/
   return '';
 }

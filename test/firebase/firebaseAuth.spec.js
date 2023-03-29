@@ -1,11 +1,13 @@
 import {
   createUserWithEmailAndPassword,
+  updateProfile,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  onAuthStateChanged,
 } from 'firebase/auth';
 import {
-  createUserWithEmail, signIn, loginGoogle, logOut,
+  createUserWithEmail, signIn, loginGoogle, logOut, checkLoggedUser,
 } from '../../src/firebase/auth';
 
 jest.mock('firebase/auth');
@@ -14,13 +16,13 @@ jest.clearAllMocks();
 
 // Teste função de cadastro
 describe('createUserWithEmail', () => {
-  it('should create a new user', async () => {
-    const UserCredential = {
+  it('should create a new user and update the profile', async () => {
+    const userCredential = {
       user: {},
     };
     // Define um objeto mockUserCredential vazio que será usado como valor de
     // retorno simulado da função createUserWithEmailAndPassword
-    createUserWithEmailAndPassword.mockResolvedValue(UserCredential);
+    createUserWithEmailAndPassword.mockResolvedValue(userCredential);
     // A função createUserWithEmailAndPassword é configurada para retornar o objeto
     // mockUserCredential quando for chamada com os parâmetros apropriados. Isso é feito
     // usando a função mockResolvedValue fornecida por uma biblioteca de simulação de teste.
@@ -36,12 +38,20 @@ describe('createUserWithEmail', () => {
     // validar se a função createUserWithEmailAndPassword está retornando o resultado esperado
     // e se a função está funcionando corretamente.
 
-    await createUserWithEmail('teste@teste.com', 'teste123');
+    const email = 'teste@teste.com';
+    const password = 'teste123';
+    const name = 'fulana';
+    const displayName = 'fulana';
+    await createUserWithEmail(email, password, name, displayName);
+
+    // await createUserWithEmail('fulana', 'teste@teste.com', 'teste123');
     // O teste chama a função createUserWithEmail com um email e senha de exemplo e aguarda
     // a conclusão da função.
 
     expect(createUserWithEmailAndPassword).toHaveBeenCalledTimes(1);
-    expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(undefined, 'teste@teste.com', 'teste123');
+    expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(undefined, email, password);
+    expect(updateProfile).toHaveBeenCalledTimes(1);
+    expect(updateProfile).toHaveBeenCalledWith(userCredential, { displayName: 'fulana' });
   // O teste verifica se a função createUserWithEmailAndPassword
   // foi chamada exatamente uma vez com os parâmetros esperados.
   // O valor undefined é usado para indicar que não há um usuário autenticado no momento da
@@ -79,6 +89,13 @@ describe('logOut', () => {
     await logOut();
     expect(signOut).toHaveBeenCalledTimes(1);
     expect(signOut).toHaveBeenCalledWith(undefined);
+  });
+});
+
+describe('checkLoggedUser', () => {
+  it('deve verificar se o usuário logado está autenticado', () => {
+    checkLoggedUser();
+    expect(onAuthStateChanged).toHaveBeenCalledTimes(1);
   });
 });
 

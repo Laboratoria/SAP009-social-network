@@ -20,9 +20,6 @@ const renderPage = () => {
         if (logged) {
           main.appendChild(await timeline());
         }
-        /* else {
-          main.appendChild(login());
-        } */
       });
       break;
     default:
