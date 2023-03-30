@@ -1,7 +1,6 @@
 import login from './pages/login/login';
 import register from './pages/register/register';
 import timeline from './pages/timeline/timeline';
-// import { timeline } from './pages/timeline/timeline';
 import { checkLoggedUser } from './firebase/auth.js';
 
 const main = document.querySelector('#root');

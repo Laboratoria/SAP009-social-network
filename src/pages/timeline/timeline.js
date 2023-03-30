@@ -4,7 +4,6 @@ import postsTm from './postsTm.js';
 import posts from './posts.js';
 import { redirect } from '../../redirect.js';
 import { auth } from '../../firebase/app.js';
-// import editPosts from './editPosts.js';
 
 export default async () => {
   const containerTimeline = document.createElement('div');

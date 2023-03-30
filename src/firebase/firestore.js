@@ -1,5 +1,5 @@
 import {
-  getFirestore, addDoc, collection, getDocs, doc, updateDoc, deleteDoc,
+  getFirestore, addDoc, collection, getDocs, doc, updateDoc, deleteDoc, query, orderBy,
 } from 'firebase/firestore';
 import { app, auth } from './app';
 
@@ -12,12 +12,14 @@ export const createPost = (anime, episodes, description) => { //eslint-disable-l
     anime,
     episodes,
     description,
+    createdAt: new Date(),
   });
 };
 
 export async function accessPost() {
   const allPosts = [];
-  const querySnapshot = await getDocs(collection(db, 'posts'));
+  const postQuery = query(collection(db, 'posts'), orderBy('createdAt', 'desc'));
+  const querySnapshot = await getDocs(postQuery);
   querySnapshot.forEach((post) => {
     const data = post.data();
     data.id = post.id;

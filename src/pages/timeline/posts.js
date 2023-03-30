@@ -42,19 +42,6 @@ export default () => {
   const animePost = modal.querySelector('#anime');
   const episodesPost = modal.querySelector('#episodes');
   const descriptionPost = modal.querySelector('#post-area');
-  /*
-  postButton.addEventListener('click', () => {
-    const anime = animePost.value;
-    const episodes = episodesPost.value;
-    const description = descriptionPost.value;
-
-    createPost(anime, episodes, description)
-      .then(() => {
-        alert('Publicação efetuada com sucesso');
-        redirect('#timeline');
-      });
-  });
-  */
 
   postButton.addEventListener('click', () => {
     const anime = animePost.value;
@@ -62,7 +49,7 @@ export default () => {
     const description = descriptionPost.value;
 
     if (!anime || !episodes || !description) {
-      alert('Favor preencher os campos');
+      alert('Favor preencher todos os campos');
     } else {
       createPost(anime, episodes, description)
         .then(() => {
