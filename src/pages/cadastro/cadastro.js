@@ -1,4 +1,5 @@
 import { fazerCadastro } from '../../firebase/auth.js';
+import { database } from '../../firebase/firestoreDB.js';
 
 export default () => {
   const container = document.createElement('div');
@@ -49,9 +50,9 @@ export default () => {
 
   formCadastro.addEventListener('submit', (event) => {
     event.preventDefault();
-    console.log(cadastroNome.value, cadastroEmail.value, cadastroSenha.value);
     fazerCadastro(cadastroNome.value, cadastroEmail.value, cadastroSenha.value)
       .then(() => {
+        database(cadastroNome.value, cadastroEmail.value);
         window.location.hash = '#feed';
       })
       .catch(() => {
