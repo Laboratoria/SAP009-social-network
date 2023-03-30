@@ -51,18 +51,3 @@ window.addEventListener('load', () => {
 //   // aqui tinha que ficar o innerHTML = posts
 // });
 // });
-
-window.addEventListener('DOMContentLoaded', async () => {
-  console.log('pegando');
-
-  // const querySnapshot = await postagens();
-
-  // let posts = '';
-
-  // querySnapshot.forEach((doc) => {
-  //   const descricao = doc.data();
-  //   posts += descricao;
-  // });
-
-  // postagensAnteriores.innerHTML += querySnapshot;
-});

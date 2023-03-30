@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 // import { async } from 'regenerator-runtime';
 import { observador, sair } from '../../firebase/firebase';
-import { paraPostar, postagens, quandoDadosForemAdicionados } from '../../firebase/firebase-storage';
+import { paraPostar, postagens, mostraPostAutomaticamente, deletaPost } from '../../firebase/firebase-storage';
 import { pegaDados } from '../../firebase/funcoes-acessorias';
 
 const postagem = () => {
@@ -37,6 +37,7 @@ const postagem = () => {
 
   const btnSair = criarPostagem.querySelector('.btn-sair');
 
+  // VERIFICA USUÁRIO ON/OFF
   observador();
 
   // DESLOGAR
@@ -45,18 +46,32 @@ const postagem = () => {
     window.location.hash = '';
   });
 
-  // CRIAR AQUI A MANIPULAÇÃO DO DOM PARA CRIAR POSTS E TUDO O MAIS
+  // ARMAZENA OS POSTS NO CONSOLE DO FIREBASE
 
   const novoTexto = criarPostagem.querySelector('#novo-texto');
 
   const btnPostar = criarPostagem.querySelector('.btn-postar');
 
+  btnPostar.addEventListener('click', () => {
+    paraPostar(novoTexto.value); // cria a memoria de arq p/ postar
+    novoTexto.value = '';
+  });
+
+  // MOSTRA NA TELA, APAGA E EDITA TODOS OS POSTS ARMAZENADOS NO FIREBASE
+
   const postagensAnteriores = criarPostagem.querySelector('#postagens-anteriores');
 
-  btnPostar.addEventListener('click', async () => {
-    paraPostar(novoTexto.value); // cria a memoria de arq p/ postar
+  postagens().then((post) => {
+    postagensAnteriores.innerHTML = pegaDados(post);
+    // console.log(post);
 
-    postagensAnteriores.innerHTML = pegaDados(await postagens());
+    // DELETAR POSTS
+    const btnDeletaPost = criarPostagem.querySelectorAll('.deleta-post');
+    const btnEditaPost = criarPostagem.querySelectorAll('.edita-post');
+    btnDeletaPost.onclick = (e) => {
+      // deletaPost(e.target.dataset.id);
+      console.log('deletado');
+    };
   });
 
   return criarPostagem;
