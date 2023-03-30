@@ -1,5 +1,5 @@
 import { fazerCadastro } from '../../firebase/auth.js';
-import { database } from '../../firebase/firestoreDB.js';
+import { database } from '../../firebase/firestore.js';
 
 export default () => {
   const container = document.createElement('div');
@@ -10,7 +10,7 @@ export default () => {
       <img class="logo-cadastro" src="/imagens/logo-lemos.png" href="/#login">
     </div>
   </header>
-  <section class = "cadastro">
+  <section class="cadastro">
     <form class="form-cadastro">
       <h2 class="bem-vinda"> Seja bem-vinda! </h2>
       <div>

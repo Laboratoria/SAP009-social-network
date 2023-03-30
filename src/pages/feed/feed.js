@@ -1,4 +1,5 @@
 import { fazerLogout } from '../../firebase/auth.js';
+import { fazerPost } from '../../firebase/firestore.js';
 
 export default () => {
   const container = document.createElement('div');
@@ -12,7 +13,7 @@ export default () => {
   </header>
   <main class="feed-post">
     <section class="nome-livro">
-      <h2 class="criar-post">Criar postagem</h2>
+      <h2 class="criar-post">Criar publicação</h2>
       <p>Título do livro</p>
       <input type="text" class="input-titulo">
     </section>
@@ -29,7 +30,7 @@ export default () => {
       </div>
     </section>
     <section class="post-publicacao">
-      <textarea placeholder="Limite de 350 caracteres..."></textarea>
+      <textarea placeholder="Limite de 350 caracteres..." class="texto-post"></textarea>
     </section>
     <button type="submit" class="botao-publicar">Publicar</button>
     <h2 class="ultimos-posts">Últimas publicações</h2>
@@ -39,6 +40,10 @@ export default () => {
 
   container.innerHTML = template;
 
+  const titulo = container.querySelector('.input-titulo');
+  const autora = container.querySelector('.input-autora');
+  const post = container.querySelector('.texto-post');
+
   const botaoSair = container.querySelector('.botao-sair');
   botaoSair.addEventListener('click', () => {
     fazerLogout()
@@ -47,6 +52,13 @@ export default () => {
       })
       .catch(() => {
       });
+  });
+
+  const botaoPublicar = container.querySelector('.botao-publicar');
+  botaoPublicar.addEventListener('click', () => {
+    fazerPost(titulo.value, autora.value, post.value);
+    console.log(titulo.value, autora.value, post.value);
+    console.log(fazerPost);
   });
 
   return container;
