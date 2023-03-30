@@ -1,12 +1,14 @@
 import editPosts from './editPosts';
-import { deletePost } from '../../firebase/firestore';
+import { deletePost, deslikePost, likePost } from '../../firebase/firestore';
 import { redirect } from '../../redirect';
 import { getUserId } from '../../firebase/auth';
+import { auth } from '../../firebase/app';
 
 export default (showPosts, showTimeline) => {
   const userId = getUserId();
   showPosts.forEach((post) => {
     const postContainer = document.createElement('div');
+    let countLikes = post.whoLiked.length;
 
     const templatePost = `
     <div class='post'>
@@ -17,14 +19,17 @@ export default (showPosts, showTimeline) => {
             <p id='anime-name'>${post.anime}</p>
             <p id='anime-episodes'>${post.episodes} episódios</p>
 
-            <button id="like">
-              <div class="label">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M8.4 5.25C5.61914 5.25 3.25 7.3293 3.25 10.0298C3.25 11.8927 4.12235 13.4612 5.27849 14.7604C6.43066 16.0552 7.91714 17.142 9.26097 18.0516L11.5796 19.6211C11.8335 19.793 12.1665 19.793 12.4204 19.6211L14.739 18.0516C16.0829 17.142 17.5693 16.0552 18.7215 14.7604C19.8777 13.4612 20.75 11.8927 20.75 10.0298C20.75 7.3293 18.3809 5.25 15.6 5.25C14.1665 5.25 12.9052 5.92214 12 6.79183C11.0948 5.92214 9.83347 5.25 8.4 5.25Z" fill="black"/>
-                </svg>
-              </div>
-              <div class="number" id="number"></div>
-            </button>
+            <div class='icons display'>
+            <div id='like' class='display'>
+              <svg id='empty-heart' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-heart' viewBox='0 0 16 16'>
+                  <path d='m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z'/>
+              </svg>
+              <svg id='heart-fill' class='hidden' xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+            </svg>
+
+              <span id='likes-counter'>${countLikes}</span>
+            </div>
 
           </div>
               <details>
@@ -47,13 +52,30 @@ export default (showPosts, showTimeline) => {
 
     postContainer.innerHTML = templatePost;
 
-    const btnLike = postContainer.querySelector('#like');
-    const numberLike = postContainer.querySelector('#number');
-    btnLike.addEventListener('click', () => {
-      const likeValue = postContainer.querySelector('#number').textContent;
-      const newValue = Number(likeValue) + 1;
-      btnLike.classList.add('like');
-      numberLike.innerHTML = newValue;
+    const emptyHeart = postContainer.querySelector('#empty-heart');
+    const heartFill = postContainer.querySelector('#heart-fill');
+    const likesCounter = postContainer.querySelector('#likes-counter');
+    const likesUsers = post.whoLiked;
+
+    if (likesUsers.includes(auth.currentUser.displayName)) {
+      emptyHeart.classList.add('hidden');
+      heartFill.classList.remove('hidden');
+    }
+
+    emptyHeart.addEventListener('click', () => {
+      emptyHeart.classList.add('hidden');
+      heartFill.classList.remove('hidden');
+      countLikes += 1;
+      likesCounter.innerHTML = countLikes;
+      likePost(post.id, auth.currentUser.displayName);
+    });
+
+    heartFill.addEventListener('click', () => {
+      emptyHeart.classList.remove('hidden');
+      heartFill.classList.add('hidden');
+      countLikes -= 1;
+      likesCounter.innerHTML = countLikes;
+      deslikePost(post.id, auth.currentUser.displayName);
     });
 
     const delPost = postContainer.querySelector('.div-btn-del');

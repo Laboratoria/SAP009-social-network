@@ -1,5 +1,9 @@
 import {
-  getFirestore, addDoc, collection, getDocs, doc, updateDoc, deleteDoc, query, orderBy,
+  getFirestore,
+  addDoc,
+  collection,
+  getDocs,
+  doc, updateDoc, deleteDoc, query, orderBy, arrayUnion, arrayRemove,
 } from 'firebase/firestore';
 import { app, auth } from './app';
 
@@ -13,6 +17,8 @@ export const createPost = (anime, episodes, description) => { //eslint-disable-l
     episodes,
     description,
     createdAt: new Date(),
+    likes: [],
+    whoLiked: [],
   });
 };
 
@@ -36,4 +42,16 @@ export async function editPost(idPost, newPost) {
 export async function deletePost(postId) {
   const docRef = doc(db, 'posts', postId);
   return deleteDoc(docRef);
+}
+
+export function likePost(postId, userId) {
+  updateDoc(doc(db, 'posts', postId), {
+    whoLiked: arrayUnion(userId),
+  });
+}
+
+export function deslikePost(postId, userId) {
+  updateDoc(doc(db, 'posts', postId), {
+    whoLiked: arrayRemove(userId),
+  });
 }
