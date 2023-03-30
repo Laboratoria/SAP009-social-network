@@ -79,7 +79,7 @@
 .btn-del:active {
     opacity: 0.8;
 }
-
+/*
 #like {
     height: 40px;
     margin-left: 80%;
@@ -132,4 +132,21 @@
     100% {
       transform: scale(1);
     }
+  }
+  */
+
+  #empty-heart {
+    color: #D82934;
+  }
+
+  #heart-fill.hidden {
+    display: none;
+  }
+
+  #empty-heart.hidden {
+    display: none;
+  }
+
+  #heart-fill {
+    color: #D82934;
   }
