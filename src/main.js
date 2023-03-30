@@ -1,4 +1,5 @@
 import login from './pages/login/login.js';
+import home from './pages/home/home.js';
 import cadastro from './pages/cadastro/cadastro.js';
 
 const main = document.querySelector('#root');
@@ -12,6 +13,9 @@ const init = () => {
         break;
       case '#cadastro':
         main.appendChild(cadastro());
+        break;
+      case '#home':
+        main.appendChild(home());
         break;
       default:
         main.appendChild(login());
