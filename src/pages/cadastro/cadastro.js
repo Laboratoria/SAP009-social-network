@@ -1,22 +1,23 @@
 export default () => {
-    const container = document.createElement('div');
-  
-    const template = ` 
-    <form>
-    <label for="nomesobrenome">Nome e sobrenome</label>
-    <input type="text" id="nomesobrenome" required>
+  const container = document.createElement('div');
+  const template = ` 
+  <img id="logoImagem" src="imagens/LogoFundo.png>
+  <section id="bordaCadastro">
+   <form>
+    <label for="nomesobrenome" class="texto">Nome e sobrenome</label><br>
+    <input type="text" id="nomesobrenome" class= "inputs" required>
     
-    <label for="email">Email</label>
-    <input type="email" id="email" required placeholder="seuemail@dominio.com">
+    <br><label for="email" class="texto">Email</label><br>
+    <input type="email" id="email" class= "inputs" required placeholder="seuemail@dominio.com">
     
-    <label for="telefone">Telefone</label>
-    <input type="tel" id="telefone" required placeholder="(XX) XXXXX-XXXX">
+    <br><label for="telefone" class="texto">Telefone</label><br>
+    <input type="tel" id="telefone" class= "inputs" required placeholder="(XX) XXXXX-XXXX">
     
-    <input type="submit" value="Cadastrar" class="cadastrar">
+    <br><input type="submit" value="Cadastrar" class="cadastrar">
     </form>
-    
+  </section>  
     `;
-    container.innerHTML = template;
+  container.innerHTML = template;
 
-    return container;
-  };
+  return container;
+};

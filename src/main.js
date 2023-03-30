@@ -1,4 +1,4 @@
-import login from './pages/login/login.js';
+// import login from './pages/login/login.js';
 import cadastro from './pages/cadastro/cadastro.js';
 
 const main = document.querySelector('#root');
@@ -16,14 +16,12 @@ const init = () => {
       default:
         main.appendChild(login());
     }
-  })
-}
-
-window.addEventListener('load', () => { 
+  });
+};
+window.addEventListener('load', () => {
   main.appendChild(login());
   init();
 });
-
 
 // import { myFunction } from './lib/index.js';
 
