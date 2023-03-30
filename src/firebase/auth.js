@@ -2,7 +2,6 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
-  // signInWithRedirect,
   signOut,
   createUserWithEmailAndPassword,
   // updateCurrentUser,

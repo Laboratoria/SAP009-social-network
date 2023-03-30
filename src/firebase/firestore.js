@@ -1,20 +1,45 @@
-import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+} from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
+import { app } from './firebase';
 
-// TODO: Replace the following with your app's Firebase project configuration
-// See: https://support.google.com/firebase/answer/7015592
-const firebaseConfig = {
-  apiKey: 'AIzaSyCEBQM0DWvNE7_H4CBZUszGNzmDDVi_BPQ',
-  authDomain: 'lemos-sap009.firebaseapp.com',
-  projectId: 'lemos-sap009',
-  storageBucket: 'lemos-sap009.appspot.com',
-  messagingSenderId: '537373914721',
-  appId: '1:537373914721:web:b00c5e0ed7282317f75c20',
-  measurementId: 'G-VMMT7LJBN3',
+const db = getFirestore(app);
+
+export const database = async (name, email) => {
+  try {
+    const docRef = await addDoc(collection(db, 'users'), {
+      name,
+      email,
+    });
+    console.log('Document written with ID: ', docRef.id);
+  } catch (e) {
+    console.error('Error adding document: ', e);
+  }
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const pegarPost = async (nome, titulo, autora, post) => {
+  const promessaDados = await getDocs(collection(db, 'posts'));
+  promessaDados.forEach((post) => {
+    console.log(post.id, " => ", post.data());
+  });
+};
 
-// Initialize Cloud Firestore and get a reference to the service
-const db = getFirestore(app);
+export const fazerPost = async (titulo, autora, post) => {
+  const auth = getAuth(app);
+
+  try {
+    const docRef = await addDoc(collection(db, 'posts'), {
+      nome: auth.currentUser.displayName,
+      titulo: titulo,
+      autora: autora,
+      post: post,
+    });
+    console.log('Document written with ID: ', docRef.id);
+  } catch (e) {
+    console.error('Error adding document: ', e);
+  }
+};
