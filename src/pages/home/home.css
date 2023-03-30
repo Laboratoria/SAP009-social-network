@@ -1,0 +1,25 @@
+body{
+    background-color: #F7C097;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+nav{
+    color: white;
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-size: 15px;
+}
+
+.icones{
+    background-color: #3A7B50;
+    border-radius: 150px;
+    padding: 8px;
+}
+
+/* .containerHome{
+    display:flex;
+    flex-wrap: wrap;
+} */
