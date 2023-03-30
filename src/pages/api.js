@@ -28,7 +28,7 @@ export function loginUser(email, senha) {
 export function loginGoogle() {
   const provider = new GoogleAuthProvider();
   const auth = getAuth();
-  signInWithPopup(auth, provider)
+  return signInWithPopup(auth, provider)
     .then(() => {
 
     }).catch(() => {

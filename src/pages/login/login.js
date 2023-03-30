@@ -46,7 +46,23 @@ export default () => {
 
   btnGoogle.addEventListener('click', (e) => {
     e.preventDefault();
-    loginGoogle();
+    loginGoogle()
+      .then((result) => {
+        // const credential = GoogleAuthProvider.credentialFromResult(result);
+        // const token = credential.accessToken;
+        // const user = result.user;
+        window.location.hash = '#home';
+      })
+      .catch((error) => {
+        alert('Login não foi possível tente novamente.');
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        // const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
   });
 
   btnLogin.addEventListener('click', (e) => {
@@ -54,7 +70,8 @@ export default () => {
     loginUser(email.value, password.value)
       .then((userCredential) => {
         const user = userCredential.user;
-        location.hash = '#home';
+        console.log(user);
+        window.location.hash = '#home';
       })
       .catch(() => {
         alert('Email ou senha inválidos');
