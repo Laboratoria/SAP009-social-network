@@ -1,8 +1,14 @@
-body {
+@font-face {
+  font-family: 'Roboto', sans-serif;
+  src: url(../../assets/fonts/Roboto-Italic.ttf) format("truetype");
+}
+
+html,body {
     display: flex;
     justify-content: center;
     background-color: #1e1e1e;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
+   
   }
   
   .container {
@@ -66,7 +72,9 @@ body {
     font-weight: bolder;
     width: 24rem;
     cursor: pointer;
-    transition: background-color 0.2s ease;    
+    transition: background-color 0.2s ease;   
+  
+     
   }
   
   .button:hover {

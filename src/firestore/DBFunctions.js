@@ -1,4 +1,4 @@
-import { getDocs, collection, addDoc } from 'firebase/firestore';
+import { getDocs, collection, addDoc, updateDoc, doc } from 'firebase/firestore';
 
 import { db } from './firestore.js';
 
@@ -24,6 +24,26 @@ export const createNewPost = async (title, textPost) => {
   post.id = docReference.id;
   console.log(post);
   return post;
+};
+
+export const updatePost = async (title, textPost, postId) => {
+  console.log('edit');
+  console.log(title);
+  console.log(textPost);
+ 
+ 
+  // grava o post com o UID na collection posts independente de users
+  const docReference = updateDoc(doc(db, 'posts', postId), {
+    title,
+    textPost,
+    updateDateTime: new Date().toLocaleString(),
+  });
+  console.log(docReference);
+  // const docReference = await addDoc(collection(db, 'users',
+  // auth.currentUser.uid, 'posts'), post);
+  // post.id = teste.id;
+
+  
 };
 
 export const getLoggedUserAllPosts = async () => {
