@@ -1,9 +1,14 @@
+import { valuesLogin, googleLogin } from '../../servicesFirebase/firebaseAuth';
+
 export default () => {
   const container = document.createElement('div');
 
   const template = `
-  <body class="body-login">
-    <img class="imagem-login" src="./img/imagem-login.jpg">
+    <div class="body-login">
+    <div class="coluna-1">  
+        <picture class="imagem-login"></picture>
+    </div>
+    <div class="coluna-2">
       <section class="container">
         <section class="imagem-logo">
           <img class="logo-escrita-clara" src="./img/logo-escrita-clara.png">
@@ -27,18 +32,50 @@ export default () => {
                </div>
               </div>
               <div>
-              <a href="/#feed"><button id="btnLogin" type="button" class="btn-login">Entrar</a></button>
+              <span class="txt-error hide" id="txtError"></span>
+              <button id="btnLogin" type="button" class="btn-login">Entrar</button>
               </div>
               <div>
-              <a href="/#cadastro"><button id="btnCadastrar" type="button" class="btn-cadastrar">Cadastrar</button>
+              <a href="#cadastro"><button id="btnCadastrar" type="button" class="btn-cadastrar">Cadastrar</button></a>
               </div>
+              <div class="action-google">
+              <span class="erro-google hide" id="erro-google"></span>
               <p class="entrar-google">Entrar com Google</p>
+              <button class="btn-google" id="btn-google"></button>
+              </div>
             </form>
     </section>
       </section>
-  </body>
+    </div>
+  </div>   
     `;
 
   container.innerHTML = template;
+  const email = container.querySelector('#txtEmail');
+  const senha = container.querySelector('#txtPassword');
+  const txtError = container.querySelector('#txtError');
+  const btn = container.querySelector('#btnLogin');
+  const btnGoogle = container.querySelector('#btn-google');
+  const erroGoogle = container.querySelector('#erro-google');
+
+  const fazerLogin = () => {
+    console.log(email, senha);
+    btn.addEventListener('click', (event) => {
+      valuesLogin(email.value, senha.value)
+        .then(() => {
+          window.location.href = '#feed';
+          console.log('Login com sucesso!!!');
+        })
+        .catch(() => {
+          txtError.setAttribute('style', 'display: block');
+          txtError.innerHTML = 'Usuário ou senha incorretos';
+        });
+    });
+  };
+
+  fazerLogin();
+
+  btnGoogle.addEventListener('click', () => googleLogin()
+    .then(() => window.location.hash = '#feed'));
   return container;
 };

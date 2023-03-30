@@ -1,17 +1,23 @@
-/* import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import { btnCadastro } from '../../src/pages/cadastro/index';
+import { initializeApp } from 'firebase/app';
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+  getAuth,
+} from 'firebase/auth';
+import { firebaseConfig } from './firebaseconfig';
 
+const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-export const btnCadastro = (email, senha) => {
-  createUserWithEmailAndPassword(auth, email, senha)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      console.log('foi')
-      window.location.hash = '#login';
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-    });
-}; */
+/* Cadastrar usuários */
+export const createUser = (email, senha) => createUserWithEmailAndPassword(auth, email, senha);
+
+/* Fazer Login */
+export const valuesLogin = (email, senha) => signInWithEmailAndPassword(auth, email, senha);
+
+/* Login com Google */
+
+const provider = new GoogleAuthProvider();
+export const googleLogin = () => signInWithPopup(auth, provider);

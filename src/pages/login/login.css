@@ -13,7 +13,7 @@
 }
 
 .body-login{
-   display: flex;
+   display: block;
 }
 
 .logo-escrita-clara{
@@ -44,6 +44,12 @@ h1 {
    width: 250px;
    text-align: center;
    margin-bottom: 25px;
+}
+
+.fundo-form{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
 }
 
 .form-login {
@@ -143,42 +149,65 @@ h1 {
  width:50%;
  
 }
-
-.imagem-login{
-   width: 50%;
-   height: 100vh;
-   display:none;
+.imagem-login {
+   background-image: url(../../img/imagem-login.jpg);
+   background-position: center center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   display: none;
 }
 
-
-@media (min-width:800px) {
-   .container{
-      float: right;
-      width: 50%;
-   }
-
-   .imagem-login{
-      display: flex;
-   }
-
-   .texto-entrada > p{
-      color: var(--vermelho);
-      font-size: 23px;
-      font-weight: bold;
-   }
-   
-   .fundo-form{
-      background: #d9d9d98c;
-      border-radius: 20px;
-      width: 49vh;
-      height: 599px;
-     
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center
-   }
-   .imagem-logo{
-      margin-top:50px;
-   }
+.action-google{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
 }
+
+.btn-google{
+   width: 40px;
+   height: 40px;
+   border-radius: 50%;
+   border: none;
+   margin: 10px;
+}
+
+@media  (min-width:900px){
+    .body-login {
+        display: flex;
+    }
+
+    .coluna-1, .coluna-2 {
+        width: 50%;
+    }
+    .coluna-2 .container{
+        height: 100vh;
+    }
+    .imagem-login {
+        display: block;
+        width: 100%;
+        height: 100vh;
+    }
+    
+    .fundo-form {
+        background: #d9d9d98c;
+        border-radius: 20px;
+        width: 380px;
+        height: 599px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center
+    }
+    
+    .texto-entrada>p {
+        color: var(--vermelho);
+        font-size: 23px;
+        font-weight: 400;
+    }
+    
+    .imagem-logo {
+        margin-top: 20px;
+    }
+
+}
+
