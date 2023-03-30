@@ -56,12 +56,18 @@ export function modal(mensagem) {
   console.log(mensagem);
 }
 
-export function imprimePosts(querySnapshot) { // pega tudo oq for descrição na coleção
-  const recebeDados = [];
+export function pegaDados(querySnapshot) { // pega tudo oq for descrição na coleção
+  let recebeDados = '';
   querySnapshot.forEach((doc) => {
-    doc.data();
-    recebeDados.push(doc.data());
+    const publicacao = doc.data();
+    recebeDados += `
+    <div> 
+      <textarea name="novo-texto" class="texto-amigas" cols="30%" rows="4%">${publicacao.descricao}</textarea>
+      <i class="curti"><3</i>        
+     </div>
+    `;
   });
-  console.log(recebeDados);
   return recebeDados;
 }
+
+// export function mostraData(){ new Date.toLocaleString(), mostra a data com dia mês e ano}

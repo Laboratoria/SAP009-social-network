@@ -3,16 +3,16 @@ import {
   getDocs, onSnapshot,
 } from 'firebase/firestore';
 
-const db = getFirestore();
+const db = getFirestore(); // pq pega sem o app e com o app
 
 export function paraPostar(descricao) {
   addDoc(collection(db, 'postagens'), { descricao });
 }
 
-export function mostraPostagens() { // vai na memoria pega cada arq existente
+export function postagens() { // vai na memoria pega cada arq existente
   return getDocs(collection(db, 'postagens'));
 }
 
-export function quandoDadosForemAdicionados(postsEnviados) {
-  onSnapshot(collection(db, 'postagens'), postsEnviados);
+export function quandoDadosForemAdicionados(postEnviado) {
+  onSnapshot(collection(db, 'postagens'), postEnviado);
 }

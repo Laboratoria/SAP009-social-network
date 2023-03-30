@@ -1,13 +1,13 @@
 
 /* tava impedindo os inputs de se ajustarem de acordo com o tamanho da tela*/
-div:first-child{
+/* div:first-child{
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
   justify-content: center;
   align-items: center;
   margin: auto;
-} 
+}  */
 /* .main{
   display: flex;
   align-items: center;
@@ -21,7 +21,6 @@ div:first-child{
 .btn-sair {
   display: flex;
   margin-left: 12rem;
-
   width: 40px;
   height: 20px;
   padding: 4px;
@@ -50,6 +49,15 @@ div:first-child{
   align-items: center;
   gap: 0.5rem;
 }
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  /* margin: auto; */
+  text-align: center;
+}
 
 #novo-texto,
 .postagem-anteriores {
@@ -58,12 +66,22 @@ div:first-child{
   text-align: center;
   background-color: #facfce;
   border: transparent;
+  gap: 1rem;
 }
-#novo-texto{
+#digita-texto{
   text-align: center;
   margin: auto;
   align-items: center;
   margin-right: 2.2rem; /* alinha no meio */
+}
+.texto-amigas{
+  width: 280px;
+  height: 120px;
+  text-align: center;
+  background-color: #facfce;
+  border: transparent;
+  margin:  1rem auto;
+  padding: 1.5rem 1rem;
 }
 
 .btn-postar {
@@ -73,11 +91,10 @@ div:first-child{
   border-radius: 5px;
   padding: 5px;
   margin-left: 12rem;
-
 }
 
 .icones-inferiores,
 .perfil-usuaria {
-  display: none;
+  display: block;
 }
 

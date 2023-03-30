@@ -16,7 +16,7 @@ export function fazerLogin(email, password) {
   return signInWithEmailAndPassword(auth, email, password);
 }
 
-export function observador() {
+export function observador() { // verifica se tem usuário logado ou não
   onAuthStateChanged(auth, (user) => {
     // console.log(user);
     if (user) {

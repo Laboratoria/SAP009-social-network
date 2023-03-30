@@ -3,9 +3,8 @@
 import login from './pages/login/login.js';
 import cadastro from './pages/cadastro/cadastro.js';
 import postagem from './pages/postagem/postagem.js';
-import { mostraPostagens } from './firebase/firebase-storage.js';
-import { async } from 'regenerator-runtime';
-// import { imprimePosts } from './firebase/funcoes-acessorias.js';
+import { postagens } from './firebase/firebase-storage.js';
+import { pegaDados } from './firebase/funcoes-acessorias.js';
 
 const main = document.querySelector('#main');
 
@@ -38,25 +37,25 @@ window.addEventListener('load', () => {
 // window.addEventListener('DOMContentLoaded', () => {
 //   console.log('pegando');
 
-  // const querySnapshot = mostraPostagens();
+// const querySnapshot = mostraPostagens();
 
-  // imprimePosts(querySnapshot); // esta na função acessoria fazendo o foreach
+// imprimePosts(querySnapshot); // esta na função acessoria fazendo o foreach
 
-  // quandoDadosForemAdicionados((querySnapshot) => {
-  //   let posts = '';
+// quandoDadosForemAdicionados((querySnapshot) => {
+//   let posts = '';
 
-  //   querySnapshot.forEach((doc) => {
-  //     const descricao = doc.data();
-  //     posts += descricao;
-  //   });
-  //   // aqui tinha que ficar o innerHTML = posts
-  // });
+//   querySnapshot.forEach((doc) => {
+//     const descricao = doc.data();
+//     posts += descricao;
+//   });
+//   // aqui tinha que ficar o innerHTML = posts
+// });
 // });
 
 window.addEventListener('DOMContentLoaded', async () => {
   console.log('pegando');
 
-  const querySnapshot = await mostraPostagens();
+  // const querySnapshot = await postagens();
 
   // let posts = '';
 

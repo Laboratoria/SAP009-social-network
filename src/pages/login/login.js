@@ -5,7 +5,6 @@
 /* eslint-disable indent */
 import { fazerLogin, loginComGoogle, observador } from '../../firebase/firebase';
 import { exibeErros } from '../../firebase/funcoes-acessorias';
-// import postagem from '../postagem/postagem';
 
 const criarLogin = document.createElement('section');
 
