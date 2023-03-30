@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.btn-cadastro {
+    background-color: pink;
+}
+
+.cadastro {
+    background-color: blue;
+}
+
+.body-cadastro {
+    background-color: aqua;
+    height: 50vh;
+}
