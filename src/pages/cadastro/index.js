@@ -15,9 +15,9 @@ export default () => {
                                 <img class="logo-escrita-escura" src="./img/logo-escrita-escura.png" alt="Logo da Brúlle com a escrita escura">
                             </section>
                             <form class="form-cadastro-cadastro">
-                                <input id="txtName" type="text" name="nome" class="input-nome-cadastro" placeholder="Nome" required>
+                                <input id="txtName" type="text" name="nome" class="input-nome-cadastro" placeholder="Nome ou Apelido" required>
                          
-                                <input id="txtEmail" type="email" name="email" class="input-login-cadastro" placeholder="Login" required>
+                                <input id="txtEmail" type="email" name="email" class="input-login-cadastro" placeholder="Seu e-mail" required>
 
                                 <input id="txtPassword" type="password" name="password" class="input-senha-cadastro"placeholder="Crie sua senha" minlength="8" required>
 
@@ -40,6 +40,14 @@ export default () => {
     e.preventDefault();
     const email = container.querySelector('#txtEmail').value;
     const senha = container.querySelector('#txtPassword').value;
+    const inputNome = container.querySelector('#txtName');
+    const inputEmail = container.querySelector('#txtEmail');
+    const inputSenha = container.querySelector('#txtPassword');
+    if (!inputNome || !inputEmail || !inputSenha) {
+      const mensagem = container.querySelector('#txtError');
+      mensagem.innerHTML = 'Preencha os campos corretamente.';
+    }
+
     createUser(email, senha)
       .then(() => {
         console.log('Cadastrado com sucesso!');

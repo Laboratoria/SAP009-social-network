@@ -23,5 +23,5 @@ export const valuesLogin = (email, senha) => signInWithEmailAndPassword(auth, em
 const provider = new GoogleAuthProvider();
 export const googleLogin = () => signInWithPopup(auth, provider);
 
-/*Sair do perfil*/
+/* Sair do perfil */
 export const sairPerfil = () => signOut(auth);

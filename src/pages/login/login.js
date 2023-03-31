@@ -29,14 +29,16 @@ export default () => {
                </div>
               </div>
               <div>
+
               <span class="txt-error hide" id="txtError"></span>
+
               <button id="btnLogin" type="button" class="btn-login">Entrar</button>
               </div>
               <div>
               <a href="#cadastro"><button id="btnCadastrar" type="button" class="btn-cadastrar">Cadastrar</button></a>
               </div>
               <div class="action-google">
-              <span class="erro-google hide" id="erro-google"></span>
+
               <p class="entrar-google">Entrar com Google</p>
               <button class="btn-google" id="btn-google">
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"/>
@@ -55,15 +57,12 @@ export default () => {
   const txtError = container.querySelector('#txtError');
   const btn = container.querySelector('#btnLogin');
   const btnGoogle = container.querySelector('#btn-google');
-  const erroGoogle = container.querySelector('#erro-google');
 
   const fazerLogin = () => {
-    console.log(email, senha);
     btn.addEventListener('click', (event) => {
       valuesLogin(email.value, senha.value)
         .then(() => {
           window.location.href = '#feed';
-          console.log('Login com sucesso!!!');
         })
         .catch(() => {
           txtError.setAttribute('style', 'display: block');
@@ -75,7 +74,11 @@ export default () => {
   fazerLogin();
 
   btnGoogle.addEventListener('click', () => googleLogin()
-    .then(() => { window.location.hash = '#feed';
+    .then(() => {
+      window.location.hash = '#feed';
+    })
+    .catch((error) => {
+      alert('Erro ao efetuar login com o Google!');
     }));
   return container;
 };

@@ -53,8 +53,21 @@
     margin-top: 20px;
 }
 
-.input-nome-cadastro, .input-login-cadastro, .input-senha-cadastro{
+.input-nome-cadastro, .input-login-cadastro{
     background-image: url(../img/icone-login.png);
+    background-color: #474053;
+    border-radius: 15px;
+    border-bottom: 1px solid rgba(141, 141, 141, 0.5);
+    background-repeat: no-repeat;
+    border: none;
+    width: 310px;
+    height: 50px;
+    text-align: center;
+    font-family: var(--fonte-logo);
+ }
+
+ .input-senha-cadastro{
+    background-image: url(../img/locker.png);
     background-color: #474053;
     border-radius: 15px;
     border-bottom: 1px solid rgba(141, 141, 141, 0.5);
