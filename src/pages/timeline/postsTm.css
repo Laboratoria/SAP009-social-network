@@ -79,74 +79,51 @@
 .btn-del:active {
     opacity: 0.8;
 }
-/*
-#like {
-    height: 40px;
-    margin-left: 80%;
-    margin-top: -6rem;
-    justify-content: space-between;
-    align-items: center;
-    width: 63px;
-    border: none;
-    padding: 8px;
-    font-size: 1.1rem;
-    color: #000;
-    cursor: pointer;
-    transition: all .25s ease-in-out;
-  }
-  .label {
+
+div#like.display {
     display: flex;
-    align-items: center;
-    margin-right: 8px;
+}
+
+  #heart-fill.hidden,
+  #empty-heart.hidden {
+    display: none;
   }
-  .label svg {
-    margin-right: 4px;
-  }
-  .label path {
-    fill: #8a8d9b;   
-    transition: all .25s ease-in-out;       
-  }
-  .number {
-    color: #8a8d9b;
-  }
-  #like:hover path{
-    fill: #ff00fd;
-  }
-  #like.like .number {
-    color: #ff00fd
-  }
-  #like.like svg {
+
+  #empty-heart,
+  #heart-fill {
+    color: #D82934;
+    cursor: pointer;
+    margin-left: 75%;
     animation: transitionLike 1s ease-in;
   }
-  #like.like path {
-    fill: #ff00fd;
-  }
   
+  #likes-counter {
+    color: #D82934;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-left: 5%;
+    margin-right: 8%;
+  }
+
   @keyframes transitionLike {
     0% {
       transform: scale(1);
     }
     50% {
-      transform: scale(1.3);
+      transform: scale(1.125);
     }
     100% {
       transform: scale(1);
     }
   }
-  */
 
-  #empty-heart {
-    color: #D82934;
-  }
+  @media screen and (min-width: 950px) {
+    #empty-heart,
+    #heart-fill {
+      margin-left: 80%;
+    }   
 
-  #heart-fill.hidden {
-    display: none;
-  }
-
-  #empty-heart.hidden {
-    display: none;
-  }
-
-  #heart-fill {
-    color: #D82934;
-  }
+    #likes-counter {
+      margin-right: 8%;
+    }
+}
