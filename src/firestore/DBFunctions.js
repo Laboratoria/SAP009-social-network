@@ -13,7 +13,9 @@ export const createNewPost = async (title, textPost) => {
     displayName: auth.currentUser.displayName,
     title,
     textPost,
-    dateTime: new Date().toLocaleString(),
+    dateTime: new Date().toLocaleTimeString([], {
+      year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit',
+    }),
     updateDateTime: '',
     likes: [1],
   };
@@ -29,7 +31,10 @@ export const updatePost = async (title, textPost, postId) => {
   const docReference = updateDoc(doc(db, 'posts', postId), {
     title,
     textPost,
-    updateDateTime: new Date().toLocaleString(),
+    updateDateTime: new Date().toLocaleTimeString([], {
+      year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit',
+    }),
+
   });
   console.log(docReference);
   // const docReference = await addDoc(collection(db, 'users',
