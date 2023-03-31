@@ -1,4 +1,6 @@
-import { getDocs, collection, addDoc, updateDoc, doc } from 'firebase/firestore';
+import {
+  getDocs, collection, addDoc, updateDoc, doc, deleteDoc,
+} from 'firebase/firestore';
 
 import { db } from './firestore.js';
 
@@ -17,21 +19,12 @@ export const createNewPost = async (title, textPost) => {
   };
   // grava o post com o UID na collection posts independente de users
   const docReference = await addDoc(collection(db, 'posts'), post);
-  console.log(docReference);
-  // const docReference = await addDoc(collection(db, 'users',
-  // auth.currentUser.uid, 'posts'), post);
-  // post.id = teste.id;
   post.id = docReference.id;
-  console.log(post);
   return post;
 };
 
 export const updatePost = async (title, textPost, postId) => {
   console.log('edit');
-  console.log(title);
-  console.log(textPost);
- 
- 
   // grava o post com o UID na collection posts independente de users
   const docReference = updateDoc(doc(db, 'posts', postId), {
     title,
@@ -42,8 +35,16 @@ export const updatePost = async (title, textPost, postId) => {
   // const docReference = await addDoc(collection(db, 'users',
   // auth.currentUser.uid, 'posts'), post);
   // post.id = teste.id;
+};
 
-  
+export const deletePost = async (postId) => {
+  console.log('delete');
+  // grava o post com o UID na collection posts independente de users
+  const docReference = doc(db, 'posts', postId);
+  await deleteDoc(docReference);
+  // const docReference = await addDoc(collection(db, 'users',
+  // auth.currentUser.uid, 'posts'), post);
+  // post.id = teste.id;
 };
 
 export const getLoggedUserAllPosts = async () => {
