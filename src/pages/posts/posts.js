@@ -34,12 +34,12 @@ export function openCreateNewPostModal() {
 
   const postButton = document.getElementById('post-button');
 
-  postButton.addEventListener('click', () => {
+  postButton.addEventListener('click', async () => {
     const inputTitle = document.querySelector('#post-title').value;
     const inputTextPost = document.querySelector('#post-text').value;
-    
+
     if (inputTitle !== '' && inputTextPost !== '') {
-      createNewPost(inputTitle, inputTextPost);
+      await createNewPost(inputTitle, inputTextPost);
       modalWrapper.classList.remove('show');
       location.reload();
     } else {
@@ -49,7 +49,6 @@ export function openCreateNewPostModal() {
 }
 
 export function editPost(post) {
-  console.log(post);
   const modalWrapper = document.getElementById('modal-wrapper');
   const modalContainer = document.getElementById('modal-container');
   modalContainer.classList.add('modal-container');
@@ -66,7 +65,7 @@ export function editPost(post) {
         <div class="div-post-button">
         <p class="max-char"> Máximo 300 caracteres</p>
           <div class="bt">
-            <button type='button' id='edit-button' class='post-button' href='#timeline'>Editar</button>
+            <button type='button' id='edit-button' class='post-button' href='#timeline'>Salvar</button>
           </div>
     </div>
       </form>
@@ -74,9 +73,9 @@ export function editPost(post) {
     </div>`;
 
   const editPostTitle = modalContainer.querySelector('.edit-input-post-title');
-  console.log(editPostTitle);
+
   const editTextPost = modalContainer.querySelector('.edit-input-post-text');
-  console.log(post.title);
+
   editPostTitle.value = post.title;
   editTextPost.innerHTML = post.textPost;
 
@@ -88,14 +87,13 @@ export function editPost(post) {
 
   const editButton = document.getElementById('edit-button');
 
-  editButton.addEventListener('click', () => {
+  editButton.addEventListener('click', async () => {
     const inputTitle = document.querySelector('#edit-post-title').value;
     const inputTextPost = document.querySelector('#edit-post-text').value;
     if (inputTitle !== '' && inputTextPost !== '') {
-    updatePost(inputTitle, inputTextPost, post.id);
-    modalWrapper.classList.remove('show');  
-    location.reload();  
-    }else {
+      await updatePost(inputTitle, inputTextPost, post.id);
+      modalWrapper.classList.remove('show');
+    } else {
       alert('Preencha todos os campos');
     }
   });

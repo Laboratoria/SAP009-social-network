@@ -21,6 +21,7 @@ export const createNewPost = async (title, textPost) => {
   };
   // grava o post com o UID na collection posts independente de users
   const docReference = await addDoc(collection(db, 'posts'), post);
+  console.log(docReference);
   post.id = docReference.id;
   return post;
 };
@@ -28,7 +29,7 @@ export const createNewPost = async (title, textPost) => {
 export const updatePost = async (title, textPost, postId) => {
   console.log('edit');
   // grava o post com o UID na collection posts independente de users
-  const docReference = updateDoc(doc(db, 'posts', postId), {
+  await updateDoc(doc(db, 'posts', postId), {
     title,
     textPost,
     updateDateTime: new Date().toLocaleTimeString([], {
@@ -36,21 +37,29 @@ export const updatePost = async (title, textPost, postId) => {
     }),
 
   });
-  console.log(docReference);
+  return true;
+  
+  console.log('afterdocreference-beforeconseoledocreference');
+ 
   // const docReference = await addDoc(collection(db, 'users',
   // auth.currentUser.uid, 'posts'), post);
   // post.id = teste.id;
 };
 
-export const deletePost = async (postId) => {
-  console.log('delete');
-  // grava o post com o UID na collection posts independente de users
-  const docReference = doc(db, 'posts', postId);
-  await deleteDoc(docReference);
+  
+  export const deletePost = async (postId) => {
+    console.log('delete');
+    // grava o post com o UID na collection posts independente de users
+    const docReference = doc(db, 'posts', postId);
+    await deleteDoc(docReference);
+    console.log('delete completed');
+ 
+  };
+  
   // const docReference = await addDoc(collection(db, 'users',
   // auth.currentUser.uid, 'posts'), post);
   // post.id = teste.id;
-};
+
 
 export const getLoggedUserAllPosts = async () => {
   const postsCollection = await getDocs(collection(db, 'posts'));

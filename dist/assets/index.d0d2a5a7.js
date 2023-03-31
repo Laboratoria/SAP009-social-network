@@ -16791,6 +16791,14 @@ class xh {
     return null !== this.fieldMask ? new is(t2, this.data, this.fieldMask, e, this.fieldTransforms) : new ss(t2, this.data, e, this.fieldTransforms);
   }
 }
+class Nh {
+  constructor(t2, e, n) {
+    this.data = t2, this.fieldMask = e, this.fieldTransforms = n;
+  }
+  toMutation(t2, e) {
+    return new is(t2, this.data, this.fieldMask, e, this.fieldTransforms);
+  }
+}
 function kh(t2) {
   switch (t2) {
     case 0:
@@ -16895,6 +16903,57 @@ function Fh(t2, e, n, s, i, r = {}) {
   } else
     c = null, a = o.fieldTransforms;
   return new xh(new en(u), c, a);
+}
+class Bh extends Sh {
+  _toFieldTransform(t2) {
+    if (2 !== t2.ra)
+      throw 1 === t2.ra ? t2.fa(`${this._methodName}() can only appear at the top level of your update data`) : t2.fa(`${this._methodName}() cannot be used with set() unless you pass {merge:true}`);
+    return t2.fieldMask.push(t2.path), null;
+  }
+  isEqual(t2) {
+    return t2 instanceof Bh;
+  }
+}
+function Qh(t2, e, n, s) {
+  const i = t2.wa(1, e, n);
+  Yh("Data must be an object, but it was:", i, s);
+  const r = [], o = en.empty();
+  Ut(s, (t3, s2) => {
+    const u2 = tl(e, t3, n);
+    s2 = getModularInstance(s2);
+    const c = i.ha(u2);
+    if (s2 instanceof Bh)
+      r.push(u2);
+    else {
+      const t4 = Wh(s2, c);
+      null != t4 && (r.push(u2), o.set(u2, t4));
+    }
+  });
+  const u = new tn(r);
+  return new Nh(o, u, i.fieldTransforms);
+}
+function jh(t2, e, n, s, i, r) {
+  const o = t2.wa(1, e, n), u = [Zh(e, s, n)], c = [i];
+  if (r.length % 2 != 0)
+    throw new L(B.INVALID_ARGUMENT, `Function ${e}() needs to be called with an even number of arguments that alternate between field names and values.`);
+  for (let t3 = 0; t3 < r.length; t3 += 2)
+    u.push(Zh(e, r[t3])), c.push(r[t3 + 1]);
+  const a = [], h = en.empty();
+  for (let t3 = u.length - 1; t3 >= 0; --t3)
+    if (!nl(a, u[t3])) {
+      const e2 = u[t3];
+      let n2 = c[t3];
+      n2 = getModularInstance(n2);
+      const s2 = o.ha(e2);
+      if (n2 instanceof Bh)
+        a.push(e2);
+      else {
+        const t4 = Wh(n2, s2);
+        null != t4 && (a.push(e2), h.set(e2, t4));
+      }
+    }
+  const l2 = new tn(a);
+  return new Nh(h, l2, o.fieldTransforms);
 }
 function Wh(t2, e) {
   if (Jh(
@@ -17357,6 +17416,16 @@ function Xl(t2, e, n) {
   const s = Qa(t2.firestore, ch), i = Nl(t2.converter, e, n);
   return of(s, [Fh(Oh(s), "setDoc", t2._key, i, null !== t2.converter, n).toMutation(t2._key, Hn.none())]);
 }
+function tf(t2, e, n, ...s) {
+  t2 = Qa(t2, Ja);
+  const i = Qa(t2.firestore, ch), r = Oh(i);
+  let o;
+  o = "string" == typeof (e = getModularInstance(e)) || e instanceof bh ? jh(r, "updateDoc", t2._key, e, n, s) : Qh(r, "updateDoc", t2._key, e);
+  return of(i, [o.toMutation(t2._key, Hn.exists(true))]);
+}
+function ef(t2) {
+  return of(Qa(t2.firestore, ch), [new cs(t2._key, Hn.none())]);
+}
 function nf(t2, e) {
   const n = Qa(t2.firestore, ch), s = eh(t2), i = Nl(t2.converter, e);
   return of(n, [Fh(Oh(t2.firestore), "addDoc", s._key, i, null !== t2.converter, {}).toMutation(s._key, Hn.exists(false))]).then(() => s);
@@ -17466,10 +17535,10 @@ const login = () => {
     <div class= "form-wrapper">
       <div class= "div-logo">
       <div>
-        <Image src="assets/logo-icon.png" id="ada-icon" class="logo-icon" alt="icone da ConectAda">
+        <img src="assets/logo-icon.png" id="ada-icon" class="logo-icon" alt="icone da ConectAda">
         </div>
         <div>
-        <Image src="assets/conectadas-logo.png" id="ada-logo" class="logo-image" alt="logo da ConectAda">
+        <img src="assets/conectadas-logo.png" id="ada-logo" class="logo-image" alt="logo da ConectAda">
         </div>
       </div>
       <div>
@@ -17562,57 +17631,151 @@ const createNewPost = async (title, textPost) => {
     displayName: auth.currentUser.displayName,
     title,
     textPost,
-    dateTime: new Date().toLocaleString(),
+    dateTime: new Date().toLocaleTimeString([], {
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit"
+    }),
     updateDateTime: "",
     likes: [1]
   };
   const docReference = await nf(Xa(db, "posts"), post);
+  console.log(docReference);
   post.id = docReference.id;
   return post;
 };
-const getLoggedUserAllPosts = async () => {
-  const postsCollection = await Jl(Xa(db, "posts"));
-  const posts = [];
-  postsCollection.forEach((post) => {
+const updatePost = async (title, textPost, postId) => {
+  console.log("edit");
+  const docReference = tf(eh(db, "posts", postId), {
+    title,
+    textPost,
+    updateDateTime: new Date().toLocaleTimeString([], {
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit"
+    })
+  });
+  console.log(docReference);
+};
+const deletePost = async (postId) => {
+  console.log("delete");
+  const docReference = eh(db, "posts", postId);
+  ef(docReference);
+};
+const getAllUsersPosts = async () => {
+  const allPostsCollection = await Jl(Xa(db, "posts"));
+  const allPosts = [];
+  allPostsCollection.forEach((post) => {
     const data = post.data();
-    if (data.uid === auth.currentUser.uid) {
-      data.id = post.id;
-      posts.push(data);
+    data.id = post.id;
+    allPosts.push(data);
+  });
+  return allPosts;
+};
+function openCreateNewPostModal() {
+  const modalWrapper = document.getElementById("modal-wrapper");
+  const modalContainer = document.getElementById("modal-container");
+  modalContainer.classList.add("modal-container");
+  modalContainer.innerHTML = `    
+  <div class="modal-content">  
+   <div class = "top-content">
+    <p class="greeting-modal">O que voc\xEA busca/oferece hoje?</p>   
+    <button class="buttons" id="close">X</button>
+   </div>
+   <div class="form">
+    <form>
+     <input type='text' name='post-title' class='input-post-title' id='post-title' placeholder='Digite o t\xEDtulo' maxlength='42'>
+     <textarea class="input-post-text" id="post-text" name="post-text" cols="50" rows="4" placeholder='Digite o conte\xFAdo do post' maxlength='300'></textarea>
+      <div class="div-post-button">
+        <p class="max-char"> M\xE1ximo 300 caracteres</p>
+        <div class="bt">
+        <button type='button' id='post-button' class='post-button' href='#timeline'>Post</button>
+        </div>
+        <div class="div-edit-delete>    
+        </div>
+      </div>
+    </form>
+   </div>      
+  </div>`;
+  modalWrapper.classList.add("show");
+  const close = document.getElementById("close");
+  close.addEventListener("click", () => {
+    modalWrapper.classList.remove("show");
+  });
+  const postButton = document.getElementById("post-button");
+  postButton.addEventListener("click", () => {
+    const inputTitle = document.querySelector("#post-title").value;
+    const inputTextPost = document.querySelector("#post-text").value;
+    if (inputTitle !== "" && inputTextPost !== "") {
+      createNewPost(inputTitle, inputTextPost);
+      modalWrapper.classList.remove("show");
+      location.reload();
+    } else {
+      alert("Preencha todos os campos");
     }
   });
-  return posts;
-};
+}
+function editPost(post) {
+  console.log("edit");
+  console.log(post);
+  const modalWrapper = document.getElementById("modal-wrapper");
+  const modalContainer = document.getElementById("modal-container");
+  modalContainer.classList.add("modal-container");
+  modalContainer.innerHTML = `    
+    <div class="modal-content">  
+      <div class = "top-content">
+        <p class="greeting-modal">Editar Post</p>   
+        <button class="buttons" id="close">X</button>
+      </div>
+    <div class="form">
+     <form>
+      <input type='text' name='post-title' class='edit-input-post-title' id='edit-post-title'> 
+      <textarea class="edit-input-post-text" id="edit-post-text" name="post-text" cols="50" rows="4" placeholder='Digite o conte\xFAdo do post'></textarea>
+        <div class="div-post-button">
+        <p class="max-char"> M\xE1ximo 300 caracteres</p>
+          <div class="bt">
+            <button type='button' id='edit-button' class='post-button' href='#timeline'>Editar</button>
+          </div>
+    </div>
+      </form>
+     </div>
+    </div>`;
+  const editPostTitle = modalContainer.querySelector(".edit-input-post-title");
+  const editTextPost = modalContainer.querySelector(".edit-input-post-text");
+  editPostTitle.value = post.title;
+  editTextPost.innerHTML = post.textPost;
+  modalWrapper.classList.add("show");
+  const close = document.getElementById("close");
+  close.addEventListener("click", () => {
+    modalWrapper.classList.remove("show");
+  });
+  const editButton = document.getElementById("edit-button");
+  editButton.addEventListener("click", () => {
+    console.log("ksks");
+    const inputTitle = document.querySelector("#edit-post-title").value;
+    const inputTextPost = document.querySelector("#edit-post-text").value;
+    if (inputTitle !== "" && inputTextPost !== "") {
+      console.log("bub");
+      updatePost(inputTitle, inputTextPost, post.id);
+      modalWrapper.classList.remove("show");
+      location.reload();
+    } else {
+      alert("Preencha todos os campos");
+    }
+  });
+}
 const timeline = () => {
   const user = auth.currentUser;
+  console.log(user);
   const container = document.createElement("div");
   container.classList.add("container-timeline");
   const header = createHeader();
   header.classList.add("header-site");
   container.append(header);
-  let loggedUserAllPosts = [];
-  function showAllPosts() {
-    if (loggedUserAllPosts) {
-      const mappedPosts = loggedUserAllPosts.map((post) => post);
-      const datepost = mappedPosts.sort((a, b2) => b2.dateTime.localeCompare(a.dateTime));
-      console.log(mappedPosts);
-      const postsList = document.querySelector("#post-list");
-      postsList.innerHTML = datepost.map((post) => `<article class="post-article">
-            <div class="post-header">
-            <h2>${post.title} </h2>
-            <p class="dateTime">${post.dateTime}</p>
-            </div>
-            <p class="post-body">${post.textPost}</p>
-          </article>`).join("");
-    }
-  }
-  getLoggedUserAllPosts().then((posts) => {
-    loggedUserAllPosts = posts;
-    showAllPosts();
-  }).catch((error) => {
-    console.log(error);
-  }).finally(() => {
-    console.log("Fim da solicita\xE7\xE3o de posts.");
-  });
   const template = `
     <div class="form-wrapper-timeline">
        <div>        
@@ -17621,7 +17784,10 @@ const timeline = () => {
             <p class="greeting-name">${user.displayName}</p>
             <img src="./assets/bt-new-post.png" id="btn-new-post" class="" alt="logo da ConectAda">
           </div>
-          <div id="post-type"><p class="post-type">Seus posts / Todos os posts</p></div>
+          <div class="div-post-type"><p class="post-type">\xDAltimos posts</p>
+          <p class="post-type">Seus posts</p></div>
+          
+       
         <section id="post-list" class="post-list"></section>
         <div id="modal-wrapper">
         <div id="modal-container"></div>
@@ -17636,47 +17802,77 @@ const timeline = () => {
     window.location.replace("#login");
   });
   const newPostButton = container.querySelector("#btn-new-post");
-  newPostButton.addEventListener("click", showDescription);
-  function showDescription() {
-    const modalWrapper = document.getElementById("modal-wrapper");
-    const modalContainer = document.getElementById("modal-container");
-    modalContainer.classList.add("modal-container");
-    modalContainer.innerHTML = `    
-    <div class="modal-content">  
-    <div class = "top-content">
-      <p class="greeting-modal">O que voc\xEA busca/oferece hoje?</p>   
-      <button class="buttons" id="close">X</button>
-      </div>
-      <div class="form">
-     <form>
-       <input type='text' name='post-title' class='input-post-title' id='post-title' placeholder='Digite o t\xEDtulo'> 
-      <input type='textarea' name='post-text' class='input-post-text' id='post-text' placeholder='Digite o conte\xFAdo do post'> 
-      <div class="div-post-button">
-      
-       <p class="max-char"> M\xE1ximo 300 caracteres</p>
-       <div class="bt">
-      <button type='button' id='post-button' class='post-button' href='#timeline'>Post</button>
-      </div>
-      </div>
-      </div>
-      </form>
-      </div>
-      
-    </div>`;
-    modalWrapper.classList.add("show");
-    const close = document.getElementById("close");
-    close.addEventListener("click", () => {
-      modalWrapper.classList.remove("show");
-    });
-    const postButton = document.getElementById("post-button");
-    postButton.addEventListener("click", () => {
-      const inputTitle = document.querySelector("#post-title").value;
-      const inputTextPost = document.querySelector("#post-text").value;
-      console.log(inputTextPost.value);
-      createNewPost(inputTitle, inputTextPost);
-      modalWrapper.classList.remove("show");
-      location.reload();
-    });
+  newPostButton.addEventListener("click", openCreateNewPostModal);
+  let allUsersPosts = [];
+  getAllUsersPosts().then((allPosts) => {
+    allUsersPosts = allPosts;
+    console.log(allUsersPosts);
+    showAllPostsAllUsers();
+  }).catch((error) => {
+    console.log(error);
+  }).finally(() => {
+    console.log("Fim da solicita\xE7\xE3o de posts de todos os users.");
+  });
+  function showAllPostsAllUsers() {
+    if (allUsersPosts) {
+      const mappedPosts = allUsersPosts.map((post) => post);
+      const postsByDateOrderAsc = mappedPosts.sort((a, b2) => b2.dateTime.localeCompare(a.dateTime));
+      console.log(mappedPosts);
+      const postsList = document.querySelector("#post-list");
+      postsList.innerHTML = postsByDateOrderAsc.map((post) => `
+        <article class="post-article">
+          <div class="post-header">
+            <div class="title">
+            <p class="post-display-name">${post.displayName} escreveu:</p>
+              <h2>${post.title} </h2>
+            </div>
+            <p class="dateTime">${post.dateTime}</p>
+          </div>
+            
+            <p class="post-body">${post.textPost}</p>
+            
+            <div class="div-action-buttons">
+              <button type='button' id='edit-button-${post.id}' class='edit-button none'>
+                <span class="material-icons edit" alt='\xEDcone de editar'>
+              edit_note
+                </span>
+              </button>
+              <button type='button' id='delete-button-${post.id}' class='delete-button none'>
+                <span class="material-icons delete" alt='\xEDcone de lixeira'>
+              delete_forever
+                </span>
+              </button>
+            </div>
+        </article>`).join("");
+      const editButtons = postsList.querySelectorAll(".edit-button");
+      const deleteButtons = postsList.querySelectorAll(".delete-button");
+      postsByDateOrderAsc.forEach((post, index2) => {
+        if (post.uid === auth.currentUser.uid) {
+          editButtons[index2].classList.remove("none");
+          deleteButtons[index2].classList.remove("none");
+          console.log(`Usu\xE1rio autenticado \xE9 o autor do post ${post.id} e ${post.uid}`);
+        }
+      });
+      editButtons.forEach((editButton) => {
+        editButton.addEventListener("click", () => {
+          console.log("clickson");
+          const postId = editButton.id;
+          const index2 = postId.split("-").pop();
+          const post = postsByDateOrderAsc.find((postRef) => postRef.id === index2);
+          console.log(post);
+          editPost(post);
+        });
+      });
+      deleteButtons.forEach((deleteButton) => {
+        deleteButton.addEventListener("click", () => {
+          const postId = deleteButton.id;
+          const index2 = postId.split("-").pop();
+          console.log(index2);
+          deletePost(index2);
+          location.reload();
+        });
+      });
+    }
   }
   return container;
 };

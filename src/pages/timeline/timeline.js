@@ -4,22 +4,16 @@
 import { LogOut, auth } from '../../firebase/auth.js';
 import createHeader from '../../components/header.js';
 import {
-  getLoggedUserAllPosts, deletePost, getAllUsersPosts,
+  getLoggedUserAllPosts, createNewPost, updatePost, deletePost, getAllUsersPosts,
 } from '../../firestore/DBFunctions';
 // import errorHandling from '../errorHandling.js';
-import { openCreateNewPostModal, editPost } from '../posts/posts.js';
+import { editPost, openCreateNewPostModal } from '../posts/posts.js';
+
+import ListPost from './listPosts.js';
 
 export default () => {
   const user = auth.currentUser;
   console.log(user);
-  // if (user !== null) {
-  //   const displayName = user.displayName;
-  //   const email = user.email;
-  //   const photoURL = user.photoURL;
-  //   const emailVerified = user.emailVerified;
-  //   const uid = user.uid;
-  //   console.log(email);
-  // }
 
   const container = document.createElement('div');
   container.classList.add('container-timeline');
@@ -29,24 +23,19 @@ export default () => {
 
   const template = `
     <div class="form-wrapper-timeline">
-      <p class="greeting">Olá,</p> 
+       <div>        
+          <p class="greeting">Olá,</p> 
           <div class="div-greeting-button">
             <p class="greeting-name">${user.displayName}</p>
             <img src="./assets/bt-new-post.png" id="btn-new-post" class="" alt="logo da ConectAda">
           </div>
-          <div class="div-post-type">
-            <p class="post-type">Últimos posts</p>
-            <p class="post-type">Seus posts</p>
-          </div>
-          <section id="post-list" class="post-list">
-          </section>
-          <div id="modal-wrapper">
-            <div id="modal-container">
-            </div>
-          </div>
-        <div class="div-logout-btn"> 
-          <button type="button" id="logout-button" class="button logout-btn" href="#login">Sair</button>
+          <div class="div-post-type"><p class="post-type">Últimos posts</p>
+          <p class="post-type">Seus posts</p></div>
+          ${ListPost()} 
+        <div id="modal-wrapper">
+        <div id="modal-container"></div>
         </div>
+        <div class="div-logout-btn"> <button type="button" id="logout-button" class="button logout-btn" href="#login">Sair</button></div>
       </div>    
   `;
 
@@ -62,32 +51,20 @@ export default () => {
   const newPostButton = container.querySelector('#btn-new-post');
   newPostButton.addEventListener('click', openCreateNewPostModal);
 
-  let allPosts = [];
 
-  getAllUsersPosts()
-    .then((allPostsAllUsers) => {
-      allPosts = allPostsAllUsers;
-      console.log(allPosts);
-      showAllPosts(allPosts);
-    })
-    .catch((error) => {
-      console.log(error);
-    })
-    .finally(() => {
-      console.log('Fim da solicitação de posts de todos os users.');
-    });
+  // let loggedUserAllPosts = [];
 
   // getLoggedUserAllPosts()
-  // .then((allLoggedUserPosts) => {
-  //   allPosts = allLoggedUserPosts;
-  //   showAllPosts(allPosts);
-  // })
-  // .catch((error) => {
-  //   console.log(error);
-  // })
-  // .finally(() => {
-  //   console.log('Fim da solicitação de posts.');
-  // });
+  //   .then((posts) => {
+  //     loggedUserAllPosts = posts;
+  //     showAllPosts(loggedUserAllPosts);
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   })
+  //   .finally(() => {
+  //     console.log('Fim da solicitação de posts.');
+  //   });
 
   // function showAllPosts() {
   //   if (loggedUserAllPosts) {
@@ -144,9 +121,23 @@ export default () => {
   //   }
   // }
 
-  function showAllPosts(posts) {
-    if (posts) {
-      const mappedPosts = posts.map((post) => post);
+  let allUsersPosts = [];
+  getAllUsersPosts()
+    .then((allPosts) => {
+      allUsersPosts = allPosts;
+      console.log(allUsersPosts);
+      showAllPostsAllUsers(allUsersPosts);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+    .finally(() => {
+      console.log('Fim da solicitação de posts de todos os users.');
+    });
+
+  function showAllPostsAllUsers() {
+    if (allUsersPosts) {
+      const mappedPosts = allUsersPosts.map((post) => post);
       const postsByDateOrderAsc = mappedPosts.sort((a, b) => b.dateTime.localeCompare(a.dateTime));
       console.log(mappedPosts);
       const postsList = document.querySelector('#post-list');
@@ -182,27 +173,46 @@ export default () => {
         if (post.uid === auth.currentUser.uid) {
           editButtons[index].classList.remove('none');
           deleteButtons[index].classList.remove('none');
-          console.log(`Usuário autenticado é o autor do post ${post.uid}`);
+          console.log(`Usuário autenticado é o autor do post ${post.id} e ${post.uid}`);
         }
       });
 
       editButtons.forEach((editButton) => {
-        editButton.addEventListener('click', () => {
+        editButton.addEventListener('click', async () => {
+          console.log('clickson');
           const postId = editButton.id;
           const index = postId.split('-').pop();
           const post = postsByDateOrderAsc.find((postRef) => postRef.id === index);
-          editPost(post);
+          console.log(post);
+          await editPost(post);
+          console.log('jsjs');
+          // Recarregar apenas a div "post-list"
+          try {
+            allUsersPosts = await getAllUsersPosts();
+            showAllPostsAllUsers(allUsersPosts);
+          } catch (error) {
+            console.log(error);
+          }
         });
+        
       });
-
+      
       deleteButtons.forEach((deleteButton) => {
-        deleteButton.addEventListener('click', () => {
+        deleteButton.addEventListener('click', async () => {
           const postId = deleteButton.id;
           const index = postId.split('-').pop();
-          console.log(index);
-          // const post = postsByDateOrderAsc.find((postRef) => postRef.id === index);
-          deletePost(index);
-          location.reload();
+
+          await deletePost(index); // esperar a exclusão ser concluída
+
+          // Recarregar apenas a div "post-list"
+          getAllUsersPosts()
+            .then((allPosts) => {
+              allUsersPosts = allPosts;
+              showAllPostsAllUsers(allUsersPosts);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
         });
       });
     }
