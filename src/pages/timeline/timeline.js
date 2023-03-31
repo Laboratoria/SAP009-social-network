@@ -4,7 +4,7 @@
 import { LogOut, auth } from '../../firebase/auth.js';
 import createHeader from '../../components/header.js';
 import {
-  getLoggedUserAllPosts, createNewPost, updatePost, deletePost, getAllUsersPosts,
+  getLoggedUserAllPosts, deletePost, getAllUsersPosts,
 } from '../../firestore/DBFunctions';
 // import errorHandling from '../errorHandling.js';
 import { openCreateNewPostModal, editPost } from '../posts/posts.js';
@@ -29,21 +29,24 @@ export default () => {
 
   const template = `
     <div class="form-wrapper-timeline">
-       <div>        
-          <p class="greeting">Olá,</p> 
+      <p class="greeting">Olá,</p> 
           <div class="div-greeting-button">
             <p class="greeting-name">${user.displayName}</p>
             <img src="./assets/bt-new-post.png" id="btn-new-post" class="" alt="logo da ConectAda">
           </div>
-          <div class="div-post-type"><p class="post-type">Últimos posts</p>
-          <p class="post-type">Seus posts</p></div>
-          
-       
-        <section id="post-list" class="post-list"></section>
-        <div id="modal-wrapper">
-        <div id="modal-container"></div>
+          <div class="div-post-type">
+            <p class="post-type">Últimos posts</p>
+            <p class="post-type">Seus posts</p>
+          </div>
+          <section id="post-list" class="post-list">
+          </section>
+          <div id="modal-wrapper">
+            <div id="modal-container">
+            </div>
+          </div>
+        <div class="div-logout-btn"> 
+          <button type="button" id="logout-button" class="button logout-btn" href="#login">Sair</button>
         </div>
-        <div class="div-logout-btn"> <button type="button" id="logout-button" class="button logout-btn" href="#login">Sair</button></div>
       </div>    
   `;
 
@@ -59,13 +62,13 @@ export default () => {
   const newPostButton = container.querySelector('#btn-new-post');
   newPostButton.addEventListener('click', openCreateNewPostModal);
 
-  let allUsersPosts = [];
+  let allPosts = [];
 
   getAllUsersPosts()
-    .then((allPosts) => {
-      allUsersPosts = allPosts;
-      console.log(allUsersPosts);
-      showAllPostsAllUsers(allUsersPosts);
+    .then((allPostsAllUsers) => {
+      allPosts = allPostsAllUsers;
+      console.log(allPosts);
+      showAllPosts(allPosts);
     })
     .catch((error) => {
       console.log(error);
@@ -74,19 +77,17 @@ export default () => {
       console.log('Fim da solicitação de posts de todos os users.');
     });
 
-  // let loggedUserAllPosts = [];
-
   // getLoggedUserAllPosts()
-  //   .then((posts) => {
-  //     loggedUserAllPosts = posts;
-  //     showAllPosts(loggedUserAllPosts);
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   })
-  //   .finally(() => {
-  //     console.log('Fim da solicitação de posts.');
-  //   });
+  // .then((allLoggedUserPosts) => {
+  //   allPosts = allLoggedUserPosts;
+  //   showAllPosts(allPosts);
+  // })
+  // .catch((error) => {
+  //   console.log(error);
+  // })
+  // .finally(() => {
+  //   console.log('Fim da solicitação de posts.');
+  // });
 
   // function showAllPosts() {
   //   if (loggedUserAllPosts) {
@@ -143,9 +144,9 @@ export default () => {
   //   }
   // }
 
-  function showAllPostsAllUsers() {
-    if (allUsersPosts) {
-      const mappedPosts = allUsersPosts.map((post) => post);
+  function showAllPosts(posts) {
+    if (posts) {
+      const mappedPosts = posts.map((post) => post);
       const postsByDateOrderAsc = mappedPosts.sort((a, b) => b.dateTime.localeCompare(a.dateTime));
       console.log(mappedPosts);
       const postsList = document.querySelector('#post-list');
@@ -191,7 +192,6 @@ export default () => {
           const index = postId.split('-').pop();
           const post = postsByDateOrderAsc.find((postRef) => postRef.id === index);
           editPost(post);
-        
         });
       });
 
