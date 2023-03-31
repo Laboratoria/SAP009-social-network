@@ -41,9 +41,7 @@ export default () => {
     const email = container.querySelector('#txtEmail').value;
     const senha = container.querySelector('#txtPassword').value;
     const inputNome = container.querySelector('#txtName');
-    const inputEmail = container.querySelector('#txtEmail');
-    const inputSenha = container.querySelector('#txtPassword');
-    if (!inputNome || !inputEmail || !inputSenha) {
+    if (!inputNome || !email || !senha) {
       const mensagem = container.querySelector('#txtError');
       mensagem.innerHTML = 'Preencha os campos corretamente.';
     }
