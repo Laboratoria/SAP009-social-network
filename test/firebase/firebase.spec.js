@@ -8,7 +8,7 @@ import {
   getAuth,
 } from 'firebase/auth';
 import {
-  createUserWithEmail, signIn, loginGoogle, logOut, checkLoggedUser,
+  createUserWithEmail, signIn, loginGoogle, logOut, checkLoggedUser, getUserId,
 } from '../../src/firebase/auth';
 
 jest.mock('firebase/auth');
@@ -105,26 +105,9 @@ describe('checkLoggedUser', () => {
   });
 });
 
-/*
-// Teste função de cadastro
-describe('createUserWithEmail', () => {
-  it('should create a new user', () => {
-    createUserWithEmailAndPassword.mockResolvedValue({
-      user: {},
-    });
-    createUserWithEmail('teste@teste.com', 'teste123');
-    expect(createUserWithEmailAndPassword).toHaveBeenCalledTimes(1);
+describe('getUserId', () => {
+  it('should show the user id', () => {
+    getUserId();
+    expect(getAuth).toHaveBeenCalledTimes(6); // chamadas dentro do auth.js e do próprio firebase.js
   });
 });
-
-// Teste função de login
-describe('signIn', () => {
-  it('should login with an email and password', () => {
-    signInWithEmailAndPassword.mockResolvedValue({
-      user: {},
-      password: {},
-    });
-    signIn('email@teste.com', '123456');
-    expect(signInWithEmailAndPassword).toHaveBeenCalledTimes(1);
-  });
-}); */
