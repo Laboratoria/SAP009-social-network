@@ -1,8 +1,22 @@
-// importamos la funcion que vamos a testear
-import { myFunction } from '../src/lib/index';
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+} from 'firebase/auth';
 
-describe('myFunction', () => {
-  it('debería ser una función', () => {
-    expect(typeof myFunction).toBe('function');
+import {
+  createUser,
+} from '../src/servicesFirebase/firebaseAuth';
+
+// função de criar usuário//
+
+describe('criarUsuario', () => {
+  it('a função deve criar uma conta do usuário utilizando o email e senha', async () => {
+    createUserWithEmailAndPassword.mockResolvedValueOnce();
+    const email = 'teste@teste.com';
+    const senha = '12345678';
+    await createUser(email, senha);
+
+    expect(createUserWithEmailAndPassword).toHaveBeenCalledTimes(1);
+    expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(getAuth(), email, senha);
   });
 });

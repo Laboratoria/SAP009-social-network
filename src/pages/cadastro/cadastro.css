@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+
+:root {
+    --fonte-logo: 'Montserrat', sans-serif;
+    --fonte-titulo: 'Noto Serif', serif;
+    --cor-de-fundo: #00172C;
+    --amarelinho: #F1CC9A;
+    --azul-botao: #034072;
+    --vermelho: #500B19;
+}
+
+.cadastro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-cadastro {
+    background: #d9d9d98c;
+    border-radius: 20px;
+    width: 48vh;
+    height: 530px;
+    margin-top: 100px;
+   
+}
+.cadastro{
+    background-image: url(../../img/plano-fundo-page-cadastro.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+} 
+
+
+.logo-escrita-escura {
+    width: 315px;
+    height: 310px;
+    margin: 0px;
+    margin-top: -58px;
+}
+
+.nome-email-senha-container-cadastro {
+    gap: 50px;
+}
+
+.input-nome, .input-login, .input-senha {
+    background-color: #474053;
+    width: 310px;
+    height: 48px;
+    border-radius: 15px;
+   
+} 
+
+.btnCadastro{
+    width: 262px;
+    height: 44px;
+    border-radius: 15px;
+}
+
+.input-nome-cadastro{
+    background-image: url(../img/icone-login.png);
+    background-color: #474053;
+    border-radius: 15px;
+    border-bottom: 1px solid rgba(141, 141, 141, 0.5);
+    background-repeat: no-repeat;
+    border: none;
+    width: 310px;
+    height: 50px;
+    text-align: center;
+    font-family: var(--fonte-logo);
+ }
+ .input-login-cadastro{
+    background-image: url(../img/icone-login.png);
+    background-color: #474053;
+    border-radius: 15px;
+    border-bottom: 1px solid rgba(141, 141, 141, 0.5);
+    background-repeat: no-repeat;
+    border: none;
+    width: 310px;
+    height: 50px;
+    text-align: center;
+    font-family: var(--fonte-logo);
+ }
+ .input-senha-cadastro{
+    background-image: url(../img/icone-login.png);
+    background-color: #474053;
+    border-radius: 15px;
+    border-bottom: 1px solid rgba(141, 141, 141, 0.5);
+    background-repeat: no-repeat;
+    border: none;
+    width: 310px;
+    height: 50px;
+    text-align: center;
+    font-family: var(--fonte-logo);
+ }
+
+ .form-cadastro-cadastro{
+    margin: auto;
+    display: flex;
+ }
+
+ .imagem-cadastro {
+    display: none;
+ }
+
+ 
