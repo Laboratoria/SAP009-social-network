@@ -4,9 +4,10 @@
 import { LogOut, auth } from '../../firebase/auth.js';
 import createHeader from '../../components/header.js';
 import {
-  getLoggedUserAllPosts, createNewPost, updatePost, deletePost,
+  getLoggedUserAllPosts, createNewPost, updatePost, deletePost, getAllUsersPosts,
 } from '../../firestore/DBFunctions';
 // import errorHandling from '../errorHandling.js';
+import { openCreateNewPostModal, editPost } from '../posts/posts.js';
 
 export default () => {
   const user = auth.currentUser;
@@ -34,7 +35,10 @@ export default () => {
             <p class="greeting-name">${user.displayName}</p>
             <img src="./assets/bt-new-post.png" id="btn-new-post" class="" alt="logo da ConectAda">
           </div>
-          <div id="post-type"><p class="post-type">Seus posts / Todos os posts</p></div>
+          <div class="div-post-type"><p class="post-type">Últimos posts</p>
+          <p class="post-type">Seus posts</p></div>
+          
+       
         <section id="post-list" class="post-list"></section>
         <div id="modal-wrapper">
         <div id="modal-container"></div>
@@ -53,75 +57,95 @@ export default () => {
   });
 
   const newPostButton = container.querySelector('#btn-new-post');
-  newPostButton.addEventListener('click', openNewPostModal);
+  newPostButton.addEventListener('click', openCreateNewPostModal);
 
-  function openNewPostModal() {
-    const modalWrapper = document.getElementById('modal-wrapper');
-    const modalContainer = document.getElementById('modal-container');
-    modalContainer.classList.add('modal-container');
-    modalContainer.innerHTML = `    
-    <div class="modal-content">  
-     <div class = "top-content">
-      <p class="greeting-modal">O que você busca/oferece hoje?</p>   
-      <button class="buttons" id="close">X</button>
-     </div>
-     <div class="form">
-      <form>
-      <input type='text' name='post-title' class='input-post-title' id='post-title' placeholder='Digite o título' maxlength='42'>
+  let allUsersPosts = [];
 
-
-        <textarea class="input-post-text" id="post-text" name="post-text" cols="50" rows="4" placeholder='Digite o conteúdo do post'></textarea>
-        <div class="div-post-button">
-          <p class="max-char"> Máximo 300 caracteres</p>
-          <div class="bt">
-          <button type='button' id='post-button' class='post-button' href='#timeline'>Post</button>
-          </div>
-          <div class="div-edit-delete>    
-          </div>
-        </div>
-      </form>
-     </div>      
-    </div>`;
-
-    modalWrapper.classList.add('show');
-    const close = document.getElementById('close');
-    close.addEventListener('click', () => {
-      modalWrapper.classList.remove('show');
-    });
-
-    const postButton = document.getElementById('post-button');
-
-    postButton.addEventListener('click', () => {
-      const inputTitle = document.querySelector('#post-title').value;
-      const inputTextPost = document.querySelector('#post-text').value;
-      console.log(inputTextPost.value);
-      if (inputTitle !== '' && inputTextPost !== '') {
-        createNewPost(inputTitle, inputTextPost);
-        modalWrapper.classList.remove('show');
-        location.reload();
-      } else {
-        alert('Preencha todos os campos');
-      }
-    });
-  }
-
-  let loggedUserAllPosts = [];
-
-  getLoggedUserAllPosts()
-    .then((posts) => {
-      loggedUserAllPosts = posts;
-      showAllPosts(loggedUserAllPosts);
+  getAllUsersPosts()
+    .then((allPosts) => {
+      allUsersPosts = allPosts;
+      console.log(allUsersPosts);
+      showAllPostsAllUsers(allUsersPosts);
     })
     .catch((error) => {
       console.log(error);
     })
     .finally(() => {
-      console.log('Fim da solicitação de posts.');
+      console.log('Fim da solicitação de posts de todos os users.');
     });
 
-  function showAllPosts() {
-    if (loggedUserAllPosts) {
-      const mappedPosts = loggedUserAllPosts.map((post) => post);
+  // let loggedUserAllPosts = [];
+
+  // getLoggedUserAllPosts()
+  //   .then((posts) => {
+  //     loggedUserAllPosts = posts;
+  //     showAllPosts(loggedUserAllPosts);
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   })
+  //   .finally(() => {
+  //     console.log('Fim da solicitação de posts.');
+  //   });
+
+  // function showAllPosts() {
+  //   if (loggedUserAllPosts) {
+  //     const mappedPosts = loggedUserAllPosts.map((post) => post);
+  //     const postsByDateOrderAsc = mappedPosts.sort((a, b) => b.dateTime.localeCompare(a.dateTime));
+  //     console.log(mappedPosts);
+  //     const postsList = document.querySelector('#post-list');
+  //     postsList.innerHTML = postsByDateOrderAsc.map((post) => `
+  //       <article class="post-article">
+  //         <div class="post-header">
+  //           <div class="title">
+  //             <h2>${post.title} </h2>
+  //           </div>
+  //           <p class="dateTime">${post.dateTime}</p>
+  //         </div>
+
+  //           <p class="post-body">${post.textPost}</p>
+
+  //           <div class="div-action-buttons">
+  //             <button type='button' id='edit-button-${post.id}' class='edit-button'>
+  //               <span class="material-icons edit" alt='ícone de editar'>
+  //             edit_note
+  //               </span>
+  //             </button>
+  //             <button type='button' id='delete-button-${post.id}' class='delete-button'>
+  //               <span class="material-icons delete" alt='ícone de lixeira'>
+  //             delete_forever
+  //               </span>
+  //             </button>
+  //           </div>
+  //       </article>`).join('');
+
+  //     const editButtons = postsList.querySelectorAll('.edit-button');
+  //     editButtons.forEach((editButton) => {
+  //       editButton.addEventListener('click', () => {
+  //         const postId = editButton.id;
+  //         const index = postId.split('-').pop();
+  //         const post = postsByDateOrderAsc.find((postRef) => postRef.id === index);
+  //         editPost(post);
+  //       });
+  //     });
+
+  //     const deleteButtons = postsList.querySelectorAll('.delete-button');
+  //     deleteButtons.forEach((deleteButton) => {
+  //       deleteButton.addEventListener('click', () => {
+  //         const postId = deleteButton.id;
+  //         const index = postId.split('-').pop();
+  //         console.log(index);
+  //         // const post = postsByDateOrderAsc.find((postRef) => postRef.id === index);
+  //         deletePost(index);
+  //         location.reload();
+  //       });
+  //     });
+  //   }
+  // }
+
+  function showAllPostsAllUsers() {
+    if (allUsersPosts) {
+      const mappedPosts = allUsersPosts.map((post) => post);
       const postsByDateOrderAsc = mappedPosts.sort((a, b) => b.dateTime.localeCompare(a.dateTime));
       console.log(mappedPosts);
       const postsList = document.querySelector('#post-list');
@@ -129,6 +153,7 @@ export default () => {
         <article class="post-article">
           <div class="post-header">
             <div class="title">
+            <p class="post-display-name">${post.displayName} escreveu:</p>
               <h2>${post.title} </h2>
             </div>
             <p class="dateTime">${post.dateTime}</p>
@@ -137,12 +162,12 @@ export default () => {
             <p class="post-body">${post.textPost}</p>
             
             <div class="div-action-buttons">
-              <button type='button' id='edit-button-${post.id}' class='edit-button'>
+              <button type='button' id='edit-button-${post.id}' class='edit-button none'>
                 <span class="material-icons edit" alt='ícone de editar'>
               edit_note
                 </span>
               </button>
-              <button type='button' id='delete-button-${post.id}' class='delete-button'>
+              <button type='button' id='delete-button-${post.id}' class='delete-button none'>
                 <span class="material-icons delete" alt='ícone de lixeira'>
               delete_forever
                 </span>
@@ -151,16 +176,25 @@ export default () => {
         </article>`).join('');
 
       const editButtons = postsList.querySelectorAll('.edit-button');
+      const deleteButtons = postsList.querySelectorAll('.delete-button');
+      postsByDateOrderAsc.forEach((post, index) => {
+        if (post.uid === auth.currentUser.uid) {
+          editButtons[index].classList.remove('none');
+          deleteButtons[index].classList.remove('none');
+          console.log(`Usuário autenticado é o autor do post ${post.uid}`);
+        }
+      });
+
       editButtons.forEach((editButton) => {
         editButton.addEventListener('click', () => {
           const postId = editButton.id;
           const index = postId.split('-').pop();
           const post = postsByDateOrderAsc.find((postRef) => postRef.id === index);
           editPost(post);
+        
         });
       });
 
-      const deleteButtons = postsList.querySelectorAll('.delete-button');
       deleteButtons.forEach((deleteButton) => {
         deleteButton.addEventListener('click', () => {
           const postId = deleteButton.id;
@@ -172,57 +206,6 @@ export default () => {
         });
       });
     }
-  }
-
-  function editPost(post) {
-    console.log(post);
-    const modalWrapper = document.getElementById('modal-wrapper');
-    const modalContainer = document.getElementById('modal-container');
-    modalContainer.classList.add('modal-container');
-    modalContainer.innerHTML = `    
-    <div class="modal-content">  
-      <div class = "top-content">
-        <p class="greeting-modal">Editar Post</p>   
-        <button class="buttons" id="close">X</button>
-      </div>
-    <div class="form">
-     <form>
-      <input type='text' name='post-title' class='edit-input-post-title' id='edit-post-title'> 
-      <textarea class="edit-input-post-text" id="edit-post-text" name="post-text" cols="50" rows="4" placeholder='Digite o conteúdo do post'></textarea>
-        <div class="div-post-button">
-        <p class="max-char"> Máximo 300 caracteres</p>
-          <div class="bt">
-            <button type='button' id='edit-button' class='post-button' href='#timeline'>Editar</button>
-          </div>
-          <div class="div-edit-delete" id="delete-button"></div>
-        </div>
-      </form>
-     </div>
-    </div>`;
-
-    const editPostTitle = modalContainer.querySelector('.edit-input-post-title');
-    console.log(editPostTitle);
-    const editTextPost = modalContainer.querySelector('.edit-input-post-text');
-    console.log(post.title);
-    editPostTitle.value = post.title;
-    editTextPost.innerHTML = post.textPost;
-
-    modalWrapper.classList.add('show');
-    const close = document.getElementById('close');
-    close.addEventListener('click', () => {
-      modalWrapper.classList.remove('show');
-    });
-
-    const editButton = document.getElementById('edit-button');
-
-    editButton.addEventListener('click', () => {
-      const inputTitle = document.querySelector('#edit-post-title').value;
-      const inputTextPost = document.querySelector('#edit-post-text').value;
-      console.log(inputTextPost.value);
-      updatePost(inputTitle, inputTextPost, post.id);
-      modalWrapper.classList.remove('show');
-      location.reload();
-    });
   }
 
   return container;
