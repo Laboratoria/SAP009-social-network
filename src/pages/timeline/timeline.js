@@ -3,7 +3,9 @@
 // import { doc } from 'firebase/firestore';
 import { LogOut, auth } from '../../firebase/auth.js';
 import createHeader from '../../components/header.js';
-import { getLoggedUserAllPosts, createNewPost, updatePost } from '../../firestore/DBFunctions';
+import {
+  getLoggedUserAllPosts, createNewPost, updatePost, deletePost,
+} from '../../firestore/DBFunctions';
 // import errorHandling from '../errorHandling.js';
 
 export default () => {
@@ -129,7 +131,7 @@ export default () => {
           </div>
             <p class="post-body">${post.textPost}</p>
             <button type='button' id='edit-button-${post.id}' class='edit-button'>Editar</button>
-            <button type='button' id='delete-button${post.id}' class='delete-button'>Apagar</button>
+            <button type='button' id='delete-button-${post.id}' class='delete-button'>Apagar</button>
         </article>`).join('');
 
       const editButtons = postsList.querySelectorAll('.edit-button');
@@ -139,6 +141,18 @@ export default () => {
           const index = postId.split('-').pop();
           const post = postsByDateOrderAsc.find((postRef) => postRef.id === index);
           editPost(post);
+        });
+      });
+
+      const deleteButtons = postsList.querySelectorAll('.delete-button');
+      deleteButtons.forEach((deleteButton) => {
+        deleteButton.addEventListener('click', () => {
+          const postId = deleteButton.id;
+          const index = postId.split('-').pop();
+          console.log(index);
+          // const post = postsByDateOrderAsc.find((postRef) => postRef.id === index);
+          deletePost(index);
+          location.reload();
         });
       });
     }
@@ -162,9 +176,9 @@ export default () => {
         <div class="div-post-button">
         <p class="max-char"> Máximo 300 caracteres</p>
           <div class="bt">
-            <button type='button' id='post-button' class='post-button' href='#timeline'>Editar</button>
+            <button type='button' id='edit-button' class='post-button' href='#timeline'>Editar</button>
           </div>
-          <div class="div-edit-delete></div>
+          <div class="div-edit-delete" id="delete-button"></div>
         </div>
       </form>
      </div>
@@ -183,9 +197,9 @@ export default () => {
       modalWrapper.classList.remove('show');
     });
 
-    const postButton = document.getElementById('post-button');
+    const editButton = document.getElementById('edit-button');
 
-    postButton.addEventListener('click', () => {
+    editButton.addEventListener('click', () => {
       const inputTitle = document.querySelector('#edit-post-title').value;
       const inputTextPost = document.querySelector('#edit-post-text').value;
       console.log(inputTextPost.value);
