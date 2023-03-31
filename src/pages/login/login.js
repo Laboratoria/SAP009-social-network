@@ -22,12 +22,9 @@ export default () => {
             <form class="form-login">
               <div class="email-and-password-container">
                <div class="iconmail">
-                <div class="icone"></div>
                   <input id="txtEmail" type="email" name="email" class="input-login" placeholder="Login" required <img class="mail" src="./img/icone-login.png">
                </div>
-      
-               <div class="iconmail">
-                  <div class="icone"></div>
+               <div class="iconmail">  
                   <input id="txtPassword" type="password" name="password" class="input-senha" placeholder="Password" minlength="8" required>
                </div>
               </div>
@@ -41,13 +38,15 @@ export default () => {
               <div class="action-google">
               <span class="erro-google hide" id="erro-google"></span>
               <p class="entrar-google">Entrar com Google</p>
-              <button class="btn-google" id="btn-google"></button>
+              <button class="btn-google" id="btn-google">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"/>
+              </button>
               </div>
             </form>
     </section>
       </section>
     </div>
-  </div>   
+  </div>  
     `;
 
   container.innerHTML = template;
