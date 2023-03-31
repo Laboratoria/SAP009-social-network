@@ -67,7 +67,9 @@ export default () => {
      </div>
      <div class="form">
       <form>
-        <input type='text' name='post-title' class='input-post-title' id='post-title' placeholder='Digite o título'> 
+      <input type='text' name='post-title' class='input-post-title' id='post-title' placeholder='Digite o título' maxlength='42'>
+
+
         <textarea class="input-post-text" id="post-text" name="post-text" cols="50" rows="4" placeholder='Digite o conteúdo do post'></textarea>
         <div class="div-post-button">
           <p class="max-char"> Máximo 300 caracteres</p>
@@ -126,12 +128,26 @@ export default () => {
       postsList.innerHTML = postsByDateOrderAsc.map((post) => `
         <article class="post-article">
           <div class="post-header">
-            <h2>${post.title} </h2>
+            <div class="title">
+              <h2>${post.title} </h2>
+            </div>
             <p class="dateTime">${post.dateTime}</p>
           </div>
+            
             <p class="post-body">${post.textPost}</p>
-            <button type='button' id='edit-button-${post.id}' class='edit-button'>Editar</button>
-            <button type='button' id='delete-button-${post.id}' class='delete-button'>Apagar</button>
+            
+            <div class="div-action-buttons">
+              <button type='button' id='edit-button-${post.id}' class='edit-button'>
+                <span class="material-icons edit" alt='ícone de editar'>
+              edit_note
+                </span>
+              </button>
+              <button type='button' id='delete-button-${post.id}' class='delete-button'>
+                <span class="material-icons delete" alt='ícone de lixeira'>
+              delete_forever
+                </span>
+              </button>
+            </div>
         </article>`).join('');
 
       const editButtons = postsList.querySelectorAll('.edit-button');
