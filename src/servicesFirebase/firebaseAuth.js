@@ -35,7 +35,7 @@ export const valuesLogin = (email, senha) => {
     .catch(() => {
       txtError.setAttribute('style', 'display: block');
       txtError.innerHTML = 'Usuário ou senha incorretos';
-    /* senha.focus(); */
+      /* senha.focus(); */
     });
 };
 
@@ -43,6 +43,6 @@ export const valuesLogin = (email, senha) => {
 
 const provider = new GoogleAuthProvider();
 
-export function googleLogin(){
-  return signInWithPopup(auth, provider)
-};
+export function googleLogin() {
+  return signInWithPopup(auth, provider);
+}
