@@ -75,6 +75,7 @@ export default () => {
   fazerLogin();
 
   btnGoogle.addEventListener('click', () => googleLogin()
-    .then(() => window.location.hash = '#feed'));
+    .then(() => { window.location.hash = '#feed';
+    }));
   return container;
 };

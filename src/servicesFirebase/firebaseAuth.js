@@ -5,6 +5,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   getAuth,
+  signOut,
 } from 'firebase/auth';
 import { firebaseConfig } from './firebaseconfig';
 
@@ -21,3 +22,6 @@ export const valuesLogin = (email, senha) => signInWithEmailAndPassword(auth, em
 
 const provider = new GoogleAuthProvider();
 export const googleLogin = () => signInWithPopup(auth, provider);
+
+/*Sair do perfil*/
+export const sairPerfil = () => signOut(auth);
