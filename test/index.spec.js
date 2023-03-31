@@ -39,7 +39,7 @@ describe('logarUsuário', () => {
   });
 });
 
-
+// função logar Google//
 jest.mock('firebase/auth');
 describe('logarUsuárioComGoogle', () => {
   it('a função deve logar a conta do usuário utilizando o email do Google', async () => {
