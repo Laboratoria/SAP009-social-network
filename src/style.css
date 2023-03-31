@@ -1,0 +1,14 @@
+@import url('./pages/login/login.css');
+
+body{
+    background: rgb(254,222,255);
+    background: linear-gradient(90deg, rgba(254,222,255,1) 50%, rgba(255,255,255,1) 50%);
+}
+
+@media screen and (max-width: 800px) {
+    body{
+        background-color: #FEDEFF;
+    }
+}
+
+

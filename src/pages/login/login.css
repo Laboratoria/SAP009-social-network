@@ -1,0 +1,10 @@
+#root{
+    display: flex;
+    justify-content: center;
+}
+
+.container-login{
+    background-color: white;
+    padding: 10px 50px;
+    border-radius: 20px;
+}
