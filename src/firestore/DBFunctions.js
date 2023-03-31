@@ -67,3 +67,17 @@ export const getLoggedUserAllPosts = async () => {
   });
   return posts;
 };
+
+export const getAllUsersPosts = async () => {
+  const allPostsCollection = await getDocs(collection(db, 'posts'));
+  // grava na collection posts dentro da collection users
+  // await getDocs(collection(db, 'posts', auth.currentUser.uid, 'posts'));
+  // console.log(allPostsCollection);
+  const allPosts = [];
+  allPostsCollection.forEach((post) => {
+    const data = post.data();
+    data.id = post.id;
+    allPosts.push(data);
+  });
+  return allPosts;
+};

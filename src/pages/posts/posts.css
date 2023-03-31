@@ -1,0 +1,33 @@
+
+/*edit posts */
+
+.edit-input-post-title {
+    height: 3rem;
+    border-radius: 1rem;
+    border: none;
+    outline-color: #ff4f5a;
+    background-color: #FFFFFF;
+    width: 100%;
+    margin-bottom: 1.3rem;
+    padding-left: 1rem;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.4rem;
+  }
+  
+  .edit-input-post-text {
+    
+    border-radius: 1rem;
+    border: none;
+    outline-color: #ff4f5a;
+    background-color: #FFFFFF;
+    width: 100%;
+    padding-left: 1rem;
+    padding-bottom: 4rem;
+    word-wrap: break-word;
+    height: 7rem;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.4rem;
+  }
+
+
+  
