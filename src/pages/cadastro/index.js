@@ -40,7 +40,19 @@ export default () => {
     e.preventDefault();
     const email = container.querySelector('#txtEmail').value;
     const senha = container.querySelector('#txtPassword').value;
-    createUser(email, senha);
+    const inputNome = container.querySelector('#txtName');
+    const inputEmail = container.querySelector('#txtEmail');
+    const inputSenha = container.querySelector('#txtPassword');
+    if (!inputNome || !inputEmail || !inputSenha) {
+      const mensagem = container.querySelector('#txtError');
+      mensagem.innerHTML = 'Preencha os campos corretamente.';
+    }
+
+    createUser(email, senha)
+      .then(() => {
+        console.log('Cadastrado com sucesso!');
+        window.location.hash = '#login';
+      });
   });
   return container;
 };
