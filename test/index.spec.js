@@ -4,6 +4,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
+  signOut,
   updateProfile,
 } from 'firebase/auth';
 
@@ -11,6 +12,7 @@ import {
   createUser,
   valuesLogin,
   googleLogin,
+  sairPerfil,
 } from '../src/servicesFirebase/firebaseAuth';
 
 // função de criar usuário//
@@ -47,12 +49,23 @@ describe('logarUsuário', () => {
 
 // função logar Google//
 jest.mock('firebase/auth');
-describe('logarUsuárioComGoogle', () => {
-  it('a função deve logar a conta do usuário utilizando o email do Google', async () => {
+describe('sairDaConta', () => {
+  it('a função deve realizar o logOut da conta do usuário', async () => {
     signInWithPopup.mockResolvedValueOnce();
     GoogleAuthProvider.mockReturnValueOnce();
     await googleLogin();
     expect(signInWithPopup).toHaveBeenCalledTimes(1);
     expect(signInWithPopup).toHaveBeenCalledWith(undefined, {});
+  });
+});
+
+// função sair do perfil //
+jest.mock('firebase/auth');
+describe('logarUsuárioComGoogle', () => {
+  it('a função deve logar a conta do usuário utilizando o email do Google', async () => {
+    signOut.mockResolvedValueOnce();
+    await sairPerfil();
+    expect(signOut).toHaveBeenCalledTimes(1);
+    expect(signOut).toHaveBeenCalledWith(undefined);
   });
 });

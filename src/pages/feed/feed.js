@@ -1,3 +1,5 @@
+import { sairPerfil } from '../../servicesFirebase/firebaseAuth';
+
 export default () => {
   const container = document.createElement('div');
 
@@ -23,7 +25,7 @@ export default () => {
                                     <a class='options-menu' href="#">Perfil</a>
                                 </li>
                                 <li class="li-nav">
-                                    <a class='options-menu' href="#">Sair</a>
+                                    <button id="btnSair" class='options-menu'>Sair</button>
                                 </li>
                             </ul>
                         </div>
@@ -49,10 +51,14 @@ export default () => {
   container.innerHTML = template;
   const btnMenu = container.querySelector('.menu-toggle');
   const menu = container.querySelector('.menu-section');
-
   btnMenu.addEventListener('click', () => {
     menu.classList.toggle('show');
   });
 
+  const btnSair = container.querySelector('#btnSair');
+  btnSair.addEventListener('click', () => sairPerfil()
+    .then(() => {
+      window.location.hash = '#login';
+    }));
   return container;
 };
