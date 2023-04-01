@@ -10,6 +10,7 @@ export default () => {
             </div>
             <div class="coluna-2">
                 <div class="cadastro">
+                     <button class="btn-voltar"><a href='#login'>Voltar</a></button>
                     <section class="container-cadastro">
                             <section class="imagem-logo">
                                 <img class="logo-escrita-escura" src="./img/logo-escrita-escura.png" alt="Logo da Brúlle com a escrita escura">
@@ -48,7 +49,6 @@ export default () => {
 
     createUser(email, senha)
       .then(() => {
-        console.log('Cadastrado com sucesso!');
         window.location.hash = '#login';
       });
   });

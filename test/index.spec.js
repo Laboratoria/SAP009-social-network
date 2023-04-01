@@ -5,6 +5,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   signOut,
+  updateProfile,
 } from 'firebase/auth';
 
 import {
@@ -16,15 +17,20 @@ import {
 
 // função de criar usuário//
 jest.mock('firebase/auth');
-describe('criarUsuario', () => {
-  it('a função deve criar uma conta do usuário utilizando o email e senha', async () => {
-    createUserWithEmailAndPassword.mockResolvedValueOnce();
+describe('criarUsuario e atualizar o perfil', () => {
+  it('a função deve criar uma conta do usuário utilizando o email e senha e atualizar o perfil', async () => {
+    const mockUserCredential = {
+      user: {},
+    };
+    createUserWithEmailAndPassword.mockResolvedValueOnce(mockUserCredential);
     const email = 'teste@teste.com';
     const senha = '12345678';
     await createUser(email, senha);
 
     expect(createUserWithEmailAndPassword).toHaveBeenCalledTimes(1);
     expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(getAuth(), email, senha);
+    expect(updateProfile).toHaveBeenCalledTimes(1);
+    expect(updateProfile).toHaveBeenCalledWith(mockUserCredential.user, { email, senha });
   });
 });
 
