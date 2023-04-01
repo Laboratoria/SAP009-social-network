@@ -42,7 +42,6 @@ export default () => {
     const senha = container.querySelector('#txtPassword').value;
     createUser(email, senha)
       .then(() => {
-        console.log('Cadastrado com sucesso!');
         window.location.hash = '#login';
       });
   });
