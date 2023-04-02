@@ -1,6 +1,6 @@
 import { LogOut, auth } from '../../firebase/auth.js';
 import createHeader from '../../components/header.js';
-import { deletePost, getAllUsersPosts } from '../../firestore/DBFunctions';
+import { deletePost, getAllUsersPosts, getLoggedUserAllPosts } from '../../firestore/DBFunctions';
 // import errorHandling from '../errorHandling.js';
 import { editPost, openCreateNewPostModal } from '../posts/posts.js';
 
@@ -24,8 +24,9 @@ export default () => {
             <p class="greeting-name">${user.displayName}</p>
             <img src="./assets/bt-new-post.png" id="btn-new-post" class="" alt="logo da ConectAda">
           </div>
-          <div class="div-post-type"><p class="post-type">Últimos posts</p>
-          <p class="post-type">Seus posts</p></div>
+          <div class="div-post-type"><button type="button" id="last-posts" class="post-type">Últimos posts</button>
+          <button type="button" id="user-posts" class="post-type">Seus posts</button>
+          </div>
           ${ListPost()} 
         <div id="modal-wrapper">
         <div id="modal-container"></div>
@@ -35,6 +36,52 @@ export default () => {
   `;
 
   container.innerHTML += template;
+
+ 
+  const lastPosts = container.querySelector('#last-posts');
+  const userPosts = container.querySelector('#user-posts');
+  lastPosts.classList.add('active');
+  lastPosts.addEventListener('click', () => {
+    let allUsersPosts = [];
+    getAllUsersPosts()
+      .then((allPosts) => {
+        allUsersPosts = allPosts;
+        console.log(allUsersPosts);
+        lastPosts.classList.add('active');
+        userPosts.classList.remove('active');
+        showAllPosts(allUsersPosts);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        console.log('Fim da solicitação inicial de posts de todos os users.');
+      });
+  
+  });
+
+
+  userPosts.addEventListener('click', () => {
+    let allLoggedUserPosts = [];
+    getLoggedUserAllPosts()
+    .then((allPosts) => {
+      allLoggedUserPosts = allPosts;
+      console.log(allLoggedUserPosts);
+      lastPosts.classList.remove('active');
+      userPosts.classList.add('active');
+      showAllPosts(allLoggedUserPosts);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+    .finally(() => {
+      console.log('Fim da solicitação inicial de posts de todos os users.');
+    });
+    console.log('gaga');
+
+  });
+
+
 
   const logoutButton = container.querySelector('#logout-button');
 
@@ -51,7 +98,7 @@ export default () => {
     .then((allPosts) => {
       allUsersPosts = allPosts;
       console.log(allUsersPosts);
-      showAllPostsAllUsers(allUsersPosts);
+      showAllPosts(allUsersPosts);
     })
     .catch((error) => {
       console.log(error);
@@ -60,13 +107,12 @@ export default () => {
       console.log('Fim da solicitação inicial de posts de todos os users.');
     });
 
-  function showAllPostsAllUsers() {
-    if (allUsersPosts) {
-      const mappedPosts = allUsersPosts.map((post) => post);
+  function showAllPosts(posts) {
+    if (posts) {
+      const mappedPosts = posts.map((post) => post);
       const postsByDateOrderAsc = mappedPosts.sort(
         (a, b) => b.timestamp - a.timestamp,
       );
-      console.log(mappedPosts);
       const postsList = document.querySelector('#post-list');
       postsList.innerHTML = postsByDateOrderAsc
         .map(
@@ -125,8 +171,8 @@ export default () => {
           await deletePost(index);
           getAllUsersPosts()
             .then((allPosts) => {
-              allUsersPosts = allPosts;
-              showAllPostsAllUsers(allUsersPosts);
+              posts = allPosts;
+              showAllPosts(posts);
             })
             .catch((error) => {
               console.log(error);

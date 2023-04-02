@@ -8,7 +8,6 @@ import { db } from './firestore.js';
 import { auth } from '../firebase/auth';
 
 export const createNewPost = async (title, textPost) => {
-  console.log('create');
   const post = {
     uid: auth.currentUser.uid,
     displayName: auth.currentUser.displayName,
@@ -46,10 +45,6 @@ export const deletePost = async (postId) => {
   await deleteDoc(docReference);
 };
 
-// const docReference = await addDoc(collection(db, 'users',
-// auth.currentUser.uid, 'posts'), post);
-// post.id = teste.id;
-
 export const getLoggedUserAllPosts = async () => {
   const postsCollection = await getDocs(collection(db, 'posts'));
   const posts = [];
@@ -71,6 +66,5 @@ export const getAllUsersPosts = async () => {
     data.id = post.id;
     allPosts.push(data);
   });
-  console.log(allPosts);
   return allPosts;
 };
