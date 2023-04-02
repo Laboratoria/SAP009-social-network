@@ -1,9 +1,8 @@
 import {
   createNewPost,
-  getAllUsersPosts,
   updatePost,
 } from '../../firestore/DBFunctions';
-import showAllPostsAllUsers from '../timeline/timeline.js';
+import showAllPosts from '../timeline/timeline.js';
 
 export function openCreateNewPostModal() {
   const modalWrapper = document.getElementById('modal-wrapper');
@@ -24,7 +23,8 @@ export function openCreateNewPostModal() {
         <div class="bt">
         <button type='button' id='post-button' class='post-button' href='#timeline'>Post</button>
         </div>
-        <div class="div-edit-delete>    
+        <div class="div-edit-delete>  
+          
         </div>
       </div>
     </form>
@@ -45,7 +45,7 @@ export function openCreateNewPostModal() {
     if (inputTitle.value !== '' && inputTextPost.value !== '') {
       createNewPost(inputTitle.value, inputTextPost.value);
       modalWrapper.classList.remove('show');
-      showAllPostsAllUsers();
+      showAllPosts();
     } else {
       alert('Preencha todos os campos');
     }
@@ -95,7 +95,7 @@ export async function editPost(post) {
       await updatePost(inputTitle, inputTextPost, post.id);
       modalWrapper.classList.remove('show');
       console.log('Função executada após a edição do post na pagina post.');
-      showAllPostsAllUsers();
+      showAllPosts();
     } else {
       alert('Preencha todos os campos');
     }

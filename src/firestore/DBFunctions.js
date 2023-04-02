@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 import {
-  getDocs, collection, addDoc, updateDoc, doc, deleteDoc,
+  getDocs, collection, addDoc, updateDoc, doc, deleteDoc,getDoc
 } from 'firebase/firestore';
 
 import { db } from './firestore.js';
@@ -19,7 +19,7 @@ export const createNewPost = async (title, textPost) => {
     updateDateTime: new Date().toLocaleTimeString([], {
       year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit',
     }),
-    likes: [1],
+    likes: [],
     timestamp: new Date().getTime(),
   };
 
@@ -67,4 +67,19 @@ export const getAllUsersPosts = async () => {
     allPosts.push(data);
   });
   return allPosts;
+};
+
+export const likePosts = async (post, userId) => {
+  const postDocReference = doc(db, 'posts', post.id);
+  const getPostDoc = await getDoc(postDocReference);
+  const likes = getPostDoc.data().likes || [];
+  let newLikes;
+  if (likes.includes(userId)) {
+    newLikes = likes.filter((id) => id !== userId);
+  } else {
+    newLikes = [...likes, userId];
+  }
+  await updateDoc(postDocReference, { likes: newLikes }); 
+  const updatedPosts = await getAllUsersPosts();
+  return updatedPosts;
 };
