@@ -76,9 +76,24 @@ p {
   border-radius: 5rem;
   padding: .8rem 2rem .8rem 2rem;
   font-size: 1.4rem;
+  font-weight: 700;
+  
 
 }
 
+
+
+
+.post-type.active {
+  background-color: #E29358;
+  color: #FFFFFF;
+}
+.post-type:hover {
+  background-color: #04ddcc ;
+  border: 1px solid #04ddcc;
+  color: #FFFFFF;
+  
+  }
 
 /*TIMELINE ----------------------------------------------------------*/
 .form-wrapper-timeline {
@@ -311,10 +326,6 @@ flex-direction: column;
 text-align: right;
 }
 
-.bt {
-  display: flex;
-  justify-content: right;
-}
 .post-button {
   height: 2.4rem;
   border-radius: 5rem;
