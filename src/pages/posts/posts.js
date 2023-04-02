@@ -38,13 +38,12 @@ export function openCreateNewPostModal() {
   });
 
   const postButton = document.getElementById('post-button');
-
+  const inputTitle = document.querySelector('#post-title');
+  const inputTextPost = document.querySelector('#post-text');
+  inputTitle.focus();
   postButton.addEventListener('click', async () => {
-    const inputTitle = document.querySelector('#post-title').value;
-    const inputTextPost = document.querySelector('#post-text').value;
-
-    if (inputTitle !== '' && inputTextPost !== '') {
-      createNewPost(inputTitle, inputTextPost);
+    if (inputTitle.value !== '' && inputTextPost.value !== '') {
+      createNewPost(inputTitle.value, inputTextPost.value);
       modalWrapper.classList.remove('show');
       showAllPostsAllUsers();
     } else {
@@ -80,6 +79,7 @@ export async function editPost(post) {
   const editTextPost = modalContainer.querySelector('.edit-input-post-text');
   editPostTitle.value = post.title;
   editTextPost.innerHTML = post.textPost;
+  editPostTitle.focus();
 
   modalWrapper.classList.add('show');
   const close = document.getElementById('close');
