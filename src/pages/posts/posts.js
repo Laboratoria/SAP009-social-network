@@ -21,7 +21,7 @@ export function openCreateNewPostModal() {
       <div class="div-post-button">
         <p class="max-char"> Máximo 300 caracteres</p>
         <div class="bt">
-        <button type='button' id='post-button' class='post-button' href='#timeline'>Post</button>
+        <button type='button' id='post-button' class='post-button' href='#timeline'>Publicar</button>
         </div>
         <div class="div-edit-delete>  
           
@@ -35,6 +35,14 @@ export function openCreateNewPostModal() {
   const close = document.getElementById('close');
   close.addEventListener('click', () => {
     modalWrapper.classList.remove('show');
+  });
+
+  const modal = document.querySelector('.modal-container');
+
+  modalWrapper.addEventListener('click', (event) => {
+    if (!modal.contains(event.target)) {
+      modalWrapper.classList.remove('show');
+    }
   });
 
   const postButton = document.getElementById('post-button');
@@ -85,6 +93,12 @@ export async function editPost(post) {
   const close = document.getElementById('close');
   close.addEventListener('click', () => {
     modalWrapper.classList.remove('show');
+  });
+  const modal = document.querySelector('.modal-container');
+  modalWrapper.addEventListener('click', (event) => {
+    if (!modal.contains(event.target)) {
+      modalWrapper.classList.remove('show');
+    }
   });
 
   const updateButton = document.getElementById('update-button');

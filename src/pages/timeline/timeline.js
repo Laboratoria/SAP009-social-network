@@ -49,14 +49,12 @@ export default () => {
 
 
   function showAllPosts(posts) {
-    console.log(posts);
     if (posts) {
       const mappedPosts = posts.map((post) => post);
       const postsByDateOrderAsc = mappedPosts.sort(
         (a, b) => b.timestamp - a.timestamp,
       );
       const postsList = document.querySelector('#post-list');
-      console.log(postsList);
       postsList.innerHTML = postsByDateOrderAsc
         .map(
           (post) => `
@@ -99,9 +97,7 @@ export default () => {
             (postRef) => postRef.id === index,
           );
           const newLikes = await likePosts(post, auth.currentUser.uid);
-          console.log(newLikes.length);
           labelLikes.value = newLikes.length;
-          console.log(postsByDateOrderAsc);
           showAllPosts(newLikes);
         });
       });
@@ -166,7 +162,7 @@ export default () => {
   lastPosts.addEventListener('click', () => {
     showAllPosts(allUsersPosts);
     lastPosts.classList.add('active');
-        userPosts.classList.remove('active');
+   userPosts.classList.remove('active');
   });
 
   userPosts.addEventListener('click', () => {
