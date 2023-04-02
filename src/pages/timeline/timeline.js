@@ -165,6 +165,8 @@ export default () => {
   lastPosts.classList.add('active');
   lastPosts.addEventListener('click', () => {
     showAllPosts(allUsersPosts);
+    lastPosts.classList.add('active');
+        userPosts.classList.remove('active');
   });
 
   userPosts.addEventListener('click', () => {
