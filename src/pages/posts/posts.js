@@ -1,4 +1,9 @@
-import { createNewPost, updatePost } from '../../firestore/DBFunctions';
+import {
+  createNewPost,
+  getAllUsersPosts,
+  updatePost,
+} from '../../firestore/DBFunctions';
+import showAllPostsAllUsers from '../timeline/timeline.js';
 
 export function openCreateNewPostModal() {
   const modalWrapper = document.getElementById('modal-wrapper');
@@ -39,16 +44,15 @@ export function openCreateNewPostModal() {
     const inputTextPost = document.querySelector('#post-text').value;
 
     if (inputTitle !== '' && inputTextPost !== '') {
-      await createNewPost(inputTitle, inputTextPost);
+      createNewPost(inputTitle, inputTextPost);
       modalWrapper.classList.remove('show');
-      location.reload();
+      showAllPostsAllUsers();
     } else {
       alert('Preencha todos os campos');
     }
   });
 }
-
-export function editPost(post) {
+export async function editPost(post) {
   const modalWrapper = document.getElementById('modal-wrapper');
   const modalContainer = document.getElementById('modal-container');
   modalContainer.classList.add('modal-container');
@@ -65,7 +69,7 @@ export function editPost(post) {
         <div class="div-post-button">
         <p class="max-char"> Máximo 300 caracteres</p>
           <div class="bt">
-            <button type='button' id='edit-button' class='post-button' href='#timeline'>Salvar</button>
+            <button type='button' id='update-button' class='post-button' href='#timeline'>Salvar</button>
           </div>
     </div>
       </form>
@@ -73,9 +77,7 @@ export function editPost(post) {
     </div>`;
 
   const editPostTitle = modalContainer.querySelector('.edit-input-post-title');
-
   const editTextPost = modalContainer.querySelector('.edit-input-post-text');
-
   editPostTitle.value = post.title;
   editTextPost.innerHTML = post.textPost;
 
@@ -85,14 +87,15 @@ export function editPost(post) {
     modalWrapper.classList.remove('show');
   });
 
-  const editButton = document.getElementById('edit-button');
-
-  editButton.addEventListener('click', async () => {
+  const updateButton = document.getElementById('update-button');
+  updateButton.addEventListener('click', async () => {
     const inputTitle = document.querySelector('#edit-post-title').value;
     const inputTextPost = document.querySelector('#edit-post-text').value;
     if (inputTitle !== '' && inputTextPost !== '') {
       await updatePost(inputTitle, inputTextPost, post.id);
       modalWrapper.classList.remove('show');
+      console.log('Função executada após a edição do post na pagina post.');
+      showAllPostsAllUsers();
     } else {
       alert('Preencha todos os campos');
     }
