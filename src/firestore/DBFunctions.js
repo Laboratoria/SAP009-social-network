@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 import {
   getDocs, collection, addDoc, updateDoc, doc, deleteDoc,
 } from 'firebase/firestore';
@@ -16,56 +17,41 @@ export const createNewPost = async (title, textPost) => {
     dateTime: new Date().toLocaleTimeString([], {
       year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit',
     }),
-    updateDateTime: '',
+    updateDateTime: new Date().toLocaleTimeString([], {
+      year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit',
+    }),
     likes: [1],
+    timestamp: new Date().getTime(),
   };
-  // grava o post com o UID na collection posts independente de users
+
   const docReference = await addDoc(collection(db, 'posts'), post);
-  console.log(docReference);
   post.id = docReference.id;
-  return post;
+  return getAllUsersPosts();
 };
 
 export const updatePost = async (title, textPost, postId) => {
-  console.log('edit');
-  // grava o post com o UID na collection posts independente de users
   await updateDoc(doc(db, 'posts', postId), {
     title,
     textPost,
     updateDateTime: new Date().toLocaleTimeString([], {
       year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit',
     }),
-
+    timestamp: new Date().getTime(),
   });
-  return true;
-  
-  console.log('afterdocreference-beforeconseoledocreference');
- 
-  // const docReference = await addDoc(collection(db, 'users',
-  // auth.currentUser.uid, 'posts'), post);
-  // post.id = teste.id;
+  return getAllUsersPosts();
 };
 
-  
-  export const deletePost = async (postId) => {
-    console.log('delete');
-    // grava o post com o UID na collection posts independente de users
-    const docReference = doc(db, 'posts', postId);
-    await deleteDoc(docReference);
-    console.log('delete completed');
- 
-  };
-  
-  // const docReference = await addDoc(collection(db, 'users',
-  // auth.currentUser.uid, 'posts'), post);
-  // post.id = teste.id;
+export const deletePost = async (postId) => {
+  const docReference = doc(db, 'posts', postId);
+  await deleteDoc(docReference);
+};
 
+// const docReference = await addDoc(collection(db, 'users',
+// auth.currentUser.uid, 'posts'), post);
+// post.id = teste.id;
 
 export const getLoggedUserAllPosts = async () => {
   const postsCollection = await getDocs(collection(db, 'posts'));
-  // grava na collection posts dentro da collection users
-  // await getDocs(collection(db, 'posts', auth.currentUser.uid, 'posts'));
-  // console.log(postsCollection);
   const posts = [];
   postsCollection.forEach((post) => {
     const data = post.data();
@@ -79,14 +65,12 @@ export const getLoggedUserAllPosts = async () => {
 
 export const getAllUsersPosts = async () => {
   const allPostsCollection = await getDocs(collection(db, 'posts'));
-  // grava na collection posts dentro da collection users
-  // await getDocs(collection(db, 'posts', auth.currentUser.uid, 'posts'));
-  // console.log(allPostsCollection);
   const allPosts = [];
   allPostsCollection.forEach((post) => {
     const data = post.data();
     data.id = post.id;
     allPosts.push(data);
   });
+  console.log(allPosts);
   return allPosts;
 };
