@@ -6,9 +6,7 @@ export default () => {
     <h1 class='cadastro'>cadastro</h1>
     <button class='btn-cadastro'>cadastrar</button>
     
-    //html vai aqui
-
-
+  
     
     `;
 
