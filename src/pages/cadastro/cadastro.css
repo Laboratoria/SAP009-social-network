@@ -1,17 +1,45 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-.btn-cadastro {
-    background-color: pink;
+body {
+    background-color: rgba(53, 61, 108, 1);
 }
 
-.cadastro {
-    background-color: blue;
+.title{
+    display: flex;
+    border-radius: 20px;
+    background: rgba(245, 111, 111, 1);
+    color: white;
+    width: 200px;
 }
 
-.body-cadastro {
-    background-color: aqua;
-    height: 50vh;
+p{
+    color: white;   
+}
+
+h2{
+    display: flex;
+    border-radius: 20px;
+    width: 200px;
+    background: rgba(245, 111, 111, 1);
+    color: white;
+}
+
+.body-cadastro input{
+    display: flex;
+    flex-direction: column;
+    border-radius: 40px;
+    background: white;
+    color: black;
+}
+
+button{
+    display: flex;
+    border-radius: 20px;
+    width: 150px;
+    background: rgba(245, 111, 111, 1);
+    color: white; 
 }
