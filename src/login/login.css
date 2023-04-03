@@ -1,25 +1,116 @@
-@import url('https://fonts.googleapis.com/css2?family=Bona+Nova:ital,wght@0,400;0,700;1,400&display=swap');
-
-* {
-font-family: 'Bona Nova';
-font-style: italic;
-margin: 0px;
-padding: 0px;
-box-sizing: border-box;
+body,
+html {
+  width: 100vw;
+  height: 100vh;
 }
 
-body , html {
-width: 100vw;
-height: 100vh;    
+#login-content {
+  display: flex;
+  flex-direction: column;
 }
 
-body {
-display: flex;
-background-image: linear-gradient(to bottom, #999999 , #DADADA  , #ffffff);
-background-attachment: fixed;
-}    
+#background-orange {
+  display: none;
+}
 
-#image-logo{
-display: flex;
-justify-content: center;
+.login-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+#login-logo {
+  width: 380px;
+  position: relative;
+}
+
+.padding-inputs {
+  width: 350px;
+  height: 50px;
+  background: #dadada;
+  border: 3px solid #000000;
+  border-radius: 10px;
+  text-align: justify;
+  font-size: 18px;
+}
+
+#email {
+  background-image: url("/src/imagens/email.png") !important;
+  background-repeat: no-repeat;
+}
+
+#password {
+  background-image: url("/src/imagens/cadeado.png") !important;
+  background-repeat: no-repeat;
+}
+
+#enter-button {
+  display: flex;
+  width: 350px;
+  height: 65px;
+  margin-top: 20px;
+  background: #ee8100;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+#enter {
+  display: flex;
+  color: #ffffff;
+  align-items: center;
+  margin-left: 135px;
+}
+#info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 3px;
+}
+
+#or-google {
+  font-size: 18px;
+  margin: -30px;
+}
+
+.login-google {
+  display: flex;
+  font-size: 22px;
+  margin-top: 20px;
+}
+
+.google-account {
+  display: flex;
+  font-size: 22px;
+  margin-left: -160px;
+  margin-bottom: 100px;
+}
+
+#image-google {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  margin-bottom: 100px;
+}
+
+#register {
+  display: flex;
+  color: #ee8100;
+  margin-left: 200px;
+  margin-top: -128px;
+}
+
+#register-link {
+  text-decoration-color: #ee8100;
+}
+
+footer {
+  display: flex;
+  font-size: 12px;
 }
