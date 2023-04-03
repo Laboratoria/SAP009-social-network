@@ -20,12 +20,12 @@ export default() =>{
             <form class="form-login">
                 <div>
                     <label>Email</label>
-                    <input placeholder="seu email"></input>
+                    <input placeholder="seu email">
                 </div>
 
                 <div>
                     <label>Senha</label>
-                    <input placeholder="sua senha"></input>
+                    <input placeholder="sua senha">
                 </div>
 
                 <div>
