@@ -1,11 +1,4 @@
 export default () => {
-  const container = document.createElement('div');
-  container.classList.add('body-cadastro');
-  const templaite = `
-    
-    <h1 class='cadastro'>cadastro</h1>
-    <button class='btn-cadastro'>cadastrar</button>
-  
   const registerContainer = document.createElement('div');
   registerContainer.classList.add('body-cadastro');
   const template = `
@@ -26,7 +19,7 @@ export default () => {
 
   registerContainer.innerHTML = template;
 
-  const btnCadastrar = registerContainer.querySelector('.btn-cadastro');
+  const btnCadastrar = registerContainer.querySelector('.btn-cadastro')
   btnCadastrar.addEventListener('click', () => {
     window.location.hash = '#login';
   });
