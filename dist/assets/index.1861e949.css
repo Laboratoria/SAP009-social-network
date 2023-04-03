@@ -1,0 +1,620 @@
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: rgba(0, 9, 14, 0.9);
+} 
+
+img {
+    display: block;
+    margin: 20px auto;
+    margin-top: 6rem;
+    height: 5rem;
+} 
+
+form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2.5vh;
+    margin: 4vh 0 5vh 0;
+} 
+
+input, button {
+    padding: 0.7rem;
+    border-radius: 10px;
+    border: solid 1px;
+    border-color: #00B154;
+    outline-color: #00B154;
+    background-color: #FFF;
+    width: 15rem;
+    text-align: left;
+} 
+
+#login-button {
+    background-color: #00B154;
+    border: none;
+    color: #FFF;
+    font-weight: bolder;
+    text-align: center;
+} 
+
+.msg-error {
+    margin-top: 0.6rem;
+    margin-bottom: -1rem;
+} 
+
+#google-button {
+    display: flex;
+    height: 2.3rem;
+    color: #000;
+    font-weight: bolder;
+    align-items: center;
+    border: none;
+} 
+
+#google-logo {
+    height: 1.8rem;
+    width: 1.8rem;
+    margin: 0 1rem;
+} 
+
+#register-button {
+    background: none;
+    border: none;
+    color: #fff;
+    margin-top: 1rem;
+    text-align: center;
+} 
+
+#register-link {
+    color:#00B154;
+    font-weight: bolder;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+} 
+
+button {
+    cursor: pointer;
+} 
+
+button:hover {
+    opacity: 0.9;
+} 
+
+button:active {
+    opacity: 0.8;
+} 
+
+p {
+    text-align: center;
+    color: #fff;
+    margin: 1rem 0;
+    font-family: Arial, Helvetica, sans-serif;
+} 
+
+.error {
+    background-color: red;
+    color: white;
+    display: none;
+} 
+
+@media screen and (min-width: 650px) {
+    .form-wrapper {
+      margin: 0;
+      height: 100vh;
+      width: 50vw;
+    }
+} 
+
+.inputs-register {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+} 
+
+#register-btn {
+    background-color: #00B154;
+    border: none;
+    color: #FFF;
+    font-weight: bolder;
+    text-align: center;
+    margin-top: -1rem;
+} 
+
+#login-btn {
+    background: none;
+    border: none;
+    color: #FFF;
+    margin-top: 1rem;
+    text-align: center;
+} 
+
+#login-link {
+    color: #00B154;
+    font-weight: bolder;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+} 
+
+.material-symbols-outlined {
+    color: #fff;
+    display: block;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+  } 
+
+* {
+    margin: 0px;
+    padding: 0px;
+} 
+
+header {
+    background-color: #000000; 
+} 
+
+#logo-timeline {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 10px;
+} 
+
+nav {
+    display: none;
+} 
+
+nav > a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    text-align: center;
+    background-color: #000000;
+    color: #fff;
+    border-top: 1px solid #fff;
+} 
+
+#open-modal:hover{
+    opacity: 0.9;
+} 
+
+.black-bg {
+    background-color: rgba(0, 9, 14, 0.9);
+    margin: 1rem 1.5rem 1rem 1.5rem;
+    height: 100%;
+    border-radius: .5rem;
+} 
+
+.post {
+    background-color: #fff;
+    max-width: 90%;
+    height: 30%;
+    border-radius: 10px;
+    border: solid 2px;
+    border-color: #D82934;
+    
+} 
+
+#user {
+    color: #D82934;
+    font-weight: 700;
+    font-size: medium;
+} 
+
+#anime-name, #anime-episodes, #post-description {
+    color: #431F01;
+} 
+
+.view-description {
+    color: #00B154;
+    cursor: pointer;
+} 
+
+.box-description {
+    background-color: #38EB8D;
+    width: 90%;
+    height: 90%;
+    padding: 5%;
+    border-radius: 10px;
+    margin-top: 1rem;
+} 
+
+#post-description {
+    text-align: left;
+} 
+
+.btn-posts {
+    width: 5rem;
+    background-color: #00B154;
+    color: #fff;
+    border-radius: 10px;
+    padding: 0.5rem;
+    display: inline-block;
+    margin-bottom: 1rem;
+    margin-top: 1rem;   
+    text-align: center; 
+} 
+
+/*
+.btn-edit {
+    margin: 0 auto;
+    background-color: #00B154;
+    color: #fff;
+    width: 5rem;
+    display: inline-block;
+    text-align: center; 
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+}
+
+.btn-edit:hover {
+    opacity: 0.9;
+}
+
+.btn-edit:active {
+    opacity: 0.8;
+}
+*/ 
+
+@media screen and (min-width: 900px) {
+    .black-bg {
+        background-color: rgba(0, 9, 14, 0.9);
+        margin: 2% 20% 2% 20%;
+        height: 100%;
+    }
+
+    #open-modal {
+        width: 50%;
+    }
+
+    .material-symbols-outlined {
+        display: none;
+    }
+
+    header {
+        height: 6rem;
+    }
+
+    nav {
+        display: block;
+        background-color: #000000;
+        text-align: right;
+    }
+    
+    nav > a {
+        color: #fff;
+        border-top: 1px solid #000000;
+        display: inline-block;
+        margin-left: 2%;
+        margin-right: 7%;
+        font-size: 1.5rem;
+    }
+
+    nav > a:hover{
+        color: #34D782;
+    }
+
+    .black-bg {
+        margin-top: 4%;
+    }
+} 
+
+#open-modal {
+    background-color: #38EB8D;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 90%;
+} 
+
+#close-modal {
+    padding: .3rem 0;
+    background-color: none;
+    margin-left: 95%;
+    color: #D82934;
+    border: none;
+    border-radius: .25rem;
+    cursor: pointer;
+    opacity: .8;
+    font-size: 1rem;
+    width: 5rem;
+    transition: 0.4s;
+} 
+
+button:hover {
+    opacity: 1;
+} 
+
+#modal {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFF;
+    z-index: 10;
+    width: 500px;
+    max-width: 90%;
+    padding: 1.2rem;
+    border-radius: .5rem;
+    border: solid 0.2rem #00B154;
+} 
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: -2rem;
+} 
+
+.modal-form {
+    width: 100%;
+} 
+
+div.single-input {
+    width: 100%;
+    margin: 0.2rem 0;
+    position: relative;
+} 
+
+div.single-input label {
+    font-size: 16px;
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    color: rgb(150, 150, 150);
+    cursor: text;
+    transition: 0.5s ease-in-out;
+} 
+
+div.single-input .input{
+    width: 100%;
+    padding: 5px;
+    color: rgb(150,150,150);
+    border: 0;
+    border-bottom: 2px solid rgb(200, 200, 200);
+    outline: 0;
+    font-size: 16px;
+    border-radius: 0;
+} 
+
+div.single-input .input:focus,
+div.single-input .input:valid {
+    border-bottom: 2px solid #00B154;
+} 
+
+div.single-input .input:focus ~ label,
+div.single-input .input:valid ~ label {
+    transform: translateY(-24px);
+    font-size: 15px;
+    color: #00B154;
+} 
+
+#post-area {
+    width: 500px;
+    height: 200px;
+    max-width: 100%;
+    text-align: left;
+    border-radius: 1rem;
+    padding: 1rem;
+    background-color: #38EB8D;
+    color: #413e3e;
+    border: none;
+    outline: none;
+    font-size: 15px;
+} 
+
+#post-area::placeholder{
+    color: #413e3e;
+    font-size: 15px;
+} 
+
+#post-button {
+    position: relative;
+    background-color: #00B154;
+    color: #FFF;
+    font-weight: bold;
+    text-align: center;
+    width: 5rem;
+    margin-top: 0.8rem;
+} 
+
+#post-button:hover {
+    opacity: 0.9;
+} 
+
+#post-button:active {
+    opacity: 0.8;
+} 
+
+@media screen and (min-width: 700px) {
+     #modal {
+        width: 54%;
+        height: 70%;
+    }
+
+    #post-area {
+        width: 90%;
+        max-width: 90%;
+    }
+} 
+
+@media screen and (min-width: 600px) {
+
+    #open-modal {
+        width: 50%;
+    } 
+} 
+
+.post {
+    background-color: #fff;
+    max-width: 90%;
+    height: 30%;
+    border-radius: 10px;
+    border: solid 2px;
+    border-color: #D82934;
+    
+} 
+
+#user {
+    color: #D82934;
+    font-weight: 700;
+    font-size: medium;
+} 
+
+#anime-name, #anime-episodes, #post-description {
+    color: #431F01;
+} 
+
+.view-description {
+    color: #00B154;
+    cursor: pointer;
+} 
+
+.box-description {
+    background-color: #38EB8D;
+    width: 90%;
+    height: 90%;
+    padding: 5%;
+    border-radius: 10px;
+    margin-top: 1rem;
+} 
+
+#post-description {
+    text-align: left;
+} 
+
+.btn-posts {
+    width: 5rem;
+    background-color: #00B154;
+    color: #fff;
+    border-radius: 10px;
+    padding: 0.5rem;
+    display: inline-block;
+    margin-bottom: 1rem;
+    margin-top: 1rem;   
+    text-align: center; 
+} 
+
+.btns {
+    display: flex;
+    display: inline-flex;
+} 
+
+.btn-edit, .btn-del {
+    background-color: #00B154;
+    color: #fff;
+    width: 5rem;
+    text-align: center;
+    margin-bottom: 5%;
+    font-weight: bold;
+} 
+
+.btn-edit {
+    margin-left: -20%;
+} 
+
+.btn-del {
+    margin-left: 12%;
+} 
+
+.btn-edit:hover,
+.btn-del:hover {
+    opacity: 0.9;
+} 
+
+.btn-edit:active ,
+.btn-del:active {
+    opacity: 0.8;
+} 
+
+div#like.display {
+    display: flex;
+    display: inline-flex;
+    margin-left: 60%;
+    margin-top: -40%;
+} 
+
+#heart-fill.hidden,
+  #empty-heart.hidden {
+    display: none;
+  } 
+
+#empty-heart,
+  #heart-fill {
+    color: #D82934;
+    cursor: pointer;
+    animation: transitionLike 1s ease-in;
+  } 
+
+#likes-counter {
+    color: #D82934;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-left: 10%;
+    margin-top: 10%;
+  } 
+
+/*
+  #empty-heart,
+  #heart-fill {
+    color: #D82934;
+    cursor: pointer;
+    margin-left: 75%;
+    animation: transitionLike 1s ease-in;
+  }
+  
+  #likes-counter {
+    color: #D82934;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-left: 5%;
+    margin-right: 8%;
+  }
+*/ 
+
+@keyframes transitionLike {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.125);
+    }
+    100% {
+      transform: scale(1);
+    }
+  } 
+
+/*
+  @media screen and (min-width: 950px) {
+    #empty-heart,
+    #heart-fill {
+      margin-left: 80%;
+    }   
+
+    #likes-counter {
+      margin-right: 8%;
+    }
+}
+*/ 
+
+/*
+@media screen and (min-width: 700px) {
+  #modal {
+    height: 50%;
+  }
+}
+*/ 
+
+* {
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+} 
+
+body {
+    background-image: url('../../assets/bg-image.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+} 
