@@ -4,6 +4,7 @@ import postsTm from './postsTm.js';
 import posts from './posts.js';
 import { redirect } from '../../redirect.js';
 import { auth } from '../../firebase/app.js';
+import logo from '../../images/logo.png';
 
 export default async () => {
   const containerTimeline = document.createElement('div');
@@ -11,13 +12,11 @@ export default async () => {
   // containerTimeline.innerHTML = `
   const templateTimeline = `
   <header>
-    <img src="./assets/logo.png" id="logo-timeline" alt="Logo da Anime-se">
+    <img src='${logo}' id="logo-timeline" alt="Logo da Anime-se">
     <span id="burger" class="material-symbols-outlined">menu</span>
     <nav id="menu">
-      <ul>
-        <li><a href="#login">Sobre as desenvolvedoras</a></li>
-        <li><a href="#login" id="logout">Sair</a></li>
-      </ul>
+        <a href="#about">Sobre as desenvolvedoras</a>
+        <a href="#login" id="logout">Sair</a>
     </nav>
   </header>
 
@@ -38,7 +37,6 @@ export default async () => {
   const logoutButton = containerTimeline.querySelector('#logout');
   logoutButton.addEventListener('click', () => {
     logOut();
-    window.location.replace('#login');
     redirect('#login');
   });
 

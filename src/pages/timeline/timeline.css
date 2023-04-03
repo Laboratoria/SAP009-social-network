@@ -25,11 +25,7 @@ nav {
     display: none;
 }
 
-nav > ul {
-    list-style-type: none;
-}
-
-nav > ul > li > a {
+nav > a {
     display: block;
     padding: 10px;
     text-decoration: none;
@@ -119,10 +115,45 @@ nav > ul > li > a {
     opacity: 0.8;
 }
 */
-@media screen and (min-width: 950px) {
+@media screen and (min-width: 900px) {
     .black-bg {
         background-color: rgba(0, 9, 14, 0.9);
         margin: 2% 20% 2% 20%;
         height: 100%;
+    }
+
+    #open-modal {
+        width: 50%;
+    }
+
+    .material-symbols-outlined {
+        display: none;
+    }
+
+    header {
+        height: 6rem;
+    }
+
+    nav {
+        display: block;
+        background-color: #000000;
+        text-align: right;
+    }
+    
+    nav > a {
+        color: #fff;
+        border-top: 1px solid #000000;
+        display: inline-block;
+        margin-left: 2%;
+        margin-right: 7%;
+        font-size: 1.5rem;
+    }
+
+    nav > a:hover{
+        color: #34D782;
+    }
+
+    .black-bg {
+        margin-top: 4%;
     }
 }

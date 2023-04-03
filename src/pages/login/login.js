@@ -3,13 +3,15 @@
 import { signIn, loginGoogle } from '../../firebase/auth.js';
 import { errorsFirebase, validateLogin } from '../../validations';
 import { redirect } from '../../redirect.js';
+import logo from '../../images/logo.png';
+import googleLogo from '../../images/google-logo.png';
 
 export default () => {
   const containerLogin = document.createElement('div');
 
   const templateLogin = `
     <div class="form-wrapper">
-      <img src="./assets/logo.png" id="logo" alt="Logo da Anime-se">
+      <img src='${logo}' id="logo" alt="Logo da Anime-se">
 
       <form>
         <div>
@@ -30,7 +32,7 @@ export default () => {
         <p>ou</p>
 
         <div>
-          <button type="button" id="google-button"><img src="./assets/google-logo.png" id="google-logo" alt="logo do Google">Continue com o Google</button>
+          <button type="button" id="google-button"><img src='${googleLogo}' id="google-logo" alt="logo do Google">Continue com o Google</button>
         </div>
 
         <p class="msg-error"></p>

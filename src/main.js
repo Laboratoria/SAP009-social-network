@@ -1,6 +1,7 @@
 import login from './pages/login/login';
 import register from './pages/register/register';
 import timeline from './pages/timeline/timeline';
+import about from './pages/about/about';
 import { checkLoggedUser } from './firebase/auth.js';
 
 const main = document.querySelector('#root');
@@ -13,6 +14,9 @@ const renderPage = () => {
       break;
     case '#register':
       main.appendChild(register());
+      break;
+    case '#about':
+      main.appendChild(about());
       break;
     case '#timeline':
       checkLoggedUser(async (logged) => {
