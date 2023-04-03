@@ -1,15 +1,8 @@
 export default () => {
-  const container = document.createElement('div');
-  container.classList.add('body-cadastro');
-  const templaite = `
-    
-    <h1 class='cadastro'>cadastro</h1>
-    <button class='btn-cadastro'>cadastrar</button>
-  
   const registerContainer = document.createElement('div');
   registerContainer.classList.add('body-cadastro');
   const template = `
-    <h1 class='title'>HelParents</h1>
+    <h1 class="logo-geral">HelParents</h1>
     <p><strong>Primeira vez por aqui?</strong></p>
     <p>Realize o seu cadastro, contribua e aproveite todas as possibilidades
     que esta rede pode oferecer!</p>
