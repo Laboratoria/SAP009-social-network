@@ -1,3 +1,28 @@
-.login {
-    background-color: brown;
-}
+ * {
+     margin: 0;
+     padding: 0;
+ }
+
+ .header-login-page {
+    width: 500px;
+    height: 150px;
+    font-size: 80px;
+    border-radius: 15px;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 10px;
+    
+ }
+
+ .section-login-dispay {
+  
+  }
+
+ 
+
+ 
+ 
+
+    
+
+     
