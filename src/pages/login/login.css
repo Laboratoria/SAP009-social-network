@@ -1,10 +1,35 @@
-#root{
-    display: flex;
-    justify-content: center;
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
 }
 
-.container-login{
-    background-color: white;
-    padding: 10px 50px;
-    border-radius: 20px;
+.icon-1,
+.icon-2 {
+    padding: 4%;
+    width: 30%;
 }
+
+.container-login {
+    border-radius: 20px;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bloco-login {
+    background-color: #fff;
+    padding: 2rem; 
+    max-width: 350px;
+    min-height: 70vh;
+    border-radius: 20px;
+    box-shadow: 0 4px 4px 0 #00000025;      
+}
+
+
+
+
+

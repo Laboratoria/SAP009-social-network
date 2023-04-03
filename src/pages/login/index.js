@@ -3,6 +3,7 @@ export default() =>{
     container.classList.add('container-login');
 
     const template = `
+        <img class="icon-1" src="image/Rectangle 86.png">
         <section class="bloco-login">
             <header>
                 <h3>Bem-vindo à C&H</h3>
@@ -11,21 +12,23 @@ export default() =>{
             </header>
 
             <section>
-                <button>
-                    <img class="logo-google" src="image/google.png" alt="imagem com logo do Google">
-                    <a>Entrar com Google</a>
-                </button>
+                <a href="#">
+                <img class="logo-google" src="image/google.png" alt="imagem com logo do Google">
+                Entre com a sua conta Google
+                </a>
             </section>
 
             <form class="form-login">
                 <div>
-                    <label>Email</label>
-                    <input placeholder="seu email">
+                    <label>E-mail</label>
+                    <input type="text" name="username" id="username"
+                    placeholder="Digite seu e-mail">
                 </div>
 
                 <div>
                     <label>Senha</label>
-                    <input placeholder="sua senha">
+                    <input type="password" name="password" id="password"
+                    placeholder="Digite sua senha">
                 </div>
 
                 <div>
@@ -39,6 +42,7 @@ export default() =>{
                 </div>
             </form>
         </section>
+        <img class="icon-2" src="image/Rectangle 83.png">
     `;
 
     container.innerHTML = template;
