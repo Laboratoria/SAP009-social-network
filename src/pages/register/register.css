@@ -39,6 +39,7 @@ background: #EE8100;
 border-radius: 10px;
 text-decoration: none;
 margin-left: 135px;
+cursor: pointer;
 }
 
 #account-creation {

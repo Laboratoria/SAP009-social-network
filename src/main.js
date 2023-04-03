@@ -1,7 +1,7 @@
-import login from './login/login.js';
-import register from './register/register.js';
-import feed from './feed/feed.js';
-import publish from './publish/publish.js';
+import login from './pages/login/login.js';
+import register from './pages/register/register.js';
+import feed from './pages/feed/feed.js';
+import publish from './pages/publish/publish.js';
 
 const main = document.querySelector('#root');
 
