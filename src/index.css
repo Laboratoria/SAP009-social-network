@@ -3,16 +3,19 @@
 @import './pages/timeline/timeline.css';
 @import './pages/timeline/posts.css';
 @import './pages/timeline/postsTm.css';
+@import './pages/about/about.css';
 
 * {
     box-sizing: border-box;
     margin: 0 auto;
     padding: 0;
     text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
-    background-image: url('../../assets/bg-image.jpg');
+    background-image: url('../../SAP009-social-network/src/images/bg-image.jpg');
     background-attachment: fixed;
     background-repeat: no-repeat;
+    background-size: cover;
 } 
