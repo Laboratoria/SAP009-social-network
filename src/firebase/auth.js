@@ -27,16 +27,7 @@ const fazerCadastro = async (name, email, password) => {
     displayName: name,
   });
 };
-// const checkUserLogin = (callback) => {
-//   onAuthStateChanged(auth, (user) => {
-//     console.log(user)
-//     if (user) {
-//       callback(true);
-//     } else {
-//       callback(false);
-//     }
-//   });
-// }
+
 export {
   auth,
   fazerLogin,
