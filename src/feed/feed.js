@@ -1,26 +1,23 @@
 export default () => {
   const feedContainer = document.createElement("div");
-
+  ////<p class="gaparecer nome do usuario pego no login">${user.displayName}</p>//
   const feedScreen = `
     <section id='feed'>
     <section id='menu-pub'>
-     <figure>
-     <a href='#login'> <img src='imagens/logout.png' alt='Imagem publicação' id='image-publish'><p>SAIR</p> </a></figure>
-      <img id='bumerangue-gif' src='imagens/bumerangue.gif'> 
-      </section> 
+    <p class="hello">Olá,</p> 
+     <figure><img src='imagens/logout.png' alt='Imagem publicação' id='image-publish'></figure>
+        <img id='bumerangue-gif' src='imagens/bumerangue.gif'> 
+      </section>      
       <section id='nav-pub'>
-       <img src='imagens/perfil.png'><p> PERFIL </p>
-        <img src='imagens/logo.png' id='feed-logo' alt='Logotipo QA- Qualidade de ações'>
-        <a href='#publish'> <img src='imagens/publicar.png' alt='Imagem publicação' id='image-publish'> PUBLICAR </a>
+       <img id='profile' src='imagens/perfil.png'>
+        <img id='logo' src='imagens/logo.png' id='feed-logo' alt='Logotipo QA- Qualidade de ações'>
+        <a href='#publish'> <img id='publish' src='imagens/publicar.png' alt='Imagem publicação' id='image-publish'> </a>
         </section>
-      <section id='new-pub'>
-        <input placeholder='criar-publicação'></input>
-        <input placeholder='minha-publicação'></input>
-        <input type='button' value='outra-pubicação'></input>
+        <section>
+        <footer> <strong> © BOOMERANG </strong> </footer>
         </section>
-    
+        
     </section>
-
     `;
 
   feedContainer.innerHTML = feedScreen;

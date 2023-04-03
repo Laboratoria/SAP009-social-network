@@ -12,22 +12,16 @@ export default () => {
       <figure> <img src='imagens/logo.png' id='login-logo' alt='Logotipo QA- Qualidade de ações'> </figure><br>
       <input class='padding-inputs' id='email' type='email' placeholder= 'E-MAIL'> </input>
       <input class='padding-inputs' id='password' type='password' placeholder= 'SENHA' > </input>
-      <a id= 'enter-button' type='button' href='#feed'> <h2 id='enter'> ENTRAR </h2> </a>
+      <a id= 'enter-button' type='button' href='#feed'> <p id='enter'> ENTRAR </p> </a>
       <div id='info'>
         <p id='or-google'><strong>OU</strong></p><br>
         <p class='login-google'> Faça login com sua conta </p> 
         <a href='#feed'> <img src='imagens/google.png' alt='Imagem google' id='image-google'> </a>
-        <p class='google-account'> Não tem uma conta? </p> <a id='register-link' href='#register'> <h2 id='register'> CADASTRE-SE </h2> </a>
+        <p class='google-account'> Não tem uma conta? </p> <a id='register-link' href='#register'> <p id='register'> CADASTRE-SE </p> </a>
         <footer> <strong> © BOOMERANG </strong> </footer>
         </div>   
     </section>      
-      
-         <div><div>
       </section> 
-    
-
-    
-   
   `;
 
   loginContainer.innerHTML = loginScreen;

@@ -25,12 +25,12 @@ html {
 }
 
 #login-logo {
-  width: 380px;
+  width: 375px;
   position: relative;
 }
 
 .padding-inputs {
-  width: 350px;
+  width: 340px;
   height: 50px;
   background: #dadada;
   border: 3px solid #000000;
@@ -51,7 +51,7 @@ html {
 
 #enter-button {
   display: flex;
-  width: 350px;
+  width: 340px;
   height: 65px;
   margin-top: 20px;
   background: #ee8100;
@@ -63,7 +63,7 @@ html {
   display: flex;
   color: #ffffff;
   align-items: center;
-  margin-left: 135px;
+  margin-left: 132px;
 }
 #info {
   display: flex;

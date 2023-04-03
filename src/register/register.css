@@ -13,7 +13,7 @@ body {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 }
 
@@ -43,7 +43,6 @@ body {
   background: #ee8100;
   border-radius: 10px;
   text-decoration: none;
-
   margin-top: 20px;
   align-items: center;
 }
@@ -55,7 +54,11 @@ body {
   padding: 50px;
 }
 
-footer {
-  display: flex;
+#register-content-desktop {
+  display: none;    
+  }
+  
+  footer {
+  display: flex;  
   font-size: 12px;
-}
+  }

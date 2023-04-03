@@ -1,33 +1,92 @@
 body {
   width: 100vw;
   height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 #feed {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 246px);
+  padding: 10px;
+  margin-left: 350px;
+   
 }
-
-#menu-pub {
-  
-  align-items: center ;
-  position: absolute;
-  
-  
-}
-
 #nav-pub {
   display: flex;
   flex-direction: row;
-  justify-content: center;
   align-items: center;
+ 
 }
 
-#new-pub {
+
+#menu-pub {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  position: initial;
+  width: 100vw;
+  height: 100vh;
+}
+
+
+#image-publish {
+  width: 130px;
+}
+
+#bumerangue-gif {
+  width: 130px;
+}
+
+#profile {
+  width: 60px;
+}
+
+#logo {
+  width: 130px; 
+}
+
+#publish {
+  width: 60px;
+}
+
+#image-publish{
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  margin-bottom: 100px;
+}
+
+#image-publish:hover{
+  opacity: 0.5;
+}
+
+#image-publish:active{
+  opacity: 0.8;
+}
+
+#logout {
+  align-items: center;
+  justify-content: center;
+}
+
+#new-publish{
   display: flex;
   flex-direction: column;
+  border-radius: 10px;
+  height: 100px;
+  width: 250px;
   align-items: center;
-  position: fixed;
+  padding: 5px;
+}
+
+footer {
+  display: flex;
+  font-size: 12px;
 }

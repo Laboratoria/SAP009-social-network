@@ -8,6 +8,7 @@ export default () => {
   <img id='bumerangue-gif' src='imagens/bumerangue.gif'>
 
     <input id='publication' type='text' placeholder= 'O que deseja compartilhar?'> </input>
+    <textarea id='new-publish' placeholder='criar-publicação'></textarea>
 
     <a id='cancel-button' type='button'  href='#feed'> Cancelar </a>
     <a id='publication-button'type='button'href='#feed'> Publicar </a>
