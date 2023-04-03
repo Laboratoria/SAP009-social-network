@@ -1,4 +1,5 @@
 import { fazerCadastro } from '../../firebase/auth.js';
+import { database } from '../../firebase/firestore.js';
 
 export default () => {
   const container = document.createElement('div');
@@ -9,7 +10,7 @@ export default () => {
       <img class="logo-cadastro" src="/imagens/logo-lemos.png" href="/#login">
     </div>
   </header>
-  <section class = "cadastro">
+  <section class="cadastro">
     <form class="form-cadastro">
       <h2 class="bem-vinda"> Seja bem-vinda! </h2>
       <div>
@@ -34,7 +35,7 @@ export default () => {
         <p class="textos-cadastro">Repita sua senha</p>
         <input type="password" class="input-cadastro" required>
       </div>
-        <button type="submit" class="botao-cadastrar"> <a href= "#feed"> Cadastrar </a> </button>
+        <button type="submit" class="botao-cadastrar"> Cadastrar </a> </button>
     </form>
    </section> 
   `;
@@ -44,12 +45,14 @@ export default () => {
   const cadastroNome = container.querySelector('#nome-usuaria');
   const cadastroEmail = container.querySelector('#email-cadastro');
   const cadastroSenha = container.querySelector('#senha-cadastro');
-  const botaoCadastrar = container.querySelector('.botao-cadastrar');
+  const formCadastro = container.querySelector('.form-cadastro');
   const mensagemErro = container.querySelector('.texto-erro');
 
-  botaoCadastrar.addEventListener('click', () => {
+  formCadastro.addEventListener('submit', (event) => {
+    event.preventDefault();
     fazerCadastro(cadastroNome.value, cadastroEmail.value, cadastroSenha.value)
       .then(() => {
+        database(cadastroNome.value, cadastroEmail.value);
         window.location.hash = '#feed';
       })
       .catch(() => {
