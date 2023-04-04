@@ -12,23 +12,23 @@ export default () => {
     <form>
       <div class="input-group">
         <label>Email:</label>
-        <input type="email" id="email-login" name="email" placeholder="Type your email">
+        <input type="email" id="email-login" name="email" placeholder="Type your email" required>
         <div class="error" id="no-email-error">Please, enter your email.</div>
         <div class="error" id="invalid-email-error">Invalid email.</div>
       </div>
       <div class="input-group">
         <label>Password:</label>
-        <input type="password" id="password-login" name="password" placeholder="Type your password">
+        <input type="password" id="password-login" name="password" placeholder="Type your password" required>
         <div class="error" id="no-password-error">Please, enter your password.</div>
         <div class="error" id="short-password-error">Your password is too short.</div>
       </div>
       <div class="login-links">
-        <button type="button" disabled="true" id="recover-password">
+        <button type="button" id="recover-password">
           <a href="">Click here if you forgot your password.</a>
         </button>
       </div>
       <div id="button-login">  
-        <button type="button" id="login-btn" disabled="true">LET'S GO!</button>
+        <button type="button" id="login-btn">LET'S GO!</button>
       </div>
       <div class="login-links">
         <a href="/#signup">Click here if you still don't have an account.</a>
@@ -89,10 +89,7 @@ export default () => {
   }
 
   loginBtn.addEventListener('click', () => {
-    if (!isEmailValid(value) && !isPasswordValid(value)) {
       window.location.hash = '#feed';
-    }
-    console.log(loginBtn);
   });
 
   return loginContainer;

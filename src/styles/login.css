@@ -54,6 +54,7 @@
     display: flex;
     justify-content: center;
     padding: 30px;
+    
 }
 #login-btn{
     width: 150px;
@@ -66,6 +67,8 @@
     color: #004AAD;
     font-weight: 700;
     font-size: 24px;
+    cursor: pointer;
+    
 }
 .separation-or{
     display: flex;
