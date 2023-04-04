@@ -14,7 +14,9 @@ export default () => {
               
                 <a href="/#feed"><img class="logo-feed" src="./img/logo-sem-escrita.png"></a>
                 <div class='feed display'>
+
                 <p class='username' id='username' >Olá, ${auth.currentUser.displayName}</p>
+
                 </div>
               
 
@@ -86,5 +88,6 @@ export default () => {
   const user = auth.currentUser.displayName;
   if (user === '');
 
-  return container;
+ return container;
+
 };
