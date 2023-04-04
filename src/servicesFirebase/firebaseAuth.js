@@ -16,7 +16,7 @@ export const auth = getAuth(app);
 /* Cadastrar usuários */
 export const createUser = (email, senha, displayName) => createUserWithEmailAndPassword(auth, email, senha, displayName);
 
-/* Fazer Login */
+/* Fazer Login do usuário */
 export const valuesLogin = (email, senha) => signInWithEmailAndPassword(auth, email, senha);
 
 /* Login com Google */
@@ -24,5 +24,5 @@ export const valuesLogin = (email, senha) => signInWithEmailAndPassword(auth, em
 const provider = new GoogleAuthProvider();
 export const googleLogin = () => signInWithPopup(auth, provider);
 
-/* Sair do perfil */
+/* Sair do perfil do usuário */
 export const sairPerfil = () => signOut(auth);
