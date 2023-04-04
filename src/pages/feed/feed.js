@@ -7,58 +7,66 @@ export default () => {
   const container = document.createElement('div');
 
   const template = `     
-    <div class="home-feed">
-        <header>   
-            <section class="container-feed">
-                <div class="header">
-                    <a href="/#feed"><img class="logo-feed" src="./img/logo-sem-escrita.png"></a>
-                    <div class="menu-section">
-                        <button class="menu-toggle">
-                         <div class="one"></div>
-                         <div class="two"></div>
-                         <div class="three"></div>
-                        </button>
-                    <nav class="position-nav">
-                        <div class="menu">
-                            <ul class="ul-nav">
-                                <li class="li-nav">
-                                    <a class='options-menu' href="#">Sobre nós</a>           
-                                </li>
-                                <li class="li-nav">
-                                    <a class='options-menu' href="#">Perfil</a>
-                                </li>
-                                <li class="li-nav">
-                                    <button id="btnSair" class='options-menu'>Sair</button>
-                                </li>
-                            </ul>
-                        </div>
-                </div>        
-                    </nav>
-                </div>
+  <div class="home-feed">
+  <header>   
+      <section class="container-feed">
+          <div class="header">
+              
+                <a href="/#feed"><img class="logo-feed" src="./img/logo-sem-escrita.png"></a>
                 <div class='feed display'>
-                    /* <p class='username' id='username' >${auth.currentUser.displayName}</p> */
-                     
+
+                <p class='username' id='username' >Olá, ${auth.currentUser.displayName}</p>
+
                 </div>
-                </div>    
-                
-            </section>
-            <div class='feed display'>
-        </header>
-           
-    <section class="post">
-        <form class="form">
-        <textarea class="input-post"></textarea>
-        </form>
-        <section class="botoes">
-            <button class="btn-imagem">Imagem</button>
-            <button class="btn-publicar">Publicar</button>
-        </section>
-    </section>
-    </div>
+              
+
+              <div class="menu-section">
+                  <button class="menu-toggle">
+                   <div class="one"></div>
+                   <div class="two"></div>
+                   <div class="three"></div>
+                  </button>
+                  <nav class="position-nav">
+                      <div class="menu">
+                          <ul class="ul-nav">
+                              <li class="li-nav">
+                                  <a class='options-perfil' href="#">Perfil</a>
+                              </li>
+                              <li class="li-nav">
+                               <button id="btnSair" class='options-sair'>Sair</button>
+                              </li>
+                          </ul>
+                      </div>
+                  </nav>
+
+              </div> 
+          </div> 
+          
+      </section>
+  </header>
+     
+  <section class="post">
+      <section class="botoes">
+          <button id="btn-modal" class="btn-publicar">Criar Post</button>
+      </section>
+  </section>
+
+  <dialog class="dialog" id="bloco">
+  <div class="modal">
+    <button id="fechar" class="fechar">X</button>
+    <textarea class="input-post"></textarea>
+    <button class="btn-postar">Publicar</button>
+  </div>
+  </dialog>
+
+</div>
       `;
 
   container.innerHTML = template;
+  const btnModal = container.querySelector('#btn-modal');
   const btnMenu = container.querySelector('.menu-toggle');
+  const modal = container.querySelector('#bloco');
+  const fecharModal = container.querySelector('#fechar');
   const menu = container.querySelector('.menu-section');
   btnMenu.addEventListener('click', () => {
     menu.classList.toggle('show');
@@ -70,7 +78,17 @@ export default () => {
       window.location.hash = '#login';
     }));
 
+
+  btnModal.addEventListener('click', () => {
+    modal.showModal();
+  });
+  fecharModal.addEventListener('click', () => {
+    modal.close();
+  });
+
   const user = auth.currentUser.displayName;
   if (user === '');
-  return container;
+
+
+ return container;
 };
