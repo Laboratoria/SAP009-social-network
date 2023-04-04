@@ -76,6 +76,7 @@ export default () => {
       window.location.hash = '#login';
     }));
 
+<<<<<<< HEAD
   btnModal.addEventListener('click', () => {
     modal.showModal();
   });
@@ -86,5 +87,9 @@ export default () => {
   const user = auth.currentUser.displayName;
   if (user === '');
 
+=======
+  const user = auth.currentUser.displayName;
+  if (user === '');
+>>>>>>> 6d9a076f1aa1bc8bffff30495edfaffb64a7ffe0
   return container;
 };

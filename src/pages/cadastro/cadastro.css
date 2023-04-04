@@ -32,7 +32,23 @@
     width: 100vw;
     height: 100vh;
 } 
-
+.btn-voltar{
+    padding: 10px 0px;
+    margin: 100px;
+    margin-left: -264px;
+    margin-top: 24px;
+    width: 23%;
+    height: 36px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    font-weight: bold;
+    font-family: var(--fonte-titulo);
+    color: white;
+    background-color: #211D28;
+    text-transform: uppercase;
+    cursor: pointer;
+}
 
 .logo-escrita-escura {
     width: 315px;
@@ -51,6 +67,13 @@
 
 .btn-cadastrar{
     margin-top: 20px;
+}
+
+.txt-error{
+    color: var(--cor-de-fundo);
+    font-family: var(--fonte-titulo);
+    font-size: 15px;
+    font-weight: 100vh;
 }
 
 .input-nome-cadastro, .input-login-cadastro{
@@ -83,7 +106,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
+    margin-top: -38px;
+    gap: 10px;
  }
 
  .imagem-cadastro {
@@ -95,11 +119,7 @@
  }
 
  @media  (min-width:900px){
-    .cadastro{
-        background-color: var(--cor-de-fundo);
-        width: 50vw;
-    }
-
+    
     .body-login {
         display: flex;
     }
@@ -110,6 +130,8 @@
 
     .cadastro{
         background-image: none;
+        background-color: var(--cor-de-fundo);
+            width: 50vw;
     }
 
     .imagem-cadastro {
