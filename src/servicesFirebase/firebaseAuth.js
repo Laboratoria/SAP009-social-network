@@ -10,10 +10,10 @@ import {
 import { firebaseConfig } from './firebaseconfig';
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+export const auth = getAuth(app);
 
 /* Cadastrar usuários */
-export const createUser = (email, senha) => createUserWithEmailAndPassword(auth, email, senha);
+export const createUser = (email, senha, displayName) => createUserWithEmailAndPassword(auth, email, senha, displayName);
 
 /* Fazer Login */
 export const valuesLogin = (email, senha) => signInWithEmailAndPassword(auth, email, senha);
