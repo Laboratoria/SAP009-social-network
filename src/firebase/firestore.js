@@ -21,6 +21,14 @@ export const database = async (name, email) => {
   }
 };
 
+window.onload = function () {
+  db.collection('users').get().then((snapshot) => {
+    snapshot.forEach(function (child) {
+      const userNome = child.data().name;
+    });
+  });
+  };
+
 export const pegarPost = async (nome, titulo, autora, post) => {
   const promessaDados = await getDocs(collection(db, 'posts'));
   promessaDados.forEach((post) => {
