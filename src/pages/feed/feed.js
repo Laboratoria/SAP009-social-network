@@ -1,9 +1,9 @@
-import { fazerLogout } from '../../firebase/auth.js';
-import { fazerPost } from '../../firebase/firestore.js';
+import { fazerLogout, auth } from '../../firebase/auth.js';
+import { fazerPost, database } from '../../firebase/firestore.js';
 
 export default () => {
+  
   const container = document.createElement('div');
-
   const template = `
   <header class="conteudo-feed">
     <div class="cabecalho-feed">
@@ -12,6 +12,8 @@ export default () => {
     </div>
   </header>
   <main class="feed-post">
+    <img class="avatar" src="/imagens/user.png">
+    <h3>Olá, ${auth.currentUser.displayName} !</h3>
     <section class="nome-livro">
       <h2 class="criar-post">Criar publicação</h2>
       <p>Título do livro</p>
@@ -24,9 +26,9 @@ export default () => {
     <section class="nivel-leitura">
       <p>Para qual leitora você indica esse livro?</p>
       <div class="botoes-nivel">
-        <button class="iniciante">iniciante</button>
-        <button class="intermediaria">intermediária</button>
-        <button class="avancada">avançada</button>
+        <input type="radio" class="iniciante" name="nivel">iniciante</input>
+        <input type="radio" class="intermediaria" name="nivel">intermediária</input>
+        <input type="radio" class="avancada" name="nivel">avançada</input>
       </div>
     </section>
     <section class="post-publicacao">
@@ -43,6 +45,7 @@ export default () => {
   const titulo = container.querySelector('.input-titulo');
   const autora = container.querySelector('.input-autora');
   const post = container.querySelector('.texto-post');
+  const tagNivel = container.querySelector('.botoes-nivel');
 
   const botaoSair = container.querySelector('.botao-sair');
   botaoSair.addEventListener('click', () => {
