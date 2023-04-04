@@ -120,6 +120,7 @@ nav > a {
         background-color: rgba(0, 9, 14, 0.9);
         margin: 2% 20% 2% 20%;
         height: 100%;
+        margin-top: 4%;
     }
 
     #open-modal {
@@ -146,14 +147,10 @@ nav > a {
         display: inline-block;
         margin-left: 2%;
         margin-right: 7%;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 
     nav > a:hover{
         color: #34D782;
-    }
-
-    .black-bg {
-        margin-top: 4%;
     }
 }

@@ -5,11 +5,13 @@ import {
   getDocs,
   doc, updateDoc, deleteDoc, query, orderBy, arrayUnion, arrayRemove,
 } from 'firebase/firestore';
-import { app, auth } from './app';
+import { getAppAuth } from './auth';
+import { app } from './app';
 
 const db = getFirestore(app);
 
 export const createPost = (anime, episodes, description) => { //eslint-disable-line
+  const auth = getAppAuth();
   return addDoc(collection(db, 'posts'), {
     name: auth.currentUser.displayName,
     author: auth.currentUser.uid,
