@@ -16,14 +16,15 @@
    display: block;
 }
 
+.imagem-logo{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+
 .logo-escrita-clara{
-   width: 200px;
-   margin: 30px;
-    background-image: url(../../img/imagem-login.jpg);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: none;
+   width: 230px;
+   margin-bottom: 20px;
 }
 
 .container{
@@ -147,18 +148,6 @@ h1 {
    font-size: 15px;
 }
 
-.imagem-logo{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-/* 
-.logo-escrita-clara {
- width:50%;
- 
-} */
-
-
 .action-google{
    display: flex;
    flex-direction: column;
@@ -177,6 +166,13 @@ h1 {
 
 .btn-google:hover{
    cursor: pointer;
+}
+
+.imagem-login{
+   background-image: url(../../img/imagem-login.jpg);
+   background-position: center center;
+   background-repeat: no-repeat;
+   background-size: cover;
 }
 
 @media  (min-width:900px){
