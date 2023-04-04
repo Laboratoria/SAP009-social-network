@@ -42,12 +42,13 @@ export default () => {
     const email = container.querySelector('#txtEmail').value;
     const senha = container.querySelector('#txtPassword').value;
     const inputNome = container.querySelector('#txtName');
+
     if (!inputNome || !email || !senha) {
       const mensagem = container.querySelector('#txtError');
       mensagem.innerHTML = 'Preencha os campos corretamente.';
     }
 
-    createUser(email, senha)
+    createUser(email, senha, inputNome)
       .then(() => {
         window.location.hash = '#login';
       });
