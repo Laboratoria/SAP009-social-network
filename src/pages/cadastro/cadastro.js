@@ -1,7 +1,7 @@
 export default () => {
   const container = document.createElement('div');
   const template = ` 
-  <img id="logoImagem" src="imagens/LogoFundo.png>
+  <img id="logoImagem" src="imagens/logoImagem.jpeg">
   <section id="bordaCadastro">
    <form>
     <label for="nomesobrenome" class="texto">Nome e sobrenome</label><br>
