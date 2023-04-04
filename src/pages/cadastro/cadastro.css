@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+
+:root {
+    --fonte-logo: 'Montserrat', sans-serif;
+    --fonte-titulo: 'Noto Serif', serif;
+    --cor-de-fundo: #00172C;
+    --amarelinho: #F1CC9A;
+    --azul-botao: #034072;
+    --vermelho: #500B19;
+}
+
+.body-cadastro{
+    display: flex;
+}
+
+.container-cadastro {
+    background: #d9d9d9c5;
+    border-radius: 20px;
+    width: 380px;
+    height: 550px;  
+}
+.cadastro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../../img/cadastro-desktop.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+} 
+.btn-voltar{
+    padding: 10px 0px;
+    margin: 100px;
+    margin-left: -264px;
+    margin-top: 24px;
+    width: 23%;
+    height: 36px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    font-weight: bold;
+    font-family: var(--fonte-titulo);
+    color: white;
+    background-color: #211D28;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.logo-escrita-escura {
+    width: 315px;
+    height: 310px;
+    margin: 0px;
+    margin-top: -58px;
+}
+
+.input-nome, .input-login, .input-senha {
+    background-color: #474053;
+    width: 310px;
+    height: 48px;
+    border-radius: 15px;
+   
+} 
+
+.btn-cadastrar{
+    margin-top: 20px;
+}
+
+.txt-error{
+    color: var(--cor-de-fundo);
+    font-family: var(--fonte-titulo);
+    font-size: 15px;
+    font-weight: 100vh;
+}
+
+.input-nome-cadastro, .input-login-cadastro{
+    background-image: url(../img/icone-login.png);
+    background-color: #474053;
+    border-radius: 15px;
+    border-bottom: 1px solid rgba(141, 141, 141, 0.5);
+    background-repeat: no-repeat;
+    border: none;
+    width: 310px;
+    height: 50px;
+    text-align: center;
+    font-family: var(--fonte-logo);
+ }
+
+ .input-senha-cadastro{
+    background-image: url(../img/locker.png);
+    background-color: #474053;
+    border-radius: 15px;
+    border-bottom: 1px solid rgba(141, 141, 141, 0.5);
+    background-repeat: no-repeat;
+    border: none;
+    width: 310px;
+    height: 50px;
+    text-align: center;
+    font-family: var(--fonte-logo);
+ }
+
+ .form-cadastro-cadastro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -38px;
+    gap: 10px;
+ }
+
+ .imagem-cadastro {
+    background-image: url(../../img/cadastro-desktop.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: none;
+ }
+
+ @media  (min-width:900px){
+    
+    .body-login {
+        display: flex;
+    }
+
+    .coluna-1, .coluna-2 {
+        width: 50%;
+    }
+
+    .cadastro{
+        background-image: none;
+        background-color: var(--cor-de-fundo);
+            width: 50vw;
+    }
+
+    .imagem-cadastro {
+        display: block;
+        width: 100%;
+        height: 100vh;
+    }
+
+}
+
+ 
