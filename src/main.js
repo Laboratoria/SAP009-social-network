@@ -15,15 +15,15 @@ const renderPage = () => {
     case '#register':
       main.appendChild(register());
       break;
-    case '#about':
-      main.appendChild(about());
-      break;
     case '#timeline':
       checkLoggedUser(async (logged) => {
         if (logged) {
           main.appendChild(await timeline());
         }
       });
+      break;
+    case '#about':
+      main.appendChild(about());
       break;
     default:
       main.appendChild(login());
