@@ -10,7 +10,7 @@ export default () => {
     <img src="/img/github.svg" alt="cat icon" class="github-cat"><a href="https://github.com/marinacezario" class="footer-names">Marina Cezário</a></img>
   </div>
   <div class="git-name">
-    <img src="/img/github.svg" alt="cat icon" class="github-cat"><a href="https://github.com/silvertapecoder" class="footer-names">Silver Santos</a></img>
+    <img src="/img/github.svg" alt="cat icon" class="github-cat"><a href="https://github.com/silversantos" class="footer-names">Silver Santos</a></img>
   </div>
 </div>
   `;

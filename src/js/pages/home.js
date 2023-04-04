@@ -30,7 +30,9 @@ export default () => {
     </div>
   </div>
   <div id="button-home">  
-    <button id="sign-in-home-button">SIGN IN</button>
+    <button id="sign-in-home-button">
+      <a href="/#login">SIGN IN</a>
+    </button>
   </div>
 </div>
   `;
