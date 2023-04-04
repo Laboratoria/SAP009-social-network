@@ -44,8 +44,6 @@ const login = () => {
   const btnEntrar = criarLogin.querySelector('.btn-entrar');
   const btnGoogle = criarLogin.querySelector('.btn-google');
 
-  observador();
-
   btnEntrar.addEventListener('click', (e) => {
     e.preventDefault();
 

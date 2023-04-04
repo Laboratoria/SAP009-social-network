@@ -5,7 +5,7 @@
 /* eslint-disable no-unneeded-ternary */
 /* eslint-disable no-alert */
 /* eslint-disable max-len */
-import { criarCadastro, observador, verificarEmail } from '../../firebase/firebase';
+import { criarCadastro, verificarEmail } from '../../firebase/firebase';
 import { maiorDe18, exibeErros } from '../../firebase/funcoes-acessorias';
 
 const cadastro = () => {
@@ -59,8 +59,6 @@ const cadastro = () => {
   const filhx = criaCadastro.querySelector('#filhos');
   const erro = criaCadastro.querySelector('.mensagem-erro');
   const btnEnviar = criaCadastro.querySelector('.btn-enviar');
-
-  observador(); // mostra se to conectada a pag
 
   btnEnviar.addEventListener('click', (e) => {
     e.preventDefault();

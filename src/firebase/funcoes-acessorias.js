@@ -56,15 +56,15 @@ export function modal(mensagem) {
   console.log(mensagem);
 }
 
-export function pegaDados(querySnapshot) { // pega tudo oq for descrição na coleção
+export function pegaDados(querySnapshot) { // pega tudo o texto publicado pela usuaria na coleção
   let recebeDados = '';
   querySnapshot.forEach((doc) => {
     const publicacao = doc.data();
     recebeDados += `
     <div> 
       <textarea name="novo-texto" class="texto-amigas" cols="30%" rows="4%">${publicacao.descricao}</textarea> <br>
-      <button class="deleta-post" data-id="${publicacao.id}">Delete</button>        
-      <button class="edita-post">Editar</button>        
+      <button class="deleta-post" data-id="${publicacao.id}" value="${publicacao.id}">Delete</button>        
+      <button class="edita-post" data-id="${publicacao.id}">Editar</button>        
     </div>
     `;
   });

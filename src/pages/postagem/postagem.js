@@ -1,7 +1,9 @@
+/* eslint-disable arrow-body-style */
 /* eslint-disable no-unused-vars */
 // import { async } from 'regenerator-runtime';
+import { async } from 'regenerator-runtime';
 import { observador, sair } from '../../firebase/firebase';
-import { paraPostar, postagens, mostraPostAutomaticamente, deletaPost } from '../../firebase/firebase-storage';
+import { paraPostar, postagens, mostraPostAutomaticamente, deletaPost, editaPost } from '../../firebase/firebase-storage';
 import { pegaDados } from '../../firebase/funcoes-acessorias';
 
 const postagem = () => {
@@ -35,21 +37,52 @@ const postagem = () => {
 
   criarPostagem.innerHTML = template;
 
-  const btnSair = criarPostagem.querySelector('.btn-sair');
-
-  // VERIFICA USUÁRIO ON/OFF
-  observador();
-
   // DESLOGAR
+  const btnSair = criarPostagem.querySelector('.btn-sair');
   btnSair.addEventListener('click', () => {
     sair();
     window.location.hash = '';
   });
 
-  // ARMAZENA OS POSTS NO CONSOLE DO FIREBASE
+  // MOSTRA NA TELA, APAGA E EDITA TODOS OS POSTS ARMAZENADOS NO FIREBASE
+
+  const postagensAnteriores = criarPostagem.querySelector('#postagens-anteriores');
+
+  const teste = async () => { // colocando o async aqui posso usar await em qualquer lugar abaixo
+    return postagens().then((post) => {
+      postagensAnteriores.innerHTML = pegaDados(post);
+      // console.log(post);
+
+      // DELETAR POSTS
+      const btnDeletaPost = criarPostagem.querySelectorAll('.deleta-post');
+      console.log(btnDeletaPost);
+
+      btnDeletaPost.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          const apagou = deletaPost(e.target.dataset.id);
+          console.log('deletado com sucesso');
+          // preciso acrescentar a usuaria para ter o id e assim o butão vai funcionar
+          return apagou;
+        });
+      });
+
+      // SUBSTITUIR NOMES delete E editar POR IMGS //
+
+      // EDITAR POSTS
+      const btnEditaPost = criarPostagem.querySelectorAll('.edita-post');
+      btnEditaPost.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          const edit = editaPost(e.target.dataset.id);
+          console.log('editar clicado');
+          console.log(edit.data());
+        });
+      });
+    });
+  };
+
+  // ENVIA OS POSTS PARA ARMAZENAR NO CONSOLE DO FIREBASE
 
   const novoTexto = criarPostagem.querySelector('#novo-texto');
-
   const btnPostar = criarPostagem.querySelector('.btn-postar');
 
   btnPostar.addEventListener('click', () => {
@@ -57,22 +90,7 @@ const postagem = () => {
     novoTexto.value = '';
   });
 
-  // MOSTRA NA TELA, APAGA E EDITA TODOS OS POSTS ARMAZENADOS NO FIREBASE
-
-  const postagensAnteriores = criarPostagem.querySelector('#postagens-anteriores');
-
-  postagens().then((post) => {
-    postagensAnteriores.innerHTML = pegaDados(post);
-    // console.log(post);
-
-    // DELETAR POSTS
-    const btnDeletaPost = criarPostagem.querySelectorAll('.deleta-post');
-    const btnEditaPost = criarPostagem.querySelectorAll('.edita-post');
-    btnDeletaPost.onclick = (e) => {
-      // deletaPost(e.target.dataset.id);
-      console.log('deletado');
-    };
-  });
+  mostraPostAutomaticamente(teste);
 
   return criarPostagem;
 };

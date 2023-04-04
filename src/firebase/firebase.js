@@ -18,7 +18,7 @@ export function fazerLogin(email, password) {
 
 export function observador() { // verifica se tem usuário logado ou não
   onAuthStateChanged(auth, (user) => {
-    // console.log(user);
+    console.log(user);
     if (user) {
     // O usuário está conectado, consulte os documentos para obter uma lista de propriedades disponíveis;
     // https://firebase.google.com/docs/reference/js/firebase.User

@@ -5,6 +5,7 @@ import cadastro from './pages/cadastro/cadastro.js';
 import postagem from './pages/postagem/postagem.js';
 import { postagens } from './firebase/firebase-storage.js';
 import { pegaDados } from './firebase/funcoes-acessorias.js';
+import { observador } from './firebase/firebase.js';
 
 const main = document.querySelector('#main');
 
@@ -28,6 +29,8 @@ const iniciaTela = () => {
 };
 
 window.addEventListener('load', () => {
+  observador();
+
   main.appendChild(postagem());
   // main.appendChild(login());
   iniciaTela();
