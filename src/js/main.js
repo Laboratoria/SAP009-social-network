@@ -1,8 +1,8 @@
 import headerInitial from './components/headers/header-initial.js';
-// import headerLogin from './components/headers/header-login.js';
+import headerLogin from './components/headers/header-login.js';
 import footer from './components/footer.js';
 import home from './pages/home.js';
-// import login from './pages/login.js';
+import login from './pages/login.js';
 import signUp from './pages/sign-up.js';
 
 const main = document.querySelector('#root');
@@ -15,9 +15,11 @@ const init = () => {
         main.appendChild(home());
         main.appendChild(footer());
         break;
-      // case '#login':
-      //   main.appendChild(login());
-      //   break;
+      case '#login':
+        main.appendChild(headerLogin());
+        main.appendChild(login());
+        main.appendChild(footer());
+        break;
       case '#signup':
         main.appendChild(headerInitial());
         main.appendChild(signUp());
@@ -36,6 +38,3 @@ window.addEventListener('load', () => {
   main.appendChild(footer());
   init();
 });
-
-
-

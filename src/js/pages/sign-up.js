@@ -21,7 +21,7 @@ export default () => {
     </div>
     <div class="signup-group">
       <label for="passwordConfirmation">Password Confirmation:</label>
-      <input type="senha" id="password"/>
+      <input type="senha" id="password-confirmation"/>
     </div>
     <div class="signup-button">
       <button id="signup-botao" type="submit">LET'S GO!</button>
@@ -30,8 +30,6 @@ export default () => {
 
 `;
   signupContainer.innerHTML = signupTemplate;
- 
 
   return signupContainer;
-
 };
