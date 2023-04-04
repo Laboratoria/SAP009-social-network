@@ -10,7 +10,7 @@ export default () => {
     </li>
     <li id="li-header-btn">
       <button id="header-btn">
-       <a href="/#signup">SIGN IN</a>
+       <a href="/#login">SIGN IN</a>
       </button>
     </li>
   </ul>
@@ -18,6 +18,11 @@ export default () => {
   `;
 
   headerInitialContainer.innerHTML = headerInitialTemplate;
+  const headerInitialBtn = headerInitialContainer.querySelector('#header-btn');
+
+  headerInitialBtn.addEventListener('click', () => {
+    window.location.hash = '#login';
+  });
 
   return headerInitialContainer;
 };

@@ -37,5 +37,11 @@ export default () => {
 
   homeContainer.innerHTML = homeTemplate;
 
+  const homeBtn = homeContainer.querySelector('#sign-in-home-button');
+
+  homeBtn.addEventListener('click', () => {
+    window.location.hash = '#login';
+  });
+
   return homeContainer;
 };
