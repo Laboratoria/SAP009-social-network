@@ -2,6 +2,8 @@
  
 Gosta de animes e gostaria de receber algumas recomendações só com as informações essenciais? Fica desconfiada(o/e) quando vê algum influenciador ou blogueiro falando sobre algum anime, porque você não tem certeza se essa pessoa está sendo patrocinada ou não? Você também fica completamente perdida(o/e) quando vê que, só nessa temporada, foram lançados 2 milhões de animes e você não faz ideia do que as pessoas estão achando deles? Então Anime-se, porque o nosso terceiro projeto criado junto ao bootcamp da Laboratória foi feito para você!
 
+🔗 [Clique aqui para acessar](https://social-network-5b156.web.app/)
+
 ## Índice
 
 * [1. Resumo do projeto](#1-resumo-do-projeto)
