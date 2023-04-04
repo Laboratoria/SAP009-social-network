@@ -7,7 +7,8 @@ export default() =>{
         <section class="bloco-login">
             <header>
                 <h3>Bem-vindo à C&H</h3>
-                <label>Não tem conta? cadastre-se</label>
+                <label>Não tem conta?</label>
+                <a href="#cadastro" type="button" style="text-decoration:none">Cadastre-se</a>
                 <h1>Login</h1>
             </header>
 
