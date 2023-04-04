@@ -133,11 +133,7 @@
     "es-shim-unscopables": "^1.0.0",
     "es-to-primitive": "^1.2.1",
     "esbuild": "^0.15.18",
-<<<<<<< HEAD
-    "esbuild-linux-64": "^0.15.18",
-=======
     "esbuild-windows-64": "^0.15.18",
->>>>>>> c44578383dfc168a6c8645417c911acf31f70dc8
     "escalade": "^3.1.1",
     "escape-string-regexp": "^1.0.5",
     "escodegen": "^2.0.0",
@@ -475,9 +471,7 @@
     "yargs-parser": "^20.2.9",
     "yocto-queue": "^0.1.0"
   },
-<<<<<<< HEAD
-  "author": ""
-=======
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/silvertapecoder/SAP009-social-network.git"
@@ -487,5 +481,4 @@
     "url": "https://github.com/silvertapecoder/SAP009-social-network/issues"
   },
   "homepage": "https://github.com/silvertapecoder/SAP009-social-network#readme"
->>>>>>> c44578383dfc168a6c8645417c911acf31f70dc8
 }

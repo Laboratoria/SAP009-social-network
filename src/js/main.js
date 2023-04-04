@@ -4,6 +4,7 @@ import footer from './components/footer.js';
 import home from './pages/home.js';
 import login from './pages/login.js';
 import signUp from './pages/sign-up.js';
+import feed from './pages/feed.js';
 
 const main = document.querySelector('#root');
 const init = () => {
@@ -25,14 +26,20 @@ const init = () => {
         main.appendChild(signUp());
         main.appendChild(footer());
         break;
+      case '#feed':
+        main.appendChild(feed());
+        break;
       default:
+        window.location.hash = '#home';
         main.appendChild(headerInitial());
         main.appendChild(home());
         main.appendChild(footer());
     }
   });
 };
+
 window.addEventListener('load', () => {
+  window.location.hash = '#home';
   main.appendChild(headerInitial());
   main.appendChild(home());
   main.appendChild(footer());
