@@ -3,6 +3,8 @@ import {
   signInWithPopup,
   signOut,
   createUserWithEmailAndPassword,
+  getAuth,
+  updateProfile,
 } from 'firebase/auth';
 
 import {
@@ -50,16 +52,21 @@ describe('fazerLogout', () => {
 });
 
 describe('fazerCadastro', () => {
-  it('deve criar uma conta com nome, email e senha', () => {
-    createUserWithEmailAndPassword.mockResolvedValue({ cadastro: {} });
+  it('deve criar uma conta com nome, email e senha', async () => {
+    createUserWithEmailAndPassword.mockResolvedValue();
+    const mockAuth = { currentUser: {} };
+    getAuth.mockReturnValue(mockAuth);
+    updateProfile.mockReturnValue();
 
     const email = 'teste@gmail.com';
     const senha = '123456';
     const nome = 'teste';
 
-    fazerCadastro(email, senha, nome);
+    await fazerCadastro(nome, email, senha);
 
     expect(createUserWithEmailAndPassword).toHaveBeenCalledTimes(1);
-    expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(email, senha, nome);
+    expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(mockAuth, email, senha);
+    expect(updateProfile).toHaveBeenCalledTimes(1);
+    expect(updateProfile).toHaveBeenCalledWith(mockAuth.currentUser, { displayName: nome });
   });
 });
