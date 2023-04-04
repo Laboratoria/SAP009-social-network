@@ -19,6 +19,11 @@
 .logo-escrita-clara{
    width: 200px;
    margin: 30px;
+    background-image: url(../../img/imagem-login.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: none;
 }
 
 .container{
@@ -65,18 +70,13 @@ h1 {
    display: flex;
    flex-direction: column;
    gap:5px;
+   
 }
 
 .mail{
    background-color: #034072;
    height: 30px;
    
-}
-
-.email-and-password-container{
-   display: flex;
-   flex-direction: column;
-
 }
 
 .input-login, .input-senha{
@@ -152,18 +152,12 @@ h1 {
     align-items: center;
     justify-content: center;
 }
-
+/* 
 .logo-escrita-clara {
  width:50%;
  
-}
-.imagem-login {
-   background-image: url(../../img/imagem-login.jpg);
-   background-position: center center;
-   background-repeat: no-repeat;
-   background-size: cover;
-   display: none;
-}
+} */
+
 
 .action-google{
    display: flex;

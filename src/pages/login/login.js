@@ -59,7 +59,7 @@ export default () => {
   const btnGoogle = container.querySelector('#btn-google');
 
   const fazerLogin = () => {
-    btn.addEventListener('click', (event) => {
+    btn.addEventListener('click', () => {
       valuesLogin(email.value, senha.value)
         .then(() => {
           window.location.href = '#feed';
@@ -77,7 +77,7 @@ export default () => {
     .then(() => {
       window.location.hash = '#feed';
     })
-    .catch((error) => {
+    .catch(() => {
       alert('Erro ao efetuar login com o Google!');
     }));
   return container;
