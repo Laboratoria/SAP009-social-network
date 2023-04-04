@@ -22,10 +22,10 @@ export default () => {
             <form class="form-login">
               <div class="email-and-password-container">
                <div class="iconmail">
-                  <input id="txtEmail" type="email" name="email" class="input-login" placeholder="Login" required <img class="mail" src="./img/icone-login.png">
+                  <input id="txtEmail" type="email" name="email" class="input-login" placeholder="Email" required <img class="mail" src="./img/icone-login.png">
                </div>
                <div class="iconmail">  
-                  <input id="txtPassword" type="password" name="password" class="input-senha" placeholder="Password" minlength="8" required>
+                  <input id="txtPassword" type="password" name="password" class="input-senha" placeholder="Senha" minlength="8" required>
                </div>
               </div>
               <div>
