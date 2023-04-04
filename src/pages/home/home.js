@@ -21,6 +21,6 @@ export default () => {
     </section>  
   `;
   container.innerHTML = template;
-//  getAuth user
+  //  getAuth user
   return container;
 };

@@ -1,4 +1,4 @@
-import { cadastrar } from '../api';
+import { cadastrar } from '../../lib/api';
 
 export default () => {
   const container = document.createElement('div');
@@ -33,11 +33,13 @@ export default () => {
   btn.addEventListener('click', (e) => {
     e.preventDefault();
     cadastrar(username.value, email.value, password.value)
-      .then((user) => {
-        console.log(user);
+      .then(() => {
+        // console.log(user);
+        // eslint-disable-next-line no-alert
         alert('Seu cadastro foi realizado com sucesso!');
       })
       .catch(() => {
+        // eslint-disable-next-line no-alert
         alert('Falha ao cadastrar');
       });
   });
