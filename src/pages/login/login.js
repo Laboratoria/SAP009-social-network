@@ -1,3 +1,5 @@
+import { loginUser, loginGoogle } from '../api';
+
 export default () => {
   const container = document.createElement('div');
   const template = `  
@@ -11,7 +13,7 @@ export default () => {
     <input id='email' class='user-login' type='email' required placeholder='seuemail@dominio.com'>
 
     <p>Senha</p>
-    <input  id='password' class='user-login' type='password' required placeholder='Senha'>
+    <input  id='senha' class='user-login' type='password' required placeholder='Senha'>
     
 
     <section class='buttons'>
@@ -25,7 +27,7 @@ export default () => {
     <a id='submitGoogle' class='btn' href='#login'>Login with</a>
     <section class='buttons'>
       <div id="linhaHor1"></div>
-      <button id='googleButton'>Google</button>
+      <button onClick={actionLoginGoogle} id='googleButton'>Google</button>
       <div id="linhaHor2"></div>
     </section>
 
@@ -35,7 +37,46 @@ export default () => {
    
     </form>
     `;
-
   container.innerHTML = template;
+
+  const btnLogin = container.querySelector('#submitLogin');
+  const email = container.querySelector('#email');
+  const password = container.querySelector('#senha');
+  const btnGoogle = container.querySelector('#googleButton');
+
+  btnGoogle.addEventListener('click', (e) => {
+    e.preventDefault();
+    loginGoogle()
+      .then((result) => {
+        // const credential = GoogleAuthProvider.credentialFromResult(result);
+        // const token = credential.accessToken;
+        // const user = result.user;
+        window.location.hash = '#home';
+      })
+      .catch((error) => {
+        alert('Login não foi possível tente novamente.');
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        // const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
+  });
+
+  btnLogin.addEventListener('click', (e) => {
+    e.preventDefault();
+    loginUser(email.value, password.value)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+        window.location.hash = '#home';
+      })
+      .catch(() => {
+        alert('Email ou senha inválidos');
+      });
+  });
+
   return container;
 };
