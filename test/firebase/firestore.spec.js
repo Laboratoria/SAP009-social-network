@@ -4,10 +4,18 @@ import {
 import {
   createPost, accessPost, editPost, deletePost, likePost, deslikePost,
 } from '../../src/firebase/firestore';
+import { getAppAuth } from '../../src/firebase/auth';
 
 jest.mock('firebase/firestore');
+jest.mock('../../src/firebase/auth');
 
-jest.clearAllMocks();
+const mockAppAuth = {
+  currentUser: {
+    displayName: 'Fulano',
+    uid: 'uid1234',
+  },
+};
+getAppAuth.mockReturnValue(mockAppAuth);
 
 describe('createPost', () => {
   it('should create a new post', async () => {
@@ -16,8 +24,8 @@ describe('createPost', () => {
     const episodes = '500';
     const description = 'Anime muito bom! Fez parte da minha infância';
     const post = {
-      name: 'Fulana',
-      author: 'author123',
+      name: mockAppAuth.currentUser.displayName,
+      author: mockAppAuth.currentUser.uid,
       anime,
       episodes,
       description,
@@ -28,7 +36,7 @@ describe('createPost', () => {
     await createPost(anime, episodes, description);
 
     expect(addDoc).toHaveBeenCalledTimes(1);
-    expect(addDoc).toHaveBeenCalledWith(post);
+    expect(addDoc).toHaveBeenCalledWith(undefined, post);
   });
 });
 
