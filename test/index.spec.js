@@ -25,17 +25,18 @@ describe('criarUsuario e atualizar o perfil', () => {
     createUserWithEmailAndPassword.mockResolvedValueOnce(mockUserCredential);
     const email = 'teste@teste.com';
     const senha = '12345678';
-    await createUser(email, senha);
+    const displayName = 'usernameteste';
+    await createUser(email, senha, displayName);
 
     expect(createUserWithEmailAndPassword).toHaveBeenCalledTimes(1);
-    expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(getAuth(), email, senha);
+expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(getAuth(), email, senha, displayName);
     expect(updateProfile).toHaveBeenCalledTimes(1);
-    expect(updateProfile).toHaveBeenCalledWith(mockUserCredential.user, { email, senha });
+expect(updateProfile).toHaveBeenCalledWith(mockUserCredential.user, { email, senha, displayName });
   });
 });
 
 // função de login//
-jest.mock('firebase/auth');
+
 describe('logarUsuário', () => {
   it('a função deve logar a conta do usuário utilizando o email e senha', async () => {
     signInWithEmailAndPassword.mockResolvedValueOnce();
@@ -48,7 +49,7 @@ describe('logarUsuário', () => {
 });
 
 // função logar Google//
-jest.mock('firebase/auth');
+
 describe('sairDaConta', () => {
   it('a função deve realizar o logOut da conta do usuário', async () => {
     signInWithPopup.mockResolvedValueOnce();
@@ -60,7 +61,7 @@ describe('sairDaConta', () => {
 });
 
 // função sair do perfil //
-jest.mock('firebase/auth');
+
 describe('logarUsuárioComGoogle', () => {
   it('a função deve logar a conta do usuário utilizando o email do Google', async () => {
     signOut.mockResolvedValueOnce();

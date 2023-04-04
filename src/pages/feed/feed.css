@@ -152,5 +152,11 @@
     text-transform: uppercase;
     transition: 0.5s;
 }
-
+.username {
+    color: var(--amarelinho);
+    font-family: var(--fonte-titulo);
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.5rem;
+}
  

@@ -1,4 +1,7 @@
-import { sairPerfil } from '../../servicesFirebase/firebaseAuth';
+import {
+  sairPerfil,
+  auth,
+} from '../../servicesFirebase/firebaseAuth';
 
 export default () => {
   const container = document.createElement('div');
@@ -31,9 +34,15 @@ export default () => {
                         </div>
                 </div>        
                     </nav>
-                </div> 
+                </div>
+                <div class='feed display'>
+                    <p class='username' id='username' >${auth.currentUser.displayName}</p>
+                     
+                </div>
+                </div>    
                 
             </section>
+            <div class='feed display'>
         </header>
            
     <section class="post">
@@ -60,5 +69,8 @@ export default () => {
     .then(() => {
       window.location.hash = '#login';
     }));
+
+  const user = auth.currentUser.displayName;
+  if (user === '');
   return container;
 };
