@@ -255,15 +255,21 @@ Na página de cadastro, abaixo dos campos para inserir o e-mail e a senha nós c
 ## 8. Considerações técnicas
 
 Linguagens utilizadas: JavaScript | HTML5 | CSS3
+
 Programas/Plataformas utilizadas: VSCode (codificação) | Firebase (registro de novas contas e autenticação de usuários) | Firestore (criação, exibição, edição e exclusão de posts) | Canva (protótipo de baixa fidelidade e imagem com a paleta de cores) | Vite (ferramenta de compilação) | Figma (protótipo de alta fidelidade) | Trello (planejamento)
 
 ## 9. Objetivos alcançados
 
 ✨ Desenvolvimento de uma plataforma que permita ao usuário registrar uma nova conta, logar em uma conta já existente (com e-mail e senha informados ou através da conta do Google), criar, editar, excluir, curtir e descurtir posts.
+
 ✨ Criação de histórias de usuário e construção do site de acordo com estas histórias
+
 ✨ Desenvolvimento do projeto de acordo com os testes de usabilidade realizados com usuários reais
+
 ✨ Cobertura de 100% nos testes unitários
+
 ✨ Páginas 100% responsivas
+
 ✨ Criação e validação de testes unitários para as funções criadas no código
 
 ## 10. Contatos
@@ -271,9 +277,11 @@ Programas/Plataformas utilizadas: VSCode (codificação) | Firebase (registro de
 **Aline Guiseline** 💙
 
 https://www.linkedin.com/in/alineguiseline/
+
 https://github.com/AlineGuiseline/
 
 **Bruna Abreu** 💙
 
 https://www.linkedin.com/in/bru-abreu/
+
 https://github.com/bruna-abreu
