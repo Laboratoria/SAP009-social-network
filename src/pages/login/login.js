@@ -78,7 +78,7 @@ export default () => {
       window.location.hash = '#feed';
     })
     .catch(() => {
-      alert('Erro ao efetuar login com o Google!');
+      txtError.innerHTML = ('Usuário ou senha incorretos');
     }));
   return container;
 };

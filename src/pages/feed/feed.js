@@ -14,7 +14,9 @@ export default () => {
               
                 <a href="/#feed"><img class="logo-feed" src="./img/logo-sem-escrita.png"></a>
                 <div class='feed display'>
+
                 <p class='username' id='username' >Olá, ${auth.currentUser.displayName}</p>
+
                 </div>
               
 
@@ -76,7 +78,7 @@ export default () => {
       window.location.hash = '#login';
     }));
 
-<<<<<<< HEAD
+
   btnModal.addEventListener('click', () => {
     modal.showModal();
   });
@@ -87,9 +89,6 @@ export default () => {
   const user = auth.currentUser.displayName;
   if (user === '');
 
-=======
-  const user = auth.currentUser.displayName;
-  if (user === '');
->>>>>>> 6d9a076f1aa1bc8bffff30495edfaffb64a7ffe0
-  return container;
+
+ return container;
 };
