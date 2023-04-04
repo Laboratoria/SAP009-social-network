@@ -88,6 +88,5 @@ export default () => {
   const user = auth.currentUser.displayName;
   if (user === '');
 
- return container;
-
+  return container;
 };
