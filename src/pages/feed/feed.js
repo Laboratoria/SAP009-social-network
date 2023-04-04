@@ -6,17 +6,22 @@ export default () => {
       <button class="btn-sair">Sair</button>
   </header>
   <main>
+      <div> 
+      <img src='./img/notebook.png' alt='notebook' class='notebook'>
+      </div>
       <section class="feed-posts">
           <div class="postando">
               <textarea name="" id="txt-area" cols="70" rows="5">Escreva um post</textarea>
               <div class="posição-botão-postar">
-                 <button id="btn-postar">postar</button>
+                 <button class="btn-postar">postar</button>
               </div>
           </div>
           <div class="postado">
               <ul>
                   <li>
-
+                  <div> 
+                  <textarea name="" id="txt-area-postado" cols="70" rows="5">Post escrito</textarea>
+                  </div>
                   </li>
               </ul>
           </div>

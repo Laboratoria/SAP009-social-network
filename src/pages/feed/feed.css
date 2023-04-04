@@ -1,12 +1,12 @@
 
-
 .header {
     background-color: #A1BAFC;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 3.9975rem;
+    height: 5.0000rem;
 	padding: 1rem;
+    font-family: 'Smooch Sans', sans-serif;
 }
 
 .feed-posts {
@@ -15,27 +15,31 @@
     height: 300px;
     border-radius: 10px;
     box-shadow: 4px 5px 4px rgba(0,0,0,0.25);
-    
+    font-family: 'Roboto', sans-serif;
 }
 
 
 .btn-sair {
     background:  #F56F6F;
-    width: 100px;
-    height: 50px;
+    width: 50px;
+    height: 30px;
     border: none;
     box-shadow: 2px 3px 2px rgba(0,0,0,0.25);
     border-radius: 8px;
     color: white;
+    font-family: 'Roboto', sans-serif;
+    align-items: center;
+    padding-left: 0.8rem;
 }
 
 #txt-area {
     background-color: #f9c8c8;
     border-radius: 10px;
     padding: 15px;
+    font-family: 'Roboto', sans-serif;
 }
 
-#btn-postar {
+.btn-postar {
     background:  #F56F6F;
     width: 80px;
     height: 30px;
@@ -45,5 +49,16 @@
     font-weight: 400;
     font-size: 15px;
     color: white;
+    align-items: center;
+    padding-left: 0.8rem;
+    font-family: 'Roboto', sans-serif;
 }
+
+#txt-area-postado {
+    background-color: #d3e2f4;
+    border-radius: 10px;
+    padding: 15px;
+    font-family: 'Roboto', sans-serif;
+}
+
 
