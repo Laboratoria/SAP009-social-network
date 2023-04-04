@@ -36,7 +36,7 @@ export default () => {
                     </nav>
                 </div>
                 <div class='feed display'>
-                    <p class='username' id='username' >${auth.currentUser.displayName}</p>
+                    /* <p class='username' id='username' >${auth.currentUser.displayName}</p> */
                      
                 </div>
                 </div>    
