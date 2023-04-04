@@ -247,4 +247,10 @@ li > a{
     .input-post{
         width: 480px;
     }
+
+    .username{
+        margin-top: 10px;
+        position: absolute;
+        left: 43%;
+    }
 }
