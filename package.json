@@ -471,6 +471,7 @@
     "yargs-parser": "^20.2.9",
     "yocto-queue": "^0.1.0"
   },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/silvertapecoder/SAP009-social-network.git"

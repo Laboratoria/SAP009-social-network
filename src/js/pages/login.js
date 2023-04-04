@@ -9,23 +9,31 @@ export default () => {
       <img class="logo-login" src="img/logo-s2s-transparent.png" alt="">
       <h1>LOGIN</h1>
     </div>
-    <div class="input-group">
-      <label>Email:</label>
-      <input type="text" id="email" name="email" placeholder="Type your email">
-    </div>
-    <div class="input-group">
-      <label>Password:</label>
-      <input type="password" id="password" name="password" placeholder="Type your password">
-    </div>
-    <div class="login-links">
-      <a href="">Click here if you forgot your password.</a>
-    </div>
-    <div id="button-login">  
-      <button id="login-btn">LET'S GO!</button>
-    </div>
-    <div class="login-links">
-      <a href="/#signup">Click here if you still don't have an account.</a>
-    </div>
+    <form>
+      <div class="input-group">
+        <label>Email:</label>
+        <input type="email" id="email-login" name="email" placeholder="Type your email">
+        <div class="error" id="no-email-error">Please, enter your email.</div>
+        <div class="error" id="invalid-email-error">Invalid email.</div>
+      </div>
+      <div class="input-group">
+        <label>Password:</label>
+        <input type="password" id="password-login" name="password" placeholder="Type your password">
+        <div class="error" id="no-password-error">Please, enter your password.</div>
+        <div class="error" id="short-password-error">Your password is too short.</div>
+      </div>
+      <div class="login-links">
+        <button type="button" disabled="true" id="recover-password">
+          <a href="">Click here if you forgot your password.</a>
+        </button>
+      </div>
+      <div id="button-login">  
+        <button type="button" id="login-btn" disabled="true">LET'S GO!</button>
+      </div>
+      <div class="login-links">
+        <a href="/#signup">Click here if you still don't have an account.</a>
+      </div>
+    </form>
     <div class="separation-or">
       <hr>
       <h2>OR</h2>
@@ -44,6 +52,48 @@ export default () => {
   `;
 
   loginContainer.innerHTML = loginTemplate;
+  const emailLogin = loginContainer.querySelector('#email-login');
+  const passwordLogin = loginContainer.querySelector('#password-login');
+  const loginBtn = loginContainer.querySelector('#login-btn');
+
+  function validateEmail(value) {
+    return /\S+@\S+\.\S+/.test(value);
+  }
+
+  function isEmailValid(value) {
+    if (!emailLogin) {
+      loginContainer.querySelector('#no-email-error').style.display = 'block';
+    } else {
+      loginContainer.querySelector('#no-email-error').style.display = 'none';
+    }
+
+    if (validateEmail(value)) {
+      loginContainer.querySelector('#invalid-email-error').style.display = 'none';
+    } else {
+      loginContainer.querySelector('#invalid-email-error').style.display = 'block';
+    }
+  }
+
+  function isPasswordValid(value) {
+    if (!passwordLogin) {
+      loginContainer.querySelector('#no-password-error').style.display = 'block';
+    } else {
+      loginContainer.querySelector('#no-password-error').style.display = 'none';
+    }
+
+    if (value.length < 6) {
+      loginContainer.querySelector('#short-password-error').style.display = 'block';
+    } else {
+      loginContainer.querySelector('#short-password-error').style.display = 'none';
+    }
+  }
+
+  loginBtn.addEventListener('click', () => {
+    if (!isEmailValid(value) && !isPasswordValid(value)) {
+      window.location.hash = '#feed';
+    }
+    console.log(loginBtn);
+  });
 
   return loginContainer;
 };
