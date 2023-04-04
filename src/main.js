@@ -3,7 +3,7 @@
 import login from './pages/login/login.js';
 import cadastro from './pages/cadastro/cadastro.js';
 import postagem from './pages/postagem/postagem.js';
-import { observador, verificarIdUsuaria } from './firebase/firebase.js';
+import { observador } from './firebase/firebase.js';
 
 const main = document.querySelector('#main');
 
@@ -31,6 +31,7 @@ window.addEventListener('load', () => {
   console.log('main aqui');
 
   main.appendChild(postagem());
+
   // main.appendChild(login());
   iniciaTela();
   window.location.hash = '';

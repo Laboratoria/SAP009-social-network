@@ -1,3 +1,4 @@
+import { nomeUsuaria } from './firebase';
 /* eslint-disable default-case */
 /* eslint-disable no-alert */
 export function maiorDe18(dataNascimento) {
@@ -56,20 +57,42 @@ export function modal(mensagem) {
   console.log(mensagem);
 }
 
+function mostraData() {
+  const dataCriacaoPost = Date.now();
+  const dataAtual = new Date(dataCriacaoPost);
+  return dataAtual.toLocaleDateString();
+}
+
 export function pegaDados(querySnapshot) { // pega tudo o texto publicado pela usuaria na coleção
   let recebeDados = '';
   querySnapshot.forEach((doc) => {
     const publicacao = doc.data();
     recebeDados += `
-    <div> 
-      <textarea name="novo-texto" class="texto-amigas" cols="30%" rows="4%">${publicacao.descricao}</textarea> <br>
+    <div class="container-textarea"> 
+      <section class="postagem-data">
+        <p class="perfil-usuaria">${nomeUsuaria()}</p>
+        <p class="data-postagem">${mostraData()}</p>
+      </section>
+
+      <textarea name="novo-texto" class="texto-amigas" cols="30%" rows="4%">${publicacao.descricao}</textarea> 
+      <p class="numero-curtidas">Nº</p>
+      <button class="curtir-post" data-id="${doc.id}">Curtir</button>  
+
       <button class="deleta-post" data-id="${doc.id}">Delete</button>        
-      <button class="edita-post" data-id="${doc.id}">Editar</button>        
+
+      <button class="edita-post" data-id="${doc.id}">Editar</button>       
+      <br>
     </div>
     `;
+
+    // <img src="./imagens/coraçãocurtimuito-removebg-preview (1).png" alt="icone três corações">
+    // <img src="./imagens/lixeira2-removebg-preview.png" alt="icone lixeira">
+    // <img src="./imagens/editar2-removebg-preview.png" alt="icone lixeira">
   });
 
   return recebeDados;
 }
+
+
 
 // export function mostraData(){ new Date.toLocaleString(), mostra a data com dia mês e ano}

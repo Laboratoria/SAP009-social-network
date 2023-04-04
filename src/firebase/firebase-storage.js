@@ -7,7 +7,7 @@ import { app } from './firebase.config.js';
 // const auth = getAuth(app);
 const db = getFirestore(app);
 
-export function paraPostar(descricao) {
+export function paraPostar(descricao) { // armazena no firebase
   addDoc(collection(db, 'postagens'), { descricao });
 }
 
@@ -24,5 +24,5 @@ export function deletaPost(id) {
 }
 
 export function editaPost(id) {
-  getDoc(doc(db, 'postagens', id));
+  return getDoc(doc(db, 'postagens', id));
 }

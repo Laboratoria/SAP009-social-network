@@ -1,21 +1,27 @@
+/* eslint-disable max-len */
 /* eslint-disable arrow-body-style */
 /* eslint-disable no-unused-vars */
 // import { async } from 'regenerator-runtime';
-import { async } from 'regenerator-runtime';
-import { observador, sair, verificarIdUsuaria } from '../../firebase/firebase';
-import { paraPostar, postagens, mostraPostAutomaticamente, deletaPost, editaPost } from '../../firebase/firebase-storage';
+import { sair, nomeUsuaria } from '../../firebase/firebase';
+import {
+  paraPostar, postagens, mostraPostAutomaticamente, deletaPost, editaPost,
+} from '../../firebase/firebase-storage';
 import { pegaDados } from '../../firebase/funcoes-acessorias';
 
 const postagem = () => {
   const header = document.querySelector('.header');
   const criarPostagem = document.createElement('div');
   const template = `
+  <section class="imagem-background desktop>
+    
+  </section>
+  
     <div class="botao">
     <button class="btn-sair">Sair</button></div>
 
     <div class="postagem">
       <div class="mensagem-ola">
-        <p class="paragrafo">Olá usúaria, seja bem-vinda! <br> O que você deseja compartilhar?</p>
+        <p class="paragrafo">Olá ${nomeUsuaria()}, seja bem-vinda! <br> O que você deseja compartilhar?</p>
       </div>
       
       <section class="novo-post">
@@ -24,15 +30,10 @@ const postagem = () => {
       </section>
   </div>
 
-  <div class="postagem-amigas">
-    <div class="container">
-      <section class="postagem-data">
-        <p class="data-postagem">xx/xx/xxxx</p>
-        <div class="digita-texto" id="postagens-anteriores"></div>
-      </section>
-    </div>
-  </div>
+  <div class="digita-texto" id="postagens-anteriores"></div>
 `;
+  // <img src="./imagens/enchendo_taça_de_vinho-removebg-preview.png" alt="garrafa de vinho com liquido derramando na taça">
+
   header.style.display = 'block';
 
   criarPostagem.innerHTML = template;
@@ -51,9 +52,6 @@ const postagem = () => {
     return postagens().then((post) => {
       postagensAnteriores.innerHTML = pegaDados(post);
 
-      // VERIFICA QUAL USUÁRIA ESTA LOGADA PARA MANIPULAR O POST
-      verificarIdUsuaria();
-
       // DELETAR POSTS
       const btnDeletaPost = criarPostagem.querySelectorAll('.deleta-post');
 
@@ -66,13 +64,11 @@ const postagem = () => {
         });
       });
 
-      // SUBSTITUIR NOMES delete E editar POR IMGS //
-
       // EDITAR POSTS
       const btnEditaPost = criarPostagem.querySelectorAll('.edita-post');
       btnEditaPost.forEach((btn) => {
-        btn.addEventListener('click', (e) => {
-          const edit = editaPost(e.target.dataset.id);
+        btn.addEventListener('click', async (e) => {
+          const edit = await editaPost(e.target.dataset.id);
           console.log('editar clicado');
           console.log(edit.data());
         });

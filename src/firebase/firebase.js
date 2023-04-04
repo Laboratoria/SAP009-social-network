@@ -4,12 +4,12 @@
 /* eslint-disable max-len */
 import { app } from './firebase.config.js';
 // eslint-disable-next-line no-unused-vars, import/order, object-curly-newline
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, sendEmailVerification, GoogleAuthProvider, deleteUser, signInWithPopup, signOut } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, sendEmailVerification, GoogleAuthProvider, deleteUser, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 // Inicialize o Firebase Authentication e obtenha uma referência para o serviço
 const auth = getAuth(app);
 
-export function criarCadastro(email, password) {
-  return createUserWithEmailAndPassword(auth, email, password);
+export function criarCadastro(email, password, displayName) {
+  return createUserWithEmailAndPassword(auth, email, password).then((usuaria) => updateProfile(usuaria.user, { displayName }));
 }
 
 export function fazerLogin(email, password) {
@@ -18,7 +18,6 @@ export function fazerLogin(email, password) {
 
 export function observador() { // verifica se tem usuário logado ou não
   onAuthStateChanged(auth, (user) => {
-    console.log(user);
     if (user) {
     // O usuário está conectado, consulte os documentos para obter uma lista de propriedades disponíveis;
     // https://firebase.google.com/docs/reference/js/firebase.User
@@ -53,28 +52,21 @@ export function sair() {
   });
 }
 
-export function deletarUsuaria() {
-  const user = auth.currentUser;
-  deleteUser(user).then(() => {
-    // se for ok, deletada
-  }).catch((error) => {
-    console.log(error);
-  });
-}
-
-export function verificarIdUsuaria() {
+export function nomeUsuaria() {
   const user = auth.currentUser;
   console.log(user);
-
-  if (user !== null) {
-    // propriedade do obj já existentes pelo firebase
-    const displayName = user.displayName;
-    const email = user.email;
-    const uid = user.uid;
-    console.log(displayName);
-    console.log(email);
-    console.log(uid);
-  } else {
-    console.log('user nulo');
+  if (user == null){
+    return 'usuária';
   }
+  return user.displayName;
 }
+
+// export function deletarUsuaria() {
+//   const user = auth.currentUser;
+//   deleteUser(user).then(() => {
+//     // se for ok, deletada
+//   }).catch((error) => {
+//     console.log(error);
+//   });
+// }
+// propriedade do obj já existentes pelo firebase

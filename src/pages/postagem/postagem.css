@@ -1,18 +1,3 @@
-
-/* tava impedindo os inputs de se ajustarem de acordo com o tamanho da tela*/
-/* div:first-child{
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-}  */
-/* .main{
-  display: flex;
-  align-items: center;
-  width: 100%;
-} */
 .botao{
   display: flex;
   justify-content: flex-end;
@@ -20,16 +5,17 @@
 }
 .btn-sair {
   display: flex;
-  margin-left: 12rem;
+  margin: 1rem;
   width: 40px;
   height: 20px;
   padding: 4px;
   text-align: center;
   align-items: center;
+  justify-content: center;
   margin-top: -5rem;
   background-color: #ebafac;
   border: transparent;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .mensagem-ola {
@@ -52,21 +38,21 @@
 .container{
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1rem; /* 5 */
   justify-content: center;
   align-items: center;
   /* margin: auto; */
   text-align: center;
 }
 
-#novo-texto,
-.postagem-anteriores {
+#novo-texto{
   width: 280px;
   height: 140px;
   text-align: center;
   background-color: #facfce;
   border: transparent;
   gap: 1rem;
+  /* .postagem-anteriores */
 }
 #digita-texto{
   text-align: center;
@@ -82,6 +68,7 @@
   border: transparent;
   margin:  1rem auto;
   padding: 1.5rem 1rem;
+  align-self: center;
 }
 
 .btn-postar {
@@ -98,3 +85,24 @@
   display: block;
 }
 
+/* .container-textarea{
+  background-color:#ebafac;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  width: 80%;
+}
+.deleta-post, .edita-post, .curtir-post{
+  width: 50%;
+  margin: 0px;
+  background-color: transparent;
+  border: none;
+  display: inline;
+}
+.deleta-post img, .curtir-post img{
+  width: 2.5rem;
+}
+.edita-post{
+  width: 1.8rem;
+} */

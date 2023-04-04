@@ -80,7 +80,7 @@ const cadastro = () => {
 
       // criação de cadastro
 
-      criarCadastro(inputEmail.value, inputSenha.value)
+      criarCadastro(inputEmail.value, inputSenha.value, nome.value)
         .then(() => {
 
           console.log('cadastrou');
