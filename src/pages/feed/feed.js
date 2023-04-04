@@ -1,9 +1,9 @@
 import { fazerLogout } from '../../firebase/auth.js';
 import { fazerPost } from '../../firebase/firestore.js';
 
+
 export default () => {
   const container = document.createElement('div');
-
   const template = `
   <header class="conteudo-feed">
     <div class="cabecalho-feed">
@@ -12,6 +12,7 @@ export default () => {
     </div>
   </header>
   <main class="feed-post">
+    <section class = "nome_usuaria></section>
     <section class="nome-livro">
       <h2 class="criar-post">Criar publicação</h2>
       <p>Título do livro</p>
@@ -37,9 +38,7 @@ export default () => {
   </main>
 
   `;
-
   container.innerHTML = template;
-
   const titulo = container.querySelector('.input-titulo');
   const autora = container.querySelector('.input-autora');
   const post = container.querySelector('.texto-post');
