@@ -52,8 +52,8 @@ export default () => {
   `;
 
   loginContainer.innerHTML = loginTemplate;
-  const email = loginContainer.querySelector('#email-login');
-  const password = loginContainer.querySelector('#password-login');
+  const emailLogin = loginContainer.querySelector('#email-login');
+  const passwordLogin = loginContainer.querySelector('#password-login');
   const loginBtn = loginContainer.querySelector('#login-btn');
 
   function validateEmail(value) {
@@ -61,7 +61,7 @@ export default () => {
   }
 
   function isEmailValid(value) {
-    if (!email) {
+    if (!emailLogin) {
       loginContainer.querySelector('#no-email-error').style.display = 'block';
     } else {
       loginContainer.querySelector('#no-email-error').style.display = 'none';
@@ -75,7 +75,7 @@ export default () => {
   }
 
   function isPasswordValid(value) {
-    if (!password) {
+    if (!passwordLogin) {
       loginContainer.querySelector('#no-password-error').style.display = 'block';
     } else {
       loginContainer.querySelector('#no-password-error').style.display = 'none';
@@ -88,10 +88,11 @@ export default () => {
     }
   }
 
-  loginBtn.addEventListener('hashchange', () => {
-    if (!isEmailValid.value && !isPasswordValid.value) {
+  loginBtn.addEventListener('click', () => {
+    if (!isEmailValid(value) && !isPasswordValid(value)) {
       window.location.hash = '#feed';
     }
+    console.log(loginBtn);
   });
 
   return loginContainer;

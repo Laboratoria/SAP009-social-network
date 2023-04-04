@@ -18,6 +18,11 @@ export default () => {
   `;
 
   headerInitialContainer.innerHTML = headerInitialTemplate;
+  const headerInitialBtn = headerInitialContainer.querySelector('#header-btn');
+
+  headerInitialBtn.addEventListener('click', () => {
+    window.location.hash = '#login';
+  });
 
   return headerInitialContainer;
 };

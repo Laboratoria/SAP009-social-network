@@ -24,12 +24,18 @@ export default () => {
     <input type="senha" id="password-confirmation"/>
   </div>
   <div class="signup-button">
-    <button onclick="signUpButton()" id="signup-botao" type="button">LET'S GO!</button>
+    <button id="signup-botao" type="button">LET'S GO!</button>
   </div>
 </form>
 
 `;
   signupContainer.innerHTML = signupTemplate;
+
+  const email = signupContainer.querySelector('#email');
+  const name = signupContainer.querySelector('#name');
+  const username = signupContainer.querySelector('#username');
+  const password = signupContainer.querySelector('#password');
+  const passwordConfirmation = signupContainer.querySelector('#password-confirmation');
 
   return signupContainer;
 };
