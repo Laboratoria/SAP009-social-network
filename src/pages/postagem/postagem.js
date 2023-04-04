@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 // import { async } from 'regenerator-runtime';
 import { async } from 'regenerator-runtime';
-import { observador, sair } from '../../firebase/firebase';
+import { observador, sair, verificarIdUsuaria } from '../../firebase/firebase';
 import { paraPostar, postagens, mostraPostAutomaticamente, deletaPost, editaPost } from '../../firebase/firebase-storage';
 import { pegaDados } from '../../firebase/funcoes-acessorias';
 
@@ -45,17 +45,17 @@ const postagem = () => {
   });
 
   // MOSTRA NA TELA, APAGA E EDITA TODOS OS POSTS ARMAZENADOS NO FIREBASE
-
   const postagensAnteriores = criarPostagem.querySelector('#postagens-anteriores');
 
   const teste = async () => { // colocando o async aqui posso usar await em qualquer lugar abaixo
     return postagens().then((post) => {
       postagensAnteriores.innerHTML = pegaDados(post);
-      // console.log(post);
+
+      // VERIFICA QUAL USUÁRIA ESTA LOGADA PARA MANIPULAR O POST
+      verificarIdUsuaria();
 
       // DELETAR POSTS
       const btnDeletaPost = criarPostagem.querySelectorAll('.deleta-post');
-      console.log(btnDeletaPost);
 
       btnDeletaPost.forEach((btn) => {
         btn.addEventListener('click', (e) => {

@@ -63,8 +63,8 @@ export function pegaDados(querySnapshot) { // pega tudo o texto publicado pela u
     recebeDados += `
     <div> 
       <textarea name="novo-texto" class="texto-amigas" cols="30%" rows="4%">${publicacao.descricao}</textarea> <br>
-      <button class="deleta-post" data-id="${publicacao.id}" value="${publicacao.id}">Delete</button>        
-      <button class="edita-post" data-id="${publicacao.id}">Editar</button>        
+      <button class="deleta-post" data-id="${doc.id}">Delete</button>        
+      <button class="edita-post" data-id="${doc.id}">Editar</button>        
     </div>
     `;
   });

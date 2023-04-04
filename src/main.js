@@ -3,9 +3,7 @@
 import login from './pages/login/login.js';
 import cadastro from './pages/cadastro/cadastro.js';
 import postagem from './pages/postagem/postagem.js';
-import { postagens } from './firebase/firebase-storage.js';
-import { pegaDados } from './firebase/funcoes-acessorias.js';
-import { observador } from './firebase/firebase.js';
+import { observador, verificarIdUsuaria } from './firebase/firebase.js';
 
 const main = document.querySelector('#main');
 
@@ -30,27 +28,10 @@ const iniciaTela = () => {
 
 window.addEventListener('load', () => {
   observador();
+  console.log('main aqui');
 
   main.appendChild(postagem());
   // main.appendChild(login());
   iniciaTela();
   window.location.hash = '';
 });
-
-// window.addEventListener('DOMContentLoaded', () => {
-//   console.log('pegando');
-
-// const querySnapshot = mostraPostagens();
-
-// imprimePosts(querySnapshot); // esta na função acessoria fazendo o foreach
-
-// quandoDadosForemAdicionados((querySnapshot) => {
-//   let posts = '';
-
-//   querySnapshot.forEach((doc) => {
-//     const descricao = doc.data();
-//     posts += descricao;
-//   });
-//   // aqui tinha que ficar o innerHTML = posts
-// });
-// });

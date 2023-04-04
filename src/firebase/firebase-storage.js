@@ -4,7 +4,7 @@ import {
 } from 'firebase/firestore';
 import { app } from './firebase.config.js';
 
-const auth = getAuth(app);
+// const auth = getAuth(app);
 const db = getFirestore(app);
 
 export function paraPostar(descricao) {
@@ -26,16 +26,3 @@ export function deletaPost(id) {
 export function editaPost(id) {
   getDoc(doc(db, 'postagens', id));
 }
-
-// export const obterNomeUsuaria = async () => {
-//   const idUsuaria = await getDoc(doc(db, 'usuarias', auth.currentUser.uid));
-//   console.log(idUsuaria);
-//   const usuaria = {
-//     uid: auth.currentUser.uid,
-//     displayName: auth.currentUser.displayName,
-//     email: idUsuaria.data().email,
-//     nome: idUsuaria.data().nome,
-//   };
-//   console.log(usuaria);
-//   return usuaria;
-// };

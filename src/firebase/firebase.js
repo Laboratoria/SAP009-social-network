@@ -61,3 +61,20 @@ export function deletarUsuaria() {
     console.log(error);
   });
 }
+
+export function verificarIdUsuaria() {
+  const user = auth.currentUser;
+  console.log(user);
+
+  if (user !== null) {
+    // propriedade do obj já existentes pelo firebase
+    const displayName = user.displayName;
+    const email = user.email;
+    const uid = user.uid;
+    console.log(displayName);
+    console.log(email);
+    console.log(uid);
+  } else {
+    console.log('user nulo');
+  }
+}
