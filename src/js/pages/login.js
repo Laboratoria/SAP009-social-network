@@ -71,6 +71,7 @@ export default () => {
       noEmailError.style.display = 'none';
       invalidEmailError.style.display = 'block';
     } else {
+      noEmailError.style.display = 'none';
       invalidEmailError.style.display = 'none';
     }
 
@@ -80,6 +81,7 @@ export default () => {
       noPasswordError.style.display = 'none';
       shortPasswordError.style.display = 'block';
     } else {
+      noPasswordError.style.display = 'none';
       shortPasswordError.style.display = 'none';
     }
 
