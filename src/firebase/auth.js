@@ -18,6 +18,16 @@ export async function createUser(name, email, password) {
   });
 }
 
+
+export function createUser(name, email, password) {
+  return createUserWithEmailAndPassword(auth, email, password)
+    .then(() => {
+      updateProfile(auth.currentUser, {
+        displayName: name,
+      });
+    });
+}
+
 export const userLogin = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
 export const googleLogin = () => {
