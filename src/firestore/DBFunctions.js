@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 import {
-  getDocs, collection, addDoc, updateDoc, doc, deleteDoc,getDoc
+  getDocs, collection, addDoc, updateDoc, doc, deleteDoc,getDoc, query, where
 } from 'firebase/firestore';
 
 import { db } from './firestore.js';
@@ -67,6 +67,27 @@ export const getAllUsersPosts = async () => {
   return allPosts;
 };
 
+export const getLoggedUserLikes = async () => {
+  const userDocReference = doc(db, 'users', auth.currentUser.uid);
+  const userDocSnapshot = await getDoc(userDocReference);
+  const userLikes = userDocSnapshot.data().likes || [];
+  
+ 
+  const allPostsCollection = await getDocs(collection(db, 'posts'));
+  const allPosts = allPostsCollection.docs.map(post => {
+    const postData = post.data();
+    postData.id = post.id;
+    return postData;
+  });
+  
+  const likedPosts = allPosts.filter(post => userLikes.includes(post.id));
+  
+  console.log(likedPosts);
+
+  return likedPosts;
+  
+};
+
 export const likePosts = async (post, userId) => {
   const postDocReference = doc(db, 'posts', post.id);
   const getPostDoc = await getDoc(postDocReference);
@@ -77,7 +98,22 @@ export const likePosts = async (post, userId) => {
   } else {
     newLikes = [...likes, userId];
   }
-  await updateDoc(postDocReference, { likes: newLikes }); 
+  await updateDoc(postDocReference, { likes: newLikes });
+
+  const userDocReference = doc(db, 'users', userId);
+  const getUserDoc = await getDoc(userDocReference);
+  const userLikes = getUserDoc.data().likes || [];
+  let userNewLikes;
+  if (userLikes.includes(post.id)) {
+    userNewLikes = userLikes.filter((id) => id !== post.id);
+  } else {
+    userNewLikes = [...userLikes, post.id];
+  }
+  await updateDoc(userDocReference, { likes: userNewLikes });
+  
   const updatedPosts = await getAllUsersPosts();
   return updatedPosts;
 };
+
+
+

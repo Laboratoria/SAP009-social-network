@@ -1,7 +1,7 @@
 import { LogOut, auth } from '../../firebase/auth.js';
 import Header from '../../components/header.js';
 import {
-  deletePost, getAllUsersPosts, getLoggedUserAllPosts, likePosts,
+  deletePost, getAllUsersPosts, getLoggedUserAllPosts, likePosts, getLoggedUserLikes
 } from '../../firestore/DBFunctions';
 // import errorHandling from '../errorHandling.js';
 import { editPost, openCreateNewPostModal } from '../posts/posts.js';
@@ -65,6 +65,13 @@ export default () => {
             <p class="post-body">${post.textPost}</p>
             
             <div class="div-action-buttons">
+            <div id="div-like" class="div-like">
+              <button type='button' id='like-button-${post.id}' class='like-button'><span class="material-icons like">
+              sentiment_very_satisfied
+              </span></button>
+              
+              <label id='like-labl' class="like-label">${post.likes.length}</label>
+              </div>
               <button type='button' id='edit-button-${post.id}' class='edit-button none'>
                 <span class="material-icons edit" alt='ícone de editar'>
               edit_note
@@ -75,18 +82,12 @@ export default () => {
               delete_forever
                 </span>
               </button>
-              <div id="div-like" class="div-like">
-              <button type='button' id='like-button-${post.id}' class='like-button'><span class="material-icons like">
-              sentiment_very_satisfied
-              </span></button>
-              <label id='like-label' class="like-label">${post.likes}</label>
-              <label id='like-labl' class="like-label">${post.likes.length}</label>
-              </div>
+              
             </div>
         </article>`,
         )
         .join('');
-
+//<label id='like-label' class="like-label">${post.likes}</label> 
       const likeButtons = postsList.querySelectorAll('.like-button');
       const labelLikes = postsList.querySelectorAll('.like-label');
       likeButtons.forEach((likeButton) => {
@@ -147,7 +148,7 @@ export default () => {
   }
 
   let allUsersPosts = [];
-  getAllUsersPosts()
+  getLoggedUserLikes()
     .then((allPosts) => {
       allUsersPosts = allPosts;
       showAllPosts(allUsersPosts);
