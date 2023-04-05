@@ -1,3 +1,7 @@
+main{
+  height: 100%;
+}
+
 .cabecalho-feed{
   display:flex;
   justify-content: space-between;
@@ -116,4 +120,3 @@ textarea {
    border-radius: 10px;
    padding: 5px;
 }
-
