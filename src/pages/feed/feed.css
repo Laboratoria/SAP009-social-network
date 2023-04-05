@@ -163,17 +163,14 @@ ul, li {
       margin-bottom: 20px;
       width: 100%;
       margin: auto;
-      background-color: black;
+      background-color:#A1BAFC;
     }
   
     .logo-geral {
       font-size: 2rem;
     }
 
-   
-  
     .btn-sair {
       font-size: 1rem;
     }
   }
-  
