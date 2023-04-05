@@ -161,7 +161,7 @@
     "file-entry-cache": "^6.0.1",
     "fill-range": "^7.0.1",
     "find-up": "^5.0.0",
-    "firebase": "^9.18.0",
+    "firebase": "^9.19.1",
     "flat-cache": "^3.0.4",
     "flatted": "^3.2.7",
     "for-each": "^0.3.3",
@@ -471,7 +471,6 @@
     "yargs-parser": "^20.2.9",
     "yocto-queue": "^0.1.0"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/silvertapecoder/SAP009-social-network.git"
