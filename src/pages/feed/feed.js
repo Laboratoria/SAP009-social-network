@@ -39,7 +39,9 @@ export default () => {
       <textarea placeholder="Limite de 350 caracteres..." class="texto-post"></textarea>
     </section>
     <button type="submit" class="botao-publicar">Publicar</button>
-    <h2 class="ultimos-posts">Últimas publicações</h2>
+    <div class="texto-ultimos-post">
+      <h2 class="ultimos-posts">Últimas publicações</h2>
+    </div>
   </main>
 
   `;
@@ -48,14 +50,18 @@ export default () => {
   const exibirPostagem = () => {
     const localPost = container.querySelector('.ultimos-posts');
     pegarPost((post) => {
-      console.log(post);
       const containerPost = document.createElement('div');
       const templatePost = `
-    <div class = "nome-usuaria">
-      <img class="avatar" src="/imagens/user.png">
-      <h3>${auth.currentUser.displayName}</h3>
-      <p class="titulo-post"> ${post.titulo}</p>
+    <div class="nome-usuaria-post">
+      <img class="avatar-post" src="/imagens/user.png">
+      <h3>${post.nome}</h3>
     </div>  
+      <section class="publicacao">
+        <p class="titulo-post"> ${post.titulo}</p>
+        <p class="autora-post"> ${post.autora}</p>
+        <p class="texto-postagem"> ${post.post}</p>
+      </section> 
+    
    `;
       containerPost.innerHTML = templatePost;
       localPost.appendChild(containerPost);
@@ -68,7 +74,8 @@ export default () => {
   // const tagNivel = container.querySelector('input[type=radio] [name=nivel]:checked');
 
   const botaoPublicar = container.querySelector('.botao-publicar');
-  botaoPublicar.addEventListener('click', () => {
+  botaoPublicar.addEventListener('click', (e) => {
+    e.preventDefault();
     fazerPost(titulo.value, autora.value, post.value);
     console.log(titulo.value, autora.value, post.value);
   });
