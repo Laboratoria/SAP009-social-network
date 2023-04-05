@@ -6,9 +6,10 @@ export default () => {
       <button class="btn-sair">Sair</button>
   </header>
   <main>
-      <div> 
-      <img src='./img/notebook.png' alt='notebook' class='notebook'>
-      </div>
+    <div class="container-img-feed"> 
+       <picture class="div-img">
+          <img src="./img/mobile.png" alt="notebook" style="width:auto;">
+       </picture>
       <section class="feed-posts">
           <div class="postando">
               <textarea name="" id="txt-area" cols="70" rows="5">Escreva um post</textarea>
@@ -26,7 +27,7 @@ export default () => {
               </ul>
           </div>
       </section>
-
+      </div>
   </main>
     
   

@@ -7,17 +7,27 @@
     height: 5.0000rem;
 	padding: 1rem;
     font-family: 'Smooch Sans', sans-serif;
+    width: 100%;
 }
-
+   
 .feed-posts {
     background-color: #A1BAFC;
-    width: 600px;
     height: 300px;
+    width: 700px;
     border-radius: 10px;
     box-shadow: 4px 5px 4px rgba(0,0,0,0.25);
-    font-family: 'Roboto', sans-serif;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
 }
 
+picture {
+    width: 10px;
+}
 
 .btn-sair {
     background:  #F56F6F;
@@ -30,6 +40,8 @@
     font-family: 'Roboto', sans-serif;
     align-items: center;
     padding-left: 0.8rem;
+    font-size: 1rem;
+    font-weight: bold;
 }
 
 #txt-area {
@@ -37,6 +49,7 @@
     border-radius: 10px;
     padding: 15px;
     font-family: 'Roboto', sans-serif;
+    box-shadow: 2px 3px 2px rgba(0,0,0,0.25);
 }
 
 .btn-postar {
@@ -59,6 +72,108 @@
     border-radius: 10px;
     padding: 15px;
     font-family: 'Roboto', sans-serif;
+    box-shadow: 2px 3px 2px rgba(0,0,0,0.25);
 }
 
 
+.container-img-feed {
+    display: flex;
+    justify-content: space-between; /* isso adiciona espaço entre as duas divs */
+    align-items: center; /* isso alinha verticalmente as duas divs */
+    width: 90%;
+    max-width: 800px;
+    min-width: 320px;
+    margin: auto;
+  }
+
+.div-img {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+ul, li {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+}
+  
+
+@media (max-width: 600px) {
+    .container-img-feed {
+      display: flex;
+      flex-direction: column;
+    }
+
+    picture {
+    display: none;
+   }
+  
+    .div-img {
+      display: none;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        margin-bottom: 20px;
+        width: 100%;
+    }
+      
+    .logo-geral {
+        font-size: 1.5rem;
+    }
+      
+    .btn-sair {
+       font-size: 0.7rem;
+    }
+
+    .feed-posts {
+        background-color: #A1BAFC;
+        width: 90%;
+        border-radius: 10px;
+        box-shadow: 4px 5px 4px rgba(0,0,0,0.25);
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-top: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; 
+    }
+
+    #txt-area {
+       width: 100%;
+    }
+
+    #txt-area-postado {
+        width: 100%;
+    }
+
+  }
+
+  
+  @media only screen and (min-width: 700px) {
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      margin-bottom: 20px;
+      width: 100%;
+      margin: auto;
+      background-color: black;
+    }
+  
+    .logo-geral {
+      font-size: 2rem;
+    }
+
+   
+  
+    .btn-sair {
+      font-size: 1rem;
+    }
+  }
+  
