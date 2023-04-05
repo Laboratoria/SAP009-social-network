@@ -21,30 +21,22 @@ export const database = async (name, email) => {
   }
 };
 
-window.onload = function () {
-  db.collection('users').get().then((snapshot) => {
-    snapshot.forEach(function (child) {
-      const userNome = child.data().name;
-    });
-  });
-  };
-
-export const pegarPost = async (nome, titulo, autora, post) => {
-  const promessaDados = await getDocs(collection(db, 'posts'));
-  promessaDados.forEach((post) => {
-    console.log(post.id, " => ", post.data());
+export const pegarPost = async (mostrarPost) => {
+  const promessaPosts = await getDocs(collection(db, 'posts'));
+  promessaPosts.forEach((post) => {
+    mostrarPost(post.data());
+    console.log(post.id, ' => ', post.data());
   });
 };
 
 export const fazerPost = async (titulo, autora, post) => {
   const auth = getAuth(app);
-
   try {
     const docRef = await addDoc(collection(db, 'posts'), {
       nome: auth.currentUser.displayName,
-      titulo: titulo,
-      autora: autora,
-      post: post,
+      titulo,
+      autora,
+      post,
     });
     console.log('Document written with ID: ', docRef.id);
   } catch (e) {
