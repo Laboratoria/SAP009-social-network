@@ -1,28 +1,28 @@
-import login from "./pages/login/login.js";
-import register from "./pages/register/register.js";
-import feed from "./pages/feed/feed.js";
-import publish from "./pages/publish/publish.js";
+import login from './pages/login/login.js';
+import register from './pages/register/register.js';
+import feed from './pages/feed/feed.js';
+import publish from './pages/publish/publish.js';
 
-const main = document.querySelector("#root");
+const main = document.querySelector('#root');
 
 const init = () => {
   switch (window.location.hash) {
-    case "":
+    case '':
       main.appendChild(login());
       break;
-    case "#login":
+    case '#login':
       main.appendChild(login());
       break;
-    case "#register":
+    case '#register':
       main.appendChild(register());
       break;
-    case "#feed":
+    case '#feed':
       main.appendChild(feed());
       break;
-    case "#publish":
+    case '#publish':
       main.appendChild(publish());
       break;
-    case "#logout":
+    case '#logout':
       main.appendChild(login());
       break;
     default:
@@ -30,11 +30,11 @@ const init = () => {
   }
 };
 
-window.addEventListener("load", () => {
+window.addEventListener('load', () => {
   init();
 });
 
-window.addEventListener("hashchange", () => {
-  main.innerHTML = "";
+window.addEventListener('hashchange', () => {
+  main.innerHTML = '';
   init();
 });

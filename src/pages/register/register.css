@@ -1,0 +1,54 @@
+#register-content-desktop {
+  display: none;    
+  }
+      
+  .register-container {
+  width: 100vw;
+  height: 100vh;   
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  }
+      
+  #register-logo {
+  display: flex;  
+  width: 380px;
+  }
+  
+  .registration-description {
+  display: flex;
+  font-size: 25px;      
+  }
+  
+  .registration-content {
+  display: flex;
+  width: 450px;
+  height: 50px;
+  background: #DADADA;
+  border: 3px solid #000000;
+  border-radius: 10px; 
+  }
+  
+  #register-button {
+  display: flex;    
+  width: 250px;
+  height: 60px;
+  background: #EE8100;
+  border-radius: 10px;
+  text-decoration: none;
+  margin-left: 135px;
+  cursor: pointer;
+  }
+  
+  #account-creation {
+  display: flex;    
+  color: #ffffff;
+  align-items: center;    
+  }
+  
+  footer {
+  display: flex;  
+  font-size: 12px;
+  }

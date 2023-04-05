@@ -1,24 +1,75 @@
+import { userLogin, googleLogin } from '../../firebase/auth.js';
+import { errorMessages, validationLogin } from '../../firebase/error.js';
+
 export default () => {
-  const publishContainer = document.createElement("div");
+  const loginContainer = document.createElement('div');
 
-  const publishScreen = `
-  <section>
-  <img id='bumerangue-gif' src='assets/imagens/bumerangue.gif'>
-    <input id='publication' type='textArea' placeholder= 'O que deseja compartilhar?'> </input>
-    <a id='cancel-button' type='button'  href='#feed'> Cancelar </a>
-    <a id='publication-button'type='button'href='#feed'> Publicar </a>
-    <!--icones emojis reações-->
-    <h2> Entendendo as reações</h2>
-    <img id='reactions-gif' src='assets/imagens/reacoes.gif'>
-  </section>
-  
-      `;
+  const loginScreen = `
+  <section id='login-content-desktop'
 
-  publishContainer.innerHTML = publishScreen;
+    <section id='background-orange'>
+      <h2 id='welcome'> Bem vindo (a) !</h2>
+      <p id='quality'> 'A sua qualidade de vida é como um <span>bumerangue</span>, precisa ter movimento. Todas as ações que você lançar, voltarão em sua direção ainda mais fortes.' </p>
+      <p id='actions'> Melhore suas ações, pratique atividade física! </p>
+      </section>
 
-  //COLOCAR AQUI OS AS MANIPULAÇÕES DINAMICAS DO DOM, PEGANDO OS IDS DO HTML E/OU CSS
-  // COLOCAR OS EVENTOS DOS BOTOES DE ENTRAR, ENTRAR C/ GOOGLE E CADASTRAR
-  // CRIAR AS CONDICIONAIS SE O EMAIL E/OU SENHA ESTIVEREM ERRADOS, OU SE O EMAIL JÁ FOR OU NÃO CADASTRADO, ETC...v
+      <section class='login-container'>
+      <figure> <img src='assets/imagens/logo.png' id='login-logo' alt='Logotipo QA- Qualidade de ações'> </figure>
+      <input class='padding-inputs' id='email' type='email' placeholder= 'E-MAIL'> </input>
+      <input class='padding-inputs' id='password' type='password' placeholder= 'SENHA'> </input>
+      <p id='error'></p>
 
-  return publishContainer;
+      <button id= 'enter-button' type='button'> <h2 id='enter'> ENTRAR </h2> </button>
+
+      <p id= 'or-google'> <strong> OU </strong> </p>
+      <p class='login-google'> Faça login com sua conta </p> 
+      <button type='button'> <img src='assets/imagens/google.png' alt='Imagem google' id='image-google'> </button>
+      <p class='google-account'> Não tem uma conta? </p> 
+      <button type='button' id='register-link'> <h2 id='new-register'> CADASTRE-SE </h2>      </button>
+
+    <footer> <strong> © BOOMERANG </strong> </footer>
+
+    </section>
+    </section>
+  `;
+
+  loginContainer.innerHTML = loginScreen;
+
+  const buttonEnter = loginContainer.querySelector('#enter-button');
+  const buttonGoogle = loginContainer.querySelector('#image-google');
+  const inputEmail = loginContainer.querySelector('#email');
+  const inputPassword = loginContainer.querySelector('#password');
+  const errorMessage = loginContainer.querySelector('#error');
+  const signUp = loginContainer.querySelector('#new-register');
+
+  buttonEnter.addEventListener('click', (event) => {
+    event.preventDefault();
+    const validateLogin = validationLogin(inputEmail.value, inputPassword.value);
+    if (validateLogin === '') {
+      userLogin(inputEmail.value, inputPassword.value)
+        .then(() => {
+          window.location.hash = '#feed';
+        })
+        .catch((error) => {
+          errorMessage.innerHTML = errorMessages(error);
+        });
+    } else {
+      errorMessage.innerHTML = validateLogin;
+    }
+  });
+
+  buttonGoogle.addEventListener('click', (event) => {
+    event.preventDefault();
+    googleLogin()
+      .then(() => {
+        window.location.hash = '#feed';
+      })
+      .catch((error) => error);
+  });
+
+  signUp.addEventListener('click', () => {
+    window.location.hash = '#register';
+  });
+
+  return loginContainer;
 };
