@@ -14,7 +14,7 @@
 .bloco-cadastro {
   background-color: #fff;
   width: 35%;
-  height: 80vh;
+  height: 90vh;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.212);
   display: flex;
   justify-content: center;
@@ -103,5 +103,19 @@
   .bloco-cadastro {
     width: 90%;
     height: auto;
+  }
+  
+}
+
+/*laptop*/
+@media screen and (max-width: 1400px) {
+  .form-header {
+    margin-bottom: 0;
+  }
+  .button-singnup button {
+    margin-top: 0;
+  }
+  .bloco-cadastro {
+    height: 0 auto;
   }
 }
