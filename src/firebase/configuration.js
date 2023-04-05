@@ -1,4 +1,4 @@
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: 'AIzaSyBcJ5XDTRiMrUBYrEx2qgiH1B-igMqby0c',
   authDomain: 'student-2-student-93fb5.firebaseapp.com',
   projectId: 'student-2-student-93fb5',
@@ -8,4 +8,4 @@ const firebaseConfig = {
   measurementId: 'G-T0VL4N7FE9',
 };
   // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
