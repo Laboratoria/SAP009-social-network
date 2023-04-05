@@ -3,7 +3,6 @@ export default() =>{
     container.classList.add('container-login');
 
     const template = `
-        <img class="icon-1" src="image/Rectangle 86.png">
         <section class="bloco-login">
             <header>
                 <h3>Bem-vindo à C&H</h3>
@@ -19,7 +18,7 @@ export default() =>{
             </section>
 
             <form class="form-login">
-                <div>
+                <div>   
                     <label>E-mail</label>
                     <input type="text" name="username" id="username"
                     placeholder="Digite seu e-mail">
@@ -42,7 +41,6 @@ export default() =>{
                 </div>
             </form>
         </section>
-        <img class="icon-2" src="image/Rectangle 83.png">
     `;
 
     container.innerHTML = template;
