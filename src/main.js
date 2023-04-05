@@ -27,12 +27,15 @@ const iniciaTela = () => {
 };
 
 window.addEventListener('load', () => {
-  observador();
   console.log('main aqui');
 
-  main.appendChild(postagem());
-
-  // main.appendChild(login());
-  iniciaTela();
-  window.location.hash = '';
+  observador((user) => {
+    if (user) {
+      const uid = user.uid;
+      console.log(uid);
+      iniciaTela();
+    } else {
+      window.location.hash = ''; // poderia ser tbm main.appendChild(login());
+    }
+  });
 });

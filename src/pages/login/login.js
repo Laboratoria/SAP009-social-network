@@ -3,7 +3,7 @@
 /* eslint-disable max-len */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable indent */
-import { fazerLogin, loginComGoogle, observador } from '../../firebase/firebase';
+import { fazerLogin, loginComGoogle } from '../../firebase/firebase';
 import { exibeErros } from '../../firebase/funcoes-acessorias';
 
 const criarLogin = document.createElement('section');

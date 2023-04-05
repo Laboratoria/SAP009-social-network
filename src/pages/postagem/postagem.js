@@ -2,37 +2,36 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable no-unused-vars */
 // import { async } from 'regenerator-runtime';
-import { sair, nomeUsuaria } from '../../firebase/firebase';
 import {
-  paraPostar, postagens, mostraPostAutomaticamente, deletaPost, editaPost,
-} from '../../firebase/firebase-storage';
+  sair, nomeUsuaria, paraPostar, postagens, mostraPostAutomaticamente, deletaPost, editaPost, obterUsuaria,
+} from '../../firebase/firebase';
+
 import { pegaDados } from '../../firebase/funcoes-acessorias';
 
 const postagem = () => {
+  // MOSTRA A USUÁRIA
+  const usuariaLogada = obterUsuaria();
+  console.log(usuariaLogada);
   const header = document.querySelector('.header');
   const criarPostagem = document.createElement('div');
   const template = `
-  <section class="imagem-background desktop>
-    
-  </section>
-  
     <div class="botao">
-    <button class="btn-sair">Sair</button></div>
-
+      <button class="btn-sair">Sair</button>
+    </div>
+    
     <div class="postagem">
       <div class="mensagem-ola">
         <p class="paragrafo">Olá ${nomeUsuaria()}, seja bem-vinda! <br> O que você deseja compartilhar?</p>
       </div>
-      
-      <section class="novo-post">
-        <textarea name="novo-texto" id="novo-texto" class="digita-texto" cols="30%" rows="4%"></textarea>
-        <button class="btn-postar">Postar</button>
-      </section>
-  </div>
+    </div>
 
-  <div class="digita-texto" id="postagens-anteriores"></div>
+    <section class="novo-post">
+      <textarea name="novo-texto" id="novo-texto" cols="30%" rows="4%"></textarea>
+      <button class="btn-postar">Postar</button>
+    </section>
+
+    <div class="digita-texto" id='postagens-anteriores'></div>
 `;
-  // <img src="./imagens/enchendo_taça_de_vinho-removebg-preview.png" alt="garrafa de vinho com liquido derramando na taça">
 
   header.style.display = 'block';
 

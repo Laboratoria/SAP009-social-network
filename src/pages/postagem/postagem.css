@@ -11,11 +11,11 @@
   padding: 4px;
   text-align: center;
   align-items: center;
-  justify-content: center;
   margin-top: -5rem;
   background-color: #ebafac;
   border: transparent;
   border-radius: 5px;
+  justify-content: center;
 }
 
 .mensagem-ola {
@@ -36,23 +36,21 @@
   gap: 0.5rem;
 }
 .container{
-  display: flex;
-  flex-direction: column;
-  gap: 1rem; /* 5 */
-  justify-content: center;
-  align-items: center;
-  /* margin: auto; */
-  text-align: center;
+display: flex;
+flex-direction: column;
+gap: 1rem;
+justify-content: center;
+align-items: center;
+text-align: center;
 }
-
 #novo-texto{
-  width: 280px;
-  height: 140px;
-  text-align: center;
-  background-color: #facfce;
-  border: transparent;
-  gap: 1rem;
-  /* .postagem-anteriores */
+ width: 280px;
+ height: 110px;
+ border-radius: 5px;
+ text-align: center;
+ background-color: #facfce;
+ border: transparent;
+ gap: 1rem;
 }
 #digita-texto{
   text-align: center;
@@ -60,7 +58,7 @@
   align-items: center;
   margin-right: 2.2rem; /* alinha no meio */
 }
-.texto-amigas{
+/* .texto-amigas{
   width: 280px;
   height: 120px;
   text-align: center;
@@ -68,41 +66,74 @@
   border: transparent;
   margin:  1rem auto;
   padding: 1.5rem 1rem;
-  align-self: center;
-}
-
+ } */
 .btn-postar {
   display: flex;
   background-color: #ebafac;
   border: transparent;
   border-radius: 5px;
   padding: 5px;
-  margin-left: 12rem;
+  margin-left: 14rem;
+  margin-bottom: 10px;
 }
 
-.icones-inferiores,
-.perfil-usuaria {
-  display: block;
-}
-
-/* .container-textarea{
-  background-color:#ebafac;
+/* estlizando os elementos das postagens publicadas */
+.postagem-amigas{
   display: flex;
+  background-color: #facfce;
+  border-radius: 6px;
   flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-  width: 80%;
+  justify-content: center;
+  margin-bottom: 15px;
+  margin-left: 20px;
+  margin-right: 17px;
+  box-sizing: border-box;
 }
-.deleta-post, .edita-post, .curtir-post{
-  width: 50%;
-  margin: 0px;
+.postagem-data{
+  display: grid;
+  margin-top: -57px;
+  margin-left: 28px;
+  grid-template-columns: 29% 22%;
+}
+.perfil-usuaria, .data-postagem{
+  font-size: 15px;
+  font-weight: bold;
+  color: rgb(186, 48, 71);
+  /* justify-content: space-between; */
+  margin-top: 15px;
+}
+.texto-usuaria-postado{
+  width: 90%; /* tamanho do textarea em relação à div pai */
+  height: 90%; /* tamanho do textarea em relação à div pai */
+ padding: 10px; 
+ font-size: 14px;
+ box-sizing: border-box;
+ border-radius: 20px; 
+ border-style: none;
+ margin-top: 3px;
+ color: black;
+}
+.btn-curtir, .btn-editar, .btn-excluir, .numero-curtidas{
+  display: inline-block;
   background-color: transparent;
-  border: none;
-  display: inline;
+  border-style: none;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  color: rgb(186, 48, 71);
 }
-.deleta-post img, .curtir-post img{
-  width: 2.5rem;
+ .icone-usuaria{
+   width: 60px;
 }
-.edita-post{
-  width: 1.8rem;
-} */
+.postagens-anteriosres{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.postagens {
+width: 100%;
+height: 100px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
