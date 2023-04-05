@@ -16,9 +16,7 @@ export const createNewPost = async (title, textPost) => {
     dateTime: new Date().toLocaleTimeString([], {
       year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit',
     }),
-    updateDateTime: new Date().toLocaleTimeString([], {
-      year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit',
-    }),
+    updateDateTime: '',
     likes: [],
     timestamp: new Date().getTime(),
   };

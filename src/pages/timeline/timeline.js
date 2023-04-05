@@ -35,20 +35,11 @@ export default () => {
         <div id="modal-wrapper">
         <div id="modal-container"></div>
         </div>
-        <div class="div-logout-btn"> <button type="button" id="logout-button" class="button logout-btn" href="#login">Sair</button></div>
+       
       </div>    
   `;
 
   container.innerHTML += template;
-
-  const logoutButton = container.querySelector('#logout-button');
-
-  logoutButton.addEventListener('click', () => {
-    LogOut(user);
-    window.location.replace('#login');
-  });
-
-
 
   function showAllPosts(posts) {
     if (posts) {
@@ -58,16 +49,17 @@ export default () => {
       );
       console.log(postsByDateOrderAsc);
       const postsList = document.querySelector('#post-list');
+      
       postsList.innerHTML = postsByDateOrderAsc
         .map(
           (post) => `
         <article class="post-article">
           <div class="post-header">
             <div class="title">
-            <p class="post-display-name">${post.displayName} escreveu:</p>
+            <p class="post-display-name"><strong>${post.displayName}</strong> escreveu:</p>
               <h2>${post.title} </h2>
             </div>
-            <p class="dateTime">${post.dateTime}</p>
+            <p class="dateTime">Publicado em ${post.dateTime}${post.updateDateTime !== '' ? ` | Atualizado em ${post.updateDateTime}` : ''}</p>
           </div>
            
             <p class="post-body">${post.textPost}</p>
@@ -173,7 +165,7 @@ export default () => {
   lastPosts.addEventListener('click', () => {
     showAllPosts(allUsersPosts);
     lastPosts.classList.add('active');
-   userPosts.classList.remove('active');
+    userPosts.classList.remove('active');
   });
 
   userPosts.addEventListener('click', () => {

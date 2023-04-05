@@ -20,7 +20,7 @@ export default () => {
       
      
       <ul id="menu">
-      <li><a href="#">Home</a></li>
+      <li><a href="#timeline">Home</a></li>
       <li><a href="#">Sobre</a></li>
       <li><a id="menu-sair" href="#">Sair</a></li>
     </ul>
