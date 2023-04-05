@@ -1,6 +1,178 @@
+@font-face {
+  font-family: 'Roboto', sans-serif;
+  src: url(/assets/Roboto-Italic.99e4a850.ttf) format("truetype");
+}
+
+html,body {
+    display: flex;
+    justify-content: center;
+    background-color: #1e1e1e;
+    font-family: 'Roboto', sans-serif;
+   
+  }
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 34rem;
+  }
+
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+  
+    margin: 0 auto;
+    align-items: center;
+  }
+
+.div-logo {
+    padding-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+.logo-image {
+    width: 26rem;
+  }
+
+.logo-icon {
+    width: 7rem;
+    padding-top: 2rem;
+  }
+
+.form-login {
+    width: 32rem;
+  }
+
+.input {
+    height: 3.8rem;    
+    border-radius: 5rem;
+    border: none;
+    outline-color: #ff4f5a;
+    background-color: rgb(225, 223, 223);
+    width: 24rem;
+    margin-bottom: 1.9rem;
+    padding-left: 1.6rem;
+  }
+
+::placeholder {
+    color: #1e1e1e;   
+  }
+
+.button {
+    height: 3.8rem;
+    border-radius: 5rem;
+    border: none;
+    outline-color: #04ddcc;
+    background-color: #04ddcc;
+    color: #1e1e1e;
+    font-weight: bolder;
+    width: 24rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;   
+  
+     
+  }
+
+.button:hover {
+    opacity: 0.9;
+  }
+
+.button:active {
+    opacity: 0.8;
+  }
+
+.google-div {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+
+.google-div p {
+    color: #7d7d7d;
+    padding-bottom: 0.1rem;
+    margin: 0;
+  }
+
+.google-btn {
+    border-radius: 5rem;
+    width: 24rem;
+    height: 6.4rem;
+    background-color: #323232;
+    padding: 0.5rem;
+    transition: background-color 0.2s ease;
+  }
+
+.google-btn:hover{ 
+      background-color:#474747;      
+    }
+
+.google-logo {
+    width: 8rem;
+  }
+
+.register-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.8rem;
+    padding: 3rem 0 1rem 0;
+    
+  }
+
+.register-div p {
+    color: #fff;
+    padding-bottom: 0.5rem;
+  }
+
+#register-link {
+    color: #e29358;
+    font-weight: bold;
+    font-size: 1.4rem;
+    text-decoration: none;
+  }
+
+.error {
+    background-color: red;
+    color: white;
+    display: none;
+  }
+
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputs-div {
+    display: flex;
+    flex-direction: column;
+}
+
+#login-link {
+    color:#FF4F5A;
+    font-weight: bolder;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    color:#04ddcc;
+    padding-bottom: 1rem;
+}
+
+.label-error {
+    color: #FF4F5A ;
+}
+
 /* body{
   background-color: #eaeaea;
 } */
+
 .container-timeline {
   display: flex;
   align-items: center;
@@ -12,144 +184,29 @@
   
 }
 
-.container-menu {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  background-color: red;
-  justify-items: center;
-  align-content: center;
-  height: 100vh;
-  width: 100vw;;
-
-  
-}
 .header-site {
   background-color: #323232;
   display: flex;
-  justify-content: space-between;
+  height: 12vh;
   align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
   margin-bottom: 2rem;
   padding: 2rem;
   width: 100%;
-  height: 10vh;
 }
 
 .logo-image-timeline {
   padding-left: 1rem;
 }
 
-/* MENU HAMBURGUER ----------------------------------------*/
-#menuToggle
-{
-  display: block;
-  position: relative;
-  z-index: 1;  
-  -webkit-user-select: none;
-  user-select: none;
+.div-logo-timeline {
 }
 
-#menuToggle a
-{
-  text-decoration: none;
-  color: #FFFFFF;  
-  transition: color 0.3s ease;
+.menu {
+  padding-right: 1rem;
 }
 
-#menuToggle a:hover
-{
-  color: tomato;
-}
-
-
-#menuToggle input
-{
-  display: block;
-  width: 40px;
-  height: 32px;
-  position: absolute;
-  top: -7px;
-  left: -5px;  
-  cursor: pointer;  
-  opacity: 0; 
-  z-index: 2;   
-  -webkit-touch-callout: none;
-}
-
-#menuToggle span
-{
-  display: block;
-  width: 33px;
-  height: 4px;
-  margin-bottom: 5px;
-  position: relative;  
-  background: #FC5D9A;
-  border-radius: 3px;  
-  z-index: 1;  
-  transform-origin: 4px 0px;  
-  transition: transform ease-in .7s,              
-              opacity .5s ease;
-}
-
-#menuToggle span:first-child
-{
-  transform-origin: 0% 0%;
-}
-
-#menuToggle span:nth-last-child(2)
-{
-  transform-origin: 0% 100%;
-}
-
-#menuToggle input:checked ~ span
-{
-  opacity: 1;
-  transform: rotate(45deg) translate(-2px, -1px);
-  background: #FC5D9A;
-}
-
-#menuToggle input:checked ~ span:nth-last-child(3)
-{
-  opacity: 0;
-  transform: rotate(0deg) scale(0.2, 0.2);
-}
-
-#menuToggle input:checked ~ span:nth-last-child(2)
-{
-  transform: rotate(-45deg) translate(0, -1px);
-}
-
-#menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background:#04ddcc;
-  list-style-type: none;
-  -webkit-font-smoothing: antialiased;
-  transform-origin: top;
-  transform: translateY(-100%);
-  transition: transform ease-in-out 1s;
-  text-align:center;
-}
-
-#menuToggle input:checked ~ ul {
-  transform: translateY(0);
-  height: 100vh;
-  transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  padding-top: 10rem;
-}
-
-#menu li
-{
-  padding: 2rem 0;
-  font-size: 2rem;
-  color: #FFFFFF;
-  font-weight: 700;
-}
-
-/* GREETING TOP ---------------------------------------------*/
 h1 {
   text-align: center;
 }
@@ -186,7 +243,7 @@ p {
 
 .post-type {
   color: #FCA15D;
-  border: .2rem solid #FCA15D;
+  border: .3rem solid #FCA15D;
   border-radius: 5rem;
   padding: .8rem 2rem .8rem 2rem;
   font-size: 1.4rem;
@@ -195,13 +252,11 @@ p {
 
 }
 
-
-
-
 .post-type.active {
   background-color: #FCA15D;
   color: #FFFFFF;
 }
+
 .post-type:hover {
   background-color: #04ddcc ;
   border: 1px solid #04ddcc;
@@ -210,6 +265,7 @@ p {
   }
 
 /*TIMELINE ----------------------------------------------------------*/
+
 .form-wrapper-timeline {
   display: flex;
   flex-direction: column;
@@ -325,6 +381,7 @@ h2 {
   background-color: #EAEAEA;
 
 }
+
 .modal-content-delete{
   
   padding: .5rem;  
@@ -332,6 +389,7 @@ h2 {
   text-align: center;
   
 }
+
 .modal-close-button{
   display: flex;
   justify-content: right;
@@ -384,7 +442,6 @@ h2 {
   gap: .5rem;
 }
 
-
 .like-button {
   background-color: transparent;
   border: none;
@@ -397,27 +454,26 @@ h2 {
   padding-right: 1rem;
 }
 
-
 .material-icons.edit{ color: #04DDCC; }
-.material-icons.delete{ color: #ff4f5a; }
-.material-icons.like{ color: #ea4fff; }
-.material-icons.close{ color: #ff4f5a; }
-.material-icons.menu{ color: #FC5D9A; }
 
-  #close-delete-modal {
+.material-icons.delete{ color: #ff4f5a; }
+
+.material-icons.like{ color: #ea4fff; }
+
+.material-icons.close{ color: #ff4f5a; }
+
+#close-delete-modal {
   
     border-radius: 0.5rem; 
     border: none;
   }
 
-    
-  #close-delete-modal:active {
+#close-delete-modal:active {
     background-color: #04DDCC;
     color: #fff;
   }
 
-
-  /* MODAL ------------------------------------------------------------- */
+/* MODAL ------------------------------------------------------------- */
 
 #modal-wrapper {
   position: fixed;
@@ -438,6 +494,7 @@ h2 {
   opacity: 1;
   pointer-events: auto;
 }
+
 .modal-container {
   display: flex;
   flex-direction: row;
@@ -463,6 +520,7 @@ h2 {
 }
 
 /* MODAL CONTENT  ---------------------------------------*/
+
 .top-content {
   display: flex;
   flex-direction: row;
@@ -534,6 +592,7 @@ height: 87%;
   font-family: 'Roboto', sans-serif;
   font-size: 1.4rem;
 }
+
 .input-post-text:focus {
   outline: none;
   border: 1px solid #FC5D9A;
@@ -549,8 +608,6 @@ display: flex;
 flex-direction: column;
 text-align: right;
 }
-
-
 
 .post-button {
   height: 2.4rem;
@@ -594,7 +651,6 @@ text-align: right;
   color: #fff;
 }
 
-
 .div-logout-btn {
   display: flex;
   justify-content: center;
@@ -607,7 +663,6 @@ text-align: right;
   font-weight: bolder;
   width: 16.5rem;
 }
-
 
 /*edit posts */
 
@@ -659,4 +714,25 @@ text-align: right;
 .post-display-name{
   font-size: 1.2rem;
 }
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 62.5%;
+  }
+
+html,
+  body {
+    height: 100vh;
+    width: 100vw;
+   
+   
+  }
+
+ 
+
 

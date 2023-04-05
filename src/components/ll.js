@@ -1,5 +1,5 @@
 import { LogOut, auth } from '../../firebase/auth.js';
-import Header from '../../components/header.js';
+import createHeader from '../../components/header.js';
 import {
   deletePost, getAllUsersPosts, getLoggedUserAllPosts, likePosts,
 } from '../../firestore/DBFunctions';
@@ -15,12 +15,27 @@ export default () => {
   const container = document.createElement('div');
   
   container.classList.add('container-timeline');
-  const header = Header();
+  // const header = createHeader();
 
-  header.classList.add('header-site');
-  container.appendChild(header);
+  // header.classList.add('header-site');
+  // container.append(header);
 
   const template = ` 
+  <div class="div-logo-timeline">
+  <img src="./assets/logo-horizontal.png" id="ada-logo-timeline" class="logo-image-timeline" alt="logo da ConectAda">
+</div>
+<div class="menu">
+  <button class="menu-button" id="menu-button">
+  <span class="material-icons edit" id="menu-icon" alt='ícone de editar'>
+  edit_note
+    </span>
+  </button>
+</div>
+<ul class="nav-list">
+  <li><a href="#">Home</a></li>
+  <li><a href="#">About</a></li>
+  <li><a href="#">Contact</a></li>
+</ul>   
     <div class="form-wrapper-timeline">
        <div>        
           <p class="greeting">Olá,</p> 
@@ -47,8 +62,16 @@ export default () => {
     LogOut(user);
     window.location.replace('#login');
   });
-
-
+  const menuIcon = container.querySelector('#menu-icon');
+  const menuButton = container.querySelector('.menu-button');
+  menuButton.addEventListener('click', () => {
+    // toggle the open class on click
+    console.log('vcucucuc');
+    menuIcon.classList.toggle('open');
+    // show/hide the menu items
+    const navList = container.querySelector('.nav-list');
+    navList.classList.toggle('show');
+  });
 
   function showAllPosts(posts) {
     if (posts) {
