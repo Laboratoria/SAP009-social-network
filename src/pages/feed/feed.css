@@ -36,11 +36,10 @@ main{
   flex-direction: row;
   gap: 0.5rem;
   padding-top: 1rem;
-
 }
 
 .avatar{
-  height: 60%;
+  height: 1.6rem;
 }
 
 .criar-post{
@@ -63,27 +62,25 @@ main{
   flex-direction: column;
   align-items: center;    
 }
+
  .nivel-leitura{
   flex-direction: row;
-  border-bottom: 10px;
-  margin-inline: 20px;
+  border-bottom: 10px;  
  }
   
 .botoes-nivel{
   display: flex;
-  padding: 20px;
+  width: 333px;
+  padding: 5px;
   gap: 10px;
-  margin-top: 15px;
+  margin-top: 10px;
   margin-bottom: 10px;
   border-radius: 10px;
   background-color:#085560;
   border: 0.5px solid #FFFFFF;
-  height: 3.5vh;
 }
 
 .iniciante, .intermediaria, .avancada{    
-
-  
  /* 
    width: 2.5;
   color: #FFFFFF;
@@ -114,9 +111,44 @@ main{
 }
 
 textarea {
-   resize: none;
-   width: 350px;
-   height: 133px;
-   border-radius: 10px;
-   padding: 5px;
+  resize: none;
+  width: 333px;
+  height: 133px;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.texto-ultimos-post{
+  text-align: center;
+  margin-bottom: 5rem;
+  font-size: 0.8rem;
+}
+
+.avatar-post{
+  width: 1.5rem;
+  margin-bottom: 0.2rem;
+}
+
+.nome-usuaria-post{
+  display:flex;
+  font-size: 0.9rem;
+  padding: 0.2rem;
+  gap: 0.15rem;
+  margin-top: 1rem;
+}
+
+.dia-post{
+  display: flex;
+  margin-left: auto;
+}
+
+.publicacao{
+  background-color: #FFFFFF;
+  color: #000000;
+  font-size: 0.8rem;
+  width: 23rem;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  text-align: left;
+  margin-bottom: 2rem;
 }

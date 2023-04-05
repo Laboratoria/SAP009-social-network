@@ -22,16 +22,10 @@ body {
   height: 100%;
 }
 
-main{
-  height: 100vh;
-}
-
  .rodape{
   background-color: #085560;
   text-align: center;
   padding: 10px 0px 10px;
-  margin-top: 80px;
-  margin-bottom: 0;
   width: 100%;
   height: 5%;
 }
@@ -40,7 +34,6 @@ main{
   font-size: 12px;
   margin-top: 5px;
 }
-
 
 @media screen and (min-width: 800px) 
 {

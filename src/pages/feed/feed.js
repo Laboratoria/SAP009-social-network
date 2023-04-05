@@ -39,23 +39,31 @@ export default () => {
       <textarea placeholder="Limite de 350 caracteres..." class="texto-post"></textarea>
     </section>
     <button type="submit" class="botao-publicar">Publicar</button>
-    <h2 class="ultimos-posts">Últimas publicações</h2>
+    <div class="texto-ultimos-post">
+      <h2 class="ultimos-posts">Últimas publicações</h2>
+    </div>
   </main>
 
   `;
   container.innerHTML = template;
+  const date = new Date();
 
   const exibirPostagem = () => {
     const localPost = container.querySelector('.ultimos-posts');
     pegarPost((post) => {
-      console.log(post);
       const containerPost = document.createElement('div');
       const templatePost = `
-    <div class = "nome-usuaria">
-      <img class="avatar" src="/imagens/user.png">
-      <h3>${auth.currentUser.displayName}</h3>
-      <p class="titulo-post"> ${post.titulo}</p>
+    <div class="nome-usuaria-post">
+      <img class="avatar-post" src="/imagens/user.png">
+      <h3>${post.nome}</h3>
+      <p class="dia-post"> ${date.toLocaleDateString()}</p>
     </div>  
+      <section class="publicacao">
+        <p class="titulo-post">Título do Livro: ${post.titulo}</p>
+        <p class="autora-post">Nome da Autora: <span class="input-bold">${post.autora}</span></p>
+        <p class="texto-postagem">${post.post}</p>
+      </section> 
+  
    `;
       containerPost.innerHTML = templatePost;
       localPost.appendChild(containerPost);
@@ -63,12 +71,14 @@ export default () => {
   };
 
   const titulo = container.querySelector('.input-titulo');
+  // const dia = container.querySelector('.dia-post');
   const autora = container.querySelector('.input-autora');
   const post = container.querySelector('.texto-post');
   // const tagNivel = container.querySelector('input[type=radio] [name=nivel]:checked');
 
   const botaoPublicar = container.querySelector('.botao-publicar');
-  botaoPublicar.addEventListener('click', () => {
+  botaoPublicar.addEventListener('click', (e) => {
+    e.preventDefault();
     fazerPost(titulo.value, autora.value, post.value);
     console.log(titulo.value, autora.value, post.value);
   });
