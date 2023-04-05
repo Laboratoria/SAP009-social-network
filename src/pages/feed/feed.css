@@ -27,8 +27,16 @@
   background-color:#085560;
 }
 
+.nome-usuaria{
+  display:flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  padding-top: 1rem;
+
+}
+
 .avatar{
-  width: 15%;
+  height: 60%;
 }
 
 .criar-post{
@@ -55,13 +63,8 @@
   flex-direction: row;
   border-bottom: 10px;
   margin-inline: 20px;
-  /*
-  display: flex;
+ }
   
-  padding: 20px;
-  gap: 10px;
-*/
-} 
 .botoes-nivel{
   display: flex;
   padding: 20px;
