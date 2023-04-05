@@ -56,6 +56,7 @@ export default () => {
     <div class="nome-usuaria-post">
       <img class="avatar-post" src="/imagens/user.png">
       <h3>${post.nome}</h3>
+
       <p class="dia-post"> ${date.toLocaleDateString()}</p>
     </div>  
       <section class="publicacao">
@@ -64,6 +65,14 @@ export default () => {
         <p class="texto-postagem">${post.post}</p>
       </section> 
   
+
+    </div>  
+      <section class="publicacao">
+        <p class="titulo-post"> ${post.titulo}</p>
+        <p class="autora-post"> ${post.autora}</p>
+        <p class="texto-postagem"> ${post.post}</p>
+      </section> 
+
    `;
       containerPost.innerHTML = templatePost;
       localPost.appendChild(containerPost);
