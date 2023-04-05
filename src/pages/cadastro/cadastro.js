@@ -6,7 +6,7 @@ export default () => {
     <p><strong>Primeira vez por aqui?</strong></p>
     <p>Realize o seu cadastro, contribua e aproveite todas as possibilidades
     que esta rede pode oferecer!</p>
-    <img src='./img/img_cadastro.png' alt='img-cadastro' class='img-cadastro'
+    <img src='./img/img_cadastro.png' alt='img-cadastro' class='img-cadastro'>
     <form class='section-register'>
       <h2>CADASTRAR</h2>
       <input type='text' placeholder='Nome Completo' id='name'>
