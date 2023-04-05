@@ -1,5 +1,5 @@
 export default () => {
-  const feedContainer = document.createElement("div");
+  const feedContainer = document.createElement('div');
 
   const feedScreen = `
       <section>
@@ -17,9 +17,5 @@ export default () => {
     `;
 
   feedContainer.innerHTML = feedScreen;
-
-  //COLOCAR AQUI OS AS MANIPULAÇÕES DINAMICAS DO DOM, PEGANDO OS IDS DO HTML E/OU CSS
-  // COLOCAR OS EVENTOS DOS BOTOES DE ENTRAR, ENTRAR C/ GOOGLE E CADASTRAR
-  // CRIAR AS CONDICIONAIS SE O EMAIL E/OU SENHA ESTIVEREM ERRADOS, OU SE O EMAIL JÁ FOR OU NÃO CADASTRADO, ETC...v
   return feedContainer;
 };

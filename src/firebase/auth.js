@@ -6,36 +6,35 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
-} from 'firebase/auth';
-import { app } from './app.js';
+} from "firebase/auth";
+import { app } from "./app.js";
 
 export const auth = getAuth(app);
 
 export function createUser(name, email, password) {
-  return createUserWithEmailAndPassword(auth, email, password)
-//    .then(() => {
-//   updateProfile(auth.currentUser, {
-//     displayName: name,
-//   });
-//   confirmationMessage.innerHTML = 'CADASTRO REALIZADO COM SUCESSO! &#x2705 <br> Agora, faça o login para entrar!';
-//   window.location.hash = '#login';
-// })
-// .catch(() => {
-//   errorMessage.innerHTML = validationRegister;
-// });
+  return createUserWithEmailAndPassword(auth, email, password);
+  //    .then(() => {
+  //   updateProfile(auth.currentUser, {
+  //     displayName: name,
+  //   });
+  //   confirmationMessage.innerHTML = 'CADASTRO REALIZADO COM SUCESSO! &#x2705 <br> Agora, faça o login para entrar!';
+  //   window.location.hash = '#login';
+  // })
+  // .catch(() => {
+  //   errorMessage.innerHTML = validationRegister;
+  // });
 }
-
 
 export function createUser(name, email, password) {
-  return createUserWithEmailAndPassword(auth, email, password)
-    .then(() => {
-      updateProfile(auth.currentUser, {
-        displayName: name,
-      });
+  return createUserWithEmailAndPassword(auth, email, password).then(() => {
+    updateProfile(auth.currentUser, {
+      displayName: name,
     });
+  });
 }
 
-export const userLogin = (email, password) => signInWithEmailAndPassword(auth, email, password);
+export const userLogin = (email, password) =>
+  signInWithEmailAndPassword(auth, email, password);
 
 export const googleLogin = () => {
   const provider = new GoogleAuthProvider();
