@@ -1,4 +1,5 @@
-import authentication from src/firebase/authentication.js
+import { loginToFeed } from '../../firebase/authentication.js';
+
 
 export default () => {
   const loginContainer = document.createElement('section');
@@ -30,6 +31,7 @@ export default () => {
     </div>
     <div id="button-login">  
       <button type="submit" id="login-btn">LET'S GO!</button>
+      <div id="error-login"></div>
     </div>
     <div class="login-links">
       <a href="/#signup">Click here if you still don't have an account.</a>
@@ -41,6 +43,7 @@ export default () => {
     </div>
     <div class="btn-group">
       <button class="login-google">
+
         <span>
          <img id="logo-google" src="./img/google-37.png" alt="google">
          Sign in with Google
@@ -87,8 +90,14 @@ export default () => {
       shortPasswordError.style.display = 'none';
     }
 
-  /*     window.location.hash = '#feed'; */
+    loginToFeed(emailLogin, passwordLogin)
+      .then(() => {
+        window.location.hash = '#feed';
+      })
+      .catch((error) => {
+        errorLogin(error);
+        alert('We could not log you in');
+      });
   });
-
   return loginContainer;
 };
