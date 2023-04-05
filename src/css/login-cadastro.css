@@ -23,13 +23,6 @@
   align-items: center;
 }
 
-.box-01 {
-  flex: 1; 
-}
-
-.box-register {
-  flex: 2; 
-}
 
 .section-register{
   display:flex;
@@ -87,4 +80,8 @@ hr{
   border-color: #303A73;
   width: 400px;
   margin: 0 auto;
+}
+
+.img-cadastro {
+  height: 50vh;
 }

@@ -12,7 +12,7 @@ export default () => {
     <p><strong>Já está cadastrado? Faça o login!</strong></p>
     </div> 
     <div class='img-register'>
-    <img src='./img/img_cadastro.png' alt='img-cadastro' class='img-cadastro'>
+    <img src='./img/online.png' alt='img-cadastro' class='img-cadastro'>
     </div>
     </div>
     <section class='box-register'>
