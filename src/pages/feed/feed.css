@@ -80,13 +80,6 @@ main{
   border: 0.5px solid #FFFFFF;
 }
 
-.iniciante, .intermediaria, .avancada{    
- /* 
-   width: 2.5;
-  color: #FFFFFF;
-  font-size: 14px;
-  margin-top:auto;*/
-} 
 
 .post-publicacao{
   display: flex;
