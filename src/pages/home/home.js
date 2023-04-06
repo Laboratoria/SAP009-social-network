@@ -16,8 +16,12 @@ export default () => {
       </nav>
     </div>
   </header>
-    <section id="bordaCadastro">
-     
+    <section id="bordaCadastroHome">
+    <img id="logoTexto" src="imagens/logo1.png.png">
+    <img id="usuarioGato" src="imagens/usuarioGato.png">
+    <p id="nomeUsuario">Nome do Usuário</p>
+    <textArea id="areaTexto" rows = "15" cols = "15" name="textoPostagem">Compartilhe com seus amigos como você está se sentindo hoje!
+    </textArea> 
     </section>  
   `;
   container.innerHTML = template;

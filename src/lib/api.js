@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import 'firebase/firestore';
 import {
   getAuth, createUserWithEmailAndPassword, updateProfile,
@@ -11,11 +12,21 @@ const firebaseApp = initializeApp(firebaseConfig);
 
 //  função para criar cadastro
 export function cadastrar(name, email, senha) {
+  // console.log(firebaseApp);
   const auth = getAuth(firebaseApp);
-  createUserWithEmailAndPassword(auth, email, senha)
-    .then(() => updateProfile(auth.currentUser, {
-      displayName: name,
-    }));
+  // console.log('teste');
+  return createUserWithEmailAndPassword(auth, email, senha)
+    .then(() => {
+      updateProfile(auth.currentUser, {
+        displayName: name,
+      });
+      // console.log(auth.currentUser);
+      alert('Seu cadastro foi realizado com sucesso!');
+      window.location.hash = '#login';
+    })
+    .catch(() => {
+      alert('Falha ao cadastrar, por favor verifique os dados digitados');
+    });
 }
 
 // função de login do usuário

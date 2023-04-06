@@ -13,7 +13,6 @@ body{
 #bordaCadastro{
     margin-top: 20px;
     display: flex;
-    justify-content: center;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
@@ -29,19 +28,26 @@ body{
   color:#EB5F07;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.caixaTextos{
+  display: flex;
+  flex-direction: column;
 }
 .inputs{
   display: flex;
+  justify-content: center;
   border-radius:7px;
   padding: 10px;
   width: 100%;
   border-style: solid;
   border-color: #3A7B50;
-  margin-left: -10px;
 }
 
 .cadastrar{
-  background:  #EB5F07;
+    background:  #EB5F07;
     border-radius: 7px;
     border-style: none;
     margin: 15px;

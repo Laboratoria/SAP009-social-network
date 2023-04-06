@@ -13,13 +13,49 @@ nav{
     font-size: 15px;
 }
 
+#bordaCadastroHome{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: white;
+    width: 100%;
+    height: 450px;
+    padding-top: 30px;
+    align-items: center;
+    box-sizing: border-box;
+    position: absolute;
+    margin-left: -8px;
+}
+
+#areaTexto{
+    width: 80%;
+    height: 50px;
+    margin-top: 5px;
+    border-radius: 7px;
+    padding: 7px;
+    border-color: #5E6697;
+    border-style: solid;
+}
+
+#usuarioGato{
+    width: 100px;
+    border-radius: 150px;
+    height: 100px;
+}
+
+#logoTexto{
+    display: flex;
+    width: 300px;
+}
+
+#nomeUsuario{
+    color: #3A7B50;
+}
+
 .icones{
     background-color: #3A7B50;
     border-radius: 150px;
     padding: 8px;
 }
 
-/* .containerHome{
-    display:flex;
-    flex-wrap: wrap;
-} */
