@@ -46,8 +46,6 @@ export default () => {
 
   `;
   container.innerHTML = template;
-  const date = new Date();
-
   const exibirPostagem = () => {
     const localPost = container.querySelector('.ultimos-posts');
     pegarPost((post) => {
@@ -56,8 +54,9 @@ export default () => {
     <div class="nome-usuaria-post">
       <img class="avatar-post" src="/imagens/user.png">
       <h3>${post.nome}</h3>
-
+      <p class="dia-post"> ${post.date}</p>
       <p class="dia-post"> ${date.toLocaleDateString()}</p>
+
     </div>  
       <section class="publicacao">
         <p class="titulo-post">Título do Livro: ${post.titulo}</p>
@@ -79,16 +78,15 @@ export default () => {
     });
   };
 
+  
   const titulo = container.querySelector('.input-titulo');
-  // const dia = container.querySelector('.dia-post');
   const autora = container.querySelector('.input-autora');
   const post = container.querySelector('.texto-post');
   // const tagNivel = container.querySelector('input[type=radio] [name=nivel]:checked');
 
   const botaoPublicar = container.querySelector('.botao-publicar');
-  botaoPublicar.addEventListener('click', (e) => {
-    e.preventDefault();
-    fazerPost(titulo.value, autora.value, post.value);
+  botaoPublicar.addEventListener('click', async () => {
+    await fazerPost(titulo.value, autora.value, post.value);
     console.log(titulo.value, autora.value, post.value);
   });
 
@@ -101,6 +99,7 @@ export default () => {
       .catch(() => {
       });
   });
+
   exibirPostagem();
   return container;
 };
