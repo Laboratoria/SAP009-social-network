@@ -42,13 +42,19 @@ export default () => {
 
   container.innerHTML += template;
 
+  function showPostsByDateOrderAsc (mappedPosts){
+    const postsByDateOrderAsc = mappedPosts.sort(
+      (a, b) => b.timestamp - a.timestamp,
+    );
+    return postsByDateOrderAsc;
+  }
+
   function showAllPosts(posts) {
     if (posts) {
-      const mappedPosts = posts.map((post) => post);
-      const postsByDateOrderAsc = mappedPosts.sort(
-        (a, b) => b.timestamp - a.timestamp,
-      );
-      console.log(postsByDateOrderAsc);
+      const postsByDateOrderAsc = posts.map((post) => post);
+ showPostsByDateOrderAsc(postsByDateOrderAsc);
+
+     
       const postsList = document.querySelector('#post-list');
     
       postsList.innerHTML = postsByDateOrderAsc
@@ -66,6 +72,18 @@ export default () => {
             <p class="post-body">${post.textPost}</p>
             
             <div class="div-action-buttons">
+            <div id="div-like" class="div-like">
+            <button type='button' id='like-button-${post.id}' class='like-button'>
+            ${post.likes.length === 0 ? `<span class="material-icons like">
+            star_border
+            </span> ` : `<span class="material-icons like">
+            star
+            </span>`}
+             </button>
+            
+            <label id='like-labl' class="like-label">${post.likes.length}</label>
+            </div>
+            <div>
               <button type='button' id='edit-button-${post.id}' class='edit-button none'>
                 <span class="material-icons edit" alt='ícone de editar'>
               edit_note
@@ -76,18 +94,12 @@ export default () => {
               delete_forever
                 </span>
               </button>
-              <div id="div-like" class="div-like">
-              <button type='button' id='like-button-${post.id}' class='like-button'><span class="material-icons like">
-              sentiment_very_satisfied
-              </span></button>
-              <label id='like-label' class="like-label">${post.likes}</label>
-              <label id='like-labl' class="like-label">${post.likes.length}</label>
-              </div>
+          </div>
             </div>
         </article>`,
         )
         .join('');
-
+//<label id='like-label' class="like-label">${post.likes}</label> // PARA O SONHO DE MOSTRAR QUEM CURTIU
       const likeButtons = postsList.querySelectorAll('.like-button');
       const labelLikes = postsList.querySelectorAll('.like-label');
       likeButtons.forEach((likeButton) => {
@@ -173,10 +185,23 @@ export default () => {
 
   lastPosts.classList.add('active');
   lastPosts.addEventListener('click', () => {
-    showAllPosts(allUsersPosts);
-    lastPosts.classList.add('active');
-    userPosts.classList.remove('active');
-    userFavorites.classList.remove('active');
+    getAllUsersPosts()
+    .then((allPosts) => {
+      allUsersPosts = allPosts;
+      showAllPosts(allUsersPosts);
+      userPosts.classList.remove('active');
+      userFavorites.classList.remove('active');
+      lastPosts.classList.add('active');
+     
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+    .finally(() => {
+      console.log('Fim da solicitação inicial de posts de todos os users.');
+    });
+    
+   
   });
 
   userPosts.addEventListener('click', () => {
@@ -186,8 +211,9 @@ export default () => {
         allLoggedUserPosts = allPosts;
         console.log(allLoggedUserPosts);
         lastPosts.classList.remove('active');
-        userPosts.classList.add('active');
         userFavorites.classList.remove('active');
+        userPosts.classList.add('active');
+        
         showAllPosts(allLoggedUserPosts);
       })
       .catch((error) => {
@@ -203,10 +229,10 @@ export default () => {
       getLoggedUserLikes()
       .then((allPosts) => {
         userLikedPosts = allPosts;
-        console.log(userLikedPosts);
-        userFavorites.classList.add('active');
+        console.log(userLikedPosts);        
         lastPosts.classList.remove('active');
         userPosts.classList.remove('active');
+        userFavorites.classList.add('active');
         showAllPosts(userLikedPosts);
       })
       .catch((error) => {

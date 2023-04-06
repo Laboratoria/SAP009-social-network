@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 import {
-  getDocs, collection, addDoc, updateDoc, doc, deleteDoc, getDoc, query, where
+  getDocs, collection, addDoc, updateDoc, doc, deleteDoc,getDoc, query, where
 } from 'firebase/firestore';
 
 import { db } from './firestore.js';
@@ -69,8 +69,8 @@ export const getAllUsersPosts = async () => {
 
 export const getLoggedUserLikes = async () => {
   const userDocReference = doc(db, 'users', auth.currentUser.uid);
-  const userDocSnapshot = await getDoc(userDocReference);
-  const userLikes = userDocSnapshot.data().likes || [];
+  const userDoc = await getDoc(userDocReference);
+  const userLikes = userDoc.data().likes || [];
   const allPostsCollection = await getDocs(collection(db, 'posts'));
   const allPosts = allPostsCollection.docs.map((post) => {
     const postData = post.data();
