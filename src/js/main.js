@@ -1,10 +1,11 @@
 import headerInitial from './components/headers/header-initial.js';
 import headerLogin from './components/headers/header-login.js';
+import headerFeed from './components/headers/header-feed.js';
 import footer from './components/footer.js';
 import home from './pages/home.js';
 import login from './pages/login.js';
 import signUp from './pages/sign-up.js';
-import feed from './pages/feed.js';
+import feed from './pages/feed/feed.js';
 
 const main = document.querySelector('#root');
 const init = () => {
@@ -27,6 +28,7 @@ const init = () => {
         main.appendChild(footer());
         break;
       case '#feed':
+        main.appendChild(headerFeed());
         main.appendChild(feed());
         break;
       default:
