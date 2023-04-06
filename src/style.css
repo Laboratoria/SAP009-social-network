@@ -1,5 +1,10 @@
+@import url('./pages/login/login.css');
 @import url("./pages/login/login.css");
 @import url("pages/cadastro/cadastro.css");
+
+body{
+    background: rgb(254,222,255);
+}    
 
 * {
   padding: 0;
@@ -9,11 +14,6 @@
 
 body {
   background: rgb(254, 222, 255);
-  background: linear-gradient(
-    90deg,
-    rgba(254, 222, 255, 1) 50%,
-    rgba(255, 254, 249, 1) 50%
-  );
   width: 100%;
   height: 100vh;
   display: flex;
@@ -21,8 +21,20 @@ body {
   align-items: center;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (min-width: 1200px) {
   body {
-    background: rgb(254, 222, 255);
+    background: linear-gradient(
+    90deg,
+    rgba(254, 222, 255, 1) 50%,
+    rgba(255, 254, 249, 1) 50%
+  );
   }
 }
+
+/*
+<img class="icon-1" src="image/Rectangle 86.png">
+<img class="icon-2" src="image/Rectangle 83.png">
+background: linear-gradient(90deg, rgba(254,222,255,1) 50%, rgba(255,254,249,1) 50%);
+
+*/
+

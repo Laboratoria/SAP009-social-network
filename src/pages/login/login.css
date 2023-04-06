@@ -1,35 +1,89 @@
-* {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    box-sizing: border-box;
-}
-
-.icon-1,
-.icon-2 {
-    padding: 4%;
-    width: 30%;
+.icon {
+  padding: 4%;
+  width: 30%;
 }
 
 .container-login {
-    border-radius: 20px;
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .bloco-login {
-    background-color: #fff;
-    padding: 2rem; 
-    max-width: 350px;
-    min-height: 70vh;
-    border-radius: 20px;
-    box-shadow: 0 4px 4px 0 #00000025;      
+    width: 35%;
+  background-color: #fff;
+  height: 90vh;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.212);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 3rem;
+  border-radius: 20px;
 }
 
+.input-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1rem 0;
+  flex-direction: column;
+  width: 17rem;
+}
 
+.input-box {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.1rem;
+}
 
+.input-box input {
+  margin: 0.6rem 0;
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 1px 1px 6px #0000001c;
+}
 
+.label-password {
+  display: flex;
+  justify-content: flex-end;
+}
 
+.welcome-title {
+  display: flex;
+  flex-direction: column;
+  padding: 0rem 1rem;
+}
+
+.button-enter button {
+  width: 100%;
+  margin-top: 2.2rem;
+  border: none;
+  background-color: #aee2ff;
+  padding: 0.62rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.other {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.btnGoogle button {
+  width: 100%;
+  margin-top: 1rem;
+  border: none;
+  background-color: #aee2ff;
+  padding: 0.62rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logo-google {
+  margin-right: 10px;
+}
