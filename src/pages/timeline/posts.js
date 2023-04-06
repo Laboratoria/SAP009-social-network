@@ -15,18 +15,15 @@ export default () => {
           <input required type="text" id="anime" class="input">
           <label for="anime">Nome do anime</label>
         </div>
-  
         <div class="single-input">
           <input required type="text" id="episodes" class="input">
           <label for="episodes">Quantidade de episódios</label>
         </div>
-
         <textarea style="resize: none" id="post-area" placeholder="Fale sobre o anime aqui" class="input"></textarea>
         <button id="post-button">Publicar</button>
       </form>
     </div>
   </section>
-
   `;
 
   modal.style.display = 'block';

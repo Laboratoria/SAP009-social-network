@@ -42,18 +42,10 @@ export function validateRegister(name, email, password) {
   if (email === false) {
     return 'Insira um e-mail válido (ex: nome@email.com)';
   }
-  /*
-  if (email !== emailRepeat) {
-    return 'Os e-mails não correspondem';
-  }
-*/
+
   if (password === '') {
     return 'Digite sua senha';
   }
-  /*
-  if (password !== passwordRepeat) {
-    return 'As senhas não correspondem';
-  }
-*/
+
   return '';
 }

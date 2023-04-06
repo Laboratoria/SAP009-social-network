@@ -10,7 +10,7 @@ import { app } from './app';
 
 const db = getFirestore(app);
 
-export const createPost = (anime, episodes, description) => { //eslint-disable-line
+export const createPost = (anime, episodes, description) => {
   const auth = getAppAuth();
   return addDoc(collection(db, 'posts'), {
     name: auth.currentUser.displayName,

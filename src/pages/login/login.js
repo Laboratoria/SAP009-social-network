@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
 import { signIn, loginGoogle } from '../../firebase/auth.js';
 import { errorsFirebase, validateLogin } from '../../validations';
 import { redirect } from '../../redirect.js';
@@ -46,7 +44,6 @@ export default () => {
 
   containerLogin.innerHTML = templateLogin;
 
-  // Adiciona um listener de evento no botão de login
   const loginButton = containerLogin.querySelector('#login-button');
   const emailInput = containerLogin.querySelector('#email');
   const passwordInput = containerLogin.querySelector('#password');
@@ -76,12 +73,10 @@ export default () => {
   loginWithGoogle.addEventListener('click', () => {
     loginGoogle()
       .then(() => {
-        console.log('google: Usuário autenticado!');
         redirect('#timeline');
         window.location.reload();
       })
       .catch((error) => {
-        console.log('google: Usuário não autenticado.');
         redirect('#login');
       });
   });

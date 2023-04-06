@@ -95,26 +95,7 @@ nav > a {
     margin-top: 1rem;   
     text-align: center; 
 }
-/*
-.btn-edit {
-    margin: 0 auto;
-    background-color: #00B154;
-    color: #fff;
-    width: 5rem;
-    display: inline-block;
-    text-align: center; 
-    margin-bottom: 0.3rem;
-    font-weight: bold;
-}
 
-.btn-edit:hover {
-    opacity: 0.9;
-}
-
-.btn-edit:active {
-    opacity: 0.8;
-}
-*/
 @media screen and (min-width: 900px) {
     .black-bg {
         background-color: rgba(0, 9, 14, 0.9);
