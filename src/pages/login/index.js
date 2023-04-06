@@ -2,7 +2,8 @@ export default () => {
   const container = document.createElement("div");
   container.classList.add("container-login");
 
-    const template = `
+  const template = `
+        <img class="icon" src="image/Rectangle 86.png" alt="imagem de menina mexendo no cabelo">
         <section class="bloco-login">
             <header class="form-header">
                 <div class="welcome-title">
@@ -15,39 +16,39 @@ export default () => {
                 </div>
             </header>
 
-            <section class="btnGoogle">
-                <a href="#">
-                <img class="logo-google" src="image/google.png" alt="imagem com logo do Google">
-                Entre com a sua conta Google
-                </a>
-            </section>
-
             <form class="form-login">
                 <div class="input-group">
                     <div class="input-box">   
                         <label>E-mail</label>
                         <input type="text" name="username" id="username"
-                        placeholder="Digite seu e-mail">
+                        placeholder=" seu e-mail">
                     </div>
 
                     <div class="input-box">
                         <label>Senha</label>
                         <input type="password" name="password" id="password"
-                        placeholder="Digite sua senha">
+                        placeholder="senha">
                     </div>
 
-                    <div class="label-password">
-                        <label>Esqueci a senha</label>
+                    <div class="forgot-password">
+                        <a href="#">Esqueci a Senha</a>
                     </div>
 
-                    <div>
-                        <button>
-                            <a>Entrar</a>
-                        </button>
+                    <div class="button-enter">
+                        <button id="enter" type="button" class="enter" style="text-decoration:none">Entrar</button>
+                    </div>
+
+                    <div class"option"
+                        <span class="other">ou</span>
+                    </div>
+
+                    <div class="btnGoogle">                        
+                        <button id="google" type="button" class="google" style="text-decoration:none"><img class="logo-google" src="image/google.png" alt="imagem com logo do Google">Entrar com Google</button>
                     </div>
                 </div>
             </form>
         </section>
+        <img class="icon" src="image/Rectangle 83.png" alt="imagem de menina mexendo no cabelo">
     `;
 
   container.innerHTML = template;
