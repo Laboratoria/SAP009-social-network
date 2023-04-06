@@ -30,7 +30,7 @@ export default () => {
 
                 <div class="input-box">
                     <label for="number">Número</label>
-                    <input type="tel" name="number" id="number" placeholder="(xx) xxxx-xxxx" required>
+                    <input type="tel" name="number" id="number" pattern="[0-9()-]+" placeholder="(xx) xxxx-xxxx" required>
                 </div>
 
                 <div class="input-box">

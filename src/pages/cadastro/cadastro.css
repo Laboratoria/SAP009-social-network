@@ -104,4 +104,18 @@
     width: 90%;
     height: auto;
   }
+  
+}
+
+/*laptop*/
+@media screen and (max-width: 1400px) {
+  .form-header {
+    margin-bottom: 0;
+  }
+  .button-singnup button {
+    margin-top: 0;
+  }
+  .bloco-cadastro {
+    height: 0 auto;
+  }
 }
