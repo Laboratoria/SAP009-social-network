@@ -3,50 +3,52 @@ export default () => {
   container.classList.add("container-login");
 
   const template = `
-    <img class="icon-1" src="image/Rectangle 86.png">
+        <img class="icon" src="image/Rectangle 86.png" alt="imagem de menina mexendo no cabelo">
         <section class="bloco-login">
-            <div class="form-header">
-                <div class="title">
-                    <span>Bem Vindo a C&H</span>
-                    <h1>Não tem conta?</h1>
+            <header class="form-header">
+                <div class="welcome-title">
+                    <h3>Bem-vindo à C&H</h3>
+                    <h1>Login</h1>
                 </div>
-
-                <div class="button-cadastro">
-                    <a href= "#cadastro" type="button" style="text-decoration:none">Cadastre-se</a>
+                <div class="welcome-title">
+                    <label>Não tem conta?</label>
+                    <a href="#cadastro" type="button" style="text-decoration:none">Cadastre-se</a>
                 </div>
-            </div>
-
-            <div class="google">
-                <button id="btn-gmail" type="button" class="btn-google">
-                    <img class="google-icon" src="image/google.png" alt="imagem com logo do Google">
-                    Continue com google
-                </button>
-            </div>
+            </header>
 
             <form class="form-login">
-                <div class="input-group"
-                    <div class="input-box">
-                        <label for="email">E-mail</label>
-                        <input type="email" name="email" id="email" placeholder="seu endereço de e-mail" required>
+                <div class="input-group">
+                    <div class="input-box">   
+                        <label>E-mail</label>
+                        <input type="text" name="username" id="username"
+                        placeholder=" seu e-mail">
                     </div>
 
                     <div class="input-box">
-                        <label for="password">E-mail</label>
-                        <input type="password" name="password" id="password" placeholder="senha" required>
+                        <label>Senha</label>
+                        <input type="password" name="password" id="password"
+                        placeholder="senha">
                     </div>
 
-                    <div class="forgotpassword-container">
-                        <a href="#" class="forgotpassword">Esqueceu sua senha?</a>
-                    </div>   
-
-                    <div>
-                        <button>
-                            <a>Entrar</a>
-                        </button>
+                    <div class="forgot-password">
+                        <a href="#">Esqueci a Senha</a>
                     </div>
+
+                    <div class="button-enter">
+                        <button id="enter" type="button" class="enter" style="text-decoration:none">Entrar</button>
+                    </div>
+
+                    <div class"option"
+                        <span class="other">ou</span>
+                    </div>
+
+                    <div class="btnGoogle">                        
+                        <button id="google" type="button" class="google" style="text-decoration:none"><img class="logo-google" src="image/google.png" alt="imagem com logo do Google">Entrar com Google</button>
+                    </div>
+                </div>
             </form>
         </section>
-    <img class="icon-2" src="image/Rectangle 83.png">
+        <img class="icon" src="image/Rectangle 83.png" alt="imagem de menina mexendo no cabelo">
     `;
 
   container.innerHTML = template;
