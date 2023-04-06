@@ -49,7 +49,9 @@ export default () => {
   container.innerHTML = template;
   const exibirPostagem = () => {
     const localPost = container.querySelector('.ultimos-posts');
-    document.querySelector('.ultimos-posts').innerHTML = '';
+    if (document.querySelector('.ultimos-posts')) {
+      document.querySelector('.ultimos-posts').innerHTML = '';
+    }
     pegarPost((post) => {
       const containerPost = document.createElement('div');
       const templatePost = `
