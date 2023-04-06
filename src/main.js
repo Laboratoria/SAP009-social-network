@@ -33,9 +33,15 @@ window.addEventListener('load', () => {
     if (user) {
       const uid = user.uid;
       console.log(uid);
-      iniciaTela();
+      // iniciaTela();
+      main.appendChild(postagem());
     } else {
-      window.location.hash = ''; // poderia ser tbm main.appendChild(login());
+      console.log('não logado');
     }
   });
+  // iniciaTela();
+  // main.appendChild(postagem());
+  // main.appendChild(login());
+
+  window.location.hash = '';
 });

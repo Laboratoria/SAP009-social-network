@@ -9,9 +9,6 @@ import {
 import { pegaDados } from '../../firebase/funcoes-acessorias';
 
 const postagem = () => {
-  // MOSTRA A USUÁRIA
-  const usuariaLogada = obterUsuaria();
-  console.log(usuariaLogada);
   const header = document.querySelector('.header');
   const criarPostagem = document.createElement('div');
   const template = `
@@ -37,6 +34,10 @@ const postagem = () => {
 
   criarPostagem.innerHTML = template;
 
+  // MOSTRA A USUÁRIA
+  // const usuariaLogada = obterUsuaria();
+  // console.log(usuariaLogada);
+
   // DESLOGAR
   const btnSair = criarPostagem.querySelector('.btn-sair');
   btnSair.addEventListener('click', () => {
@@ -52,7 +53,7 @@ const postagem = () => {
       postagensAnteriores.innerHTML = pegaDados(post);
 
       // DELETAR POSTS
-      const btnDeletaPost = criarPostagem.querySelectorAll('.deleta-post');
+      const btnDeletaPost = criarPostagem.querySelectorAll('.btn-excluir');
 
       btnDeletaPost.forEach((btn) => {
         btn.addEventListener('click', (e) => {
@@ -64,12 +65,16 @@ const postagem = () => {
       });
 
       // EDITAR POSTS
-      const btnEditaPost = criarPostagem.querySelectorAll('.edita-post');
+      const textoEdicao = criarPostagem.querySelector('#novo-texto');
+      const btnEditaPost = criarPostagem.querySelectorAll('.btn-editar');
+
       btnEditaPost.forEach((btn) => {
         btn.addEventListener('click', async (e) => {
           const edit = await editaPost(e.target.dataset.id);
           console.log('editar clicado');
-          console.log(edit.data());
+          const editarTexto = edit.data();
+
+          textoEdicao.value = editarTexto.descricao;
         });
       });
     });

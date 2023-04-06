@@ -67,61 +67,36 @@ export function pegaDados(querySnapshot) { // pega tudo o texto publicado pela u
   let recebeDados = '';
   querySnapshot.forEach((doc) => {
     const publicacao = doc.data();
-    recebeDados += `<div class="postagem-amigas">
-    <img src="../imagens/icone-usuaria.png" class="icone-usuaria">
+    recebeDados += ` 
+    <div class="postagem-amigas">
+      <img src="../imagens/icone-usuaria.png" class="icone-usuaria">
     
-    <section class="postagem-data">
-    <p class="perfil-usuaria">${nomeUsuaria()}</p>
-    <p class="data-postagem">${mostraData()}</p>
-    </section>
+      <section class="postagem-data">
+        <p class="perfil-usuaria">${nomeUsuaria()}</p>
+        <p class="data-postagem">${mostraData()}</p>
+      </section>
 
-    <div class="postagens">
-    <textarea class="texto-usuaria-postado" id="texto-usuaria-postado" style='resize:none' disabled>${publicacao.texto}</textarea>
-    <span class="icones-inferiores">
-    <p class="numero-curtidas">Curtir</p>
-    <button class="btn-curtir">
-    <i class="fa-solid fa-heart" id="btn-curtir" type="button"></i>
-    </button>
-    <button class="btn-excluir">
-    <i class="fa-solid fa-trash-can" id="btn-excluir-${doc.id}" type="button" value = '${doc.id}'></i>
-    </button>
-    <button class="btn-editar">
-    <i class="fa-sharp fa-solid fa-pen-to-square" id="btn-editar" type="button"></i>
-    </button>
-    </span>
-    
+      <div class="postagens">
+        <textarea class="texto-usuaria-postado" id="texto-usuaria-postado" style='resize:none' disabled>${publicacao.texto}</textarea>
+
+        <span class="icones-inferiores">
+          <p class="numero-curtidas">Curtir</p>
+
+          <button class="btn-curtir">
+            <i class="fa-solid fa-heart" id="btn-curtir" type="button"></i>
+          </button>
+
+          <button class="btn-excluir">
+            <i class="fa-solid fa-trash-can" type="button" data-id="${doc.id}"></i>
+          </button>
+
+          <button class="btn-editar">
+            <i class="fa-sharp fa-solid fa-pen-to-square" class="btn-editar" type="button" data-id="${doc.id}"></i>
+          </button>
+        </span>
+      </div>
     </div>
-    
-    </div>
-    `;
-
-    // `
-    // <div class="postagem-amigas"> 
-    //   <img src="../imagens/icone-usuaria.png" class="icone-usuaria">
-    
-    //   <section class="postagem-data">
-    //     <p class="perfil-usuaria">${nomeUsuaria()}</p>
-    //     <p class="data-postagem">${mostraData()}</p>
-    //   </section>
-    
-    //   <div class="postagens"> 
-    //     <textarea name="novo-texto" id="texto-usuaria-postado" class="texto-usuaria-postado" style="resize:none" disabled>${publicacao.descricao}</textarea> 
-    //     <span class="icones-inferiores">
-    //       <p class="numero-curtidas">Nº</p>
-    //       <button class="btn-curtir"><i class="fa-solid fa-heart" id="btn-curtir" type="button" data-id="${doc.id}"></i></button>  
-
-    //       <button class="btn-excluir"><i class="fa-solid fa-trash-can" type="button" data-id="${doc.id}"></i></button>        
-
-    //       <button class="btn-editar" data-id="${doc.id}"><i class="fa-sharp fa-solid fa-pen-to-square" id="btn-editar" type="button"></i></button>       
-    //       <br>
-    //     </span>
-    //   </div>  
-    // </div>
-    // `;
-
-    // <img src="./imagens/coraçãocurtimuito-removebg-preview (1).png" alt="icone três corações">
-    // <img src="./imagens/lixeira2-removebg-preview.png" alt="icone lixeira">
-    // <img src="./imagens/editar2-removebg-preview.png" alt="icone lixeira">
+  `;
   });
 
   return recebeDados;

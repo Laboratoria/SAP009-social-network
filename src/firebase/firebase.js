@@ -51,7 +51,7 @@ export function sair() {
 
 export function nomeUsuaria() {
   const user = auth.currentUser;
-  console.log(user);
+  // console.log(user);
   if (user == null){
     return 'Usuária';
   }
@@ -59,7 +59,8 @@ export function nomeUsuaria() {
 }
 
 export const obterUsuaria = () => {
-  const usuarioRef = getDoc(doc(db, 'usuarias', auth.currentUser.uid));
+  const uid = auth.currentUser.user.uid;
+  const usuarioRef = getDoc(doc(db, 'usuarias', uid));
   const usuaria = {
     uid: auth.currentUser.uid,
     displayName: auth.currentUser.displayName,
