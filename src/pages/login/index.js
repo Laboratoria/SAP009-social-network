@@ -1,3 +1,5 @@
+import { loginEmailPassword, signInGoogle } from "../firebase/auth";
+
 export default () => {
   const container = document.createElement("div");
   container.classList.add("container-login");
@@ -52,6 +54,8 @@ export default () => {
     `;
 
   container.innerHTML = template;
+
+  const email = document.querySelector("#username").value;
 
   return container;
 };
