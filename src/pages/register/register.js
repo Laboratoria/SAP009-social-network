@@ -50,12 +50,10 @@ export default () => {
     if (registerAccount === '') {
       createUserWithEmail(name, email, password)
         .then(() => {
-          console.log('Usuário cadastrado - register');
           redirect('#timeline');
           window.location.reload();
         })
         .catch((error) => {
-          console.log('Erro de cadastro');
           const errorFirebase = errorsFirebase(error.code);
           errorMessage.innerHTML = errorFirebase;
         });

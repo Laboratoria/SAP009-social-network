@@ -4,6 +4,10 @@ Gosta de animes e gostaria de receber algumas recomendações só com as informa
 
 🔗 [Clique aqui para acessar](https://social-network-5b156.web.app/)
 
+| E-mail  | Senha |
+| ------------- | ------------- |
+| naruto@email.com  | senha123  |
+
 ## Índice
 
 * [1. Resumo do projeto](#1-resumo-do-projeto)
