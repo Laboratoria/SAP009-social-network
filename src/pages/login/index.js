@@ -4,14 +4,18 @@ export default() =>{
 
     const template = `
         <section class="bloco-login">
-            <header>
-                <h3>Bem-vindo à C&H</h3>
-                <label>Não tem conta?</label>
-                <a href="#cadastro" type="button" style="text-decoration:none">Cadastre-se</a>
-                <h1>Login</h1>
+            <header class="form-header">
+                <div class="welcome-title">
+                    <h3>Bem-vindo à C&H</h3>
+                    <h1>Login</h1>
+                </div>
+                <div class="welcome-title">
+                    <label>Não tem conta?</label>
+                    <a href="#cadastro" type="button" style="text-decoration:none">Cadastre-se</a>
+                </div>
             </header>
 
-            <section>
+            <section class="btnGoogle">
                 <a href="#">
                 <img class="logo-google" src="image/google.png" alt="imagem com logo do Google">
                 Entre com a sua conta Google
@@ -19,26 +23,28 @@ export default() =>{
             </section>
 
             <form class="form-login">
-                <div>   
-                    <label>E-mail</label>
-                    <input type="text" name="username" id="username"
-                    placeholder="Digite seu e-mail">
-                </div>
+                <div class="input-group">
+                    <div class="input-box">   
+                        <label>E-mail</label>
+                        <input type="text" name="username" id="username"
+                        placeholder="Digite seu e-mail">
+                    </div>
 
-                <div>
-                    <label>Senha</label>
-                    <input type="password" name="password" id="password"
-                    placeholder="Digite sua senha">
-                </div>
+                    <div class="input-box">
+                        <label>Senha</label>
+                        <input type="password" name="password" id="password"
+                        placeholder="Digite sua senha">
+                    </div>
 
-                <div>
-                    <label>Esqueci a senha</label>
-                </div>
+                    <div class="label-password">
+                        <label>Esqueci a senha</label>
+                    </div>
 
-                <div>
-                    <button>
-                        <a>Entrar</a>
-                    </button>
+                    <div>
+                        <button>
+                            <a>Entrar</a>
+                        </button>
+                    </div>
                 </div>
             </form>
         </section>
