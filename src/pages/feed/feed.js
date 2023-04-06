@@ -39,8 +39,9 @@ export default () => {
       <textarea placeholder="Limite de 350 caracteres..." class="texto-post"></textarea>
     </section>
     <button type="submit" class="botao-publicar">Publicar</button>
-    <div class="texto-ultimos-post">
-      <h2 class="ultimos-posts">Últimas publicações</h2>
+    <div>
+      <h3 class="texto-ultimos-posts">Últimas publicações</h3>
+      <div class="ultimos-posts"></div>
     </div>
   </main>
 
@@ -48,6 +49,7 @@ export default () => {
   container.innerHTML = template;
   const exibirPostagem = () => {
     const localPost = container.querySelector('.ultimos-posts');
+    document.querySelector('.ultimos-posts').innerHTML = '';
     pegarPost((post) => {
       const containerPost = document.createElement('div');
       const templatePost = `
@@ -55,22 +57,13 @@ export default () => {
       <img class="avatar-post" src="/imagens/user.png">
       <h3>${post.nome}</h3>
       <p class="dia-post"> ${post.date}</p>
-      <p class="dia-post"> ${date.toLocaleDateString()}</p>
-
     </div>  
       <section class="publicacao">
         <p class="titulo-post">Título do Livro: ${post.titulo}</p>
-        <p class="autora-post">Nome da Autora: <span class="input-bold">${post.autora}</span></p>
+        <p class="autora-post">Nome da Autora: <strong>${post.autora}</strong></p>
         <p class="texto-postagem">${post.post}</p>
       </section> 
-  
-
     </div>  
-      <section class="publicacao">
-        <p class="titulo-post"> ${post.titulo}</p>
-        <p class="autora-post"> ${post.autora}</p>
-        <p class="texto-postagem"> ${post.post}</p>
-      </section> 
 
    `;
       containerPost.innerHTML = templatePost;
@@ -78,7 +71,6 @@ export default () => {
     });
   };
 
-  
   const titulo = container.querySelector('.input-titulo');
   const autora = container.querySelector('.input-autora');
   const post = container.querySelector('.texto-post');
