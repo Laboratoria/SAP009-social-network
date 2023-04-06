@@ -1,3 +1,5 @@
+import { listarPosts } from '../../lib/api';
+
 export default () => {
   const container = document.createElement('div');
   const template = ` 
@@ -22,9 +24,19 @@ export default () => {
     <p id="nomeUsuario">Nome do Usuário</p>
     <textArea id="areaTexto" rows = "15" cols = "15" name="textoPostagem">Compartilhe com seus amigos como você está se sentindo hoje!
     </textArea> 
+
+    <button id='posts'>Posts</button>
     </section>  
   `;
   container.innerHTML = template;
+  const btnPost = container.querySelector('#posts');
+  btnPost.addEventListener('click', (e) => {
+    e.preventDefault();
+    listarPosts();
+    function postar() {
+
+    }
+  });
   //  getAuth user
   return container;
 };
