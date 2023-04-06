@@ -1,7 +1,7 @@
-import { LogOut, auth } from '../../firebase/auth.js';
+import { auth } from '../../firebase/auth.js';
 import Header from '../../components/header.js';
 import {
-  deletePost, getAllUsersPosts, getLoggedUserAllPosts, likePosts, getLoggedUserLikes
+  deletePost, getAllUsersPosts, getLoggedUserAllPosts, getLoggedUserLikes, likePosts
 } from '../../firestore/DBFunctions';
 // import errorHandling from '../errorHandling.js';
 import { editPost, openCreateNewPostModal } from '../posts/posts.js';
@@ -30,6 +30,7 @@ export default () => {
           </div>
           <div class="div-post-type"><button type="button" id="last-posts" class="post-type">Últimos posts</button>
           <button type="button" id="user-posts" class="post-type">Meus posts</button>
+          <button type="button" id="user-favorites" class="post-type">Meus favoritos</button>
           </div>
           ${ListPost()} 
         <div id="modal-wrapper">
@@ -49,7 +50,7 @@ export default () => {
       );
       console.log(postsByDateOrderAsc);
       const postsList = document.querySelector('#post-list');
-      
+    
       postsList.innerHTML = postsByDateOrderAsc
         .map(
           (post) => `
@@ -65,13 +66,6 @@ export default () => {
             <p class="post-body">${post.textPost}</p>
             
             <div class="div-action-buttons">
-            <div id="div-like" class="div-like">
-              <button type='button' id='like-button-${post.id}' class='like-button'><span class="material-icons like">
-              sentiment_very_satisfied
-              </span></button>
-              
-              <label id='like-labl' class="like-label">${post.likes.length}</label>
-              </div>
               <button type='button' id='edit-button-${post.id}' class='edit-button none'>
                 <span class="material-icons edit" alt='ícone de editar'>
               edit_note
@@ -82,12 +76,18 @@ export default () => {
               delete_forever
                 </span>
               </button>
-              
+              <div id="div-like" class="div-like">
+              <button type='button' id='like-button-${post.id}' class='like-button'><span class="material-icons like">
+              sentiment_very_satisfied
+              </span></button>
+              <label id='like-label' class="like-label">${post.likes}</label>
+              <label id='like-labl' class="like-label">${post.likes.length}</label>
+              </div>
             </div>
         </article>`,
         )
         .join('');
-//<label id='like-label' class="like-label">${post.likes}</label> 
+
       const likeButtons = postsList.querySelectorAll('.like-button');
       const labelLikes = postsList.querySelectorAll('.like-label');
       likeButtons.forEach((likeButton) => {
@@ -102,9 +102,14 @@ export default () => {
           showAllPosts(newLikes);
         });
       });
+
       const newPostButton = container.querySelector('#btn-new-post');
       const editButtons = postsList.querySelectorAll('.edit-button');
       const deleteButtons = postsList.querySelectorAll('.delete-button');
+
+      // const userPosts = container.querySelector('#user-posts');
+      // const lastPosts = container.querySelector('#last-posts');
+      // const userFavorites = container.querySelector('#user-favorites');
 
       newPostButton.addEventListener('click', openCreateNewPostModal);
 
@@ -144,11 +149,13 @@ export default () => {
             });
         });
       });
+
+
     }
   }
 
   let allUsersPosts = [];
-  getLoggedUserLikes()
+  getAllUsersPosts()
     .then((allPosts) => {
       allUsersPosts = allPosts;
       showAllPosts(allUsersPosts);
@@ -162,11 +169,14 @@ export default () => {
 
   const userPosts = container.querySelector('#user-posts');
   const lastPosts = container.querySelector('#last-posts');
+  const userFavorites = container.querySelector('#user-favorites');
+
   lastPosts.classList.add('active');
   lastPosts.addEventListener('click', () => {
     showAllPosts(allUsersPosts);
     lastPosts.classList.add('active');
     userPosts.classList.remove('active');
+    userFavorites.classList.remove('active');
   });
 
   userPosts.addEventListener('click', () => {
@@ -177,6 +187,7 @@ export default () => {
         console.log(allLoggedUserPosts);
         lastPosts.classList.remove('active');
         userPosts.classList.add('active');
+        userFavorites.classList.remove('active');
         showAllPosts(allLoggedUserPosts);
       })
       .catch((error) => {
@@ -185,7 +196,25 @@ export default () => {
       .finally(() => {
         console.log('Fim da solicitação inicial de posts de todos os users.');
       });
-    console.log('gaga');
+  });
+
+  userFavorites.addEventListener('click', () => {
+    let userLikedPosts = [];
+      getLoggedUserLikes()
+      .then((allPosts) => {
+        userLikedPosts = allPosts;
+        console.log(userLikedPosts);
+        userFavorites.classList.add('active');
+        lastPosts.classList.remove('active');
+        userPosts.classList.remove('active');
+        showAllPosts(userLikedPosts);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        console.log('Fim da solicitação inicial de posts FAVORITOS do user LOGADO.');
+      });
   });
 
   function openDeleteModal() {
