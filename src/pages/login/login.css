@@ -202,8 +202,7 @@ h1 {
         align-items: center;
         justify-content: center
     }
-    
-    .texto-entrada>p {
+    .txt-error    .texto-entrada>p {
         color: var(--vermelho);
         font-size: 1em;
         font-weight: 600;

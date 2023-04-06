@@ -1,11 +1,14 @@
-import { valuesLogin, googleLogin } from '../../servicesFirebase/firebaseAuth';
+import {
+  valuesLogin,
+  googleLogin,
+} from '../../servicesFirebase/firebaseAuth';
 
 export default () => {
   const container = document.createElement('div');
 
   const template = `
     <div class="body-login">
-    <div class="coluna-1">  
+    <div class="coluna-1">
         <picture class="imagem-login"></picture>
     </div>
     <div class="coluna-2">
@@ -24,7 +27,7 @@ export default () => {
                <div class="iconmail">
                   <input id="txtEmail" type="email" name="email" class="input-login" placeholder="Email" required <img class="mail" src="./img/icone-login.png">
                </div>
-               <div class="iconmail">  
+               <div class="iconmail">
                   <input id="txtPassword" type="password" name="password" class="input-senha" placeholder="Senha" minlength="8" required>
                </div>
               </div>
@@ -48,7 +51,7 @@ export default () => {
     </section>
       </section>
     </div>
-  </div>  
+  </div>
     `;
 
   container.innerHTML = template;
