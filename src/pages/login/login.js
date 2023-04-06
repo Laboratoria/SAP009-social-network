@@ -1,4 +1,4 @@
-import { loginUser, loginGoogle } from '../api';
+import { loginUser, loginGoogle } from '../../lib/api.js';
 
 export default () => {
   const container = document.createElement('div');

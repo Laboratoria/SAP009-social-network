@@ -1,4 +1,4 @@
-import { cadastrar } from '../api';
+import { cadastrar } from '../../lib/api';
 
 export default () => {
   const container = document.createElement('div');
