@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-// import login from './pages/login/login.js';
-=======
 import login from './pages/login/login.js';
 import home from './pages/home/home.js';
->>>>>>> d3ff23eb5062d8defccc27160278426b60617ede
 import cadastro from './pages/cadastro/cadastro.js';
 
 const main = document.querySelector('#root');

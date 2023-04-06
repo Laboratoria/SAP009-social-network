@@ -1,6 +1,5 @@
-// // aqui exportaras las funciones que necesites
+// // // aqui exportaras las funciones que necesites
 
-export const myFunction = () => {
-  
-  console.log('Hola mundo!');
-};
+// export const myFunction = () =>
+//   console.log('Hola mundo!');
+// };
