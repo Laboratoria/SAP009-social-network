@@ -25,13 +25,11 @@ describe('criarUsuario e atualizar o perfil', () => {
     createUserWithEmailAndPassword.mockResolvedValueOnce(mockUserCredential);
     const email = 'teste@teste.com';
     const senha = '12345678';
-    const displayName = 'usernameteste';
-    await createUser(email, senha, displayName);
+    await createUser(email, senha);
 
     expect(createUserWithEmailAndPassword).toHaveBeenCalledTimes(1);
-expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(getAuth(), email, senha, displayName);
     expect(updateProfile).toHaveBeenCalledTimes(1);
-expect(updateProfile).toHaveBeenCalledWith(mockUserCredential.user, { email, senha, displayName });
+    expect(updateProfile).toHaveBeenCalledWith(mockUserCredential.user, { email, senha });
   });
 });
 

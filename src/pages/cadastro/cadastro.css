@@ -130,6 +130,13 @@
     display: none;
  }
 
+ .txt-error {
+    color: var(--vermelho);
+    font-size: 1em;
+    font-weight: 600;
+    text-align: center;
+ }
+
  @media  (min-width:900px){
     
     .body-login {

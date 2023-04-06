@@ -2,27 +2,29 @@ import { initializeApp } from 'firebase/app';
 
 import {
   getFirestore,
+  collection,
+  addDoc,
 } from 'firebase/firestore';
 
 import {
   firebaseConfig,
-  collection,
-  addDoc,
 } from './firebaseconfig';
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-//função newPost - postagem, nome do usuário, data
+// Armazenar conta do usuário//
 
-try {
-  const docRef = await addDoc(collection(db, "users"), {
-    first: "Ada",
-    last: "Lovelace",
-    born: 1815
+export async function userData(nome, email) {
+  await addDoc(collection(db, 'users'), {
+    displayName: nome,
+    email,
   });
-  console.log("Document written with ID: ", docRef.id);
-} catch (e) {
-  console.error("Error adding document: ", e);
 }
 
+// criar post//
+export async function newPost(post) {
+  await addDoc(collection(db, 'post'), {
+    textArea: post,
+  });
+}

@@ -3,24 +3,22 @@ import {
   auth,
 } from '../../servicesFirebase/firebaseAuth';
 
+import { newPost } from '../../servicesFirebase/fireStore';
+
 export default () => {
   const container = document.createElement('div');
-
-  const template = `     
+  const template = `
   <div class="home-feed">
-  <header>   
+  <header>
       <section class="container-feed">
           <div class="header">
-              
                 <a href="/#feed"><img class="logo-feed" src="./img/logo-sem-escrita.png"></a>
                 <div class='feed display'>
 
                 <p class='username' id='username' >Olá, ${auth.currentUser.displayName}</p>
 
                 </div>
-              
-
-              <div class="menu-section">
+                  <div class="menu-section">
                   <button class="menu-toggle">
                    <div class="one"></div>
                    <div class="two"></div>
@@ -39,12 +37,11 @@ export default () => {
                       </div>
                   </nav>
 
-              </div> 
-          </div> 
-          
-      </section>
+              </div>
+          </div>
+        </section>
   </header>
-     
+
   <section class="post">
       <section class="botoes">
           <button id="btn-modal" class="btn-publicar">Criar Post</button>
@@ -54,10 +51,11 @@ export default () => {
   <dialog class="dialog" id="bloco">
   <div class="modal">
     <button id="fechar" class="fechar">X</button>
-    <textarea class="input-post"></textarea>
-    <button class="btn-postar">Publicar</button>
+    <textarea id="input-post" class="input-post"></textarea>
+    <button id="btn-postar" class="btn-postar">Publicar</button>
   </div>
   </dialog>
+  <div id="postagem"></div>
 
 </div>
       `;
@@ -68,6 +66,9 @@ export default () => {
   const modal = container.querySelector('#bloco');
   const fecharModal = container.querySelector('#fechar');
   const menu = container.querySelector('.menu-section');
+  const btnPostar = container.querySelector('#btn-postar');
+  const post = container.querySelector('#input-post').value;
+  const postagem = container.querySelector('#postagem');
   btnMenu.addEventListener('click', () => {
     menu.classList.toggle('show');
   });
@@ -88,5 +89,9 @@ export default () => {
   const user = auth.currentUser.displayName;
   if (user === '');
 
+  btnPostar.addEventListener('click', () => {
+    postagem.innerHTML = `${newPost(post)}`;
+    modal.close();
+  });
   return container;
 };

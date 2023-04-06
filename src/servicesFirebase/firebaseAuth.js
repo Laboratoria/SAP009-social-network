@@ -14,10 +14,11 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
 /* Cadastrar usuários */
-export const createUser = (email, senha, inputNome, displayName) => createUserWithEmailAndPassword(auth, email, senha, inputNome,  displayName)
+export const createUser = (email, senha, displayName) => createUserWithEmailAndPassword(auth, email, senha)
   .then((userCredential) => {
     const user = userCredential.user;
-    return updateProfile(user, { email, senha, displayName });
+    updateProfile(user, { email, senha, displayName });
+    console.log(auth.currentUser);
   });
 
 /* Fazer Login do usuário */
