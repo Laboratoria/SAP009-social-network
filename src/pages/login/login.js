@@ -1,3 +1,5 @@
+import { fazerLogin } from '../../firebase/firebase';
+
 export default () => {
   const container = document.createElement('div');
   const template = `
@@ -37,8 +39,18 @@ export default () => {
 
   container.innerHTML = template;
   const btnLogin = container.querySelector('.btn-feed');
-  btnLogin.addEventListener('click', () => {
-    window.location.hash = '#cadastro';
+  btnLogin.addEventListener('click', (event) => {
+    event.preventDefault();
+    const nome = container.querySelector('#name');
+    const senha = container.querySelector('#password');
+    fazerLogin(nome.value, senha.value)
+      .then(() => {
+        window.location.hash = '#feed';
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
   });
   return container;
 };
