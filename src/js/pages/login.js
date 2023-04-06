@@ -1,4 +1,4 @@
-import authentication from src/firebase/authentication.js
+/* import authentication from './firebase/authentication.js' */
 
 export default () => {
   const loginContainer = document.createElement('section');
