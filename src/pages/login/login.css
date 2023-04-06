@@ -12,6 +12,7 @@
 }
 
 .bloco-login {
+    width: 35%;
   background-color: #fff;
   height: 90vh;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.212);
@@ -19,7 +20,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 1rem;
+  padding: 3rem;
   border-radius: 20px;
 }
 
