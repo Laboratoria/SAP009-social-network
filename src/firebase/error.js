@@ -1,18 +1,20 @@
-export function errorLogin (error) {
-    switch (error) {
-        case 'auth/invalid-email':
-            return 'O e-mail inserido é inválido';
-        case 'auth/user-not-found':
-            return 'O e-mail inserido não está cadastrado';
-        case 'auth/email-already-in-use':
-            return 'O e-mail inserido já possui cadastro';
-        case 'auth/weak-password':
-            return 'A senha deve ter 6 ou mais caracteres';
-        case 'auth/invalid-password':
-            return 'Senha Inválida';
-        case 'auth/wrong-password':
-            return 'Senha Incorreta';
-        default: 
-            return '';
-    }
+export function errorLogin(error) {
+  switch (error.code) {
+    case 'auth/invalid-email':
+      return 'Invalid email.';
+    case 'auth/user-not-found':
+      return 'You do not have an account. Please, register.';
+    case 'auth/email-already-in-use':
+      return 'You already have an account.';
+    case 'auth/weak-password':
+      return 'The password must have at least 6 digits.';
+    case 'auth/invalid-password':
+      return 'The password is invalid.';
+    case 'auth/wrong-password':
+      return 'The password is incorrect.';
+    default:
+      console.log('Something went wrong. Please, contact us.');
+      break;
+  }
+  return errorLogin;
 }

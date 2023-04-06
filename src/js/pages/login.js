@@ -1,4 +1,5 @@
-import authentication from src/firebase/authentication.js
+import { loginToFeed } from '../../firebase/authentication.js';
+import { errorLogin } from '../../firebase/error.js';
 
 export default () => {
   const loginContainer = document.createElement('section');
@@ -24,12 +25,11 @@ export default () => {
       <div class="error" id="short-password-error">Your password is too short.</div>
     </div>
     <div class="login-links">
-      <button type="button" id="recover-password">
-        <a href="">Click here if you forgot your password.</a>
-      </button>
+      <a href="">Click here if you forgot your password.</a>
     </div>
     <div id="button-login">  
       <button type="submit" id="login-btn">LET'S GO!</button>
+      <div id="error-login"></div>
     </div>
     <div class="login-links">
       <a href="/#signup">Click here if you still don't have an account.</a>
@@ -41,6 +41,7 @@ export default () => {
     </div>
     <div class="btn-group">
       <button class="login-google">
+
         <span>
          <img id="logo-google" src="./img/google-37.png" alt="google">
          Sign in with Google
@@ -52,7 +53,7 @@ export default () => {
   `;
 
   loginContainer.innerHTML = loginTemplate;
-  /*   const formLogin = loginContainer.querySelector('.form-login'); */
+  const formLogin = loginContainer.querySelector('.form-login');
   const emailLogin = loginContainer.querySelector('#email-login');
   const passwordLogin = loginContainer.querySelector('#password-login');
   const loginBtn = loginContainer.querySelector('#login-btn');
@@ -60,6 +61,7 @@ export default () => {
   const invalidEmailError = loginContainer.querySelector('#invalid-email-error');
   const noPasswordError = loginContainer.querySelector('#no-password-error');
   const shortPasswordError = loginContainer.querySelector('#short-password-error');
+  const errorLoginMessage = loginContainer.querySelector('#error-login');
 
   function validateEmail(value) {
     return /\S+@\S+\.\S+/.test(value);
@@ -67,6 +69,7 @@ export default () => {
 
   loginBtn.addEventListener('click', (e) => {
     e.preventDefault();
+    formLogin.reportValidity();
     if (emailLogin.value === '') {
       noEmailError.style.display = 'block';
     } else if (!validateEmail(emailLogin.value)) {
@@ -87,9 +90,15 @@ export default () => {
       shortPasswordError.style.display = 'none';
     }
 
-  /*     window.location.hash = '#feed'; */
+    loginToFeed(emailLogin, passwordLogin)
+      .then(() => {
+        window.location.hash = '#feed';
+      })
+      .catch((error) => {
+        console.log('error');
+        errorLogin(error);
+        errorLoginMessage.innerHTML = 'error is here.';
+      });
   });
-
   return loginContainer;
 };
-

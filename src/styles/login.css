@@ -52,9 +52,9 @@
 }
 #button-login{
     display: flex;
-    justify-content: center;
     padding: 30px;
-    
+    flex-direction: column;
+    align-items: center;
 }
 #login-btn{
     width: 150px;
@@ -68,7 +68,9 @@
     font-weight: 700;
     font-size: 24px;
     cursor: pointer;
-    
+}
+#error-login{
+    color: red;
 }
 .separation-or{
     display: flex;
