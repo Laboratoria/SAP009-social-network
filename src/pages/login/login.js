@@ -1,4 +1,4 @@
-import { loginUser, loginGoogle } from '../../lib/api';
+import { loginUser, loginGoogle } from '../../lib/api.js';
 
 export default () => {
   const container = document.createElement('div');
@@ -7,6 +7,8 @@ export default () => {
     <img id='logoImagem' src= 'imagens/logoImagem.jpeg' alt="imagem de um gatinho de óculos e um cachorrinho">
     </p>
     <section class='flex-container'>
+    <img id='logo-insta' src='imagens/Logo.png.png' alt='imagem de um gatinho de óculos e um cachorrinho'>
+    <div class= "vertical"></div> 
     <form class='form'>
     
     <p>E-mail</p>
@@ -24,10 +26,12 @@ export default () => {
     </section>
 
     <section class='buttons'>
-    <a id='submitGoogle' class='btn' href='#login'>Login with</a>
+    <a id='submitGoogle' class='btn'>Login with</a>
     <section class='buttons'>
       <div id="linhaHor1"></div>
-      <button onClick={actionLoginGoogle} id='googleButton'>Google</button>
+    
+      <button onClick={actionLoginGoogle} id='googleButton'><img class="google-icon" src="imagens/google.ico" alt="google-icon">Google</button>
+     
       <div id="linhaHor2"></div>
     </section>
 
