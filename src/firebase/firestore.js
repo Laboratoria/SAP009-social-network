@@ -26,6 +26,7 @@ export const database = async (name, email) => {
 
 export const pegarPost = async (mostrarPost) => {
   await onSnapshot(collection(db, 'posts'), (querySnapshot) => {
+    document.querySelector('.ultimos-posts').innerHTML = '';
     querySnapshot.forEach((post) => {
       mostrarPost(post.data());
       console.log(post.id, ' => ', post.data());
