@@ -4,6 +4,7 @@ import {
   getFirestore,
   collection,
   addDoc,
+  Timestamp,
 } from 'firebase/firestore';
 
 import {
@@ -15,16 +16,20 @@ const db = getFirestore(app);
 
 // Armazenar conta do usuário//
 
-export async function userData(nome, email) {
+export async function userData(nome, email, uid) {
   await addDoc(collection(db, 'users'), {
     displayName: nome,
     email,
+    uid,
   });
 }
 
 // criar post//
-export async function newPost(post) {
+export async function newPost(dataPostagem, id, post, username) {
   await addDoc(collection(db, 'post'), {
+    date: dataPostagem,
+    idUser: id,
     textArea: post,
+    userName: username,
   });
 }

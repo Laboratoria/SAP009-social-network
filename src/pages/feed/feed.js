@@ -67,8 +67,8 @@ export default () => {
   const fecharModal = container.querySelector('#fechar');
   const menu = container.querySelector('.menu-section');
   const btnPostar = container.querySelector('#btn-postar');
-  const post = container.querySelector('#input-post').value;
-  const postagem = container.querySelector('#postagem');
+  const post = container.querySelector('#input-post');
+  /* const postagem = container.querySelector('#postagem'); */
   btnMenu.addEventListener('click', () => {
     menu.classList.toggle('show');
   });
@@ -89,9 +89,16 @@ export default () => {
   const user = auth.currentUser.displayName;
   if (user === '');
 
-  btnPostar.addEventListener('click', () => {
-    postagem.innerHTML = `${newPost(post)}`;
-    modal.close();
+  btnPostar.addEventListener('click', async () => {
+    if (post.value !== '') {
+      const timeElapsed = Date.now();
+      const today = new Date(timeElapsed);
+      const dataPostagem = today.toLocaleDateString();
+      const idUser = auth.currentUser.uid;
+      const userName = auth.currentUser.displayName;
+      newPost(dataPostagem, idUser, post.value, userName);
+      modal.close();
+    }
   });
   return container;
 };
