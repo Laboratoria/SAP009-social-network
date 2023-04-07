@@ -31,13 +31,10 @@ window.addEventListener('load', () => {
 
   main.appendChild(login());
 
-  if (observador()) {
-    window.location.hash = '#postagem';
-    // main.appendChild(postagem());
-  }
+  iniciaTela();
+  observador();
   // observador();
   // window.location.hash = '#postagem';
-
 
   // if (observador() === true) {
   //   window.location.hash = '#postagem';
