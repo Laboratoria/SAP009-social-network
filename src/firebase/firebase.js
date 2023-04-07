@@ -1,5 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { initializeApp } from 'firebase/app';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCXzj5MfGytnQSWwjsq5VKWlEfyc6Z6AMg',
@@ -11,3 +13,8 @@ const firebaseConfig = {
 };
 
 export const app = initializeApp(firebaseConfig);
+
+export const fazerLogin = (nome, senha) => {
+  const auth = getAuth();
+  return signInWithEmailAndPassword(auth, nome, senha);
+};
