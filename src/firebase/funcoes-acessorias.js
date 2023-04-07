@@ -1,6 +1,8 @@
-import { nomeUsuaria } from './firebase';
 /* eslint-disable default-case */
 /* eslint-disable no-alert */
+
+import { nomeUsuaria, dataPostagem, dadosUsuaria } from './firebase';
+
 export function maiorDe18(dataNascimento) {
   // verificar se é maior de 18
   const dataAtual = new Date();
@@ -57,27 +59,22 @@ export function modal(mensagem) {
   console.log(mensagem);
 }
 
-function mostraData() {
-  const dataCriacaoPost = Date.now(); // mostra a data agora, te que fixar
-  const dataAtual = new Date(dataCriacaoPost);
-  return dataAtual.toLocaleDateString();
-}
-
 export function pegaDados(querySnapshot) { // pega tudo o texto publicado pela usuaria na coleção
   let recebeDados = '';
   querySnapshot.forEach((doc) => {
     const publicacao = doc.data();
+    console.log(publicacao);
     recebeDados += ` 
     <div class="postagem-amigas">
       <img src="../imagens/icone-usuaria.png" class="icone-usuaria">
     
       <section class="postagem-data">
-        <p class="perfil-usuaria">${nomeUsuaria()}</p>
-        <p class="data-postagem">${mostraData()}</p>
+        <p class="perfil-usuaria">${nomeUsuaria()}<br>${dadosUsuaria().userName}</p>
+        <p class="data-postagem">${dataPostagem()}<br> ${dadosUsuaria().hoje}<br>${dadosUsuaria().data}</p>
       </section>
 
       <div class="postagens">
-        <textarea class="texto-usuaria-postado" id="texto-usuaria-postado" style='resize:none' disabled>${publicacao.texto}</textarea>
+        <textarea class="texto-usuaria-postado" id="texto-usuaria-postado" style='resize:none'>${publicacao.descricao}</textarea>
 
         <span class="icones-inferiores">
           <p class="numero-curtidas">Curtir</p>

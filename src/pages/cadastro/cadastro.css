@@ -71,4 +71,13 @@ input[type=submit]{
 .cursor-block{
   cursor: not-allowed;
 }
+
+a{
+  text-align: center;
+  padding: 5px;
+  margin: .5rem;
+  color: black;
+  text-decoration: none;
+  font-weight: 600;
+}
  

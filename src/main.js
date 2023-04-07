@@ -27,21 +27,22 @@ const iniciaTela = () => {
 };
 
 window.addEventListener('load', () => {
-  console.log('main aqui');
+  console.log('main aqui', observador());
 
-  observador((user) => {
-    if (user) {
-      const uid = user.uid;
-      console.log(uid);
-      // iniciaTela();
-      main.appendChild(postagem());
-    } else {
-      console.log('não logado');
-    }
-  });
-  // iniciaTela();
-  // main.appendChild(postagem());
-  // main.appendChild(login());
+  main.appendChild(login());
 
-  window.location.hash = '';
+  if (observador()) {
+    window.location.hash = '#postagem';
+    // main.appendChild(postagem());
+  }
+  // observador();
+  // window.location.hash = '#postagem';
+
+
+  // if (observador() === true) {
+  //   window.location.hash = '#postagem';
+  //   // main.appendChild(postagem());
+  // } else {
+  //   iniciaTela();
+  // }
 });

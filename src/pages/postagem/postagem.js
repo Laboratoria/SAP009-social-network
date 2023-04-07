@@ -2,9 +2,10 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable no-unused-vars */
 // import { async } from 'regenerator-runtime';
+import { sair, nomeUsuaria, dadosUsuaria } from '../../firebase/firebase';
 import {
-  sair, nomeUsuaria, paraPostar, postagens, mostraPostAutomaticamente, deletaPost, editaPost, obterUsuaria,
-} from '../../firebase/firebase';
+  paraPostar, postagens, mostraPostAutomaticamente, deletaPost, editaPost, atualizaEdicao,
+} from '../../firebase/firebase-storage';
 
 import { pegaDados } from '../../firebase/funcoes-acessorias';
 
@@ -48,6 +49,9 @@ const postagem = () => {
   // MOSTRA NA TELA, APAGA E EDITA TODOS OS POSTS ARMAZENADOS NO FIREBASE
   const postagensAnteriores = criarPostagem.querySelector('#postagens-anteriores');
 
+  let editar = false;
+  let id = '';
+
   const teste = async () => { // colocando o async aqui posso usar await em qualquer lugar abaixo
     return postagens().then((post) => {
       postagensAnteriores.innerHTML = pegaDados(post);
@@ -73,10 +77,13 @@ const postagem = () => {
           const edit = await editaPost(e.target.dataset.id);
           console.log('editar clicado');
           const editarTexto = edit.data();
-
           textoEdicao.value = editarTexto.descricao;
+          editar = true;
+          id = edit.id;
         });
       });
+
+      // CURTIR POSTS
     });
   };
 
@@ -86,8 +93,14 @@ const postagem = () => {
   const btnPostar = criarPostagem.querySelector('.btn-postar');
 
   btnPostar.addEventListener('click', () => {
-    paraPostar(novoTexto.value); // cria a memoria de arq p/ postar
-    novoTexto.value = '';
+    if (editar) {
+      atualizaEdicao(id, { descricao: novoTexto.value });
+      editar = false;
+      novoTexto.value = '';
+    } else {
+      paraPostar(novoTexto.value); // cria a memoria de arq p/ postar
+      novoTexto.value = '';
+    }
   });
 
   mostraPostAutomaticamente(teste);

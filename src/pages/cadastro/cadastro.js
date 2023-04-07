@@ -41,6 +41,8 @@ const cadastro = () => {
         <span class="modal mensagem-erro"><a href=""></a></span>
 
         <input class="btn-enviar" type="submit" value="Enviar">
+        
+        <a id="voltar-login" href="#">Voltar ao login</a>
       </form>
     </div>
   `;
@@ -58,10 +60,19 @@ const cadastro = () => {
   const telefone = criaCadastro.querySelector('#tel');
   const filhx = criaCadastro.querySelector('#filhos');
   const erro = criaCadastro.querySelector('.mensagem-erro');
+  const voltarLogin = criaCadastro.querySelector('#voltar-login');
   const btnEnviar = criaCadastro.querySelector('.btn-enviar');
 
   btnEnviar.addEventListener('click', (e) => {
     e.preventDefault();
+
+    // botão voltar ao login
+    // se  botão voltar ao login for clicado,
+    // criaCadastro.voltarLogin.addEventListener('click', () => {
+    //   //window.location.hash = '#';
+    //  // header.style.display = 'flex';
+    //   console.log('essa oiderea funciona');
+    // });
 
     // validações de preenchimemto do form
 
