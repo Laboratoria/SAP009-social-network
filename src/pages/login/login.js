@@ -23,9 +23,9 @@ export default () => {
 
       <p id= 'or-google'> <strong> OU </strong> </p>
       <p class='login-google'> Faça login com sua conta </p> 
-      <button type='button'> <img src='assets/imagens/google.png' alt='Imagem google' id='image-google'> </button>
+     <img src='assets/imagens/google.png' alt='Imagem google' id='image-google'> 
       <p class='google-account'> Não tem uma conta? </p> 
-      <button type='button' id='register-link'> <h2 id='new-register'> CADASTRE-SE </h2>      </button>
+     <h2 id='new-register'  > CADASTRE-SE </h2>     
 
     <footer> <strong> © BOOMERANG </strong> </footer>
 
@@ -40,7 +40,7 @@ export default () => {
   const inputEmail = loginContainer.querySelector('#email');
   const inputPassword = loginContainer.querySelector('#password');
   const errorMessage = loginContainer.querySelector('#error');
-  const signUp = loginContainer.querySelector('#new-register');
+  const newRegister = loginContainer.querySelector('#new-register');
 
   buttonEnter.addEventListener('click', (event) => {
     event.preventDefault();
@@ -67,7 +67,7 @@ export default () => {
       .catch((error) => error);
   });
 
-  signUp.addEventListener('click', () => {
+  newRegister.addEventListener('click', () => {
     window.location.hash = '#register';
   });
 

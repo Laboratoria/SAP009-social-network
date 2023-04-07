@@ -17,12 +17,21 @@ export async function createUser(name, email, password) {
     displayName: name,
   });
 }
+/* Cadastrar usuários 
+export const createUser = (email, password) => createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
+  const user = userCredential.user;
+  updateProfile(user, { email, password });
+  console.log(auth.currentUser);
+  return userCredential;
+});*/
 
+
+/* Fazer Login do usuário */
 export const userLogin = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
-export const googleLogin = () => {
+/* Login com Google */
   const provider = new GoogleAuthProvider();
-  return signInWithPopup(auth, provider);
-};
+  export const googleLogin = () => signInWithPopup(auth, provider);
 
+/* Sair do perfil do usuário */
 export const logOut = () => signOut(auth);

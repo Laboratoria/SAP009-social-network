@@ -1,34 +1,20 @@
-import { initializeApp } from 'firebase/app';
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  GoogleAuthProvider,
-  getAuth,
-  signOut,
-  updateProfile,
-} from 'firebase/auth';
-import { firebaseConfig } from './firebaseconfig';
+const criarCadastro = container.querySelector('#btnCreateUser');
+criarCadastro.addEventListener('click', (e) => {
+  e.preventDefault();
+  const email = container.querySelector('#txtEmail').value;
+  const senha = container.querySelector('#txtPassword').value;
+  const nome = container.querySelector('#txtName').value;
+  if (!nome || !email || !senha) {
+    const mensagem = container.querySelector('#txtError');
+    mensagem.innerHTML = 'Preencha os campos corretamente.';
+  }
 
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
+  createUser(email, senha, nome)
+    .then((userCredential) => {
+      const uid = userCredential.user.uid;
+      userData(nome, email, uid);
+      alert('Cadastro realizado com sucesso!');
+      window.location.hash = '#login';
+    });
+});
 
-/* Cadastrar usuários */
-export const createUser = (email, senha, displayName) => createUserWithEmailAndPassword(auth, email, senha)
-  .then((userCredential) => {
-    const user = userCredential.user;
-    updateProfile(user, { email, senha, displayName });
-    console.log(auth.currentUser);
-    return userCredential;
-  });
-
-/* Fazer Login do usuário */
-export const valuesLogin = (email, senha) => signInWithEmailAndPassword(auth, email, senha);
-
-/* Login com Google */
-
-const provider = new GoogleAuthProvider();
-export const googleLogin = () => signInWithPopup(auth, provider);
-
-/* Sair do perfil do usuário */
-export const sairPerfil = () => signOut(auth);
