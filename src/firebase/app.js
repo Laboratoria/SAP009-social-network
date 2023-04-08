@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-//export default {
+
 const firebaseConfig = {
   apiKey: 'AIzaSyC2xfV4u_804jMaPRKtdc8ecGNjPQyX0vM',
   authDomain: 'social-network-qa-1f7b1.firebaseapp.com',
@@ -11,5 +11,3 @@ const firebaseConfig = {
 };
 
 export const app = initializeApp(firebaseConfig);
-
-// configurações firebase armazenadas na const app que será chamada no decorrer dos codigos (firebaseConfig)

@@ -6,32 +6,29 @@ export default () => {
 
   const loginScreen = `
   <section id='login-content-desktop'
-
-    <section id='background-orange'>
+    <form id='background-orange'>
       <h2 id='welcome'> Bem vindo (a) !</h2>
       <p id='quality'> 'A sua qualidade de vida é como um <span>bumerangue</span>, precisa ter movimento. Todas as ações que você lançar, voltarão em sua direção ainda mais fortes.' </p>
       <p id='actions'> Melhore suas ações, pratique atividade física! </p>
       </section>
-
       <section class='login-container'>
       <figure> <img src='assets/imagens/logo.png' id='login-logo' alt='Logotipo QA- Qualidade de ações'> </figure>
       <input class='padding-inputs' id='email' type='email' placeholder= 'E-MAIL'> </input>
       <input class='padding-inputs' id='password' type='password' placeholder= 'SENHA'> </input>
-      <p id='error'></p>
-
-      <button id= 'enter-button' type='button'> <h2 id='enter'> ENTRAR </h2> </button>
-
-      <p id= 'or-google'> <strong> OU </strong> </p>
-      <p class='login-google'> Faça login com sua conta </p> 
-     <img src='assets/imagens/google.png' alt='Imagem google' id='image-google'> 
-      <p class='google-account'> Não tem uma conta? </p> 
-     <h2 id='new-register'  > CADASTRE-SE </h2>     
-
+      <button id='enter-button' > ENTRAR  </button>
+      <p id='error'> </p>
+      <p>ou</p> 
+      <p id='login-google'>Faça login com sua conta </p><img src='assets/imagens/google.png' alt='Imagem google' id='image-google'> 
+      <p id='google-account'> Não tem uma conta? </p>
+      <span id='register'> CADASTRE-SE </span>
+      </form>
+      <br>
     <footer> <strong> © BOOMERANG </strong> </footer>
-
     </section>
     </section>
   `;
+
+
 
   loginContainer.innerHTML = loginScreen;
 
@@ -40,7 +37,7 @@ export default () => {
   const inputEmail = loginContainer.querySelector('#email');
   const inputPassword = loginContainer.querySelector('#password');
   const errorMessage = loginContainer.querySelector('#error');
-  const newRegister = loginContainer.querySelector('#new-register');
+  const signUp = loginContainer.querySelector('#register');
 
   buttonEnter.addEventListener('click', (event) => {
     event.preventDefault();
@@ -67,7 +64,7 @@ export default () => {
       .catch((error) => error);
   });
 
-  newRegister.addEventListener('click', () => {
+  signUp.addEventListener('click', () => {
     window.location.hash = '#register';
   });
 

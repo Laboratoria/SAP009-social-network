@@ -8,7 +8,6 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
   justify-content: space-evenly;
   }
@@ -43,67 +42,60 @@
   }*/
   
   #enter-button {
-  display: flex;    
   width: 350px;
-  height: 65px;
-  margin-top: 30px;
+  height: 60px;
   background: #EE8100;
   border-radius: 10px;
   text-decoration: none;
   cursor: pointer;
-  }
-  
-  #enter {
-  display: flex;    
   color: #ffffff;
   align-items: center;
-  margin-left: 135px;
+  text-align: center;
+  font-size: 20px;
+  margin-left: 15px; 
   }
   
+  #error {
+    font-size: 20px;    
+    padding: 10px;
+    margin-top: -40px;
+    }
+
   #or-google{
-  display: flex;   
   font-size: 18px;
-  margin-top: 30px;  
   }
-  
-  .login-google {
+
+  #login-google {
   display: flex;   
   font-size: 22px; 
-  }
-  
-  .google-account {
-  display: flex;   
-  font-size: 22px; 
-  margin-left: -100px;
-  margin-bottom: 100px;
+  margin-left: -70px;
+  padding: 20px;
   }
   
   #image-google {
   display: flex;  
-  justify-content: center;
-  align-items: center;
-  width: 150px;
-  margin-bottom: 100px;
+  width: 80px;
+  margin-top: -90px;
+  margin-left: 250px;
   cursor: pointer;
   }
-  
-  #new-register {
+  #google-account {
+    display: flex;   
+    font-size: 22px; 
+    margin-left: -70px;
+    margin-top: -40px;
+    }
+
+  #register {
   display: flex;  
   color: #EE8100;
-  margin-left: 250px;
-  margin-top: -138px;
+  margin-left: 210px;
+  margin-top: -60px;
   cursor: pointer;
-  }
-  
-  #register-link {
-  text-decoration-color: #EE8100;    
+  text-decoration-color: #EE8100; 
   }
   
   footer {
   display: flex;  
   font-size: 12px;
-  }
-  
-  #error {
-  font-size: 30px;    
   }

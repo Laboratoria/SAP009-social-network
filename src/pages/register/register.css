@@ -32,22 +32,34 @@
     }
     
     #register-button {
-    display: flex;    
-    width: 250px;
+    width: 460px;
     height: 60px;
     background: #EE8100;
     border-radius: 10px;
     text-decoration: none;
-    margin-left: 135px;
+    text-align: center;
     cursor: pointer;
-    }
-    
-    #account-creation {
-    display: flex;    
     color: #ffffff;
-    align-items: center;    
+    align-items: center;       
+    font-size: 25px;
+    margin-left: 15px; 
+    padding: 20px;
     }
-    
+   
+ #enter-button {
+  width: 350px;
+  height: 60px;
+  background: #EE8100;
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  color: #ffffff;
+  align-items: center;
+  text-align: center;
+  font-size: 20px;
+  margin-left: 15px; 
+  }
+
     footer {
     display: flex;  
     font-size: 12px;
