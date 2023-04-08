@@ -13,23 +13,22 @@ export default () => {
       </section>
       <section class='login-container'>
       <figure> <img src='assets/imagens/logo.png' id='login-logo' alt='Logotipo QA- Qualidade de ações'> </figure>
-      <input class='padding-inputs' id='email' type='email' placeholder= 'E-MAIL'> </input>
-      <input class='padding-inputs' id='password' type='password' placeholder= 'SENHA'> </input>
-      <button id='enter-button' > ENTRAR  </button>
+      <input class='padding-inputs' id='email' name='email' type='email' placeholder= 'E-MAIL'> 
+      <input class='padding-inputs' id='password' name='password' type='password' placeholder= 'SENHA'> 
+      <button id='enter-button'> ENTRAR </button>
       <p id='error'> </p>
-      <p>ou</p> 
+      <p id='or-google'>ou</p> 
       <p id='login-google'>Faça login com sua conta </p><img src='assets/imagens/google.png' alt='Imagem google' id='image-google'> 
       <p id='google-account'> Não tem uma conta? </p>
       <span id='register'> CADASTRE-SE </span>
       </form>
-      <br>
+     
     <footer> <strong> © BOOMERANG </strong> </footer>
+
     </section>
+
     </section>
   `;
-
-
-
   loginContainer.innerHTML = loginScreen;
 
   const buttonEnter = loginContainer.querySelector('#enter-button');

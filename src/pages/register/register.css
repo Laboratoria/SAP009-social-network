@@ -3,18 +3,23 @@
   }
       
   .register-container {
-  width: 100vw;
-  height: 100vh;   
+    position: absolute;
+  width: 90vw;
+  height: 90vh;   
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  text-align: center;
   align-items: center;
   }
+ 
+  
       
   #register-logo {
-  display: flex;  
-  width: 380px;
+    width: 50%;
+    margin-left: 10px;
+    margin-top: 10px;
   }
   
   .registration-description {
@@ -28,37 +33,42 @@
     height: 50px;
     background: #DADADA;
     border: 3px solid #000000;
-    border-radius: 10px; 
+    border-radius: 15px; 
     }
     
     #register-button {
-    width: 460px;
-    height: 60px;
-    background: #EE8100;
-    border-radius: 10px;
+    width: 200px;
+    height: 50px;
+    background: #DADADA;
+    color: #EE8100;
+    border: 3px solid #EE8100;
+    border-radius: 40px;
     text-decoration: none;
     text-align: center;
     cursor: pointer;
-    color: #ffffff;
     align-items: center;       
-    font-size: 25px;
+    font-size: 20px;
     margin-left: 15px; 
-    padding: 20px;
+    padding: 10px;
+    opacity: 0.6;
     }
    
- #enter-button {
-  width: 350px;
-  height: 60px;
+ #register-button:hover {
   background: #EE8100;
-  border-radius: 10px;
-  text-decoration: none;
-  cursor: pointer;
   color: #ffffff;
-  align-items: center;
-  text-align: center;
-  font-size: 20px;
-  margin-left: 15px; 
+  opacity: 2.8;
   }
+
+ #registerlogin-init {
+  display: flex;  
+  color: #EE8100;
+  margin-left: 150px;
+  margin-top: -55px;
+  cursor: pointer;
+  text-decoration-color: #EE8100; 
+  text-decoration: underline;
+  }
+  
 
     footer {
     display: flex;  

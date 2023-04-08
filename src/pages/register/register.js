@@ -1,5 +1,5 @@
-import { createUser } from '../../firebase/auth.js';
-import { validateRegister } from '../../firebase/error.js';
+//import { createUser } from '../../firebase/auth.js';
+//import { validateRegister } from '../../firebase/error.js';
 
 export default () => {
   const registerContainer = document.createElement('div');
@@ -13,15 +13,16 @@ export default () => {
   <figure> <img src='assets/imagens/logo.png' id='register-logo' alt='Logotipo QA- Qualidade de ações'> </figure>
     <form>
     <label class='registration-description' for='nome'> NOME COMPLETO </label>
-    <input class='registration-content' id='register-name' name='nome' required> </input>
+    <input class='registration-content' id='register-name' name='nome' required> 
     <label class='registration-description' for='email'> E-MAIL </label>
-    <input class='registration-content' id='register-email' name='email' required> </input>
-    <label class='registration-description' for='senha'> NOVA SENHA </label>
-    <input class='registration-content' id='register-password' name='senha' required> </input>
-    <label class='registration-description' for='confirmar-senha'> CONFIRMAR SENHA </label>
-    <input class='registration-content' id='confirm-password' name='confirmar-senha' required> </input>
+    <input type='email' class='registration-content' id='register-email' name='email' required> 
+    <label class='registration-description' for='register-password'> NOVA SENHA </label>
+    <input type='password' class='registration-content' id='register-password' name='register-password' required> 
+    <label class='registration-description' for='confirm-password'> CONFIRMAR SENHA </label>
+    <input type='password' class='registration-content' id='confirm-password' name='confirm-password' required> 
     </form>
-    <p id='register-button'> CRIAR CONTA </p> 
+    <button id='register-button' > CRIAR CONTA </button> <br>
+    <p id='google-account'> Já tem uma conta? </p> <span id='registerlogin-init'> ACESSE </span>
     <p id='error'></p>
     <p id= confirmation-message> </p>
   <footer> <strong> © BOOMERANG </strong> </footer>
@@ -29,7 +30,7 @@ export default () => {
   `;
   registerContainer.innerHTML = registerScreen;
 
-  const register = registerContainer.querySelector('#register-logo');
+  const register = registerContainer.querySelector('#registerlogin-init');
   register.addEventListener('click', () => {
     window.history.back();
   });
@@ -39,6 +40,7 @@ export default () => {
 
   buttonRegister.addEventListener('click', (event) => {
     event.preventDefault();
+    console.log('funciono')
     const inputName = registerContainer.querySelector('#register-name');
     const inputEmail = registerContainer.querySelector('#register-email');
     const inputPassword = registerContainer.querySelector('#register-password');
