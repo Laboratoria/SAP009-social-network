@@ -1,4 +1,4 @@
-import { fazerCadastro } from "../../firebase/firebase";
+import { fazerCadastro } from '../../firebase/firebase';
 
 export default () => {
   const registerContainer = document.createElement('div');
