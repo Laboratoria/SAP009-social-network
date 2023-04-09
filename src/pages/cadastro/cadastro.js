@@ -1,3 +1,5 @@
+import { fazerCadastro } from "../../firebase/firebase";
+
 export default () => {
   const registerContainer = document.createElement('div');
   registerContainer.classList.add('body-cadastro');
@@ -19,8 +21,8 @@ export default () => {
       <h2 class='subtitle-register'>CADASTRAR</h2>
       <input type='text' placeholder='Nome Completo:' id='name'>
       <input type='text' placeholder='Nome de Usuário:' id='name-user'>
-      <input type='email' placeholder='E-mail:' id='e-mail'>
-      <input type='password' placeholder='Senha:' id='password'> 
+      <input type='email' placeholder='E-mail:' class='email'>
+      <input type='password' placeholder='Senha:' class='password'> 
       <hr>
       <button class='btn-cadastro' id='cadastro type='button>CADASTRE-SE</button>
     </form>
@@ -31,8 +33,18 @@ export default () => {
   registerContainer.innerHTML = template;
 
   const btnCadastrar = registerContainer.querySelector('.btn-cadastro');
-  btnCadastrar.addEventListener('click', () => {
-    window.location.hash = '#feed';
+  btnCadastrar.addEventListener('click', (event) => {
+    event.preventDefault();
+    const nome = registerContainer.querySelector('.email');
+    const senha = registerContainer.querySelector('.password');
+    fazerCadastro(nome.value, senha.value)
+      .then(() => {
+        window.location.hash = '#feed';
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
   });
   return registerContainer;
 };

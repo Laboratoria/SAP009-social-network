@@ -20,7 +20,10 @@ export default () => {
     <section class='box-register'>
     <form class='section-register'>
       <h2 class='subtitle-register'>LOGIN</h2>
-      <input type='text' placeholder='Usuário:' id='name'>
+      <div> 
+      <p class='msg-erro'><p> 
+      </div>
+      <input type='text' placeholder='E-mail:' id='name'>
       <input type='password' placeholder='Senha:' id='password'> 
       <div class="form-group">
       <button type="submit" class="btn-feed">LOGIN</button>
@@ -37,6 +40,14 @@ export default () => {
     </section>  
     `;
 
+  const showErrorMessage = (message, timeout) => {
+    const erroMsg = container.querySelector('.msg-erro');
+    erroMsg.innerHTML = message;
+    setTimeout(() => {
+      erroMsg.innerHTML = '';
+    }, timeout);
+  };
+
   container.innerHTML = template;
   const btnLogin = container.querySelector('.btn-feed');
   btnLogin.addEventListener('click', (event) => {
@@ -48,9 +59,18 @@ export default () => {
         window.location.hash = '#feed';
       })
       .catch((error) => {
+        const erroMsg = container.querySelector('.msg-erro');
         const errorCode = error.code;
         const errorMessage = error.message;
+        showErrorMessage('Login ou senha incorretos, tente outra vez', 3000);
       });
   });
+
+  const btnCadastrar = container.querySelector('.btn-cadastro');
+  btnCadastrar.addEventListener('click', (event) => {
+    event.preventDefault();
+    window.location.hash = '#cadastro';
+  });
+
   return container;
 };
