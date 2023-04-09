@@ -1,3 +1,4 @@
+import { doc } from 'firebase/firestore';
 import {
   createNewPost,
   updatePost,
@@ -49,16 +50,24 @@ export function openCreateNewPostModal() {
   const inputTitle = document.querySelector('#post-title');
   const inputTextPost = document.querySelector('#post-text');
   inputTitle.focus();
+
   postButton.addEventListener('click', async () => {
     if (inputTitle.value !== '' && inputTextPost.value !== '') {
       createNewPost(inputTitle.value, inputTextPost.value);
       modalWrapper.classList.remove('show');
+      const lastPosts = document.querySelector('#last-posts');
+      const userFavorites = document.querySelector('#user-favorites');
+      const userPosts = document.querySelector('#user-posts');
+      userFavorites.classList.remove('active');
+      userPosts.classList.remove('active');
+      lastPosts.classList.add('active');
       showAllPosts();
     } else {
       alert('Preencha todos os campos');
     }
   });
 }
+
 export async function editPost(post) {
   const modalWrapper = document.getElementById('modal-wrapper');
   const modalContainer = document.getElementById('modal-container');
@@ -109,6 +118,13 @@ export async function editPost(post) {
       await updatePost(inputTitle, inputTextPost, post.id);
       modalWrapper.classList.remove('show');
       console.log('Função executada após a edição do post na pagina post.');
+      const lastPosts = document.querySelector('#last-posts');
+      const userFavorites = document.querySelector('#user-favorites');
+      const userPosts = document.querySelector('#user-posts');
+      userFavorites.classList.remove('active');
+      userPosts.classList.remove('active');
+      lastPosts.classList.add('active');
+
       showAllPosts();
     } else {
       alert('Preencha todos os campos');

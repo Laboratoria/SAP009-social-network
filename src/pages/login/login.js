@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { signIn, loginGoogle  } from '../../firebase/auth.js';
-
+import { showErrorMessage } from '../errorHandling.js';
 
 export default () => {
 

@@ -11,9 +11,9 @@ import ListPost from './listPosts.js';
 export default () => {
   const user = auth.currentUser;
   console.log(user);
- 
+
   const container = document.createElement('div');
-  
+
   container.classList.add('container-timeline');
   const header = Header();
 
@@ -35,29 +35,34 @@ export default () => {
           ${ListPost()} 
         <div id="modal-wrapper">
         <div id="modal-container"></div>
-        </div>
-       
+        </div>       
       </div>    
   `;
 
   container.innerHTML += template;
 
-  function showPostsByDateOrderAsc (mappedPosts){
-    const postsByDateOrderAsc = mappedPosts.sort(
+  function orderPostsByDateAsc(posts) {
+    const postsByDateOrderAsc = posts.sort(
       (a, b) => b.timestamp - a.timestamp,
     );
+    console.log(postsByDateOrderAsc);
     return postsByDateOrderAsc;
   }
 
   function showAllPosts(posts) {
+    console.log('showll');
+    console.log(posts);
     if (posts) {
-      const postsByDateOrderAsc = posts.map((post) => post);
- showPostsByDateOrderAsc(postsByDateOrderAsc);
+      console.log(posts);
+      const mappedPosts = [];
+      posts.forEach((post) => {
+        mappedPosts.push(post);
+      });
+      console.log(mappedPosts);
 
-     
       const postsList = document.querySelector('#post-list');
-    
-      postsList.innerHTML = postsByDateOrderAsc
+
+      postsList.innerHTML = mappedPosts
         .map(
           (post) => `
         <article class="post-article">
@@ -72,17 +77,15 @@ export default () => {
             <p class="post-body">${post.textPost}</p>
             
             <div class="div-action-buttons">
-            <div id="div-like" class="div-like">
-            <button type='button' id='like-button-${post.id}' class='like-button'>
-            ${post.likes.length === 0 ? `<span class="material-icons like">
-            star_border
-            </span> ` : `<span class="material-icons like">
-            star
-            </span>`}
-             </button>
-            
-            <label id='like-labl' class="like-label">${post.likes.length}</label>
-            </div>
+                <div id="div-like" class="div-like">
+              <button type='button' id='like-button-${post.id}' class='like-button'>
+              <span class="material-icons like">
+              star_border
+              </span>
+               </button>
+              
+              <label id='like-labl' class="like-label">${post.likes.length}</label>
+              </div>
             <div>
               <button type='button' id='edit-button-${post.id}' class='edit-button none'>
                 <span class="material-icons edit" alt='ícone de editar'>
@@ -99,19 +102,44 @@ export default () => {
         </article>`,
         )
         .join('');
-//<label id='like-label' class="like-label">${post.likes}</label> // PARA O SONHO DE MOSTRAR QUEM CURTIU
+      //         <div class="div-action-buttons">
+      //         <div id="div-like" class="div-like">
+      //       <button type='button' id='like-button-${post.id}' class='like-button'>
+      //       ${post.likes.length === 0 ? `<span class="material-icons like">
+      //       star_border
+      //       </span> ` : `<span class="material-icons like">
+      //       star
+      //       </span>`}
+      //        </button>
+
+      //       <label id='like-labl' class="like-label">${post.likes.length}</label>
+      //       </div>
+      // //<label id='like-label' class="like-label">${post.likes}</label> 
+      // PARA O SONHO DE MOSTRAR QUEM CURTIU
       const likeButtons = postsList.querySelectorAll('.like-button');
       const labelLikes = postsList.querySelectorAll('.like-label');
       likeButtons.forEach((likeButton) => {
         likeButton.addEventListener('click', async () => {
           const postId = likeButton.id;
           const index = postId.split('-').pop();
-          const post = postsByDateOrderAsc.find(
+          const post = mappedPosts.find(
             (postRef) => postRef.id === index,
           );
           const newLikes = await likePosts(post, auth.currentUser.uid);
           labelLikes.value = newLikes.length;
-          showAllPosts(newLikes);
+          console.log(newLikes);
+          if (userFavorites.classList.contains('active')) {
+            const userLikes = await getLoggedUserLikes();
+            showAllPosts(userLikes);
+          } else if (userPosts.classList.contains('active')) {
+            const loggedUserPosts = await getLoggedUserAllPosts();
+            console.log(loggedUserPosts);
+            orderPostsByDateAsc(loggedUserPosts);
+            showAllPosts(loggedUserPosts);
+          } else {
+            orderPostsByDateAsc(newLikes);
+            showAllPosts(newLikes);
+          }
         });
       });
 
@@ -125,7 +153,7 @@ export default () => {
 
       newPostButton.addEventListener('click', openCreateNewPostModal);
 
-      postsByDateOrderAsc.forEach((post, index) => {
+      mappedPosts.forEach((post, index) => {
         if (post.uid === auth.currentUser.uid) {
           editButtons[index].classList.remove('none');
           deleteButtons[index].classList.remove('none');
@@ -136,7 +164,7 @@ export default () => {
         editButton.addEventListener('click', async () => {
           const postId = editButton.id;
           const index = postId.split('-').pop();
-          const post = postsByDateOrderAsc.find(
+          const post = mappedPosts.find(
             (postRef) => postRef.id === index,
           );
           await editPost(post);
@@ -147,22 +175,24 @@ export default () => {
         deleteButton.addEventListener('click', async () => {
           const modal = await openDeleteModal();
           console.log(modal);
-          
+
           const postId = deleteButton.id;
           const index = postId.split('-').pop();
-          await deletePost(index);
-          getAllUsersPosts()
-            .then((allPosts) => {
-              const postsAfterDelete = allPosts;
-              showAllPosts(postsAfterDelete);
-            })
-            .catch((error) => {
-              console.log(error);
-            });
+          const all = await deletePost(index);
+          if (lastPosts.classList.contains('active')) {
+            const allPosts = await getAllUsersPosts();
+            orderPostsByDateAsc(allPosts);
+            showAllPosts(allPosts);
+          } else if (userFavorites.classList.contains('active')) {
+            showAllPosts(all);
+          } else if (userPosts.classList.contains('active')) {
+            console.log('userposts actie');
+            const userPosts = await getLoggedUserAllPosts();
+            orderPostsByDateAsc(userPosts);
+            showAllPosts(userPosts);
+          }
         });
       });
-
-
     }
   }
 
@@ -170,6 +200,8 @@ export default () => {
   getAllUsersPosts()
     .then((allPosts) => {
       allUsersPosts = allPosts;
+      console.log('entrou aqui');
+      orderPostsByDateAsc(allUsersPosts);
       showAllPosts(allUsersPosts);
     })
     .catch((error) => {
@@ -186,22 +218,20 @@ export default () => {
   lastPosts.classList.add('active');
   lastPosts.addEventListener('click', () => {
     getAllUsersPosts()
-    .then((allPosts) => {
-      allUsersPosts = allPosts;
-      showAllPosts(allUsersPosts);
-      userPosts.classList.remove('active');
-      userFavorites.classList.remove('active');
-      lastPosts.classList.add('active');
-     
-    })
-    .catch((error) => {
-      console.log(error);
-    })
-    .finally(() => {
-      console.log('Fim da solicitação inicial de posts de todos os users.');
-    });
-    
-   
+      .then((allPosts) => {
+        allUsersPosts = allPosts;
+        orderPostsByDateAsc(allUsersPosts);
+        showAllPosts(allUsersPosts);
+        userPosts.classList.remove('active');
+        userFavorites.classList.remove('active');
+        lastPosts.classList.add('active');
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        console.log('Fim da solicitação inicial de posts de todos os users.');
+      });
   });
 
   userPosts.addEventListener('click', () => {
@@ -213,23 +243,23 @@ export default () => {
         lastPosts.classList.remove('active');
         userFavorites.classList.remove('active');
         userPosts.classList.add('active');
-        
+        orderPostsByDateAsc(allLoggedUserPosts);
         showAllPosts(allLoggedUserPosts);
       })
       .catch((error) => {
         console.log(error);
       })
       .finally(() => {
-        console.log('Fim da solicitação inicial de posts de todos os users.');
+        console.log('Fim da solicitação inicial de TODOS os posts do USER LOGADO.');
       });
   });
 
   userFavorites.addEventListener('click', () => {
     let userLikedPosts = [];
-      getLoggedUserLikes()
+    getLoggedUserLikes()
       .then((allPosts) => {
         userLikedPosts = allPosts;
-        console.log(userLikedPosts);        
+        console.log(userLikedPosts);
         lastPosts.classList.remove('active');
         userPosts.classList.remove('active');
         userFavorites.classList.add('active');
@@ -272,38 +302,43 @@ export default () => {
             </form>
           </div>      
         </div>`;
-  
+
       modalWrapper.classList.add('show');
       const closeDeleteModal = document.getElementById('close-delete-modal');
       closeDeleteModal.addEventListener('click', () => {
         modalWrapper.classList.remove('show');
         reject(new Error('Modal closed without confirming delete'));
       });
-  
+
       const modal = document.querySelector('.modal-container');
-  
+
       modalWrapper.addEventListener('click', (event) => {
         if (!modal.contains(event.target)) {
           modalWrapper.classList.remove('show');
           reject(new Error('Modal closed without confirming delete'));
         }
       });
-  
+
       const cancelButton = document.querySelector('#cancel-button');
       const finalDeleteButton = document.querySelector('#final-delete-button');
-  
+
       cancelButton.addEventListener('click', async () => {
         modalWrapper.classList.remove('show');
         reject(new Error('Delete cancelled'));
       });
-  
+
       finalDeleteButton.addEventListener('click', async () => {
         modalWrapper.classList.remove('show');
         resolve(true);
+        const b = await getLoggedUserLikes();
+        console.log(b);
+        showAllPosts(b);
+        // userFavorites.classList.remove('active');
+        // userPosts.classList.remove('active');
+        // lastPosts.classList.add('active');
       });
     });
   }
-  
 
   return container;
 };

@@ -64,6 +64,7 @@ export const getAllUsersPosts = async () => {
     data.id = post.id;
     allPosts.push(data);
   });
+  console.log('getalluserspost')
   return allPosts;
 };
 
@@ -71,14 +72,20 @@ export const getLoggedUserLikes = async () => {
   const userDocReference = doc(db, 'users', auth.currentUser.uid);
   const userDoc = await getDoc(userDocReference);
   const userLikes = userDoc.data().likes || [];
-  const allPostsCollection = await getDocs(collection(db, 'posts'));
-  const allPosts = allPostsCollection.docs.map((post) => {
-    const postData = post.data();
-    postData.id = post.id;
-    return postData;
-  });
+  
+ // const likedPosts = [];
+  
+  const postDocRefs = userLikes.map((postId) => doc(db, 'posts', postId));
+  const postDocs = await Promise.all(postDocRefs.map(getDoc));
+  const likedPosts = postDocs
+    .filter((postDoc) => postDoc.exists())
+    .map((postDoc) => {
+      const postData = postDoc.data();
+      postData.id = postDoc.id;
+      return postData;
+    });
+  
 
-  const likedPosts = allPosts.filter((post) => userLikes.includes(post.id));
   console.log(likedPosts);
   return likedPosts;
 };
@@ -102,7 +109,7 @@ export const likePosts = async (post, userId) => {
   if (userLikes.includes(post.id)) {
     userNewLikes = userLikes.filter((id) => id !== post.id);
   } else {
-    userNewLikes = [...userLikes, post.id];
+    userNewLikes = [post.id, ...userLikes];
   }
   await updateDoc(userDocReference, { likes: userNewLikes });
 
