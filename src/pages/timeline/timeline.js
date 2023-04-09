@@ -45,20 +45,16 @@ export default () => {
     const postsByDateOrderAsc = posts.sort(
       (a, b) => b.timestamp - a.timestamp,
     );
-    console.log(postsByDateOrderAsc);
     return postsByDateOrderAsc;
   }
 
   function showAllPosts(posts) {
-    console.log('showll');
-    console.log(posts);
     if (posts) {
       console.log(posts);
       const mappedPosts = [];
       posts.forEach((post) => {
         mappedPosts.push(post);
       });
-      console.log(mappedPosts);
 
       const postsList = document.querySelector('#post-list');
 
@@ -133,7 +129,6 @@ export default () => {
             showAllPosts(userLikes);
           } else if (userPosts.classList.contains('active')) {
             const loggedUserPosts = await getLoggedUserAllPosts();
-            console.log(loggedUserPosts);
             orderPostsByDateAsc(loggedUserPosts);
             showAllPosts(loggedUserPosts);
           } else {
@@ -146,10 +141,6 @@ export default () => {
       const newPostButton = container.querySelector('#btn-new-post');
       const editButtons = postsList.querySelectorAll('.edit-button');
       const deleteButtons = postsList.querySelectorAll('.delete-button');
-
-      // const userPosts = container.querySelector('#user-posts');
-      // const lastPosts = container.querySelector('#last-posts');
-      // const userFavorites = container.querySelector('#user-favorites');
 
       newPostButton.addEventListener('click', openCreateNewPostModal);
 
@@ -173,9 +164,7 @@ export default () => {
 
       deleteButtons.forEach((deleteButton) => {
         deleteButton.addEventListener('click', async () => {
-          const modal = await openDeleteModal();
-          console.log(modal);
-
+          await openDeleteModal();
           const postId = deleteButton.id;
           const index = postId.split('-').pop();
           const all = await deletePost(index);
@@ -186,7 +175,6 @@ export default () => {
           } else if (userFavorites.classList.contains('active')) {
             showAllPosts(all);
           } else if (userPosts.classList.contains('active')) {
-            console.log('userposts actie');
             const userPosts = await getLoggedUserAllPosts();
             orderPostsByDateAsc(userPosts);
             showAllPosts(userPosts);
@@ -200,7 +188,6 @@ export default () => {
   getAllUsersPosts()
     .then((allPosts) => {
       allUsersPosts = allPosts;
-      console.log('entrou aqui');
       orderPostsByDateAsc(allUsersPosts);
       showAllPosts(allUsersPosts);
     })
@@ -239,7 +226,6 @@ export default () => {
     getLoggedUserAllPosts()
       .then((allPosts) => {
         allLoggedUserPosts = allPosts;
-        console.log(allLoggedUserPosts);
         lastPosts.classList.remove('active');
         userFavorites.classList.remove('active');
         userPosts.classList.add('active');
@@ -259,7 +245,6 @@ export default () => {
     getLoggedUserLikes()
       .then((allPosts) => {
         userLikedPosts = allPosts;
-        console.log(userLikedPosts);
         lastPosts.classList.remove('active');
         userPosts.classList.remove('active');
         userFavorites.classList.add('active');
@@ -330,12 +315,8 @@ export default () => {
       finalDeleteButton.addEventListener('click', async () => {
         modalWrapper.classList.remove('show');
         resolve(true);
-        const b = await getLoggedUserLikes();
-        console.log(b);
-        showAllPosts(b);
-        // userFavorites.classList.remove('active');
-        // userPosts.classList.remove('active');
-        // lastPosts.classList.add('active');
+        const loggedUserLikes = await getLoggedUserLikes();
+        showAllPosts(loggedUserLikes);
       });
     });
   }
