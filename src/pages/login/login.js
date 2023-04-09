@@ -13,8 +13,8 @@ export default () => {
       </section>
       <section class='login-container'>
       <figure> <img src='assets/imagens/logo.png' id='login-logo' alt='Logotipo QA- Qualidade de ações'> </figure>
-      <input class='padding-inputs' id='email' name='email' type='email' placeholder= 'E-MAIL'> 
-      <input class='padding-inputs' id='password' name='password' type='password' placeholder= 'SENHA'> 
+      <input class='padding-inputs' id='email' name='email' type='email' placeholder='E-MAIL' required/> 
+      <input class='padding-inputs' id='password' name='password' type='password' placeholder='SENHA' > 
       <button id='enter-button'> ENTRAR </button>
       <p id='error'> </p>
       <p id='or-google'>ou</p> 
@@ -22,7 +22,7 @@ export default () => {
       <p id='google-account'> Não tem uma conta? </p>
       <span id='register'> CADASTRE-SE </span>
       </form>
-     
+      <br><br>
     <footer> <strong> © BOOMERANG </strong> </footer>
 
     </section>
