@@ -23,16 +23,23 @@ export default () => {
   const template = ` 
     <div class="form-wrapper-timeline">
        <div>        
+       <div class="div-name-button">
           <p class="greeting">Olá,</p> 
           <div class="div-greeting-button">
             <p class="greeting-name">${user.displayName}</p>
             <img src="./assets/bt-new-post.png" id="btn-new-post" class="" alt="logo da ConectAda">
           </div>
+          </div>
+          <div class="timeline-content">
           <div class="div-post-type"><button type="button" id="last-posts" class="post-type">Últimos posts</button>
           <button type="button" id="user-posts" class="post-type">Meus posts</button>
           <button type="button" id="user-favorites" class="post-type">Meus favoritos</button>
           </div>
+          
+          <div class="container-postList">
           ${ListPost()} 
+          </div>
+          </div>
         <div id="modal-wrapper">
         <div id="modal-container"></div>
         </div>       

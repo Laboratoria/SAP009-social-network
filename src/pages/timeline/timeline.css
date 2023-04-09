@@ -188,7 +188,7 @@ p {
   color: #FCA15D;
   border: .2rem solid #FCA15D;
   border-radius: 5rem;
-  padding: .8rem 2rem .8rem 2rem;
+  padding: .8rem 1rem .8rem 1rem;
   font-size: 1.4rem;
   font-weight: 700;
   
@@ -249,7 +249,7 @@ p {
 .post-header {
 background-color: #FC5D9A;
 border-radius: 1rem 1rem .5rem .5rem;
-margin-top: 1rem;
+
 display: flex;
 flex-direction: column;
 
@@ -661,3 +661,73 @@ text-align: right;
   font-size: 1.2rem;
 }
 
+
+
+@media only screen and (min-width: 768px) {
+
+  .container-timeline{
+    width: 70vw;
+    align-items: flex-start;
+  }
+
+  .header-site{
+    position: fixed;
+    width: 70vw;
+    
+  }
+
+  .div-name-button{
+    margin-top: 9rem;
+    width: 70vw;
+    margin-bottom: 2rem;
+    background-color: rebeccapurple;
+    position: fixed;
+    padding: .5rem 1.5rem 0 1.5rem;
+
+    ;
+  }
+
+ 
+
+  .div-top-content{
+    position: fixed;
+    margin-top: 12rem;
+  }
+
+  .timeline-content{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .div-post-type {display: flex;
+  flex-direction: column;
+margin-top: 20rem;
+justify-content: flex-start;
+padding-right: 12rem;
+padding-left: 4rem;
+gap:6rem;
+position: fixed;
+}
+
+  .container-postList{
+    
+    display: flex;
+    justify-content: center;
+  }
+  .post-list {
+    margin-top: 22rem;
+    width: 50rem;
+    margin-left: 30rem;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    /* display: flex;
+    flex-direction: column;
+    justify-items: center; */
+  }
+  .post-article {
+    width: 50rem;
+  }
+
+
+} 
