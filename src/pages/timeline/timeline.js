@@ -81,11 +81,13 @@ export default () => {
             
             <div class="div-action-buttons">
                 <div id="div-like" class="div-like">
-              <button type='button' id='like-button-${post.id}' class='like-button'>
-              <span class="material-icons like">
-              star_border
-              </span>
-               </button>
+                     <button type='button' id='like-button-${post.id}' class='like-button'>
+                ${!post.likes.includes(auth.currentUser.uid) ? `<span class="material-icons like">
+            star_border
+            </span> ` : `<span class="material-icons like">
+            star
+            </span>`}
+             </button>
               
               <label id='like-labl' class="like-label">${post.likes.length}</label>
               </div>
@@ -108,7 +110,7 @@ export default () => {
       //         <div class="div-action-buttons">
       //         <div id="div-like" class="div-like">
       //       <button type='button' id='like-button-${post.id}' class='like-button'>
-      //       ${post.likes.length === 0 ? `<span class="material-icons like">
+      //        ${post.likes.find(like => like.uid === auth.currentUser.uid)  ? `<span class="material-icons like">
       //       star_border
       //       </span> ` : `<span class="material-icons like">
       //       star
