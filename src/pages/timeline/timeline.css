@@ -423,12 +423,12 @@ h2 {
 #modal-wrapper {
   position: fixed;
   display: flex;
-  align-items: center;
+  padding-top: 20rem;
   justify-content: center;
   top: 0;
   left: 0;
   width: 100vw;
-  height: 80vh;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.3);
   opacity: 0;
   pointer-events: none;
@@ -670,9 +670,14 @@ text-align: right;
     align-items: flex-start;
   }
 
+  .div-logo-timeline{
+    padding-left:1.5rem;
+  }
+
   .header-site{
     position: fixed;
     width: 70vw;
+    height: 8rem;
     
   }
 
@@ -680,9 +685,9 @@ text-align: right;
     margin-top: 9rem;
     width: 70vw;
     margin-bottom: 2rem;
-    background-color: rebeccapurple;
+    /* background-color: rebeccapurple; */
     position: fixed;
-    padding: .5rem 1.5rem 0 1.5rem;
+    padding:.9rem 1.5rem 0rem 5rem;
 
     ;
   }
@@ -715,7 +720,7 @@ position: fixed;
     justify-content: center;
   }
   .post-list {
-    margin-top: 22rem;
+    margin-top: 20rem;
     width: 50rem;
     margin-left: 30rem;
     align-self: center;
@@ -727,6 +732,10 @@ position: fixed;
   }
   .post-article {
     width: 50rem;
+  }
+
+  .modal-container{
+    width: 30%;
   }
 
 
