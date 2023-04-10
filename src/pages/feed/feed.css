@@ -184,6 +184,7 @@ li > a{
     background-color: var(--amarelinho);
     width: 300px;
     height: 300px;
+    z-index: 10;
     border-radius: 20px;
     border: none;
     padding: 10px;

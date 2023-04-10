@@ -50,6 +50,7 @@ export default () => {
 
   <dialog class="dialog" id="bloco">
   <div class="modal">
+   <span class="txt-error hide" id="txtError"></span>
     <button id="fechar" class="fechar">X</button>
     <textarea id="input-post" class="input-post"></textarea>
     <button id="btn-postar" class="btn-postar">Publicar</button>
@@ -66,9 +67,8 @@ export default () => {
   const modal = container.querySelector('#bloco');
   const fecharModal = container.querySelector('#fechar');
   const menu = container.querySelector('.menu-section');
-  const btnPostar = container.querySelector('#btn-postar');
-  const post = container.querySelector('#input-post');
-  /* const postagem = container.querySelector('#postagem'); */
+  const postagem = container.querySelector('#postagem');
+  const txtError = container.querySelector('#txtError');
   btnMenu.addEventListener('click', () => {
     menu.classList.toggle('show');
   });
@@ -89,6 +89,8 @@ export default () => {
   const user = auth.currentUser.displayName;
   if (user === '');
 
+  const post = container.querySelector('.input-post');
+  const btnPostar = container.querySelector('#btn-postar');
   btnPostar.addEventListener('click', async () => {
     if (post.value !== '') {
       const timeElapsed = Date.now();
@@ -96,7 +98,9 @@ export default () => {
       const dataPostagem = today.toLocaleDateString();
       const idUser = auth.currentUser.uid;
       const userName = auth.currentUser.displayName;
-      newPost(dataPostagem, idUser, post.value, userName);
+      const textArea = post.post;
+      newPost(dataPostagem, idUser, textArea, userName);
+      console.log(post, user);
       modal.close();
     }
   });
