@@ -43,12 +43,21 @@
     border-width: thin;
     border-color: #004AAD;
 }
+.login-links{
+    display: flex;
+    justify-content: center;
+}
 .login-links a{
+    font-family: 'Montserrat', sans-serif;
     color: black;
     font-size: 15px;
     line-height: 19px;
+
+}
+#reset-password-btn{
+    border: none;
     display: flex;
-    justify-content: center;
+    align-content: center;
 }
 #button-login{
     display: flex;
