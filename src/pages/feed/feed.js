@@ -62,35 +62,39 @@ export default () => {
         <p class="autora-post">Nome da Autora: <strong>${post.autora}</strong></p>
         <p class="texto-postagem">${post.post}</p>
       </section> 
-    </div>  
-
+   
    `;
       containerPost.innerHTML = templatePost;
       localPost.appendChild(containerPost);
+
+      const titulo = container.querySelector('.input-titulo');
+      const autora = container.querySelector('.input-autora');
+      const postagem = container.querySelector('.texto-post');
+
+      function limparForm() {
+        container.querySelector('.input-titulo').value = '';
+        container.querySelector('.input-autora').value = '';
+        container.querySelector('.texto-post').value = '';
+      }
+
+      const botaoPublicar = container.querySelector('.botao-publicar');
+      botaoPublicar.addEventListener('click', async () => {
+        await fazerPost(titulo.value, autora.value, postagem.value);
+        limparForm();
+        console.log(titulo.value, autora.value, postagem.value);
+      });
+
+      const botaoSair = container.querySelector('.botao-sair');
+      botaoSair.addEventListener('click', () => {
+        fazerLogout()
+          .then(() => {
+            window.location.hash = '#login';
+          })
+          .catch(() => {
+          });
+      });
     });
   };
-
-  const titulo = container.querySelector('.input-titulo');
-  const autora = container.querySelector('.input-autora');
-  const post = container.querySelector('.texto-post');
-  // const tagNivel = container.querySelector('input[type=radio] [name=nivel]:checked');
-
-  const botaoPublicar = container.querySelector('.botao-publicar');
-  botaoPublicar.addEventListener('click', async () => {
-    await fazerPost(titulo.value, autora.value, post.value);
-    console.log(titulo.value, autora.value, post.value);
-  });
-
-  const botaoSair = container.querySelector('.botao-sair');
-  botaoSair.addEventListener('click', () => {
-    fazerLogout()
-      .then(() => {
-        window.location.hash = '#login';
-      })
-      .catch(() => {
-      });
-  });
-
   exibirPostagem();
   return container;
 };
