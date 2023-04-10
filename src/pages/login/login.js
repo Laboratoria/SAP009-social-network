@@ -5,7 +5,7 @@ export default () => {
   const template = `
     <section class='box-text-img'>
     <div class='box-01'>
-    <img src='./img/logohelp9.png' alt='logo HelParents' class='img-logo'>
+    <img src='./img/logohelp8.png' alt='logo HelParents' class='img-logo'>
     <div class="paragrafo">
     <p>Compartilhe informações e orientações <br> sobre o uso da internet <br> e ajude pais e cuidadores.</p>
     <p><strong>Já está cadastrado? <br> Faça o login!</strong></p>
