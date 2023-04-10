@@ -35,7 +35,7 @@ export default () => {
                     </div>
 
                     <div class="button-enter">
-                        <button id="enter" type="button" class="enter" style="text-decoration:none">Entrar</button>
+                        <button type="button" id="login-button" href="#feed" class="button">Entrar</button>
                     </div>
 
                     <div class"option"

@@ -1,10 +1,11 @@
-@import url('./pages/login/login.css');
+@import url("./pages/login/login.css");
 @import url("./pages/login/login.css");
 @import url("pages/cadastro/cadastro.css");
+@import url("pages/feed/feed.css");
 
-body{
-    background: rgb(254,222,255);
-}    
+body {
+  background: rgb(254, 222, 255);
+}
 
 * {
   padding: 0;
@@ -24,10 +25,10 @@ body {
 @media screen and (min-width: 1200px) {
   body {
     background: linear-gradient(
-    90deg,
-    rgba(254, 222, 255, 1) 50%,
-    rgba(255, 254, 249, 1) 50%
-  );
+      90deg,
+      rgba(254, 222, 255, 1) 50%,
+      rgba(255, 254, 249, 1) 50%
+    );
   }
 }
 
@@ -37,4 +38,3 @@ body {
 background: linear-gradient(90deg, rgba(254,222,255,1) 50%, rgba(255,254,249,1) 50%);
 
 */
-
