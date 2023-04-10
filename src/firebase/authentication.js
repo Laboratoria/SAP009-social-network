@@ -6,7 +6,6 @@ import {
   signOut,
   createUserWithEmailAndPassword,
   updateProfile,
-  
 } from 'firebase/auth';
 import { app } from './configuration.js';
 

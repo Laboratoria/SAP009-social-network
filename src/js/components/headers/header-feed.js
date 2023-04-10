@@ -1,3 +1,5 @@
+import { logout } from '../../../firebase/authentication.js';
+
 export default () => {
   const headerFeedContainer = document.createElement('header');
   headerFeedContainer.classList.add('header-feed');
@@ -20,6 +22,7 @@ export default () => {
 
   headerFeedContainer.innerHTML = headerFeedTemplate;
   const headerFeedBtn = headerFeedContainer.querySelector('#menu-btn');
+  const signOutAnchor = headerFeedContainer.querySelector('#logout');
 
   // acessibilidade do menu
   function toggleMenu(event) {
@@ -38,8 +41,16 @@ export default () => {
   headerFeedBtn.addEventListener('click', toggleMenu);
   headerFeedBtn.addEventListener('touchstart', toggleMenu);
 
-  import { getAuth, signOut } from "firebase/auth";
-
+  // colocar promise
+  signOutAnchor.addEventListener('click', (e) => {
+    logout(auth).then(() => {
+      window.location.hash = '#login';
+    }).catch((error) => {
+      console.log('error');
+      errorLogin(error);
+      errorLoginMessage.innerHTML = 'error is here.';
+    });
+  });
 
   return headerFeedContainer;
 };
