@@ -1,4 +1,4 @@
-import { loginEmailPassword, signInGoogle } from "../firebase/auth";
+import { login } from "../firebase/auth.js";
 
 export default () => {
   const container = document.createElement("div");
@@ -37,7 +37,7 @@ export default () => {
                     </div>
 
                     <div class="button-enter">
-                        <button id="enter" type="button" class="enter" style="text-decoration:none">Entrar</button>
+                        <button id="enter" type="submit" class="enter" style="text-decoration:none">Entrar</button>
                     </div>
 
                     <div class"option"
@@ -55,7 +55,24 @@ export default () => {
 
   container.innerHTML = template;
 
-  const email = document.querySelector("#username").value;
+  const form = container.querySelector(".form-login");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const username = form.username.value;
+    const password = form.password.value;
+    login(username, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(error);
+      });
+  });
 
   return container;
 };
