@@ -1,0 +1,132 @@
+
+.img-logo {
+  width: 50%;
+  height: 20%;
+  margin-top: 5%;
+  margin-left: 8%;
+}
+.paragrafo{
+  color: white; 
+  text-align: justify;
+  margin: 30px 0px 0px 40px;
+  letter-spacing: 2px;  
+  line-height: 1.3em;
+  text-shadow: 0.1 0.1 0.2 black;
+}
+
+.box-register{
+  background: #A1BAFC;
+  height: 350px;
+  width: 350px;
+  border-radius: 10px;
+  margin-right: 50px;
+}
+
+.box-text-img {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  margin-left: 17%;
+  margin-right: 17%;
+}
+
+
+.section-register{
+  display:flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.subtitle-register {
+  color: #303A73;
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+input{
+  display: flex;
+  flex-direction: column;
+  border-radius: 40px;
+  border: none;
+  margin: 0 auto;
+  background: white;
+  width: 300px;
+  height: 25px;
+  padding-left: 4%;
+  font-family: 'Roboto', sans-serif;
+  color: #F56F6F;
+  font-weight: 700;
+}
+
+input::placeholder {
+  color:#6173d8;
+}
+
+textarea:focus, input:focus {
+  outline-style:auto;
+  outline-color: #6d81f5;
+}
+
+.msg-erro {
+  text-align: center;
+  background-color: #f56f6fa9;
+  color: #d4f9ff;
+  
+}
+
+.text-box-register{
+  color: #303A73;
+  text-align: center;
+}
+
+
+.btn-cadastro, .btn-feed {
+  display: flex;
+  border-radius: 20px;
+  border: none;
+  width: 170px;
+  height: 25px;
+  margin: 0 auto;
+  background: rgba(245, 111, 111, 1);
+  color: white; 
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+} 
+
+.btn-cadastro:hover , .btn-feed:hover {
+  top:-4px;
+  box-shadow:0 4px 4px #606060;
+  transition: all .2s ease-in-out;
+  background-color: #303A73;
+  color:#F56F6F;
+
+}
+
+.logo-google{
+  text-align: center;
+}
+
+hr{
+  border-color: #303a7371;
+  width: 400px;
+  margin: 0 auto;
+}
+
+.img-cadastro {
+  height: 50vh;
+}
+
+.google-img {
+  position:relative;
+  top:0;
+  border-radius: 50%;
+}
+
+.google-img:hover {
+ top:-4px;
+ box-shadow:0 4px 4px #606060;
+ transition: all .2s ease-in-out;
+ background-color: azure;
+}
