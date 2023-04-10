@@ -25,7 +25,7 @@ export default () => {
       <p class='login-google'> Faça login com sua conta </p> 
       <button type='button'> <img src='assets/imagens/google.png' alt='Imagem google' id='image-google'> </button>
       <p class='google-account'> Não tem uma conta? </p> 
-      <button type='button' id='register-link'> <h2 id='register'> CADASTRE-SE </h2>      </button>
+      <button type='button' id='register-link'> <h2 id='new-register'> CADASTRE-SE </h2>      </button>
 
     <footer> <strong> © BOOMERANG </strong> </footer>
 
@@ -40,7 +40,7 @@ export default () => {
   const inputEmail = loginContainer.querySelector('#email');
   const inputPassword = loginContainer.querySelector('#password');
   const errorMessage = loginContainer.querySelector('#error');
-  const signUp = loginContainer.querySelector('#register');
+  const signUp = loginContainer.querySelector('#new-register');
 
   buttonEnter.addEventListener('click', (event) => {
     event.preventDefault();

@@ -11,20 +11,12 @@ import { app } from './app.js';
 
 export const auth = getAuth(app);
 
-export function createUser(name, email, password) {
-  return createUserWithEmailAndPassword(auth, email, password)
-//    .then(() => {
-//   updateProfile(auth.currentUser, {
-//     displayName: name,
-//   });
-//   confirmationMessage.innerHTML = 'CADASTRO REALIZADO COM SUCESSO! &#x2705 <br> Agora, faça o login para entrar!';
-//   window.location.hash = '#login';
-// })
-// .catch(() => {
-//   errorMessage.innerHTML = validationRegister;
-// });
+export async function createUser(name, email, password) {
+  await createUserWithEmailAndPassword(auth, email, password);
+  await updateProfile(auth.currentUser, {
+    displayName: name,
+  });
 }
-
 export const userLogin = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
 export const googleLogin = () => {

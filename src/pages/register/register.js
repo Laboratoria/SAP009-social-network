@@ -40,15 +40,15 @@ export default () => {
   registerContainer.innerHTML = registerScreen;
 
   const buttonRegister = registerContainer.querySelector('#register-button');
+  const inputName = registerContainer.querySelector('#register-name');
+  const inputEmail = registerContainer.querySelector('#register-email');
+  const inputPassword = registerContainer.querySelector('#register-password');
+  const inputConfirmPassword = registerContainer.querySelector('#confirm-password');
+  const confirmationMessage = registerContainer.querySelector('#confirmation-message');
+  const errorMessage = registerContainer.querySelector('#error');
 
   buttonRegister.addEventListener('click', (event) => {
     event.preventDefault();
-    const inputName = registerContainer.querySelector('#register-name');
-    const inputEmail = registerContainer.querySelector('#register-email');
-    const inputPassword = registerContainer.querySelector('#register-password');
-    const inputConfirmPassword = registerContainer.querySelector('#confirm-password');
-    const confirmationMessage = registerContainer.querySelector('#confirmation-message');
-    const errorMessage = registerContainer.querySelector('#error');
 
     // eslint-disable-next-line max-len
     const validationRegister = validateRegister(inputName.value, inputEmail.value, inputPassword.value, inputConfirmPassword.value);
