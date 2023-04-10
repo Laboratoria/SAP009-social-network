@@ -20,7 +20,7 @@ body, ul {
     width: 100%;
     justify-content: space-between;
 }
-a {
+.menu-item {
     color:  #F38E53;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
@@ -43,6 +43,10 @@ a {
     margin: 0;
     padding: 1rem;
 }
+#logout {
+    border: none;
+    background: none;
+}
 
 @media (max-width: 650px) {
     #menu-feed {
@@ -63,12 +67,18 @@ a {
         visibility: visible;
         overflow-y: auto;
     }
-    #menu-feed a {
+    .nav-item {
+        padding: 0;
+    }
+    .menu-item {
         display: flex;
-        padding: 1rem 0;
-        margin: 0 1rem;
+        padding: 0;
+        margin: 0;
         color: #004AAD;
         border-bottom: 1px solid  #004AAD;
+        width: 100%;
+        justify-content: center;
+        line-height: 5rem;
     }
     #menu-btn {
         display: flex;
