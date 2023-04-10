@@ -1,3 +1,7 @@
+import database from 'mime-db';
+import { register } from '../../firebase/authentication.js';
+import { errorSignUp } from "../../firebase/error";
+
 export default () => {
   const signupContainer = document.createElement('div');
   const signupTemplate = `
@@ -34,6 +38,7 @@ export default () => {
     </div>
     <div class="signup-button">
       <button id="signup-btn" type="submit">LET'S GO!</button>
+      <div id="error-signup"></div>
     </div>
   </form>
 
@@ -46,7 +51,7 @@ export default () => {
   const password = signupContainer.querySelector('#password');
   const passwordConfirmation = signupContainer.querySelector('#password-confirmation');
   const registerBtn = signupContainer.querySelector('#signup-btn');
-
+  
   const noNameError = signupContainer.querySelector('#no-name-error');
   const noUsernameError = signupContainer.querySelector('#no-username-error');
   const usernameLengthError = signupContainer.querySelector('#username-length-error');
@@ -56,6 +61,7 @@ export default () => {
   const shortPasswordError = signupContainer.querySelector('#short-password-error');
   const noPasswordConfirmationError = signupContainer.querySelector('#no-password-confirmation-error');
   const passwordsDontMatch = signupContainer.querySelector('#passwords-dont-match-error');
+  const errorSignUpMessage = signupContainer.querySelector('#error-signup');
 
   function validateEmail(value) {
     return /\S+@\S+\.\S+/.test(value);
@@ -113,22 +119,21 @@ export default () => {
       noPasswordConfirmationError.style.display = 'none';
       passwordsDontMatch.style.display = 'none';
     }
+
+    register (name, username, password, passwordConfirmation)
+      .then (() => {
+        database (name.value, email.value);
+        window.location.hash = '#feed';
+      })
+      .catch ((error) => {
+        console.log (error);
+        errorSignUp (error);
+        alert('Unable to complete your registration');
+        errorSignUpMessage.innerHTML = 'error is here.';
+      })
+
   });
 
   return signupContainer;
 };
 
-/* export function signUpButton() {
-  firebase.auth().createUserwithEmailandPassword
-  (document.getElementById('email').value, document.getElementById('password').value)
-    .then((user) => {
-      const auth = user;
-      alert('Seus dados foram cadastrados com sucesso');
-
-      document.getElementById('email').value = '';
-      document.getElementById('password').value = '';
-    }).catch((error) => {
-      alert('Falha ao cadastrar');
-    });
-}
- */
