@@ -11,10 +11,10 @@ export default () => {
         <div id="burger-btn"></div>
     </button>
     <ul id="menu-feed">
-        <li class="nav-item"><a href="#communities">Communities</a></li>
-        <li class="nav-item"><a href="#faq" id="faq">FAQ</a></li>
-        <li class="nav-item"><a href="#about">About Us</a></li>
-        <li class="nav-item"><a href="#login" id="logout">Log out</a></li>
+        <li class="nav-item"><a class="menu-item" href="#communities">Communities</a></li>
+        <li class="nav-item"><a class="menu-item" href="#faq" id="faq">FAQ</a></li>
+        <li class="nav-item"><a class="menu-item" href="#about">About Us</a></li>
+        <li class="nav-item"><button class="menu-item" type="button" id="logout" class="nav-item">Log out</button></li>
     </ul>
 </nav>
     <img id="user-img" alt="User">
@@ -22,7 +22,7 @@ export default () => {
 
   headerFeedContainer.innerHTML = headerFeedTemplate;
   const headerFeedBtn = headerFeedContainer.querySelector('#menu-btn');
-  const signOutAnchor = headerFeedContainer.querySelector('#logout');
+  const signOutBtn = headerFeedContainer.querySelector('#logout');
 
   // acessibilidade do menu
   function toggleMenu(event) {
@@ -42,13 +42,12 @@ export default () => {
   headerFeedBtn.addEventListener('touchstart', toggleMenu);
 
   // colocar promise
-  signOutAnchor.addEventListener('click', (e) => {
-    logout(auth).then(() => {
-      window.location.hash = '#login';
-    }).catch((error) => {
-      console.log('error');
-      errorLogin(error);
-      errorLoginMessage.innerHTML = 'error is here.';
+  signOutBtn.addEventListener('click', () => {
+    logout().then(() => {
+      // eslint-disable-next-line no-alert
+      alert('You have logged out!');
+      window.location.hash = '#home';
+    }).catch(() => {
     });
   });
 

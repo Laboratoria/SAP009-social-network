@@ -20,7 +20,7 @@ body, ul {
     width: 100%;
     justify-content: space-between;
 }
-a {
+.menu-item {
     color:  #F38E53;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
@@ -42,6 +42,10 @@ a {
 .nav-item {
     margin: 0;
     padding: 1rem;
+}
+#logout {
+    border: none;
+    background: none;
 }
 
 @media (max-width: 650px) {
@@ -66,7 +70,7 @@ a {
     .nav-item {
         padding: 0;
     }
-    #menu-feed a {
+    .menu-item {
         display: flex;
         padding: 0;
         margin: 0;
