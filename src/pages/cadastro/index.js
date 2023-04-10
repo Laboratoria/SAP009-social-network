@@ -1,3 +1,5 @@
+import { createUser } from "../firebase/auth.js";
+
 export default () => {
   const container = document.createElement("div");
   container.classList.add("container-cadastro");
@@ -29,11 +31,6 @@ export default () => {
                 </div>
 
                 <div class="input-box">
-                    <label for="number">Número</label>
-                    <input type="tel" name="number" id="number" pattern="[0-9()-]+" placeholder="(xx) xxxx-xxxx" required>
-                </div>
-
-                <div class="input-box">
                     <label for="password">Senha</label>
                     <input type="password" name="password" id="password" placeholder="senha" required>
                 </div>
@@ -47,5 +44,25 @@ export default () => {
     <img class="icon" src="image/Rectangle 83.png" alt="imagem de menina mexendo no cabelo">
     `;
   container.innerHTML = template;
+
+  const form = container.querySelector(".form-cadastro");
+  form.addEventListener("click", (e) => {
+    e.preventDefault();
+    const name = form.name.value;
+    const password = form.password.value;
+    const email = form.email.value;
+    createUser(name, password, email)
+      .then((userCredential) => {
+        window.location.hash = "#feed";
+        const user = userCredential.user;
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
+  });
+
   return container;
 };

@@ -37,7 +37,7 @@ export default () => {
                     </div>
 
                     <div class="button-enter">
-                        <button id="enter" type="submit" class="enter" style="text-decoration:none">Entrar</button>
+                        <button id="enter" type="submit" class="enter" style="text-decoration:none" href="#feed">Entrar</button>
                     </div>
 
                     <div class"option"
@@ -62,7 +62,7 @@ export default () => {
     const password = form.password.value;
     login(username, password)
       .then((userCredential) => {
-        // Signed in
+        window.location.hash = "#feed";
         const user = userCredential.user;
         console.log(user);
         // ...

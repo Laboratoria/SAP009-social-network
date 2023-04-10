@@ -14,6 +14,9 @@ const renderiza = () => {
     case "#cadastro":
       main.appendChild(cadastro());
       break;
+    case "#feed":
+      main.appendChild(feed());
+      break;
     default:
       main.appendChild(login());
       break;
