@@ -1,4 +1,4 @@
-import { loginToFeed } from '../../firebase/authentication.js';
+import { loginToFeed, loginWithGoogle, resetPassword } from '../../firebase/authentication.js';
 import { errorLogin } from '../../firebase/error.js';
 
 export default () => {
@@ -25,7 +25,10 @@ export default () => {
       <div class="error" id="short-password-error">Your password is too short.</div>
     </div>
     <div class="login-links">
-      <a href="">Click here if you forgot your password.</a>
+      <button type="button" name="password-reset" id="reset-password-btn">
+        Click here if you forgot your password.
+      </button>
+      <div id="reset-password-error"></div>
     </div>
     <div id="button-login">  
       <button type="submit" id="login-btn">LET'S GO!</button>
@@ -41,7 +44,6 @@ export default () => {
     </div>
     <div class="btn-group">
       <button class="login-google">
-
         <span>
          <img id="logo-google" src="./img/google-37.png" alt="google">
          Sign in with Google
@@ -57,6 +59,9 @@ export default () => {
   const emailLogin = loginContainer.querySelector('#email-login');
   const passwordLogin = loginContainer.querySelector('#password-login');
   const loginBtn = loginContainer.querySelector('#login-btn');
+  const resetPasswordBtn = loginContainer.querySelector('#reset-password-btn');
+  const resetPasswordError = loginContainer.querySelector('#reset-password-error');
+  const loginWithGoogleBtn = loginContainer.querySelector('.login-google');
   const noEmailError = loginContainer.querySelector('#no-email-error');
   const invalidEmailError = loginContainer.querySelector('#invalid-email-error');
   const noPasswordError = loginContainer.querySelector('#no-password-error');
@@ -90,14 +95,32 @@ export default () => {
       shortPasswordError.style.display = 'none';
     }
 
-    loginToFeed(emailLogin, passwordLogin)
+    loginToFeed(emailLogin.value, passwordLogin.value)
       .then(() => {
         window.location.hash = '#feed';
       })
       .catch((error) => {
-        console.log('error');
-        errorLogin(error);
-        errorLoginMessage.innerHTML = 'error is here.';
+        errorLoginMessage.innerHTML = errorLogin(error);
+      });
+  });
+
+  resetPasswordBtn.addEventListener('click', () => {
+    resetPassword(emailLogin.value)
+      .then(() => {
+        // alert('Email enviado com sucesso!');
+        // console.log('before catch.');
+      })
+      .catch((error) => {
+        resetPasswordError.innerHTML = errorLogin(error);
+      });
+  });
+
+  loginWithGoogleBtn.addEventListener('click', () => {
+    loginWithGoogle()
+      .then(() => {
+        window.location.hash = '#feed';
+      })
+      .catch(() => {
       });
   });
   return loginContainer;
