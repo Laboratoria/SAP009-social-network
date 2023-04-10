@@ -46,6 +46,14 @@ input{
   background: white;
   width: 300px;
   height: 25px;
+  padding-left: 4%;
+}
+
+.msg-erro {
+  text-align: center;
+  background-color: azure;
+  border-radius: 8px;
+  
 }
 
 ::-webkit-input-placeholder {
