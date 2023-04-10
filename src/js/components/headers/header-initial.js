@@ -6,7 +6,7 @@ export default () => {
 <div class="header-nav">
   <ul>
     <li id="header-link">
-      <a href="/#home"><img src="./img/logo-icon-no-background.png" alt="logo-icon" id="logo-icon"></a>
+      <a href="/#home"><img src="./img/logo-icon-no-background.png" alt="Logo Icon to Home" id="logo-icon"></a>
     </li>
     <li id="li-header-btn">
       <button id="header-btn">
