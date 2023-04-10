@@ -6,15 +6,14 @@ export default () => {
 
   const loginScreen = `
   <section id='login-content-desktop'
-
-    <section id='background-orange'>
+    <form id='background-orange'>
       <h2 id='welcome'> Bem vindo (a) !</h2>
       <p id='quality'> 'A sua qualidade de vida é como um <span>bumerangue</span>, precisa ter movimento. Todas as ações que você lançar, voltarão em sua direção ainda mais fortes.' </p>
       <p id='actions'> Melhore suas ações, pratique atividade física! </p>
       </section>
-
       <section class='login-container'>
       <figure> <img src='assets/imagens/logo.png' id='login-logo' alt='Logotipo QA- Qualidade de ações'> </figure>
+
       <input class='padding-inputs' id='email' type='email' placeholder= 'E-MAIL'> </input>
       <input class='padding-inputs' id='password' type='password' placeholder= 'SENHA'> </input>
       <p id='error'></p>
@@ -25,14 +24,26 @@ export default () => {
       <p class='login-google'> Faça login com sua conta </p> 
       <button type='button'> <img src='assets/imagens/google.png' alt='Imagem google' id='image-google'> </button>
       <p class='google-account'> Não tem uma conta? </p> 
-      <button type='button' id='register-link'> <h2 id='register'> CADASTRE-SE </h2>      </button>
+      <button type='button' id='register-link'> <h2 id='new-register'> CADASTRE-SE </h2>      </button>
+
+
+      <input class='padding-inputs' id='email' name='email' type='email' placeholder='E-MAIL' required/> 
+      <input class='padding-inputs' id='password' name='password' type='password' placeholder='SENHA' > 
+      <button id='enter-button'> ENTRAR </button>
+      <p id='error'> </p>
+      <p id='or-google'>ou</p> 
+      <p id='login-google'>Faça login com sua conta </p><img src='assets/imagens/google.png' alt='Imagem google' id='image-google'> 
+      <p id='google-account'> Não tem uma conta? </p>
+      <span id='register'> CADASTRE-SE </span>
+      </form>
+      <br><br>
 
     <footer> <strong> © BOOMERANG </strong> </footer>
 
     </section>
+
     </section>
   `;
-
   loginContainer.innerHTML = loginScreen;
 
   const buttonEnter = loginContainer.querySelector('#enter-button');
@@ -40,7 +51,7 @@ export default () => {
   const inputEmail = loginContainer.querySelector('#email');
   const inputPassword = loginContainer.querySelector('#password');
   const errorMessage = loginContainer.querySelector('#error');
-  const signUp = loginContainer.querySelector('#register');
+  const signUp = loginContainer.querySelector('#new-register');
 
   buttonEnter.addEventListener('click', (event) => {
     event.preventDefault();

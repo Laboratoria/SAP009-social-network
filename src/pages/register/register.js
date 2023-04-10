@@ -6,49 +6,42 @@ export default () => {
 
   const registerScreen = `
   <section id='register-content-desktop'>
-  <button type='button'> <img src='assets/imagens/logout.png' alt='Botão sair' id='image-logout'> </button>
-  <div id='register'> <h2> Cadastre-se </h2> </div>
-  </section>
- 
+    <img src='assets/imagens/logout.png' alt='Botão sair' id='image-logout'>  
+  <h2 id='register'> Cadastre-se </h2> 
+  </section> 
   <section class='register-container'>  
   <figure> <img src='assets/imagens/logo.png' id='register-logo' alt='Logotipo QA- Qualidade de ações'> </figure>
-  
-  <form>
+    <form>
     <label class='registration-description' for='nome'> NOME COMPLETO </label>
-    <input class='registration-content' id='register-name' name='nome' required> </input>
-
+    <input class='registration-content' id='register-name' name='nome' required> 
     <label class='registration-description' for='email'> E-MAIL </label>
-    <input class='registration-content' id='register-email' name='email' required> </input>
-
-    <label class='registration-description' for='senha'> NOVA SENHA </label>
-    <input class='registration-content' id='register-password' name='senha' required> </input>
-
-    <label class='registration-description' for='confirmar-senha'> CONFIRMAR SENHA </label>
-    <input class='registration-content' id='confirm-password' name='confirmar-senha' required> </input>
-
+    <input type='email' class='registration-content' id='register-email' name='email' required> 
+    <label class='registration-description' for='register-password'> NOVA SENHA </label>
+    <input type='password' class='registration-content' id='register-password' name='register-password' required> 
+    <label class='registration-description' for='confirm-password'> CONFIRMAR SENHA </label>
+    <input type='password' class='registration-content' id='confirm-password' name='confirm-password' required> 
     </form>
+    <button id='register-button' > CRIAR CONTA </button> 
     <p id='error'></p>
-    <button id= 'register-button' type='button'> <h2 id='account-creation'> CRIAR CONTA </h2> </button>
-
-    <p id= confirmation-message> </p>
-
+    <p id='google-account'> Já tem uma conta? </p>
+    <span id='registerlogin-init'>      ACESSE AQUI </span>
+    <p id='confirmation-message'> </p>
   <footer> <strong> © BOOMERANG </strong> </footer>
-
   </section>
-
   `;
   registerContainer.innerHTML = registerScreen;
 
+
   const buttonRegister = registerContainer.querySelector('#register-button');
+  const inputName = registerContainer.querySelector('#register-name');
+  const inputEmail = registerContainer.querySelector('#register-email');
+  const inputPassword = registerContainer.querySelector('#register-password');
+  const inputConfirmPassword = registerContainer.querySelector('#confirm-password');
   const confirmationMessage = registerContainer.querySelector('#confirmation-message');
   const errorMessage = registerContainer.querySelector('#error');
 
   buttonRegister.addEventListener('click', (event) => {
     event.preventDefault();
-    const inputName = registerContainer.querySelector('#register-name');
-    const inputEmail = registerContainer.querySelector('#register-email');
-    const inputPassword = registerContainer.querySelector('#register-password');
-    const inputConfirmPassword = registerContainer.querySelector('#confirm-password');
 
     // eslint-disable-next-line max-len
     const validationRegister = validateRegister(inputName.value, inputEmail.value, inputPassword.value, inputConfirmPassword.value);
@@ -57,11 +50,36 @@ export default () => {
       createUser(inputName.value, inputEmail.value, inputPassword.value, inputConfirmPassword.value)
         .then(() => {
           confirmationMessage.innerHTML = 'CADASTRO REALIZADO COM SUCESSO! &#x2705 <br> Agora, faça o login para entrar!';
-          window.location.hash = '#feed';
+
+  const registerlog = registerContainer.querySelector('#registerlogin-init');
+  registerlog.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.history.back();
+  });
+
+  const buttonRegister = registerContainer.querySelector('#register-button');
+  buttonRegister.addEventListener('click', (e) => {
+    e.preventDefault();
+    console.log('funcioneio');
+    const inputName = registerContainer.querySelector('#register-name');
+    const inputEmail = registerContainer.querySelector('#register-email');
+    const inputPassword = registerContainer.querySelector('#register-password');
+   
+    const errorMessage = registerContainer.querySelector('#error');
+    const inputConfirmPassword = registerContainer.querySelector('#confirm-password');
+    const createLogin = validateRegister(inputName.value, inputEmail.value, inputPassword.value, inputConfirmPassword.value);
+    if (inputName.value !== '' && inputEmail.value !== '' && inputPassword.value !== '' && inputConfirmPassword.value === inputPassword.value) {
+      createUser(inputName.value, inputEmail.value, inputPassword.value)
+        .then(() => {
+          errorMessage.innerHTML = 'CADASTRO REALIZADO COM SUCESSO!'+inputName+'&#x2705 <br> Agora, faça o login para entrar!';
+
+          window.location.hash = '#login';
         })
         .catch(() => {
-          errorMessage.innerHTML = validationRegister;
+          errorMessage.innerHTML = createLogin;
         });
+    } else {
+      errorMessage.innerHTML = createLogin;
     }
   });
 
