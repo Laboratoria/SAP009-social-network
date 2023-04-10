@@ -4,6 +4,11 @@
 @import "./home.css";
 @import "./login.css";
 @import "./sign-up.css";
+@import "./header-feed.css";
+@import "./feed.css";
+@import "./timeline.css";
+@import "./posts.css";
+@import "./posts-edit.css";
 
 html {
     margin: 0;

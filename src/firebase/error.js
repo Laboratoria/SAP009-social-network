@@ -13,10 +13,8 @@ export function errorLogin(error) {
     case 'auth/wrong-password':
       return 'The password is incorrect.';
     default:
-      console.log('Something went wrong. Please, contact us.');
-      break;
+      return 'Something went wrong. Please, contact us.';
   }
-  return errorLogin;
 }
 
 export function errorSignUp (error) {
