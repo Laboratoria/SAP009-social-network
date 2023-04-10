@@ -4,7 +4,8 @@ import {
   getFirestore,
   collection,
   addDoc,
-  Timestamp,
+  query,
+  getDocs,
 } from 'firebase/firestore';
 
 import {
@@ -26,10 +27,22 @@ export async function userData(nome, email, uid) {
 
 // criar post//
 export async function newPost(dataPostagem, id, post, username) {
-  await addDoc(collection(db, 'post'), {
+  const docRef = await addDoc(collection(db, 'post'), {
     date: dataPostagem,
     idUser: id,
     textArea: post,
     userName: username,
+  });
+  // newPost.id = docRef.id;
+  // return newPost;
+  return docRef.id;
+}
+
+const q = query(collection(db, 'post'));
+
+export async function postsNaTela() {
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    console.log(doc.id, ' => ', doc.data());
   });
 }
