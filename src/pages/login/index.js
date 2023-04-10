@@ -1,4 +1,4 @@
-import { login } from "../firebase/auth.js";
+import { login, loginGoggle } from "../firebase/auth.js";
 
 export default () => {
   const container = document.createElement("div");
@@ -45,7 +45,7 @@ export default () => {
                     </div>
 
                     <div class="btnGoogle">                        
-                        <button id="google" type="button" class="google" style="text-decoration:none"><img class="logo-google" src="image/google.png" alt="imagem com logo do Google">Entrar com Google</button>
+                        <button id="google" class="btnGoogle" type="button" class="google" style="text-decoration:none"><img class="logo-google" src="image/google.png" alt="imagem com logo do Google">Entrar com Google</button>
                     </div>
                 </div>
             </form>
@@ -71,6 +71,18 @@ export default () => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(error);
+      });
+  });
+
+  const gmail = container.querySelector(".btnGoogle");
+  gmail.addEventListener("click", () => {
+    loginGoggle()
+      .then(() => {
+        window.location.hash = "#feed";
+      })
+      .catch(() => {
+        txtError.setAttribute("style", "display: block");
+        txtError.innerHTML = "Erro ao logar com sua conta do google";
       });
   });
 
