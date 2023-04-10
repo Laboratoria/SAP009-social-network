@@ -96,19 +96,3 @@
     margin-top: -35px;
     padding: 10px;
     }
-
-  #register {
-  display: flex;  
-  color: #EE8100;
-  margin-left: 210px;
-  margin-top: -67px;
-  cursor: pointer;
-  text-decoration-color: #EE8100; 
-  text-decoration: underline;
-  }
-  
-  footer {
-  display: flex;  
-  font-size: 12px;
- 
-  }

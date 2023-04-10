@@ -47,12 +47,10 @@ export function createUser(name, email, password) {
 
 /* export async function createUser(name, email, password) {
   await createUserWithEmailAndPassword(auth, email, password);
-  updateProfile(auth.currentUser, {
+  await updateProfile(auth.currentUser, {
     displayName: name,
   });
-} */
 
-// login usuario cadastrado ok
 export const userLogin = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
 // login google ok
