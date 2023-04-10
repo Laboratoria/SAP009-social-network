@@ -6,11 +6,11 @@ export default () => {
   const template = `
     <section class='box-text-img'>
     <div class='box-01'>
-        <h1 class="logo-geral logo-register">HelParents</h1>
+    <img src='./img/logohelp9.png' alt='logo HelParents' class='img-logo'>
         <div class="paragrafo">
           <p><strong>Primeira vez por aqui?</strong></p>
-          <p>Realize o seu cadastro, contribua e aproveite todas as possibilidades
-          que esta rede pode oferecer!</p>
+          <p>Realize o seu cadastro, contribua e <br> aproveite todas as possibilidades
+          <br> que esta rede pode oferecer!</p>
         </div>
       <div class='img-register'>
         <img src='./img/online.png' alt='img-cadastro' class='img-cadastro'>
@@ -18,7 +18,7 @@ export default () => {
     </div>
     <section class='box-register'>
     <form class='section-register'>
-      <h2 class='subtitle-register'>CADASTRAR</h2>
+      <h2 class='subtitle-register'>CADASTRO</h2>
       <input type='text' placeholder='Nome Completo:' id='name'>
       <input type='text' placeholder='Nome de Usuário:' id='name-user'>
       <input type='email' placeholder='E-mail:' class='email'>
