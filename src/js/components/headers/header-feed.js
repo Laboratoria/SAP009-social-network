@@ -38,5 +38,8 @@ export default () => {
   headerFeedBtn.addEventListener('click', toggleMenu);
   headerFeedBtn.addEventListener('touchstart', toggleMenu);
 
+  import { getAuth, signOut } from "firebase/auth";
+
+
   return headerFeedContainer;
 };
