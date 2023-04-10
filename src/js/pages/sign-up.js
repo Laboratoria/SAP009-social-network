@@ -1,6 +1,5 @@
-import database from 'mime-db';
 import { register } from '../../firebase/authentication.js';
-import { errorSignUp } from "../../firebase/error";
+import { errorLogin } from "../../firebase/error";
 
 export default () => {
   const signupContainer = document.createElement('div');
@@ -119,17 +118,13 @@ export default () => {
       noPasswordConfirmationError.style.display = 'none';
       passwordsDontMatch.style.display = 'none';
     }
-
-    register (name, username, password, passwordConfirmation)
+    
+    register(name.value, email.value, password.value)
       .then (() => {
-        database (name.value, email.value);
         window.location.hash = '#feed';
       })
       .catch ((error) => {
-        console.log (error);
-        errorSignUp (error);
-        alert('Unable to complete your registration');
-        errorSignUpMessage.innerHTML = 'error is here.';
+        errorSignUpMessage.innerHTML = errorLogin(error);
       })
 
   });

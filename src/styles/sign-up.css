@@ -39,6 +39,9 @@
 }
 
 #signup-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 150px;
     height: 60px;
     background: #EF681A;
@@ -53,8 +56,14 @@
 
 .signup-button {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     padding: 3em;
+}
+#error-signup {
+    color: red;
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 @media screen and (min-width: 600px) {
