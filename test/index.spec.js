@@ -1,8 +1,22 @@
-// importamos la funcion que vamos a testear
-import { myFunction } from '../src/lib/index';
+import { signInWithEmailAndPassword, loginWithGoogle } from 'firebase/auth';
+import { loginToFeed } from '../src/firebase/authentication.js';
 
-describe('myFunction', () => {
-  it('debería ser una función', () => {
-    expect(typeof myFunction).toBe('function');
+jest.mock('firebase/auth');
+
+describe('loginToFeed', () => {
+  it('should sign in with email and password', async () => {
+    signInWithEmailAndPassword.mockResolvedValueOnce();
+    const email = 'marina.cezario@gmail.com';
+    const password = '123456';
+
+    await loginToFeed(email, password);
+
+    expect(signInWithEmailAndPassword).toHaveBeenCalledTimes(1);
+    expect(signInWithEmailAndPassword).toHaveBeenCalledWith(undefined, email, password);
   });
+
+  it('should return invalid email', async () => {
+    signInWithEmailAndPassword.mockResolvedValueOnce();
+    const email =
+  })
 });
