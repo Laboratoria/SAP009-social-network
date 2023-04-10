@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { initializeApp } from 'firebase/app';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCXzj5MfGytnQSWwjsq5VKWlEfyc6Z6AMg",
@@ -22,4 +22,9 @@ export const fazerLogin = (nome, senha) => {
 export const fazerCadastro = (nome, senha) => {
   const auth = getAuth();
   return createUserWithEmailAndPassword(auth, nome, senha);
+};
+
+export const fazerLoginComGoogle = (provider) => {
+  const auth = getAuth();
+  return signInWithPopup(auth, provider);
 };
