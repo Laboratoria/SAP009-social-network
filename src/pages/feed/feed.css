@@ -1,0 +1,10 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container-feed {
+  background-color: #ffffff;
+  height: 100vh;
+}
