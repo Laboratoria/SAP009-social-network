@@ -168,10 +168,21 @@ textarea{
   border-radius: 1rem;
   padding: 0.5rem;
   text-align: left;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
 }
 
-.input-bold{
-  font-size: 0.9rem;
-  
+.botao-like{
+  margin-bottom: 2.5rem;
+}
+#coracao-vazio{
+  width: 1.2rem;
+  margin-left: 0.5rem;
+  position: absolute;
+}
+
+#coracao-cheio{
+  width: 1.2rem;
+  margin-left: 0.5rem;
+  position: absolute;
+  visibility: hidden;
 }
