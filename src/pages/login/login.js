@@ -1,7 +1,7 @@
-import { fazerLogin, fazerLoginComGoogle } from '../../firebase/firebase';
+import { fazerLogin, fazerLoginComGoogle } from "../../firebase/firebase";
 
 export default () => {
-  const container = document.createElement('div');
+  const container = document.createElement("div");
   const template = `
     <section class='box-text-img'>
     <div class='box-01'>
@@ -23,11 +23,11 @@ export default () => {
       <input type='text' placeholder='E-mail:' id='name'>
       <input type='password' placeholder='Senha:' id='password'> 
       <div class="form-group">
-      <button type="submit" class="btn-feed" id="btn-feed">LOGIN</button>
+      <button type="submit" class="btn-login" id="btn-login">LOGIN</button>
       <p class='text-box-register'>Acesse com o Google<p>
-      <div class='logo-google'>
+      <button type="button" class='btn-logo-google'>
       <img class='google-img' src='./img/googlelogo.png' alt='logo-google'>
-      </div>
+      </button>
       <hr>
       <p class='text-box-register'>Ainda não tem conta?<p>
       <button type="submit" class="btn-cadastro" id="btn-cadastro">CADASTRE-SE</button>
@@ -37,46 +37,9 @@ export default () => {
     </section>  
     `;
 
-  const showErrorMessage = (message, timeout) => {
-    const erroMsg = container.querySelector('.msg-erro');
-    erroMsg.innerHTML = message;
-    setTimeout(() => {
-      erroMsg.innerHTML = '';
-    }, timeout);
-  };
-
   container.innerHTML = template;
-  const btnCadastrar = container.querySelector('#btn-cadastro');
-  btnCadastrar.addEventListener('click', (event) => {
-    event.preventDefault();
-    window.location.hash = '#cadastro';
-  });
 
-  const imgGoogle = container.querySelector('.google-img');
-  imgGoogle.addEventListener('click', (event) => {
-    fazerLoginComGoogle()
-      .then((result) => {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        // The signed-in user info.
-        const user = result.user;
-      // IdP data available using getAdditionalUserInfo(result)
-      // ...
-      })
-      .catch((error) => {
-      // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-      // ...
-      }); 
-  });
-
-  const btnLogin = container.querySelector('#btn-feed');
+  const btnLogin = container.querySelector('#btn-login');
   btnLogin.addEventListener('click', (event) => {
     event.preventDefault();
     const nome = container.querySelector('#name');
@@ -91,6 +54,45 @@ export default () => {
         const errorMessage = error.message;
         showErrorMessage('Login ou senha incorretos, tente outra vez', 4000);
       });
+  });
+
+  const showErrorMessage = (message, timeout) => {
+    const erroMsg = container.querySelector('.msg-erro');
+    erroMsg.innerHTML = message;
+    setTimeout(() => {
+      erroMsg.innerHTML = '';
+    }, timeout);
+  };
+
+  const btnLoginGoogle = container.querySelector(".btn-logo-google");
+  btnLoginGoogle.addEventListener("click", (event) => {
+    fazerLoginComGoogle()
+      .then(() => {
+        window.location.hash = "#feed";
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        //const credential = GoogleAuthProvider.credentialFromResult(result);
+        //const token = credential.accessToken;
+        // The signed-in user info.
+        //const user = result.user;
+        // IdP data available using getAdditionalUserInfo(result)
+        // ...
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        //const email = error.customData.email;
+        // The AuthCredential type that was used.
+        //const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
+  });
+
+  const btnCadastrar = container.querySelector('#btn-cadastro');
+  btnCadastrar.addEventListener('click', (event) => {
+    event.preventDefault();
+    window.location.hash = '#cadastro';
   });
 
   return container;
