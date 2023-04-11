@@ -50,7 +50,7 @@ export default () => {
   const password = signupContainer.querySelector('#password');
   const passwordConfirmation = signupContainer.querySelector('#password-confirmation');
   const registerBtn = signupContainer.querySelector('#signup-btn');
-  
+
   const noNameError = signupContainer.querySelector('#no-name-error');
   const noUsernameError = signupContainer.querySelector('#no-username-error');
   const usernameLengthError = signupContainer.querySelector('#username-length-error');
@@ -118,17 +118,15 @@ export default () => {
       noPasswordConfirmationError.style.display = 'none';
       passwordsDontMatch.style.display = 'none';
     }
-    
+
     register(name.value, email.value, password.value)
-      .then (() => {
+      .then(() => {
         window.location.hash = '#feed';
       })
-      .catch ((error) => {
+      .catch((error) => {
         errorSignUpMessage.innerHTML = errorLogin(error);
-      })
-
+      });
   });
 
   return signupContainer;
 };
-
