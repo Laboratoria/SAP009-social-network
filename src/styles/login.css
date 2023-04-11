@@ -46,18 +46,28 @@
 .login-links{
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 .login-links a{
-    font-family: 'Montserrat', sans-serif;
     color: black;
     font-size: 15px;
     line-height: 19px;
-
+    display: flex;
+    justify-content: center;
 }
 #reset-password-btn{
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: underline;
+    font-size: 15px;
     border: none;
     display: flex;
     align-content: center;
+    justify-content: center;
+}
+#reset-password-error{
+    display: flex;
+    color: red;
+    justify-content: center;
 }
 #button-login{
     display: flex;
