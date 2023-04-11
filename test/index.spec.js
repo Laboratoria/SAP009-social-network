@@ -1,5 +1,14 @@
-// importamos la funcion que vamos a testear
-import { myFunction } from '../src/index';
+import {
+  googleLogin,
+  userLogin,
+  createUser,
+} from '../src/firebase/auth.js';
+
+const createUserWithEmailAndPassword = jest.fn();
+const signInWithEmailAndPassword = jest.fn();
+const signInWithPopup = jest.fn();
+
+jest.mock('firebase/auth');
 
 describe('myFunction', () => {
   it('debería ser una función', () => {
