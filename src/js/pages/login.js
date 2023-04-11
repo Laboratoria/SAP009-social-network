@@ -96,7 +96,8 @@ export default () => {
     }
 
     loginToFeed(emailLogin.value, passwordLogin.value)
-      .then(() => {
+      .then((data) => {
+        console.log(data)
         window.location.hash = '#feed';
       })
       .catch((error) => {

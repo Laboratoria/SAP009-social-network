@@ -23,7 +23,14 @@ describe ('register', () => {
     loginToFeed('Bruna', '123456')
     .then(data => {
       console.log (data)
+      expect(data.user.displayName).toBe('Bruna')
     })
   })
-
+  it ('mensagem de email inválido', () => {
+    register('Bruna', 'brunasilveira.admgmail.com', '123456')
+    .catch(error => {
+      console.log (error)
+      expect(errorLogin(error)).toBe('Invalid email')
+    })
+  }) 
 })
