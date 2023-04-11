@@ -31,10 +31,9 @@ const register = async (name, email, password) => {
 };
 
 export {
-  auth,
+  register,
   loginToFeed,
   loginWithGoogle,
-  logout,
-  register,
   resetPassword,
+  logout,
 };
