@@ -5,10 +5,21 @@
     align-items: center;
     justify-content: space-between;
     height: 5.0000rem;
-	padding: 1rem;
-    font-family: 'Smooch Sans', sans-serif;
+	  padding: 1rem;
     width: 100%;
 }
+
+.div-img-logo {
+  margin-top: 0%;
+  margin-left: 4%;
+  width: 10%
+}
+
+.img-logo {
+  width: 50%;
+}
+
+
    
 .feed-posts {
     background-color: #A1BAFC;
@@ -23,6 +34,10 @@
     flex-direction: column;
     justify-content: space-between;
     
+}
+
+textarea::placeholder {
+  color:#606060;
 }
 
 picture {
@@ -42,6 +57,15 @@ picture {
     padding-left: 0.8rem;
     font-size: 1rem;
     font-weight: bold;
+}
+
+.btn-sair:hover {
+  top:-4px;
+  box-shadow:0 4px 4px #606060;
+  transition: all .2s ease-in-out;
+  background-color: #303A73;
+  color:#F56F6F;
+
 }
 
 #txt-area {
@@ -83,7 +107,8 @@ picture {
     width: 90%;
     max-width: 800px;
     min-width: 320px;
-    margin: auto;
+    margin-left: 15%;
+    margin-right: 15%;
   }
 
 .div-img {

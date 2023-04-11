@@ -2,7 +2,9 @@ export default () => {
   const container = document.createElement('div');
   const template = `
   <header class="header">
-      <h1 class= "logo-geral">HelParents</h1>
+      <div class="div-img-logo">
+      <img src='./img/logohelp12.png' alt='logo HelParents' class='img-logo'>
+      </div>
       <button class="btn-sair">Sair</button>
   </header>
   <main>
@@ -12,7 +14,7 @@ export default () => {
        </picture>
       <section class="feed-posts">
           <div class="postando">
-              <textarea name="" id="txt-area" cols="70" rows="5">Escreva um post</textarea>
+              <textarea name="" id="txt-area" cols="70" rows="5" placeholder= "Escreva seu post"></textarea>
               <div class="posição-botão-postar">
                  <button class="btn-postar">postar</button>
               </div>
@@ -21,7 +23,7 @@ export default () => {
               <ul>
                   <li>
                   <div> 
-                  <textarea name="" id="txt-area-postado" cols="70" rows="5">Post escrito</textarea>
+                  <textarea name="" id="txt-area-postado" cols="70" rows="5"></textarea>
                   </div>
                   </li>
               </ul>
@@ -29,7 +31,7 @@ export default () => {
       </section>
       </div>
   </main>
-
+    
   
     `;
 
