@@ -56,7 +56,7 @@ export default () => {
     </div>
     </dialog>
     <section class="feed-posts">
-      <div id="postagem"></div>
+      <div id="postagem">${postsNaTela()}</div>
     </section>
   </div>
 
@@ -131,6 +131,7 @@ export default () => {
       modal.close();
     }
   });
+
   const resultado = Promise.resolve(teste()).then((value) => {
     console.log(value);
     postagem.innerHTML = `${value} `;

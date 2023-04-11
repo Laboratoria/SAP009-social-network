@@ -34,11 +34,13 @@ export async function newPost(dataPostagem, id, post, username) {
     textArea: post,
     userName: username,
   });
+
   // newPost.id = docRef.id;
   // return newPost;
   const doc = await getDoc(docRef);
   console.log(doc.data().textArea);
   return doc;
+
 }
 
 export async function postsNaTela() {
@@ -46,9 +48,11 @@ export async function postsNaTela() {
   const q = query(collection(db, 'post'));
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
+
     /* const dados = doc.data();
     dados.id = doc.id; */
     novoArray.push(doc);
+
   });
   console.log(novoArray);
   return novoArray;
