@@ -1,6 +1,7 @@
 import { signInWithPopup, getAuth, GoogleAuthProvider } from 'firebase/auth';
 import { app } from '../src/firebase/configuration.js';
-import { loginWithGoogle } from '../src/firebase/authentication.js';
+import { loginToFeed, loginWithGoogle, register } from '../src/firebase/authentication.js';
+
 
 jest.mock('firebase/auth');
 
@@ -15,3 +16,14 @@ describe('loginWithGoogle', () => {
     expect(signInWithPopup).toHaveBeenCalledWith(authGoogle, providerGoogle);
   });
 });
+
+describe ('register', () => {
+  it ('registrar um novo usuário', () => {
+    register('Bruna', 'brunasilveira.adm@gmail.com', '123456')
+    loginToFeed('Bruna', '123456')
+    .then(data => {
+      console.log (data)
+    })
+  })
+
+})

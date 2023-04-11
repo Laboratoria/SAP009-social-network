@@ -1,5 +1,5 @@
 import { register } from '../../firebase/authentication.js';
-import { errorLogin } from "../../firebase/error";
+import { errorLogin } from '../../firebase/error';
 
 export default () => {
   const signupContainer = document.createElement('div');
