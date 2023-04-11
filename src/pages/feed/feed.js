@@ -67,12 +67,23 @@ export default () => {
     const dados = doc.data();
     return `
     <section class="feed-posts">
-        <div id="postagem">
-            <div id="info-postagem">
+        <div class="container-post" id="postagem">
+            <div class="info-postagem">
                 <p>${dados.userName}</p>
                 <p>${dados.date}</p>
             </div>
-            <textarea id='message-post' name='message-post' class='message-post' rows='3' cols='30' disabled>${dados.textArea}</textarea>
+            <div class="bloco-texto">
+              <p>${dados.textArea}</p>
+            </div>
+            <section class="icones">
+            <div class="curtida">
+            <button class="btn-like"><img class="img-curtida" src="../img/panelinha.png"></button>
+            </div>
+            <div class="btn-usuarios">
+              <button class="btn-editar"><img class="img-editar" src="../img/icone-editar.png"></button>
+              <button class="btn-excluir"><img class="img-excluir" src="../img/icone-excluir.png"></button>
+              <section>
+            </div>
         </div>
     </section>
   </div >
@@ -81,11 +92,10 @@ export default () => {
   async function teste() {
     const arrayTemplates = [];
     const arrayPost = await postsNaTela();
-    console.log(arrayPost);
     arrayPost.forEach((element) => {
       arrayTemplates.push(templatePost(element));
     });
-    console.log(arrayTemplates);
+    // console.log(arrayTemplates); //
     return arrayTemplates.join('');
   }
   container.innerHTML = template;
@@ -136,6 +146,17 @@ export default () => {
     console.log(value);
     postagem.innerHTML = `${value} `;
   });
+
+  postagem.addEventListener('click', () => {
+    const btnLike = postagem.querySelector('.btn-like');
+    btnLike.addEventListener('click', () => {
+      atualizaPost('like');
+    })
+  })
+  function atualizaPost(tipo) {
+    console.log(tipo)
+  }
+
   /* postagem.innerHTML = `${resultado} `; */
   return container;
 };
