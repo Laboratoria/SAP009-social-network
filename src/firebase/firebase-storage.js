@@ -11,7 +11,7 @@ const db = getFirestore(app);
 
 export function paraPostar(descricao) { // armazena no firebase
   const usuaria = dadosUsuaria();
-  console.log(usuaria);
+  // console.log(usuaria);
   addDoc(collection(db, 'postagens'), { descricao, ...usuaria });
 }
 
@@ -42,17 +42,8 @@ export function curtirPost(id, curtidas) {
 // export function somaCurtidas
 
 export async function ordenaPosts() {
-  const postsOrdenados = [];
-  const ordem = query(collection(db, 'postagens'), orderBy('dataPostagem', 'asc'));
+  const ordem = query(collection(db, 'postagens'), orderBy('dataPostagem', 'desc'));
   const paraOrdenar = await getDocs(ordem);
-  paraOrdenar.forEach((post) => {
-    const dados = post.data();
-    dados.id = post.id;
-    postsOrdenados.push(dados);
-  });
 
-  return postsOrdenados;
+  return paraOrdenar;
 }
-
-const OP = ordenaPosts();
-console.log(OP);

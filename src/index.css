@@ -5,35 +5,27 @@
 body {
   font-family: "Cagliostro", sans-serif;
   color: white;
-  height: 100%;
+  height: 100vh;
   background: linear-gradient(180deg, #83152d 8.85%, #ad1d45 88.54%);
   display: flex;
   flex-direction: column;
   margin: 1rem;
 }
 
-.header {
-  text-align: center;
-}
-
-.header img {
-  width: 80%;
-}
-
-.footer {
-  color: white;
-  text-align: center;
-}
-
+.footer{
+  margin: 80% auto 5% auto;
+} 
+.footer, 
 .footer a {
+  text-align: center;
   color: white;
-  text-decoration: none;
   margin: 0;
 }
-
-/* gerais - que se aplicam a todas pags */
-.btn{
-  flex-grow: 1; /* pra ajustar de acordo com a pag  */
+.footer a {
+  text-decoration: underline;
+}
+.footer h5 a:hover{
+  color:#44000d;
 }
 
 /* no media query colocar em body fonte-size 1.12/15rem para tablet e x-larger para desktop, ajustar o size do footer sozinho */

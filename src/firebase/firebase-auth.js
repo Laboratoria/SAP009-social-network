@@ -6,7 +6,7 @@
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, sendEmailVerification, GoogleAuthProvider, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import { app } from './firebase.config.js';
 
-const auth = getAuth(app);
+export const auth = getAuth(app);
 
 // Firebase Authentication
 
@@ -57,7 +57,7 @@ export function nomeUsuaria() {
   const user = auth.currentUser;
   console.log(user);
   if (user){
-    return user.name; // user.displayName;
+    return user.displayName;
   }
 }
 

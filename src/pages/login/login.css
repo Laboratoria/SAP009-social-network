@@ -1,16 +1,12 @@
-body{
- margin: .5rem 2rem 2rem 2rem;
-}
-.main {
+
+.main { 
+  /* colocar margens no main, não mexer no body */
   margin: 5%;
   margin-top: 0;
   font-size: 1.1rem;
   display: flex;
 } 
 
-/* .bckgnd-txt{
-  display: none;
-}  */
 .desktop{ display: none;}
 
 .caixa-login {
@@ -88,10 +84,10 @@ input::-webkit-input-placeholder {
   display: none;
 }
 
-@media screen and (min-width: 769px) {
+/* @media screen and (min-width: 769px) {
   .desktop, .footer-desktop .desktop, .main div {
     display:block;
-  }
+  } */
   /* .main div{ } */
   /* .container-bcg-login{   } */
   /* .bckgnd-txt .desktop{ */
@@ -119,10 +115,10 @@ input::-webkit-input-placeholder {
     font-size: larger;
     text-align: center; }*/
   
-
+/* 
   .header img{
     display: none;
-  }
+  } */
   /* .footer-desktop .desktop{ */
   
 

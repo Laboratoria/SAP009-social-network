@@ -1,6 +1,4 @@
-body{
-  margin: 7rem auto; /*era 2rem*/
-}
+
 section{
   width: 90%;
   margin: 2% auto;
@@ -11,9 +9,6 @@ section{
   position: relative;
   gap: 1rem;
 }
-
-/* .desktop{ display: none;} */
-
 
 .img-fundo, .img-fundo .desktop{
   position: absolute;
@@ -84,7 +79,7 @@ a{
   font-weight: 600;
 }
  
-@media screen and (min-width: 481px) {
+/* @media screen and (min-width: 481px) {
   .img-fundo{
     display: none;
   }
@@ -107,4 +102,4 @@ a{
   .footer{
     font-size: larger;
   }
-}
+} */

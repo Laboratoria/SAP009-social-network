@@ -5,7 +5,6 @@
 
 } .img-desktop{
   display: none;
-
 }
 
 .botao{
@@ -73,6 +72,7 @@ text-align: center;
  gap: 1rem;
 width: 90%;
 }
+
 #digita-texto{
   display: flex;
   text-align: center;
@@ -90,7 +90,6 @@ width: 90%;
   margin: auto;
   margin-bottom: 10px;
   font-size: smaller;
-  /* font-weight: bold; */
 }
 
 /* postagens publicadas */
@@ -170,19 +169,28 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 }
-/* 
-.main {
-display: grid;
-grid-template-columns: 2fr 3fr;
-} */
-@media screen and (min-width: 769px) {
+
+
+
+/* @media screen and (min-width: 769px) {
   .icones-inferiores{
     text-align: center;
-    margin: -.5rem auto;}
-    /* align-items: center; */
+    margin: -.5rem auto;
+  }
+    
+  .desktop{
+    display: block;
   }
 
-  /* .main div{
+  .imagem-desktop .desktop{
+    display: block;
+
+  } .img-desktop{
+    display: block;
+    width: 25%;
+
+  } 
+  .main div{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap; 
@@ -198,10 +206,20 @@ grid-template-columns: 2fr 3fr;
     width: 100%;
   }
   .postagem-amigas{
-    width: 100vw;
-    height: 100%;
+    width: auto;
+    height: auto;
   }
   .header{
+    width: auto;
+    height: auto;
     display: flex;
     flex-direction: row;
-  } */
+  } 
+  }
+  .header img{
+    display: inline;
+    width: 20%;
+  }
+   */
+
+ 

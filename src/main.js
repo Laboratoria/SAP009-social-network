@@ -27,7 +27,7 @@ const iniciaTela = () => {
 };
 
 window.addEventListener('load', () => {
-  console.log('main aqui');
+  // console.log('main aqui');
 
   observador();
   // main.appendChild(cadastro());

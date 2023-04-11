@@ -55,7 +55,7 @@ const postagem = () => {
   let id = '';
 
   const teste = async () => { // colocando o async aqui posso usar await em qualquer lugar abaixo
-    return postagens().then((post) => {
+    return ordenaPosts().then((post) => {
       // MOSTRAR NA TELA
       postagensAnteriores.innerHTML = pegaDados(post);
       // postagensAnteriores.innerHTML = ordenaPosts();
@@ -94,12 +94,12 @@ const postagem = () => {
       // const qtdCurtidas = Number(curtidas) + 1;
       // console.log(qtdCurtidas); soma feita lá na função // curtidas.innerText = qtdCurtidas;
       const btnCurtir = criarPostagem.querySelectorAll('.btn-curtir');
-      // console.log(btnCurtir);
+      console.log(btnCurtir);
       btnCurtir.forEach((btn) => {
         btn.addEventListener('click', (e) => {
-          const curtida = e.target.dataset.id;
-          // console.log(curtida);
-          // curtirPost(e.target.dataset.id, curtidas);
+          const idBtn = btn.dataset.id;
+          console.log(idBtn, e.target);
+          curtirPost(idBtn, Number(curtidas));
         });
       });
     });

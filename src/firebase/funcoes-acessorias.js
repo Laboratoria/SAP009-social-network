@@ -1,6 +1,7 @@
 /* eslint-disable default-case */
 /* eslint-disable no-alert */
 // import { ordenaPosts } from './firebase-storage';
+import { auth } from './firebase-auth';
 
 export function maiorDe18(dataNascimento) {
   // verificar se é maior de 18
@@ -75,19 +76,20 @@ export function pegaDados(querySnapshot) { // pega tudo o texto publicado pela u
         <textarea class="texto-usuaria-postado" id="texto-usuaria-postado" style='resize:none'>${publicacao.descricao}</textarea>
 
         <div class="icones-inferiores">
-          <p class="numero-curtidas"></p>
+          <p class="numero-curtidas"> ${publicacao.curtidas}</p>
 
           <button class="btn-curtir" data-id="${doc.id}">
             <i type="button" >🥂</i>
           </button>
-
+          ${auth.currentUser.uid === publicacao.userId ? `
           <button class="btn-excluir">
             <i class="fa-solid fa-trash-can" type="button" data-id="${doc.id}"></i>
           </button>
 
           <button class="btn-editar">
             <i class="fa-sharp fa-solid fa-pen-to-square" class="btn-editar" type="button" data-id="${doc.id}"></i>
-          </button>
+          </button>` : ''}
+         
         </div>
       </div>
     </div>
