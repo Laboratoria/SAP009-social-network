@@ -107,8 +107,7 @@ export default () => {
   resetPasswordBtn.addEventListener('click', () => {
     resetPassword(emailLogin.value)
       .then(() => {
-        // alert('Email enviado com sucesso!');
-        // console.log('before catch.');
+        resetPasswordError.innerHTML = 'Check your inbox to reset your password.';
       })
       .catch((error) => {
         resetPasswordError.innerHTML = errorLogin(error);
