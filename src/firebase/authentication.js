@@ -34,6 +34,7 @@ const resetPassword = (email) => sendPasswordResetEmail(auth, email);
 const logout = () => signOut(auth, provider);
 
 export {
+  register,
   loginToFeed,
   loginWithGoogle,
   resetPassword,
