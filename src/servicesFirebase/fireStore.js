@@ -6,6 +6,7 @@ import {
   addDoc,
   query,
   getDocs,
+  getDoc,
 } from 'firebase/firestore';
 
 import {
@@ -35,14 +36,20 @@ export async function newPost(dataPostagem, id, post, username) {
   });
   // newPost.id = docRef.id;
   // return newPost;
-  return docRef.id;
+  const doc = await getDoc(docRef);
+  console.log(doc.data().textArea);
+  return doc;
 }
 
-const q = query(collection(db, 'post'));
-
 export async function postsNaTela() {
+  const novoArray = [];
+  const q = query(collection(db, 'post'));
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
-    console.log(doc.id, ' => ', doc.data());
+    /* const dados = doc.data();
+    dados.id = doc.id; */
+    novoArray.push(doc);
   });
+  console.log(novoArray);
+  return novoArray;
 }

@@ -61,8 +61,33 @@ export default () => {
   </div>
 
 </div>
-      `;
+  `;
 
+  function templatePost(doc) {
+    const dados = doc.data();
+    return `
+    <section class="feed-posts">
+        <div id="postagem">
+            <div id="info-postagem">
+                <p>${dados.userName}</p>
+                <p>${dados.date}</p>
+            </div>
+            <textarea id='message-post' name='message-post' class='message-post' rows='3' cols='30' disabled>${dados.textArea}</textarea>
+        </div>
+    </section>
+  </div >
+   `;
+  }
+  async function teste() {
+    const arrayTemplates = [];
+    const arrayPost = await postsNaTela();
+    console.log(arrayPost);
+    arrayPost.forEach((element) => {
+      arrayTemplates.push(templatePost(element));
+    });
+    console.log(arrayTemplates);
+    return arrayTemplates.join('');
+  }
   container.innerHTML = template;
   const btnModal = container.querySelector('#btn-modal');
   const btnMenu = container.querySelector('.menu-toggle');
@@ -100,10 +125,16 @@ export default () => {
   btnPostar.addEventListener('click', async () => {
     if (post.value !== '') {
       const novoPost = await newPost(dataPostagem, idUser, post.value, userName);
-      postagem.innerHTML = `${novoPost}`;
+      Promise.resolve(teste()).then((value) => {
+        postagem.innerHTML = `${value} `;
+      });
       modal.close();
     }
   });
-  postagem.innerHTML = `${postsNaTela()}`;
+  const resultado = Promise.resolve(teste()).then((value) => {
+    console.log(value);
+    postagem.innerHTML = `${value} `;
+  });
+  /* postagem.innerHTML = `${resultado} `; */
   return container;
 };

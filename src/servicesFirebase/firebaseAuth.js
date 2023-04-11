@@ -18,7 +18,7 @@ export const createUser = (email, senha, displayName) => createUserWithEmailAndP
   .then((userCredential) => {
     const user = userCredential.user;
     updateProfile(user, { email, senha, displayName });
-    console.log(auth.currentUser);
+    /*  console.log(auth.currentUser); */
     return userCredential;
   });
 
