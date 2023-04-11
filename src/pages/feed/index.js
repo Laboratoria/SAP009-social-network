@@ -4,13 +4,19 @@ export default () => {
 
   const template = `
   <header class="header-menu">
-      <div class="menu">
-        <img src="./image/home.png" alt="icone de home" href="#" />
-        <img src="./image/publicar.png" src="ic_outline-add-circle-outline.png" alt="icone para publicar um post" href="#"/>
-        <img src="./image/sair.png" alt="icone para sair do app" />
-      </div>
+          <img src="./image/logo_c&h.jpg" alt="logo Care&Health"/>
   </header>
-  <form class="form-pots"
+  
+
+          <img src="./image/home.png" alt="icone de home" href="#" />
+          <img src="./image/publicar.png" src="ic_outline-add-circle-outline.png" alt="icone para publicar um post" href="#"/>
+          <img src="./image/sair.png" alt="icone para sair do app" />
+        </div>
+  
+      <div class="user"
+        <span>Nome_do_Usuário</span>
+      </div>
+  <form class="form-pots">
     <div class="post">
       <div class="text">
         <p class="username" id="username"></p>

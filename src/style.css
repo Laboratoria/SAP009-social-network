@@ -1,5 +1,6 @@
 @import url("./pages/login/login.css");
 @import url("./pages/cadastro/cadastro.css");
+@import url("./pages/feed/feed.css");
 
 * {
   padding: 0;
@@ -8,12 +9,7 @@
 }
 
 body {
-  background: rgb(254, 222, 255);
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: #fedeff;
 }
 
 @media screen and (min-width: 1200px) {
