@@ -30,7 +30,8 @@ export const pegarPost = async (mostrarPost) => {
   await onSnapshot(collection(db, 'posts'), orderBy('date', 'desc'), (querySnapshot) => {
     document.querySelector('.ultimos-posts').innerHTML = '';
     querySnapshot.forEach((post) => {
-      mostrarPost(post.data());
+      // ... puxa todos os dados do objeto a seguir (no caso, post.data)
+      mostrarPost({ ...post.data(), postId: post.id });
       console.log(post.id, ' => ', post.data());
     });
   });

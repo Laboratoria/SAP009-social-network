@@ -1,5 +1,10 @@
 import { fazerLogout, auth } from '../../firebase/auth.js';
-import { fazerPost, pegarPost } from '../../firebase/firestore.js';
+import {
+  fazerPost,
+  pegarPost,
+  curtirPost,
+  descurtirPost,
+} from '../../firebase/firestore.js';
 
 export default () => {
   const container = document.createElement('div');
@@ -52,6 +57,7 @@ export default () => {
     const localPost = container.querySelector('.ultimos-posts');
     pegarPost((post) => {
       const containerPost = document.createElement('div');
+      let somaCurtidas = post.likesUsuaria.length;
       const templatePost = `
     <div class="nome-usuaria-post">
       <img class="avatar-post" src="/imagens/user.png">
@@ -63,13 +69,49 @@ export default () => {
       <p class="autora-post">Nome da Autora: <strong>${post.autora}</strong></p>
       <p class="texto-postagem">${post.post}</p>
     </section> 
-    <button botao-like">
-
+    <div class="botao-like">
      <img id="coracao-vazio" src="/imagens/coracao-vazio.png"> 
      <img id="coracao-cheio" class="hidden" src="/imagens/coracao-preenchido.png">
-    </button> 
+      <span id="soma-likes">${somaCurtidas}</span>
+    </div> 
    `;
       containerPost.innerHTML = templatePost;
+
+      const coracaoVazio = containerPost.querySelector('#coracao-vazio');
+      const coracaoCheio = containerPost.querySelector('#coracao-cheio');
+      const curtidasNaTela = containerPost.querySelector('#soma-likes');
+      const curtidasArray = post.likesUsuaria;
+
+      if (curtidasArray.includes(auth.currentUser.uid)) {
+        coracaoVazio.classList.add('hidden');
+        coracaoCheio.classList.remove('hidden');
+      }
+
+      coracaoVazio.addEventListener('click', () => {
+        coracaoVazio.classList.add('hidden');
+        coracaoCheio.classList.remove('hidden');
+        somaCurtidas += 1;
+        curtidasNaTela.innerHTML = somaCurtidas;
+        curtirPost(post.postId, auth.currentUser.uid);
+      });
+
+      coracaoCheio.addEventListener('click', () => {
+        coracaoVazio.classList.remove('hidden');
+        coracaoCheio.classList.add('hidden');
+        somaCurtidas -= 1;
+        curtidasNaTela.innerHTML = somaCurtidas;
+        descurtirPost(post.postId, auth.currentUser.uid);
+      });
+      // const botaoLike = containerPost.querySelectorAll('.botao-like');
+      // botaoLike.forEach((botao) => {
+      //   botao.addEventListener('click', async () => {
+      //     const postCurtido = botao.dataset.postId;
+      //     const usuarioId = auth.currentUser.uid;
+      //     // com dataset acessa o atributo que foi inserido no html como data-post-id
+      //     console.log(postCurtido);
+      //     curtirPost(likesUsuaria);
+      //   });
+      // });
       localPost.appendChild(containerPost);
     });
   };
@@ -89,10 +131,6 @@ export default () => {
     await fazerPost(titulo.value, autora.value, postagem.value);
     limparForm();
     console.log(titulo.value, autora.value, postagem.value);
-  });
-
-  botaoLike.addEventListener('click', async () => {
-    curtirPost(likesUsuaria);
   });
 
   const botaoSair = container.querySelector('.botao-sair');
