@@ -44,6 +44,14 @@ export default () => {
     event.preventDefault();
     const nome = container.querySelector('#name');
     const senha = container.querySelector('#password');
+    if (nome.value === '') {
+      showErrorMessage('Você precisa preencher esse campo', 4000);
+      return;
+    }
+    if (senha.value.length < 6) {
+      showErrorMessage('Sua senha precisa ter pelo menos seis digitos', 4000);
+      return;
+    }
     fazerLogin(nome.value, senha.value)
       .then(() => {
         window.location.hash = '#feed';
@@ -52,7 +60,6 @@ export default () => {
         const erroMsg = container.querySelector('.msg-erro');
         const errorCode = error.code;
         const errorMessage = error.message;
-        showErrorMessage('Login ou senha incorretos, tente outra vez', 4000);
       });
   });
 
@@ -67,20 +74,15 @@ export default () => {
   const btnLoginGoogle = container.querySelector(".btn-logo-google");
   btnLoginGoogle.addEventListener("click", (event) => {
     fazerLoginComGoogle()
-      .then(() => {
+      .then((userCredential) => {
         window.location.hash = "#feed";
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        //const credential = GoogleAuthProvider.credentialFromResult(result);
-        //const token = credential.accessToken;
-        // The signed-in user info.
-        //const user = result.user;
-        // IdP data available using getAdditionalUserInfo(result)
-        // ...
+        const user = userCredential.user;
+        console.log(user);
       })
       .catch((error) => {
         // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
+        //if (error.code === 
+        //const errorMessage = error.message;
         // The email of the user's account used.
         //const email = error.customData.email;
         // The AuthCredential type that was used.
