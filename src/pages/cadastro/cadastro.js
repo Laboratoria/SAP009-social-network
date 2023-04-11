@@ -32,11 +32,6 @@ export default () => {
 
   registerContainer.innerHTML = template;
 
-<<<<<<< HEAD
-  const btnCadastrar = registerContainer.querySelector('.btn-cadastro')
-  btnCadastrar.addEventListener('click', () => {
-    window.location.hash = '#feed';
-=======
   const btnCadastrar = registerContainer.querySelector('.btn-cadastro');
   btnCadastrar.addEventListener('click', (event) => {
     event.preventDefault();
@@ -50,7 +45,6 @@ export default () => {
         const errorCode = error.code;
         const errorMessage = error.message;
       });
->>>>>>> a820854877b2309cc8a5c3303ae272436b1ef4c7
   });
   return registerContainer;
 };
