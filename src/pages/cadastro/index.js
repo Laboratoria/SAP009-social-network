@@ -37,7 +37,7 @@ export default () => {
             </div>
 
             <div class="button-singnup">
-                <button id="btnSignup" type="button" class="btnSignup" style="text-decoration:none">Criar Conta</button>
+                <button id="btnSignup" type="submit" class="btnSignup" style="text-decoration:none">Criar Conta</button>
             </div>
         </form>
     </section>
@@ -46,18 +46,19 @@ export default () => {
   container.innerHTML = template;
 
   const form = container.querySelector(".form-cadastro");
-  form.addEventListener("click", (e) => {
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
     const name = form.name.value;
     const password = form.password.value;
     const email = form.email.value;
-    createUser(name, password, email)
+    createUser(email, password)
       .then((userCredential) => {
         window.location.hash = "#feed";
         const user = userCredential.user;
         // ...
       })
       .catch((error) => {
+        console.log(error);
         const errorCode = error.code;
         const errorMessage = error.message;
         // ..
