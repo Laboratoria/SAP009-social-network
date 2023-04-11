@@ -7,11 +7,17 @@ import {
   query,
   getDocs,
   getDoc,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
+  doc,
 } from 'firebase/firestore';
 
 import {
   firebaseConfig,
 } from './firebaseconfig';
+
+import { async } from 'regenerator-runtime';
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -33,6 +39,7 @@ export async function newPost(dataPostagem, id, post, username) {
     idUser: id,
     textArea: post,
     userName: username,
+    likes: [],
   });
 
   // newPost.id = docRef.id;
@@ -40,7 +47,6 @@ export async function newPost(dataPostagem, id, post, username) {
   const doc = await getDoc(docRef);
   console.log(doc.data().textArea);
   return doc;
-
 }
 
 export async function postsNaTela() {
@@ -48,12 +54,23 @@ export async function postsNaTela() {
   const q = query(collection(db, 'post'));
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
-
-    /* const dados = doc.data();
+  /* const dados = doc.data();
     dados.id = doc.id; */
     novoArray.push(doc);
-
   });
   console.log(novoArray);
   return novoArray;
 }
+
+// export const likePost = async (id, username) => updateDoc(doc(db, 'post', id), {
+//   likes: +1,
+// });
+
+const getPost = async (postId) => {
+  const ref = doc(db, 'post', postId);
+  const result = await getDoc(ref);
+  return result.data();
+};
+export const likePost = async (postId, idUser) => {
+  const post = await getPost(postId, idUser);
+};
