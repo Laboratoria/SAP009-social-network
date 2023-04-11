@@ -80,8 +80,7 @@ textarea:focus, input:focus {
   text-align: center;
 }
 
-
-.btn-cadastro, .btn-feed {
+.btn-cadastro, .btn-login {
   display: flex;
   border-radius: 20px;
   border: none;
@@ -95,7 +94,7 @@ textarea:focus, input:focus {
   align-items: center;
 } 
 
-.btn-cadastro:hover , .btn-feed:hover {
+.btn-cadastro:hover , .btn-login:hover {
   top:-4px;
   box-shadow:0 4px 4px #606060;
   transition: all .2s ease-in-out;
@@ -104,9 +103,6 @@ textarea:focus, input:focus {
 
 }
 
-.logo-google{
-  text-align: center;
-}
 
 hr{
   border-color: #303a7371;

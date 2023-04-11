@@ -31,8 +31,6 @@ export default () => {
       </section>
       </div>
   </main>
-    
-  
     `;
 
   container.innerHTML = template;
