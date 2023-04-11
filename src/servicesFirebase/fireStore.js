@@ -46,10 +46,10 @@ export async function postsNaTela() {
   const q = query(collection(db, 'post'));
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
-    const dados = doc.data();
-    dados.id = doc.id;
-    novoArray.push(dados);
-    console.log(novoArray);
+    /* const dados = doc.data();
+    dados.id = doc.id; */
+    novoArray.push(doc);
   });
+  console.log(novoArray);
   return novoArray;
 }

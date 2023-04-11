@@ -1,4 +1,3 @@
-import { DocumentSnapshot } from 'firebase/firestore';
 import {
   sairPerfil,
   auth,
@@ -65,7 +64,7 @@ export default () => {
   `;
 
   function templatePost(doc) {
-    const dados = doc.data()
+    const dados = doc.data();
     return `
     <section class="feed-posts">
         <div id="postagem">
@@ -78,7 +77,17 @@ export default () => {
     </section>
   </div >
    `;
-}
+  }
+  async function teste() {
+    const arrayTemplates = [];
+    const arrayPost = await postsNaTela();
+    console.log(arrayPost);
+    arrayPost.forEach((element) => {
+      arrayTemplates.push(templatePost(element));
+    });
+    console.log(arrayTemplates);
+    return arrayTemplates.join('');
+  }
   container.innerHTML = template;
   const btnModal = container.querySelector('#btn-modal');
   const btnMenu = container.querySelector('.menu-toggle');
@@ -116,10 +125,16 @@ export default () => {
   btnPostar.addEventListener('click', async () => {
     if (post.value !== '') {
       const novoPost = await newPost(dataPostagem, idUser, post.value, userName);
-      postagem.innerHTML = templatePost(novoPost);
+      Promise.resolve(teste()).then((value) => {
+        postagem.innerHTML = `${value} `;
+      });
       modal.close();
     }
   });
-  postagem.innerHTML = `${newPost} `;
+  const resultado = Promise.resolve(teste()).then((value) => {
+    console.log(value);
+    postagem.innerHTML = `${value} `;
+  });
+  /* postagem.innerHTML = `${resultado} `; */
   return container;
 };
