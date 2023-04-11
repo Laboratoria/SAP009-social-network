@@ -28,6 +28,7 @@ body {
 .footer a {
   color: white;
   text-decoration: none;
+  margin: 0;
 }
 
 /* gerais - que se aplicam a todas pags */

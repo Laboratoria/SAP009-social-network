@@ -3,7 +3,7 @@
 import login from './pages/login/login.js';
 import cadastro from './pages/cadastro/cadastro.js';
 import postagem from './pages/postagem/postagem.js';
-import { observador } from './firebase/firebase.js';
+import { observador } from './firebase/firebase-auth.js';
 
 const main = document.querySelector('#main');
 
@@ -27,19 +27,13 @@ const iniciaTela = () => {
 };
 
 window.addEventListener('load', () => {
-  console.log('main aqui', observador());
+  console.log('main aqui');
 
-  main.appendChild(login());
-
-  iniciaTela();
   observador();
-  // observador();
-  // window.location.hash = '#postagem';
-
-  // if (observador() === true) {
-  //   window.location.hash = '#postagem';
-  //   // main.appendChild(postagem());
-  // } else {
-  //   iniciaTela();
-  // }
+  // main.appendChild(cadastro());
+  main.appendChild(postagem());
+  // main.appendChild(login());
+  iniciaTela();
+  // window.location.hash = '';
+  // colocar um if else para ir para postagem se já tiver logado
 });

@@ -57,7 +57,7 @@ export function nomeUsuaria() {
   const user = auth.currentUser;
   console.log(user);
   if (user){
-    return user.name;
+    return user.name; // user.displayName;
   }
 }
 

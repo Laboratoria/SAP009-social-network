@@ -1,11 +1,18 @@
 body{
  margin: .5rem 2rem 2rem 2rem;
 }
-section {
+.main {
   margin: 5%;
   margin-top: 0;
   font-size: 1.1rem;
+  display: flex;
 } 
+
+/* .bckgnd-txt{
+  display: none;
+}  */
+.desktop{ display: none;}
+
 .caixa-login {
   padding: 18% 10%;
   background-color: #44000d;
@@ -81,24 +88,54 @@ input::-webkit-input-placeholder {
   display: none;
 }
 
-/* @media screen and (min-width: 600px){
-  body{
+@media screen and (min-width: 769px) {
+  .desktop, .footer-desktop .desktop, .main div {
+    display:block;
+  }
+  /* .main div{ } */
+  /* .container-bcg-login{   } */
+  /* .bckgnd-txt .desktop{ */
+
+    /* position: absolute;
     display: flex;
-    background: linear-gradient(180deg, #83152d 8.85%, #ad1d45 88.54%);
-  background-image: url('/src/imagens/background_desktop_preto-removebg-preview.png'); 
+    justify-content: center;
+    flex-direction: column;
+    text-align: center; */
+  /* }   .img-apresentacao{ */
+   
+    /* position: relative;
+    
+    width: 80vw; */
+  /* }   .texto-apresentacao{ */
+   
+    /* position: absolute;
+     /* margin-top: 10rem; */
+    /* width: 55%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    align-self: center;
+    font-size: larger;
+    text-align: center; }*/
+  
+
   .header img{
     display: none;
   }
-  .imagem-footer{
-    display: block;
-    margin: auto;
-    width: 25%;
-  }
-  .caixa-login {
-    width: 60%;
-  }
-  .background-desktop{
-    display: flex;
-    width: 100vw;
-  }  
-} */
+  /* .footer-desktop .desktop{ */
+  
+
+    /* margin: auto;
+    text-align: center;
+    flex-direction: column;
+    flex-wrap: wrap;} */
+  
+  /* .imagem-footer { */
+    /* margin: auto;
+    text-align: center;
+    width: 10rem; */
+  /* }   .login-com{   }   .form-login{    }   .caixa-login { */
+    /* width: 100%;
+    margin: auto; }*/
+}

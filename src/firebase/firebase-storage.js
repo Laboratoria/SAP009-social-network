@@ -1,11 +1,11 @@
 import {
-  getFirestore, collection, addDoc, getDocs, onSnapshot, deleteDoc, doc, getDoc, updateDoc,
+  getFirestore, collection, addDoc, getDocs, onSnapshot,
+  deleteDoc, doc, getDoc, updateDoc, query, orderBy,
 } from 'firebase/firestore';
-import { getAuth } from 'firebase/auth';
-import { dadosUsuaria } from './firebase';
+import { dadosUsuaria } from './firebase-auth';
 import { app } from './firebase.config.js';
 
-const auth = getAuth(app);
+// const auth = getAuth(app);
 
 const db = getFirestore(app);
 
@@ -35,11 +35,24 @@ export function atualizaEdicao(id, texto) {
   updateDoc(doc(db, 'postagens', id), texto);
 }
 
-export function nomeUsuaria() {
-  const user = auth.currentUser;
-  console.log(user);
-  if (user == null) {
-    return 'Usuária';
-  }
-  return user.displayName;
+export function curtirPost(id, curtidas) {
+  updateDoc(doc(db, 'postagens', id), { curtidas: curtidas + 1 });
 }
+
+// export function somaCurtidas
+
+export async function ordenaPosts() {
+  const postsOrdenados = [];
+  const ordem = query(collection(db, 'postagens'), orderBy('dataPostagem', 'asc'));
+  const paraOrdenar = await getDocs(ordem);
+  paraOrdenar.forEach((post) => {
+    const dados = post.data();
+    dados.id = post.id;
+    postsOrdenados.push(dados);
+  });
+
+  return postsOrdenados;
+}
+
+const OP = ordenaPosts();
+console.log(OP);

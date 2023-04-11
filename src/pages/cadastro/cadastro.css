@@ -1,5 +1,5 @@
 body{
-  margin: 2.5rem auto 5rem; /*era 2rem*/
+  margin: 7rem auto; /*era 2rem*/
 }
 section{
   width: 90%;
@@ -12,7 +12,10 @@ section{
   gap: 1rem;
 }
 
-.img-fundo{
+/* .desktop{ display: none;} */
+
+
+.img-fundo, .img-fundo .desktop{
   position: absolute;
   display: flex;
   width: 100%;
@@ -81,3 +84,27 @@ a{
   font-weight: 600;
 }
  
+@media screen and (min-width: 481px) {
+  .img-fundo{
+    display: none;
+  }
+  .img-fundo .desktop{
+    display: block;
+  }
+  .caixa-cadastro{
+    display: flex; 
+  }
+  .mensagem-cadastro, .form-cadastro label{
+  font-size: 1.7rem;
+  } 
+  .form-cadastro input{
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+  }
+  .btn-enviar{
+    font-size: 1.2rem;
+  }
+  .footer{
+    font-size: larger;
+  }
+}

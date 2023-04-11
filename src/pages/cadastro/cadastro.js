@@ -5,14 +5,15 @@
 /* eslint-disable no-unneeded-ternary */
 /* eslint-disable no-alert */
 /* eslint-disable max-len */
-import { criarCadastro, verificarEmail } from '../../firebase/firebase';
+import { criarCadastro, verificarEmail } from '../../firebase/firebase-auth';
 import { maiorDe18, exibeErros } from '../../firebase/funcoes-acessorias';
 
 const cadastro = () => {
-  const criaCadastro = document.createElement('section');
+  const criaCadastro = document.createElement('section');// div?
   const header = document.querySelector('.header');
   const template = ` 
     <img class="img-fundo" src="imagens/background_mobile_preto-removebg-preview.png" alt="">
+    <img class="img-fundo desktop" src="imagens/background_desktop_preto-removebg-preview" alt="">
     
     <div class="mensagem-cadastro">
       <h3>Bem-vinda à nossa área de cadastro. Por favor, preencha as informações abaixo</h3>
@@ -60,7 +61,6 @@ const cadastro = () => {
   const telefone = criaCadastro.querySelector('#tel');
   const filhx = criaCadastro.querySelector('#filhos');
   const erro = criaCadastro.querySelector('.mensagem-erro');
-  const voltarLogin = criaCadastro.querySelector('#voltar-login');
   const btnEnviar = criaCadastro.querySelector('.btn-enviar');
 
   btnEnviar.addEventListener('click', (e) => {

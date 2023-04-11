@@ -1,7 +1,6 @@
 /* eslint-disable default-case */
 /* eslint-disable no-alert */
-
-import { nomeUsuaria, dataPostagem, dadosUsuaria } from './firebase';
+// import { ordenaPosts } from './firebase-storage';
 
 export function maiorDe18(dataNascimento) {
   // verificar se é maior de 18
@@ -55,32 +54,31 @@ export function exibeErros(erro) {
   }
 }
 
-export function modal(mensagem) {
-  console.log(mensagem);
-}
+// export function modal(mensagem) {
+//   console.log(mensagem);
+// }
 
 export function pegaDados(querySnapshot) { // pega tudo o texto publicado pela usuaria na coleção
   let recebeDados = '';
   querySnapshot.forEach((doc) => {
-    const publicacao = doc.data();
-    console.log(publicacao);
+    const publicacao = doc.data(); // cada documento do firebase
     recebeDados += ` 
     <div class="postagem-amigas">
-      <img src="../imagens/icone-usuaria.png" class="icone-usuaria">
+      <img src="../imagens/mulher-mao-com-uma-taca-de-vinho-transbordando-removebg-preview.png" class="icone-usuaria">
     
       <section class="postagem-data">
-        <p class="perfil-usuaria">${nomeUsuaria()}<br>${dadosUsuaria().userName}</p>
-        <p class="data-postagem">${dataPostagem()}<br> ${dadosUsuaria().hoje}<br>${dadosUsuaria().data}</p>
+        <p class="perfil-usuaria">${publicacao.userName}</p>
+        <p class="data-postagem">${publicacao.dataPostagem}</p>
       </section>
 
       <div class="postagens">
         <textarea class="texto-usuaria-postado" id="texto-usuaria-postado" style='resize:none'>${publicacao.descricao}</textarea>
 
-        <span class="icones-inferiores">
-          <p class="numero-curtidas">Curtir</p>
+        <div class="icones-inferiores">
+          <p class="numero-curtidas"></p>
 
-          <button class="btn-curtir">
-            <i class="fa-solid fa-heart" id="btn-curtir" type="button"></i>
+          <button class="btn-curtir" data-id="${doc.id}">
+            <i type="button" >🥂</i>
           </button>
 
           <button class="btn-excluir">
@@ -90,7 +88,7 @@ export function pegaDados(querySnapshot) { // pega tudo o texto publicado pela u
           <button class="btn-editar">
             <i class="fa-sharp fa-solid fa-pen-to-square" class="btn-editar" type="button" data-id="${doc.id}"></i>
           </button>
-        </span>
+        </div>
       </div>
     </div>
   `;

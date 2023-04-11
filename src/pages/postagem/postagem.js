@@ -2,9 +2,9 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable no-unused-vars */
 // import { async } from 'regenerator-runtime';
-import { sair, nomeUsuaria, dadosUsuaria } from '../../firebase/firebase';
+import { sair, dadosUsuaria, nomeUsuaria } from '../../firebase/firebase-auth';
 import {
-  paraPostar, postagens, mostraPostAutomaticamente, deletaPost, editaPost, atualizaEdicao,
+  paraPostar, postagens, mostraPostAutomaticamente, deletaPost, editaPost, atualizaEdicao, ordenaPosts, curtirPost,
 } from '../../firebase/firebase-storage';
 
 import { pegaDados } from '../../firebase/funcoes-acessorias';
@@ -13,6 +13,11 @@ const postagem = () => {
   const header = document.querySelector('.header');
   const criarPostagem = document.createElement('div');
   const template = `
+  <div class="imagem-desktop desktop">
+    <img class="img-desktop" src="imagens/enchendo_taça_de_vinho-removebg-preview.png" alt="imagem  de garrafa derramand liquido em uma taça">
+  </div>
+
+  <div class="container-txt">
     <div class="botao">
       <button class="btn-sair">Sair</button>
     </div>
@@ -29,15 +34,12 @@ const postagem = () => {
     </section>
 
     <div class="digita-texto" id='postagens-anteriores'></div>
-`;
+  </div>
+    `;
 
   header.style.display = 'block';
 
   criarPostagem.innerHTML = template;
-
-  // MOSTRA A USUÁRIA
-  // const usuariaLogada = obterUsuaria();
-  // console.log(usuariaLogada);
 
   // DESLOGAR
   const btnSair = criarPostagem.querySelector('.btn-sair');
@@ -54,7 +56,11 @@ const postagem = () => {
 
   const teste = async () => { // colocando o async aqui posso usar await em qualquer lugar abaixo
     return postagens().then((post) => {
+      // MOSTRAR NA TELA
       postagensAnteriores.innerHTML = pegaDados(post);
+      // postagensAnteriores.innerHTML = ordenaPosts();
+
+      // chamei aqui a função de ordenar
 
       // DELETAR POSTS
       const btnDeletaPost = criarPostagem.querySelectorAll('.btn-excluir');
@@ -62,7 +68,7 @@ const postagem = () => {
       btnDeletaPost.forEach((btn) => {
         btn.addEventListener('click', (e) => {
           const apagou = deletaPost(e.target.dataset.id);
-          console.log('deletado com sucesso');
+          // console.log('deletado com sucesso');
           // preciso acrescentar a usuaria para ter o id e assim o butão vai funcionar
           return apagou;
         });
@@ -75,7 +81,7 @@ const postagem = () => {
       btnEditaPost.forEach((btn) => {
         btn.addEventListener('click', async (e) => {
           const edit = await editaPost(e.target.dataset.id);
-          console.log('editar clicado');
+          // console.log('editar clicado');
           const editarTexto = edit.data();
           textoEdicao.value = editarTexto.descricao;
           editar = true;
@@ -84,6 +90,18 @@ const postagem = () => {
       });
 
       // CURTIR POSTS
+      const curtidas = criarPostagem.querySelector('.numero-curtidas').textContent;
+      // const qtdCurtidas = Number(curtidas) + 1;
+      // console.log(qtdCurtidas); soma feita lá na função // curtidas.innerText = qtdCurtidas;
+      const btnCurtir = criarPostagem.querySelectorAll('.btn-curtir');
+      // console.log(btnCurtir);
+      btnCurtir.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          const curtida = e.target.dataset.id;
+          // console.log(curtida);
+          // curtirPost(e.target.dataset.id, curtidas);
+        });
+      });
     });
   };
 
@@ -104,6 +122,7 @@ const postagem = () => {
   });
 
   mostraPostAutomaticamente(teste);
+  // chamei aqui a função de ordenar
 
   return criarPostagem;
 };

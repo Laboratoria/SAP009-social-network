@@ -3,14 +3,19 @@
 /* eslint-disable max-len */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable indent */
-import { fazerLogin, loginComGoogle } from '../../firebase/firebase';
+import { fazerLogin, loginComGoogle } from '../../firebase/firebase-auth';
 import { exibeErros } from '../../firebase/funcoes-acessorias';
 
-const criarLogin = document.createElement('section');
+const criarLogin = document.createElement('div');
 
 const login = () => {
   const template = `
-    <img class="background-desktop" src="imagens\background_desktop_preto-removebg-preview.png" alt="">
+  <div class="container-bcg-login">   
+    <div class="bckgnd-txt desktop">
+      <img class="img-apresentacao" src="./imagens/background login.png" alt="dois cachos de uva diagonalmente opostos com o nome mães e vinhos entre ele">
+
+      <h3 class="texto-apresentacao">Seja bem-vinda! Mães e vinhos é uma rede social feita para mães que gostam de conversar sobre maternidade real acompanhadas de uma boa taça de vinho. Por aqui a emoção é a flor da pele, com lágrimas e risos garantidos. Esse é um espaço de conexão e partilha. Junte-se a nós!</h3>
+    </div>
 
     <div class="caixa-login">
       <form class="form-login">
@@ -21,19 +26,21 @@ const login = () => {
         <input class="btn-entrar " type="submit" value="Entrar">
       </form>
 
-    <section class="login-com">
-      <p class="login-google">Login com</p>
+      <section class="login-com">
+        <p class="login-google">Login com</p>
 
-      <button class="btn-google" type="button">
-        <img src="./imagens/icone google.png" alt="icone google">
-      </button>
+        <button class="btn-google" type="button">
+          <img src="./imagens/icone google.png" alt="icone google">
+        </button>
 
-      <p>Ainda não possui cadastro? <br> <a href="/#cadastro">Crie sua conta!</a></p>
-    </section>
-  </div> 
+        <p>Ainda não possui cadastro? <br> <a href="/#cadastro">Crie sua conta!</a></p>
+      </section>
+    </div> 
+  </div>
 
-  <img class="imagem-footer" src="./imagens/brinde_taças-removebg-preview.png" alt="duas mãos próximas segurando taças com vinho simulando um brinde">
-  
+  <div class="footer-desktop desktop">
+    <img class="imagem-footer desktop" src="../imagens/brinde_taças-removebg-preview.png" alt="duas mãos próximas segurando taças com vinho simulando um brinde">
+  </div>
   `;
 
   criarLogin.innerHTML = template;
