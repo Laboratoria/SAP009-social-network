@@ -1,7 +1,11 @@
-import { signInWithPopup, getAuth, GoogleAuthProvider } from 'firebase/auth';
+import {
+  signInWithPopup,
+  getAuth,
+  GoogleAuthProvider,
+  signOut,
+} from 'firebase/auth';
 import { app } from '../src/firebase/configuration.js';
-import { loginToFeed, loginWithGoogle, register } from '../src/firebase/authentication.js';
-
+import { loginToFeed, loginWithGoogle, register, logout} from '../src/firebase/authentication.js';
 
 jest.mock('firebase/auth');
 
@@ -34,3 +38,16 @@ describe ('register', () => {
     })
   }) 
 })
+
+describe('logout', () => {
+  it('should logout', async () => {
+    signOut.mockResolvedValueOnce();
+    const authLogout = getAuth(app);
+    const providerLogout = new GoogleAuthProvider();
+
+    await logout(authLogout, providerLogout);
+    expect(signOut).toHaveBeenCalledTimes(1);
+    expect(signOut).toHaveBeenCalledWith(authLogout, providerLogout);
+  });
+});
+
