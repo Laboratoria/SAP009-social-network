@@ -56,7 +56,7 @@ export default () => {
     </div>
     </dialog>
     <section class="feed-posts">
-      <div id="postagem"></div>
+      <div id="postagem">${postsNaTela()}</div>
     </section>
   </div>
 
@@ -104,6 +104,6 @@ export default () => {
       modal.close();
     }
   });
-  postagem.innerHTML = `${postsNaTela()}`;
+  //postagem.innerHTML = `${postsNaTela()}`;
   return container;
 };

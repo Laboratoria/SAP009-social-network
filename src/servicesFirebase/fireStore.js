@@ -33,16 +33,18 @@ export async function newPost(dataPostagem, id, post, username) {
     textArea: post,
     userName: username,
   });
-  // newPost.id = docRef.id;
-  // return newPost;
-  return docRef.id;
+  console.log(docRef.id);
 }
 
-const q = query(collection(db, 'post'));
-
 export async function postsNaTela() {
+  const novoArray = [];
+  const q = query(collection(db, 'post'));
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
-    console.log(doc.id, ' => ', doc.data());
+    const dados = doc.data();
+    dados.id = doc.id;
+    novoArray.push(dados);
   });
+  console.log(novoArray);
+  return novoArray;
 }
