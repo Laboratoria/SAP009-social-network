@@ -5,7 +5,6 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
-  deleteUser,
 } from 'firebase/auth';
 
 import { app } from './app.js';
@@ -28,11 +27,11 @@ export const googleLogin = () => {
 
 export const logOut = () => signOut(auth);
 
-export function delectUser() {
-  const user = auth.currentUser;
-  deleteUser(user).then(() => {
-    // se for ok, deletada
-  }).catch((error) => {
-    console.log(error);
-  });
-}
+// export function delectUser() {
+//   const user = auth.currentUser;
+//   deleteUser(user).then(() => {
+//     // se for ok, deletada
+//   }).catch((error) => {
+//     console.log(error);
+//   });
+// }

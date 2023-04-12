@@ -8,8 +8,8 @@ color: #EE8100;
 margin-left: 210px;
 margin-top: -67px;
 cursor: pointer;
-text-decoration-color: #EE8100;
 text-decoration: underline;
+text-decoration-color: #EE8100;
 }
 
 .login-container { 
@@ -120,13 +120,6 @@ display: flex;
 background-color: #EE8100; 
 width: 750px;
 height: 900px;
-width: 50%;
-}
-
-#login-content-desktop {
-display: flex;   
-background-color: #EE8100; 
-width: 750px;
 }
 
 #welcome {
@@ -155,6 +148,5 @@ color: #FFFFFF;
 display: flex;
 width: 40vw;
 margin-left: 900px;
-width: 50%;
 } 
 }

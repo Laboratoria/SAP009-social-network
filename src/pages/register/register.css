@@ -63,8 +63,9 @@ color: #EE8100;
 margin-left: 175px;
 margin-top: -58px;
 cursor: pointer;
-text-decoration-color: #EE8100; 
 text-decoration: underline;
+text-decoration-color: #EE8100; 
+
 }
 
 footer {

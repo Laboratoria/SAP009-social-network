@@ -11,10 +11,3 @@ const firebaseConfig = {
 };
 
 export const app = initializeApp(firebaseConfig);
-
- /*apiKey: "AIzaSyBrP9zD_eD3sddBj8uFgt1LgmidejxRudM",
-  authDomain: "teste-social-nw.firebaseapp.com",
-  projectId: "teste-social-nw",
-  storageBucket: "teste-social-nw.appspot.com",
-  messagingSenderId: "397941123450",
-  appId: "1:397941123450:web:1d613d2894234987cccec3"*/
