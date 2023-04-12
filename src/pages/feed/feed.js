@@ -47,6 +47,7 @@ export default () => {
 
   `;
   container.innerHTML = template;
+
   const exibirPostagem = () => {
     const localPost = container.querySelector('.ultimos-posts');
     pegarPost((post) => {
@@ -57,12 +58,16 @@ export default () => {
       <h3>${post.nome}</h3>
       <p class="dia-post"> ${post.date}</p>
     </div>  
-      <section class="publicacao">
-        <p class="titulo-post">Título do Livro: <strong>${post.titulo}</strong></p>
-        <p class="autora-post">Nome da Autora: <strong>${post.autora}</strong></p>
-        <p class="texto-postagem">${post.post}</p>
-      </section> 
-   
+    <section class="publicacao">
+      <p class="titulo-post">Título do Livro: ${post.titulo}</p>
+      <p class="autora-post">Nome da Autora: <strong>${post.autora}</strong></p>
+      <p class="texto-postagem">${post.post}</p>
+    </section> 
+    <button botao-like">
+
+     <img id="coracao-vazio" src="/imagens/coracao-vazio.png"> 
+     <img id="coracao-cheio" class="hidden" src="/imagens/coracao-preenchido.png">
+    </button> 
    `;
       containerPost.innerHTML = templatePost;
       localPost.appendChild(containerPost);
@@ -85,6 +90,10 @@ export default () => {
     console.log(titulo.value, autora.value, postagem.value);
   });
 
+  botaoLike.addEventListener('click', async () => {
+    curtirPost(likesUsuaria);
+  });
+
   const botaoSair = container.querySelector('.botao-sair');
   botaoSair.addEventListener('click', () => {
     fazerLogout()
@@ -94,7 +103,6 @@ export default () => {
       .catch(() => {
       });
   });
-
   exibirPostagem();
   return container;
 };
