@@ -112,8 +112,7 @@ export default () => {
       const botaoEditar = containerPost.querySelector('#editar');
       const botaoExcluir = containerPost.querySelector('#excluir');
 
-      if (post.userId === post.id) {
-        alert("teste ok")
+      if (post.id !== auth.currentUser.uid) {
         botaoEditar.classList.add('hidden');
         botaoExcluir.classList.add('hidden');
       }
