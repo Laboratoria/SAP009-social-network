@@ -39,13 +39,30 @@ export default () => {
 
   container.innerHTML = template;
 
+  const showErrorMessage = (message, timeout) => {
+    const erroMsg = container.querySelector('.msg-erro');
+    erroMsg.innerHTML = message;
+    setTimeout(() => {
+      erroMsg.innerHTML = '';
+    }, timeout);
+  };
+
   const btnLogin = container.querySelector('#btn-login');
   btnLogin.addEventListener('click', (event) => {
     event.preventDefault();
     const nome = container.querySelector('#name');
     const senha = container.querySelector('#password');
+    //const expressaoRegexEmail = "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/";
     if (nome.value === '') {
-      showErrorMessage('Você precisa preencher esse campo', 4000);
+      showErrorMessage('Você precisa preencher os dois campos abaixo', 4000);
+      return;
+    }
+    //if (nome.value !== expressaoRegexEmail) {
+      //showErrorMessage('Você precisa usar um e-mail válido', 4000);
+      //return;
+    //}
+    if (senha.value === '') {
+      showErrorMessage('Você precisa digitar uma senha', 4000);
       return;
     }
     if (senha.value.length < 6) {
@@ -56,38 +73,21 @@ export default () => {
       .then(() => {
         window.location.hash = '#feed';
       })
-      .catch((error) => {
+      .catch(() => {
         const erroMsg = container.querySelector('.msg-erro');
-        const errorCode = error.code;
-        const errorMessage = error.message;
+        erroMsg.innerHTML = 'Usuário ou senha incorretos';
       });
   });
 
-  const showErrorMessage = (message, timeout) => {
-    const erroMsg = container.querySelector('.msg-erro');
-    erroMsg.innerHTML = message;
-    setTimeout(() => {
-      erroMsg.innerHTML = '';
-    }, timeout);
-  };
-
-  const btnLoginGoogle = container.querySelector(".btn-logo-google");
-  btnLoginGoogle.addEventListener("click", (event) => {
+  const btnLoginGoogle = container.querySelector('.btn-logo-google');
+  btnLoginGoogle.addEventListener('click', (event) => {
     fazerLoginComGoogle()
       .then((userCredential) => {
-        window.location.hash = "#feed";
+        window.location.hash = '#feed';
         const user = userCredential.user;
         console.log(user);
       })
-      .catch((error) => {
-        // Handle Errors here.
-        //if (error.code === 
-        //const errorMessage = error.message;
-        // The email of the user's account used.
-        //const email = error.customData.email;
-        // The AuthCredential type that was used.
-        //const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
+      .catch(() => {
       });
   });
 
