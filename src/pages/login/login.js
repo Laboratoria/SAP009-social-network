@@ -39,23 +39,6 @@ export default () => {
 
   container.innerHTML = template;
 
-  const btnLogin = container.querySelector('#btn-login');
-  btnLogin.addEventListener('click', (event) => {
-    event.preventDefault();
-    const nome = container.querySelector('#name');
-    const senha = container.querySelector('#password');
-    fazerLogin(nome.value, senha.value)
-      .then(() => {
-        window.location.hash = '#feed';
-      })
-      .catch((error) => {
-        const erroMsg = container.querySelector('.msg-erro');
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        showErrorMessage('Login ou senha incorretos, tente outra vez', 4000);
-      });
-  });
-
   const showErrorMessage = (message, timeout) => {
     const erroMsg = container.querySelector('.msg-erro');
     erroMsg.innerHTML = message;
@@ -64,28 +47,47 @@ export default () => {
     }, timeout);
   };
 
-  const btnLoginGoogle = container.querySelector(".btn-logo-google");
-  btnLoginGoogle.addEventListener("click", (event) => {
-    fazerLoginComGoogle()
+  const btnLogin = container.querySelector('#btn-login');
+  btnLogin.addEventListener('click', (event) => {
+    event.preventDefault();
+    const nome = container.querySelector('#name');
+    const senha = container.querySelector('#password');
+    //const expressaoRegexEmail = "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/";
+    if (nome.value === '') {
+      showErrorMessage('Você precisa preencher os dois campos abaixo', 4000);
+      return;
+    }
+    //if (nome.value !== expressaoRegexEmail) {
+      //showErrorMessage('Você precisa usar um e-mail válido', 4000);
+      //return;
+    //}
+    if (senha.value === '') {
+      showErrorMessage('Você precisa digitar uma senha', 4000);
+      return;
+    }
+    if (senha.value.length < 6) {
+      showErrorMessage('Sua senha precisa ter pelo menos seis digitos', 4000);
+      return;
+    }
+    fazerLogin(nome.value, senha.value)
       .then(() => {
-        window.location.hash = "#feed";
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        //const credential = GoogleAuthProvider.credentialFromResult(result);
-        //const token = credential.accessToken;
-        // The signed-in user info.
-        //const user = result.user;
-        // IdP data available using getAdditionalUserInfo(result)
-        // ...
+        window.location.hash = '#feed';
       })
-      .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        //const email = error.customData.email;
-        // The AuthCredential type that was used.
-        //const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
+      .catch(() => {
+        const erroMsg = container.querySelector('.msg-erro');
+        erroMsg.innerHTML = 'Usuário ou senha incorretos';
+      });
+  });
+
+  const btnLoginGoogle = container.querySelector('.btn-logo-google');
+  btnLoginGoogle.addEventListener('click', (event) => {
+    fazerLoginComGoogle()
+      .then((userCredential) => {
+        window.location.hash = '#feed';
+        const user = userCredential.user;
+        console.log(user);
+      })
+      .catch(() => {
       });
   });
 
