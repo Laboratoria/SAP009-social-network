@@ -6,7 +6,7 @@ export default () => {
   const template = `
     <section class='box-text-img'>
     <div class='box-01'>
-    <img src='./img/logohelp9.png' alt='logo HelParents' class='img-logo'>
+    <img src='./img/logohelp8.png' alt='logo HelParents' class='img-logo'>
         <div class="paragrafo">
           <p><strong>Primeira vez por aqui?</strong></p>
           <p>Realize o seu cadastro, contribua e <br> aproveite todas as possibilidades
@@ -33,8 +33,18 @@ export default () => {
   registerContainer.innerHTML = template;
 
   const btnCadastrar = registerContainer.querySelector('.btn-cadastro');
-  btnCadastrar.addEventListener('click', () => {
-    window.location.hash = '#feed';
+  btnCadastrar.addEventListener('click', (event) => {
+    event.preventDefault();
+    const nome = registerContainer.querySelector('.email');
+    const senha = registerContainer.querySelector('.password');
+    fazerCadastro(nome.value, senha.value)
+      .then(() => {
+        window.location.hash = '#feed';
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
   });
   return registerContainer;
 };
