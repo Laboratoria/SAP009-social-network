@@ -3,11 +3,10 @@ import login from './pages/login/login.js';
 import cadastro from './pages/cadastro/cadastro.js';
 import feed from './pages/feed/feed.js';
 import sobre from './pages/sobre/sobre.js';
-// import { checkUserLogin } from './firebase/auth.js';
+import { usuariaLogada } from './firebase/auth.js';
 
 const main = document.querySelector('#root');
-
-window.addEventListener('hashchange', () => {
+const verificarHash = () => {
   main.innerHTML = '';
   switch (window.location.hash) {
     case '':
@@ -28,18 +27,27 @@ window.addEventListener('hashchange', () => {
     default:
       main.appendChild(login());
   }
+};
+
+window.addEventListener('hashchange', () => {
+  verificarHash();
 });
+
 // const redirectUserAuthentication = (isAuthenticated) => {
 //   console.log(isAuthenticated);
-//   if (isAuthenticated) {
+//   if (usuariaLogada) {
 //     window.location.hash = '#feed';
-//   }
-//   else {
+//   } else {
 //     window.location.hash = '#login';
 //   }
 // };
 
-window.addEventListener('load', () => {
-  main.appendChild(login());
-  // checkUserLogin(redirectUserAuthentication);
+window.addEventListener('load', async () => {
+  usuariaLogada(async (user) => {
+    if (user) {
+      await verificarHash();
+    } else {
+      window.location.hash = '#login';
+    }
+  });
 });

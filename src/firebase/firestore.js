@@ -11,6 +11,7 @@ import {
 } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import { app } from './firebase';
+// import { auth } from './auth';
 
 const db = getFirestore(app);
 
@@ -30,7 +31,8 @@ export const pegarPost = async (mostrarPost) => {
   await onSnapshot(collection(db, 'posts'), orderBy('date', 'desc'), (querySnapshot) => {
     document.querySelector('.ultimos-posts').innerHTML = '';
     querySnapshot.forEach((post) => {
-      mostrarPost(post.data());
+      // ... puxa todos os dados do objeto a seguir (no caso, post.data)
+      mostrarPost({ ...post.data(), postId: post.id });
       console.log(post.id, ' => ', post.data());
     });
   });
