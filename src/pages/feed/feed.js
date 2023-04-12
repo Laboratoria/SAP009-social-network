@@ -69,6 +69,7 @@ export default () => {
       <p class="autora-post">Nome da Autora: <strong>${post.autora}</strong></p>
       <p class="texto-postagem">${post.post}</p>
     </section> 
+
     <div class="botao-like">
      <img id="coracao-vazio" src="/imagens/coracao-vazio.png"> 
      <img id="coracao-cheio" class="hidden" src="/imagens/coracao-preenchido.png">
