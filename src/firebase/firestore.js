@@ -8,6 +8,9 @@ import {
   arrayUnion,
   arrayRemove,
   doc,
+  query,
+  getDocs,
+  deleteDoc,
 } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import { app } from './firebase';
@@ -28,7 +31,7 @@ export const database = async (name, email) => {
 };
 
 export const pegarPost = async (mostrarPost) => {
-  await onSnapshot(collection(db, 'posts'), orderBy('date', 'desc'), (querySnapshot) => {
+  await onSnapshot(collection(db, 'posts'), (querySnapshot) => {
     document.querySelector('.ultimos-posts').innerHTML = '';
     querySnapshot.forEach((post) => {
       // ... puxa todos os dados do objeto a seguir (no caso, post.data)
@@ -60,6 +63,12 @@ export const fazerPost = async (titulo, autora, post) => {
   }
 };
 
+export const ordenarPost = async () => {
+  const ordem = query(collection(db, 'posts'), orderBy('date', 'desc'));
+  const ordenar = await getDocs(ordem);
+  return ordenar;
+};
+
 export const curtirPost = async (postId, userId) => updateDoc(doc(db, 'posts', postId), {
   likesUsuaria: arrayUnion(userId),
 });
@@ -67,3 +76,5 @@ export const curtirPost = async (postId, userId) => updateDoc(doc(db, 'posts', p
 export const descurtirPost = async (postId, userId) => updateDoc(doc(db, 'posts', postId), {
   likesUsuaria: arrayRemove(userId),
 });
+
+export const excluirPost = async (postId) => deleteDoc(doc(db), 'posts', postId);

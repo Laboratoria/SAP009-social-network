@@ -172,12 +172,14 @@ textarea{
 }
 
 .botao-like{
+  display: flex;
   margin-bottom: 2.5rem;
 }
+
 #coracao-vazio{
   width: 1.2rem;
   margin-left: 0.5rem;
-  position: absolute;
+  margin-right: 0.3rem;
 }
 
 #coracao-cheio{
@@ -188,4 +190,15 @@ textarea{
 
 .hidden{
   visibility: hidden;
+}
+
+#editar{
+  width: 0.8rem;
+  margin-left: 18.3rem;
+}
+
+#excluir{
+  width: 0.9rem;
+  margin-left: auto;
+  margin-right: 0.8rem;
 }
