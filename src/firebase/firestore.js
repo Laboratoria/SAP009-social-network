@@ -11,6 +11,7 @@ import {
 } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import { app } from './firebase';
+// import { auth } from './auth';
 
 const db = getFirestore(app);
 

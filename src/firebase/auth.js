@@ -5,13 +5,16 @@ import {
   signOut,
   createUserWithEmailAndPassword,
   // updateCurrentUser,
+  onAuthStateChanged,
   updateProfile,
   signInWithPopup,
+
 } from 'firebase/auth';
 
 import { app } from './firebase.js';
 
 const auth = getAuth(app);
+const user = auth.currentUser;
 const provider = new GoogleAuthProvider();
 const fazerLogin = (email, password) => signInWithEmailAndPassword(auth, email, password);
 const loginGoogle = () => signInWithPopup(auth, provider);
@@ -27,10 +30,17 @@ const fazerCadastro = async (name, email, password) => {
   });
 };
 
+const usuariaLogada = (verificacao) => {
+  onAuthStateChanged(auth, verificacao);
+};
+
 export {
   auth,
+  user,
   fazerLogin,
   loginGoogle,
   fazerLogout,
   fazerCadastro,
+  updateProfile,
+  usuariaLogada,
 };
