@@ -32,25 +32,9 @@ export default () => {
 
   registerContainer.innerHTML = template;
 
-<<<<<<< HEAD
-  const btnCadastrar = registerContainer.querySelector('.btn-cadastro')
+  const btnCadastrar = registerContainer.querySelector('.btn-cadastro');
   btnCadastrar.addEventListener('click', () => {
     window.location.hash = '#feed';
-=======
-  const btnCadastrar = registerContainer.querySelector('.btn-cadastro');
-  btnCadastrar.addEventListener('click', (event) => {
-    event.preventDefault();
-    const nome = registerContainer.querySelector('.email');
-    const senha = registerContainer.querySelector('.password');
-    fazerCadastro(nome.value, senha.value)
-      .then(() => {
-        window.location.hash = '#feed';
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-      });
->>>>>>> a820854877b2309cc8a5c3303ae272436b1ef4c7
   });
   return registerContainer;
 };

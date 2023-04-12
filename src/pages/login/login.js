@@ -1,7 +1,7 @@
-import { fazerLogin, fazerLoginComGoogle } from "../../firebase/firebase";
+import { fazerLogin, fazerLoginComGoogle } from '../../firebase/firebase';
 
 export default () => {
-  const container = document.createElement("div");
+  const container = document.createElement('div');
   const template = `
     <section class='box-text-img'>
     <div class='box-01'>
