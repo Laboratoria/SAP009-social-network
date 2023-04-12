@@ -3,10 +3,19 @@ export default () => {
   feedContainer.classList.add('feed-section');
 
   const feedTemplate = `
-<div class="feed-main">
-  <div class="feed-initial-text">  
-    <h1>The best social media for learning English!</h1>
+<div class="write-post">
+  <h2>Share your thoughts...</h2>
+  <div class="post-area">
+    <div class="textarea-div">
+      <textarea placeholder="What's up?" class="text-area" required></textarea>
+    </div>
+    <div class="share-btn-div">
+      <button type="submit" class="share-btn">SHARE</button>
+    </div>
   </div>
+</div>
+<div class="latest-posts">
+  <hr>
 </div>
 `;
 

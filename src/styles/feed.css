@@ -1,3 +1,51 @@
-.feed-main{
-    color: black;
+.feed-section{
+    font-family: 'Montserrat', sans-serif;
+}
+.write-post{
+    display: flex;
+    flex-direction: column;
+}
+.write-post h2{
+    color: #004AAD;
+    font-weight: 400;
+    font-size: 20px;
+}
+.post-area{
+    width: 80vw;
+    margin-left: 10vw;
+    background-color: #D8E8FE;
+    border: 0.5px solid #004AAD;
+}
+.textarea-div{
+    display: flex;
+    justify-content: center;
+}
+.text-area{
+    margin-top: 1em;
+    background-color: #D8E8FE;
+    width: 60vw;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    line-height: 1.4;
+    outline: none;
+}
+.share-btn-div{
+    display: flex;
+    justify-content: flex-end;
+}
+.share-btn{
+    width: 87px;
+    height: 32px;
+    background: #EF681A;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    color: #004AAD;
+    border: 1px solid #F0EBE8(30, 30, 30, 0.2);
+    cursor: pointer;
+    margin-bottom: 5px;
+    margin-right: 5px;
 }
