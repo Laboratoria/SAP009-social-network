@@ -33,15 +33,6 @@ window.addEventListener('hashchange', () => {
   verificarHash();
 });
 
-// const redirectUserAuthentication = (isAuthenticated) => {
-//   console.log(isAuthenticated);
-//   if (usuariaLogada) {
-//     window.location.hash = '#feed';
-//   } else {
-//     window.location.hash = '#login';
-//   }
-// };
-
 window.addEventListener('load', async () => {
   usuariaLogada(async (user) => {
     if (user) {

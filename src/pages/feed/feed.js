@@ -4,6 +4,8 @@ import {
   pegarPost,
   curtirPost,
   descurtirPost,
+  ordenarPost,
+  excluirPost,
 } from '../../firebase/firestore.js';
 
 export default () => {
@@ -59,13 +61,13 @@ export default () => {
       const containerPost = document.createElement('div');
       let somaCurtidas = post.likesUsuaria.length;
       const templatePost = `
-    <div class="nome-usuaria-post">
+    <div class="nome-usuaria-post">   
       <img class="avatar-post" src="/imagens/user.png">
       <h3>${post.nome}</h3>
       <p class="dia-post"> ${post.date}</p>
     </div>  
     <section class="publicacao">
-      <p class="titulo-post">Título do Livro: ${post.titulo}</p>
+      <p class="titulo-post">Título do Livro: <strong>${post.titulo}</strong></p>
       <p class="autora-post">Nome da Autora: <strong>${post.autora}</strong></p>
       <p class="texto-postagem">${post.post}</p>
     </section> 
@@ -74,8 +76,11 @@ export default () => {
      <img id="coracao-vazio" src="/imagens/coracao-vazio.png"> 
      <img id="coracao-cheio" class="hidden" src="/imagens/coracao-preenchido.png">
       <span id="soma-likes">${somaCurtidas}</span>
-    </div> 
-   `;
+      <img id="editar" src="/imagens/editar.png">
+      <img id="excluir" src="/imagens/excluir.png">
+    </div>
+      `;
+      ordenarPost();
       containerPost.innerHTML = templatePost;
 
       const coracaoVazio = containerPost.querySelector('#coracao-vazio');
@@ -103,16 +108,16 @@ export default () => {
         curtidasNaTela.innerHTML = somaCurtidas;
         descurtirPost(post.postId, auth.currentUser.uid);
       });
-      // const botaoLike = containerPost.querySelectorAll('.botao-like');
-      // botaoLike.forEach((botao) => {
-      //   botao.addEventListener('click', async () => {
-      //     const postCurtido = botao.dataset.postId;
-      //     const usuarioId = auth.currentUser.uid;
-      //     // com dataset acessa o atributo que foi inserido no html como data-post-id
-      //     console.log(postCurtido);
-      //     curtirPost(likesUsuaria);
-      //   });
-      // });
+
+      const botaoEditar = containerPost.querySelector('#editar');
+      const botaoExcluir = containerPost.querySelector('#excluir');
+
+      if (post.userId === post.id) {
+        alert("teste ok")
+        botaoEditar.classList.add('hidden');
+        botaoExcluir.classList.add('hidden');
+      }
+
       localPost.appendChild(containerPost);
     });
   };
@@ -131,7 +136,6 @@ export default () => {
   botaoPublicar.addEventListener('click', async () => {
     await fazerPost(titulo.value, autora.value, postagem.value);
     limparForm();
-    console.log(titulo.value, autora.value, postagem.value);
   });
 
   const botaoSair = container.querySelector('.botao-sair');
