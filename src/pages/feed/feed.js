@@ -3,7 +3,7 @@ import {
   auth,
 } from '../../servicesFirebase/firebaseAuth';
 
-import { newPost, postsNaTela } from '../../servicesFirebase/fireStore';
+import { likePost, newPost, postsNaTela } from '../../servicesFirebase/fireStore';
 
 export default () => {
   const container = document.createElement('div');
@@ -67,7 +67,7 @@ export default () => {
     const dados = doc.data();
     return `
     <section class="feed-posts">
-        <div class="container-post" id="postagem">
+        <div class="container-post" id="postagem" data-post-id="${doc.id}">
             <div class="info-postagem">
                 <p>${dados.userName}</p>
                 <p>${dados.date}</p>
@@ -77,7 +77,7 @@ export default () => {
             </div>
             <section class="icones">
             <div class="curtida">
-            <button class="btn-like"><img class="img-curtida" src="../img/panelinha.png"></button>
+            <button class="btn-like"><img data-post-id="${doc.id}" class="img-curtida" src="../img/panelinha.png"></button>
             </div>
             <div class="btn-usuarios">
               <button class="btn-editar"><img class="img-editar" src="../img/icone-editar.png"></button>
@@ -146,12 +146,15 @@ export default () => {
     console.log(value);
     postagem.innerHTML = `${value} `;
   });
+  postagem.addEventListener('click', (event) => {
+    console.log(event.target.classList);
+    if (event.target.classList.contains('img-curtida')) {
+    /*  likePost(postId, idUser); */
+      console.log(event.target.getAttribute('data-post-id'));
+    /* } else if (event.target.classList === '.btn-editar') {
+} else if (event.target.classList === '.btn-excluir') {
 
-  postagem.addEventListener('click', () => {
-    const btnLike = postagem.querySelector('.btn-like');
-    btnLike.addEventListener('click', () => {
-      atualizaPost('like');
-    });
+*/};
   });
   function atualizaPost(tipo) {
     console.log(tipo);
