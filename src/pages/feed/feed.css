@@ -267,6 +267,11 @@ li > a{
     cursor: pointer;
 }
 
+.img-curtida{
+    margin-top: 5px;
+    width: 40px;
+}
+
 .img-editar, .img-excluir{
     margin-top: 15px;
     width: 30px;
