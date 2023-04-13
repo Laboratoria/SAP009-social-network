@@ -77,4 +77,8 @@ export const descurtirPost = async (postId, userId) => updateDoc(doc(db, 'posts'
   likesUsuaria: arrayRemove(userId),
 });
 
-export const excluirPost = async (postId) => deleteDoc(doc(db), 'posts', postId);
+export const excluirPost = async (postId) => deleteDoc(doc(db, 'posts', postId));
+
+export const editarPost = async (postId, editarTexto) => updateDoc(doc(db, 'posts', postId), {
+  post: editarTexto,
+});

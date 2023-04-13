@@ -6,6 +6,7 @@ import {
   descurtirPost,
   ordenarPost,
   excluirPost,
+  editarPost,
 } from '../../firebase/firestore.js';
 
 export default () => {
@@ -69,16 +70,16 @@ export default () => {
     <section class="publicacao">
       <p class="titulo-post">Título do Livro: <strong>${post.titulo}</strong></p>
       <p class="autora-post">Nome da Autora: <strong>${post.autora}</strong></p>
-      <p class="texto-postagem">${post.post}</p>
+      <p disabled class="texto-postagem">${post.post}</p>
     </section> 
-
-    <div class="botao-like">
+    <div id="botao-like" class="display">
      <img id="coracao-vazio" src="/imagens/coracao-vazio.png"> 
      <img id="coracao-cheio" class="hidden" src="/imagens/coracao-preenchido.png">
       <span id="soma-likes">${somaCurtidas}</span>
       <img id="editar" src="/imagens/editar.png">
       <img id="excluir" src="/imagens/excluir.png">
     </div>
+     <button id="botao-salvar" class="hidden">Salvar</button> </div>
       `;
       ordenarPost();
       containerPost.innerHTML = templatePost;
@@ -111,13 +112,23 @@ export default () => {
 
       const botaoEditar = containerPost.querySelector('#editar');
       const botaoExcluir = containerPost.querySelector('#excluir');
+      const editarTexto = containerPost.querySelector('.texto-postagem');
+      const botaoSalvar = containerPost.querySelector('#botao-salvar');
+      const botaoCurtida = containerPost.querySelector('#botao-like');
 
       if (post.id !== auth.currentUser.uid) {
-        botaoEditar.classList.add('hidden');
+        botaoEditar.setAttribute('class', 'hidden');
         botaoExcluir.classList.add('hidden');
       }
 
-      localPost.appendChild(containerPost);
+      botaoEditar.addEventListener('click', () => {
+        editarTexto.removeAttribute('disabled');
+        botaoSalvar.removeAttribute('class');
+        botaoCurtida.setAttribute('class', 'hidden');
+        botaoEditar.setAttribute('class', 'hidden');
+        botaoExcluir.setAttribute('class', 'hidden');
+      });
+      
 
       botaoExcluir.addEventListener('click', () => {
         if (window.confirm('Tem certeza que deseja excluir a publicação?')) {
@@ -125,6 +136,7 @@ export default () => {
           containerPost.remove();
         }
       });
+      localPost.appendChild(containerPost);
     });
   };
 
