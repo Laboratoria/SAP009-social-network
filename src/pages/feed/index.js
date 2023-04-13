@@ -3,16 +3,42 @@ export default () => {
   container.classList.add("container-feed");
 
   const template = `
-  <header class="header-menu">
-          <img src="./image/logo_c&h.jpg" alt="logo Care&Health"/>
-  </header>
-  
+    <aside>
+      <header class="header-menu">
+        <img src="./image/logo_c&h.jpg" alt="logo Care&Health"/>
+      </header>
 
-          <img src="./image/home.png" alt="icone de home" href="#" />
-          <img src="./image/publicar.png" src="ic_outline-add-circle-outline.png" alt="icone para publicar um post" href="#"/>
-          <img src="./image/sair.png" alt="icone para sair do app" />
-        </div>
-  
+      <nav>
+        <button>
+          <span>
+            <i>
+              <img src="./image/home.png" alt="icone de home" href="#" />
+            </i>
+            <span></span>
+          </span>
+        </button>
+
+        <button>
+          <span>
+            <i>
+              <img src="./image/publicar.png" src="ic_outline-add-circle-outline.png" alt="icone para publicar um post" href="#"/>
+            </i>
+            <span></span>
+          </span>
+        </button>
+
+        <button>
+          <span>
+            <i>
+              <img src="./image/sair.png" alt="icone para sair do app"/>
+            </i>
+            <span></span>
+          </span>
+        </button>
+      </nav>
+    </aside>
+          
+
       <div class="user"
         <span>Nome_do_Usuário</span>
       </div>
@@ -27,6 +53,7 @@ export default () => {
       </div>
     </div>
   </form
+  <aside>
     `;
 
   container.innerHTML = template;
