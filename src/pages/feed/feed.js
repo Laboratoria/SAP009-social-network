@@ -89,15 +89,8 @@ export default () => {
   </div >
    `;
   }
-  async function teste() {
-    const arrayTemplates = [];
-    const arrayPost = await postsNaTela();
-    arrayPost.forEach((element) => {
-      arrayTemplates.push(templatePost(element));
-    });
-    // console.log(arrayTemplates); //
-    return arrayTemplates.join('');
-  }
+
+  // ELEMENTOS DO TEMPLATE PRINCIPAL //
   container.innerHTML = template;
   const btnModal = container.querySelector('#btn-modal');
   const btnMenu = container.querySelector('.menu-toggle');
@@ -127,6 +120,7 @@ export default () => {
   const user = auth.currentUser.displayName;
   if (user === '');
 
+  // ELEMENTOS DO TEMPLATE POST //
   const timeElapsed = Date.now();
   const today = new Date(timeElapsed);
   const dataPostagem = today.toLocaleDateString();
@@ -142,22 +136,37 @@ export default () => {
     }
   });
 
+  // FUNÇÃO PARA JUNTAR TODOS OS POSTS NA TELA //
+  async function teste() {
+    const arrayTemplates = [];
+    const arrayPost = await postsNaTela();
+    arrayPost.forEach((element) => {
+      arrayTemplates.push(templatePost(element));
+    });
+    // console.log(arrayTemplates); //
+    return arrayTemplates.join('');
+  }
+
   const resultado = Promise.resolve(teste()).then((value) => {
     console.log(value);
     postagem.innerHTML = `${value} `;
   });
+
+  // RASTREAR EVENTOS DE CLICK //
   postagem.addEventListener('click', (event) => {
+
     const element = event.target;
     if (element.dataset.likeId) {
       likePost(element.dataset.likeId, idUser);
       console.log(event.target.getAttribute('data-post-id'));
-    /* } else if (event.target.classList === '.btn-editar') {
-} else if (event.target.classList === '.btn-excluir') {
-
+    } else if (event.target.classList === '.btn-editar') {
+      //função de editar
+    } else if (event.target.classList === '.btn-excluir') {
+      //função de excluir
+    }
   });
-  function atualizaPost(tipo) {
-    console.log(tipo);
-  }
+
   /* postagem.innerHTML = `${resultado} `; */
+
   return container;
 };
