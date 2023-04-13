@@ -52,15 +52,10 @@ export default () => {
     event.preventDefault();
     const nome = container.querySelector('#name');
     const senha = container.querySelector('#password');
-    //const expressaoRegexEmail = "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/";
     if (nome.value === '') {
       showErrorMessage('Você precisa preencher os dois campos abaixo', 4000);
       return;
     }
-    //if (nome.value !== expressaoRegexEmail) {
-      //showErrorMessage('Você precisa usar um e-mail válido', 4000);
-      //return;
-    //}
     if (senha.value === '') {
       showErrorMessage('Você precisa digitar uma senha', 4000);
       return;
@@ -80,12 +75,12 @@ export default () => {
   });
 
   const btnLoginGoogle = container.querySelector('.btn-logo-google');
-  btnLoginGoogle.addEventListener('click', (event) => {
+  btnLoginGoogle.addEventListener('click', () => {
     fazerLoginComGoogle()
-      .then((userCredential) => {
+      .then((/* userCredential */) => {
         window.location.hash = '#feed';
-        const user = userCredential.user;
-        console.log(user);
+        /* const user = userCredential.user;
+        console.log(user); */
       })
       .catch(() => {
       });
