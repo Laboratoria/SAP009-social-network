@@ -154,7 +154,6 @@ export default () => {
     /* } else if (event.target.classList === '.btn-editar') {
 } else if (event.target.classList === '.btn-excluir') {
 
-*/};
   });
   function atualizaPost(tipo) {
     console.log(tipo);
