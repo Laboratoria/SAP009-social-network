@@ -3,7 +3,7 @@ import {
   auth,
 } from '../../servicesFirebase/firebaseAuth';
 
-import { likePost, newPost, postsNaTela } from '../../servicesFirebase/fireStore';
+import { likePost, newPost, postsNaTela, deletarPost } from '../../servicesFirebase/fireStore';
 
 export default () => {
   const container = document.createElement('div');
@@ -67,7 +67,7 @@ export default () => {
     const dados = doc.data();
     return `
     <section class="feed-posts">
-        <div class="container-post" id="postagem" data-post-id="${doc.id}">
+        <div class="container-post" data-post-id="${doc.id}">
             <div class="info-postagem">
                 <p>${dados.userName}</p>
                 <p>${dados.date}</p>
@@ -77,11 +77,12 @@ export default () => {
             </div>
             <section class="icones">
             <div class="curtida">
-            <button class="btn-like"><img data-like-id="${doc.id}" class="img-curtida" src="../img/panelinha.png"></button>
+            <button class="btn-like"><img data-like-id="${doc.id}" class="img-curtida" src="../img/panela.png"></button>
+            <span class="contagem"></span>
             </div>
             <div class="btn-usuarios">
-              <button class="btn-editar"><img class="img-editar" src="../img/icone-editar.png"></button>
-              <button class="btn-excluir"><img class="img-excluir" src="../img/icone-excluir.png"></button>
+              <button class="btn-editar"><img data-editar-id="${doc.id}" class="img-editar" src="../img/icone-editar.png"></button>
+              <button class="btn-excluir"><img data-excluir-id="${doc.id}" class="img-excluir" src="../img/icone-excluir.png"></button>
               <section>
             </div>
         </div>
@@ -152,17 +153,28 @@ export default () => {
     postagem.innerHTML = `${value} `;
   });
 
-  // RASTREAR EVENTOS DE CLICK //
-  postagem.addEventListener('click', (event) => {
-
+  // RASTREAR EVENTOS DE CLICK e adicionar as funções de cada evento //
+  postagem.addEventListener('click', async (event) => {
     const element = event.target;
+    const imgLike = container.querySelector('img-curtida');
+    const contagem = container.querySelector('.contagem');
     if (element.dataset.likeId) {
       likePost(element.dataset.likeId, idUser);
-      console.log(event.target.getAttribute('data-post-id'));
+      console.log(event.target.getAttribute('data-like-id'));
+      imgLike.setAttribute('src', '../img/panela-preenchida.png'); // trocar imagem
     } else if (event.target.classList === '.btn-editar') {
-      //função de editar
-    } else if (event.target.classList === '.btn-excluir') {
-      //função de excluir
+      // função de editar
+    } else if (element.dataset.excluirId) {
+      if (window.confirm('Tem certeza que gostaria de deletar essa postagem?')) {
+        deletarPost(element.dataset.excluirId)
+          .then(() => {
+            document.location.reload(true);
+          }).catch(() => {
+            alert('Não foi possível deletar sua postagem. Tente novamente.');
+          });
+      }
+
+      console.log(event.target.getAttribute('data-excluir-id'));
     }
   });
 

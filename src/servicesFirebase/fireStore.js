@@ -11,12 +11,12 @@ import {
   arrayUnion,
   arrayRemove,
   doc,
+  deleteDoc,
 } from 'firebase/firestore';
 
 import {
   firebaseConfig,
 } from './firebaseconfig';
-import { async } from 'regenerator-runtime';
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -40,7 +40,6 @@ export async function newPost(dataPostagem, id, post, username) {
     userName: username,
     likes: [],
   });
-
   // newPost.id = docRef.id;
   // return newPost;
   const doc = await getDoc(docRef);
@@ -48,38 +47,60 @@ export async function newPost(dataPostagem, id, post, username) {
   return doc;
 }
 
+// função para printar posts na tela //
 export async function postsNaTela() {
   const novoArray = [];
   const q = query(collection(db, 'post'));
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
-  /* const dados = doc.data();
-    dados.id = doc.id; */
     novoArray.push(doc);
   });
-  console.log(novoArray);
   return novoArray;
 }
 
-const addLikePost = async (postId, idUser) => updateDoc(doc(db, 'post', postId), {
-  likes: arrayUnion(idUser),
+// adicionar like //
+const addLikePost = async (postId, idUser) => {
+  await updateDoc(doc(db, 'post', postId), {
+    likes: arrayUnion(idUser),
+  });
+};
 
-});
+// retirar like //
+const removeLike = async (postId, idUser) => {
+  await updateDoc(doc(db, 'post', postId), {
+    likes: arrayRemove(idUser),
+  });
+};
 
-const removeLike = async (postId, idUser) => updateDoc(doc(db, 'post', postId), {
-  likes: arrayRemove(idUser),
-});
+// pegar um post dos documentos //
 const getPost = async (postId) => {
   const ref = doc(db, 'post', postId);
   const result = await getDoc(ref);
   return result.data();
 };
+
+/* função geral para add e retirar likes:
+adicionar ou retirar id's dos usuários no array de likes */
+
 export const likePost = async (postId, idUser) => {
   const post = await getPost(postId);
   const alreadyLiked = post.likes.includes(idUser);
-  if (alreadyLiked === true) {
-    addLikePost(postId, idUser);
-  } else {
+  let count = post.likes.length;
+  let liked;
+  if (alreadyLiked) {
     removeLike(postId, idUser);
+    count -= 1;
+    liked = false;
+  } else {
+    addLikePost(postId, idUser);
+    count += 1;
+    liked = true;
   }
+  return { liked, count };
 };
+
+// deletar posts //
+
+export async function deletarPost(postId) {
+  await deleteDoc(doc(db, 'posts', postId));
+}
