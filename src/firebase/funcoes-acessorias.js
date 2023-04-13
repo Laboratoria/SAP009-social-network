@@ -53,7 +53,7 @@ export function exibeErros(erro) {
     default:
       return 'ocorreu um erro inesperado';
   }
-}
+} // chamar modal(msg) no return
 
 // export function modal(mensagem) {
 //   console.log(mensagem);

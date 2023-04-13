@@ -39,9 +39,9 @@ const cadastro = () => {
         <label for="filhos">Nº de filhas/os</label>
         <input type="tel" name="" id="filhos" required> <!-- tel pq aparece o teclado de nº  -->
         
-        <span class="modal mensagem-erro"><a href=""></a></span>
+        <span class="mensagem-erro"></span>
 
-        <input class="btn-enviar" type="submit" value="Enviar">
+        <input class="btn-enviar-cadastro" type="submit" value="Enviar">
         
         <a id="voltar-login" href="#">Voltar ao login</a>
       </form>
@@ -60,19 +60,11 @@ const cadastro = () => {
   const inputSenha = criaCadastro.querySelector('#senha');
   const telefone = criaCadastro.querySelector('#tel');
   const filhx = criaCadastro.querySelector('#filhos');
-  const erro = criaCadastro.querySelector('.mensagem-erro');
+  const erroCadastro = criaCadastro.querySelector('.mensagem-erro');
   const btnEnviar = criaCadastro.querySelector('.btn-enviar');
 
   btnEnviar.addEventListener('click', (e) => {
     e.preventDefault();
-
-    // botão voltar ao login
-    // se  botão voltar ao login for clicado,
-    // criaCadastro.voltarLogin.addEventListener('click', () => {
-    //   //window.location.hash = '#';
-    //  // header.style.display = 'flex';
-    //   console.log('essa oiderea funciona');
-    // });
 
     // validações de preenchimemto do form
 
@@ -83,10 +75,10 @@ const cadastro = () => {
       form.reportValidity();
     } else if (inputSenha.value.length < 6) {
 
-      alert('sua senha precisa ter mais de 6 digítos');
+      erroCadastro.innerHTML = 'sua senha precisa ter mais de 6 digítos';
     } else if (maiorDe18(dataNascimento.value) === false) {
 
-      alert('Infelizmente vc não pode acessar essa plataforma/rede social, ela é destinada para maiores de 18 anos por fazer apologia e incentivar o uso de bebida alcoólica');
+      erroCadastro.innerHTML = 'Infelizmente vc não pode acessar essa plataforma/rede social, ela é destinada para maiores de 18 anos por fazer apologia e incentivar o uso de bebida alcoólica';
     } else {
 
       // criação de cadastro
@@ -104,11 +96,8 @@ const cadastro = () => {
             });
         })
         .catch((error) => {
-          exibeErros(error);
-          erro.innerHTML = exibeErros(error);
+          erroCadastro.innerHTML = exibeErros(error);
           console.log(error);
-          // erro.textContent = ''; não funcionou, mas tem que apagar a mensagem de erro qndo o usuário começar a digitar
-          // CRIAR UM MODAL PARA EXIBIR OS ERROS
         });
     }
   });

@@ -1,6 +1,6 @@
 import {
   getFirestore, collection, addDoc, getDocs, onSnapshot,
-  deleteDoc, doc, getDoc, updateDoc, query, orderBy,
+  deleteDoc, doc, getDoc, updateDoc, query, orderBy, arrayUnion, arrayRemove,
 } from 'firebase/firestore';
 import { dadosUsuaria } from './firebase-auth';
 import { app } from './firebase.config.js';
@@ -17,7 +17,7 @@ export function paraPostar(descricao) { // armazena no firebase
 
 export function postagens() { // vai na memoria pega cada arq existente
   return getDocs(collection(db, 'postagens'));
-}
+} // a ordena posts substituiu ela pq retorna as postagens já ordenadas
 
 export function mostraPostAutomaticamente(postEnviado) {
   return onSnapshot(collection(db, 'postagens'), postEnviado);
@@ -35,11 +35,12 @@ export function atualizaEdicao(id, texto) {
   updateDoc(doc(db, 'postagens', id), texto);
 }
 
-export function curtirPost(id, curtidas) {
-  updateDoc(doc(db, 'postagens', id), { curtidas: curtidas + 1 });
+export async function curtirPost(id, curtidas) {
+  await updateDoc(doc(db, 'postagens', id), { curtidas: arrayUnion(curtidas + 1) });
 }
-
-// export function somaCurtidas
+export async function descurtirPost(id, curtidas) {
+  await updateDoc(doc(db, 'postagens', id), { curtidas: arrayRemove(curtidas - 1) });
+}
 
 export async function ordenaPosts() {
   const ordem = query(collection(db, 'postagens'), orderBy('dataPostagem', 'desc'));

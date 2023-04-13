@@ -11,13 +11,15 @@ const criarLogin = document.createElement('div');
 const login = () => {
   const template = `
   <div class="container-bcg-login">   
-    <div class="bckgnd-txt desktop">
+    <div class="bckgnd-txt-img">
       <img class="img-apresentacao" src="./imagens/background login.png" alt="dois cachos de uva diagonalmente opostos com o nome mães e vinhos entre ele">
 
-      <h3 class="texto-apresentacao">Seja bem-vinda! Mães e vinhos é uma rede social feita para mães que gostam de conversar sobre maternidade real acompanhadas de uma boa taça de vinho. Por aqui a emoção é a flor da pele, com lágrimas e risos garantidos. Esse é um espaço de conexão e partilha. Junte-se a nós!</h3>
+      <h3 class="texto-apresentacao">Seja bem-vinda! Mães e vinhos é uma rede social feita para mães que gostam de conversar sobre maternidade real acompanhadas de uma boa taça de vinho. Por aqui a emoção é a flor da pele, com lágrimas e risos garantidos. Esse é um espaço de conexão e partilha. <br> Junte-se a nós!</h3>
     </div>
 
     <div class="caixa-login">
+      <p class="erro-login"></p>
+
       <form class="form-login">
         <input id="login-email" type="email"  placeholder="E-mail" required/>
 
@@ -38,13 +40,14 @@ const login = () => {
     </div> 
   </div>
 
-  <div class="footer-desktop desktop">
-    <img class="imagem-footer desktop" src="../imagens/brinde_taças-removebg-preview.png" alt="duas mãos próximas segurando taças com vinho simulando um brinde">
+  <div class="footer-login-desktop">
+    <img class="imagem-footer-login " src="../imagens/brinde_taças-removebg-preview.png" alt="duas mãos próximas segurando taças com vinho simulando um brinde">
   </div>
   `;
 
   criarLogin.innerHTML = template;
 
+  const erroLogin = criarLogin.querySelector('.erro-login');
   const form = criarLogin.querySelector('.form-login');
   const loginEmail = criarLogin.querySelector('#login-email');
   const loginSenha = criarLogin.querySelector('#login-senha');
@@ -65,14 +68,12 @@ const login = () => {
       .then(() => {
         window.location.hash = '#postagem';
       }).catch((error) => {
-        alert(exibeErros(error));
-        // CRIAR UM MODAL PARA EXIBIR OS ERROS
+        erroLogin.innerHTML = exibeErros(error);
       });
     }
   });
 
   // login com google
-
   btnGoogle.addEventListener('click', () => {
     loginComGoogle()
     .then(() => {

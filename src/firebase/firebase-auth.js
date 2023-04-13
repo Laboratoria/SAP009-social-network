@@ -24,9 +24,9 @@ export function observador() { // verifica se tem usuário logado ou não
     if (user) {
       const uid = user.uid;
       console.log(uid);
-    } else {
-      return false;
+      return true;
     }
+    return false;
   });
 }
 
@@ -69,7 +69,7 @@ export function dadosUsuaria() {
     userName: user.displayName,
     userEmail: user.email,
     dataPostagem: dataPostagem.toLocaleString(),
-    curtidas: 0,
+    curtidas: [],
   };
 
   return usuaria;

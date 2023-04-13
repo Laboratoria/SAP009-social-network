@@ -1,4 +1,7 @@
-.desktop{ display: none;}
+
+/* ^gerais^ */
+
+.imagem-postagem-desktop{ display: none;}
 
 .imagem-desktop .desktop{
   display: none;
@@ -15,20 +18,23 @@
 .btn-sair {
   display: flex;
   margin: 1rem;
-  width: 40px;
-  height: 20px;
-  padding: 4px;
+  width: auto;
+  height: 1.5rem;
+  padding: .5rem;
   text-transform: uppercase;
   text-align: center;
+  font-size: large;
   font-weight: bold;
   font-family: monospace;
   align-items: center;
-  margin-top: -18rem;
   background-color: #ebafac;
   border: transparent;
   border-radius: 5px;
   justify-content: center;
-/* FIXAR O BOTÂO */
+  position: fixed;
+  left: 80%;
+  top: 3%;
+  /* bottom: 50%; */
 }
 
 .mensagem-ola {
@@ -86,10 +92,16 @@ width: 90%;
   background-color: #ebafac;
   border: transparent;
   border-radius: 5px;
-  padding: 5px;
+  width: auto;
+  height: 1.5rem;
+  padding: .5rem;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: x-large;
+  font-family: monospace;
+  align-items: center;
   margin: auto;
   margin-bottom: 10px;
-  font-size: smaller;
 }
 
 /* postagens publicadas */
@@ -169,8 +181,6 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 }
-
-
 
 /* @media screen and (min-width: 769px) {
   .icones-inferiores{

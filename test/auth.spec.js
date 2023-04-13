@@ -19,20 +19,20 @@ const nome = 'Usuaria Sobrenome';
 const email = 'usuaria@email.com';
 const senha = '123456';
 
-it('deveria criar um cadastro', () => {
+it('deveria criar um cadastro', async () => {
   // createUserWithEmailAndPassword.mockClear(); se for usar mais de 1x
   const mockAuth = { user: { } };
-  createUserWithEmailAndPassword.mockResolvedValue({ displayName: nome }); // pra qndo tem o then e catch? pra qndo espera uma resposta e chama outra função que retorna um valor novo, nesse caso o nome
+  createUserWithEmailAndPassword.mockResolvedValue({ }); // pra qndo tem o then e catch? pra qndo espera uma resposta e chama outra função que retorna um valor novo, nesse caso o nome
   // a promise resolved de updateProfile retorna: displayName: name
   // getAuth.mockReturnValue(mockAuth);
   updateProfile.mockReturnValue();
 
-  criarCadastro(email, senha, nome);
+  await criarCadastro(email, senha, nome);
 
-  expect(createUserWithEmailAndPassword).toHaveBeenCalledTimes(1);
-  expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(email, senha);
-  expect(updateProfile).toHaveBeenCalledTimes(1);
-  expect(updateProfile).toHaveBeenCalledTimes(mockAuth.user, { displayName: nome });
+  expect(createUserWithEmailAndPassword()).toHaveBeenCalledTimes(1);
+  expect(createUserWithEmailAndPassword()).toHaveBeenCalledWith(email, senha);
+  expect(updateProfile()).toHaveBeenCalledTimes(1);
+  expect(updateProfile()).toHaveBeenCalledTimes(mockAuth.user, { displayName: nome });
 });
 
 it('deveria fazer login', () => {

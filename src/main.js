@@ -3,7 +3,7 @@
 import login from './pages/login/login.js';
 import cadastro from './pages/cadastro/cadastro.js';
 import postagem from './pages/postagem/postagem.js';
-import { observador } from './firebase/firebase-auth.js';
+import { auth, observador } from './firebase/firebase-auth.js';
 
 const main = document.querySelector('#main');
 
@@ -36,4 +36,9 @@ window.addEventListener('load', () => {
   iniciaTela();
   // window.location.hash = '';
   // colocar um if else para ir para postagem se já tiver logado
+
+  // if (auth.currentUser.uid === observador()) {
+  //   main.appendChild(postagem());
+  // }
+  // main.appendChild(login());
 });

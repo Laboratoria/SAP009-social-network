@@ -1,3 +1,42 @@
+@media screen and (min-width:768px) {
+  section{
+    margin: auto;
+
+  }
+  .mensagem-cadastro h3{
+    font-size: xx-large;
+    line-height: 2rem;
+  }
+  .caixa-cadastro{
+    display: flex;
+    width: 80%;
+    margin: auto;
+    /* background-color: purple; */
+    /* margin-bottom: 1.5rem; */
+    position: relative;
+  }
+  .form-cadastro{
+    width: 80%;
+    height: 70%;
+    margin: auto;
+    gap: .2rem;;
+  }
+  .form-cadastro label{
+    margin: 1.5rem 0;
+    font-size: x-large;
+    font-weight: 600;
+  }
+  .form-cadastro input{
+    height: 2.5rem;
+    border-radius: 1px 15px;
+    font-size: larger;
+  }
+  .btn-enviar-cadastro{
+    font-size: large;
+    font-weight: 700;
+    margin: 1rem auto;
+  }
+}
 
 section{
   width: 90%;
@@ -17,7 +56,6 @@ section{
   opacity: 40%;
   margin: 60% auto 10% auto;
 }
-
 .caixa-cadastro{
   display: flex;
   margin: .5rem auto;
@@ -78,7 +116,7 @@ a{
   text-decoration: none;
   font-weight: 600;
 }
- 
+
 /* @media screen and (min-width: 481px) {
   .img-fundo{
     display: none;
