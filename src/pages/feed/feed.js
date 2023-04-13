@@ -77,7 +77,7 @@ export default () => {
             </div>
             <section class="icones">
             <div class="curtida">
-            <button class="btn-like"><img data-post-id="${doc.id}" class="img-curtida" src="../img/panelinha.png"></button>
+            <button class="btn-like"><img data-like-id="${doc.id}" class="img-curtida" src="../img/panelinha.png"></button>
             </div>
             <div class="btn-usuarios">
               <button class="btn-editar"><img class="img-editar" src="../img/icone-editar.png"></button>
@@ -154,9 +154,10 @@ export default () => {
 
   // RASTREAR EVENTOS DE CLICK //
   postagem.addEventListener('click', (event) => {
-    console.log(event.target.classList);
-    if (event.target.classList.contains('img-curtida')) {
-      //função de like
+
+    const element = event.target;
+    if (element.dataset.likeId) {
+      likePost(element.dataset.likeId, idUser);
       console.log(event.target.getAttribute('data-post-id'));
     } else if (event.target.classList === '.btn-editar') {
       //função de editar
