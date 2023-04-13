@@ -17,8 +17,6 @@ import {
   firebaseConfig,
 } from './firebaseconfig';
 
-import { async } from 'regenerator-runtime';
-
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 

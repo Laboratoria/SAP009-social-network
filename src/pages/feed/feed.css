@@ -300,6 +300,7 @@ li > a{
         margin-top: 30px;
         width: 120px;
         height: 120px;
+        position: fixed;
     }
 
     .post{
@@ -316,9 +317,9 @@ li > a{
     }
 
     .username{
-        margin-top: 10px;
-        position: fixed;
-        left: 43%;
+        margin:20px;
+        position: relative;
+        right: 42vw;
     }
 
     .feed-posts{

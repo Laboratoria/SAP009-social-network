@@ -151,10 +151,10 @@ export default () => {
     const btnLike = postagem.querySelector('.btn-like');
     btnLike.addEventListener('click', () => {
       atualizaPost('like');
-    })
-  })
+    });
+  });
   function atualizaPost(tipo) {
-    console.log(tipo)
+    console.log(tipo);
   }
 
   /* postagem.innerHTML = `${resultado} `; */
