@@ -1,0 +1,80 @@
+body{
+ margin: .5rem 2rem 2rem 2rem;
+ background: #f8f0e1;
+}
+
+section {
+  margin: 5%;
+  margin-top: 0;
+  font-size: 1.1rem;
+} 
+.caixa-login {
+  padding: 18% 10%;
+  background-color: #AD213A;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  border-radius: 15px;
+  gap: 2rem;
+}
+
+.form-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 1.8rem;
+  width: 100%;
+}
+
+.form-login input {
+  background-color: #facfce;
+  height: 30px;
+  width: 85%;
+  border: 1px ridge;
+  text-align: center;
+}
+
+input[type="submit"] {
+  background-color: #ebafac;
+  border-radius: 7px;
+  border: transparent;
+  padding: 5px;
+  width: 30%;
+}
+.login-com {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.login-com p {
+  line-height: 1.5rem;
+  vertical-align: text-bottom;
+
+}
+.login-com p a {
+  color: white;
+}
+
+.login-google {
+  text-align: center;
+}
+
+.btn-google {
+  background-color: transparent;
+  border: transparent;
+}
+
+.btn-google img {
+  width: 15%;
+  padding: 3%;
+}
+
+input::-webkit-input-placeholder {
+  font-size: 1rem;
+  color: #62615d;
+}

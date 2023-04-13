@@ -1,0 +1,74 @@
+body{
+  margin: 2.5rem auto 5rem; /*era 2rem*/
+}
+section{
+  width: 90%;
+  margin: 2% auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  position: relative;
+  gap: 1rem;
+}
+
+.img-fundo{
+  position: absolute;
+  display: flex;
+  width: 100%;
+  opacity: 40%;
+  margin: 60% auto 10% auto;
+}
+
+.caixa-cadastro{
+  display: flex;
+  margin: .5rem auto;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.mensagem-cadastro{
+  margin: 5% auto;
+  width: 80%;
+  text-align: center;
+  line-height: 1.3rem;
+  font-size: 1.2rem;
+}
+
+.form-cadastro{
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.12rem;
+}
+
+.form-cadastro label{
+  margin-bottom: 2px;
+}
+
+.form-cadastro input{
+  margin-bottom: 15px;
+  background-color: #FACFCE;
+  border: transparent;
+  padding: 8px;
+}
+
+input[type=submit]{
+  width: 30%;
+  margin: 0 auto;
+  background-color: #EBAFAC;
+  border-radius: 15px;
+  padding: 5px;
+}
+
+.footer{
+  position: relative;
+  top: 4rem; /* para deixar em baixo */
+}
+
+.cursor-block{
+  cursor: not-allowed;
+}
+ 

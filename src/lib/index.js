@@ -1,6 +1,4 @@
-// aqui exportaras las funciones que necesites
-
-export const myFunction = () => {
-  // aqui tu codigo
-  console.log('Hola mundo!');
-};
+// export const minhasFuncoes =  {
+//   // aqui todas as funções que vamos usar 
+//   console.log('Hola mundo!');
+// };
