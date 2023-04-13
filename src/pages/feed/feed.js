@@ -159,7 +159,6 @@ export default () => {
   function atualizaPost(tipo) {
     console.log(tipo);
   }
-
   /* postagem.innerHTML = `${resultado} `; */
   return container;
 };
