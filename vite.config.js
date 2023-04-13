@@ -17,6 +17,10 @@ export default defineConfig(({ command }) => {
       // ejemplo base: '/social-network/',
       build: {
         minify: false,
+        commonjsOptions: {
+          esmExternals: true,
+        },
+
         rollupOptions: {
           output: {
             dir: './dist',

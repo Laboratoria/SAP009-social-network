@@ -60,9 +60,10 @@ export async function postsNaTela() {
   return novoArray;
 }
 
-// export const likePost = async (id, username) => updateDoc(doc(db, 'post', id), {
-//   likes: +1,
-// });
+/* export const likePost = async (postId, idUser) => updateDoc(doc(db, 'post', postId), {
+  likes: arrayUnion('idUser'),
+
+}); */
 
 const getPost = async (postId) => {
   const ref = doc(db, 'post', postId);
