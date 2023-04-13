@@ -1,0 +1,220 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+
+:root{
+   --fonte-logo: 'Montserrat', sans-serif;
+   --fonte-titulo: 'Noto Serif', serif;
+   --cor-de-fundo: #00172C;
+   --amarelinho: #F1CC9A;
+   --azul-botao: #034072;
+   --vermelho: #500B19;
+
+}
+
+.body-login{
+   display: block;
+}
+
+.imagem-logo{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+
+.logo-escrita-clara{
+   width: 200px;
+   margin-bottom: 20px;
+}
+
+.container{
+   background-color: var(--cor-de-fundo);
+   height: 100vh;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+
+h1 {
+   font-family: var(--fonte-logo);
+   font-size: 16px;
+   color:white;
+   text-align: center;
+   margin-bottom: 20px;
+}
+
+.texto-entrada p {
+   color: var(--amarelinho);
+   font-size:0.9em;
+   width: 250px;
+   text-align: center;
+   margin-bottom: 25px;
+   font-weight: 200;
+   font-family: var(--fonte-logo);
+}
+
+.fundo-form{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.form-login {
+   display: flex;
+   flex-direction: column;
+   gap:20px;
+   align-items: center;
+}
+
+.email-and-password-container{
+   display: flex;
+   flex-direction: column;
+   gap:5px;
+   
+}
+
+.mail{
+   background-color: #034072;
+   height: 30px;
+   
+}
+
+.input-login, .input-senha{
+   background-repeat: no-repeat;
+   background-color: var(--azul-botao);
+   border: none;
+   width: 315px;
+   height: 45px;
+   text-align: center;
+   font-family: var(--fonte-logo);
+}
+
+.input-login{
+   background-image: url(../img/icone-login.png);
+   border-radius: 10px 10px 0 0;
+   border-bottom: 1px solid rgba(141, 141, 141, 0.5);
+}
+
+.input-senha{
+   background-image: url(../img/locker.png);
+   border-radius: 0 0 10px 10px;
+}
+
+.btn-login{
+   background-color: #F1CC9A;
+   border: none;
+   font-family: var(--fonte-logo);
+   font-weight: bold;
+   height: 40px;
+   width: 195px;
+   border-radius: 10px;
+   color:#500B19;
+   text-transform: uppercase;
+   transition: 0.5s;
+}
+
+.btn-login a {
+   color: #500B19;
+   text-decoration: none;
+}
+
+.btn-login:hover{
+   cursor: pointer;
+   background-color: #eeba76;
+}
+
+.btn-cadastrar{
+   width: 240px;
+   height: 47px;
+   border: none;
+   border-radius: 10px;
+   background-color: #034072;
+   font-family: var(--fonte-logo);
+   font-weight: bold;
+   color: white;
+   text-transform: uppercase;
+   transition: 0.5s;
+}
+
+.btn-cadastrar:hover{
+   cursor: pointer;
+   background-color: #03335a;
+}
+
+.entrar-google{
+   color: white;
+   font-family: var(--fonte-titulo);
+   font-size: 15px;
+}
+
+.action-google{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.btn-google{
+   background-color: transparent;
+   padding: 3px;
+   width: 40px;
+   height: 40px;
+   border-radius: 50%;
+   border: none;
+   margin: 10px;
+}
+
+.btn-google:hover{
+   cursor: pointer;
+}
+
+.imagem-login{
+   background-image: url(../../img/imagem-login.jpg);
+   background-position: center center;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+@media  (min-width:900px){
+    .body-login {
+        display: flex;
+    }
+
+    .coluna-1, .coluna-2 {
+        width: 50%;
+    }
+    .coluna-2 .container{
+        height: 100vh;
+    }
+    .imagem-login {
+        display: block;
+        width: 100%;
+        height: 100vh;
+    }
+    
+    .fundo-form {
+        background: #d9d9d98c;
+        border-radius: 20px;
+        width: 380px;
+        height: 550px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center
+    }
+    .txt-error    .texto-entrada>p {
+        color: var(--vermelho);
+        font-size: 1em;
+        font-weight: 600;
+    }
+    
+    .imagem-logo {
+        margin-top: 20px;
+    }
+
+    .btn-google{
+      background-color: #ececec8c;
+    }
+
+}
+
