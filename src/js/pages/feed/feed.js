@@ -1,3 +1,5 @@
+import { newPost } from '../../../firebase/firestore';
+
 export default () => {
   const feedContainer = document.createElement('section');
   feedContainer.classList.add('feed-section');
@@ -14,12 +16,20 @@ export default () => {
     </div>
   </div>
 </div>
-<div class="latest-posts">
-  <hr>
-</div>
+<div class="post-container"></div>
+<div class="timeline"></div>
 `;
 
   feedContainer.innerHTML = feedTemplate;
+
+  // const postContainer = feedContainer.querySelector('.post-container');
+  const textPost = feedContainer.querySelector('.text-area');
+  const shareBtn = feedContainer.querySelector('.share-btn');
+
+  shareBtn.addEventListener('click', async () => {
+    await newPost(textPost.value);
+    textPost.value = '';
+  });
 
   return feedContainer;
 };
