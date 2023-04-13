@@ -87,3 +87,21 @@
 .logo-google {
   margin-right: 10px;
 }
+
+@media screen and (max-width: 1200px) {
+  .icon {
+    display: none;
+  }
+
+  .bloco-login {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 1064px) {
+  .bloco-login {
+    width: 90%;
+    height: auto;
+  }
+  
+}
