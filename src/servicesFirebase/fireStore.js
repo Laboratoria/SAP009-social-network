@@ -16,6 +16,7 @@ import {
 import {
   firebaseConfig,
 } from './firebaseconfig';
+import { async } from 'regenerator-runtime';
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -60,16 +61,25 @@ export async function postsNaTela() {
   return novoArray;
 }
 
-/* export const likePost = async (postId, idUser) => updateDoc(doc(db, 'post', postId), {
-  likes: arrayUnion('idUser'),
+const addLikePost = async (postId, idUser) => updateDoc(doc(db, 'post', postId), {
+  likes: arrayUnion(idUser),
 
-}); */
+});
 
+const removeLike = async (postId, idUser) => updateDoc(doc(db, 'post', postId), {
+  likes: arrayRemove(idUser),
+});
 const getPost = async (postId) => {
   const ref = doc(db, 'post', postId);
   const result = await getDoc(ref);
   return result.data();
 };
 export const likePost = async (postId, idUser) => {
-  const post = await getPost(postId, idUser);
+  const post = await getPost(postId);
+  const alreadyLiked = post.likes.includes(idUser);
+  if (alreadyLiked === true) {
+    addLikePost(postId, idUser);
+  } else {
+    removeLike(postId, idUser);
+  }
 };
