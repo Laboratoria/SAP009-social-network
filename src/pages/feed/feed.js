@@ -118,6 +118,13 @@ export default () => {
       }
 
       localPost.appendChild(containerPost);
+
+      botaoExcluir.addEventListener('click', () => {
+        if (window.confirm('Tem certeza que deseja excluir a publicação?')) {
+          excluirPost(post.postId);
+          containerPost.remove();
+        }
+      });
     });
   };
 
