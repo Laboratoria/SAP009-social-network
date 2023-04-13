@@ -74,6 +74,15 @@
   margin-top: 1rem;
 }
 
+/*botão esqueci senha*/
+.forgot-password a{
+  text-decoration: none;
+  color: #AD3113;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/*botão logar com Google*/
 .btnGoogle button {
   width: 100%;
   margin-top: 1rem;
