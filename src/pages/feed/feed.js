@@ -4,7 +4,6 @@ import {
   pegarPost,
   curtirPost,
   descurtirPost,
-  ordenarPost,
   excluirPost,
   editarPost,
 } from '../../firebase/firestore.js';
@@ -26,25 +25,25 @@ export default () => {
     <section class="nome-livro">
       <h2 class="criar-post">Criar publicação</h2>
       <p>Título do livro</p>
-      <input type="text" class="input-titulo">
+      <input type="text" class="input-titulo" required>
     </section>
     <section class="nome-autora">
       <p>Autora</p>
-      <input type="text" class="input-autora">
+      <input type="text" class="input-autora" required>
     </section>
     <section class="nivel-leitura">
       <p>Para qual leitora você indica esse livro?</p>
-      <div class="botoes-nivel">
+      <div class="botoes-nivel">        
         <input type="radio" class="inicante" value="iniciante" name="nivel">
         <label for="iniciante">iniciante</label>
-        <input type="radio" class="intermediaria" value="intermediaria" name="nivel">
+        <input type="radio" class="intermediaria" value="intermediária" name="nivel">
         <label for="intermediaria">intermediária</label>
-        <input type="radio" class="avancada" value="avancada" name="nivel">
+        <input type="radio" class="avancada" value="avançada" name="nivel">
         <label for="avancada">avançada</label>
       </div>
     </section>
     <section class="post-publicacao">
-      <textarea placeholder="Limite de 350 caracteres..." class="texto-post"></textarea>
+      <textarea placeholder="Limite de 350 caracteres..." class="texto-post" required></textarea>
     </section>
     <button type="submit" class="botao-publicar">Publicar</button>
     <div>
@@ -70,6 +69,7 @@ export default () => {
     <section class="publicacao">
       <p class="titulo-post">Título do Livro: <strong>${post.titulo}</strong></p>
       <p class="autora-post">Nome da Autora: <strong>${post.autora}</strong></p>
+      <span class="nivel-post">${post.nivel}</span> 
       <textarea disabled class="texto-postagem">${post.post}</textarea>
     </section> 
     <div id="botao-like" class="display">
@@ -81,7 +81,7 @@ export default () => {
     </div>
      <button id="botao-salvar" class="hidden">Salvar</button> </div>
       `;
-      ordenarPost();
+
       containerPost.innerHTML = templatePost;
 
       const coracaoVazio = containerPost.querySelector('#coracao-vazio');
@@ -160,7 +160,12 @@ export default () => {
 
   const botaoPublicar = container.querySelector('.botao-publicar');
   botaoPublicar.addEventListener('click', async () => {
-    await fazerPost(titulo.value, autora.value, postagem.value);
+    const nivel = container.querySelector('input[name=nivel]:checked');
+    await fazerPost(titulo.value, autora.value, postagem.value, nivel.value);
+    // eslint-disable-next-line max-len
+    if ((titulo.value === '') || (autora.value === '') || (postagem.value === '') || (nivel.value === false)) {
+      alert('Por favor, preencha todos os campos!');
+    }
     limparForm();
   });
 

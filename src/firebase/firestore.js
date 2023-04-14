@@ -31,7 +31,8 @@ export const database = async (name, email) => {
 };
 
 export const pegarPost = async (mostrarPost) => {
-  await onSnapshot(collection(db, 'posts'), (querySnapshot) => {
+  const q = query(collection(db, 'posts'), orderBy('date', 'desc'));
+  await onSnapshot(q, (querySnapshot) => {
     document.querySelector('.ultimos-posts').innerHTML = '';
     querySnapshot.forEach((post) => {
       // ... puxa todos os dados do objeto a seguir (no caso, post.data)
@@ -41,7 +42,7 @@ export const pegarPost = async (mostrarPost) => {
   });
 };
 
-export const fazerPost = async (titulo, autora, post) => {
+export const fazerPost = async (titulo, autora, post, nivel) => {
   const auth = getAuth(app);
   try {
     const dataPost = Date.now();
@@ -52,6 +53,7 @@ export const fazerPost = async (titulo, autora, post) => {
       id: auth.currentUser.uid,
       titulo,
       autora,
+      nivel,
       post,
       date: dataPostagem,
       like: 0,
@@ -61,12 +63,6 @@ export const fazerPost = async (titulo, autora, post) => {
   } catch (e) {
     console.error('Error adding document: ', e);
   }
-};
-
-export const ordenarPost = async () => {
-  const ordem = query(collection(db, 'posts'), orderBy('date', 'desc'));
-  const ordenar = await getDocs(ordem);
-  return ordenar;
 };
 
 export const curtirPost = async (postId, userId) => updateDoc(doc(db, 'posts', postId), {

@@ -43,8 +43,9 @@ main{
 }
 
 .criar-post{
+  text-align: center;
   font-size: 1.2rem;
-  margin-bottom: 15px;
+  margin: 1rem;
 }
 
 .input-titulo, .input-autora{
@@ -109,10 +110,10 @@ textarea {
   background: #407279;
 }
 
-.texto-ultimos-post{
+.texto-ultimos-posts{
   text-align: center;
-  margin-bottom: 5rem;
-  font-size: 0.8rem;
+  font-size: 1.2rem;
+  margin: 1.5rem;
 }
 
 .avatar-post{
@@ -135,9 +136,26 @@ textarea {
   margin-right: 1rem;
 }
 
-.texto-ultimos-posts{
-  text-align: center;
-  margin: 1.5rem;
+.titulo-post {
+  padding-top: 0.3rem;
+  padding-left: 0.5rem;
+}
+
+.autora-post {
+  padding-left: 0.5rem;
+  padding-bottom: 0.3rem;
+}
+
+.nivel-post{
+  height: 25px;
+  color: #FFFFFF;
+  font-size: 0.7rem;
+  background-color:#085560;
+  border: 0.5px solid #FFFFFF;
+  border-radius: 10px;
+  padding: 0.2rem;
+  margin-left: 0.5rem;
+  cursor: pointer;
 }
 
 .publicacao{
@@ -206,18 +224,9 @@ textarea {
   color: #000000;
   font-size: 0.8rem;
   width: 19rem;
-  height: 8.5rem;
+  height: 7.4rem;
   border-radius: 1rem;
   padding: 0.5rem;
   margin-left: 0.4rem;
   margin-top: 0.5rem;
-}
-
-.titulo-post {
-  padding-top: 0.3rem;
-  padding-left: 0.5rem;
-}
-
-.autora-post {
-  padding-left: 0.5rem;
 }
