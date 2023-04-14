@@ -3,7 +3,7 @@
 /* eslint-disable max-len */
 /* eslint-disable arrow-body-style */
 /* eslint-disable no-unused-vars */
-import { sair, nomeUsuaria, auth } from '../../firebase/firebase-auth';
+import { sair, nomeUsuaria, dadosUsuaria } from '../../firebase/firebase-auth';
 import {
   paraPostar, mostraPostAutomaticamente, deletaPost, editaPost, atualizaEdicao, ordenaPosts, curtirPost, descurtirPost,
 } from '../../firebase/firebase-storage';
@@ -14,7 +14,7 @@ const postagem = () => {
   const header = document.querySelector('.header');
   const criarPostagem = document.createElement('div');
   const template = `
-  <div class="imagem-postagem-desktop desktop">
+  <div class="imagem-postagem-desktop">
     <img class="img-desktop" src="imagens/enchendo_taça_de_vinho-removebg-preview.png" alt="imagem  de garrafa derramand liquido em uma taça">
   </div>
 
@@ -67,10 +67,8 @@ const postagem = () => {
 
       btnDeletaPost.forEach((btn) => {
         btn.addEventListener('click', (e) => {
-          const apagou = deletaPost(e.target.dataset.id);
-          if (apagou) {
-            alert('deseja realmente apagar o post?'); // colocar um modal
-            return apagou;
+          if (window.confirm('Deseja realmente apagar o post?')) {
+            return deletaPost(e.target.dataset.id);
           }
         });
       });
@@ -90,20 +88,22 @@ const postagem = () => {
       });
 
       // CURTIR POSTS
+      const publicacao = dadosUsuaria();
       const curtidas = criarPostagem.querySelector('.numero-curtidas').textContent;
       const btnCurtir = criarPostagem.querySelectorAll('.btn-curtir');
+      console.log();
+      console.log();
       btnCurtir.forEach((btn) => {
         btn.addEventListener('click', (e) => {
           const idBtn = btn.dataset.id;
-          curtirPost(idBtn, Number(curtidas));
-          console.log(curtidas);
-          // if (idBtn) {
-          //   curtirPost(idBtn, Number(curtidas));
-          //   console.log(curtidas);
-          // } else if (!idBtn) {
-          //   descurtirPost(idBtn, Number(curtidas));
-          //   console.log(curtidas);
-          // }
+
+          if (publicacao.curtidas.includes(publicacao.userId)) {
+            descurtirPost(idBtn, Number(curtidas));
+            publicacao.curtidas.splice(publicacao.userId);
+          } else {
+            curtirPost(idBtn, Number(curtidas));
+            publicacao.curtidas.push(publicacao.userId);
+          }
         });
       });
     });

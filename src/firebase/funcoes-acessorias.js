@@ -73,10 +73,10 @@ export function pegaDados(querySnapshot) { // pega tudo o texto publicado pela u
       </section>
 
       <div class="postagens">
-        <textarea class="texto-usuaria-postado" id="texto-usuaria-postado" style='resize:none'>${publicacao.descricao}</textarea>
+        <textarea class="texto-usuaria-postado" id="texto-usuaria-postado" style='resize:none' disabled>${publicacao.descricao}</textarea>
 
         <div class="icones-inferiores">
-          <p class="numero-curtidas"> ${publicacao.curtidas}</p>
+          <p class="numero-curtidas"> ${publicacao.curtidas.length}</p>
 
           <button class="btn-curtir" data-id="${doc.id}">
             <i type="button" >🥂</i>

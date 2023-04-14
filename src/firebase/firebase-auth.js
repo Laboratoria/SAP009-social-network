@@ -19,14 +19,15 @@ export function fazerLogin(email, password) {
   return signInWithEmailAndPassword(auth, email, password);
 }
 
-export function observador() { // verifica se tem usuário logado ou não
+export function observador(cb) { // verifica se tem usuário logado ou não
   onAuthStateChanged(auth, (user) => {
     if (user) {
       const uid = user.uid;
       console.log(uid);
-      return true;
+      cb(true);
+    } else {
+      cb(false);
     }
-    return false;
   });
 }
 
@@ -46,11 +47,7 @@ export function loginComGoogle() {
 }
 
 export function sair() {
-  return signOut(auth).then(() => {
-    // saiu
-  }).catch((error) => {
-    console.log(error);
-  });
+  return signOut(auth);
 }
 
 export function nomeUsuaria() {

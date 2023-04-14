@@ -5,11 +5,10 @@
 body {
   font-family: "Cagliostro", sans-serif;
   color: white;
-  height: 100vh;
   background: linear-gradient(180deg, #83152d 8.85%, #ad1d45 88.54%);
   /* display: flex;
   flex-direction: column; */
-  margin: 1rem;
+  /* margin: 1rem; */
 }
 .header img{
   width: 100%;
@@ -18,7 +17,7 @@ body {
 .footer a {
   text-align: center;
   color: white;
-  margin: 0;
+  /* margin: 0; */
 }
 .footer a {
   text-decoration: underline;
@@ -47,12 +46,12 @@ body {
 } */
 
 .caixa-login {
-  padding: 18% 10%;
+  /* padding: 18% 10%; */
   background-color: #44000d;
   display: flex;
   flex-direction: column;
-  margin: auto;
-  margin-bottom: 1.5rem;
+  /* margin: auto; */
+  /* margin-bottom: 1.5rem; */
   text-align: center;
   border-radius: 15px;
   gap: 2rem;
@@ -65,13 +64,13 @@ body {
   align-items: center;
   text-align: center;
   gap: 1.8rem;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .form-login input {
   background-color: #facfce;
-  height: 30px;
-  width: 85%;
+  /* height: 30px; */
+  /* width: 85%; */
   border: 1px ridge;
   text-align: center;
 }
@@ -80,8 +79,8 @@ input[type="submit"] {
   background-color: #ebafac;
   border-radius: 5px;
   border: transparent;
-  padding: 5px;
-  width: 30%;
+  /* padding: 5px; */
+  /* width: 30%; */
 }
 .login-com {
   display: flex;
@@ -108,8 +107,8 @@ input[type="submit"] {
 }
 
 .btn-google img {
-  width: 15%;
-  padding: 3%;
+  width: 10%;
+  /* padding: 3%; */
 }
 
 input::-webkit-input-placeholder {
@@ -119,40 +118,44 @@ input::-webkit-input-placeholder {
 
 
 @media screen and (min-width: 768px) {
+  *{
+    padding: 0px;
+    margin: 0px;
+  }
   .header, .header img{ display: none; } 
   .main{ 
     /* width: auto; */
-    margin: 25% auto; 
+    /* margin: 25% auto;  */
   }
   .container-bcg-login{ 
     display: flex; 
     justify-content: space-between;
     gap: 1rem;
-    margin-top: 10rem;
-    height: auto;
+    /* margin-top: 10rem; */
+    /* height: auto; */
   }
   .bckgnd-txt-img{
-    width: 70%; 
-    height: 50%;
+    /* width: 70%;  */
+    /* height: 50%; */
     text-align: center;
   }
   .img-apresentacao{
-    width: auto;
-    min-width: 70%;
-    margin: 8rem auto;
+    /* width: auto; */
+    /* min-width: 70%; */
+    /* margin: 8rem auto; */
     text-align: center;
   }
   .texto-apresentacao{
-    min-width: auto;
+    /* min-width: auto; */
     font-weight: 400;
     font-size: 1.4rem;
     vertical-align: middle;
     line-height: 1.5;
-    margin: -30rem 3rem ;
+    /* margin: -30rem 3rem ; */
   }
   .caixa-login{ 
-    min-width: 50%; /* 60% */
-    height: 50%; /* 60% */
+    /* min-width: 50%;  */
+    /* height: 50%;  */
     /* margin: auto;
     text-align: center; */
   }
@@ -163,19 +166,20 @@ input::-webkit-input-placeholder {
     align-items: center;
     text-align: center;
     gap: 1.8rem;
-    width: 100%;
+    /* width: 100%; */
   }
-
- 
   .footer-login-desktop,
   .imagem-footer-login{ 
     text-align: center;
-    margin: auto;
-    margin-bottom: -10rem;
-    margin-top: 5rem;
+    /* margin: auto; */
+    /* margin-bottom: -10rem; */
+    /* margin-top: 5rem; */
   }
   .imagem-footer-login{ 
-    width: 25%;
+    width: 20rem;
+  }
 
+  html{
+    /* width: 75%; */
   }
 }
