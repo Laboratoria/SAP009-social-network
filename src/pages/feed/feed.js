@@ -5,7 +5,9 @@ import {
 
 import {
   likePost,
-  newPost, postsNaTela, deletarPost,
+  newPost,
+  postsNaTela,
+  deletarPost,
 } from '../../servicesFirebase/fireStore';
 
 export default () => {
@@ -80,9 +82,11 @@ export default () => {
             </div>
             <section class="icones">
             <div class="curtida">
-            <button class="btn-like"><img data-like-id="${doc.id}" class="img-curtida" src="../img/panela.png"></button>
+            <button class="btn-like"><img data-like-id="${doc.id}" class="img-curtida" src=" 
+            ${dados.likes.includes(auth.currentUser.uid) ? '../img/panela-preenchida.png' : '../img/panela.png'}"></button>
             <span class="contagem"></span>
             </div>
+            
             <div class="btn-usuarios">
               <button class="btn-editar"><img data-editar-id="${doc.id}" class="img-editar" src="../img/icone-editar.png"></button>
               <button class="btn-excluir"><img data-excluir-id="${doc.id}" class="img-excluir" src="../img/icone-excluir.png"></button>
@@ -158,13 +162,18 @@ export default () => {
 
   // RASTREAR EVENTOS DE CLICK e adicionar as funções de cada evento //
   postagem.addEventListener('click', async (event) => {
-    const element = event.target;
-    const imgLike = container.querySelector('img-curtida');
-    const contagem = container.querySelector('.contagem');
+    const element = event.target; // elemento que é clicado
+    const imgLike = container.querySelector(`[data-like-id='${element.dataset.likeId}']`);
+    // const contagem = container.querySelector('.contagem');
     if (element.dataset.likeId) {
-      likePost(element.dataset.likeId, idUser);
-      /* console.log(event.target.setAttribute('data-like-id')); */
-      imgLike.setAttribute('src', '/img/panela-preenchida.png'); // trocar imagem
+
+      const likes = await likePost(element.dataset.likeId, idUser);
+      if (likes.liked === true) {
+        imgLike.setAttribute('src', '../img/panela-preenchida.png'); // trocar imagem
+      } else {
+        imgLike.setAttribute('src', '../img/panela.png'); // trocar imagem
+      }
+
     } else if (event.target.classList === '.btn-editar') {
       // função de editar
     } else if (element.dataset.excluirId) {

@@ -47,7 +47,7 @@ export async function newPost(dataPostagem, id, post, username) {
   return doc;
 }
 
-// função para printar posts na tela //
+// printar posts na tela //
 export async function postsNaTela() {
   const novoArray = [];
   const q = query(collection(db, 'post'));
