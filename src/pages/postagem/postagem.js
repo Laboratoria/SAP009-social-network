@@ -7,6 +7,7 @@ import {
   editandoPostagem,
   curtindoPostagem,
   descurtindoPostagem,
+  // atualizaLikes,
 } from '../../firebase/firebase';
 
 // monta a tela das postagens
@@ -80,44 +81,67 @@ const postagem = async () => {
     const btnEditar = containerPost.querySelector('#btn-editar');
     const textArea = containerPost.querySelector('#texto-usuaria-postado');
     const btnSalvar = containerPost.querySelector('#btn-salvar');
-
-    if (post.id !== usuariaLogada.uid) {
-      btnEditar.setAttribute('class', 'esconde-btn');
+    console.log({ post, usuariaLogada });
+    if (post.idUsuaria !== usuariaLogada.uid) {
+      btnEditar.style.display = 'none';
     }
     btnEditar.addEventListener('click', () => {
       textArea.removeAttribute('disabled');
-      btnSalvar.removeAttribute('class');
-      btnEditar.setAttribute('id', 'esconde-btn');
+      btnSalvar.style.display = 'inline-block';
+      btnEditar.style.display = 'none';
     });
     btnSalvar.addEventListener('click', () => {
       editandoPostagem(post.id, textArea.value);
-      btnEditar.removeAttribute('class');
+      // btnEditar.removeAttribute('class');
       textArea.setAttribute('disabled', 'disabled');
+      btnSalvar.style.display = 'none';
+      btnEditar.style.display = 'inline-block';
     });
+
     // função likes
     const tacaVazia = containerPost.querySelector('#taca-vazia');
     const tacaCheia = containerPost.querySelector('#taca-cheia');
     const likeNaTela = containerPost.querySelector('.numero-curtidas');
     const colecaoLikes = post.likes;
-    if (colecaoLikes.includes(usuariaLogada)) {
-      tacaVazia.classList.add('hidden');
-      tacaCheia.classList.remove('hidden');
+    const uid = usuariaLogada.uid;
+    const curtiuPost = colecaoLikes.includes(uid);
+
+    // oculta inicialmente a taça cheia
+    tacaCheia.style.display = 'none';
+
+    // verifica se a usuária logada já curtiu o post
+    if (curtiuPost) {
+      tacaVazia.style.display = 'none';
+      tacaCheia.style.display = 'block';
     }
+    // adiciona o evento de clique na taça vazia
     tacaVazia.addEventListener('click', () => {
-      tacaVazia.classList.add('hidden');
-      tacaCheia.classList.remove('hidden');
+      tacaVazia.style.display = 'none';
+      tacaCheia.style.display = 'block';
       somaLikes += 1;
       likeNaTela.innerHTML = somaLikes;
       curtindoPostagem(post.id, usuariaLogada);
       console.log(post.id);
+
+      // Adiciona a usuária logada à coleção de likes no Firebase
+      colecaoLikes.push(uid);
+      // atualizaLikes(post.id, colecaoLikes);
     });
+
+    // adiciona o evento de clique na taça cheia
     tacaCheia.addEventListener('click', () => {
-      tacaCheia.classList.remove('hidden');
-      tacaCheia.classList.add('hidden');
+      tacaCheia.style.display = 'none';
+      tacaVazia.style.display = 'block';
       somaLikes -= 1;
       likeNaTela.innerHTML = somaLikes;
-      descurtindoPostagem(post.id, usuariaLogada);
+      descurtindoPostagem(post.id, usuariaLogada.uid);
     });
+    // // Remove a usuária logada à coleção de likes no Firebase
+    // const indicelikeUsuaria = colecaoLikes.indexOf(uid);
+    // if (indicelikeUsuaria !== -1) {
+    //   colecaoLikes.splice(indicelikeUsuaria, 1);
+    //   atualizaLikes(post.id, colecaoLikes);
+    // }
 
     const btnSair = telaDaPostagem.querySelector('.btn-sair');
     btnSair.addEventListener('click', async () => {

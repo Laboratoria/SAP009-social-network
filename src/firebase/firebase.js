@@ -115,6 +115,12 @@ export const curtindoPostagem = async (idDoPost, uid) => updateDoc(doc(db, 'post
 export const descurtindoPostagem = async (idDoPost, uid) => updateDoc(doc(db, 'postagens', idDoPost), {
   likes: arrayRemove(uid),
 });
+// export const atualizaLikes = async (idDoPost, likes) => {
+//   console.log(likes);
+//   updateDoc(doc(db, 'postagens', idDoPost), {
+//     likes,
+//   });
+// };
 
 export function excluindoPostagem(idDoPost) {
   const postRef = doc(db, 'postagens', idDoPost);
