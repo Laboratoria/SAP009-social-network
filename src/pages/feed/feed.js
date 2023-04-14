@@ -84,8 +84,10 @@ export default () => {
             <button class="btn-like"><img data-like-id="${doc.id}" class="img-curtida" src=" 
             ${dados.likes.includes(auth.currentUser.uid) ? '../img/panela-preenchida.png' : '../img/panela.png'}"></button>
             </div>
+
             <button class="btn-salvar" hidden data-salvar-id="${doc.id}">Salvar</button>
             ${dados.idUser === auth.currentUser.uid ? `<div class="btn-usuarios">
+
               <button class="btn-editar"><img data-editar-id="${doc.id}" class="img-editar" src="../img/icone-editar.png"></button>
               <button class="btn-excluir"><img data-excluir-id="${doc.id}" class="img-excluir" src="../img/icone-excluir.png"></button>
               <section>
@@ -162,8 +164,7 @@ export default () => {
   // RASTREAR EVENTOS DE CLICK e adicionar as funções de cada evento //
   postagem.addEventListener('click', async (event) => {
     const element = event.target; // elemento que é clicado
-    const imgLike = container.querySelector(`[data-like-id='${element.dataset.likeId}']`);
-    // const contagem = container.querySelector('.contagem');
+    const imgLike = container.querySelector(`[data-like-id='${element.dataset.likeId}']`); // imagem de like
     if (element.dataset.likeId) {
       const likes = await likePost(element.dataset.likeId, idUser);
       if (likes.liked === true) {
@@ -182,13 +183,12 @@ export default () => {
       if (window.confirm('Tem certeza que gostaria de deletar essa postagem?')) {
         deletarPost(element.dataset.excluirId)
           .then(() => {
+            alert('deletado com sucesso');
             document.location.reload(true);
           }).catch(() => {
             alert('Não foi possível deletar sua postagem. Tente novamente.');
           });
       }
-
-      console.log(event.target.getAttribute('data-excluir-id'));
     }
   });
 
