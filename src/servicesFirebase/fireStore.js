@@ -12,6 +12,7 @@ import {
   arrayRemove,
   doc,
   deleteDoc,
+  orderBy,
 } from 'firebase/firestore';
 
 import {
@@ -43,7 +44,6 @@ export async function newPost(dataPostagem, id, post, username) {
   // newPost.id = docRef.id;
   // return newPost;
   const doc = await getDoc(docRef);
-  console.log(doc.data().textArea);
   return doc;
 }
 
@@ -102,5 +102,9 @@ export const likePost = async (postId, idUser) => {
 // deletar posts //
 
 export async function deletarPost(postId) {
-  await deleteDoc(doc(db, 'posts', postId));
+  console.log(postId);
+  await deleteDoc(doc(db, 'post', postId));
 }
+
+// ordenar posts //
+// export const ordenar = query(postsNaTela(), orderBy('date'));
