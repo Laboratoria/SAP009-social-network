@@ -20,12 +20,7 @@ const auth = getAuth(app);
 
 const db = getFirestore(app);
 
-export const userData = (name, username) => addDoc(collection(db, 'users'), {
-  name,
-  username,
-});
-
-export async function newPost(textpost) {
+async function newPost(textpost) {
   const createPosts = {
     userId: auth.currentUser.uid,
     username: auth.currentUser.displayName,
@@ -35,6 +30,12 @@ export async function newPost(textpost) {
   };
   const docRef = await addDoc(collection(db, 'posts'), createPosts);
   createPosts.id = docRef.id;
-  console.log(createPosts);
   return createPosts;
 }
+
+const getUsername = () => auth.currentUser.displayName;
+
+export {
+  newPost,
+  getUsername,
+};
