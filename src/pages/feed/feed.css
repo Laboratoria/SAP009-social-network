@@ -247,6 +247,7 @@ li > a{
     height: 70px;
     padding: 10px;
     border-radius: 20px;
+    font-family: var(--fonte-titulo);
 }
 
 .postagem{
@@ -277,10 +278,27 @@ li > a{
     width: 30px;
 }
 
-.contagem{
+
+.btn-salvar{
+    background-color: var(--vermelho);
+    border: none;
     font-family: var(--fonte-logo);
+    height: 30px;
+    width: 90px;
+    border-radius: 10px;
+    color: var(--amarelinho);
+    text-transform: uppercase;
+    margin-top: 10px;
+    transition: 0.5s;
+    
+}
+
+.btn-salvar:hover{
+    cursor: pointer;
+    background-color: var(--amarelinho);
+    color: var(--vermelho);
     font-weight: bold;
-    margin-bottom: 5px;
+
 }
 
 @media (min-width:900px){
