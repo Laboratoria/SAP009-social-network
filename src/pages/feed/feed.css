@@ -277,6 +277,12 @@ li > a{
     width: 30px;
 }
 
+.contagem{
+    font-family: var(--fonte-logo);
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
 @media (min-width:900px){
     .menu-toggle{
         display: none;
