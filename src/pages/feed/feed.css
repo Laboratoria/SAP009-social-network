@@ -35,7 +35,7 @@ main{
   display:flex;
   flex-direction: row;
   gap: 0.5rem;
-  padding-top: 1rem;
+  padding: 2rem;
 }
 
 .avatar{
@@ -43,13 +43,12 @@ main{
 }
 
 .criar-post{
-  font-size: 20px;
-  margin-top: 15px;
+  font-size: 1.2rem;
   margin-bottom: 15px;
 }
 
 .input-titulo, .input-autora{
-  width: 343px;
+  width: 21rem;
   height: 29px;
   border: 0.5px solid #FFFFFF;
   border-radius: 10px;
@@ -70,7 +69,7 @@ main{
   
 .botoes-nivel{
   display: flex;
-  width: 333px;
+  width: 20.2rem;
   padding: 5px;
   gap: 10px;
   margin-top: 10px;
@@ -83,6 +82,14 @@ main{
 .post-publicacao{
   display: flex;
   flex-direction: column;
+}
+
+textarea {
+  resize: none;
+  width: 21rem;
+  height: 10rem;
+  border-radius: 10px;
+  padding: 5px;
 }
 
 .botao-publicar{
@@ -102,14 +109,6 @@ main{
   background: #407279;
 }
 
-textarea {
-  resize: none;
-  width: 333px;
-  height: 133px;
-  border-radius: 10px;
-  padding: 5px;
-}
-
 .texto-ultimos-post{
   text-align: center;
   margin-bottom: 5rem;
@@ -119,6 +118,7 @@ textarea {
 .avatar-post{
   width: 1.5rem;
   margin-bottom: 0.2rem;
+  margin-left: 1rem;
 }
 
 .nome-usuaria-post{
@@ -132,14 +132,7 @@ textarea {
 .dia-post{
   display: flex;
   margin-left: auto;
-}
-
-textarea{
-   resize: none;
-   width: 333px;
-   height: 133px;
-   border-radius: 10px;
-   padding: 5px;
+  margin-right: 1rem;
 }
 
 .texto-ultimos-posts{
@@ -147,28 +140,17 @@ textarea{
   margin: 1.5rem;
 }
 
-.avatar-post{
-  width: 1.5rem;
-  margin-bottom: 0.2rem;
-}
-
-.nome-usuaria-post{
-  display:flex;
-  font-size: 0.9rem;
-  padding: 0.2rem;
-  gap: 0.15rem;
-  margin-top: 1rem;
-}
-
 .publicacao{
   background-color: #FFFFFF;
   color: #000000;
   font-size: 0.8rem;
-  width: 23rem;
+  width: 21rem;
   border-radius: 1rem;
-  padding: 0.5rem;
+  padding: 5px;
   text-align: left;
   margin-bottom: 0.5rem;
+  margin-left: 1rem;
+  height: 13rem;
 }
 
 #botao-like{
@@ -177,13 +159,13 @@ textarea{
 
 #coracao-vazio{
   width: 1.2rem;
-  margin-left: 0.5rem;
+  margin-left: 1.5rem;
   margin-right: 0.3rem;
 }
 
 #coracao-cheio{
   width: 1.2rem;
-  margin-left: 0.5rem;
+  margin-left: 1.5rem;
   position: absolute;
 }
 
@@ -192,14 +174,16 @@ textarea{
 }
 
 #editar{
-  width: 0.8rem;
-  margin-left: 18.3rem;
+  width: 0.9rem;
+  height: 1rem;
+  margin-left: 16rem;
 }
 
 #excluir{
   width: 0.9rem;
+  height: 1rem;
   margin-left: auto;
-  margin-right: 0.8rem;
+  margin-right: 1.7rem;
 }
 
 #botao-salvar{
@@ -216,4 +200,24 @@ textarea{
 
 #botao-salvar:hover{
   background: #407279;
+}
+
+.texto-postagem{
+  color: #000000;
+  font-size: 0.8rem;
+  width: 19rem;
+  height: 8.5rem;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin-left: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.titulo-post {
+  padding-top: 0.3rem;
+  padding-left: 0.5rem;
+}
+
+.autora-post {
+  padding-left: 0.5rem;
 }
