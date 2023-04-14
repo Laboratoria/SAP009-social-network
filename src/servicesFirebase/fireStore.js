@@ -102,5 +102,11 @@ export const likePost = async (postId, idUser) => {
 // deletar posts //
 
 export async function deletarPost(postId) {
-  await deleteDoc(doc(db, 'posts', postId));
+  await deleteDoc(doc(db, 'post', postId));
 }
+
+// editar post //
+
+export const editPost = (postId, post) => updateDoc(doc(db, 'post', postId), {
+  textArea: post,
+});
