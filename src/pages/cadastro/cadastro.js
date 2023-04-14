@@ -40,11 +40,11 @@ export default () => {
     fazerCadastro(nome.value, senha.value)
       .then(() => {
         window.location.hash = '#feed';
-      })
-      .catch((error) => {
+      });
+    /* .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-      });
+      }); */
   });
   return registerContainer;
 };
