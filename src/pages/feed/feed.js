@@ -166,12 +166,14 @@ export default () => {
     const imgLike = container.querySelector(`[data-like-id='${element.dataset.likeId}']`);
     // const contagem = container.querySelector('.contagem');
     if (element.dataset.likeId) {
+
       const likes = await likePost(element.dataset.likeId, idUser);
       if (likes.liked === true) {
         imgLike.setAttribute('src', '../img/panela-preenchida.png'); // trocar imagem
       } else {
         imgLike.setAttribute('src', '../img/panela.png'); // trocar imagem
       }
+
     } else if (event.target.classList === '.btn-editar') {
       // função de editar
     } else if (element.dataset.excluirId) {

@@ -43,7 +43,7 @@ export async function newPost(dataPostagem, id, post, username) {
   // newPost.id = docRef.id;
   // return newPost;
   const doc = await getDoc(docRef);
-  console.log(doc.data().textArea);
+  /* console.log(doc.data().textArea); */
   return doc;
 }
 
