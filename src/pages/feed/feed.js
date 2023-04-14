@@ -70,7 +70,7 @@ export default () => {
     <section class="publicacao">
       <p class="titulo-post">Título do Livro: <strong>${post.titulo}</strong></p>
       <p class="autora-post">Nome da Autora: <strong>${post.autora}</strong></p>
-      <p disabled class="texto-postagem">${post.post}</p>
+      <textarea disabled class="texto-postagem">${post.post}</textarea>
     </section> 
     <div id="botao-like" class="display">
      <img id="coracao-vazio" src="/imagens/coracao-vazio.png"> 
@@ -112,7 +112,7 @@ export default () => {
 
       const botaoEditar = containerPost.querySelector('#editar');
       const botaoExcluir = containerPost.querySelector('#excluir');
-      const editarTexto = containerPost.querySelector('.texto-postagem');
+      const campoTexto = containerPost.querySelector('.texto-postagem');
       const botaoSalvar = containerPost.querySelector('#botao-salvar');
       const botaoCurtida = containerPost.querySelector('#botao-like');
 
@@ -122,13 +122,21 @@ export default () => {
       }
 
       botaoEditar.addEventListener('click', () => {
-        editarTexto.removeAttribute('disabled');
+        campoTexto.removeAttribute('disabled');
         botaoSalvar.removeAttribute('class');
         botaoCurtida.setAttribute('class', 'hidden');
         botaoEditar.setAttribute('class', 'hidden');
         botaoExcluir.setAttribute('class', 'hidden');
       });
-      
+
+      botaoSalvar.addEventListener('click', () => {
+        editarPost(post.postId, campoTexto.value);
+        campoTexto.setAttribute('disabled');
+        botaoSalvar.setAttribute('class', 'hidden');
+        botaoCurtida.removeAttribute('class');
+        botaoEditar.removeAttribute('class');
+        botaoExcluir.removeAttribute('class');
+      });
 
       botaoExcluir.addEventListener('click', () => {
         if (window.confirm('Tem certeza que deseja excluir a publicação?')) {
