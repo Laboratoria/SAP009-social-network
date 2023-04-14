@@ -7,11 +7,18 @@ import {
   getAuth,
   signOut,
   updateProfile,
+  onAuthStateChanged,
 } from 'firebase/auth';
 import { firebaseConfig } from './firebaseconfig';
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+
+// ao invés de definir uma função anonimima 'user',
+// estamos recebendo a função'verificando'como parametro
+export function verificaUsuarioLogado(verificando) {
+  onAuthStateChanged(auth, verificando);
+}
 
 /* Cadastrar usuários */
 export const createUser = (email, senha, displayName) => createUserWithEmailAndPassword(auth, email, senha)

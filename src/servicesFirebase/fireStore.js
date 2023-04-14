@@ -44,6 +44,7 @@ export async function newPost(dataPostagem, id, post, username) {
   // newPost.id = docRef.id;
   // return newPost;
   const doc = await getDoc(docRef);
+
   return doc;
 }
 
@@ -102,9 +103,12 @@ export const likePost = async (postId, idUser) => {
 // deletar posts //
 
 export async function deletarPost(postId) {
+
   console.log(postId);
   await deleteDoc(doc(db, 'post', postId));
 }
 
-// ordenar posts //
-// export const ordenar = query(postsNaTela(), orderBy('date'));
+export const editPost = (postId, post) => updateDoc(doc(db, 'post', postId), {
+  textArea: post,
+});
+

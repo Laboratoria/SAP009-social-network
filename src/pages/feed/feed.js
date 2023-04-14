@@ -8,6 +8,7 @@ import {
   newPost,
   postsNaTela,
   deletarPost,
+  editPost,
 } from '../../servicesFirebase/fireStore';
 
 export default () => {
@@ -85,12 +86,12 @@ export default () => {
             <button class="btn-like"><img data-like-id="${doc.id}" class="img-curtida" src=" 
             ${dados.likes.includes(auth.currentUser.uid) ? '../img/panela-preenchida.png' : '../img/panela.png'}"></button>
             </div>
-           
-            <div class="btn-usuarios">
+
               <button class="btn-editar"><img data-editar-id="${doc.id}" class="img-editar" src="../img/icone-editar.png"></button>
               <button class="btn-excluir"><img data-excluir-id="${doc.id}" class="img-excluir" src="../img/icone-excluir.png"></button>
               <section>
-            </div>
+            </div>` : ''}
+           
         </div>
     </section>
   </div >
@@ -170,8 +171,8 @@ export default () => {
       } else {
         imgLike.setAttribute('src', '../img/panela.png'); // trocar imagem
       }
-    } else if (event.target.classList === '.btn-editar') {
-      // função de editar
+    } else if (element.dataset.editarId) {
+      editPost(doc.id, post);
     } else if (element.dataset.excluirId) {
       if (window.confirm('Tem certeza que gostaria de deletar essa postagem?')) {
         deletarPost(element.dataset.excluirId)
