@@ -3,7 +3,10 @@ import {
   auth,
 } from '../../servicesFirebase/firebaseAuth';
 
-import { likePost, newPost, postsNaTela, deletarPost } from '../../servicesFirebase/fireStore';
+import {
+  likePost,
+  newPost, postsNaTela, deletarPost,
+} from '../../servicesFirebase/fireStore';
 
 export default () => {
   const container = document.createElement('div');
@@ -160,8 +163,8 @@ export default () => {
     const contagem = container.querySelector('.contagem');
     if (element.dataset.likeId) {
       likePost(element.dataset.likeId, idUser);
-      console.log(event.target.getAttribute('data-like-id'));
-      imgLike.setAttribute('src', '../img/panela-preenchida.png'); // trocar imagem
+      /* console.log(event.target.setAttribute('data-like-id')); */
+      imgLike.setAttribute('src', '/img/panela-preenchida.png'); // trocar imagem
     } else if (event.target.classList === '.btn-editar') {
       // função de editar
     } else if (element.dataset.excluirId) {
