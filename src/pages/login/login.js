@@ -77,10 +77,8 @@ export default () => {
   const btnLoginGoogle = container.querySelector('.btn-logo-google');
   btnLoginGoogle.addEventListener('click', () => {
     fazerLoginComGoogle()
-      .then((/* userCredential */) => {
+      .then(() => {
         window.location.hash = '#feed';
-        /* const user = userCredential.user;
-        console.log(user); */
       })
       .catch(() => {
       });
