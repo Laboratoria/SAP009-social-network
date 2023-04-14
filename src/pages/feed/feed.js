@@ -78,15 +78,13 @@ export default () => {
                 <p>${dados.userName}</p>
                 <p>${dados.date}</p>
             </div>
-            <div class="bloco-texto">
-              <p>${dados.textArea}</p>
-            </div>
+              <textarea class="bloco-texto" data-texto-id="${doc.id}" style="resive=none" disabled>${dados.textArea}</textarea>
             <section class="icones">
             <div class="curtida">
             <button class="btn-like"><img data-like-id="${doc.id}" class="img-curtida" src=" 
             ${dados.likes.includes(auth.currentUser.uid) ? '../img/panela-preenchida.png' : '../img/panela.png'}"></button>
-            <span class="contagem"></span>
             </div>
+            <button class="btn-salvar" hidden data-salvar-id="${doc.id}">Salvar</button>
             ${dados.idUser === auth.currentUser.uid ? `<div class="btn-usuarios">
               <button class="btn-editar"><img data-editar-id="${doc.id}" class="img-editar" src="../img/icone-editar.png"></button>
               <button class="btn-excluir"><img data-excluir-id="${doc.id}" class="img-excluir" src="../img/icone-excluir.png"></button>
@@ -174,6 +172,11 @@ export default () => {
         imgLike.setAttribute('src', '../img/panela.png'); // trocar imagem
       }
     } else if (element.dataset.editarId) {
+      const btnSalvar = document.querySelector(`[data-salvar-id='${element.dataset.salvarId}']`);
+      const areaTexto = document.querySelector(`[data-texto-id='${element.dataset.textoId}']`);
+      areaTexto.removeAttribute('disabled');
+      btnSalvar.removeAttribute('hidden');
+
       editPost(doc.id, post);
     } else if (element.dataset.excluirId) {
       if (window.confirm('Tem certeza que gostaria de deletar essa postagem?')) {
