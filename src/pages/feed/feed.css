@@ -4,3 +4,232 @@
   box-sizing: border-box;
   font-family: sans-serif;
 }
+
+body{
+  background: white;
+}
+
+.color-menu{
+  background-color: #FEDEFF;
+}
+
+.img-user{
+  width: 35px;
+  min-height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: 10px;
+}
+
+.button-hamburguer{
+  display: none;
+  align-self: flex-start;
+  align-items: center;
+  margin: 15px;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding-top: 9px;
+
+}
+
+.img-close{
+  padding-top: 10px;
+}
+
+.button-hamburguer{
+  display: flex;
+}
+
+.menu-mobile{
+  display: none;
+}
+
+.menu-mobile-active{
+  background: #FEDEFF;
+  width: 70%;
+  height: 100%;
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+.menu-mobile-active button{
+  background: transparent;
+  border: 0;
+  margin-bottom: 16px;
+  padding: 10px 20px;
+}
+
+.menu-mobile-active button > span{
+  display: inline-flex;
+  align-items: center;
+}
+
+.text-mobile{
+  font-size: 20px;
+  margin-left: 8px;
+}
+
+
+.hidden-when-mobile{
+  display: none;
+}
+
+.menu button > span{
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  height: 40px;
+  padding: 0px 16px 0px 12px;
+  border-radius: 20px;
+  line-height: 1;
+}
+
+.menu button:hover > span{
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.menu button > span > span{
+  visibility: hidden;
+  color: #0F1419;
+  display: none;
+}
+
+.menu button img{
+  position: relative;
+  transition: 0.3s;
+}
+
+.main{
+  margin-left: 6px;
+  transition: margin 0.3s;
+}
+
+
+/* desktop */
+
+@media (min-width:1025px){
+  .menu{
+    width: 220px;
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+    padding: 40px 10px 30px 10px;
+    transition: all 0.3s;
+  }
+
+  .header-menu{
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .menu button{
+    height: 60px;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    text-align: left;
+    padding: 0;
+  }
+
+  .hidden-when-mobile{
+    display: block;
+  }
+
+  .menu button > span{
+    width: 50px;
+  }
+
+  .menu button > span > span{
+    visibility: visible;
+    display: contents;
+  }
+
+  .main{
+    margin-left: 240px;
+    margin-right: 5px;
+    overflow: hidden;
+  }
+
+  .button-hamburguer{
+    display: none;
+  }
+
+  .menu-mobile{
+    display: none;
+  }
+
+  .menu-mobile-active{
+    display: none;
+  }
+}
+
+/*tablet*/
+@media (min-width:700px) and (max-width:1024px){
+  .menu{
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 70px;
+    height: 100%;
+    padding: 40px 10px 30px 10px;
+    transition: all 0.3s;
+
+  }
+
+  .hidden-when-mobile{
+    display: block;
+  }
+
+  .header-menu{
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .menu-mobile{
+    display: none;
+  }
+
+  .menu-mobile-active{
+    display: none;
+  }
+
+  .button-hamburguer{
+    display: none;
+  }
+
+  .menu button{
+    height: 60px;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    text-align: left;
+    padding: 0;
+  }
+
+  .menu > nav{
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .main{
+    margin-left: 80px;
+    margin-right: 5px;
+    overflow: hidden;
+
+  }
+
+}
