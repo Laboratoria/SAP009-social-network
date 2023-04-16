@@ -1,20 +1,20 @@
-###  &#x1F4BB &#x1F4F1 CRIANDO UMA REDE SOCIAL &#x1F4F1 &#x1F4BB 
+## <div align="center"> 💻 📱 CRIANDO UMA REDE SOCIAL 📱 💻 </div>
 
-# &#x1FA83 QA: Qualidade de Ações - Incentivando a prática de atividade física &#x1FA83
+# <div align="center"> 🪃 QA: Qualidade de Ações - Incentivando a prática de atividade física 🧡🏀 </div>
 
-<div align="center"> <img src= "src/imagens/logo.png" width = "600px" height = "400px"/> </div>
+<div align="center"> <img src= "src/assets/imagens/logo.png" width ="600px" height = "400px"/>
 
- _"A sua **qualidade de vida** é como um bumerangue, precisa ter **movimento**. Todas as **ações** que você lançar, **voltarão** em sua direção ainda mais fortes."_ 
+_"A sua **qualidade de vida** é como um bumerangue, precisa ter **movimento**. Todas as **ações** que você lançar, **voltarão** em sua direção ainda mais fortes."_ 
 
  _Melhore suas ações, pratique atividade física!_
 
-### Acesse o projeto completo [CLICANDO AQUI](https://THALINascimento.github.io/SAP009-social-network/)
+### Acesse o projeto completo [CLICANDO AQUI](https://THALINascimento.github.io/SAP009-social-network/) </div>
 
 ***
 
 ## Resumo do projeto
 
-Neste projeto, construímos uma Rede Social sobre melhoria da qualidade de vida, com foco na prática de atividade física. Nela, permitimos à qualquer usuário **criar uma conta** de acesso, **logar-se** com ela (utilizando email e senha cadastrados ou conta do Google), criar, editar, deletar e dar _likes_ em **publicações**. Para essas finalidades, utilizamos o Firebase. Ele é um conjunto de serviços de computação em nuvem de back-end e plataformas de desenvolvimento de aplicativos, fornecidos pelo Google. O objetivo principal de aprendizagem deste projeto foi construir uma Single-page Application **(SPA) responsiva**, na qual aplicamos o conceito de **Mobile-First**, com mais de uma tela/página onde fosse possível **ler e escrever dados**. 
+Neste projeto, construímos uma Rede Social sobre melhoria da qualidade de vida, com foco na prática de atividade física. Nela, permitimos à qualquer usuário **criar uma conta** de acesso, **logar-se** com ela (utilizando email e senha cadastrados ou conta do Google), criar, editar, deletar e dar _likes_ em **publicações**. Para essas finalidades, utilizamos o **Firebase**. Ele é um conjunto de serviços de computação em nuvem de back-end e plataformas de desenvolvimento de aplicativos, fornecidos pelo Google. O objetivo principal de aprendizagem deste projeto foi construir uma Single-page Application **(SPA) responsiva**, na qual aplicamos o conceito de **Mobile-First**, com mais de uma tela/página onde fosse possível **ler e escrever dados**. 
   
 ***
 
@@ -74,7 +74,7 @@ O usuário poderá visualizar outras publicações e reagir sobre elas!
 Elaboramos seis histórias baseadas na escolha do público-alvo para elucidar os usuários em
 potencial e entender o fluxo de interações que os mesmos desejam executar. Após a compreensão da necessidade de cada um, todas foram estruturadas no projeto desenvolvido.
 
-<div align="center"> <img src= "src/imgs-readme/historias-dos-usuarios.png" width ="550px" height = "650px"/> </div> 
+<div align="center"> <img src= "src/assets/imgs-readme/historias-dos-usuarios.png" width ="550px" height = "650px"/> </div> 
 
 ## Nível de EXPERIÊNCIA e INTERFACE 
 
@@ -88,7 +88,7 @@ abaixo foi escolhida para estabelecer a comunicação visual entre os usuários 
 páginas. Tanto a interface, quanto a experiência do usuário (UX), foram pensadas e
 baseadas atráves de protótipos de baixa e alta fidelidades, ambos construídos no figma.
 
-<div align="center"> <img src= "src/paleta.png" width = "350px" height = "450px"/> </div>
+<div align="center"> <img src= "src/assets/imgs-readme/paleta.png" width = "350px" height = "450px"/> </div>
 
 
 ## PROTÓTIPO DE BAIXA FIDELIDADE:
@@ -96,8 +96,8 @@ baseadas atráves de protótipos de baixa e alta fidelidades, ambos construídos
 Nesta interface, aplicamos o conceito de Mobile-first. Definimos qual seria o fluxo 
 que o usuário seguiria dentro da nossa rede e, com isso, criamos a interface do usuário (UI), que seguisse este fluxo. Desenhamos a ideia do posicionamento de cada elemento nas páginas, uma a uma, de maneira simples, com baixo grau de detalhamento, e os identificamos.
 
-<img src= "src/imgs-readme/prototipo-baixa1.png" width = "750px" height = "500px"/> 
-<img src= "src/imgs-readme/prototipo-baixa2.png" width = "750px" height = "500px"/> 
+<img src= "src/assets/imgs-readme/prototipo-baixa1.png" width = "750px" height = "500px"/> 
+<img src= "src/assets/imgs-readme/prototipo-baixa2.png" width = "750px" height = "500px"/> 
 
 
 ## PROTÓTIPO DE ALTA FIDELIDADE MOBILE:
@@ -107,8 +107,8 @@ o posicionamento de cada elemento, pigmentamos com a palheta de cores escolhida,
 desenhamos com alto grau de detalhamento, apresentamos visualmente a funcionalidade
 e reproduzimos fielmente o produto final em termos de design.
 
-<img src= "src/imgs-readme/prototipo-alta1.png" width = "750px" height = "500px"/> 
-<img src= "src/imgs-readme/prototipo-alta2.png" width = "750px" height = "500px"/> 
+<img src= "src/assets/imgs-readme/prototipo-alta1.png" width = "750px" height = "500px"/> 
+<img src= "src/assets/imgs-readme/prototipo-alta2.png" width = "750px" height = "500px"/> 
 
 
 ## PROTÓTIPO DE ALTA FIDELIDADE DESKTOP:
@@ -116,21 +116,22 @@ e reproduzimos fielmente o produto final em termos de design.
 Já no desktop, além do que já foi citado acima, também adptamos alguns elementos de
 nossas páginas para telas maiores, de acordo com os desenhos abaixo:
 
-<img src= "src/imgs-readme/prototipo-desktop1.png" width = "750px" height = "500px"/> 
-<img src= "src/imgs-readme/prototipo-desktop2.png" width = "750px" height = "500px"/> 
-<img src= "src/imgs-readme/prototipo-desktop3.png" width = "750px" height = "500px"/> 
-<img src= "src/imgs-readme/prototipo-desktop4.png" width = "750px" height = "500px"/> 
+<img src= "src/assets/imgs-readme/prototipo-desktop1.png" width ="750px" height ="500px"/> 
+<img src= "src/assets/imgs-readme/prototipo-desktop2.png" width ="750px" height ="500px"/> 
+<img src= "src/assets/imgs-readme/prototipo-desktop3.png" width ="750px" height ="500px"/> 
+<img src= "src/assets/imgs-readme/prototipo-desktop4.png" width ="750px" height ="500px"/> 
 
 
 ## Testes de usabilidade:
 
 Utilizamos estratégias para garantir uma usabilidade de qualidade em nosso aplicativo.
 Sendo assim, aplicamos uma identidade clara, boa acessibilidade, fácil navegação, 
-design limpo e atraente, é responsivo, e, incentiva a interação.Pensando na usabilidade 
+design limpo e atraente, é responsivo, e, incentiva a interação. Pensando na usabilidade 
 do nosso aplicativo e na experiência do usuário (UX), criamos protótipos que otimizassem
 a navegação: Menu na barra inferior, botões de confirmação em destaque e próximos ao polegar direito. Botões de logout na barra superior e no canto esquerdo. 
 
-Realizamos sessões de teste de usabilidade com usuários diferentes, com o produto em HTML.Através dos resultados obtidos, iteramos nossos desenhos de interface, aplicando modificação da fonte, principalmente tamanho e destaque. Reposicionamento de alguns elementos, e a melhoria dos botões.
+Realizamos sessões de teste de usabilidade com usuários diferentes, com o produto em HTML. 
+Através dos resultados obtidos, iteramos nossos desenhos de interface, aplicando modificação da fonte, principalmente tamanho e destaque. Reposicionamento de alguns elementos, e a melhoria dos botões.
 
 ***
 
@@ -178,8 +179,8 @@ melhorias.
 
 ***
 
-# ESTE PROJETO FOI CRIADO E DESENVOLVIDO POR:
+### ESTE PROJETO FOI CRIADO E DESENVOLVIDO POR:
 
-# &#x1FA83 [THALITA NASCIMENTO](https://github.com/THALINascimento) & [VANESSA MENEZES](https://github.com/VanessaNMenezes) &#x1F9E1
+### 🪃 [THALITA NASCIMENTO](https://github.com/THALINascimento) & [VANESSA MENEZES](https://github.com/VanessaNMenezes) 🧡
 
 ***
