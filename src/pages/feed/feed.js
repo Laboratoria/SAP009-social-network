@@ -189,7 +189,5 @@ export default () => {
     }
   });
 
-  /* postagem.innerHTML = `${resultado} `; */
-
   return container;
 };
