@@ -278,6 +278,7 @@ li > a{
     width: 30px;
 }
 
+
 .btn-salvar{
     background-color: var(--vermelho);
     border: none;
@@ -296,6 +297,7 @@ li > a{
     background-color: var(--amarelinho);
     color: var(--vermelho);
     font-weight: bold;
+
 }
 
 @media (min-width:900px){

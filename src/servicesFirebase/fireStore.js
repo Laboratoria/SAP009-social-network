@@ -12,6 +12,7 @@ import {
   arrayRemove,
   doc,
   deleteDoc,
+  orderBy,
 } from 'firebase/firestore';
 
 import {
@@ -43,16 +44,18 @@ export async function newPost(dataPostagem, id, post, username) {
   // newPost.id = docRef.id;
   // return newPost;
   const doc = await getDoc(docRef);
-  /* console.log(doc.data().textArea); */
+
   return doc;
 }
 
 // printar posts na tela //
 export async function postsNaTela() {
   const novoArray = [];
-  const q = query(collection(db, 'post'));
+  const q = query(collection(db, 'post'), orderBy('date', 'desc'));
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
+    const data = doc.data();
+    data.id = doc.id;
     novoArray.push(doc);
   });
   return novoArray;
@@ -102,11 +105,12 @@ export const likePost = async (postId, idUser) => {
 // deletar posts //
 
 export async function deletarPost(postId) {
+
+  console.log(postId);
   await deleteDoc(doc(db, 'post', postId));
 }
-
-// editar post //
 
 export const editPost = (postId, post) => updateDoc(doc(db, 'post', postId), {
   textArea: post,
 });
+

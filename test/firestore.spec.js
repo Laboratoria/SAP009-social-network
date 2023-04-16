@@ -1,10 +1,15 @@
 import {
   collection,
   addDoc,
+  deleteDoc,
+  doc,
+  query,
+  orderBy,
+  getDoc,
 } from 'firebase/firestore';
 
 import {
-  userData, newPost,
+  userData, newPost, deletarPost, postsNaTela,
 
 } from '../src/servicesFirebase/fireStore';
 
@@ -57,6 +62,62 @@ describe('Função newPost', () => {
     expect(addDoc).toHaveBeenCalledTimes(1);
     expect(addDoc).toHaveBeenCalledWith(mockCollection, posts);
     expect(collection).toHaveBeenCalledTimes(1);
-    expect(collection).toHaveBeenCalledWith(undefined, 'posts');
+    expect(collection).toHaveBeenCalledWith(undefined, 'post');
+  });
+});
+
+// função deletar post //
+
+describe('Função delete', () => {
+  it('Deve deletar um post', async () => {
+    const mockDoc = 'doc';
+    doc.mockReturnValueOnce(mockDoc);
+    deleteDoc.mockResolvedValueOnce();
+    const postId = 'id-post';
+    await deletarPost(postId);
+    expect(doc).toHaveBeenCalledTimes(1);
+    expect(doc).toHaveBeenCalledWith(undefined, 'post', postId);
+    expect(deleteDoc).toHaveBeenCalledTimes(1);
+    expect(deleteDoc).toHaveBeenCalledWith(mockDoc);
+  });
+});
+
+// printar posts na tela //
+describe('function postsNaTela', () => {
+  it('deve acessar a publicacao criada e retornar um array', async () => {
+    const mockOrderBy = 'order';
+    orderBy.mockReturnValueOnce(mockOrderBy);
+    const mockQuery = 'query';
+    query.mockReturnValueOnce(mockQuery);
+    const mockCollection = 'collection';
+    collection.mockReturnValueOnce(mockCollection);
+    getDoc.mockResolvedValueOnce([
+      {
+        postId: '1',
+        data: () => ({ textArea: 'Primeiro post' }),
+      },
+      {
+        postId: '2',
+        data: () => ({ textArea: 'Segundo Post' }),
+      },
+      {
+        postId: '3',
+        data: () => ({ textArea: 'Terceiro Post' }),
+      },
+    ]);
+    const acessarPost = await postsNaTela();
+    expect(acessarPost).toEqual([
+      { postId: '1', textArea: 'Primeiro post' },
+      { postId: '2', textArea: 'Segundo Post' },
+      { postId: '3', textArea: 'Terceiro Post' },
+    ]);
+    expect(orderBy).toHaveBeenCalledTimes(1);
+    expect(orderBy).toHaveBeenCalledWith('date', 'desc');
+    expect(collection).toHaveBeenCalledTimes(1);
+    expect(collection).toHaveBeenCalledWith(undefined, 'post');
+    expect(query).toHaveBeenCalledTimes(1);
+    expect(query).toHaveBeenCalledWith(mockCollection, mockOrderBy);
+    expect(getDoc).toHaveBeenCalledTimes(1);
+    expect(getDoc).toHaveBeenCalledWith(mockQuery);
   });
 });
