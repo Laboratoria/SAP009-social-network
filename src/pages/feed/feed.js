@@ -86,11 +86,9 @@ export default () => {
             </div>
             <button class="btn-salvar" hidden data-salvar-id="${doc.id}">Salvar</button>
             ${dados.idUser === auth.currentUser.uid ? `<div class="btn-usuarios">
-              <button class="btn-editar"><img data-editar-id="${doc.id}" class="img-editar" src="../img/icone-editar.png"></button>
+              <button class="btn-editar"><img data-editar-id="${doc.id}" class="img-editar" src="../img/icone-editar.png" ></button>
               <button class="btn-excluir"><img data-excluir-id="${doc.id}" class="img-excluir" src="../img/icone-excluir.png"></button>
-              <section>
-            </div>` : ''}
-           
+            </div>` : ''} 
         </div>
     </section>
   </div >
@@ -163,7 +161,8 @@ export default () => {
   postagem.addEventListener('click', async (event) => {
     const element = event.target; // elemento que é clicado
     const imgLike = container.querySelector(`[data-like-id='${element.dataset.likeId}']`);
-    // const contagem = container.querySelector('.contagem');
+    const btnSalvar = container.querySelector(`[data-salvar-id='${element.dataset.salvarId}']`);
+    const areaTexto = container.querySelector(`[data-texto-id='${element.dataset.textoId}']`);
     if (element.dataset.likeId) {
       const likes = await likePost(element.dataset.likeId, idUser);
       if (likes.liked === true) {
@@ -172,11 +171,8 @@ export default () => {
         imgLike.setAttribute('src', '../img/panela.png'); // trocar imagem
       }
     } else if (element.dataset.editarId) {
-      const btnSalvar = document.querySelector(`[data-salvar-id='${element.dataset.salvarId}']`);
-      const areaTexto = document.querySelector(`[data-texto-id='${element.dataset.textoId}']`);
-      areaTexto.removeAttribute('disabled');
       btnSalvar.removeAttribute('hidden');
-
+      areaTexto.removeAttribute('disabled');
       editPost(doc.id, post);
     } else if (element.dataset.excluirId) {
       if (window.confirm('Tem certeza que gostaria de deletar essa postagem?')) {
@@ -187,7 +183,6 @@ export default () => {
             alert('Não foi possível deletar sua postagem. Tente novamente.');
           });
       }
-
       console.log(event.target.getAttribute('data-excluir-id'));
     }
   });

@@ -287,9 +287,8 @@ li > a{
     border-radius: 10px;
     color: var(--amarelinho);
     text-transform: uppercase;
-    margin-top: 10px;
+    margin-bottom: 10px;
     transition: 0.5s;
-    
 }
 
 .btn-salvar:hover{
