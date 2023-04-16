@@ -1,3 +1,5 @@
+import data from './feed.js';
+
 export default () => {
   const container = document.createElement("div");
   container.classList.add("container-feed");
@@ -88,32 +90,7 @@ export default () => {
             </div>
           </div>
         </form>
-
-        <section class="posts-users">
-          <div class="photo-post-user">
-            <div>
-              <img class="img-post-user" src="./image/logo_c&h.jpg" alt="imagem de perfil do usuário">
-            </div>
-
-
-          </div>
-
-          <div class="text-and-likes">
-            <div>
-              <label class="name-post-user">fulano</label>
-            </div>
-            <div>
-              <p class="text-post-user">The DesignLab is doing major work on Community-Driven Design, with several different variants. If you are working in this area, submit a paper to the DIS conference here in San Diego (see DesignLab posting below)</p>
-            </div>
-
-            <div>
-              <span class="like-post-user">
-                <img src="./image/like.png" alt="ícone de like com coração">
-                <label id="likes-quantities">10</label>
-              </span>
-            </div>
-          </div>
-        </section>
+        ${carregarPost()}
       </section>
   </main>
   `;
@@ -139,14 +116,70 @@ export default () => {
     }
   }
 
+  function likePost(){
+    const menuMobile = document.getElementById("like-heart")
+  
+    if(menuMobile.className === "like-heart-active"){
+      menuMobile.className = "like-heart";
+      menuMobile.setAttribute('src', 'liked.png')
+      document.getElementsByClassName("button-hamburguer").display="none"
+      document.getElementsByClassName("img-close").display="block"
+
+    }
+    else{
+      menuMobile.className = "menu-mobile-active";
+      menuMobile.setAttribute('src', 'menu-hamburguer.png');
+      document.getElementsByClassName("button-hamburguer").display="block"
+      document.getElementsByClassName("img-close").display="none"
+
+    }
+  }
+
   const menuOpen = container.querySelector(".button-hamburguer");
   menuOpen.addEventListener("click", toggleMenu)
 
   const menuClose = container.querySelector(".img-close");
   menuClose.addEventListener("click", toggleMenu)
 
-  return container;
+  const pressLike = container.querySelector(".like-heart");
+  pressLike.addEventListener("click", likePost)
 
+
+//faz a manipulação de dados do json
+function carregarPost(){
+  return data.results.map((post) => 
+    montaTemplate(post)
+  ).join("")
+}
+
+//responsável por criar a div da caixinha de personagem
+function montaTemplate(post){
+  return `
+  <section class="posts-users">
+    <div class="photo-post-user">
+      <div>
+        <img class="img-post-user img-user" src="${post.photo_user}" alt="imagem de perfil do usuário">
+      </div>
+    </div>
+
+    <div class="text-and-likes">
+      <div>
+        <label class="name-post-user">${post.name}</label>
+      </div>
+      <div>
+        <p class="text-post-user">${post.post_content}</p>
+      </div>  
+      <div>
+        <span class="like-post-user">
+          <img class="like-heart" src="${post.liked == true ? './image/liked-red.png' : './image/like.png'}" alt="ícone de like com coração">
+          <label id="likes-quantities">${post.like_quantity}</label>
+        </span>
+      </div>
+    </div>
+  </section>
+`
+}
+  return container;
   
 };
 

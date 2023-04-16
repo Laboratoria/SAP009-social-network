@@ -123,10 +123,6 @@ body{
   padding-right: 5px;
 }
 
-.img-post-user{
-  width: 30px;
-}
-
 .photo-post-user{
   display: flex;
   padding: 10px;
@@ -165,6 +161,10 @@ div > .name-post-user{
   font-size: 13px;
   margin: 10px 0px;
   color: #0F1419;
+}
+
+.liked{
+  background: url("./image/liked-red.png");
 }
 
 #likes-quantities{
