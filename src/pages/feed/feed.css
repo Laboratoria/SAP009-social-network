@@ -30,6 +30,7 @@ body{
   border: none;
   outline: none;
   padding-top: 9px;
+  margin-bottom: -38px;
 
 }
 
@@ -111,6 +112,115 @@ body{
   transition: margin 0.3s;
 }
 
+.logo-feed{
+  display: flex;
+  margin: 0 auto;
+}
+
+.timeline{
+  width: 100%;
+  background-color: white;
+  padding-right: 5px;
+}
+
+.img-post-user{
+  width: 30px;
+}
+
+.photo-post-user{
+  display: flex;
+  padding: 10px;
+}
+
+div > .name-post-user{
+  margin: 5px;
+}
+
+.text-and-likes{
+  display: flex;
+  flex-direction: column;
+}
+
+.text-post-user{
+  margin: 10px 3px;
+  font-size: 13px;
+}
+
+.posts-users{
+  display: flex;
+  padding: 5px;
+  margin-top: 15px;
+  border: solid 2px #EBEEF0;
+  border-right: none;
+  border-left: none;
+  border-top: none;
+
+}
+
+.like-post-user{
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 13px;
+  margin: 10px 0px;
+  color: #0F1419;
+}
+
+#likes-quantities{
+  margin-left: 10px;
+}
+
+/*publicar post*/
+.post{
+  display: flex;
+  flex-direction: column;
+  border: solid 1px #EBEEF0;
+}
+
+.post-text{
+  display: flex;
+  justify-content: center;
+}
+
+.post-text > textarea{
+  width: 100%;
+  padding: 2px;
+  height: 20vw;
+  margin: 10px;
+  border: solid 1px #EBEEF0;
+  border-right: none;
+  border-left: none;
+  border-top: none;
+}
+
+.post-text > textarea:focus{
+  box-shadow: 0 0 0 0;
+  outline: 0;
+
+}
+
+.post-button{
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px;
+  margin-top: 0;
+}
+
+#button-publish{
+  width: 90px;
+  height: 30px;
+  border-radius: 15px;
+  border: none;
+  background-color: #AEE2FF;
+  cursor: pointer;
+
+
+}
+
+.form-pots{
+  margin-top: 7px;
+}
 
 /* desktop */
 
@@ -171,6 +281,43 @@ body{
   .menu-mobile-active{
     display: none;
   }
+
+  .post{
+    border-right: none;
+    border-left: none;
+  }
+
+  .post-text > textarea{
+    width: 100%;
+    padding: 5px;
+    height: 5vw;
+    margin: 10px;
+    border: solid 1px #EBEEF0;
+  }
+
+  .logo-feed{
+    display: flex;
+    padding: 15px;
+  }
+
+  .timeline{
+    max-width: 87%;
+    background-color: white;
+  }
+
+  body{
+    background: #FEDEFF;
+  }
+
+  .form-pots{
+    margin-top: 1px;
+  }
+
+  .text-post-user{
+    margin: 10px 3px;
+    font-size: 16px;
+  }
+  
 }
 
 /*tablet*/
@@ -229,7 +376,25 @@ body{
     margin-left: 80px;
     margin-right: 5px;
     overflow: hidden;
+  }
 
+  .post-text > textarea{
+    width: 100%;
+    height: 10vw;
+    margin: 10px;
+    border: solid 1px #EBEEF0;
+    border-right: none;
+    border-left: none;
+    border-top: none;
+  }
+
+  .logo-feed{
+    display: flex;
+    padding: 10px;
+  }
+
+  .form-pots{
+    margin-top: 1px;
   }
 
 }

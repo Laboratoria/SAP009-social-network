@@ -71,23 +71,50 @@ export default () => {
 
      
   <main class="main">
-    <div class="user">
-      <span>Nome_do_Usuário</span>
-    </div>
+      <section class="timeline">
+        <section>
+          <img class="logo-feed" src="./image/logo-titulo.png">
+        </section>
 
-    <form class="form-pots">
-      <div class="post">
-        <div class="text">
-          <p class="username" id="username"></p>
-          <textarea class="textarea" placeholder="Qual a sua dica/dúvida sobre pele ou cabelo?"></textarea>
-        </div>
-      
-        <div class="post-button">
-          <button type="button" id="button-publish" class="button-publish">Publicar</button>
-        </div>
-      </div>
-    </form>
+        <form class="form-pots">
+          <div class="post">
+            <div class="post-text">
+              <p class="username" id="username"></p>
+              <textarea class="textarea" placeholder="Qual a sua dica/dúvida sobre pele ou cabelo?"></textarea>
+            </div>
+          
+            <div class="post-button">
+              <button type="button" id="button-publish" class="button-publish">Publicar</button>
+            </div>
+          </div>
+        </form>
 
+        <section class="posts-users">
+          <div class="photo-post-user">
+            <div>
+              <img class="img-post-user" src="./image/logo_c&h.jpg" alt="imagem de perfil do usuário">
+            </div>
+
+
+          </div>
+
+          <div class="text-and-likes">
+            <div>
+              <label class="name-post-user">fulano</label>
+            </div>
+            <div>
+              <p class="text-post-user">The DesignLab is doing major work on Community-Driven Design, with several different variants. If you are working in this area, submit a paper to the DIS conference here in San Diego (see DesignLab posting below)</p>
+            </div>
+
+            <div>
+              <span class="like-post-user">
+                <img src="./image/like.png" alt="ícone de like com coração">
+                <label id="likes-quantities">10</label>
+              </span>
+            </div>
+          </div>
+        </section>
+      </section>
   </main>
   `;
 
