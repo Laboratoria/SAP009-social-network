@@ -1,3 +1,68 @@
-#menu {
-display: none;    
+* {
+box-sizing: border-box; 
 }
+
+#menu-bottom {
+position: absolute;
+width: 40vw;
+height: 90vh;  
+display: flex;
+flex-direction: row;
+align-items: end;
+justify-content: space-evenly;
+margin-left: 500px;  
+}
+
+#menu-top {
+position: absolute;
+width: 90vw;
+height: 90vh;  
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+justify-content: space-evenly;
+text-align: center;   
+}
+
+#button-logout {
+display: flex;
+margin-left: 10px;
+margin-top: 60px;
+width: 80px;
+cursor: pointer;
+} 
+
+#bumerangue-gif-feed {
+display: flex;    
+width: 150px;
+height: 150px;  
+padding-top: 0px;
+}
+
+#button-publish {
+display: flex;
+width: 50%;
+margin-left: 2px;
+margin-top: 10px;
+cursor: pointer;  
+}
+
+#feed-logo {
+display: flex;    
+width: 120px;
+height: 80px;
+}
+
+#button-publish {
+display: flex;    
+width: 50px;
+height: 50px;  
+cursor: pointer;    
+}
+
+#profile {
+display: flex;    
+width: 50px;
+height: 50px;  
+}
+

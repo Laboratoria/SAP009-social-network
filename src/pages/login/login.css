@@ -39,7 +39,7 @@ background: #DADADA;
 border: 3px solid #000000;
 border-radius: 10px;
 text-align: center;
-font-size: 18px;
+font-size: 25px;
 }
   
   /*#email {
@@ -74,7 +74,7 @@ opacity: 1.5;
 }
 
 #error-login {
-font-size: 20px;    
+font-size: 30px;    
 padding: 2px;
 }
 

@@ -1,3 +1,74 @@
-body{
- margin:0;   
+#publication { 
+position: absolute;
+width: 90vw;
+height: 90vh;  
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-evenly;
+text-align: center;
+}
+
+#bumerangue-gif-publish {
+display: flex;    
+width: 150px;
+height: 150px;  
+padding-top: 0px;
+margin-left: 220px;
+}
+
+#publication-text-publish {
+display: flex;
+position: absolute;
+width: 350px;
+height: 250px;
+background: #FFFFFF;
+border: 2px solid #000000;
+border-radius: 20px;    
+font-size: 30px;
+text-align: center;
+}
+
+#buttons-publication{
+flex-direction: row;
+}
+
+#cancel-button {
+display: flex;
+cursor: pointer;
+width: 150px;
+height: 40px;
+background: #DADADA;
+border: 1px solid #000000;
+border-radius: 10px;
+text-align: center;
+font-size: 25px;
+}
+
+#publication-button-publish {
+display: flex;
+cursor: pointer;
+width: 150px;
+height: 40px;
+background: #EE8100;
+border-radius: 10px;
+text-align: center;
+font-size: 25px;
+}
+
+#empty-post-message{
+font-size: 30px;
+}
+
+#reactions-title  {
+display: flex;
+font-size: 30px;
+}
+
+#reactions {
+display: flex;    
+border-radius: 40px; 
+width: 350px;
+height: 300px;
+margin-top: 500px;
 }
