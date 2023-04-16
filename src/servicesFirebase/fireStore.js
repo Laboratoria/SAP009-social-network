@@ -51,9 +51,11 @@ export async function newPost(dataPostagem, id, post, username) {
 // printar posts na tela //
 export async function postsNaTela() {
   const novoArray = [];
-  const q = query(collection(db, 'post'));
+  const q = query(collection(db, 'post'), orderBy('date', 'desc'));
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
+    const data = doc.data();
+    data.id = doc.id;
     novoArray.push(doc);
   });
   return novoArray;
