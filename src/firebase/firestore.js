@@ -3,14 +3,13 @@ import {
   getFirestore,
   collection,
   addDoc,
-  doc,
+  // doc,
   onSnapshot,
-  // orderBy,
+  orderBy,
   // updateDoc,
   // arrayUnion,
   // arrayRemove,
-  // query,
-  // getDocs,
+  query,
   // deleteDoc,
 } from 'firebase/firestore';
 
@@ -35,16 +34,17 @@ async function newPost(textpost) {
 
 const getUsername = () => auth.currentUser.displayName;
 
+async function findPosts(showPosts) {
+  const queryOrder = query(collection(db, 'posts'), orderBy('date', 'desc'));
+  await onSnapshot(queryOrder, (querySnapshot) => {
+    querySnapshot.forEach((post) => {
+      showPosts({ ...post.data(), postId: post.id });
+    });
+  });
+}
+
 export {
   newPost,
   getUsername,
+  findPosts,
 };
-
-export async function findPosts() {
-  firebase.firestore()
-    .collection('posts')
-    .get()
-    .then(onSnapshot => {
-      onSnapshot.docs.map(doc => doc.data());
-    });
-}

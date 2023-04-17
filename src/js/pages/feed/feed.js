@@ -1,5 +1,8 @@
-import { newPost, snapshot, } from '../../../firebase/firestore';
-import { getUsername } from '../../../firebase/firestore.js';
+import {
+  newPost,
+  getUsername,
+  findPosts,
+} from '../../../firebase/firestore.js';
 
 export default () => {
   const feedContainer = document.createElement('section');
@@ -21,8 +24,7 @@ export default () => {
       </div>
     </div>
   </div>
-  <div class="post-container"></div>
-  <div class="timeline"></div>
+  <div class="post-container" id="timeline"></div>
 </div>
 `;
 
@@ -32,36 +34,25 @@ export default () => {
   const textPost = feedContainer.querySelector('.text-area');
   const shareBtn = feedContainer.querySelector('.share-btn');
   const displayUsername = feedContainer.querySelector('.display-username');
+  const timeline = feedContainer.querySelector('#timeline');
 
   displayUsername.innerHTML = getUsername();
+  const showPosts = (post) => {
+    // mudar innerHTML para appendChild
+    timeline.innerHTML += `<p>${post.username}</p>
+    <p>${post.post}</p>
+   `;
+  };
 
+  findPosts(showPosts);
   shareBtn.addEventListener('click', async () => {
-    await newPost(textPost.value);
+    if (textPost.value.length > 0) {
+      await newPost(textPost.value);
+      /*       postRef = await readOnePost(postRef.id); */
+      /*       publishedPost.appendChild(timelinePosts(postRef)); */
+      textPost.innerHTML = '';
+    }
     textPost.value = '';
   });
-
-
-export function publish() {
-    const publishContainer = document.createElement('div');
-    publishContainer.classList.add('publish-container');
-  
-    const publishTemplate = `
-<div class="publish">
-    <h2>Share your thoughts...</h2>
-    <div class="post-area">
-      <div class="textarea-div">
-        <textarea placeholder="What's up?" class="text-area" required></textarea>
-      </div>
-      <div class="share-btn-div">
-        <button type="submit" class="share-btn">SHARE</button>
-      </div>
-    </div>
-  </div>
-  <div class="post-container"></div>
-  <div class="timeline"></div>
-  `;
-
   return feedContainer;
 };
-
-  const
