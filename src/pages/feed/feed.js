@@ -12,17 +12,17 @@ export default () => {
   const feedContainer = document.createElement('div');
 
   const feedScreenMenu = `
-
-  <section>
-  <div id='menu-bottom'>
-  <button> <img src='assets/imagens/perfil.png' id='profile'> PERFIL </button>
-   <img src='assets/imagens/logo.png' id='feed-logo' alt='Logotipo QA- Qualidade de ações'>
-   <button> <img src='assets/imagens/publicar.png' alt='Imagem publicação' id='button-publish'> PUBLICAR </button>
-   </div>
+  <section class='register-container-feed'>
    <div id='menu-top'>
    <button> <img src='assets/imagens/logout.png' alt='Imagem sair' id='button-logout'> SAIR </button>
    <img id='bumerangue-gif-feed' src='assets/imagens/bumerangue.gif'>
    </div>
+    <div id='time-line'> </div>
+   <div id='menu-bottom'>
+   <button> <img src='assets/imagens/perfil.png' id='profile'> PERFIL </button>
+    <img src='assets/imagens/logo.png' id='feed-logo' alt='Logotipo QA- Qualidade de ações'>
+    <button> <img src='assets/imagens/publicar.png' alt='Imagem publicação' id='feed-button-publish'> PUBLICAR </button>
+    </div>
  </section>
  `;
 
@@ -32,7 +32,6 @@ export default () => {
     const posts = await getPosts();
     const postTemplate = posts.map((post) => `
   <div class='main-post-feed'>
-
   <div class='name-post'> ${post.userName} </div>
   <div class='content-post'> ${post.text} </div>
   <div class='date-post'>${post.publishDate} </div> </div>
@@ -49,13 +48,10 @@ export default () => {
   <button class='button-delete' data-post-id=${post.id} data-user-id=${post.userId}> <img src='assets/imagens/lixeira.png'> </button>
 </div> </div>
     `);
-    const postsFeed = document.createElement('div');
-    postsFeed.id = 'posts-feed';
-    feedContainer.appendChild(postsFeed);
 
-    feedContainer.querySelector('#posts-feed').innerHTML = postTemplate;
+    feedContainer.querySelector('#time-line').innerHTML = postTemplate;
 
-    const publishPost = feedContainer.querySelector('#button-publish');
+    const publishPost = feedContainer.querySelector('#feed-button-publish');
 
     publishPost.addEventListener('click', (event) => {
       event.preventDefault();
@@ -158,5 +154,6 @@ export default () => {
   });
 
   showPosts();
+
   return feedContainer;
 };
