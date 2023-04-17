@@ -1,3 +1,6 @@
+html{
+    background: #F6F7F8;
+}
 .feed-section{
     font-family: 'Montserrat', sans-serif;
 }
@@ -9,6 +12,7 @@
     color: #004AAD;
     font-weight: 400;
     font-size: 20px;
+    margin-left: 1em;
 }
 .post-area{
     width: 80vw;
@@ -51,4 +55,53 @@
 }
 .timeline{
     color: black;
+}
+
+@media screen and (min-width: 650px){
+    .feed-section{
+        background: #D8E8FE;
+        display: flex;
+        justify-items: center;
+        z-index: 0;
+        height: 100%;
+    }
+    .feed-container{
+        width: 70vw;
+        background: #F6F7F8;
+        display: flex;
+        margin-right: auto;
+        margin-left: auto;
+        z-index: 1;
+        border-left: 0.5px solid #004AAD;
+        border-right: 0.5px solid #004AAD;
+    }
+    .write-post{
+        width: 70vw;
+        display: flex;
+        justify-items: center;
+    }
+    .write-post h2{
+        width: 40vw;
+        display: flex;
+        margin-left: 15vw;
+    }
+    .user-post-area{
+        display: flex;
+        flex-direction: row;
+        /* align-items: center; */
+    }
+    .display-username{
+        display: flex;
+        justify-content: center;
+        width: 15vw;
+        color: #004AAD;
+        font-weight: 700;
+    }
+    .post-area{
+        width: 40vw;
+        margin-left: 0;
+    }
+    .text-area{
+        width: 90%
+    }
 }

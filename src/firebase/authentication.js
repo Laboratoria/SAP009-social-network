@@ -7,6 +7,7 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
   sendPasswordResetEmail,
+  onAuthStateChanged,
 } from 'firebase/auth';
 import { app } from './configuration.js';
 
@@ -32,10 +33,13 @@ const resetPassword = (email) => sendPasswordResetEmail(auth, email);
 
 const logout = async () => signOut(auth);
 
+const isUserLogged = (callback) => onAuthStateChanged(auth, callback);
+
 export {
   register,
   loginToFeed,
   loginWithGoogle,
   resetPassword,
   logout,
+  isUserLogged,
 };
