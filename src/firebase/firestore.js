@@ -3,12 +3,12 @@ import {
   getFirestore,
   collection,
   addDoc,
-  // onSnapshot,
+  doc,
+  onSnapshot,
   // orderBy,
   // updateDoc,
   // arrayUnion,
   // arrayRemove,
-  // doc,
   // query,
   // getDocs,
   // deleteDoc,
@@ -37,4 +37,13 @@ export async function newPost(textpost) {
   createPosts.id = docRef.id;
   console.log(createPosts);
   return createPosts;
+}
+
+export async function findPosts() {
+  firebase.firestore()
+    .collection('posts')
+    .get()
+    .then(onSnapshot => {
+      onSnapshot.docs.map(doc => doc.data());
+    });
 }
