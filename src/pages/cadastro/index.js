@@ -37,14 +37,16 @@ export default () => {
     `;
   container.innerHTML = template;
 
-  // function errorMessage(error) {
-  //   if (error.code === 'auth/email-already-exists') {
-  //     return 'Email já cadastrado.';
-  //   } if (error.code === 'auth/invalid-password') {
-  //     return 'A senha precisa ter no mínimo 6 caracteres.';
-  //   }
-  //   return error.message;
-  // }
+  function errorMessage(error) {
+    if (error.code === 'auth/email-already-exists') {
+      return 'Email já cadastrado.';
+    } if (error.code === 'auth/invalid-password') {
+      return 'A senha precisa ter no mínimo 6 caracteres.';
+    } if (error.code === 'auth/invalid-email') {
+      return 'Email inválido';
+    }
+    return error.message;
+  }
 
   const criarCadastro = container.querySelector('#btnCreateUser');
   criarCadastro.addEventListener('click', (e) => {
@@ -52,23 +54,22 @@ export default () => {
     const email = container.querySelector('#txtEmail').value;
     const senha = container.querySelector('#txtPassword').value;
     const nome = container.querySelector('#txtName').value;
-    const mensagem = container.querySelector('#txtError');
-    if (senha.length >= 5) {
-      mensagem.innerHTML = 'A senha deve ter no mínimo 6 caracteres.';
-    } if (!nome || !email || !senha) {
-      mensagem.innerHTML = 'Preencha os campos corretamente.';
-    }
+
+    // if (senha.length <= 5) {
+    //   mensagem.innerHTML = 'A senha deve ter no mínimo 6 caracteres.';
+    // } if (!nome || !email || !senha) {
+    //   mensagem.innerHTML = 'Preencha os campos corretamente.';
+    // }
 
     createUser(email, senha, nome)
-      .then((userCredential) => {
-        const uid = userCredential.user.uid;
-        userData(nome, email, uid);
+      .then(() => {
         alert('Cadastro realizado com sucesso!');
         window.location.hash = '#login';
+      })
+      .catch((error) => {
+        const mensagem = container.querySelector('#txtError');
+        mensagem.innerHTML = errorMessage(error);
       });
-    // .catch((error) => {
-    //   alert(errorMessage(error));
-    // });
   });
   return container;
 };

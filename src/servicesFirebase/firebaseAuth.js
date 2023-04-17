@@ -20,13 +20,11 @@ export function verificaUsuarioLogado(verificando) {
   onAuthStateChanged(auth, verificando);
 }
 /* Cadastrar usuários */
-export const createUser = (email, senha, displayName) => {
-  createUserWithEmailAndPassword(auth, email, senha)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      updateProfile(user, { email, senha, displayName });
-      return userCredential;
-    });
+export const createUser = async (email, senha, displayName) => {
+  const nomeAleatorio = await createUserWithEmailAndPassword(auth, email, senha);
+  // const user = userCredential.user;
+  await updateProfile(auth.currentUser, { email, senha, displayName });
+  return nomeAleatorio;
 };
 
 /* Fazer Login do usuário */
