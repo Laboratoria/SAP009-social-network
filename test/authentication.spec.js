@@ -7,6 +7,7 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
   createUserWithEmailAndPassword,
+  onAuthStateChanged,
 } from 'firebase/auth';
 import { app } from '../src/firebase/configuration.js';
 import {
@@ -15,6 +16,7 @@ import {
   register,
   logout,
   resetPassword,
+  isUserLogged,
 } from '../src/firebase/authentication.js';
 
 jest.mock('firebase/auth');
@@ -85,3 +87,13 @@ describe('logout', () => {
     expect(signOut).toHaveBeenCalledWith(undefined);
   });
 });
+describe('isUserLogged', () => {
+  it('should veryfy if the user is logged', async () => {
+    onAuthStateChanged.mockResolvedValueOnce();
+    await isUserLogged();
+
+    expect(onAuthStateChanged).toHaveBeenCalledTimes(1);
+    expect(onAuthStateChanged).toHaveBeenCalledWith(undefined, undefined);
+  });
+});
+
