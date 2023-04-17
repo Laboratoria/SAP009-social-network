@@ -15,6 +15,7 @@ export default () => {
   <div class="write-post">
     <h2>Share your thoughts...</h2>
     <div class="user-post-area">
+      <img src="img/user-icon.png" class="user-icon">
       <div class="display-username"></div>
       <div class="post-area">
         <div class="textarea-div">

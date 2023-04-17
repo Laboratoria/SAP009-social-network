@@ -20,10 +20,12 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 async function newPost(textpost) {
+  const currentDate = new Date(currentDate * 1000);
+  const dateString = currentDate.toLocaleDateString();
   const createPosts = {
     userId: auth.currentUser.uid,
     username: auth.currentUser.displayName,
-    date: new Date(),
+    date: dateString,
     post: textpost,
     likes: 0,
   };
