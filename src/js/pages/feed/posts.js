@@ -5,7 +5,7 @@ export function postTemplate(post) {
   <div class="post-list">
    <hr> 
    <header class="header-post">
-     <img src="user-icon.png" id="user-icon">
+     <img src="img/user-icon.png" class="user-icon">
      <div class="username-post">${post.username}</div>
    </header>
    <p class="body-post">${post.post}</p>
@@ -13,8 +13,8 @@ export function postTemplate(post) {
      <div class="post-date">${post.date}</div>
      <div class="post-like">
       <button type="button" class="like-btn">
-       <img src="heart-regular.png" id="not-liked">
-       <img src="heart-solid.png" id="liked">
+       <img src="img/heart-regular.png" class="not-liked">
+       <img src="img/heart-solid.png" class="liked">
       </button>
       <div class="number-like">${post.likes}</div>
      </div>
@@ -22,5 +22,6 @@ export function postTemplate(post) {
   </div>
   `;
   postContainer.innerHTML = template;
+
   return postContainer;
 }
