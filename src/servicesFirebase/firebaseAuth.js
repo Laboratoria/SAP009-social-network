@@ -39,4 +39,3 @@ export const googleLogin = () => signInWithPopup(auth, provider);
 
 /* Sair do perfil do usuário */
 export const sairPerfil = () => signOut(auth);
-

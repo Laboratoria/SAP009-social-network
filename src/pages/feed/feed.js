@@ -19,11 +19,9 @@ export default () => {
       <section class="container-feed">
           <div class="header">
                 <a href="/#feed"><img class="logo-feed" src="./img/logo-sem-escrita.png"></a>
-
                 <div class='feed-display'>
                 <p class='username' id='username' >Olá, ${auth.currentUser.displayName}</p>
                 </div>
-
                   <div class="menu-section">
                   <button class="menu-toggle">
                    <div class="one"></div>
@@ -42,12 +40,10 @@ export default () => {
                           </ul>
                       </div>
                   </nav>
-
               </div>
           </div>
         </section>
   </header>
-
   <div class="main">
     <section class="post">
         <section class="botoes">
@@ -65,7 +61,6 @@ export default () => {
       <div id="postagem">${postsNaTela()}</div>
     </section>
   </div>
-
 </div>
   `;
 
@@ -127,6 +122,19 @@ export default () => {
   const user = auth.currentUser.displayName;
   if (user === '');
 
+  // FUNÇÃO PARA JUNTAR TODOS OS POSTS NA TELA //
+  async function teste() {
+    const arrayTemplates = [];
+    const arrayPost = await postsNaTela();
+    arrayPost.forEach((element) => {
+      arrayTemplates.push(templatePost(element));
+    });
+    return arrayTemplates.join('');
+  }
+  const resultado = Promise.resolve(teste()).then((value) => {
+    postagem.innerHTML = `${value} `;
+  });
+
   // ELEMENTOS DO TEMPLATE POST //
   const timeElapsed = Date.now();
   const today = new Date(timeElapsed);
@@ -143,26 +151,12 @@ export default () => {
     }
   });
 
-  // FUNÇÃO PARA JUNTAR TODOS OS POSTS NA TELA //
-  async function teste() {
-    const arrayTemplates = [];
-    const arrayPost = await postsNaTela();
-    arrayPost.forEach((element) => {
-      arrayTemplates.push(templatePost(element));
-    });
-    // console.log(arrayTemplates); //
-    return arrayTemplates.join('');
-  }
-
-  const resultado = Promise.resolve(teste()).then((value) => {
-    console.log(value);
-    postagem.innerHTML = `${value} `;
-  });
-
   // RASTREAR EVENTOS DE CLICK e adicionar as funções de cada evento //
   postagem.addEventListener('click', async (event) => {
     const element = event.target; // elemento que é clicado
     const imgLike = container.querySelector(`[data-like-id='${element.dataset.likeId}']`); // imagem de like
+    const btnSalvar = container.querySelector(`[data-salvar-id='${element.dataset.salvarId}']`);
+    const areaTexto = container.querySelector(`[data-texto-id='${element.dataset.textoId}']`);
     if (element.dataset.likeId) {
       const likes = await likePost(element.dataset.likeId, idUser);
       if (likes.liked === true) {
