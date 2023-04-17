@@ -19,6 +19,5 @@ export default () => {
 `;
 
   feedContainer.innerHTML = feedTemplate;
-  /* const postList = feedContainer.querySelector('.timeline'); */
   return feedContainer;
 };
