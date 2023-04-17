@@ -17,7 +17,6 @@ export default () => {
         <li class="nav-item"><button class="menu-item" type="button" id="logout" class="nav-item">Log out</button></li>
     </ul>
 </nav>
-    <img id="user-img" alt="User">
     `;
 
   headerFeedContainer.innerHTML = headerFeedTemplate;
