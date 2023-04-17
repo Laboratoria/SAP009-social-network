@@ -1,6 +1,7 @@
 import devKeila from '../../img/icones-sobre/devKeila.png';
 import devStella from '../../img/icones-sobre/devStella.png';
 import iconeGitHub from '../../img/icones-sobre/iconeGitHub.png';
+import { sairPerfil } from '../../servicesFirebase/firebaseAuth';
 
 export default () => {
   const container = document.createElement('div');
@@ -40,28 +41,31 @@ export default () => {
                     <div class='description'>
                         <p class='texto-sobre'>A Brúlle é uma rede social criada para os amantes da Gastronomia se conectarem e compartilharem receitas, dicas de restaurantes e tudo que envolve o mundo gastronôminco.</p>
                     </div>
-                    <p class='devs-sobre'>Desenvoldedoras da Brúlle</p>
+                    <p class='devs-sobre'>Conheça as Desenvolvedoras:</p>
                 </div>
                 <div class="cards-devs" id="cards-devs">
                     
                     <div class="card-keila" id="card-keila">
-                        <div class="img-keila">
                             <img src="${devKeila}" class="img-keila" alt="Foto da desenvolvedora Keila">
-                        </div>
+                            <p class="devs">Keila Costa</p>
                         <div class="img-sociais">
-                        <a href="https://www.linkedin.com/in/keilaoliveiradev/">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" class="img-linkedin" alt="Logo do linkedin"></a>
-                        <a href="https://github.com/Keilaoliveira0112"><img src="${iconeGitHub}" class="img-github" alt="Logo do github"></a>.
+                        <div>
+                            <a href="https://www.linkedin.com/in/keilaoliveiradev/" target="_blank">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" class="img-linkedin" alt="Logo do linkedin"></a>
+                        </div>
+                        <div>
+                            <a href="https://github.com/Keilaoliveira0112" target="_blank"><img src="${iconeGitHub}" class="img-github" alt="Logo do github"></a>.</div>
                         </div>
                     </div>
                     <div class="card-stella" id="card-stella">
-                        <div class="img-stella">
                             <img src="${devStella}" class="img-stella" alt="Foto da desenvolvedora Stella">
-                        </div>
+                            <p class="devs">Stella Zen</p>
                         <div class="img-sociais">
-                        <a href="https://www.linkedin.com/in/stella-zen/">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" class="img-linkedin" alt="Logo do linkedin"></a>
-                        <a href="https://github.com/Stellazen"><img src="${iconeGitHub}" class="img-github" alt="Logo do github"></a>.
+                        <div>
+                            <a href="https://www.linkedin.com/in/stella-zen/" target="_blank">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" class="img-linkedin" alt="Logo do linkedin" ></a>
+                        </div>
+                            <div><a href="https://github.com/Stellazen" target="_blank"><img src="${iconeGitHub}" class="img-github" alt="Logo do github" ></a></div>
                         </div>  
                     </div>    
                 </div>
@@ -69,5 +73,16 @@ export default () => {
   </div>  
   `;
   container.innerHTML = template;
+
+  const btnSair = container.querySelector('#btnSair');
+  btnSair.addEventListener('click', () => sairPerfil()
+    .then(() => {
+      window.location.hash = '#login';
+    }));
+  const btnMenu = container.querySelector('.menu-toggle');
+  const menu = container.querySelector('.menu-section');
+  btnMenu.addEventListener('click', () => {
+    menu.classList.toggle('show');
+  });
   return container;
 };

@@ -19,9 +19,6 @@ export default () => {
       <section class="container-feed">
           <div class="header">
                 <a href="/#feed"><img class="logo-feed" src="./img/logo-sem-escrita.png"></a>
-                <div class='feed-display'>
-                <p class='username' id='username' >Olá, ${auth.currentUser.displayName}</p>
-                </div>
                   <div class="menu-section">
                   <button class="menu-toggle">
                    <div class="one"></div>
@@ -45,6 +42,9 @@ export default () => {
         </section>
   </header>
   <div class="main">
+  <div class='feed-display'>
+  <p class='username' id='username' >Olá, ${auth.currentUser.displayName}</p>
+  </div>
     <section class="post">
         <section class="botoes">
             <button id="btn-modal" class="btn-publicar">Criar Post</button>
@@ -102,6 +102,7 @@ export default () => {
   const btnPostar = container.querySelector('#btn-postar');
   const post = container.querySelector('#input-post');
   const postagem = container.querySelector('#postagem');
+
   btnMenu.addEventListener('click', () => {
     menu.classList.toggle('show');
   });
