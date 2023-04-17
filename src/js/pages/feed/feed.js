@@ -13,7 +13,7 @@ export default () => {
   <div class="write-post">
     <h2>Share your thoughts...</h2>
     <div class="user-post-area">
-      <div class="display-username">Some User</div>
+      <div class="display-username"></div>
       <div class="post-area">
         <div class="textarea-div">
           <textarea placeholder="What's up?" class="text-area" required></textarea>
@@ -30,7 +30,6 @@ export default () => {
 
   feedContainer.innerHTML = feedTemplate;
 
-  // const postContainer = feedContainer.querySelector('.post-container');
   const textPost = feedContainer.querySelector('.text-area');
   const shareBtn = feedContainer.querySelector('.share-btn');
   const displayUsername = feedContainer.querySelector('.display-username');
