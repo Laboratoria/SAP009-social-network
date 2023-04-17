@@ -4,6 +4,8 @@ import {
   findPosts,
 } from '../../../firebase/firestore.js';
 
+import { postTemplate } from './posts.js';
+
 export default () => {
   const feedContainer = document.createElement('section');
   feedContainer.classList.add('feed-section');
@@ -37,10 +39,7 @@ export default () => {
 
   displayUsername.innerHTML = getUsername();
   const showPosts = (post) => {
-    // mudar innerHTML para appendChild
-    timeline.innerHTML += `<p>${post.username}</p>
-    <p>${post.post}</p>
-   `;
+    timeline.appendChild(postTemplate(post));
   };
 
   findPosts(showPosts);
