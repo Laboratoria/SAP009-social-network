@@ -13,7 +13,7 @@ export default () => {
   </div>
   <div class="main-content-home">
     <div class="icons-text-home">
-      <img src="./img/location-dot-solid.svg" alt="Location dot icon" class="icons-home">
+      <img src="./img/location-dot-solid.png" alt="Location dot icon" class="icons-home">
       <p class="text-home">Estudantes de todo o país se encontram aqui.</p>
     </div>
     <div class="icons-text-home">
@@ -21,11 +21,11 @@ export default () => {
       <p class="text-home">Participe de comunidades sobre músicas, filmes, séries, memes, gramática e muito mais.</p>
     </div>
     <div class="icons-text-home">
-      <img src="./img/pen-to-square-regular.svg" alt="Pen to square icon" class="icons-home">
+      <img src="./img/pen-to-square-regular.png" alt="Pen to square icon" class="icons-home">
       <p class="text-home">Crie postagens e compartilhe ideias e pensamentos.</p>
     </div>
     <div class="icons-text-home">
-      <img src="./img/heart-solid.svg" alt="Love icon"  class="icons-home">
+      <img src="./img/heart-solid.png" alt="Love icon"  class="icons-home">
       <p class="text-home">Curta conteúdos de outras pessoas e faça amizades.</p>
     </div>
   </div>

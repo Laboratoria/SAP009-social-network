@@ -1,5 +1,10 @@
-import { newPost } from '../../../firebase/firestore';
-import { getUsername } from '../../../firebase/firestore.js';
+import {
+  newPost,
+  getUsername,
+  findPosts,
+} from '../../../firebase/firestore.js';
+
+import { postTemplate } from './posts.js';
 
 export default () => {
   const feedContainer = document.createElement('section');
@@ -10,6 +15,7 @@ export default () => {
   <div class="write-post">
     <h2>Share your thoughts...</h2>
     <div class="user-post-area">
+      <img src="img/user-icon.png" class="user-icon">
       <div class="display-username"></div>
       <div class="post-area">
         <div class="textarea-div">
@@ -21,23 +27,31 @@ export default () => {
       </div>
     </div>
   </div>
-  <div class="timeline"></div>
+  <div class="post-container" id="timeline"></div>
 </div>
 `;
 
   feedContainer.innerHTML = feedTemplate;
 
-  // const postContainer = feedContainer.querySelector('.post-container');
   const textPost = feedContainer.querySelector('.text-area');
   const shareBtn = feedContainer.querySelector('.share-btn');
   const displayUsername = feedContainer.querySelector('.display-username');
+  const timeline = feedContainer.querySelector('#timeline');
 
   displayUsername.innerHTML = getUsername();
+  const showPosts = (post) => {
+    timeline.appendChild(postTemplate(post));
+  };
 
+  findPosts(showPosts);
   shareBtn.addEventListener('click', async () => {
-    await newPost(textPost.value);
+    if (textPost.value.length > 0) {
+      await newPost(textPost.value);
+      /*       postRef = await readOnePost(postRef.id); */
+      /*       publishedPost.appendChild(timelinePosts(postRef)); */
+      textPost.innerHTML = '';
+    }
     textPost.value = '';
   });
-
   return feedContainer;
 };

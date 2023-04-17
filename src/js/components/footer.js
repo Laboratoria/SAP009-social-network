@@ -4,13 +4,13 @@ export default () => {
 <div id="div-footer">
   <h1>Desenvolvido por:</h1>
   <div class="git-name">
-    <img src="/img/github.svg" alt="cat icon" class="github-cat"><a href="https://github.com/Bru-Silveira" class="footer-names">Bruna Silveira</a></img>
+    <img src="/img/github.png" alt="cat icon" class="github-cat"><a href="https://github.com/Bru-Silveira" class="footer-names">Bruna Silveira</a></img>
   </div>
   <div class="git-name">
-    <img src="/img/github.svg" alt="cat icon" class="github-cat"><a href="https://github.com/marinacezario" class="footer-names">Marina Cezário</a></img>
+    <img src="/img/github.png" alt="cat icon" class="github-cat"><a href="https://github.com/marinacezario" class="footer-names">Marina Cezário</a></img>
   </div>
   <div class="git-name">
-    <img src="/img/github.svg" alt="cat icon" class="github-cat"><a href="https://github.com/silversantos" class="footer-names">Silver Santos</a></img>
+    <img src="/img/github.png" alt="cat icon" class="github-cat"><a href="https://github.com/silversantos" class="footer-names">Silver Santos</a></img>
   </div>
 </div>
   `;
