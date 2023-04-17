@@ -87,7 +87,6 @@ describe('logout', () => {
     expect(signOut).toHaveBeenCalledWith(undefined);
   });
 });
-
 describe('isUserLogged', () => {
   it('should veryfy if the user is logged', async () => {
     onAuthStateChanged.mockResolvedValueOnce();
@@ -97,3 +96,4 @@ describe('isUserLogged', () => {
     expect(onAuthStateChanged).toHaveBeenCalledWith(undefined, undefined);
   });
 });
+
