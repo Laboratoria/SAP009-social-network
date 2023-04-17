@@ -110,8 +110,34 @@ li > a{
     font-family: var(--fonte-logo);
 }
 
-.texto-sobre{
+.main-sobre{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.texto-sobre, .devs-sobre{
+    margin-top: 30px;
+    text-align: center;
     color:white;
+    font-family: var(--fonte-logo);
+    max-width: 500px;
+}
+
+.devs{
+    margin-bottom: 10px;
+    text-align: center;
+    color:var(--vermelho);
+    font-weight: bold;
+    font-family: var(--fonte-logo);
+}
+
+.devs-sobre{
+    margin-bottom: 20px;
+}
+
+.texto-sobre{
+    padding: 5px;
 }
 
 .cards-devs{
@@ -119,30 +145,42 @@ li > a{
     flex-direction: column;
     align-items: center;
     gap: 50px;
+    margin-bottom: 50px ;
 }
 
 .card-keila, .card-stella{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 250px;
-    height: 350px;
+    width: 220px;
+    height: 320px;
     padding: 10px;
-    border: 1px solid white;
+    border: 1px solid var(--vermelho);
     border-radius: 20px;
-    background-color: #03407279;
+    background-color: var(--amarelinho);
+}
+
+.img-sociais{
+    display: flex;
+    gap:50px;
 }
 
 .img-linkedin, .img-github{
     width: 40px;
 }
 
+.img-linkedin:hover, .img-github:hover{
+    cursor: pointer;
+}
+
 .img-stella, .img-keila{
+    margin-top: 10px;
+    margin-bottom: 20px;
     width: 200px;
     border-radius: 50%;
-    margin-top:10px;
-    margin-bottom: 20px;
+    border:2px solid var(--vermelho);
 }
+
 
 @media (min-width:900px){
     .menu-toggle{
@@ -174,4 +212,12 @@ li > a{
         height: 120px;
         position: fixed;
     }
+
+    .cards-devs{
+        margin-top: 20px;
+        display:flex;
+        flex-direction: row;
+        gap:100px;
+    }
+
 }
