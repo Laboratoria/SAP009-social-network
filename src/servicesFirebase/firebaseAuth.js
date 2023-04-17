@@ -19,15 +19,15 @@ export const auth = getAuth(app);
 export function verificaUsuarioLogado(verificando) {
   onAuthStateChanged(auth, verificando);
 }
-
 /* Cadastrar usuários */
-export const createUser = (email, senha, displayName) => createUserWithEmailAndPassword(auth, email, senha)
-  .then((userCredential) => {
-    const user = userCredential.user;
-    updateProfile(user, { email, senha, displayName });
-    /*  console.log(auth.currentUser); */
-    return userCredential;
-  });
+export const createUser = (email, senha, displayName) => {
+  createUserWithEmailAndPassword(auth, email, senha)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      updateProfile(user, { email, senha, displayName });
+      return userCredential;
+    });
+};
 
 /* Fazer Login do usuário */
 export const valuesLogin = (email, senha) => signInWithEmailAndPassword(auth, email, senha);

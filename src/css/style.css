@@ -1,6 +1,7 @@
 @import url(../pages/login/login.css);
 @import url(../pages/feed/feed.css);
 @import url(../pages/cadastro/cadastro.css);
+@import url(../pages/sobre/sobre.css);
 * {
     margin: 0;
     padding: 0;

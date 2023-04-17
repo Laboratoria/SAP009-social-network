@@ -37,14 +37,25 @@ export default () => {
     `;
   container.innerHTML = template;
 
+  // function errorMessage(error) {
+  //   if (error.code === 'auth/email-already-exists') {
+  //     return 'Email já cadastrado.';
+  //   } if (error.code === 'auth/invalid-password') {
+  //     return 'A senha precisa ter no mínimo 6 caracteres.';
+  //   }
+  //   return error.message;
+  // }
+
   const criarCadastro = container.querySelector('#btnCreateUser');
   criarCadastro.addEventListener('click', (e) => {
     e.preventDefault();
     const email = container.querySelector('#txtEmail').value;
     const senha = container.querySelector('#txtPassword').value;
     const nome = container.querySelector('#txtName').value;
-    if (!nome || !email || !senha) {
-      const mensagem = container.querySelector('#txtError');
+    const mensagem = container.querySelector('#txtError');
+    if (senha.length >= 5) {
+      mensagem.innerHTML = 'A senha deve ter no mínimo 6 caracteres.';
+    } if (!nome || !email || !senha) {
       mensagem.innerHTML = 'Preencha os campos corretamente.';
     }
 
@@ -55,6 +66,9 @@ export default () => {
         alert('Cadastro realizado com sucesso!');
         window.location.hash = '#login';
       });
+    // .catch((error) => {
+    //   alert(errorMessage(error));
+    // });
   });
   return container;
 };

@@ -2,6 +2,7 @@
 import login from './pages/login/login';
 import feed from './pages/feed/feed.js';
 import cadastro from './pages/cadastro/index.js';
+import sobre from './pages/sobre/sobre.js';
 import { verificaUsuarioLogado } from './servicesFirebase/firebaseAuth';
 
 const main = document.querySelector('#root');
@@ -11,18 +12,18 @@ const init = () => {
     main.innerHTML = '';
     switch (window.location.hash) {
       case '':
-        console.log('login vazio');
         main.appendChild(login());
         break;
       case '#feed':
-        console.log('feed entrei');
         main.appendChild(feed());
         break;
       case '#cadastro':
         main.appendChild(cadastro());
         break;
+      case '#sobre':
+        main.appendChild(sobre());
+        break;
       default:
-        console.log('login default');
         main.appendChild(login());
     }
   });
@@ -34,7 +35,7 @@ window.addEventListener('load', () => {
 window.addEventListener('load', async () => {
   verificaUsuarioLogado(async (idUser) => {
     if (idUser) {
-    // verifica se usuario ta logado, se tiver ele chama init p/ carregar a pag q está
+      // verifica se usuario ta logado, se tiver ele chama init p/ carregar a pag q está
       window.location.hash = '#feed';
       window.dispatchEvent(new HashChangeEvent('hashchange'));
     } else {

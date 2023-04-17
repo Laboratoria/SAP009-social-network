@@ -19,11 +19,9 @@ export default () => {
       <section class="container-feed">
           <div class="header">
                 <a href="/#feed"><img class="logo-feed" src="./img/logo-sem-escrita.png"></a>
-
                 <div class='feed-display'>
                 <p class='username' id='username' >Olá, ${auth.currentUser.displayName}</p>
                 </div>
-
                   <div class="menu-section">
                   <button class="menu-toggle">
                    <div class="one"></div>
@@ -34,7 +32,7 @@ export default () => {
                       <div class="menu">
                           <ul class="ul-nav">
                               <li class="li-nav">
-                                  <a class='options-perfil' href="#">Perfil</a>
+                                  <a class='options-perfil' href="#sobre">Sobre</a>
                               </li>
                               <li class="li-nav">
                                <button id="btnSair" class='options-sair'>Sair</button>
@@ -42,12 +40,10 @@ export default () => {
                           </ul>
                       </div>
                   </nav>
-
               </div>
           </div>
         </section>
   </header>
-
   <div class="main">
     <section class="post">
         <section class="botoes">
@@ -65,7 +61,6 @@ export default () => {
       <div id="postagem">${postsNaTela()}</div>
     </section>
   </div>
-
 </div>
   `;
 
@@ -90,9 +85,7 @@ export default () => {
 
               <button class="btn-editar"><img data-editar-id="${doc.id}" class="img-editar" src="../img/icone-editar.png"></button>
               <button class="btn-excluir"><img data-excluir-id="${doc.id}" class="img-excluir" src="../img/icone-excluir.png"></button>
-              <section>
-            </div>` : ''}
-           
+            </div>` : ''} 
         </div>
     </section>
   </div >
@@ -129,6 +122,19 @@ export default () => {
   const user = auth.currentUser.displayName;
   if (user === '');
 
+  // FUNÇÃO PARA JUNTAR TODOS OS POSTS NA TELA //
+  async function teste() {
+    const arrayTemplates = [];
+    const arrayPost = await postsNaTela();
+    arrayPost.forEach((element) => {
+      arrayTemplates.push(templatePost(element));
+    });
+    return arrayTemplates.join('');
+  }
+  const resultado = Promise.resolve(teste()).then((value) => {
+    postagem.innerHTML = `${value} `;
+  });
+
   // ELEMENTOS DO TEMPLATE POST //
   const timeElapsed = Date.now();
   const today = new Date(timeElapsed);
@@ -145,26 +151,12 @@ export default () => {
     }
   });
 
-  // FUNÇÃO PARA JUNTAR TODOS OS POSTS NA TELA //
-  async function teste() {
-    const arrayTemplates = [];
-    const arrayPost = await postsNaTela();
-    arrayPost.forEach((element) => {
-      arrayTemplates.push(templatePost(element));
-    });
-    // console.log(arrayTemplates); //
-    return arrayTemplates.join('');
-  }
-
-  const resultado = Promise.resolve(teste()).then((value) => {
-    console.log(value);
-    postagem.innerHTML = `${value} `;
-  });
-
   // RASTREAR EVENTOS DE CLICK e adicionar as funções de cada evento //
   postagem.addEventListener('click', async (event) => {
     const element = event.target; // elemento que é clicado
     const imgLike = container.querySelector(`[data-like-id='${element.dataset.likeId}']`); // imagem de like
+    const btnSalvar = container.querySelector(`[data-salvar-id='${element.dataset.salvarId}']`);
+    const areaTexto = container.querySelector(`[data-texto-id='${element.dataset.textoId}']`);
     if (element.dataset.likeId) {
       const likes = await likePost(element.dataset.likeId, idUser);
       if (likes.liked === true) {
@@ -173,11 +165,8 @@ export default () => {
         imgLike.setAttribute('src', '../img/panela.png'); // trocar imagem
       }
     } else if (element.dataset.editarId) {
-      const btnSalvar = document.querySelector(`[data-salvar-id='${element.dataset.salvarId}']`);
-      const areaTexto = document.querySelector(`[data-texto-id='${element.dataset.textoId}']`);
-      areaTexto.removeAttribute('disabled');
       btnSalvar.removeAttribute('hidden');
-
+      areaTexto.removeAttribute('disabled');
       editPost(doc.id, post);
     } else if (element.dataset.excluirId) {
       if (window.confirm('Tem certeza que gostaria de deletar essa postagem?')) {
