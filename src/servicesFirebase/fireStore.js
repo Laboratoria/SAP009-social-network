@@ -13,6 +13,7 @@ import {
   doc,
   deleteDoc,
   orderBy,
+  onSnapshot,
 } from 'firebase/firestore';
 
 import {
@@ -43,22 +44,21 @@ export async function newPost(dataPostagem, id, post, username) {
   });
   // newPost.id = docRef.id;
   // return newPost;
-  const doc = await getDoc(docRef);
-
-  return doc;
+  const postUnic = await getDoc(docRef);
+  return postUnic;
 }
 
 // printar posts na tela //
-export async function postsNaTela() {
-  const novoArray = [];
+export function postsNaTela(limparTela, testando) {
   const q = query(collection(db, 'post'), orderBy('date', 'desc'));
-  const querySnapshot = await getDocs(q);
-  querySnapshot.forEach((doc) => {
-    const data = doc.data();
-    data.id = doc.id;
-    novoArray.push(doc);
+  onSnapshot(q, (querySnapshot) => {
+    limparTela();
+    querySnapshot.forEach((postagem) => {
+      const data = postagem.data();
+      data.id = postagem.id;
+      testando(postagem);
+    });
   });
-  return novoArray;
 }
 
 // adicionar like //
@@ -103,14 +103,11 @@ export const likePost = async (postId, idUser) => {
 };
 
 // deletar posts //
-
 export async function deletarPost(postId) {
-
-  console.log(postId);
   await deleteDoc(doc(db, 'post', postId));
 }
 
-export const editPost = (postId, post) => updateDoc(doc(db, 'post', postId), {
+// editar post //
+export const editPost = (postId, idUser) => updateDoc(doc(db, 'post', postId), {
   textArea: post,
 });
-

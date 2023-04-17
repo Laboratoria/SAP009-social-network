@@ -58,7 +58,7 @@ export default () => {
     </div>
     </dialog>
     <section class="feed-posts">
-      <div id="postagem">${postsNaTela()}</div>
+      <div id="postagem"></div>
     </section>
   </div>
 </div>
@@ -78,6 +78,7 @@ export default () => {
             <div class="curtida">
             <button class="btn-like"><img data-like-id="${doc.id}" class="img-curtida" src=" 
             ${dados.likes.includes(auth.currentUser.uid) ? '../img/panela-preenchida.png' : '../img/panela.png'}"></button>
+            <span data-count-id="${doc.id}">${dados.likes.length}</span>
             </div>
 
             <button class="btn-salvar" hidden data-salvar-id="${doc.id}">Salvar</button>
@@ -124,17 +125,13 @@ export default () => {
   if (user === '');
 
   // FUNÇÃO PARA JUNTAR TODOS OS POSTS NA TELA //
-  async function teste() {
-    const arrayTemplates = [];
-    const arrayPost = await postsNaTela();
-    arrayPost.forEach((element) => {
-      arrayTemplates.push(templatePost(element));
-    });
-    return arrayTemplates.join('');
-  }
-  const resultado = Promise.resolve(teste()).then((value) => {
-    postagem.innerHTML = `${value} `;
-  });
+  function limparTela(){
+    postagem.innerHTML ='';
+  };
+  const aparecerPostagens = (posts) => {
+    postagem.innerHTML += templatePost(posts);
+  };
+  postsNaTela(limparTela, aparecerPostagens);
 
   // ELEMENTOS DO TEMPLATE POST //
   const timeElapsed = Date.now();
@@ -142,12 +139,13 @@ export default () => {
   const dataPostagem = today.toLocaleDateString();
   const idUser = auth.currentUser.uid;
   const userName = auth.currentUser.displayName;
+  // const contagem = container.querySelector('.contagem');
   btnPostar.addEventListener('click', async () => {
     if (post.value !== '') {
       const novoPost = await newPost(dataPostagem, idUser, post.value, userName);
-      Promise.resolve(teste()).then((value) => {
-        postagem.innerHTML = `${value} `;
-      });
+      // Promise.resolve(teste()).then((value) => {
+      //   postagem.innerHTML = `${value} `;
+      // });
       modal.close();
     }
   });
@@ -156,8 +154,9 @@ export default () => {
   postagem.addEventListener('click', async (event) => {
     const element = event.target; // elemento que é clicado
     const imgLike = container.querySelector(`[data-like-id='${element.dataset.likeId}']`); // imagem de like
-    const btnSalvar = container.querySelector(`[data-salvar-id='${element.dataset.salvarId}']`);
-    const areaTexto = container.querySelector(`[data-texto-id='${element.dataset.textoId}']`);
+    const btnSalvar = container.querySelector(`[data-salvar-id='${element.dataset.editarId}']`);
+    const areaTexto = container.querySelector(`[data-texto-id='${element.dataset.editarId}']`);
+    // botão de like //
     if (element.dataset.likeId) {
       const likes = await likePost(element.dataset.likeId, idUser);
       if (likes.liked === true) {
@@ -165,10 +164,19 @@ export default () => {
       } else {
         imgLike.setAttribute('src', '../img/panela.png'); // trocar imagem
       }
+
+      // botão de editar //
     } else if (element.dataset.editarId) {
       btnSalvar.removeAttribute('hidden');
       areaTexto.removeAttribute('disabled');
-      editPost(doc.id, post);
+      // botão salvar edição //
+    } else if (element.dataset.salvarId) {
+      const btnSalvarEdicao = container.querySelector(`[data-salvar-id='${element.dataset.salvarId}']`);
+      const areaTextoEdicao = container.querySelector(`[data-texto-id='${element.dataset.salvarId}']`);
+      btnSalvarEdicao.setAttribute('hidden', true);
+      areaTextoEdicao.setAttribute('disabled', true);
+      editPost(areaTexto, post);
+      // botão excluir //
     } else if (element.dataset.excluirId) {
       if (window.confirm('Tem certeza que gostaria de deletar essa postagem?')) {
         deletarPost(element.dataset.excluirId)
