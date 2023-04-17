@@ -114,7 +114,8 @@ export default () => {
       });
   });
 
-  loginWithGoogleBtn.addEventListener('click', () => {
+  loginWithGoogleBtn.addEventListener('click', (e) => {
+    e.preventDefault();
     loginWithGoogle()
       .then(() => {
         window.location.hash = '#feed';
