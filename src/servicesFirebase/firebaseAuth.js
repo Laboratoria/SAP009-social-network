@@ -21,10 +21,10 @@ export function verificaUsuarioLogado(verificando) {
 }
 /* Cadastrar usuários */
 export const createUser = async (email, senha, displayName) => {
-  const nomeAleatorio = await createUserWithEmailAndPassword(auth, email, senha);
+  const authentication = getAuth(app);
+  await createUserWithEmailAndPassword(authentication, email, senha);
   // const user = userCredential.user;
-  await updateProfile(auth.currentUser, { email, senha, displayName });
-  return nomeAleatorio;
+  await updateProfile(authentication.currentUser, { displayName });
 };
 
 /* Fazer Login do usuário */

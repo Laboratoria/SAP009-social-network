@@ -125,9 +125,9 @@ export default () => {
   if (user === '');
 
   // FUNÇÃO PARA JUNTAR TODOS OS POSTS NA TELA //
-  function limparTela(){
-    postagem.innerHTML ='';
-  };
+  function limparTela() {
+    postagem.innerHTML = '';
+  }
   const aparecerPostagens = (posts) => {
     postagem.innerHTML += templatePost(posts);
   };
@@ -142,7 +142,7 @@ export default () => {
   // const contagem = container.querySelector('.contagem');
   btnPostar.addEventListener('click', async () => {
     if (post.value !== '') {
-      const novoPost = await newPost(dataPostagem, idUser, post.value, userName);
+      await newPost(dataPostagem, idUser, post.value, userName);
       // Promise.resolve(teste()).then((value) => {
       //   postagem.innerHTML = `${value} `;
       // });
@@ -175,7 +175,7 @@ export default () => {
       const areaTextoEdicao = container.querySelector(`[data-texto-id='${element.dataset.salvarId}']`);
       btnSalvarEdicao.setAttribute('hidden', true);
       areaTextoEdicao.setAttribute('disabled', true);
-      editPost(areaTexto, post);
+      editPost(element.dataset.salvarId, areaTextoEdicao.value);
       // botão excluir //
     } else if (element.dataset.excluirId) {
       if (window.confirm('Tem certeza que gostaria de deletar essa postagem?')) {
