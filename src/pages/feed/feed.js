@@ -179,12 +179,15 @@ export default () => {
       editPost(element.dataset.salvarId, areaTextoEdicao.value);
       // botão excluir //
     } else if (element.dataset.excluirId) {
+      // eslint-disable-next-line no-alert
       if (window.confirm('Tem certeza que gostaria de deletar essa postagem?')) {
         deletarPost(element.dataset.excluirId)
           .then(() => {
-            alert('deletado com sucesso');
+
+          /* alert('deletado com sucesso'); */
+
           }).catch(() => {
-            alert('Não foi possível deletar sua postagem. Tente novamente.');
+            /* alert('Não foi possível deletar sua postagem. Tente novamente.'); */
           });
       }
     }

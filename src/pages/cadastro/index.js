@@ -55,6 +55,7 @@ export default () => {
 
     createUser(email, senha, nome)
       .then(() => {
+        // eslint-disable-next-line no-alert
         alert('Cadastro realizado com sucesso!');
         window.location.hash = '#login';
       })

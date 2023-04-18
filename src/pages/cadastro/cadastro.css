@@ -82,6 +82,7 @@
     font-size: 1em;
     font-weight: 600;
     text-align: center;
+
 }
 
 .input-nome-cadastro, .input-login-cadastro{
@@ -130,6 +131,7 @@
     background-size: cover;
     display: none;
  }
+
 
 
  @media  (min-width:900px){
