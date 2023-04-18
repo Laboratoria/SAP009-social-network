@@ -87,7 +87,7 @@ export default () => {
             </div>
           
             <div class="post-button">
-              <button type="button" id="button-publish" class="button-publish">Publicar</button>
+              <button type="button" id="button-publish" class="button-publish" onclick="publicar()">Publicar</button>
             </div>
           </div>
         </form>
@@ -147,7 +147,48 @@ export default () => {
     return data.results.map((post) => montaTemplate(post)).join("");
   }
 
-  //responsável por criar a div da caixinha de personagem
+  //faz a manipulação de dados do json
+  function carregarPost() {
+    return data.results.map((post) => montaTemplate(post)).join("");
+  }
+
+  // const buttonPost = document.querySelector('#button-publish');
+  // buttonPost.addEventListener('click', publicar)
+
+  function publicar() {
+    const text = document.querySelector(".textarea");
+    if (text.value !== "") {
+      const timeElapsed = Date.now();
+      const today = new Date(timeElapsed);
+      const dataPostagem = today.toLocaleDateString();
+      const username = Auth.currentUser.displayName;
+      const idUser = Auth.currentUser.uid;
+      newPost(text.value, dataPostagem, username, idUser);
+      try {
+        if (text.value === "") {
+          const mensagemError = "Por favor, escreva algo para publicar!";
+          throw new UserException(mensagemError);
+        }
+        alert("Publicação efetuada com sucesso!");
+        window.location.hash = "#Home";
+      } catch (error) {
+        alert(error.message);
+      }
+    } else {
+      alert("Por favor, escreva algo para publicar!");
+    }
+  }
+
+  //criar uma constante para o texto
+  //  para o botão
+  //addevent
+  //username puxa de quem está logado
+
+  //importar o firebase auth
+
+  //criar uma função para acessar os posts
+
+  //responsável por criar
   function montaTemplate(post) {
     return `
   <section class="posts-users">
