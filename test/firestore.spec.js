@@ -12,12 +12,15 @@ import {
 } from 'firebase/firestore';
 
 import {
-  userData, newPost, deletarPost, postsNaTela, likePost,
+  userData, newPost, deletarPost, postsNaTela, likePost, editPost,
 } from '../src/servicesFirebase/fireStore';
 
 jest.mock('firebase/firestore');
 
 // acessar dados e conta do usuário//
+beforeEach(() => {
+  jest.clearAllMocks();
+});
 
 describe('teste userData', () => {
   it('deve acessar os dados do usuário e guardar na coleção', async () => {
@@ -44,6 +47,7 @@ describe('teste userData', () => {
 // criar post//
 describe('Função newPost', () => {
   it('deve criar um post e guardar na coleção', async () => {
+    addDoc.mockRestore();
     addDoc.mockResolvedValueOnce();
     const mockCollection = 'collection';
     collection.mockReturnValueOnce(mockCollection);
@@ -167,5 +171,24 @@ describe('Função contagem de deslikes', () => {
     expect(updateDoc).toHaveBeenCalledWith(mockDoc, updatedPost);
     expect(arrayRemove).toHaveBeenCalledTimes(1);
     expect(arrayRemove).toHaveBeenCalledWith(idUser);
+  });
+});
+
+// função editar post //
+describe('Função editPost', () => {
+  it('Deve editar uma publicação', async () => {
+    updateDoc.mockResolvedValue();
+    const mockDoc = 'doc';
+    doc.mockReturnValueOnce(mockDoc);
+    const postId = 'idPost';
+    const textArea = 'conteudoPost';
+    const updatedPost = {
+      post: textArea,
+    };
+    await editPost(postId, textArea);
+    expect(doc).toHaveBeenCalledTimes(1);
+    expect(doc).toHaveBeenCalledWith(undefined, 'post', postId);
+    expect(updateDoc).toHaveBeenCalledTimes(1);
+    expect(updateDoc).toHaveBeenCalledWith(mockDoc, updatedPost);
   });
 });
