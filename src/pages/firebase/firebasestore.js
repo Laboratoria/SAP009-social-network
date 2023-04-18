@@ -4,10 +4,11 @@ import { async } from "regenerator-runtime";
 
 const db = getFirestore(app);
 
-export const newPost = async(date, id, like, text, username) => addDoc(collection(db, 'Post'),{
+export const newPost = async (date, id, like, text, username) =>
+  addDoc(collection(db, "Post"), {
     username,
     date,
-    post,
+    text,
     id,
-    likes: 0
-});
+    like: [],
+  });

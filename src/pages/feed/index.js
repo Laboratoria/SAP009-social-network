@@ -1,4 +1,5 @@
-import data from './feed.js';
+import data from "./feed.js";
+import { newPost } from "../firebase/firebasestore.js";
 
 export default () => {
   const container = document.createElement("div");
@@ -96,69 +97,65 @@ export default () => {
   `;
 
   container.innerHTML = template;
-  
-  function toggleMenu(){
-    const menuMobile = document.getElementById("menu-mobile")
-  
-    if(menuMobile.className === "menu-mobile-active"){
+
+  const text = container.querySelector(".textarea");
+  const buttonPublish = container.querySelector(".button-publish");
+
+  function toggleMenu() {
+    const menuMobile = document.getElementById("menu-mobile");
+
+    if (menuMobile.className === "menu-mobile-active") {
       menuMobile.className = "menu-mobile";
-      menuMobile.setAttribute('src', 'close.png')
-      document.getElementsByClassName("button-hamburguer").display="none"
-      document.getElementsByClassName("img-close").display="block"
-
-    }
-    else{
+      menuMobile.setAttribute("src", "close.png");
+      document.getElementsByClassName("button-hamburguer").display = "none";
+      document.getElementsByClassName("img-close").display = "block";
+    } else {
       menuMobile.className = "menu-mobile-active";
-      menuMobile.setAttribute('src', 'menu-hamburguer.png');
-      document.getElementsByClassName("button-hamburguer").display="block"
-      document.getElementsByClassName("img-close").display="none"
-
+      menuMobile.setAttribute("src", "menu-hamburguer.png");
+      document.getElementsByClassName("button-hamburguer").display = "block";
+      document.getElementsByClassName("img-close").display = "none";
     }
   }
 
-  function likePost(){
-    const menuMobile = document.getElementById("like-heart")
-  
-    if(menuMobile.className === "like-heart-active"){
+  function likePost() {
+    const menuMobile = document.getElementById("like-heart");
+
+    if (menuMobile.className === "like-heart-active") {
       menuMobile.className = "like-heart";
-      menuMobile.setAttribute('src', 'liked.png')
-      document.getElementsByClassName("button-hamburguer").display="none"
-      document.getElementsByClassName("img-close").display="block"
-
-    }
-    else{
+      menuMobile.setAttribute("src", "liked.png");
+      document.getElementsByClassName("button-hamburguer").display = "none";
+      document.getElementsByClassName("img-close").display = "block";
+    } else {
       menuMobile.className = "menu-mobile-active";
-      menuMobile.setAttribute('src', 'menu-hamburguer.png');
-      document.getElementsByClassName("button-hamburguer").display="block"
-      document.getElementsByClassName("img-close").display="none"
-
+      menuMobile.setAttribute("src", "menu-hamburguer.png");
+      document.getElementsByClassName("button-hamburguer").display = "block";
+      document.getElementsByClassName("img-close").display = "none";
     }
   }
 
   const menuOpen = container.querySelector(".button-hamburguer");
-  menuOpen.addEventListener("click", toggleMenu)
+  menuOpen.addEventListener("click", toggleMenu);
 
   const menuClose = container.querySelector(".img-close");
-  menuClose.addEventListener("click", toggleMenu)
+  menuClose.addEventListener("click", toggleMenu);
 
   const pressLike = container.querySelector(".like-heart");
-  pressLike.addEventListener("click", likePost)
+  pressLike.addEventListener("click", likePost);
 
+  //faz a manipulação de dados do json
+  function carregarPost() {
+    return data.results.map((post) => montaTemplate(post)).join("");
+  }
 
-//faz a manipulação de dados do json
-function carregarPost(){
-  return data.results.map((post) => 
-    montaTemplate(post)
-  ).join("")
-}
-
-//responsável por criar a div da caixinha de personagem
-function montaTemplate(post){
-  return `
+  //responsável por criar a div da caixinha de personagem
+  function montaTemplate(post) {
+    return `
   <section class="posts-users">
     <div class="photo-post-user">
       <div>
-        <img class="img-post-user img-user" src="${post.photo_user}" alt="imagem de perfil do usuário">
+        <img class="img-post-user img-user" src="${
+          post.photo_user
+        }" alt="imagem de perfil do usuário">
       </div>
     </div>
 
@@ -171,18 +168,15 @@ function montaTemplate(post){
       </div>  
       <div>
         <span class="like-post-user">
-          <img class="like-heart" src="${post.liked == true ? './image/liked-red.png' : './image/like.png'}" alt="ícone de like com coração">
+          <img class="like-heart" src="${
+            post.liked == true ? "./image/liked-red.png" : "./image/like.png"
+          }" alt="ícone de like com coração">
           <label id="likes-quantities">${post.like_quantity}</label>
         </span>
       </div>
     </div>
   </section>
-`
-}
+`;
+  }
   return container;
-  
 };
-
-
-
-
