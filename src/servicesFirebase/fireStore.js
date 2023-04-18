@@ -107,6 +107,6 @@ export async function deletarPost(postId) {
 }
 
 // editar post //
-export const editPost = (postId, idUser) => updateDoc(doc(db, 'post', postId), {
-  textArea: post,
+export const editPost = (postId, textArea) => updateDoc(doc(db, 'post', postId), {
+  textArea,
 });

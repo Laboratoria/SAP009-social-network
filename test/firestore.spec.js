@@ -6,11 +6,13 @@ import {
   query,
   orderBy,
   getDoc,
+  arrayUnion,
+  updateDoc,
+  arrayRemove,
 } from 'firebase/firestore';
 
 import {
-  userData, newPost, deletarPost, postsNaTela,
-
+  userData, newPost, deletarPost, postsNaTela, likePost,
 } from '../src/servicesFirebase/fireStore';
 
 jest.mock('firebase/firestore');
@@ -119,5 +121,51 @@ describe('function postsNaTela', () => {
     expect(query).toHaveBeenCalledWith(mockCollection, mockOrderBy);
     expect(getDoc).toHaveBeenCalledTimes(1);
     expect(getDoc).toHaveBeenCalledWith(mockQuery);
+  });
+});
+
+// contagem de likes //
+describe('Função contagem de likes', () => {
+  it('deve contabilizar a quantidade de curtidas', async () => {
+    updateDoc.mockResolvedValue();
+    const mockDoc = 'doc';
+    doc.mockReturnValueOnce(mockDoc);
+    const mockUnion = 'union';
+    arrayUnion.mockReturnValueOnce(mockUnion);
+    const postId = 'id-post';
+    const idUser = 'id';
+    const updatedPost = {
+      likes: mockUnion,
+    };
+    await likePost(postId, idUser);
+    expect(doc).toHaveBeenCalledTimes(1);
+    expect(doc).toHaveBeenCalledWith(undefined, 'post', postId);
+    expect(updateDoc).toHaveBeenCalledTimes(1);
+    expect(updateDoc).toHaveBeenCalledWith(mockDoc, updatedPost);
+    expect(arrayUnion).toHaveBeenCalledTimes(1);
+    expect(arrayUnion).toHaveBeenCalledWith(idUser);
+  });
+});
+
+// função deslike //
+describe('Função contagem de deslikes', () => {
+  it('Deve descontabilizar a quantidade de curtidas', async () => {
+    updateDoc.mockResolvedValue();
+    const mockDoc = 'doc';
+    doc.mockReturnValueOnce(mockDoc);
+    const mockUnion = 'union';
+    arrayRemove.mockReturnValueOnce(mockUnion);
+    const postId = 'id-post';
+    const idUser = 'id';
+    const updatedPost = {
+      likes: mockUnion,
+    };
+    await likePost(postId, idUser);
+    expect(doc).toHaveBeenCalledTimes(1);
+    expect(doc).toHaveBeenCalledWith(undefined, 'post', postId);
+    expect(updateDoc).toHaveBeenCalledTimes(1);
+    expect(updateDoc).toHaveBeenCalledWith(mockDoc, updatedPost);
+    expect(arrayRemove).toHaveBeenCalledTimes(1);
+    expect(arrayRemove).toHaveBeenCalledWith(idUser);
   });
 });

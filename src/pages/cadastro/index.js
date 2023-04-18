@@ -1,7 +1,5 @@
 import { createUser } from '../../servicesFirebase/firebaseAuth';
 
-import { userData } from '../../servicesFirebase/fireStore';
-
 export default () => {
   const container = document.createElement('div');
 
