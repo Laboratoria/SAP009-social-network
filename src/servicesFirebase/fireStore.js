@@ -5,7 +5,6 @@ import {
   collection,
   addDoc,
   query,
-  getDocs,
   getDoc,
   updateDoc,
   arrayUnion,

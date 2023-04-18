@@ -269,6 +269,12 @@ li > a{
     cursor: pointer;
 }
 
+.curtida{
+    display: flex;
+    align-items: center;
+    gap:5px;
+}
+
 .img-curtida{
     margin-top: 5px;
     width: 40px;
@@ -289,8 +295,8 @@ li > a{
     border-radius: 10px;
     color: var(--amarelinho);
     text-transform: uppercase;
-    margin-bottom: 10px;
     transition: 0.5s;
+    margin-top: 10px;
 }
 
 .btn-salvar:hover{
@@ -299,6 +305,12 @@ li > a{
     color: var(--vermelho);
     font-weight: bold;
 
+}
+
+.count{
+    font-family: var(--fonte-logo);
+    color: #500B19;
+    margin-top: 5px;
 }
 
 @media (min-width:900px){

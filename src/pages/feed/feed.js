@@ -78,7 +78,7 @@ export default () => {
             <div class="curtida">
             <button class="btn-like"><img data-like-id="${doc.id}" class="img-curtida" src=" 
             ${dados.likes.includes(auth.currentUser.uid) ? '../img/panela-preenchida.png' : '../img/panela.png'}"></button>
-            <span data-count-id="${doc.id}">${dados.likes.length}</span>
+            <div class='count' data-count-id="${doc.id}">${dados.likes.length}</div>
             </div>
 
             <button class="btn-salvar" hidden data-salvar-id="${doc.id}">Salvar</button>
@@ -173,6 +173,7 @@ export default () => {
     } else if (element.dataset.salvarId) {
       const btnSalvarEdicao = container.querySelector(`[data-salvar-id='${element.dataset.salvarId}']`);
       const areaTextoEdicao = container.querySelector(`[data-texto-id='${element.dataset.salvarId}']`);
+
       btnSalvarEdicao.setAttribute('hidden', true);
       areaTextoEdicao.setAttribute('disabled', true);
       editPost(areaTexto, post);
@@ -182,7 +183,6 @@ export default () => {
         deletarPost(element.dataset.excluirId)
           .then(() => {
             alert('deletado com sucesso');
-            document.location.reload(true);
           }).catch(() => {
             alert('Não foi possível deletar sua postagem. Tente novamente.');
           });
