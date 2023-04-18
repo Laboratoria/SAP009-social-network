@@ -43,7 +43,7 @@ export default () => {
     } if (error.code === 'auth/invalid-email') {
       return 'Email inválido';
     }
-    return error.message;
+    return 'Preencha todos os campos corretamente';
   }
 
   const criarCadastro = container.querySelector('#btnCreateUser');
@@ -52,12 +52,6 @@ export default () => {
     const email = container.querySelector('#txtEmail').value;
     const senha = container.querySelector('#txtPassword').value;
     const nome = container.querySelector('#txtName').value;
-
-    // if (senha.length <= 5) {
-    //   mensagem.innerHTML = 'A senha deve ter no mínimo 6 caracteres.';
-    // } if (!nome || !email || !senha) {
-    //   mensagem.innerHTML = 'Preencha os campos corretamente.';
-    // }
 
     createUser(email, senha, nome)
       .then(() => {
