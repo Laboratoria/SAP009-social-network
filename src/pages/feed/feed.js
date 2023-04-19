@@ -1,3 +1,7 @@
+import { salvarPost, pegarPost } from '../../firebase/firestore.js';
+
+import { auth } from '../../firebase/firebase.js';
+
 export default () => {
   const container = document.createElement('div');
   const template = `
@@ -25,20 +29,34 @@ export default () => {
               </div>
               <textarea name="" id="txt-area" cols="70" rows="5" placeholder= "Escreva seu post"></textarea>
               <div class="posição-botão-postar">
-                 <button class="btn-postar">
+                 <button class="btn-postar" id="bntPublicar">
                   <img class='postar-img' src='./img/checked.png' alt='logo-google'>
                  </button>
               </div>
           </div>
-          <div class="postado">
+      </section>
+      <section class="feed-postado"></section>
+     </section> 
+      </div>
+  </main>
+    `;
+
+  container.innerHTML = template;
+
+  const printPost = async () => {
+    const arrayPosts = await pegarPost();
+    const postList = arrayPosts.map((posts) => `
+      <section class ="areaPostado">
+        <div class="postado">
               <ul>
                   <li>
                   <div> 
                   <div class="position-user-name">
                   <img class="img-user-name" src="./img/profile-user.png" alt="user-name">
-                  <p class="user-name">username</p>
+                  <p class="user-name">${posts.username}</p>
+                  <p class ="dataPost">${posts.date}</p>
                   </div>
-                  <textarea name="" id="txt-area-postado" cols="70" rows="5"></textarea>
+                  <textarea name="" id="txt-area-postado" cols="70" rows="5">${posts.text}</textarea>
                   <div class="position-btn-postar">
                     <button class="btn-postar">
                       <img class='editar-img' src='./img/editar-informacao.png' alt='logo-google'>
@@ -48,19 +66,34 @@ export default () => {
                     </button>
                     <button class="btn-postar">
                      <img class='curtir-img' src='./img/ame.png' alt='logo-google'>
+                     <label id="likes-quantities">${posts.like}</label>
                    </button>
                  </div>
                   </div>
                   </li>
               </ul>
           </div>
-      </section>
-     </section> 
-      </div>
-  </main>
-    `;
+      </section>     
+    `).join('');
 
-  container.innerHTML = template;
+    container.querySelector('.feed-postado').innerHTML = postList;
+  };
+  printPost();
+
+  const textArea = container.querySelector('#txt-area');
+  const btnPublicar = container.querySelector('#bntPublicar');
+  btnPublicar.addEventListener('click', () => {
+    if (textArea.value !== '') {
+      const today = new Date();
+      const userName = auth.currentUser.displayName;
+      const idUser = auth.currentUser.uid;
+
+      salvarPost(today, idUser, textArea.value, userName).then(() => {
+        printPost();
+      });
+    } else { alert ('Por favor, preencha o campo de postagem!'); }
+  });
+
   const btnSair = container.querySelector('.btn-sair');
   btnSair.addEventListener('click', () => {
     window.location.hash = '#login';
