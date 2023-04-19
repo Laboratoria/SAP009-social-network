@@ -25,6 +25,13 @@ Foi realizado uma pesquisa com nossos potenciais usuários para podermos entende
 Com base nas pesquisas realizadas elaboramos também nossas histórias de usuário.
 ![histórias de usuário](https://user-images.githubusercontent.com/109876174/233064940-492290fd-4511-4d24-aef7-743efaa65a8d.png)
 ## Protótipos
+Criamos nossos protótipos de alta fidelidade pensando num tema mais escuro e sóbrio com cores que remetessem o lado mais elegante da gastronomia.
+### Protótipos versão mobile
+![prototipo-mobile](https://user-images.githubusercontent.com/109876174/233073135-7bc19c4e-1e4f-4933-83d0-e74b59b52299.png)
+### Protótipos versão desktop
+![prototipo-desktop](https://user-images.githubusercontent.com/109876174/233074601-99b8f526-2730-4543-914c-7d8179a73d7d.png)
+
+
 
 # Criando uma Rede Social
 
