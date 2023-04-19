@@ -96,4 +96,3 @@ describe('isUserLogged', () => {
     expect(onAuthStateChanged).toHaveBeenCalledWith(undefined, undefined);
   });
 });
-

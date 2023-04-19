@@ -3,10 +3,10 @@ import {
   getFirestore,
   collection,
   addDoc,
-  // doc,
+  doc,
   onSnapshot,
   orderBy,
-  // updateDoc,
+  updateDoc,
   // arrayUnion,
   // arrayRemove,
   query,
@@ -20,14 +20,14 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 async function newPost(textpost) {
-  const currentDate = new Date(currentDate * 1000);
-  const dateString = currentDate.toLocaleDateString();
+  const currentDate = new Date();
+
   const createPosts = {
     userId: auth.currentUser.uid,
     username: auth.currentUser.displayName,
-    date: dateString,
+    date: currentDate,
     post: textpost,
-    likes: 0,
+    likes: [],
   };
   const docRef = await addDoc(collection(db, 'posts'), createPosts);
   createPosts.id = docRef.id;
@@ -45,8 +45,26 @@ async function findPosts(showPosts) {
   });
 }
 
+function loggedUsersPost(postId, userId) {
+  if (postId === userId) {
+    return true;
+  }
+  return loggedUsersPost;
+}
+
+async function editPost(postId, editContent) {
+  const currentDate = new Date();
+  const dateString = currentDate.toLocaleDateString('pt-BR');
+  await updateDoc(doc(db, 'posts', postId), {
+    post: editContent,
+    editDate: dateString,
+  });
+}
+
 export {
   newPost,
   getUsername,
   findPosts,
+  loggedUsersPost,
+  editPost,
 };
