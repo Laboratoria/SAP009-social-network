@@ -46,7 +46,7 @@ export function exibeErros(erro) {
       return 'Este email já está sendo usado, faça login ou cadastre outro email';
 
     default:
-      console.log('ocorreu um erro inesperado');
+      // console.log('ocorreu um erro inesperado');
       break;
   }
   return exibeErros;

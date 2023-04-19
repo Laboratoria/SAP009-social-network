@@ -11,13 +11,11 @@ import {
 
 // Inicialize o Firebase Authentication e obtenha uma referência para o serviço
 import {
-  // getDoc,
-  setDoc,
+  // setDoc,
   getFirestore,
   doc,
   addDoc,
   collection,
-  // getDoc,
   getDocs,
   updateDoc,
   query,
@@ -33,60 +31,57 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 // função que autentica a usuária e armazena nome
-export async function criarCadastro(email, senha, nomeUsuaria) {
-  await createUserWithEmailAndPassword(auth, email, senha);
-  await updateProfile(auth.currentUser, {
-    displayName: nomeUsuaria,
+export async function criarCadastro(email, senha, displayName) {
+  const autenticacao = getAuth(app);
+  await createUserWithEmailAndPassword(email, senha);
+  // console.log(displayName);
+  await updateProfile(autenticacao, {
+    displayName,
   });
-  console.log(nomeUsuaria);
-
-  const usuaria = {
-    email,
-    nomeUsuaria,
-  };
-
-  await setDoc(doc(db, 'usuarias', auth.currentUser.uid), usuaria);
 }
 
 // obtendo usuária logada p/ exibir o nome dela
 export const obterUsuaria = async () => {
+  const autenticacao = getAuth();
   const usuaria = {
-    uid: auth.currentUser.uid,
-    displayName: auth.currentUser.displayName,
-    email: auth.currentUser.email,
-    nomeUsuaria: auth.currentUser.displayName,
+    uid: autenticacao.currentUser.uid,
+    displayName: autenticacao.currentUser.displayName,
+    email: autenticacao.currentUser.email,
+    nomeUsuaria: autenticacao.currentUser.displayName,
   };
   return usuaria;
 };
 
-export function fazerLogin(email, password) {
-  return signInWithEmailAndPassword(auth, email, password);
-}
-
 export function observador(callback) {
   onAuthStateChanged(auth, callback);
 }
-
 export function loginComGoogle() {
   return signInWithPopup(auth, new GoogleAuthProvider());
+}
+export function fazerLogin(email, password) {
+  const autenticacao = getAuth();
+  return signInWithEmailAndPassword(autenticacao, email, password);
 }
 
 export async function sair() {
   await signOut(auth);
 }
 
+// funções do firestore
+
 // criando uma postagem no firebase
 export async function criarPostagem(textoDaPostagem) {
+  const autenticacao = getAuth();
   const postagem = {
-    idUsuaria: auth.currentUser.uid,
-    nomeUsuaria: auth.currentUser.displayName,
+    idUsuaria: autenticacao.currentUser.uid,
+    nomeUsuaria: autenticacao.currentUser.displayName,
     texto: textoDaPostagem,
     likes: [],
     data: new Date().toLocaleString(),
   };
   const docRef = await addDoc(collection(db, 'postagens'), postagem);
   postagem.id = docRef.id;
-  console.log(postagem);
+  // console.log(postagem);
   return postagem;
 }
 
