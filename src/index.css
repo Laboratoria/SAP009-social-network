@@ -1,0 +1,44 @@
+*{
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Cagliostro", sans-serif;
+  color: white;
+  height: 100vh;
+  background: linear-gradient(180deg, #83152d 8.85%, #ad1d45 88.54%);
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.footer{
+  margin: 80% auto 5% auto;
+} 
+.footer, 
+.footer a {
+  text-align: center;
+  color: white;
+  margin: 0;
+}
+.footer a {
+  text-decoration: underline;
+}
+.footer h5 a:hover{
+  color:#44000d;
+}
+
+/* no media query colocar em body fonte-size 1.12/15rem para tablet e x-larger para desktop, ajustar o size do footer sozinho */
+/* mensagens de erro */
+.mensagem-erro{
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-family: monospace;
+  border-radius: 5px;
+}
+/* .modal{
+  background-color: black;
+  color:#ad1d45;
+} */

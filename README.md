@@ -2,7 +2,7 @@
 
 ## Índice
 
-* [1. Prefácio](#1-prefácio)
+* [1. Início e protótipos](#1-protótipos)
 * [2. Resumo do projeto](#2-resumo-do-projeto)
 * [3. Objetivos de aprendizagem](#3-objetivos-de-aprendizagem)
 * [4. Considerações gerais](#4-considerações-gerais)
@@ -15,37 +15,25 @@
 
 ***
 
-## 1. Prefácio
+## 1. Início e protótipos
 
-Instagram, Snapchat, Twitter, Facebook, Twitch, Linkedin, etc. As redes sociais
-invadiram nossas vidas. Nós as amamos ou odiamos, e muitas pessoas não conseguem
-viver sem elas.
+As redes sociais invadiram nossas vidas. Há redes sociais de todo tipo para todos os tipos de interesse. Essa é uma rede social criada para mães que desejam falar de maternidade real e para dicas e impressões sobre vinhos. Porque não há nada melhor que uma conversa franca e sincera acompanhada de uma taça de um bom vinho. Esse é um espaço para trocas reais.
 
-![adem-ay-Tk9m_HP4rgQ-unsplash](https://user-images.githubusercontent.com/110297/135544666-4efa54f1-4ff6-4c4c-b398-6df04ef56117.jpg)
+  - ### Esses são os protótipos de alta fidelidade 
 
-Há redes sociais de todo tipo para todos os tipos de interesse. Por exemplo: em
-uma rodada de financiamento com investidores, foi apresentada uma rede social
-para químicos onde os usuários podem publicar artigos a respeito de suas
-pesquisas, comentar os artigos de seus colegas e filtrar artigos de acordo com
-determinadas tags ou popularidade, mais recente ou mais comentado.
+<img width="200px" src="src\imagens\print login mobile.PNG">
+<img width="200px" src="src\imagens\print cadastro mobile.PNG">
+<img width="200px" src="src\imagens\print post mobile.PNG">
+
 
 ## 2. Resumo do projeto
-
-Neste projeto você construirá uma Rede Social sobre o que você e sua equipe
-decidirem. Pode ser, por exemplo, sobre alimentação saudável, feminismo,
-educação, saúde, energias renováveis, amantes das
-[Empanadas](https://pt.wikipedia.org/wiki/Empanada), de
-[Tacos](https://pt.wikipedia.org/wiki/Taco_(culin%C3%A1ria)), de
-[Feijoada](https://pt.wikipedia.org/wiki/Feijoada), ou do que seja.
 
 Sua Rede Social terá que permitir à qualquer usuário criar uma conta de acesso,
 logar-se com ela, criar, editar, deletar e dar _likes_ em publicações.
 
-O objetivo principal de aprendizagem deste projeto é construir uma [Single-page
-Application
-(SPA)](https://pt.wikipedia.org/wiki/Aplicativo_de_p%C3%A1gina_%C3%BAnica)
-[_responsiva_](https://curriculum.laboratoria.la/pt/topics/css/02-responsive) (com mais de uma tela/ página) na
-qual seja possível **ler e escrever dados**.
+O objetivo principal de aprendizagem deste projeto é construir uma Single-page
+Application (SPA) 
+Responsiva é possível **ler e escrever dados**.
 
 ## 3. Objetivos de aprendizagem
 
@@ -55,176 +43,50 @@ Reflita e depois enumere os objetivos que quer alcançar e aplique no seu projet
 
 - [ ] **Uso de HTML semântico**
 
-  <details><summary>Links</summary><p>
-
-  * [HTML semântico](https://curriculum.laboratoria.la/pt/topics/html/02-html5/02-semantic-html)
-  * [Semantics in HTML - MDN](https://developer.mozilla.org/en-US/docs/Glossary/Semantics#Semantics_in_HTML)
-</p></details>
-
 ### CSS
 
 - [ ] **Uso de seletores de CSS**
-
-  <details><summary>Links</summary><p>
-
-  * [Intro a CSS](https://curriculum.laboratoria.la/pt/topics/css/01-css/01-intro-css)
-  * [CSS Selectors - MDN](https://developer.mozilla.org/pt_BR/docs/Web/CSS/CSS_Selectors)
-</p></details>
-
+ 
 - [ ] **Modelo de caixa (box model): borda, margem, preenchimento**
-
-  <details><summary>Links</summary><p>
-
-  * [Modelo de Caixa e Display](https://curriculum.laboratoria.la/pt/topics/css/01-css/02-boxmodel-and-display)
-  * [The box model - MDN](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model)
-  * [Introduction to the CSS box model - MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model)
-  * [CSS display - MDN](https://developer.mozilla.org/pt-BR/docs/Web/CSS/display)
-  * [display - CSS Tricks](https://css-tricks.com/almanac/properties/d/display/)
-</p></details>
 
 - [ ] **Uso de flexbox em CSS**
 
-  <details><summary>Links</summary><p>
-
-  * [A Complete Guide to Flexbox - CSS Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
-  * [Flexbox Froggy](https://flexboxfroggy.com/#pt-br)
-  * [Flexbox - MDN](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox)
-</p></details>
-
 - [ ] **Uso de CSS Grid Layout**
-
-  <details><summary>Links</summary><p>
-
-  * [A Complete Guide to Grid - CSS Tricks](https://css-tricks.com/snippets/css/complete-guide-grid/)
-  * [Grids - MDN](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids)
-</p></details>
 
 ### Web APIs
 
 - [ ] **Uso de seletores de DOM**
 
-  <details><summary>Links</summary><p>
-
-  * [Modificando o DOM](https://curriculum.laboratoria.la/pt/topics/browser/02-dom/03-1-dom-methods-selection)
-  * [Introdução ao DOM - MDN](https://developer.mozilla.org/pt-BR/docs/Web/API/Document_Object_Model/Introduction)
-  * [Locating DOM elements using selectors - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document_object_model/Locating_DOM_elements_using_selectors)
-</p></details>
-
 - [ ] **Manipulação de eventos de DOM (listeners, propagação, delegação)**
-
-  <details><summary>Links</summary><p>
-
-  * [Introdução a eventos - MDN](https://developer.mozilla.org/pt-BR/docs/Learn/JavaScript/Building_blocks/Events)
-  * [EventTarget.addEventListener() - MDN](https://developer.mozilla.org/pt-BR/docs/Web/API/EventTarget/addEventListener)
-  * [EventTarget.removeEventListener() - MDN](https://developer.mozilla.org/pt-BR/docs/Web/API/EventTarget/removeEventListener)
-  * [Objeto Event](https://developer.mozilla.org/pt-BR/docs/Web/API/Event)
-</p></details>
 
 - [ ] **Manipulação dinâmica de DOM**
 
-  <details><summary>Links</summary><p>
-
-  * [Introdução ao DOM](https://developer.mozilla.org/pt-BR/docs/DOM/Referencia_do_DOM/Introdu%C3%A7%C3%A3o)
-  * [Node.appendChild() - MDN](https://developer.mozilla.org/pt-BR/docs/Web/API/Node/appendChild)
-  * [Document.createElement() - MDN](https://developer.mozilla.org/pt-BR/docs/Web/API/Document/createElement)
-  * [Document.createTextNode()](https://developer.mozilla.org/pt-BR/docs/Web/API/Document/createTextNode)
-  * [Element.innerHTML - MDN](https://developer.mozilla.org/pt-BR/docs/Web/API/Element/innerHTML)
-  * [Node.textContent - MDN](https://developer.mozilla.org/pt-BR/docs/Web/API/Node/textContent)
-</p></details>
-
 - [ ] **Routing (History API, evento hashchange, window.location)**
 
-  <details><summary>Links</summary><p>
-
-  * [Manipulando o histórico do navegador - MDN](https://developer.mozilla.org/pt-BR/docs/Web/API/History_API)
-</p></details>
 
 ### JavaScript
 
-- [ ] **Arrays (arranjos)**
+- [ ok ] **Arrays (arranjos)**
 
-  <details><summary>Links</summary><p>
+- [ ok ] **Objetos (key, value)**
 
-  * [Arranjos](https://curriculum.laboratoria.la/pt/topics/javascript/04-arrays)
-  * [Array - MDN](https://developer.mozilla.org//pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/)
-  * [Array.prototype.sort() - MDN](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
-  * [Array.prototype.forEach() - MDN](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
-  * [Array.prototype.map() - MDN](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
-  * [Array.prototype.filter() - MDN](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
-  * [Array.prototype.reduce() - MDN](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce)
-</p></details>
+- [ ok ] **Diferenciar entre tipos de dados primitivos e não primitivos**
 
-- [ ] **Objetos (key, value)**
+- [ ok ] **Variáveis (declaração, atribuição, escopo)**
 
-  <details><summary>Links</summary><p>
+- [ ok ] **Uso de condicionais (if-else, switch, operador ternário, lógica booleana)**
 
-  * [Objetos em JavaScript](https://curriculum.laboratoria.la/pt/topics/javascript/05-objects/01-objects)
-</p></details>
+- [ ok ] **Uso de laços (while, for, for..of)**
 
-- [ ] **Diferenciar entre tipos de dados primitivos e não primitivos**
-
-- [ ] **Variáveis (declaração, atribuição, escopo)**
-
-  <details><summary>Links</summary><p>
-
-  * [Valores, tipos de dados e operadores](https://curriculum.laboratoria.la/pt/topics/javascript/01-basics/01-values-variables-and-types)
-  * [Variáveis](https://curriculum.laboratoria.la/pt/topics/javascript/01-basics/02-variables)
-</p></details>
-
-- [ ] **Uso de condicionais (if-else, switch, operador ternário, lógica booleana)**
-
-  <details><summary>Links</summary><p>
-
-  * [Estruturas condicionais e repetitivas](https://curriculum.laboratoria.la/pt/topics/javascript/02-flow-control/01-conditionals-and-loops)
-  * [Tomando decisões no seu código — condicionais - MDN](https://developer.mozilla.org/pt-BR/docs/Learn/JavaScript/Building_blocks/conditionals)
-</p></details>
-
-- [ ] **Uso de laços (while, for, for..of)**
-
-  <details><summary>Links</summary><p>
-
-  * [Laços (Loops)](https://curriculum.laboratoria.la/pt/topics/javascript/02-flow-control/02-loops)
-  * [Laços e iterações - MDN](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Loops_and_iteration)
-</p></details>
-
-- [ ] **Funções (params, args, return)**
-
-  <details><summary>Links</summary><p>
-
-  * [Funções (controle de fluxo)](https://curriculum.laboratoria.la/pt/topics/javascript/02-flow-control/03-functions)
-  * [Funções clássicas](https://curriculum.laboratoria.la/pt/topics/javascript/03-functions/01-classic)
-  * [Arrow Functions](https://curriculum.laboratoria.la/pt/topics/javascript/03-functions/02-arrow)
-  * [Funções — blocos reutilizáveis de código - MDN](https://developer.mozilla.org/pt-BR/docs/Learn/JavaScript/Building_blocks/Functions)
-</p></details>
+- [ ok ] **Funções (params, args, return)**
 
 - [ ] **Testes unitários (unit tests)**
 
-  <details><summary>Links</summary><p>
-
-  * [Introdução ao Jest - Documentação oficial](https://jestjs.io/docs/pt-BR/getting-started)
-</p></details>
-
 - [ ] **Testes assíncronos**
-
-  <details><summary>Links</summary><p>
-
-  * [Testando Código Assíncrono - Documentação oficial](https://jestjs.io/docs/pt-BR/asynchronous)
-</p></details>
 
 - [ ] **Uso de mocks e espiões**
 
-  <details><summary>Links</summary><p>
-
-  * [Simulações Manuais - Documentação oficial](https://jestjs.io/docs/pt-BR/manual-mocks)
-</p></details>
-
 - [ ] **Módulos de ECMAScript (ES modules)**
-
-  <details><summary>Links</summary><p>
-
-  * [import - MDN](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/import)
-  * [export - MDN](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/export)
-</p></details>
 
 - [ ] **Uso de linter (ESLINT)**
 
@@ -234,82 +96,47 @@ Reflita e depois enumere os objetivos que quer alcançar e aplique no seu projet
 
 - [ ] **Callbacks**
 
-  <details><summary>Links</summary><p>
-
-  * [Função Callback - MDN](https://developer.mozilla.org/pt-BR/docs/Glossario/Callback_function)
-</p></details>
-
 - [ ] **Promessas**
 
-  <details><summary>Links</summary><p>
-
-  * [Promise - MDN](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Promise)
-  * [How to Write a JavaScript Promise - freecodecamp (em inglês)](https://www.freecodecamp.org/news/how-to-write-a-javascript-promise-4ed8d44292b8/)
-</p></details>
 
 ### Controle de Versões (Git e GitHub)
 
-- [ ] **Git: Instalação e configuração**
+- [ ok ] **Git: Instalação e configuração**
 
-- [ ] **Git: Controle de versão com git (init, clone, add, commit, status, push, pull, remote)**
+- [ ok ] **Git: Controle de versão com git (init, clone, add, commit, status, push, pull, remote)**
 
-- [ ] **Git: Integração de mudanças entre ramos (branch, checkout, fetch, merge, reset, rebase, tag)**
+- [ ok ] **Git: Integração de mudanças entre ramos (branch, checkout, fetch, merge, reset, rebase, tag)**
 
-- [ ] **GitHub: Criação de contas e repositórios, configuração de chave SSH**
+- [ ok ] **GitHub: Criação de contas e repositórios, configuração de chave SSH**
 
-- [ ] **GitHub: Implantação com GitHub Pages**
+- [ ok ] **GitHub: Implantação com GitHub Pages**
 
-  <details><summary>Links</summary><p>
+- [ ok ] **GitHub: Colaboração pelo Github (branches | forks | pull requests | code review | tags)**
 
-  * [Site oficial do GitHub Pages](https://pages.github.com/)
-</p></details>
-
-- [ ] **GitHub: Colaboração pelo Github (branches | forks | pull requests | code review | tags)**
-
-- [ ] **GitHub: Organização pelo Github (projects | issues | labels | milestones | releases)**
+- [  ] **GitHub: Organização pelo Github (projects | issues | labels | milestones | releases)**
 
 ### Centrado no usuário
 
-- [ ] **Desenhar e desenvolver um produto ou serviço colocando as usuárias no centro**
+- [ ok ] **Desenhar e desenvolver um produto ou serviço colocando as usuárias no centro**
 
 ### Design de produto
 
-- [ ] **Criar protótipos para obter feedback e iterar**
+- [ ok ] **Criar protótipos para obter feedback e iterar**
 
-- [ ] **Aplicar os princípios de desenho visual (contraste, alinhamento, hierarquia)**
+- [ ok ] **Aplicar os princípios de desenho visual (contraste, alinhamento, hierarquia)**
 
 ### Pesquisa
 
-- [ ] **Planejar e executar testes de usabilidade**
+- [ ok ] **Planejar e executar testes de usabilidade**
 
 ### Firebase
 
-- [ ] **Firebase Auth**
-
-  <details><summary>Links</summary><p>
-
-  * [Primeiros passos com o Firebase Authentication em sites - Documentação oficial](https://firebase.google.com/docs/auth/web/start?hl=pt-BR)
-  * [Gerenciar usuários no Firebase (onAuthStateChanged) - Documentação oficial](https://firebase.google.com/docs/auth/web/manage-users?hl=pt-BR)
-</p></details>
+- [ ok ] **Firebase Auth**
 
 - [ ] **Firestore**
 
-  <details><summary>Links</summary><p>
-
-  * [Firestore - Documentação oficial](https://firebase.google.com/docs/firestore?hl=pt-BR)
-  * [Regras de segurança do Firebase - Documentação oficial](https://firebase.google.com/docs/rules?hl=pt-BR)
-  * [Receber atualizações em tempo real com o Cloud Firestore - Documentação oficial](https://firebase.google.com/docs/firestore/query-data/listen?hl=pt-BR)
-</p></details>
 
 ## 4. Considerações gerais
-
-* Este projeto deve ser desenvolvido em trios.
-
-* O intervalo de tempo estimado para concluir o projeto é de 4 a 5 Sprints.
-
-* A lógica do projeto deve estar implementada completamente em JavaScript
-  (ES6+), HTML e CSS :smiley:. Para este projeto **não está permitido** o uso de
-  _frameworks_ ou bibliotecas de CSS e JS.
 
 * A divisão e organização do trabalho deve permitir, sem exceção, que **cada
   integrante** da equipe pratique a aprendizagem de tudo que está envolvido em
@@ -345,91 +172,69 @@ por projetos anteriores e/ou organizar os arquivos seguindo uma estrutura de
 [Model-View-Controller](https://developer.mozilla.org/es/docs/Glossary/MVC).
 
 Neste projeto vamos utilizar uma ferramenta chamada
-[Vite](https://vitejs.dev/) para empacotar nossos módulos e iniciar
-o servidor de desenvolvimento, que disponibiliza nossos arquivos usando
-a estratégia `Hot Module Replacement`
-[(HMR)](https://vitejs.dev/guide/features.html#hot-module-replacement),
-isso significa que quando você faz alterações em arquivos que estão sendo
-hosteados, o navegador será atualizado automaticamente sem a necessidade
-de fazê-lo manualmente para recarregar todo o site. Você deve ter um
-cuidado especial para não ter nenhuma _dependência circular_ em seu código já
-[que pode causar problemas com o HMR](https://vitejs.dev/guide/troubleshooting.html#full-refresh-occurs-instead-of-hmr).
-(O `eslint-plugin-import` tem a regra
-[import/no-cycle](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-cycle.md)
-que notificará se os tiver.)
+[Vite](https://vitejs.dev/) para empacotar nossos módulos e iniciar o servidor de desenvolvimento, que disponibiliza nossos arquivos usando a estratégia `Hot Module Replacement` (HMR) isso significa que quando você faz alterações em arquivos que estão sendo hosteados, o navegador será atualizado automaticamente sem a necessidade de fazê-lo manualmente para recarregar todo o site. Você deve ter um
+cuidado especial para não ter nenhuma _dependência circular_ em seu código já que pode causar problemas com o HMR.
+O `eslint-plugin-import` tem a regra import/no-cycle que notificará se os tiver.
 
 ### 5.2 Definição do produto
 
-No `README.md`, conte-nos brevemente como você mapeou as necessidades dos seus
-usuários e como você chegou à definição final do seu produto. É importante que
-detalhe:
+No `README.md`, conte-nos brevemente como você mapeou as necessidades dos seus usuários e como você chegou à definição final do seu produto. É importante que detalhe:
 
 * Quem são os principais usuários do produto.
 * Qual problema o produto resolve/para que ele serve para esses usuários.
 
 ### 5.3 Histórias de usuário
 
-Depois de entender as necessidades de seus usuários, escreva as Histórias de
-Usuário. Elas representam tudo o que ele precisa fazer/ver na Rede Social.
+<!-- colocar cards com cada história -->
+
+Depois de entender as necessidades de seus usuários, escreva as Histórias de Usuário. Elas representam tudo o que ele precisa fazer/ver na Rede Social.
 Cada uma de suas histórias de usuário deve possuir:
 
-* **Critérios de aceitação:** tudo o que deve acontecer para satisfazer as
-  necessidades do usuário.
+* **Critérios de aceitação:** tudo o que deve acontecer para satisfazer as necessidades do usuário.
 
-* **Definição de pronto:** todos os aspectos técnicos que devem ser atendidos
-  para que, como equipe, saibam que essa história está finalizada e pronta para
-  ser publicada. **Todas** suas histórias de usuário (com exceções), devem
-  incluir esses aspectos em sua definição de pronto (além de tudo o que precisa
-  adicionar):
+* **Definição de pronto:** todos os aspectos técnicos que devem ser atendidos para que, como equipe, saibam que essa história está finalizada e pronta para ser publicada. **Todas** suas histórias de usuário (com exceções), devem
+  incluir esses aspectos em sua definição de pronto (além de tudo o que precisa adicionar):
 
   - Ser uma SPA.
   - Ser _responsivo_.
   - Receber _code review_ de pelo menos uma parceira de outra equipe.
   - Fazer _tests_ unitários.
   - Fazer testes manuais buscando erros e imperfeições simples.
-  - Fazer testes de usabilidade e incorporar o _feedback_ dos usuários como
-    melhorias.
+  - Fazer testes de usabilidade e incorporar o _feedback_ dos usuários como melhorias.
   - Fazer deploy do aplicativo e marcar a versão (git tag).
 
 ### 5.4 Desenho da Interface de Usuário (protótipo de baixa fidelidade)
 
-Você deve definir qual será o fluxo que o usuário seguirá dentro do seu
-aplicativo e, com isso, criar a interface do usuário (UI) que siga este fluxo.
+Você deve definir qual será o fluxo que o usuário seguirá dentro do seu aplicativo e, com isso, criar a interface do usuário (UI) que siga este fluxo.
 
 ### 5.5 Responsivo
 
-Deve funcionar bem em dispositivos de tela grande (computadores, laptops etc.) e
-pequena (_tablets_, telefones celulares etc.). Sugerimos seguir a técnica
-[_`mobile first`_](#mobile-first) (mais detalhes sobre essa técnica ao final).
+Deve funcionar bem em dispositivos de tela grande (computadores, laptops etc.) e pequena (_tablets_, telefones celulares etc.). Sugerimos seguir a técnica [_`mobile first`_](#mobile-first) (mais detalhes sobre essa técnica ao final).
 
 ### 5.6 Considerações sobre o comportamento da Interface do Usuário (UI)
 
-Essas considerações ajudarão você a escrever as definições de pronto de sua
-H.U.:
+Essas considerações ajudarão você a escrever as definições de pronto de sua H.U.:
 
-#### Criação e login de conta de usuário
+#### Criação e login de conta de usuário - ok
 
 * _Login_ com Firebase:
   - Para o _login_ e postagens na timeline, você pode usar o
     [Firebase](https://firebase.google.com/products/database/)
-  - O usuário deve poder criar uma conta de acesso ou autenticar-se com conta de
-    e-mail e senha e também com uma conta do Google.
+  - O usuário deve poder criar uma conta de acesso ou autenticar-se com conta de e-mail e senha e também com uma conta do Google.
 * Validações:
   - Somente usuários com contas válidas têm acesso permitido.
   - Não haver usuários repetidos.
   - O que o usuário digita no campo de senha (_input_) deve ser secreto.
 * Comportamento:
   - Quando o formulário de registro ou login é enviado, ele deve ser validado.
-  - Se houver erros, mensagens descritivas devem ser exibidas para ajudar o
-    usuário.
+  - Se houver erros, mensagens descritivas devem ser exibidas para ajudar o usuário.
 
 #### Timeline/linha do tempo
 
 * Validações:
   - Ao publicar, deve ser validado se há conteúdo no _input_.
 * Comportamento:
-  - Ao recarregar o aplicativo, é necessário verificar se o usuário está
-    _logado_ antes de exibir o conteúdo,
+  - Ao recarregar o aplicativo, é necessário verificar se o usuário está _logado_ antes de exibir o conteúdo,
   - Conseguir publicar um _post_.
   - Poder dar e remover _likes_ em uma publicação. Máximo de um por usuário.
   - Visualizar contagem de _likes_.
@@ -437,8 +242,7 @@ H.U.:
   - Solicitar confirmação antes de excluir um _post_.
   - Ao clicar em editar um _post_, você deve alterar o texto para um _input_ que
     permite editar o texto e salvar as alterações.
-  - Ao salvar as alterações, você deve voltar ao texto normal, mas com a
-    informação editada.
+  - Ao salvar as alterações, você deve voltar ao texto normal, mas com a informação editada.
   - Ao recarregar a página, poder ver os textos editados.
 
 ### 5.7 Considerações técnicas sobre front-end
@@ -490,8 +294,6 @@ interface será exibida usando páginas do GitHub ou outro serviço de hospedage
 Verifica a [Documentação Vite](https://vitejs.dev/guide/static-deploy.html)
 para orientá-lo sobre isso.
 
-***
-
 ## 8. Guias, dicas e leituras complementares
 
 ### Mobile first
@@ -508,7 +310,7 @@ A motivação aqui é se assegurar que desde o começo sejam desenhadas telas
 _responsivas_. Dessa forma, começamos com a aparência e o comportamento do
 aplicativo em uma tela e ambiente móvel.
 
-### Múltiplas telas
+### Múltiplas telas ok
 
 Em projetos anteriores, nossas aplicações eram compostas de apenas uma tela
 _principal_ (uma só _página_). Neste projeto, precisaremos dividir nossa

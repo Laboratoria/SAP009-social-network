@@ -1,0 +1,114 @@
+/* .header img{
+  display: none;
+} */
+.pagina-cadastro{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  gap: 1rem;
+}
+
+.img-fundo{
+  position: absolute;
+  display: flex;
+  width: 100%;
+  opacity: 40%;
+}
+.caixa-cadastro{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 2;
+  position: relative;
+  width: 80%;
+}
+
+.mensagem-cadastro{
+  text-align: center;
+  line-height: 1.3rem;
+  font-size: 1.2rem;
+}
+
+.form-cadastro{
+  display: flex;
+  flex-direction: column;
+  font-size: 1.12rem;
+  justify-content: center;
+  width: 80%;
+}
+
+.form-cadastro input{
+  background-color: #FACFCE;
+  border: transparent;
+  border-radius: 1px 15px;
+}
+
+input[type=submit]{ /* .btn-enviar-cadastro */
+  width: 30%;
+  margin: 1rem auto;
+  background-color: #EBAFAC;
+  border-radius: 5px;
+  text-align: center;
+  padding: 0 3px;
+}
+
+.footer{
+  position: relative;
+  top: 1.5rem;
+   /* para deixar em baixo */ 
+}
+
+.cursor-block{
+  cursor: not-allowed;
+}
+
+a{
+  text-align: center;
+  color: black;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+@media screen and (min-width:769px) {
+  body{
+    height: 100vh;
+  }
+  .pagina-cadastro{
+    margin: auto;
+    display: flex;
+    text-align: center;
+    align-items: center;
+  }
+  .mensagem-cadastro h3{
+    font-size: xx-large;
+    line-height: 2rem;
+  }
+  .caixa-cadastro{
+    display: flex;
+    align-items: center;
+    width: 80%;
+    text-align: left;
+  }
+  .form-cadastro{
+    width: 80%;
+    gap: .2rem;
+  }
+  .form-cadastro label{
+    font-size: x-large;
+    font-weight: 600;
+  }
+  .form-cadastro input{
+    height: 2.5rem;
+    border-radius: 1px 15px;
+    font-size: larger;
+  }
+  .btn-enviar-cadastro{
+    font-size: large;
+    font-weight: 700;
+    margin: auto;
+  }
+  /* colocar align itens  center para esticar o form  */
+}
