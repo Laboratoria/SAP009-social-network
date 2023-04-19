@@ -123,13 +123,16 @@ input::-webkit-input-placeholder {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    /* gap: 3rem; */
+    gap: 1rem;
     align-items: center;
+    /* margin: auto; */
+
   }
   .bckgnd-txt-img,
   .img-apresentacao{
     text-align: center;
-    margin:auto;
+    /* margin: auto; */
+    margin-left: 3rem;
   }
   .texto-apresentacao{
     width: 30rem;
@@ -143,7 +146,7 @@ input::-webkit-input-placeholder {
     left: 5rem;
   }
   .caixa-login{ 
-    margin: 5rem;
+    margin: 3rem;
     width: 22rem;
     height: 30rem;
     align-items: center;
