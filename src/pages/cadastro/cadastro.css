@@ -1,51 +1,60 @@
-body{
-  margin: 2.5rem auto 5rem; /*era 2rem*/
+.img-desktop{
+  display: none;
 }
-section{
-  width: 90%;
-  margin: 2% auto;
-  display: flex;
+.container-cadastro{
+  display:flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  position: relative;
-  gap: 1rem;
-}
-
-.img-fundo{
-  position: absolute;
-  display: flex;
-  width: 100%;
-  opacity: 40%;
-  margin: 60% auto 10% auto;
-}
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100% ;
+ }
 
 .caixa-cadastro{
-  display: flex;
-  margin: .5rem auto;
-  width: 100%;
-  margin-bottom: 1.5rem;
-  position: relative;
-}
-
-.mensagem-cadastro{
-  margin: 5% auto;
-  width: 80%;
-  text-align: center;
-  line-height: 1.3rem;
-  font-size: 1.2rem;
-}
-
-.form-cadastro{
-  width: 80%;
-  margin: auto;
+  background-color: #AD213A;
   display: flex;
   flex-direction: column;
-  font-size: 1.12rem;
+  margin: auto;
+  text-align: center;
+  border-radius: 15px;
+  width:277px;
+  position: absolute;
+  top: 139px;
+
+}
+.mensagem-cadastro{
+  margin: 0% auto;
+  width: 80%;
+  text-align: center;
+  line-height: 1.4rem;
+  font-size: 1.1rem;
+}
+.form-cadastro input[type="submit"].btn-enviar{
+  position: relative;
+  align-self: center;
+  background-color: #facfce;
+  border: transparent;
+  padding: 5px;
+  width: 30%;
+  font-size: 0.9rem;
+} 
+
+.form-cadastro{
+  margin-bottom: -21px;
+  text-align: start;
+  border-radius: 10px;
+  position: relative;
+  justify-content: center;
+  padding: 15px;
+  width: 274px;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.1rem;
 }
 
 .form-cadastro label{
-  margin-bottom: 2px;
+  margin-bottom: 0px;
+  color:white;
 }
 
 .form-cadastro input{
@@ -55,20 +64,40 @@ section{
   padding: 8px;
 }
 
-input[type=submit]{
-  width: 30%;
-  margin: 0 auto;
-  background-color: #EBAFAC;
-  border-radius: 15px;
-  padding: 5px;
-}
-
-.footer{
-  position: relative;
-  top: 4rem; /* para deixar em baixo */
-}
-
 .cursor-block{
   cursor: not-allowed;
 }
+/* tabletes */
+@media screen and (min-width: 760px) and (max-width: 900px){
+  .img-desktop{
+    display: none;
+  }
+.mensagem-cadastro{
+  font-size: 1.4rem;
+}
+.caixa-cadastro{
+  width: 300px;
+}
+.form-cadastro{
+  width: 297px;
+  font-size: 1.4rem;
+}
+.form-cadastro input[type="submit"].btn-enviar{
+  font-size: 1.2rem;
+}
+}
+@media screen and (min-width: 1024px)  {
+  .img-desktop {
+    right: 53%;
+    display: block;
+    width: 125%;
+    position: absolute;
+    top: 18px;
+   }
+
+  .caixa-cadastro {
+    position: absolute;
+    right: 20%;
+  }
+  }
  

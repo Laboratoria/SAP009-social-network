@@ -7,33 +7,34 @@ import {
   editandoPostagem,
   curtindoPostagem,
   descurtindoPostagem,
-  // atualizaLikes,
 } from '../../firebase/firebase';
+import logoPostagem from '../../imagens/mev-postagem.png';
 
 // monta a tela das postagens
 const postagem = async () => {
   const usuariaLogada = await obterUsuaria();
-  const header = document.querySelector('.header');
   const telaDaPostagem = document.createElement('div');
+  telaDaPostagem.classList.add('container-postagem'); // adiciona classe à div.
 
   console.log(usuariaLogada);
   const template = `
     <div class="botao">
+      <img src="${logoPostagem}" class="mev-postagem"alt="Mulheres brindando">
       <button class="btn-sair">Sair</button>
     </div>
     <div class="postagem">
       <div class="mensagem-ola">
-        <p class="paragrafo">${usuariaLogada.nomeUsuaria}</p>
+        <p class="paragrafo">${usuariaLogada.nomeUsuaria}, o que deseja compartilhar?</p>
       </div>
     </div>
-      <section class="novo-post">
+      <div class="novo-post">
         <textarea name="novo-texto" id="novo-texto" cols="30%" rows="4%"></textarea>
         <button class="btn-postar">Postar</button>
-      </section>
+      </div>
     <div class='postagens'></div>
 
     `;
-  header.style.display = 'block';
+  //  header.style.display = 'block';
 
   telaDaPostagem.innerHTML = template;
 
@@ -46,7 +47,6 @@ const postagem = async () => {
     const templatePost = `
     <div class="postagem-amigas">
       <div class="postagem-data">
-        <img src="../imagens/icone-usuaria.png" class="icone-usuaria">
         <p class="perfil-usuaria">${post.nomeUsuaria}</p>
         <p class="data-postagem">${post.data}</p>
       </div>
@@ -55,24 +55,28 @@ const postagem = async () => {
         <span class="icones-inferiores">
         <button class="btn-curtir">
         <img id="taca-vazia" src="./imagens/tacavazia.png">
-        <img id="taca-cheia" class="hidden" src="./imagens/tacacheia.png">
+        <img id="taca-cheia" src="./imagens/tacacheia.png">
+        </button>
+        <button class="btn-excluir">
+        <i class="fa-solid fa-trash-can" id="btn-excluir-${post.id}" type="button" value="${post.id}"></i>
+        </button>
+        <button id="btn-editar">
+        <i class="fa-sharp fa-solid fa-pen-to-square" id="btn-editar" class="btn-editar "type="button" ></i>
         </button>
         <p class="numero-curtidas">${somaLikes}</p>
-          <button class="btn-excluir">
-          <i class="fa-solid fa-trash-can" id="btn-excluir-${post.id}" type="button" value="${post.id}"></i>
-          </button>
-          <button id="btn-editar">
-          <i class="fa-sharp fa-solid fa-pen-to-square" id="btn-editar" class="btn-editar "type="button" ></i>
-          </button>
-         <button id="btn-salvar" class="esconde-btn" "> Salvar </button>
+        <button id="btn-salvar" class="esconde-btn" "> Salvar </button>
         </span>
-      </div>
-    </div>
+        </div>
+        </div>
       `;
     containerPost.innerHTML = templatePost;
+    posts.appendChild(containerPost);
 
     // evento escutador para excluir postaem
     const btnExcluir = containerPost.querySelector(`#btn-excluir-${post.id}`); // Usar template literals para pegar o elemento com o ID correto
+    if (post.idUsuaria !== usuariaLogada.uid) {
+      btnExcluir.style.display = 'none';
+    }
     btnExcluir.addEventListener('click', () => {
       excluindoPostagem(post.id);
       containerPost.remove();
@@ -81,7 +85,6 @@ const postagem = async () => {
     const btnEditar = containerPost.querySelector('#btn-editar');
     const textArea = containerPost.querySelector('#texto-usuaria-postado');
     const btnSalvar = containerPost.querySelector('#btn-salvar');
-    console.log({ post, usuariaLogada });
     if (post.idUsuaria !== usuariaLogada.uid) {
       btnEditar.style.display = 'none';
     }
@@ -121,11 +124,9 @@ const postagem = async () => {
       somaLikes += 1;
       likeNaTela.innerHTML = somaLikes;
       curtindoPostagem(post.id, usuariaLogada);
-      console.log(post.id);
 
       // Adiciona a usuária logada à coleção de likes no Firebase
       colecaoLikes.push(uid);
-      // atualizaLikes(post.id, colecaoLikes);
     });
 
     // adiciona o evento de clique na taça cheia
@@ -136,27 +137,20 @@ const postagem = async () => {
       likeNaTela.innerHTML = somaLikes;
       descurtindoPostagem(post.id, usuariaLogada.uid);
     });
-    // // Remove a usuária logada à coleção de likes no Firebase
-    // const indicelikeUsuaria = colecaoLikes.indexOf(uid);
-    // if (indicelikeUsuaria !== -1) {
-    //   colecaoLikes.splice(indicelikeUsuaria, 1);
-    //   atualizaLikes(post.id, colecaoLikes);
-    // }
 
     const btnSair = telaDaPostagem.querySelector('.btn-sair');
     btnSair.addEventListener('click', async () => {
       await sair();
       window.location.hash = '';
     });
-    posts.appendChild(containerPost);
   };
 
   const postagens = await buscarPostagens();
   postagens.forEach((postagemCriada) => exibirPostagem(postagemCriada));
-  console.log(postagens);
+  // console.log(postagens);
 
   const funcaoPostar = async () => {
-    console.log('clicou postar');
+    // console.log('clicou postar');
     const textoUsuaria = telaDaPostagem.querySelector('#novo-texto');
     const textoDaPostagem = textoUsuaria.value;
     const postagemCriada = await criarPostagem(textoDaPostagem);

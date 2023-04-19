@@ -19,21 +19,19 @@ const iniciaTela = async () => {
       main.appendChild(await postagem());
       break;
     default:
-      console.log('default');
+      // console.log('default');
       main.appendChild(login());
       break;
   }
 };
 
 window.addEventListener('hashchange', async () => {
-  console.log('evento hashchannge');
+  // console.log('evento hashchannge');
   await iniciaTela();
 });
 
 window.addEventListener('load', async () => {
-  console.log('evento load');
   observador(async (user) => {
-    console.log(user);
     if (user) {
       // verifica se usuario ta logado, se tiver ele chama init p/ carregar a pag q está
       await iniciaTela();
