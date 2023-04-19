@@ -86,7 +86,7 @@ export default () => {
             </div>
           
             <div class="post-button">
-              <button type="button" id="button-publish" class="button-publish" onclick="publicar()">Publicar</button>
+              <button type="button" id="button-publish" class="button-publish">Publicar</button>
             </div>
           </div>
         </form>
