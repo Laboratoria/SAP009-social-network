@@ -20,18 +20,17 @@ const firebaseConfig = {
 
 export const app = initializeApp(firebaseConfig);
 
+export const auth = getAuth();
+
 export const fazerLogin = (nome, senha) => {
-  const auth = getAuth();
   return signInWithEmailAndPassword(auth, nome, senha);
 };
 
 export const fazerCadastro = (nome, senha) => {
-  const auth = getAuth();
   return createUserWithEmailAndPassword(auth, nome, senha);
 };
 
 export const fazerLoginComGoogle = () => {
-  const auth = getAuth();
   const provider = new GoogleAuthProvider();
   return signInWithPopup(auth, provider);
 };

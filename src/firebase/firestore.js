@@ -3,20 +3,40 @@ import {
   deleteDoc,
   getFirestore,
   addDoc,
+  collection,
+  query,
+  orderBy,
+  getDocs,
 } from 'firebase/firestore';
-import { app } from './firebase.js';
 
-const salvarPost = (posText) => {
-  const docRef = await addDoc(collection(db, 'posts'), {
-    posText: posText,
-    likes: [],
-    autor: 
-  }
-  )
-}
+import { async } from 'regenerator-runtime';
+
+import { app } from './firebase.js';
 
 const db = getFirestore(app);
 
+export const salvarPost = async (date, id, text, username) =>
+  addDoc(collection(db, 'posts'), {
+    date,
+    id,
+    like: [],
+    text,
+    username,
+  });
+
+export const pegarPost = async () => {
+  const mensage = [];
+  const order = query(collection(db, 'posts'), orderBy('date', 'desc'));
+  const snapShot = await getDocs(order);
+  snapShot.forEach((item) => {
+    const data = item.data();
+    data.id = item.id;
+    data.date = data.date.toDate().toLocaleDateString();
+    mensage.push(data);
+  });
+  return mensage;
+};
+
 export const deletarPost = async (postId) => {
-  deleteDoc(doc(db, "posts", postId));
-}
+  deleteDoc(doc(db, 'posts', postId));
+};
