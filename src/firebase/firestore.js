@@ -20,8 +20,12 @@ export const db = getFirestore(app);
 
 // Buscar um post na coleção e mostrar todos no feed:
 export const getPosts = async () => {
-  const postCollection = await getDocs(query(collection(db, 'posts'), orderBy('data', 'desc')));
-  return postCollection.docs.map((post) => ({ id: post.id, ...post.data() }));
+  const arrayPosts = [];
+  const postCollection = await getDocs(query(collection(db, 'posts'), orderBy('publishDate', 'desc')));
+  postCollection.forEach((post) => {
+    arrayPosts.push({ id: post.id, ...post.data() });
+  });
+  return arrayPosts;
 };
   // Essa função busca posts em uma coleção no banco de dados do firestore.
   // Ordena por data em ordem decrescente.
@@ -31,15 +35,14 @@ export const getPosts = async () => {
 export async function newPost(postText) {
   await addDoc(collection(db, 'posts'), {
     userId: auth.currentUser.uid,
-    userName: auth.currentUser.displayName,
+    userName: auth.currentUser.uid,
     text: postText,
     publishDate: new Date().toLocaleDateString('pt-BR'),
     like: [],
   });
 }
 
-// Buscar um post específico na coleção
-// Para que o usuário só possa editar e deletar o que ele mesmo criou:
+// Buscar os dados de um post específico no banco de dados Firestore:
 export async function getPost(postId) {
   const querySnapshot = await getDoc(doc(db, 'posts', postId));
   return {
@@ -63,15 +66,20 @@ export async function deletePost(postId) {
 }
 
 // Curtir post:
-export async function likePost(postId, uid) {
-  await updateDoc(doc(db, 'posts', postId), {
-    likes: arrayUnion(uid),
-  });
-}
+export async function likePost(postId) {
+  let post = await getPost(postId);
 
-// Descurtir post:
-export async function unlikePost(postId, uid) {
-  await updateDoc(doc(db, 'posts', postId), {
-    likes: arrayRemove(uid),
-  });
+  if (post.like.indexOf(auth.currentUser.uid) === -1) {
+    await updateDoc(doc(db, 'posts', postId), {
+      like: arrayUnion(auth.currentUser.uid),
+    });
+  } else { // descurtir post:
+    await updateDoc(doc(db, 'posts', postId), {
+      like: arrayRemove(auth.currentUser.uid),
+    });
+  }
+
+  post = await getPost(postId);
+
+  return post.like;
 }

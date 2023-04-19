@@ -1,152 +1,162 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
 #login-content-desktop {
-display: none; 
-}
-
-#register {
-display: flex; 
-color: #EE8100;
-margin-left: 210px;
-margin-top: -67px;
-cursor: pointer;
-text-decoration: underline;
-text-decoration-color: #EE8100;
-}
-
-.login-container { 
-position: absolute;
-width: 90vw;
-height: 90vh;  
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: space-evenly;
-text-align: center;
-}
-  
-#login-logo {
-width: 50%;
-margin-left: 10px;
-margin-top: 10px;
-}
-
-.padding-inputs {
-display: flex;
-justify-content: center;
-align-items: center;
-width: 350px;
-height: 50px;
-background: #DADADA;
-border: 3px solid #000000;
-border-radius: 10px;
-text-align: center;
-font-size: 25px;
-}
-  
-  /*#email {
-  margin-top: 80px;  
-  background-image: url('/src/imagens/email.png') !important;;
-  background-repeat: no-repeat;
+  display: none; 
   }
   
-  #password {
-  background-image: url('/src/imagens/cadeado.png') !important;;
-  background-repeat: no-repeat;
-  }*/
+  #register {
+  display: flex; 
+  color: #EE8100;
+  margin-left: 210px;
+  margin-top: -67px;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: #EE8100;
+  }
   
-#enter-button {
-width: 350px;
-height: 50px;
-background:  #DADADA;
-color: #EE8100;
-border-radius: 30px;
-border: 3px solid #EE8100;
-cursor: pointer;
-align-items: center;
-text-align: center;
-font-size: 25px;
-padding: 10px ;
-}
-
-#enter-button:hover {
-background: #EE8100;
-color: #ffffff;
-opacity: 1.5;
-}
-
-#error-login {
-font-size: 30px;    
-padding: 2px;
-}
-
-#or-google{
-font-size: 18px;
-margin-top: -5px;
-}
-
-#login-google {
-display: flex;   
-font-size: 22px; 
-margin-left: -70px;
-padding: 30px;
-}
+  .login-container { 
+  position: absolute;
+  width: 90vw;
+  height: 90vh;  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+  }
+    
+  #login-logo {
+  width: 50%;
+  margin-left: 10px;
+  margin-top: 10px;
+  }
   
-#image-google {
-display: flex;  
-width: 80px;
-margin-top: -90px;
-margin-left: 250px;
-cursor: pointer;
-}
-
-#google-account {
-display: flex;   
-font-size: 20px; 
-margin-left: -70px;
-margin-top: -35px;
-padding: 10px;
-}
-
-@media (min-width: 800px) {
-
-#desktop {
-display: flex;   
-flex-direction: column;
-margin: 0;
-width: 100%;
-}
-
-#login-content-desktop {
-display: flex;   
-background-color: #EE8100; 
-width: 750px;
-height: 900px;
-}
-
-#welcome {
-text-align: center;
-font-size: 60px;
-color: #FFFFFF;
-}
-
-#line {
-width: 650px;
-margin-left: 55px;
-}
-
-#quality {
-font-size: 40px; 
-text-align: center;
-}
-
-#actions {
-font-size: 40px; 
-text-align: center;
-color: #FFFFFF;
-}
-
-.login-container {
-display: flex;
-width: 40vw;
-margin-left: 900px;
-} 
-}
+  .padding-inputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 350px;
+  height: 50px;
+  background: #DADADA;
+  border: 3px solid #000000;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 25px;
+  }
+    
+    /*#email {
+    margin-top: 80px;  
+    background-image: url('/src/imagens/email.png') !important;;
+    background-repeat: no-repeat;
+    }
+    
+    #password {
+    background-image: url('/src/imagens/cadeado.png') !important;;
+    background-repeat: no-repeat;
+    }*/
+    
+  #enter-button {
+  width: 350px;
+  height: 50px;
+  background:  #DADADA;
+  color: #EE8100;
+  border-radius: 30px;
+  border: 3px solid #EE8100;
+  cursor: pointer;
+  align-items: center;
+  text-align: center;
+  font-size: 25px;
+  padding: 10px ;
+  }
+  
+  #enter-button:hover {
+  background: #EE8100;
+  color: #ffffff;
+  opacity: 1.5;
+  }
+  
+  #error-login {
+  font-size: 30px;    
+  padding: 2px;
+  }
+  
+  #or-google{
+  font-size: 18px;
+  margin-top: -5px;
+  }
+  
+  #login-google {
+  display: flex;   
+  font-size: 22px; 
+  margin-left: -70px;
+  padding: 30px;
+  }
+    
+  #image-google {
+  display: flex;  
+  width: 80px;
+  margin-top: -90px;
+  margin-left: 250px;
+  cursor: pointer;
+  }
+  
+  #google-account {
+  display: flex;   
+  font-size: 20px; 
+  margin-left: -70px;
+  margin-top: -35px;
+  padding: 10px;
+  }
+  
+  @media (min-width: 800px) {
+  
+  #desktop {
+  display: flex;   
+  flex-direction: column;
+  margin: 0;
+  width: 100%;
+  }
+  
+  #login-content-desktop {
+  display: flex;   
+  background-color: #EE8100; 
+  width: 750px;
+  height: 900px;
+  }
+  
+  #welcome {
+  text-align: center;
+  font-size: 60px;
+  color: #FFFFFF;
+  }
+  
+  #line {
+  width: 650px;
+  margin-left: 55px;
+  }
+  
+  #quality {
+  font-size: 40px; 
+  text-align: center;
+  }
+  
+  #actions {
+  font-size: 40px; 
+  text-align: center;
+  color: #FFFFFF;
+  }
+  
+  .login-container {
+  display: flex;
+  width: 40vw;
+  margin-left: 900px;
+  } 
+  }

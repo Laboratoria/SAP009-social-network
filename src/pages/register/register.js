@@ -5,29 +5,26 @@ export default () => {
   const registerContainer = document.createElement('div');
 
   const registerScreen = `
-  <section id='register-content-desktop'>
-    <img src='assets/imagens/logout.png' alt='Botão sair' id='image-logout'>  
-  <h2 id='register'> Cadastre-se </h2> 
-  </section> 
-  <section class='register-container'>  
-  <figure> <img src='assets/imagens/logo.png' id='register-logo' alt='Logotipo QA- Qualidade de ações'> </figure>
+  <section class='register-container-new'>
+  <figure> <img src='assets/imagens/logo.png' id='register-logo' alt='Logotipo QA- Qualidade de ações'> </figure> <br> <br>
+  <h2 id='register-new'> Cadastre-se </h2>
     <form>
     <label class='registration-description' for='nome'> NOME COMPLETO </label>
-    <input class='registration-content' id='register-name' name='nome' required> 
+    <input class='registration-content' id='register-name' name='nome' required>
     <label class='registration-description' for='email'> E-MAIL </label>
-    <input type='email' class='registration-content' id='register-email' name='email' required> 
+    <input type='email' class='registration-content' id='register-email' name='email' required>
     <label class='registration-description' for='register-password'> NOVA SENHA </label>
-    <input type='password' class='registration-content' id='register-password' name='register-password' required> 
+    <input type='password' class='registration-content' id='register-password' name='register-password' required>
     <label class='registration-description' for='confirm-password'> CONFIRMAR SENHA </label>
-    <input type='password' class='registration-content' id='confirm-password' name='confirm-password' required> 
-    </form>
-    <button id='register-button' > CRIAR CONTA </button> 
-    <p id='error-register'></p> 
-    <p id='confirmation-message'> </p> <br> <br>
-    <p id='google-account'> Já tem uma conta? </p>
-    <span id='register-login-init'> ACESSE AQUI </span>
+    <input type='password' class='registration-content' id='confirm-password' name='confirm-password' required>
+    </form><br>
+    <button id='register-button' > CRIAR CONTA </button> <br>
+    <p id='error-register'></p>
+    <p id='confirmation-message'> </p> <br>
+    <p id='google-account-register'> Já tem uma conta? </p>
+    <span id='register-login-init'> ACESSE AQUI </span><br><br>
   <footer> <strong> © BOOMERANG </strong> </footer>
-  </section>
+  </section
   `;
   registerContainer.innerHTML = registerScreen;
 

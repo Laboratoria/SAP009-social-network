@@ -6,18 +6,21 @@ import {
 export default () => {
   const publishContainer = document.createElement('div');
   const publishScreen = `
-   <section id='publication'>
-    <img id='bumerangue-gif-publish' src='assets/imagens/bumerangue.gif'>
-    <textarea id='publication-text-publish' name='textarea' placeholder='Qual ação deseja compartilhar?'></textarea>
-    <div id='buttons-publication'>
-    <button id='cancel-button' type='button'> Cancelar </button>
-    <button id='publication-button-publish'> Publicar </button> <br> <br>
-    </div>
-    <p id='empty-post-message'> </p> 
-    <h2 id='reactions-title'> Entendendo as reações</h2>
-    <img id='reactions' src='assets/imagens/reacoes.gif'>
-    
-    </section>
+  <div id='publication'>
+  <div id='content-pub'>
+     <figure><img id='bumerangue-gif-publish' src='assets/imagens/bumerangue.gif'></figure>
+     <textarea id='publication-text-publish' name='textarea' placeholder='Qual ação deseja compartilhar?'></textarea>
+   </div>
+<div id='buttons-publication'>
+<button id='cancel-button' type='button'> Cancelar </button>
+<button id='publication-button-publish'>  Publicar </button>
+</div>
+<p id='empty-post-message'> </p>
+<div id='content-reactions'>
+<h2 id='reactions-title'> Entendendo as reações</h2>
+ <img id='reactions' src='assets/imagens/reacoes.gif'>
+</div>
+</div>
    `;
   publishContainer.innerHTML = publishScreen;
 
@@ -35,7 +38,7 @@ export default () => {
     if (postText === '') {
       emptyPostMessage.innerHTML = '⚠️ POST VAZIO! Por favor, digite algo!';
     } else {
-      if (localStorage.getItem('editStatus') === 'false') { // verifica se o valor da chave "editStatus" no armazenamento local é igual a "false", se for, significa que o usuário está criando um novo post.
+      if (localStorage.getItem('editStatus') === 'true') { // verifica se o valor da chave "editStatus" no armazenamento local é igual a "false", se for, significa que o usuário está criando um novo post.
         await newPost(postText); // E a função newPost(postText) é chamada.
       } else { // SE NÃO, se o valor da chave "editStatus" for diferente de "false":
         const postId = localStorage.getItem('postId'); // isso significa que o usuário está editando um post existente.

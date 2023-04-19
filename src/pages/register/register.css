@@ -1,11 +1,30 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 0vh;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
 #register-content-desktop {
-  display: none;    
+display: none;
 }
-      
-.register-container {
+
+#register-new {
+display: none;
+}
+
+input {
+font-size: 25px;
+}
+
+.register-container-new {
 position: absolute;
-width: 90vw;
-height: 90vh;   
+width: 100vw;
+height: 100vh;
 display: flex;
 flex-direction: column;
 flex-wrap: wrap;
@@ -13,27 +32,27 @@ justify-content: space-evenly;
 text-align: center;
 align-items: center;
 }
- 
+
 #register-logo {
 width: 50%;
 margin-left: 10px;
 margin-top: 10px;
 }
-  
+
 .registration-description {
 display: flex;
-font-size: 25px;      
+font-size: 18px;
 }
-  
+
 .registration-content {
 display: flex;
 width: 450px;
 height: 50px;
 background: #DADADA;
 border: 3px solid #000000;
-border-radius: 15px; 
+border-radius: 15px;
 }
-    
+
 #register-button {
 width: 200px;
 height: 50px;
@@ -44,34 +63,41 @@ border-radius: 40px;
 text-decoration: none;
 text-align: center;
 cursor: pointer;
-align-items: center;       
+align-items: center;
 font-size: 20px;
-margin-left: 15px; 
+margin-left: 15px;
 padding: 10px;
 opacity: 0.6;
 }
-   
+
+
 #register-button:hover {
 background: #EE8100;
-color: #ffffff;
+color: #FFFFFF;
 opacity: 2.8;
 }
 
-#register-login-init {
-display: flex;  
-color: #EE8100;
-margin-left: 175px;
-margin-top: -58px;
-cursor: pointer;
-text-decoration: underline;
-text-decoration-color: #EE8100; 
+#google-account-register {
+display: flex;
+font-size: 20px;
+margin-left: -70px;
 }
 
+#register-login-init {
+display: flex;
+color: #EE8100;
+margin-left: 220px;
+cursor: pointer;
+text-decoration: underline;
+text-decoration-color: #EE8100;
+margin-top: -33px;
+}
+  
 footer {
-display: flex;  
+display: flex;
 font-size: 12px;
 }
 
 #error-message {
-font-size: 30px;   
+font-size: 30px;
 }

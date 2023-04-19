@@ -4,7 +4,6 @@ import {
   doc,
   updateDoc,
   arrayUnion,
-  arrayRemove,
   deleteDoc,
 } from 'firebase/firestore';
 
@@ -13,7 +12,6 @@ import {
   newPost,
   editPost,
   likePost,
-  unlikePost,
   deletePost,
 } from '../src/firebase/firestore';
 
@@ -77,26 +75,6 @@ describe('likePost', () => {
       likes: mockUnion,
     };
     await likePost(postId);
-    expect(doc).toHaveBeenCalledTimes(1);
-    expect(doc).toHaveBeenCalledWith(db, 'posts', postId);
-    expect(updateDoc).toHaveBeenCalledTimes(1);
-    expect(updateDoc).toHaveBeenCalledWith(mockDoc, updatedPost);
-  });
-});
-
-describe('unlikePost', () => {
-  it('must remove the username from the list of likes', async () => {
-    updateDoc.mockResolvedValue();
-    const mockDoc = 'doc';
-    doc.mockReturnValueOnce(mockDoc);
-    const mockRemove = 'remove';
-    arrayRemove.mockReturnValueOnce(mockRemove);
-    const postId = 'id-post';
-    const updatedPost = {
-      likes: mockRemove,
-    };
-    await unlikePost(postId);
-
     expect(doc).toHaveBeenCalledTimes(1);
     expect(doc).toHaveBeenCalledWith(db, 'posts', postId);
     expect(updateDoc).toHaveBeenCalledTimes(1);
