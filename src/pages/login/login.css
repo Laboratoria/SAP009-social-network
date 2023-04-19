@@ -9,10 +9,7 @@ body {
   background: linear-gradient(180deg, #83152d 8.85%, #ad1d45 88.54%);
   line-height: 1.5;
   margin: 5rem 1rem 0rem 1rem;
-}
-.header img{
-  width: 90%;
-  margin: auto;
+  align-items: center;
 }
 .footer, 
 .footer a {
@@ -28,22 +25,19 @@ body {
 }
 .footer h5 a:hover{
   color:#44000d;
-  font-size: medium;
-}
-.footer h5{
-  font-size: 1.3rem;
+  font-size: large;
 }
 /* ^gerais^ */
 
 .main { 
   font-size: 1.1rem;
 } 
-
 .header, .header img{
-  display: block;
-  
+  /* display: block; */
+  /* width: 90%; */
+  /* height: auto; */
+  /* margin: auto; */
 } 
-
 .bckgnd-txt-img, .imagem-footer-login{ 
   display: none;
 }
@@ -90,7 +84,6 @@ input[type="submit"] {
 .login-com p {
   line-height: 1.5rem;
   vertical-align: text-bottom;
-
 }
 
 
@@ -121,33 +114,36 @@ input::-webkit-input-placeholder {
   .bckgnd-txt-img, .imagem-footer-login{ 
     display: block;
   }
+  .pagina-login{
+    display: flex;
+    flex-direction: column;
+  }
  
   .container-bcg-login{ 
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
-    gap: 3rem;
+    /* gap: 3rem; */
     align-items: center;
   }
-  .bckgnd-txt-img{
-    width: 30rem;
-    text-align: center;
-  }
+  .bckgnd-txt-img,
   .img-apresentacao{
-    width: 60vw;
     text-align: center;
+    margin:auto;
   }
   .texto-apresentacao{
     width: 30rem;
-    position: absolute;
-    top: 12rem;
+    position: relative;
+    top: -20rem;
     font-weight: 400;
     font-size: 1.4rem;
     vertical-align: middle;
     line-height: 1.5;
     margin: auto;
-    left: 3rem;
+    left: 5rem;
   }
   .caixa-login{ 
+    margin: 5rem;
     width: 22rem;
     height: 30rem;
     align-items: center;
@@ -193,18 +189,7 @@ input::-webkit-input-placeholder {
 
 }
 
-@media screen and (max-width: 769px) {
-  .pagina-login{
-  display: flex;
-  flex-direction: column;
-  }
-  .container-bcg-login{ 
-    display: flex;
-  }
-
-}
-
-@media screen and (min-width: 1006px) { 
+/* @media screen and (min-width: 1006px) { 
   *{
     padding: 0px;
     margin: 0px;
@@ -283,4 +268,4 @@ input::-webkit-input-placeholder {
     width: 10rem;
     height: 9rem;
   }
-}
+} */

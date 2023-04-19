@@ -25,12 +25,13 @@ body{
 .botao{
   display: flex;
   justify-content: flex-end;
-  text-align: center;
-  position: relative; 
+  margin: -5rem 0 2rem 0;
+  /* text-align: center; */
+  /* position: fixed;  */
   /*  botao aindase mexe */
 }
 .btn-sair {
-  display: flex;
+  /* display: flex; */
   /* margin: 1rem; */
   /* width: auto; */
   /* height: 1.5rem; */
@@ -44,9 +45,9 @@ body{
   background-color: #ebafac;
   border: transparent;
   border-radius: 5px;
-  left: 24rem;
-  top: -18rem;
-  position: absolute;
+  /* left: 24rem; */
+  /* top: -18rem; */
+  /* position: fixed; */
 }
 
 .mensagem-ola {
@@ -180,13 +181,19 @@ body{
   /* margin: 10px 0px -5px 15px; */
   width: 10%;
 }
+.icones-inferiores{
+  gap: 1rem;
+  display: flex;
+
+}
+
 
 
 @media screen and (min-width: 769px) {
   body{
     height: auto;
   } 
-  .main div:first-child{
+  .pagina-postagem{
     display: flex;
     /* align-items: center; */
   }
@@ -226,6 +233,12 @@ body{
   .paragrafo{
     text-align: center;
     margin: 0 auto;
+  }
+  .botao{
+    margin: 0;
+  }
+  .btn-sair{
+    padding: 0 3px;
   }
 }
 

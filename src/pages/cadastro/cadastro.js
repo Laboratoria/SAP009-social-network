@@ -9,7 +9,8 @@ import { criarCadastro, verificarEmail } from '../../firebase/firebase-auth';
 import { maiorDe18, exibeErros } from '../../firebase/funcoes-acessorias';
 
 const cadastro = () => {
-  const criaCadastro = document.createElement('section');// div?
+  const criaCadastro = document.createElement('section');
+  criaCadastro.className += 'pagina-cadastro';
   const header = document.querySelector('.header');
   const template = ` 
     <img class="img-fundo" src="imagens/background_mobile_preto-removebg-preview.png" alt="">
@@ -62,6 +63,12 @@ const cadastro = () => {
   const filhx = criaCadastro.querySelector('#filhos');
   const erroCadastro = criaCadastro.querySelector('.mensagem-erro');
   const btnEnviar = criaCadastro.querySelector('.btn-enviar-cadastro');
+  const voltarLogin = criaCadastro.querySelector('#voltar-login');
+
+  voltarLogin.addEventListener('click', () => {
+    window.location.hash = '#login';
+    header.style.display = 'block';
+  });
 
   btnEnviar.addEventListener('click', (e) => {
     e.preventDefault();

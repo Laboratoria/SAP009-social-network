@@ -13,6 +13,7 @@ import { pegaDados } from '../../firebase/funcoes-acessorias';
 const postagem = () => {
   const header = document.querySelector('.header');
   const criarPostagem = document.createElement('div');
+  criarPostagem.className += 'pagina-postagem';
   const template = `
   <div class="imagem-postagem-desktop">
     <img class="logo-desktop" src="imagens/nome logo.png" alt="nome mães e vinhos logo">
