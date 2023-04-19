@@ -1,5 +1,5 @@
-import data from "./feed.js";
-import { newPost } from "../firebase/firebasestore.js";
+import { newPost, getPost } from "../firebase/firebasestore.js";
+import { auth } from "../firebase/auth.js";
 
 export default () => {
   const container = document.createElement("div");
@@ -87,19 +87,16 @@ export default () => {
             </div>
           
             <div class="post-button">
-              <button type="button" id="button-publish" class="button-publish" onclick="publicar()">Publicar</button>
+              <button type="button" id="button-publish" class="button-publish">Publicar</button>
             </div>
           </div>
         </form>
-        ${carregarPost()}
+        <section id="post-container" class="post-container"></section>
       </section>
   </main>
   `;
 
   container.innerHTML = template;
-
-  const text = container.querySelector(".textarea");
-  const buttonPublish = container.querySelector(".button-publish");
 
   function toggleMenu() {
     const menuMobile = document.getElementById("menu-mobile");
@@ -139,30 +136,16 @@ export default () => {
   const menuClose = container.querySelector(".img-close");
   menuClose.addEventListener("click", toggleMenu);
 
-  const pressLike = container.querySelector(".like-heart");
-  pressLike.addEventListener("click", likePost);
-
-  //faz a manipulação de dados do json
-  function carregarPost() {
-    return data.results.map((post) => montaTemplate(post)).join("");
-  }
-
-  //faz a manipulação de dados do json
-  function carregarPost() {
-    return data.results.map((post) => montaTemplate(post)).join("");
-  }
-
-  // const buttonPost = document.querySelector('#button-publish');
-  // buttonPost.addEventListener('click', publicar)
-
-  function publicar() {
-    const text = document.querySelector(".textarea");
+  // pegar o post e armazenar no firabase
+  const text = container.querySelector(".textarea");
+  const buttonPublish = container.querySelector(".button-publish");
+  buttonPublish.addEventListener("click", () => {
     if (text.value !== "") {
       const timeElapsed = Date.now();
       const today = new Date(timeElapsed);
       const dataPostagem = today.toLocaleDateString();
-      const username = Auth.currentUser.displayName;
-      const idUser = Auth.currentUser.uid;
+      const username = auth.currentUser.displayName;
+      const idUser = auth.currentUser.uid;
       newPost(text.value, dataPostagem, username, idUser);
       try {
         if (text.value === "") {
@@ -170,54 +153,47 @@ export default () => {
           throw new UserException(mensagemError);
         }
         alert("Publicação efetuada com sucesso!");
-        window.location.hash = "#Home";
+        window.location.hash = "#feed";
       } catch (error) {
         alert(error.message);
       }
     } else {
       alert("Por favor, escreva algo para publicar!");
     }
-  }
-
-  //criar uma constante para o texto
-  //  para o botão
-  //addevent
-  //username puxa de quem está logado
-
-  //importar o firebase auth
-
+  });
   //criar uma função para acessar os posts
 
   //responsável por criar
-  function montaTemplate(post) {
-    return `
-  <section class="posts-users">
-    <div class="photo-post-user">
-      <div>
-        <img class="img-post-user img-user" src="${
-          post.photo_user
-        }" alt="imagem de perfil do usuário">
-      </div>
-    </div>
+
+  const printPost = async () => {
+    const arrayPost = await getPost();
+    const template = arrayPost
+      .map(
+        (post) => `
+    <section class="posts-users">
 
     <div class="text-and-likes">
       <div>
-        <label class="name-post-user">${post.name}</label>
+        <label class="name-post-user">${post.username}</label>
       </div>
       <div>
-        <p class="text-post-user">${post.post_content}</p>
+        <p class="text-post-user">${post.text}</p>
       </div>  
       <div>
         <span class="like-post-user">
-          <img class="like-heart" src="${
-            post.liked == true ? "./image/liked-red.png" : "./image/like.png"
+          <img class="like-heart" src="${post.like} "./image/liked-red.png" : "./image/like.png"
           }" alt="ícone de like com coração">
-          <label id="likes-quantities">${post.like_quantity}</label>
+          <label id="likes-quantities">${post.like}</label>
         </span>
       </div>
     </div>
   </section>
-`;
-  }
+    `
+      )
+      .join("");
+    container.querySelector(".post-container").innerHTML = template;
+    printPost();
+  };
+
   return container;
 };
