@@ -141,22 +141,13 @@ export default () => {
   const buttonPublish = container.querySelector(".button-publish");
   buttonPublish.addEventListener("click", () => {
     if (text.value !== "") {
-      const timeElapsed = Date.now();
-      const today = new Date(timeElapsed);
-      const dataPostagem = today.toLocaleDateString();
+      const today = new Date();
+      //const dataPostagem = today.toLocaleDateString();
       const username = auth.currentUser.displayName;
       const idUser = auth.currentUser.uid;
-      newPost(text.value, dataPostagem, username, idUser);
-      try {
-        if (text.value === "") {
-          const mensagemError = "Por favor, escreva algo para publicar!";
-          throw new UserException(mensagemError);
-        }
-        alert("Publicação efetuada com sucesso!");
-        window.location.hash = "#feed";
-      } catch (error) {
-        alert(error.message);
-      }
+      newPost(text.value, today, username, idUser).then(() => {
+        printPost();
+      });
     } else {
       alert("Por favor, escreva algo para publicar!");
     }
@@ -175,6 +166,7 @@ export default () => {
     <div class="text-and-likes">
       <div>
         <label class="name-post-user">${post.username}</label>
+        <p>${post.date}</p>
       </div>
       <div>
         <p class="text-post-user">${post.text}</p>
@@ -192,8 +184,7 @@ export default () => {
       )
       .join("");
     container.querySelector(".post-container").innerHTML = template;
-    printPost();
   };
-
+  printPost();
   return container;
 };
