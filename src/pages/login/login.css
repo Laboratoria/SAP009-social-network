@@ -1,17 +1,18 @@
 /* ^gerais^ */
 *{
   box-sizing: border-box;
+  font: inherit;
 }
 body {
   font-family: "Cagliostro", sans-serif;
   color: white;
   background: linear-gradient(180deg, #83152d 8.85%, #ad1d45 88.54%);
-  /* display: flex;
-  flex-direction: column; */
-  /* margin: 1rem; */
+  line-height: 1.5;
+  margin: 5rem 1rem 0rem 1rem;
 }
 .header img{
-  width: 100%;
+  width: 90%;
+  margin: auto;
 }
 .footer, 
 .footer a {
@@ -21,6 +22,9 @@ body {
 }
 .footer a {
   text-decoration: underline;
+}
+.login-com p a {
+  color: white;
 }
 .footer h5 a:hover{
   color:#44000d;
@@ -32,26 +36,26 @@ body {
 /* ^gerais^ */
 
 .main { 
-  /* margin: 5rem; 5%; */
-  /* margin-top: 0; */
   font-size: 1.1rem;
 } 
 
-/* .header, .header img{
+.header, .header img{
   display: block;
+  
 } 
 
 .bckgnd-txt-img, .imagem-footer-login{ 
   display: none;
-} */
-
+}
+.container-bcg-login{
+  display: flex;
+}
 .caixa-login {
-  /* padding: 18% 10%; */
+  width: 25rem;
   background-color: #44000d;
   display: flex;
   flex-direction: column;
-  /* margin: auto; */
-  /* margin-bottom: 1.5rem; */
+  margin: -1.5rem auto 1.5rem;
   text-align: center;
   border-radius: 15px;
   gap: 2rem;
@@ -60,17 +64,13 @@ body {
 .form-login {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  text-align: center;
   gap: 1.8rem;
-  /* width: 100%; */
 }
 
 .form-login input {
   background-color: #facfce;
-  /* height: 30px; */
-  /* width: 85%; */
+  width: 12rem;
   border: 1px ridge;
   text-align: center;
 }
@@ -79,13 +79,12 @@ input[type="submit"] {
   background-color: #ebafac;
   border-radius: 5px;
   border: transparent;
-  /* padding: 5px; */
-  /* width: 30%; */
 }
 .login-com {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .login-com p {
@@ -93,9 +92,7 @@ input[type="submit"] {
   vertical-align: text-bottom;
 
 }
-.login-com p a {
-  color: white;
-}
+
 
 .login-google {
   text-align: center;
@@ -107,8 +104,7 @@ input[type="submit"] {
 }
 
 .btn-google img {
-  width: 10%;
-  /* padding: 3%; */
+  width: 1.5rem;
 }
 
 input::-webkit-input-placeholder {
@@ -116,48 +112,47 @@ input::-webkit-input-placeholder {
   color: #62615d;
 }
 
-
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
   *{
     padding: 0px;
     margin: 0px;
   }
   .header, .header img{ display: none; } 
-  .main{ 
-    /* width: auto; */
-    /* margin: 25% auto;  */
+  .bckgnd-txt-img, .imagem-footer-login{ 
+    display: block;
   }
+ 
   .container-bcg-login{ 
-    display: flex; 
-    justify-content: space-between;
-    gap: 1rem;
-    /* margin-top: 10rem; */
-    /* height: auto; */
+    display: flex;
+    justify-content: space-around;
+    gap: 3rem;
+    align-items: center;
   }
   .bckgnd-txt-img{
-    /* width: 70%;  */
-    /* height: 50%; */
+    width: 30rem;
     text-align: center;
   }
   .img-apresentacao{
-    /* width: auto; */
-    /* min-width: 70%; */
-    /* margin: 8rem auto; */
+    width: 60vw;
     text-align: center;
   }
   .texto-apresentacao{
-    /* min-width: auto; */
+    width: 30rem;
+    position: absolute;
+    top: 12rem;
     font-weight: 400;
     font-size: 1.4rem;
     vertical-align: middle;
     line-height: 1.5;
-    /* margin: -30rem 3rem ; */
+    margin: auto;
+    left: 3rem;
   }
   .caixa-login{ 
-    /* min-width: 50%;  */
-    /* height: 50%;  */
-    /* margin: auto;
-    text-align: center; */
+    width: 22rem;
+    height: 30rem;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 0rem;
   }
   .form-login {
     display: flex;
@@ -166,20 +161,126 @@ input::-webkit-input-placeholder {
     align-items: center;
     text-align: center;
     gap: 1.8rem;
-    /* width: 100%; */
+    
   }
-  .footer-login-desktop,
+  .form-login input {
+    background-color: #facfce;
+    width: 12rem;
+    height: 2rem;
+    border: 1px ridge;
+    text-align: center;
+  }
+  .input[type=submit]{
+    font-size: initial;
+    width: 5rem;
+    height: 2rem;
+  }
+  .login-com{
+    font-size: large;
+  }
+  .footer{
+    margin-top:-1rem;
+  }
+  .footer-login-desktop{
+    display: flex;
+    justify-content: center;
+  }
   .imagem-footer-login{ 
     text-align: center;
-    /* margin: auto; */
-    /* margin-bottom: -10rem; */
-    /* margin-top: 5rem; */
-  }
-  .imagem-footer-login{ 
-    width: 20rem;
+    width: 8rem;
+    height: 7rem;
   }
 
-  html{
-    /* width: 75%; */
+}
+
+@media screen and (max-width: 769px) {
+  .pagina-login{
+  display: flex;
+  flex-direction: column;
+  }
+  .container-bcg-login{ 
+    display: flex;
+  }
+
+}
+
+@media screen and (min-width: 1006px) { 
+  *{
+    padding: 0px;
+    margin: 0px;
+  }
+  .header, .header img{ display: none; } 
+  .bckgnd-txt-img, .imagem-footer-login{ 
+    display: block;
+  }
+  .pagina-login{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container-bcg-login{ 
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+    align-items: center;
+  }
+  .bckgnd-txt-img{
+    width: 30rem;
+    text-align: center;
+  }
+  .img-apresentacao{
+    width: 60vw;
+    text-align: center;
+  }
+  .texto-apresentacao{
+    width: 30rem;
+    position: absolute;
+    top: 12rem;
+    font-weight: 400;
+    font-size: 1.4rem;
+    vertical-align: middle;
+    line-height: 1.5;
+    margin: auto;
+    left: 5rem;
+  }
+  .caixa-login{ 
+    width: 22rem;
+    height: 30rem;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 0rem;
+  }
+  .form-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1.8rem;
+    
+  }
+  .form-login input {
+    background-color: #facfce;
+    width: 14rem;
+    height: 2rem;
+    border: 1px ridge;
+    text-align: center;
+  }
+  .input[type=submit]{
+    font-size: initial;
+    width: 5rem;
+    height: 2rem;
+  }
+  .login-com{
+    font-size: large;
+  }
+  .footer-login-desktop{
+    display: flex;
+    justify-content: center;
+  }
+  .imagem-footer-login{ 
+    text-align: center;
+    width: 10rem;
+    height: 9rem;
   }
 }

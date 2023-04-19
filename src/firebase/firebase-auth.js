@@ -66,7 +66,7 @@ export function dadosUsuaria() {
     userName: user.displayName,
     userEmail: user.email,
     dataPostagem: dataPostagem.toLocaleString(),
-    curtidas: [],
+    curtidas: 0,
   };
 
   return usuaria;

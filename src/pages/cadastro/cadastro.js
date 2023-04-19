@@ -61,7 +61,7 @@ const cadastro = () => {
   const telefone = criaCadastro.querySelector('#tel');
   const filhx = criaCadastro.querySelector('#filhos');
   const erroCadastro = criaCadastro.querySelector('.mensagem-erro');
-  const btnEnviar = criaCadastro.querySelector('.btn-enviar');
+  const btnEnviar = criaCadastro.querySelector('.btn-enviar-cadastro');
 
   btnEnviar.addEventListener('click', (e) => {
     e.preventDefault();

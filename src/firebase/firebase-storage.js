@@ -1,6 +1,6 @@
 import {
   getFirestore, collection, addDoc, getDocs, onSnapshot,
-  deleteDoc, doc, getDoc, updateDoc, query, orderBy, arrayUnion, arrayRemove,
+  deleteDoc, doc, getDoc, updateDoc, query, orderBy, // arrayUnion, arrayRemove,
 } from 'firebase/firestore';
 import { dadosUsuaria } from './firebase-auth';
 import { app } from './firebase.config.js';
@@ -24,7 +24,7 @@ export function mostraPostAutomaticamente(postEnviado) {
 }
 
 export function deletaPost(id) {
-  return deleteDoc(doc(db, 'postagens', id));
+  return deleteDoc(doc(db, 'postagens', id)); // passar manualmente
 }
 
 export function editaPost(id) {
@@ -36,10 +36,15 @@ export function atualizaEdicao(id, texto) {
 }
 
 export async function curtirPost(id, curtidas) {
-  await updateDoc(doc(db, 'postagens', id), { curtidas: arrayUnion(curtidas + 1) });
+  await updateDoc(doc(db, 'postagens', id), {
+    curtidas: curtidas + 1,
+  });
+  // curtidas + 1 });
+
+  // para usar  arrayUnion em curtidas tem que ter [] e vai poder curtir infinito
 }
 export async function descurtirPost(id, curtidas) {
-  await updateDoc(doc(db, 'postagens', id), { curtidas: arrayRemove(curtidas - 1) });
+  await updateDoc(doc(db, 'postagens', id), { curtidas: curtidas - 1 });
 }
 
 export async function ordenaPosts() {

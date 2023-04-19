@@ -15,6 +15,8 @@ const postagem = () => {
   const criarPostagem = document.createElement('div');
   const template = `
   <div class="imagem-postagem-desktop">
+    <img class="logo-desktop" src="imagens/nome logo.png" alt="nome mães e vinhos logo">
+
     <img class="img-desktop" src="imagens/enchendo_taça_de_vinho-removebg-preview.png" alt="imagem  de garrafa derramand liquido em uma taça">
   </div>
 
@@ -35,7 +37,7 @@ const postagem = () => {
       <button class="btn-postar">Postar</button>
     </section>
 
-    <div class="digita-texto" id='postagens-anteriores'></div>
+    <div class="postagens-anteriores" id="postagens-anteriores"></div>
   </div>
     `;
 
@@ -91,19 +93,12 @@ const postagem = () => {
       const publicacao = dadosUsuaria();
       const curtidas = criarPostagem.querySelector('.numero-curtidas').textContent;
       const btnCurtir = criarPostagem.querySelectorAll('.btn-curtir');
-      console.log();
-      console.log();
       btnCurtir.forEach((btn) => {
         btn.addEventListener('click', (e) => {
           const idBtn = btn.dataset.id;
-
-          if (publicacao.curtidas.includes(publicacao.userId)) {
-            descurtirPost(idBtn, Number(curtidas));
-            publicacao.curtidas.splice(publicacao.userId);
-          } else {
-            curtirPost(idBtn, Number(curtidas));
-            publicacao.curtidas.push(publicacao.userId);
-          }
+          curtirPost(idBtn, Number(curtidas));
+          console.log(idBtn);
+          console.log(curtidas);
         });
       });
     });

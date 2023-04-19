@@ -1,16 +1,15 @@
 /* eslint-disable max-len */
 // importamos apenas oq vamos a testear
 import {
-  createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, signInWithPopup, signOut, onAuthStateChanged,
+  createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, signInWithPopup, signOut,
+  onAuthStateChanged, sendEmailVerification,
   // getAuth,
 } from 'firebase/auth';
 
 import {
-  criarCadastro, fazerLogin, loginComGoogle, sair, observador,
-  // , dadosUsuaria, verificarEmail,
+  criarCadastro, fazerLogin, loginComGoogle, sair, observador, verificarEmail,
+  // , dadosUsuaria,
 } from '../src/firebase/firebase-auth.js';
-
-// const mockUsuarias = { nome: 'Usuaria Sobrenome', email: 'usuaria@email.com', senha: '123456', id: 'jd8as5sa4sa5', };
 
 jest.mock('firebase/auth');
 
@@ -18,9 +17,9 @@ const nome = 'Usuaria Sobrenome';
 const email = 'usuaria@email.com';
 const senha = '123456';
 
+const mockAuth = { user: { } };
 it('deveria criar um cadastro', async () => {
   // createUserWithEmailAndPassword.mockClear(); se for usar mais de 1x
-  const mockAuth = { user: { } };
   createUserWithEmailAndPassword.mockResolvedValue(mockAuth);
   updateProfile.mockReturnValue();
 
@@ -42,7 +41,7 @@ it('deveria fazer login', () => {
 it('deveria fazer login com google', () => {
   loginComGoogle();
   expect(signInWithPopup).toHaveBeenCalledTimes(1);
-  expect(signInWithPopup).toHaveBeenCalledWith(undefined, { }); // não recebe parametro
+  expect(signInWithPopup).toHaveBeenCalledWith(undefined, { });
 });
 
 it('deveria fazer o logout', () => {
@@ -52,7 +51,20 @@ it('deveria fazer o logout', () => {
 });
 
 it('deveria mostrar usuaria on/off', () => {
-  observador();
+  onAuthStateChanged.mockResolvedValue();
+
+  const callback = jest.fn();
+  observador(callback);
+
   expect(onAuthStateChanged).toHaveBeenCalledTimes(1);
-  expect(onAuthStateChanged).toHaveBeenCalledWith(undefined, Function);
+  expect(onAuthStateChanged).toHaveBeenCalledWith(undefined, () => { });
+});
+
+it('deveria verificar se o email de vericação foi enviado', () => {
+  sendEmailVerification.mockResolvedValue(mockAuth);
+
+  verificarEmail();
+
+  expect(sendEmailVerification).toHaveBeenCalledTimes(1);
+  expect(sendEmailVerification).toHaveBeenCalledWith(mockAuth);
 });

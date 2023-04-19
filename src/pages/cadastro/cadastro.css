@@ -1,6 +1,9 @@
-@media screen and (min-width:768px) {
+@media screen and (min-width:769px) {
+  body{
+    height: 100vh;
+  }
   section{
-    margin: auto;
+    /* margin: auto; */
 
   }
   .mensagem-cadastro h3{
@@ -10,19 +13,19 @@
   .caixa-cadastro{
     display: flex;
     width: 80%;
-    margin: auto;
+    /* margin: auto; */
     /* background-color: purple; */
     /* margin-bottom: 1.5rem; */
     position: relative;
   }
   .form-cadastro{
-    width: 80%;
-    height: 70%;
-    margin: auto;
+    /* width: 80%; */
+    /* height: 70%; */
+    /* margin: auto; */
     gap: .2rem;
   }
   .form-cadastro label{
-    margin: 1.5rem 0;
+    /* margin: 1.5rem 0; */
     font-size: x-large;
     font-weight: 600;
   }
@@ -34,13 +37,15 @@
   .btn-enviar-cadastro{
     font-size: large;
     font-weight: 700;
-    margin: 1rem auto;
+    /* margin: 1rem auto; */
   }
+
+  /* colocar align itens  center para esticar o form  */
 }
 
 section{
-  width: 90%;
-  margin: 2% auto;
+  /* width: 90%; */
+  /* margin: 2% auto; */
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -49,59 +54,59 @@ section{
   gap: 1rem;
 }
 
-.img-fundo, .img-fundo .desktop{
+.img-fundo{
   position: absolute;
   display: flex;
   width: 100%;
   opacity: 40%;
-  margin: 60% auto 10% auto;
+  /* margin: 60% auto 10% auto; */
 }
 .caixa-cadastro{
   display: flex;
-  margin: .5rem auto;
-  width: 100%;
-  margin-bottom: 1.5rem;
+  /* margin: .5rem auto; */
+  /* width: 100%; */
+  /* margin-bottom: 1.5rem; */
   position: relative;
 }
 
 .mensagem-cadastro{
-  margin: 5% auto;
-  width: 80%;
+  /* margin: 5% auto; */
+  /* width: 80%; */
   text-align: center;
   line-height: 1.3rem;
   font-size: 1.2rem;
 }
 
 .form-cadastro{
-  width: 80%;
-  margin: auto;
+  /* width: 80%; */
+  /* margin: auto; */
   display: flex;
   flex-direction: column;
   font-size: 1.12rem;
 }
 
 .form-cadastro label{
-  margin-bottom: 2px;
+  /* margin-bottom: 2px; */
 }
 
 .form-cadastro input{
-  margin-bottom: 15px;
+  /* margin-bottom: 15px; */
   background-color: #FACFCE;
   border: transparent;
-  padding: 8px;
+  /* padding: 8px; */
 }
 
 input[type=submit]{
   width: 30%;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   background-color: #EBAFAC;
   border-radius: 15px;
-  padding: 5px;
+  /* padding: 5px; */
 }
 
 .footer{
-  position: relative;
-  top: 4rem; /* para deixar em baixo */
+  /* position: relative;
+  top: 4rem; para deixar em baixo */
 }
 
 .cursor-block{
@@ -110,8 +115,8 @@ input[type=submit]{
 
 a{
   text-align: center;
-  padding: 5px;
-  margin: .5rem;
+  /* padding: 5px; */
+  /* margin: .5rem; */
   color: black;
   text-decoration: none;
   font-weight: 600;

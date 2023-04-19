@@ -65,18 +65,18 @@ export function pegaDados(querySnapshot) { // pega tudo o texto publicado pela u
     const publicacao = doc.data(); // cada documento do firebase
     recebeDados += ` 
     <div class="postagem-amigas">
-      <img src="../imagens/mulher-mao-com-uma-taca-de-vinho-transbordando-removebg-preview.png" class="icone-usuaria">
-    
+          
       <section class="postagem-data">
+        <img src="../imagens/mulher-mao-com-uma-taca-de-vinho-transbordando-removebg-preview.png" class="icone-usuaria">
         <p class="perfil-usuaria">${publicacao.userName}</p>
         <p class="data-postagem">${publicacao.dataPostagem}</p>
       </section>
 
       <div class="postagens">
-        <textarea class="texto-usuaria-postado" id="texto-usuaria-postado" style='resize:none' disabled>${publicacao.descricao}</textarea>
+        <textarea class="texto-usuaria-postado" id="texto-usuaria-postado" cols="50%" rows="5%" disabled>${publicacao.descricao}</textarea>
 
         <div class="icones-inferiores">
-          <p class="numero-curtidas"> ${publicacao.curtidas.length}</p>
+          <p class="numero-curtidas"> ${publicacao.curtidas}</p>
 
           <button class="btn-curtir" data-id="${doc.id}">
             <i type="button" >🥂</i>

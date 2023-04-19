@@ -7,6 +7,7 @@ import { fazerLogin, loginComGoogle } from '../../firebase/firebase-auth';
 import { exibeErros } from '../../firebase/funcoes-acessorias';
 
 const criarLogin = document.createElement('div');
+criarLogin.className += 'pagina-login';
 
 const login = () => {
   const template = `

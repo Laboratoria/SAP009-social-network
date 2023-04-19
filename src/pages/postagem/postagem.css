@@ -1,9 +1,21 @@
-
+/* gerais */
+/* html{
+  width: auto;
+} */
+body{
+  margin: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.header, .header img{
+  width: auto;
+}
 /* ^gerais^ */
 
 .imagem-postagem-desktop{ display: none;}
 
-.imagem-desktop .desktop{
+.imagem-desktop{
   display: none;
 
 } .img-desktop{
@@ -14,27 +26,27 @@
   display: flex;
   justify-content: flex-end;
   text-align: center;
+  position: relative; 
+  /*  botao aindase mexe */
 }
 .btn-sair {
   display: flex;
-  margin: 1rem;
-  width: auto;
-  height: 1.5rem;
-  padding: .5rem;
+  /* margin: 1rem; */
+  /* width: auto; */
+  /* height: 1.5rem; */
+  /* padding: .5rem; */
   text-transform: uppercase;
   text-align: center;
   font-size: large;
   font-weight: bold;
   font-family: monospace;
-  align-items: center;
+  /* align-items: center; */
   background-color: #ebafac;
   border: transparent;
   border-radius: 5px;
-  justify-content: center;
-  position: fixed;
-  left: 80%;
-  top: 3%;
-  /* bottom: 50%; */
+  left: 24rem;
+  top: -18rem;
+  position: absolute;
 }
 
 .mensagem-ola {
@@ -43,8 +55,8 @@
 }
 
 .paragrafo {
-  margin-top: -1rem;
-  margin-bottom: 2rem;
+  /* margin-top: -1rem; */
+  /* margin-bottom: 2rem; */
 }
 
 .novo-post {
@@ -53,55 +65,60 @@
   text-align: center;
   align-items: center;
   gap: 0.5rem;
-  width: 90%;
+  /* width: 90%; */
 }
 
 .container{
-display: flex;
-flex-direction: column;
-gap: 1rem;
-justify-content: center;
-align-items: center;
-text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 #novo-texto{
- /* width: 280px; */
- height: 10rem;
- border-radius: 5px;
- font-size: 1.2rem;
- font-weight: 600;
- font-family: "Cagliostro", sans-serif, monospace;
- text-align: center;
- background-color: #facfce;
- border: transparent;
- gap: 1rem;
-width: 90%;
-}
-
-#digita-texto{
-  display: flex;
+  height: 10rem;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  font-family: "Cagliostro", sans-serif, monospace;
   text-align: center;
-  margin: auto;
-  align-items: center;
-  margin-right: 2.2rem; /* alinha no meio */
+  background-color: #facfce;
+  border: transparent;
+  gap: 1rem;
+  width: 90%;
 }
-
 .btn-postar {
   display: flex;
   background-color: #ebafac;
   border: transparent;
   border-radius: 5px;
   width: auto;
-  height: 1.5rem;
-  padding: .5rem;
+  height: 1.5rem; 
+  padding: 5px;
   text-align: center;
   text-transform: uppercase;
   font-size: x-large;
   font-family: monospace;
   align-items: center;
-  margin: auto;
-  margin-bottom: 10px;
+  /* margin: auto; */
+  margin-bottom: 1rem;
+}
+
+.postagens-anteriores{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+.postagens {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /* postagens publicadas */
@@ -111,37 +128,33 @@ width: 90%;
   border-radius: 5px;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 15px;
-  margin-left: 20px;
-  margin-right: 17px;
+ 
   box-sizing: border-box;
-  /* height: auto; */
 }
 .postagem-data{
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-around;
-  align-items:flex-start;
-  margin-top: -40px;
-  margin-left: 2.8rem;
- }
+  align-items: center;
+}
 .perfil-usuaria, .data-postagem{
   font-size: 1.15em;
   font-weight: bold;
   color: rgb(186, 48, 71);
-  /* justify-content: space-between; */
-  margin-top: 1rem;
 }
 .perfil-usuaria{
   font-size: 1.3rem;
   text-transform: uppercase;
+  text-align: left;
 }
 
 .texto-usuaria-postado{
-  width: 90%; /* tamanho do textarea em relação à div pai */
-  height: auto; /* tamanho do textarea em relação à div pai */
+  resize: none;
+  width: 90%;
+  height: 8rem;
   background-color: antiquewhite;
-  padding: 10px; 
+  flex-grow: 2;
+  margin: 0 1rem; 
   text-align: center;
   font-size: 1.2rem;
   font-weight: 600;
@@ -149,7 +162,6 @@ width: 90%;
   box-sizing: border-box;
   border-radius: 5px; 
   border-style: none;
-  margin: 4px auto;
   color: black;
 }
 
@@ -157,36 +169,63 @@ width: 90%;
   display: inline-block;
   background-color: transparent;
   border-style: none;
-  margin-bottom: 5px;
-  margin-top: 10px;
+  /* margin-bottom: 5px; */
+  /* margin-top: 10px; */
   color: rgb(186, 48, 71);
 }
 .btn-curtir:active, .btn-editar:active{
   transform: scale(1.2);
 }
  .icone-usuaria{
-  margin: 10px 0px -5px 15px;
+  /* margin: 10px 0px -5px 15px; */
   width: 10%;
 }
-.postagens-anteriosres{
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-.postagens {
-width: 100%;
-height: 100px;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-}
+
 
 @media screen and (min-width: 769px) {
-  .imagem-postagem-desktop, .img-desktop{
+  body{
+    height: auto;
+  } 
+  .main div:first-child{
     display: flex;
-    width: 70%;
-    height: 100%;
+    /* align-items: center; */
+  }
+  .imagem-postagem-desktop {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-; */
+    align-items: center;
+    /* novo , tem tbm a img que é logo-desktop*/
+    /* gap: 2rem; */
+    /* position: fixed; */
+
+  }
+  .logo-desktop{
+    top: 1rem;
+    left: 2rem;
+  }
+  .img-desktop{  
+    top: 15rem;
+    left: 2rem;
+  }
+  .logo-desktop,
+  .img-desktop{  
+    display: flex;
+   
+    /* position: fixed;  */
+
+  }
+ 
+  .container-txt{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+  }
+  /* .mensagem-ola,  */
+  .paragrafo{
+    text-align: center;
+    margin: 0 auto;
   }
 }
 
