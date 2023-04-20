@@ -1,8 +1,8 @@
-import { login, loginGoggle } from "../firebase/auth.js";
+import { login, loginGoggle } from '../firebase/auth.js';
 
 export default () => {
-  const container = document.createElement("div");
-  container.classList.add("container-login");
+  const container = document.createElement('div');
+  container.classList.add('container-login');
 
   const template = `
         <img class="icon" src="image/Rectangle 86.png" alt="imagem de menina mexendo no cabelo">
@@ -55,34 +55,32 @@ export default () => {
 
   container.innerHTML = template;
 
-  const form = container.querySelector(".form-login");
-  form.addEventListener("submit", (e) => {
+  const form = container.querySelector('.form-login');
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
     const username = form.username.value;
     const password = form.password.value;
     login(username, password)
-      .then((userCredential) => {
-        window.location.hash = "#feed";
-        const user = userCredential.user;
-        console.log(user);
-        // ...
+      .then(() => {
+        window.location.hash = '#feed';
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(error);
+        if (error.message === 'Firebase: Error (auth/user-not-found).') {
+          alert('Usuário não encontrado');
+        } else if (error.message === 'Firebase: Error (auth/wrong-password).') {
+          alert('Senha incorreta');
+        }
       });
   });
 
-  const gmail = container.querySelector(".btnGoogle");
-  gmail.addEventListener("click", () => {
+  const gmail = container.querySelector('.btnGoogle');
+  gmail.addEventListener('click', () => {
     loginGoggle()
       .then(() => {
-        window.location.hash = "#feed";
+        window.location.hash = '#feed';
       })
       .catch(() => {
-        txtError.setAttribute("style", "display: block");
-        txtError.innerHTML = "Erro ao logar com sua conta do google";
+        alert('Erro ao efetuar login com o google');
       });
   });
 
