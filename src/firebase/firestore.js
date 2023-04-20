@@ -33,7 +33,7 @@ async function newPost(textpost) {
   return createPosts;
 }
 
-const getUsername = () => auth.currentUser.displayName;
+const getUserData = () => auth.currentUser;
 
 async function findPosts(showPosts) {
   const queryOrder = query(collection(db, 'posts'), orderBy('date', 'desc'));
@@ -57,7 +57,7 @@ const deletePost = async (postId) => deleteDoc(doc(db, 'posts', postId));
 
 export {
   newPost,
-  getUsername,
+  getUserData,
   findPosts,
   editPost,
   deletePost,

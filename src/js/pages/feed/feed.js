@@ -1,6 +1,6 @@
 import {
   newPost,
-  getUsername,
+  getUserData,
   findPosts,
 } from '../../../firebase/firestore.js';
 
@@ -40,7 +40,7 @@ export default () => {
   const displayUsername = feedContainer.querySelector('.display-username');
   const timeline = feedContainer.querySelector('#timeline');
 
-  displayUsername.innerHTML = getUsername();
+  displayUsername.innerHTML = getUserData().displayName;
   const showPosts = (post) => {
     timeline.appendChild(postTemplate(post));
   };
