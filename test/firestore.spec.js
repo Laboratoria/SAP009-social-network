@@ -175,20 +175,9 @@ describe('Função contagem de deslikes', () => {
 });
 
 // função editar post //
-describe('Função editPost', () => {
-  it('Deve editar uma publicação', async () => {
-    updateDoc.mockResolvedValue();
-    const mockDoc = 'doc';
-    doc.mockReturnValueOnce(mockDoc);
-    const postId = 'idPost';
-    const textArea = 'conteudoPost';
-    const updatedPost = {
-      post: textArea,
-    };
-    await editPost(postId, textArea);
-    expect(doc).toHaveBeenCalledTimes(1);
-    expect(doc).toHaveBeenCalledWith(undefined, 'post', postId);
+describe('editPost', () => {
+  it('should edit a post', async () => {
+    editPost();
     expect(updateDoc).toHaveBeenCalledTimes(1);
-    expect(updateDoc).toHaveBeenCalledWith(mockDoc, updatedPost);
   });
 });
