@@ -7,13 +7,14 @@ import {
   onSnapshot,
   orderBy,
   updateDoc,
-  // arrayUnion,
-  // arrayRemove,
+  arrayUnion,
+  arrayRemove,
   query,
   deleteDoc,
 } from 'firebase/firestore';
 
 import { app } from './configuration.js';
+// import { update } from 'lodash';
 
 const auth = getAuth(app);
 
@@ -37,10 +38,20 @@ const getUserData = () => auth.currentUser;
 
 async function findPosts(showPosts) {
   const queryOrder = query(collection(db, 'posts'), orderBy('date', 'desc'));
-  await onSnapshot(queryOrder, (querySnapshot) => {
+  onSnapshot(queryOrder, (querySnapshot) => {
     querySnapshot.forEach((post) => {
       showPosts({ ...post.data(), postId: post.id });
     });
+  });
+}
+async function likePosts(postId, userId) {
+  await updateDoc(doc(db, 'posts', postId), {
+    likes: arrayUnion(userId),
+  });
+}
+async function dislikePosts(postId, userId) {
+  await updateDoc(doc(db, 'posts', postId), {
+    likes: arrayRemove(userId),
   });
 }
 
@@ -61,4 +72,6 @@ export {
   findPosts,
   editPost,
   deletePost,
+  likePosts,
+  dislikePosts,
 };

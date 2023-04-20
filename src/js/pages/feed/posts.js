@@ -1,12 +1,14 @@
 import {
+  dislikePosts,
+  likePosts,
   editPost,
-  // loggedUsersPost,
   getUserData,
 } from '../../../firebase/firestore';
 
 export function postTemplate(post) {
   const postContainer = document.createElement('section');
   postContainer.classList.add('post-section');
+  let countLikes = post.likes.length;
   const userData = getUserData();
   const isAuthor = userData.uid === post.userId;
 
@@ -31,7 +33,7 @@ export function postTemplate(post) {
         <img src="img/heart-regular.png" class="not-liked post-img">
         <img src="img/heart-solid.png" class="liked" post-img>
       </button>
-      <div class="number-like">${post.likes}</div>
+      <div class="number-like">${countLikes}</div>
     `;
     }
     return '';
@@ -53,6 +55,45 @@ export function postTemplate(post) {
   </div>
   `;
   postContainer.innerHTML = template;
+
+  const likeButton = postContainer.querySelector(`#like-button-${post.id}`);
+  const disliked = postContainer.querySelector(`#not-liked-${post.id}`);
+  const liked = postContainer.querySelector(`#liked-${post.id}`);
+  const likesCounter = postContainer.querySelector('#number-like');
+  const likesUsers = post.likes;
+
+  if (likesUsers.includes(userData.uid)) {
+    disliked.style.display = 'none';
+    liked.style.display = 'flex';
+  }
+
+  likeButton.addEventListener('click', () => {
+    if (likesUsers.includes(userData.uid)) {
+      dislikePosts(post.id, userData.uid);
+      disliked.style.display = 'flex';
+      liked.style.display = 'none';
+      countLikes -= 1;
+      likesCounter.innerHTML = countLikes;
+    } else {
+      likePosts(post.id, userData.uid);
+      disliked.style.display = 'none';
+      liked.style.display = 'flex';
+      countLikes += 1;
+      likesCounter.innerHTML = countLikes;
+    }
+  });
+
+  /* liked.addEventListener('click', () => {
+    liked.classList.remove('hidden');
+    liked.classList.add('hidden');
+    countLikes -= 1;
+    likesCounter.innerHTML = countLikes;
+    dislikePosts(post.id, getUsername);
+  });
+ */
+  // Executar a lógica para incrementar o número de curtidas
+  // e enviar uma solicitação ao servidor para atualizar o estado da postagem
+  // Atualizar a interface do usuário para refletir o novo número de curtidas
 
   const bodyPost = postContainer.querySelector(`#body-post-${post.id}`);
   const editDeletePost = postContainer.querySelector('.post-edit-delete');
@@ -79,12 +120,10 @@ export function postTemplate(post) {
       editPost(post.id, bodyPost.value);
       bodyPost.setAttribute('disabled');
     });
-
     cancelBtn.addEventListener('click', () => {
       bodyPost.setAttribute('disabled');
       bodyPost.innerHTML = `${post.post}`;
     });
   }
-
   return postContainer;
 }
