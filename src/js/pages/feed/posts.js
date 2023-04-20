@@ -47,14 +47,15 @@ export function postTemplate(post) {
    <textarea disabled class="body-post" id="body-post-${post.id}">${post.post}</textarea>
    <footer class="footer-post">
      <div class="post-date">${post.date.toDate().toLocaleDateString('pt-BR')}</div>
-     <div class="post-edit-delete edit-delete">${editUserPost}</div>
-     <div class="post-like">${likePost}</div>
+     <div class="post-edit-delete edit-delete">${editUserPost()}</div>
+     <div class="post-like">${likePost()}</div>
    </footer>
   </div>
   `;
   postContainer.innerHTML = template;
 
   const bodyPost = postContainer.querySelector(`#body-post-${post.id}`);
+  const editDeletePost = postContainer.querySelector('.post-edit-delete');
 
   const saveCancelBtn = `
     <div class="post-editing edit-delete" id="post-editing-${post.id}">
@@ -63,8 +64,6 @@ export function postTemplate(post) {
     </div>
   `;
 
-  const postEditing = postContainer.querySelector(`#post-editing-${post.id}`);
-
   const saveBtn = postContainer.querySelector('.save-btn');
   const cancelBtn = postContainer.querySelector('.cancel-btn');
   const editBtn = postContainer.querySelector(`#edit-btn-${post.id}`);
@@ -72,6 +71,8 @@ export function postTemplate(post) {
   if (isAuthor) {
     editBtn.addEventListener('click', () => {
       bodyPost.removeAttribute('disabled');
+      editDeletePost.innerHTML = '';
+      editDeletePost.appendChild(saveCancelBtn);
     });
 
     saveBtn.addEventListener('click', () => {
@@ -82,7 +83,6 @@ export function postTemplate(post) {
     cancelBtn.addEventListener('click', () => {
       bodyPost.setAttribute('disabled');
       bodyPost.innerHTML = `${post.post}`;
-      // colocar innerHTML
     });
   }
 
