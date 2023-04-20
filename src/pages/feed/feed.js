@@ -184,7 +184,7 @@ export default () => {
         deletarPost(element.dataset.excluirId)
           .then(() => {
 
-          /* alert('deletado com sucesso'); */
+            /* alert('deletado com sucesso'); */
 
           }).catch(() => {
             /* alert('Não foi possível deletar sua postagem. Tente novamente.'); */
