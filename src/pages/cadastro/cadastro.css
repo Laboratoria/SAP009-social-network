@@ -1,0 +1,103 @@
+.img-desktop{
+  display: none;
+}
+.container-cadastro{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100% ;
+ }
+
+.caixa-cadastro{
+  background-color: #AD213A;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  text-align: center;
+  border-radius: 15px;
+  width:277px;
+  position: absolute;
+  top: 139px;
+
+}
+.mensagem-cadastro{
+  margin: 0% auto;
+  width: 80%;
+  text-align: center;
+  line-height: 1.4rem;
+  font-size: 1.1rem;
+}
+.form-cadastro input[type="submit"].btn-enviar{
+  position: relative;
+  align-self: center;
+  background-color: #facfce;
+  border: transparent;
+  padding: 5px;
+  width: 30%;
+  font-size: 0.9rem;
+} 
+
+.form-cadastro{
+  margin-bottom: -21px;
+  text-align: start;
+  border-radius: 10px;
+  position: relative;
+  justify-content: center;
+  padding: 15px;
+  width: 274px;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.1rem;
+}
+
+.form-cadastro label{
+  margin-bottom: 0px;
+  color:white;
+}
+
+.form-cadastro input{
+  margin-bottom: 15px;
+  background-color: #FACFCE;
+  border: transparent;
+  padding: 8px;
+}
+
+.cursor-block{
+  cursor: not-allowed;
+}
+/* tabletes */
+@media screen and (min-width: 760px) and (max-width: 900px){
+  .img-desktop{
+    display: none;
+  }
+.mensagem-cadastro{
+  font-size: 1.4rem;
+}
+.caixa-cadastro{
+  width: 300px;
+}
+.form-cadastro{
+  width: 297px;
+  font-size: 1.4rem;
+}
+.form-cadastro input[type="submit"].btn-enviar{
+  font-size: 1.2rem;
+}
+}
+@media screen and (min-width: 1024px)  {
+  .img-desktop {
+    right: 53%;
+    display: block;
+    width: 125%;
+    position: absolute;
+    top: 18px;
+   }
+
+  .caixa-cadastro {
+    position: absolute;
+    right: 20%;
+  }
+  }
+ 

@@ -1,0 +1,232 @@
+.container-login{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.img-desktop-login{
+  display: none;
+}
+.desktop{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.logo {
+  display: flex;
+  position: relative;
+  width: 81%;
+  top: 0px;
+  }
+.paragrafo-login{
+  text-align: center;
+  color: white;
+  padding: 10px 18px 10px 18px;
+}
+.crie-conta{
+  padding: 9px;
+  justify-self: center;
+  display: inline-flex;
+  background-color: #44000d;
+  height: auto;
+  width: auto;
+  border: 1px ridge;
+  text-align: center;
+  border-radius: 50px;
+  position: relative;
+  justify-content: center;
+  padding-top: 3px;
+  top: -28px;
+}
+footer a {
+  color:white;
+}
+.crie-conta a{
+  color:white;
+  }
+
+.caixa-login {
+  padding: 13% 1%;
+  background-color: #44000d;
+  display: flex;
+  flex-direction: column;
+  margin: 5%;
+  text-align: center;
+  border-radius: 15px;
+  width: auto;
+  position: relative;
+  top: 12px;
+  margin-bottom: -140px;
+}
+
+.form-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  
+}
+
+.form-login input {
+  background-color: #facfce;
+  height: 30px;
+  width: 85%;
+  border: 1px ridge;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.form-login input[type="submit"].btn-entrar{
+  background-color: #facfce;
+  border: transparent;
+  padding: 5px;
+  width: 30%;
+  font-size: 0.9rem;
+} 
+
+.login-com p {
+  color:white;
+  align-self: center;
+  margin-top: 38px;
+  font-size: 1.1rem;
+
+}
+.login-google {
+  margin-bottom: 29px;
+  justify-content: center;
+  text-align: center;
+  gap: 6px;
+}
+
+.btn-google {
+  background-color: transparent;
+  border: transparent;
+}
+
+.btn-google img {
+  width: 15%;
+  padding: 1%;
+  margin-top: -23px;
+}
+footer{
+  align-items: center;
+  color: white;
+  position: relative;
+  display: flex;
+  top: 172px;
+  justify-items: center;
+  align-self: center;
+}
+
+input::-webkit-input-placeholder {
+  font-size: 1rem;
+  color: black;
+}
+
+/* tabletes */
+
+@media screen and (min-width: 760px) and (max-width: 900px){
+  .img-desktop-login{
+    display: none;
+  }
+      .header {
+    font-size: 22px;
+    }
+    .crie-conta{
+      width: 223px;
+      height: auto;
+    }
+  
+    .logo{
+    width: 50%;
+    margin-top: 26px;
+    margin-bottom: 0;
+    }
+    .caixa-login{
+    width: 50%;
+    }
+    .form-login input{
+      height: 40px;
+    }
+    input::-webkit-input-placeholder {
+    padding: 22px;
+    font-size: 1.3rem;
+    color: black;
+}
+.form-login input[type="submit"].btn-entrar{
+  font-size: 1.2rem;
+}
+}
+
+/* Estilo para paginas maiores de 1440px */
+@media screen and (min-width: 1024px)  {
+  .img-desktop-login {
+    display: block;
+    width: 122%;
+    position: absolute;
+    top: 8%;
+    right: 46%;
+}
+  .header {
+  width: 60%;
+  font-size: 20px;
+}
+.crie-conta{
+  padding: 10px;
+  width: auto;
+  height: auto;
+ }
+ .container-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.logo{
+  width: 60%;
+  top: 20px;
+  position: relative;
+}
+.caixa-login{
+  padding: 50px 3px;
+  width: 350px;
+  top: 40px;
+  position: relative;
+  right: -216px;
+  }
+ .form-login {
+  display: flex;
+  flex-direction: column;    justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+  width: 100%;
+  }
+  .form-login input {
+    background-color: #facfce;
+    height: 35px;
+    width: 75%;
+    border: 1px ridge;
+    text-align: center;
+    border-radius: 7px;
+  }
+  
+  .form-login input[type="submit"].btn-entrar{
+    background-color: #facfce;
+    border: transparent;
+    padding: 5px;
+    width: 30%;
+    font-size: 1.2rem;
+  } 
+input::-webkit-input-placeholder {
+  font-size: 1.3rem;
+  color: black;
+}
+} 

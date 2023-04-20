@@ -1,0 +1,574 @@
+*{
+  box-sizing: border-box;
+  font-family: "Cagliostro", sans-serif;
+  }
+ 
+
+body {
+  font-family: "Cagliostro", sans-serif;
+  background-color: #AD213A;
+  color: black;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+ }
+
+input{
+  padding: 2px;
+}
+header{
+  align-items: center;
+  color: white;
+  position: relative;
+  display: flex;
+  top: 0;
+  justify-items: center;
+  align-self: center;
+  flex-direction: column;
+}
+/* div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  align-self: center;
+} */.container-login{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.img-desktop-login{
+  display: none;
+}
+.desktop{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.logo {
+  display: flex;
+  position: relative;
+  width: 81%;
+  top: 0px;
+  }
+.paragrafo-login{
+  text-align: center;
+  color: white;
+  padding: 10px 18px 10px 18px;
+}
+.crie-conta{
+  padding: 9px;
+  justify-self: center;
+  display: inline-flex;
+  background-color: #44000d;
+  height: auto;
+  width: auto;
+  border: 1px ridge;
+  text-align: center;
+  border-radius: 50px;
+  position: relative;
+  justify-content: center;
+  padding-top: 3px;
+  top: -28px;
+}
+footer a {
+  color:white;
+}
+.crie-conta a{
+  color:white;
+  }
+
+.caixa-login {
+  padding: 13% 1%;
+  background-color: #44000d;
+  display: flex;
+  flex-direction: column;
+  margin: 5%;
+  text-align: center;
+  border-radius: 15px;
+  width: auto;
+  position: relative;
+  top: 12px;
+  margin-bottom: -140px;
+}
+
+.form-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  
+}
+
+.form-login input {
+  background-color: #facfce;
+  height: 30px;
+  width: 85%;
+  border: 1px ridge;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.form-login input[type="submit"].btn-entrar{
+  background-color: #facfce;
+  border: transparent;
+  padding: 5px;
+  width: 30%;
+  font-size: 0.9rem;
+} 
+
+.login-com p {
+  color:white;
+  align-self: center;
+  margin-top: 38px;
+  font-size: 1.1rem;
+
+}
+.login-google {
+  margin-bottom: 29px;
+  justify-content: center;
+  text-align: center;
+  gap: 6px;
+}
+
+.btn-google {
+  background-color: transparent;
+  border: transparent;
+}
+
+.btn-google img {
+  width: 15%;
+  padding: 1%;
+  margin-top: -23px;
+}
+footer{
+  align-items: center;
+  color: white;
+  position: relative;
+  display: flex;
+  top: 172px;
+  justify-items: center;
+  align-self: center;
+}
+
+input::-webkit-input-placeholder {
+  font-size: 1rem;
+  color: black;
+}
+
+/* tabletes */
+
+@media screen and (min-width: 760px) and (max-width: 900px){
+  .img-desktop-login{
+    display: none;
+  }
+      .header {
+    font-size: 22px;
+    }
+    .crie-conta{
+      width: 223px;
+      height: auto;
+    }
+  
+    .logo{
+    width: 50%;
+    margin-top: 26px;
+    margin-bottom: 0;
+    }
+    .caixa-login{
+    width: 50%;
+    }
+    .form-login input{
+      height: 40px;
+    }
+    input::-webkit-input-placeholder {
+    padding: 22px;
+    font-size: 1.3rem;
+    color: black;
+}
+.form-login input[type="submit"].btn-entrar{
+  font-size: 1.2rem;
+}
+}
+
+/* Estilo para paginas maiores de 1440px */
+@media screen and (min-width: 1024px)  {
+  .img-desktop-login {
+    display: block;
+    width: 122%;
+    position: absolute;
+    top: 8%;
+    right: 46%;
+}
+  .header {
+  width: 60%;
+  font-size: 20px;
+}
+.crie-conta{
+  padding: 10px;
+  width: auto;
+  height: auto;
+ }
+ .container-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.logo{
+  width: 60%;
+  top: 20px;
+  position: relative;
+}
+.caixa-login{
+  padding: 50px 3px;
+  width: 350px;
+  top: 40px;
+  position: relative;
+  right: -216px;
+  }
+ .form-login {
+  display: flex;
+  flex-direction: column;    justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+  width: 100%;
+  }
+  .form-login input {
+    background-color: #facfce;
+    height: 35px;
+    width: 75%;
+    border: 1px ridge;
+    text-align: center;
+    border-radius: 7px;
+  }
+  
+  .form-login input[type="submit"].btn-entrar{
+    background-color: #facfce;
+    border: transparent;
+    padding: 5px;
+    width: 30%;
+    font-size: 1.2rem;
+  } 
+input::-webkit-input-placeholder {
+  font-size: 1.3rem;
+  color: black;
+}
+} .img-desktop{
+  display: none;
+}
+.container-cadastro{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100% ;
+ }
+
+.caixa-cadastro{
+  background-color: #AD213A;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  text-align: center;
+  border-radius: 15px;
+  width:277px;
+  position: absolute;
+  top: 139px;
+
+}
+.mensagem-cadastro{
+  margin: 0% auto;
+  width: 80%;
+  text-align: center;
+  line-height: 1.4rem;
+  font-size: 1.1rem;
+}
+.form-cadastro input[type="submit"].btn-enviar{
+  position: relative;
+  align-self: center;
+  background-color: #facfce;
+  border: transparent;
+  padding: 5px;
+  width: 30%;
+  font-size: 0.9rem;
+} 
+
+.form-cadastro{
+  margin-bottom: -21px;
+  text-align: start;
+  border-radius: 10px;
+  position: relative;
+  justify-content: center;
+  padding: 15px;
+  width: 274px;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.1rem;
+}
+
+.form-cadastro label{
+  margin-bottom: 0px;
+  color:white;
+}
+
+.form-cadastro input{
+  margin-bottom: 15px;
+  background-color: #FACFCE;
+  border: transparent;
+  padding: 8px;
+}
+
+.cursor-block{
+  cursor: not-allowed;
+}
+/* tabletes */
+@media screen and (min-width: 760px) and (max-width: 900px){
+  .img-desktop{
+    display: none;
+  }
+.mensagem-cadastro{
+  font-size: 1.4rem;
+}
+.caixa-cadastro{
+  width: 300px;
+}
+.form-cadastro{
+  width: 297px;
+  font-size: 1.4rem;
+}
+.form-cadastro input[type="submit"].btn-enviar{
+  font-size: 1.2rem;
+}
+}
+@media screen and (min-width: 1024px)  {
+  .img-desktop {
+    right: 53%;
+    display: block;
+    width: 125%;
+    position: absolute;
+    top: 18px;
+   }
+
+  .caixa-cadastro {
+    position: absolute;
+    right: 20%;
+  }
+  }
+ 
+/* .container-postagem{
+  display:grid;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+} */
+.mev-postagem{
+  position: absolute;
+  width: 40%;
+  justify-self: stretch;
+}
+.botao{
+  background-color: #44000d;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.btn-sair {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  /* height: 140px; */
+  margin: 0;
+  /* width: 100%; */
+  position: relative;
+  justify-content: space-around;
+  grid-column: 2;
+  justify-self: self-end;
+  width: 50px;
+  height: 20px;
+  padding: 0;
+  margin-top: 3rem;
+  background-color: #ebafac;
+  border: transparent;
+  border-radius: 5px;
+  top: -23px;
+  right: 11px;
+}
+
+.mensagem-ola {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.paragrafo {
+  color: white;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.novo-post {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+#novo-texto {
+  border-radius: 10px;
+  display: flex;
+  width: 90%;
+  height: 100px;
+  text-align: center;
+  background-color: #ebafac;
+  border: transparent;
+}
+#digita-texto{
+  text-align: center;
+  margin: auto;
+  align-items: center;
+  margin-right: 2.2rem; /* alinha no meio */
+}
+
+.btn-postar {
+  margin-bottom: 15px;
+  font-size: 89%;
+  bottom: 3px;
+  position: relative;
+  display: flex;
+  background-color: #ebafac;
+  border: solid #ebafac;
+  border-radius: 5px;
+  padding: 5px;
+  }
+/* estlizando os elementos das postagens publicadas */
+.postagem-amigas{
+  background-color: #ebafac;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
+  box-sizing: border-box;
+}
+#taca-vazia, #taca-cheia{
+  margin-bottom: -3px;
+  width: 70%;
+}
+.postagem-data{
+  margin-bottom: 1px;
+  font-size: 13px;
+  font-weight: bold;
+  color: black;
+  margin-top: 15px;
+  text-align: center;
+ }
+.perfil-usuaria, .data-postagem{
+  font-size: 13px;
+  font-weight: bold;
+  color: black;
+  margin-top: 15px;
+  
+}
+.texto-usuaria-postado {
+  width: 90%;
+  resize: none;
+  padding: 10px;
+  font-size: 16px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  border-style: none;
+  height: auto;
+  min-height: 100px
+
+}
+.btn-curtir, #btn-editar, .btn-excluir{
+  display: inline-block;
+  background-color: transparent;
+  border-style: none;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  color: rgb(186, 48, 71);
+}
+.numero-curtidas
+{
+  font-size: 96%;
+  right: 118px;
+  bottom: 2px;
+  position: relative;
+  display: inline-block;
+  background-color: transparent;
+  border-style: none;
+  color: #44000d;
+}
+
+.icone-usuaria{
+  width: 60px;
+  margin-left: 10px;
+  margin-bottom: -18px;
+}
+.postagens{
+ display: flex;
+ justify-content: center;
+ flex-direction: column;
+}
+.postagens-anteriores {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#esconde-btn, .esconde-btn{
+  display: none;
+}
+@media screen and (min-width: 760px) and (max-width: 900px)  {
+  .mev-postagem {
+    width: 22%;
+  }
+  .btn-postar{
+    margin-bottom: 31px;
+    font-size: 18px;
+  }
+  .btn-sair{
+    font-size: 100%;
+    width: 66px;
+    height: 30px;
+  }
+  .mensagem-ola{
+    font-size: 25px;
+  }
+  
+  .data-postagem, .perfil-usuaria{
+    font-size: 17px;
+  }
+  .texto-usuaria-postado{
+    font-size: 20px;
+  }
+}
