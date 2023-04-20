@@ -130,6 +130,7 @@ body{
 
 div > .name-post-user{
   margin: 5px;
+  font-size: 12px;
 }
 
 .text-and-likes{
@@ -139,7 +140,8 @@ div > .name-post-user{
 
 .text-post-user{
   margin: 10px 3px;
-  font-size: 13px;
+  font-size: 15px;
+  color: #0F1419;
 }
 
 .posts-users{
