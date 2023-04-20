@@ -1,0 +1,93 @@
+
+#register-content-desktop {
+display: none;
+}
+
+#register-new {
+display: none;
+}
+
+input {
+font-size: 25px;
+}
+
+.register-container-new {
+position: absolute;
+width: 100vh;
+height: 100vh;
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+justify-content: space-evenly;
+text-align: center;
+align-items: center;
+}
+
+#register-logo {
+width: 50%;
+margin-left: 10px;
+margin-top: 10px;
+}
+
+.registration-description {
+display: flex;
+font-size: 18px;
+}
+
+.registration-content {
+display: flex;
+width: 450px;
+height: 50px;
+background: #DADADA;
+border: 3px solid #000000;
+border-radius: 15px;
+}
+
+#register-button {
+width: 200px;
+height: 50px;
+background: #DADADA;
+color: #EE8100;
+border: 3px solid #EE8100;
+border-radius: 40px;
+text-decoration: none;
+text-align: center;
+cursor: pointer;
+align-items: center;
+font-size: 20px;
+margin-left: 15px;
+padding: 10px;
+opacity: 0.6;
+}
+
+
+#register-button:hover {
+background: #EE8100;
+color: #FFFFFF;
+opacity: 2.8;
+}
+
+#google-account-register {
+display: flex;
+font-size: 20px;
+margin-left: -70px;
+}
+
+#register-login-init {
+display: flex;
+color: #EE8100;
+margin-left: 220px;
+cursor: pointer;
+text-decoration: underline;
+text-decoration-color: #EE8100;
+margin-top: -33px;
+}
+  
+footer {
+display: flex;
+font-size: 12px;
+}
+
+#error-message {
+font-size: 30px;
+}

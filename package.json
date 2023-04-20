@@ -16,7 +16,7 @@
     "stylelint": "stylelint --aei src/**/*.css",
     "pretest": "npm run htmlhint && npm run eslint && npm run stylelint",
     "test": "jest --coverage",
-    "dev": "vite dev src",
+    "dev": "vite dev src --host",
     "start": "npm run dev",
     "build": "vite build",
     "preview": "vite preview"
@@ -28,7 +28,7 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jest": "^25.3.0",
     "htmlhint": "^1.0.0",
-    "jest": "^27.0.1",
+    "jest": "^27.5.1",
     "regenerator-runtime": "^0.13.1",
     "stylelint": "^14.1.0",
     "stylelint-config-recommended": "^6.0.0",
@@ -41,5 +41,9 @@
     "createdAt": "2023-02-23T15:31:30.350Z",
     "version": "5.6.0",
     "commit": "ffa75c8b2bede153844195479abeff01f3e34227"
+  },
+  "dependencies": {
+    "firebase": "^9.19.1",
+    "firestore": "^1.1.6"
   }
 }
