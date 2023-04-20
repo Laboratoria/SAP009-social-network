@@ -21,7 +21,6 @@ const db = getFirestore(app);
 
 async function newPost(textpost) {
   const currentDate = new Date();
-
   const createPosts = {
     userId: auth.currentUser.uid,
     username: auth.currentUser.displayName,
@@ -34,7 +33,7 @@ async function newPost(textpost) {
   return createPosts;
 }
 
-const getUsername = () => auth.currentUser.displayName;
+const getUserData = () => auth.currentUser;
 
 async function findPosts(showPosts) {
   const queryOrder = query(collection(db, 'posts'), orderBy('date', 'desc'));
@@ -45,12 +44,12 @@ async function findPosts(showPosts) {
   });
 }
 
-function loggedUsersPost(postId, userId) {
+/* function loggedUsersPost(postId, userId) {
   if (postId === userId) {
     return true;
   }
   return loggedUsersPost;
-}
+} */
 
 async function editPost(postId, editContent) {
   const currentDate = new Date();
@@ -63,8 +62,9 @@ async function editPost(postId, editContent) {
 
 export {
   newPost,
-  getUsername,
+  getUserData,
   findPosts,
-  loggedUsersPost,
+  // loggedUsersPost,
   editPost,
+  auth,
 };

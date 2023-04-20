@@ -40,9 +40,6 @@
     justify-content: space-between;
     margin-right: 1em;
 }
-.post-edit-delete{
-    display: none;
-}
 .post-img{
     width: 25px;
 }
@@ -50,9 +47,6 @@
     border: none;
     height: 32px;
     background: #F6F7F8;
-}
-.post-editing{
-    display: none;
 }
 .editing-buttons{
     width: 87px;
