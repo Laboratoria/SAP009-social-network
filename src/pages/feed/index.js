@@ -114,22 +114,6 @@ export default () => {
     }
   }
 
-  function likePost() {
-    const menuMobile = document.getElementById("like-heart");
-
-    if (menuMobile.className === "like-heart-active") {
-      menuMobile.className = "like-heart";
-      menuMobile.setAttribute("src", "liked.png");
-      document.getElementsByClassName("button-hamburguer").display = "none";
-      document.getElementsByClassName("img-close").display = "block";
-    } else {
-      menuMobile.className = "menu-mobile-active";
-      menuMobile.setAttribute("src", "menu-hamburguer.png");
-      document.getElementsByClassName("button-hamburguer").display = "block";
-      document.getElementsByClassName("img-close").display = "none";
-    }
-  }
-
   const menuOpen = container.querySelector(".button-hamburguer");
   menuOpen.addEventListener("click", toggleMenu);
 
