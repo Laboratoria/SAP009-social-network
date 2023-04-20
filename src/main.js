@@ -7,31 +7,26 @@ import { verificaUsuarioLogado } from './servicesFirebase/firebaseAuth';
 
 const main = document.querySelector('#root');
 
-const init = () => {
-  window.addEventListener('hashchange', () => {
-    main.innerHTML = '';
-    switch (window.location.hash) {
-      case '':
-        main.appendChild(login());
-        break;
-      case '#feed':
-        main.appendChild(feed());
-        break;
-      case '#cadastro':
-        main.appendChild(cadastro());
-        break;
-      case '#sobre':
-        main.appendChild(sobre());
-        break;
-      default:
-        main.appendChild(login());
-    }
-  });
-};
-
-window.addEventListener('load', () => {
-  init();
+window.addEventListener('hashchange', () => {
+  main.innerHTML = '';
+  switch (window.location.hash) {
+    case '':
+      main.appendChild(login());
+      break;
+    case '#feed':
+      main.appendChild(feed());
+      break;
+    case '#cadastro':
+      main.appendChild(cadastro());
+      break;
+    case '#sobre':
+      main.appendChild(sobre());
+      break;
+    default:
+      main.appendChild(login());
+  }
 });
+
 window.addEventListener('load', async () => {
   verificaUsuarioLogado(async (idUser) => {
     if (idUser) {
