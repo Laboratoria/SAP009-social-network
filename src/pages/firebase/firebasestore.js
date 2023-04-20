@@ -25,9 +25,12 @@ export const getPost = async () => {
   const order = query(collection(db, "Post"), orderBy("date", "desc"));
   const snapshot = await getDocs(order);
   snapshot.forEach((item) => {
-    const data = item.data();
+    let data = item.data();
+    const data_time = data.date;
     data.id = item.id;
-    data.date = data.date.toDate().toLocaleDateString();
+    data.date = data_time.toDate().toLocaleDateString();
+    data.hour = data_time.toDate().toLocaleTimeString();
+
     message.push(data);
   });
   return message;

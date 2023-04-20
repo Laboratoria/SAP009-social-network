@@ -120,6 +120,12 @@ export default () => {
   const menuClose = container.querySelector(".img-close");
   menuClose.addEventListener("click", toggleMenu);
 
+  //limpar campo de post depois de postado
+
+  function cleanPost(){
+    document.querySelector(".textarea").value = "";
+  }
+
   // pegar o post e armazenar no firabase
   const text = container.querySelector(".textarea");
   const buttonPublish = container.querySelector(".button-publish");
@@ -131,6 +137,7 @@ export default () => {
       const idUser = auth.currentUser.uid;
       newPost(text.value, today, username, idUser).then(() => {
         printPost();
+        cleanPost();
       });
     } else {
       alert("Por favor, escreva algo para publicar!");
@@ -148,12 +155,13 @@ export default () => {
     <section class="posts-users">
 
     <div class="text-and-likes">
-      <div>
+      <div class="name-and-date">
         <label class="name-post-user">${post.username}</label>
-        <p>${post.date}</p>
       </div>
       <div>
         <p class="text-post-user">${post.text}</p>
+        <label class="date-and-hour">${post.date}</label>
+        <label class="date-and-hour">às ${post.hour}</label>
       </div>  
       <div>
         <span class="like-post-user">
