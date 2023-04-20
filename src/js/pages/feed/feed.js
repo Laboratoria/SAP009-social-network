@@ -1,6 +1,6 @@
 import {
   newPost,
-  getUsername,
+  getUserData,
   findPosts,
 } from '../../../firebase/firestore.js';
 
@@ -15,8 +15,10 @@ export default () => {
   <div class="write-post">
     <h2>Share your thoughts...</h2>
     <div class="user-post-area">
+    <div class="user-area">  
       <img src="img/user-icon.png" class="user-icon">
       <div class="display-username"></div>
+    </div>
       <div class="post-area">
         <div class="textarea-div">
           <textarea placeholder="What's up?" class="text-area" required></textarea>
@@ -38,7 +40,7 @@ export default () => {
   const displayUsername = feedContainer.querySelector('.display-username');
   const timeline = feedContainer.querySelector('#timeline');
 
-  displayUsername.innerHTML = getUsername();
+  displayUsername.innerHTML = getUserData().displayName;
   const showPosts = (post) => {
     timeline.appendChild(postTemplate(post));
   };

@@ -22,11 +22,10 @@ const db = getFirestore(app);
 
 async function newPost(textpost) {
   const currentDate = new Date();
-  const dateString = currentDate.toLocaleDateString('pt-BR');
   const createPosts = {
     userId: auth.currentUser.uid,
     username: auth.currentUser.displayName,
-    date: dateString,
+    date: currentDate,
     post: textpost,
     likes: [],
   };
@@ -35,7 +34,7 @@ async function newPost(textpost) {
   return createPosts;
 }
 
-const getUsername = () => auth.currentUser.displayName;
+const getUserData = () => auth.currentUser;
 
 async function findPosts(showPosts) {
   const queryOrder = query(collection(db, 'posts'), orderBy('date', 'desc'));
@@ -56,10 +55,20 @@ async function dislikePosts(postId, userId) {
   });
 }
 
+async function editPost(postId, editContent) {
+  const currentDate = new Date();
+  const dateString = currentDate.toLocaleDateString('pt-BR');
+  await updateDoc(doc(db, 'posts', postId), {
+    post: editContent,
+    editDate: dateString,
+  });
+}
+
 export {
   newPost,
-  getUsername,
+  getUserData,
   findPosts,
   likePosts,
   dislikePosts,
+  editPost,
 };

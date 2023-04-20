@@ -1,14 +1,70 @@
-.post-list {
-    display: block;
-    flex-direction: column;
-}
-.header-post {
+.header-post{
     display: flex;
-    position: relative;
+    align-items: center;
+    width: 100%;
 }
 .user-icon {
-    width: 30px;
+    width: 40px;
+    height: 40px;
+    margin-left: 0.5em;
+}
+.username-post{
+    width: 50vw;
+    color: #004AAD;
+    font-weight: 700;
+    margin-left: 1em;
+}
+.body-post{
+    width: 60vw;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    line-height: 1.4;
+    outline: none;
+    margin-left: 1em;
+}
+.footer-post{
+    background: #F6F7F8;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     height: 30px;
+}
+.post-date{
+    margin-left: 1em;
+    
+}
+.edit-delete{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 1em;
+}
+.post-img{
+    width: 25px;
+}
+.footer-btn{
+    border: none;
+    height: 32px;
+    background: #F6F7F8;
+}
+.editing-buttons{
+    width: 87px;
+    height: 32px;
+    background: #EF681A;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    color: #004AAD;
+    border: 1px solid #F0EBE8(30, 30, 30, 0.2);
+    cursor: pointer;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+.post-like{
+    display: flex;
 }
 .not-liked {
     width: 40px;
