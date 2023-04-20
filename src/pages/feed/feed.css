@@ -91,6 +91,7 @@ body {
     display: flex;
     align-items: center;
     margin-top: 10px;
+    gap: 2px;
   }
   
   .likes-posts figure {
@@ -102,18 +103,12 @@ body {
     display: flex;
     justify-content: flex-end;
     margin-top: 10px;
+    align-items: center;
   }
   
   .edit-delete-post-feed figure {
     margin: 0;
     margin-left: 10px;
-  }
-  
-  .likes-posts {
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-  gap: 2px;
   }
   
   .button-like-post,
@@ -128,13 +123,6 @@ body {
     font-weight: bold;
     cursor: pointer;
     margin-right: 10px;
-  }
-  
-  .edit-delete-post-feed {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    margin-top: 10px;
   }
   
   .button-edit,
