@@ -10,7 +10,7 @@ import {
   // arrayUnion,
   // arrayRemove,
   query,
-  // deleteDoc,
+  deleteDoc,
 } from 'firebase/firestore';
 
 import { app } from './configuration.js';
@@ -21,7 +21,6 @@ const db = getFirestore(app);
 
 async function newPost(textpost) {
   const currentDate = new Date();
-
   const createPosts = {
     userId: auth.currentUser.uid,
     username: auth.currentUser.displayName,
@@ -45,13 +44,6 @@ async function findPosts(showPosts) {
   });
 }
 
-function loggedUsersPost(postId, userId) {
-  if (postId === userId) {
-    return true;
-  }
-  return loggedUsersPost;
-}
-
 async function editPost(postId, editContent) {
   const currentDate = new Date();
   const dateString = currentDate.toLocaleDateString('pt-BR');
@@ -61,10 +53,12 @@ async function editPost(postId, editContent) {
   });
 }
 
+const deletePost = async (postId) => deleteDoc(doc(db, 'posts', postId));
+
 export {
   newPost,
   getUsername,
   findPosts,
-  loggedUsersPost,
   editPost,
+  deletePost,
 };

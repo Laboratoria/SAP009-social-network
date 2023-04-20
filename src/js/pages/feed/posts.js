@@ -12,7 +12,7 @@ export function postTemplate(post) {
    </header>
    <textarea disabled class="body-post" id="body-post-${post.id}">${post.post}</textarea>
    <footer class="footer-post">
-     <div class="post-date">${post.date}</div>
+     <div class="post-date">${post.date.toDate().toLocaleDateString('pt-BR')}</div>
      <div class="post-edit-delete edit-delete">
       <button type="button" class="footer-btn" id="edit-btn-${post.id}">
         <img src="img/pen-to-square-regular.png" class="edit-img post-img">
