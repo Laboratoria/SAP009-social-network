@@ -164,7 +164,6 @@ export default () => {
       } else {
         imgLike.setAttribute('src', '../img/panela.png'); // trocar imagem
       }
-
       // botão de editar //
     } else if (element.dataset.editarId) {
       btnSalvar.removeAttribute('hidden');
@@ -173,17 +172,19 @@ export default () => {
     } else if (element.dataset.salvarId) {
       const btnSalvarEdicao = container.querySelector(`[data-salvar-id='${element.dataset.salvarId}']`);
       const areaTextoEdicao = container.querySelector(`[data-texto-id='${element.dataset.salvarId}']`);
-
       btnSalvarEdicao.setAttribute('hidden', true);
       areaTextoEdicao.setAttribute('disabled', true);
       editPost(element.dataset.salvarId, areaTextoEdicao.value);
       // botão excluir //
     } else if (element.dataset.excluirId) {
+      // eslint-disable-next-line no-alert
       if (window.confirm('Tem certeza que gostaria de deletar essa postagem?')) {
         deletarPost(element.dataset.excluirId)
           .then(() => {
+            // eslint-disable-next-line no-alert
             alert('deletado com sucesso');
           }).catch(() => {
+            // eslint-disable-next-line no-alert
             alert('Não foi possível deletar sua postagem. Tente novamente.');
           });
       }
