@@ -7,6 +7,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
+  updateProfile,
 } from 'firebase/auth';
 
 const firebaseConfig = {
@@ -22,13 +23,17 @@ export const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth();
 
-export const fazerLogin = (nome, senha) => {
-  return signInWithEmailAndPassword(auth, nome, senha);
+export const fazerLogin = (email, senha) => {
+  return signInWithEmailAndPassword(auth, email, senha);
 };
 
-export const fazerCadastro = (nome, senha) => {
-  return createUserWithEmailAndPassword(auth, nome, senha);
-};
+export const fazerCadastro = (email, senha, name) => 
+createUserWithEmailAndPassword(auth, email, senha)
+    .then(() =>
+      updateProfile(auth.currentUser, {
+        displayName: name,
+      }))
+    .catch((error) => console.log(error));
 
 export const fazerLoginComGoogle = () => {
   const provider = new GoogleAuthProvider();

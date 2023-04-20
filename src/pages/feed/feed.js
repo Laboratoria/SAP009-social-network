@@ -1,4 +1,4 @@
-import { salvarPost, pegarPost } from '../../firebase/firestore.js';
+import { salvarPost, pegarPost, deletarPost } from '../../firebase/firestore.js';
 
 import { auth } from '../../firebase/firebase.js';
 
@@ -56,12 +56,12 @@ export default () => {
                   <p class="user-name">${posts.username}</p>
                   <p class ="dataPost">${posts.date}</p>
                   </div>
-                  <textarea name="" id="txt-area-postado" cols="70" rows="5">${posts.text}</textarea>
+                  <textarea disabled name="" id="txt-area-postado" cols="70" rows="5">${posts.text}</textarea>
                   <div class="position-btn-postar">
                     <button class="btn-postar">
                       <img class='editar-img' src='./img/editar-informacao.png' alt='logo-google'>
                     </button>
-                    <button class="btn-postar">
+                    <button id="deletando" class="btn-postar">
                       <img class='excluir-img' src='./img/botao-apagar.png' alt='logo-google'>
                     </button>
                     <button class="btn-postar">
@@ -93,6 +93,18 @@ export default () => {
       });
     } else { alert ('Por favor, preencha o campo de postagem!'); }
   });
+
+  //botao de deletar que nao funciona
+  //const btnDeletar = container.querySelector('#deletando');
+  //btnDeletar.addEventListener('click', (e) => {
+    //e.preventDefault();
+    //if (window.confirm('Tem certeza de que deseja excluir a publicação?')) {
+      //deletarPost("bm9aV0E0llOJwlaD2gU3")
+      //.then(() => {
+      // postFeed.remove();
+      //});
+    //}
+  //});
 
   const btnSair = container.querySelector('.btn-sair');
   btnSair.addEventListener('click', () => {

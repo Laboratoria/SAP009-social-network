@@ -28,7 +28,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
+    width: 35vw;
 }
 
 textarea::placeholder {
@@ -47,7 +47,7 @@ textarea::placeholder {
 }
 
 .img-sair {
-  width: 2vw;
+  width: 2.2vw;
   
 }
 
@@ -61,7 +61,7 @@ textarea::placeholder {
 }
 
 .img-user-name {
-  width: 8%;
+  width: 5%;
   margin-left: 3.5%;
 }
 
@@ -102,7 +102,7 @@ textarea::placeholder {
 }
 
 .postar-img, .excluir-img, .editar-img, .curtir-img {
-  width: 40%;
+  width: 55%;
   position:relative;
   top:0;
   padding: 4%;
@@ -116,7 +116,7 @@ textarea::placeholder {
  }
 
 .ilustration-feed {
-  width: 30vw;
+  width: 33vw;
 }
 
 #txt-area-postado {
@@ -134,7 +134,7 @@ textarea::placeholder {
     justify-content: space-between; 
     align-items: center;
     gap: 15%;
-    margin-left: 17%;
+    margin-left: 10%;
     margin-right: 17%;
   }
 

@@ -1,39 +1,41 @@
 
 .img-logo {
-  max-height: 35vh;
-  max-width: 13vw;
+  max-height: 37vh;
+  max-width: 12vw;
+  
 }
 
 .paragrafo{
   color: white; 
   text-align: center;
-  margin: 3% 0 0 4%;
   letter-spacing: 0.03rem;  
   line-height: 1.3em;
   text-shadow: 0.1 0.1 0.2 black;
   text-size-adjust: 1;
+  font-size: 1.2rem;
 }
 
 article {
   max-width: 25em;
-  margin-bottom: 10%;
+  margin-bottom: 3%;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 2.6vh;
+  gap: 2.8vh;
 }
 
 .box-register{
   background: #445864a2;
-  height: 55vh;
+  height: 72vh;
   max-width: 40vw;
   border-radius: 2vw;
   margin-right: 5vw;
-  padding-left: 1.2rem;
-  padding-right: 1.2rem;
-  padding-bottom: 1.5rem;
+  padding-left: 1.3rem;
+  padding-right: 1.3rem;
+  padding-bottom: 1.7rem;
+  padding-top: 2.3rem;
 }
 
 .box-text-img {
@@ -42,7 +44,7 @@ article {
   align-items: center;
   margin-left: 17%;
   margin-right: 17%;
-  gap: 10%;
+  gap: 15%;
 }
 
 .box-01 {
@@ -54,13 +56,12 @@ article {
 .section-register{
   display:flex;
   flex-direction: column;
-  gap: 1.2vw;
+  gap: 1.7vw;
 }
 
 .subtitle-register {
   color: #F56F6F;
   text-align: center;
-  margin-top: 1rem;
   font-weight: bold;
 }
 
@@ -72,7 +73,7 @@ input{
   margin: 0 auto;
   background: #beebe4;
   width: 20vw;
-  height: 1.6rem;
+  height: 2rem;
   padding-left: 1rem;
   font-family: 'Roboto', sans-serif;
   color: #F56F6F;
@@ -106,14 +107,14 @@ textarea:focus, input:focus {
   border-radius: 1rem;
   border: none;
   min-width: 20vw;
-  height: 1.6em;
+  height: 2em;
   margin: 0 auto;
   background: rgba(245, 111, 111, 1);
   color: white; 
   font-weight: bold;
   justify-content: center;
   align-items: center;
-  font-size: 0.8em; 
+  font-size: 0.9em; 
   padding: auto; 
 } 
 
