@@ -95,7 +95,6 @@ const postagem = async () => {
     });
     btnSalvar.addEventListener('click', () => {
       editandoPostagem(post.id, textArea.value);
-      // btnEditar.removeAttribute('class');
       textArea.setAttribute('disabled', 'disabled');
       btnSalvar.style.display = 'none';
       btnEditar.style.display = 'inline-block';
