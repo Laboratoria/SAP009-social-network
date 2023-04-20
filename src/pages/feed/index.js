@@ -1,9 +1,9 @@
-import { newPost, getPost } from "../firebase/firebasestore.js";
-import { auth } from "../firebase/auth.js";
+import { newPost, getPost } from '../firebase/firebasestore.js';
+import { auth } from '../firebase/auth.js';
 
 export default () => {
-  const container = document.createElement("div");
-  container.classList.add("container-feed");
+  const container = document.createElement('div');
+  container.classList.add('container-feed');
 
   const template = `
     <link rel="stylesheet" href="/pages/feed/feed.css">
@@ -99,40 +99,40 @@ export default () => {
   container.innerHTML = template;
 
   function toggleMenu() {
-    const menuMobile = document.getElementById("menu-mobile");
+    const menuMobile = document.getElementById('menu-mobile');
 
-    if (menuMobile.className === "menu-mobile-active") {
-      menuMobile.className = "menu-mobile";
-      menuMobile.setAttribute("src", "close.png");
-      document.getElementsByClassName("button-hamburguer").display = "none";
-      document.getElementsByClassName("img-close").display = "block";
+    if (menuMobile.className === 'menu-mobile-active') {
+      menuMobile.className = 'menu-mobile';
+      menuMobile.setAttribute('src', 'close.png');
+      document.getElementsByClassName('button-hamburguer').display = 'none';
+      document.getElementsByClassName('img-close').display = 'block';
     } else {
-      menuMobile.className = "menu-mobile-active";
-      menuMobile.setAttribute("src", "menu-hamburguer.png");
-      document.getElementsByClassName("button-hamburguer").display = "block";
-      document.getElementsByClassName("img-close").display = "none";
+      menuMobile.className = 'menu-mobile-active';
+      menuMobile.setAttribute('src', 'menu-hamburguer.png');
+      document.getElementsByClassName('button-hamburguer').display = 'block';
+      document.getElementsByClassName('img-close').display = 'none';
     }
   }
 
-  const menuOpen = container.querySelector(".button-hamburguer");
-  menuOpen.addEventListener("click", toggleMenu);
+  const menuOpen = container.querySelector('.button-hamburguer');
+  menuOpen.addEventListener('click', toggleMenu);
 
-  const menuClose = container.querySelector(".img-close");
-  menuClose.addEventListener("click", toggleMenu);
+  const menuClose = container.querySelector('.img-close');
+  menuClose.addEventListener('click', toggleMenu);
 
-  //limpar campo de post depois de postado
+  // limpar campo de post depois de postado
 
-  function cleanPost(){
-    document.querySelector(".textarea").value = "";
+  function cleanPost() {
+    document.querySelector('.textarea').value = '';
   }
 
   // pegar o post e armazenar no firabase
-  const text = container.querySelector(".textarea");
-  const buttonPublish = container.querySelector(".button-publish");
-  buttonPublish.addEventListener("click", () => {
-    if (text.value !== "") {
+  const text = container.querySelector('.textarea');
+  const buttonPublish = container.querySelector('.button-publish');
+  buttonPublish.addEventListener('click', () => {
+    if (text.value !== '') {
       const today = new Date();
-      //const dataPostagem = today.toLocaleDateString();
+      // const dataPostagem = today.toLocaleDateString();
       const username = auth.currentUser.displayName;
       const idUser = auth.currentUser.uid;
       newPost(text.value, today, username, idUser).then(() => {
@@ -140,16 +140,16 @@ export default () => {
         cleanPost();
       });
     } else {
-      alert("Por favor, escreva algo para publicar!");
+      alert('Por favor, escreva algo para publicar!');
     }
   });
-  //criar uma função para acessar os posts
+  // criar uma função para acessar os posts
 
-  //responsável por criar
+  // responsável por criar
 
   const printPost = async () => {
     const arrayPost = await getPost();
-    const template = arrayPost
+    const templatePublish = arrayPost
       .map(
         (post) => `
     <section class="posts-users">
@@ -174,8 +174,8 @@ export default () => {
   </section>
     `
       )
-      .join("");
-    container.querySelector(".post-container").innerHTML = template;
+      .join('');
+    container.querySelector('.post-container').innerHTML = templatePublish;
   };
   printPost();
   return container;
