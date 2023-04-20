@@ -9,14 +9,13 @@ import {
   getDocs,
 } from 'firebase/firestore';
 
-import { async } from 'regenerator-runtime';
-
-import { app } from './firebase.js';
+import { app, auth } from './firebase.js';
 
 const db = getFirestore(app);
 
 export const salvarPost = async (date, id, text, username) =>
   addDoc(collection(db, 'posts'), {
+    userId: auth.currentUser.uid,
     date,
     id,
     like: [],

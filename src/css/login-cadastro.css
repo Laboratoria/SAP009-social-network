@@ -1,6 +1,6 @@
 
 .img-logo {
-  max-height: 37vh;
+  max-height: 35vh;
   max-width: 12vw;
   
 }
@@ -9,10 +9,8 @@
   color: white; 
   text-align: center;
   letter-spacing: 0.03rem;  
-  line-height: 1.3em;
   text-shadow: 0.1 0.1 0.2 black;
-  text-size-adjust: 1;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 article {
@@ -44,7 +42,7 @@ article {
   align-items: center;
   margin-left: 17%;
   margin-right: 17%;
-  gap: 15%;
+  gap: 35%;
 }
 
 .box-01 {

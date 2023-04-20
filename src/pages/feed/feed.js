@@ -24,8 +24,7 @@ export default () => {
        <section class="feed-posts">
           <div class="postando">
               <div class="position-user-name">
-              <img class="img-user-name" src="./img/profile-user.png" alt="user-name">
-              <p class="user-name">username</p>
+              <p class="user-name">O que deseja compartilhar?</p>
               </div>
               <textarea name="" id="txt-area" cols="70" rows="5" placeholder= "Escreva seu post"></textarea>
               <div class="posição-botão-postar">
@@ -54,16 +53,17 @@ export default () => {
                   <div class="position-user-name">
                   <img class="img-user-name" src="./img/profile-user.png" alt="user-name">
                   <p class="user-name">${posts.username}</p>
-                  <p class ="dataPost">${posts.date}</p>
                   </div>
+                  <p class ="dataPost">${posts.date}</p>
                   <textarea disabled name="" id="txt-area-postado" cols="70" rows="5">${posts.text}</textarea>
                   <div class="position-btn-postar">
-                    <button class="btn-postar">
-                      <img class='editar-img' src='./img/editar-informacao.png' alt='logo-google'>
-                    </button>
-                    <button id="deletando" class="btn-postar">
-                      <img class='excluir-img' src='./img/botao-apagar.png' alt='logo-google'>
-                    </button>
+                    ${posts.userId === auth.currentUser.uid ? `   <button class="btn-postar">
+                    <img class='editar-img' src='./img/editar-informacao.png' alt='logo-google'>
+                  </button>
+                  <button id="deletando" class="btn-postar">
+                    <img class='excluir-img' src='./img/botao-apagar.png' alt='logo-google'>
+                  </button>` : ''}
+                 
                     <button class="btn-postar">
                      <img class='curtir-img' src='./img/ame.png' alt='logo-google'>
                      <label id="likes-quantities">${posts.like}</label>
