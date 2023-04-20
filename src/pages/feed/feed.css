@@ -214,12 +214,15 @@ div > .name-post-user{
   border: none;
   background-color: #AEE2FF;
   cursor: pointer;
-
-
 }
 
 .form-pots{
   margin-top: 7px;
+}
+
+.date-and-hour{
+  font-size: 10px;
+  color: #5B7083;
 }
 
 /* desktop */
@@ -316,6 +319,10 @@ div > .name-post-user{
   .text-post-user{
     margin: 10px 3px;
     font-size: 16px;
+  }
+  .date-and-hour{
+    font-size: 12px;
+    color: #5B7083;
   }
   
 }
