@@ -81,15 +81,6 @@ body{
     list-style-type: none;
 }
 
-.menu-section.show .position-nav .options-sair, .options-perfil {
-    text-align: center;
-    display: block;
-    font-size: 1.5em;
-    line-height: 6rem;
-    color: var(--amarelinho);
-    transition: 0.5s;
-}
-
 .options-sair{
     background-color: transparent;
     border: none;
@@ -99,6 +90,17 @@ body{
     cursor: pointer;
     text-decoration: underline;
 }
+
+.menu-section.show .position-nav .options-sair, .options-perfil {
+    text-align: center;
+    display: block;
+    font-size: 1.5em;
+    line-height: 6rem;
+    color: var(--amarelinho);
+    transition: 0.5s;
+}
+
+
 
 .options-perfil:hover{
     cursor: pointer;
@@ -199,7 +201,7 @@ li > a{
 
     .options-perfil, .options-sair{
         color: var(--amarelinho);
-        font-size: var(--fonte-logo);
+        font-family: var(--fonte-logo);
         margin-right: 70px;
         font-size: 1.5em;
     }
