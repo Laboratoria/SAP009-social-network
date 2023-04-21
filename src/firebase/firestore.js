@@ -10,7 +10,7 @@ import {
   arrayUnion,
   arrayRemove,
   query,
-  // deleteDoc,
+  deleteDoc,
 } from 'firebase/firestore';
 
 import { app } from './configuration.js';
@@ -64,11 +64,14 @@ async function editPost(postId, editContent) {
   });
 }
 
+const deletePost = async (postId) => deleteDoc(doc(db, 'posts', postId));
+
 export {
   newPost,
   getUserData,
   findPosts,
+  editPost,
+  deletePost,
   likePosts,
   dislikePosts,
-  editPost,
 };
