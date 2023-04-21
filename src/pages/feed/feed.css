@@ -309,6 +309,11 @@ li > a{
 
 }
 
+.btn-usuarios{
+display: flex;
+gap:5px;
+}
+
 .count{
     font-family: var(--fonte-logo);
     color: #500B19;

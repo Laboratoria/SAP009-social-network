@@ -11,6 +11,12 @@ import {
   editPost,
 } from '../../servicesFirebase/fireStore';
 
+import logoPequena from '../../img/logo-sem-escrita.png';
+import panelaVazia from '../../img/panela.png';
+import panelaCheia from '../../img/panela-preenchida.png';
+import editar from '../../img/icone-editar.png';
+import excluir from '../../img/icone-excluir.png';
+
 export default () => {
   const container = document.createElement('div');
   const template = `
@@ -18,7 +24,7 @@ export default () => {
   <header>
       <section class="container-feed">
           <div class="header">
-                <a href="/#feed"><img class="logo-feed" src="./img/logo-sem-escrita.png"></a>
+                <a href="/#feed"><img class="logo-feed" src="${logoPequena}"></a>
                   <div class="menu-section">
                   <button class="menu-toggle">
                    <div class="one"></div>
@@ -77,15 +83,15 @@ export default () => {
             <section class="icones">
             <div class="curtida">
             <button class="btn-like"><img data-like-id="${doc.id}" class="img-curtida" src=" 
-            ${dados.likes.includes(auth.currentUser.uid) ? '../img/panela-preenchida.png' : '../img/panela.png'}"></button>
+            ${dados.likes.includes(auth.currentUser.uid) ? panelaCheia : panelaVazia}"></button>
             <div class='count' data-count-id="${doc.id}">${dados.likes.length}</div>
             </div>
 
             <button class="btn-salvar" hidden data-salvar-id="${doc.id}">Salvar</button>
-            ${dados.idUser === auth.currentUser.uid ? `<div class="btn-usuarios">
-
-              <button class="btn-editar"><img data-editar-id="${doc.id}" class="img-editar" src="../img/icone-editar.png"></button>
-              <button class="btn-excluir"><img data-excluir-id="${doc.id}" class="img-excluir" src="../img/icone-excluir.png"></button>
+            ${dados.idUser === auth.currentUser.uid ? `
+            <div class="btn-usuarios">
+              <button class="btn-editar"><img data-editar-id="${doc.id}" class="img-editar" src=${editar} </button>
+              <button class="btn-excluir"><img data-excluir-id="${doc.id}" class="img-excluir" src="${excluir}"></button>
             </div>` : ''} 
         </div>
     </section>
