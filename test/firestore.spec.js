@@ -1,6 +1,6 @@
 import { getAuth } from 'firebase/auth';
 import { addDoc, collection } from 'firebase/firestore';
-import { getUsername, newPost } from '../src/firebase/firestore';
+import { getUserDate, newPost } from '../src/firebase/firestore';
 
 jest.mock('firebase/auth');
 

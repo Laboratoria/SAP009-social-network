@@ -3,6 +3,7 @@ import {
   likePosts,
   editPost,
   getUserData,
+  deletePost,
 } from '../../../firebase/firestore';
 
 export function postTemplate(post) {
@@ -85,38 +86,57 @@ export function postTemplate(post) {
 
   const bodyPost = postContainer.querySelector(`#body-post-${post.id}`);
   const editDeletePost = postContainer.querySelector('.post-edit-delete');
-  const editBtn = postContainer.querySelector('.edit-btn');
+  // const postEditing = postContainer.querySelector('.post-editing');
 
   const saveCancelBtn = `
     <div class="post-editing edit-delete" id="post-editing-${post.id}">
-      <button type="button" class="save-btn editing-buttons">SAVE</button>
-      <button type="button" class="cancel-btn editing-buttons">CANCEL</button>
+      <button type="button" class="editing-buttons save-btn">SAVE</button>
+      <button type="button" class="editing-buttons cancel-btn">CANCEL</button>
     </div>
   `;
 
-  const saveBtn = postContainer.querySelector('.save-btn');
-  const cancelBtn = postContainer.querySelector('.cancel-btn');
-  console.log(editBtn);
+  const editBtn = postContainer.querySelector('.edit-btn');
   if (editBtn) {
     editBtn.addEventListener('click', () => {
       bodyPost.removeAttribute('disabled');
       editDeletePost.innerHTML = '';
       editDeletePost.innerHTML = saveCancelBtn;
     });
-
-    if (saveBtn) {
-      saveBtn.addEventListener('click', () => {
-        editPost(post.id, bodyPost.value);
-        bodyPost.setAttribute('disabled');
-      });
-    }
-
-    if (cancelBtn) {
-      cancelBtn.addEventListener('click', () => {
-        bodyPost.setAttribute('disabled');
-        bodyPost.innerHTML = `${post.post}`;
-      });
-    }
   }
+
+  const saveBtn = postContainer.querySelector('.save-btn');
+  console.log(saveBtn);
+  if (saveBtn) {
+    saveBtn.addEventListener('click', () => {
+      bodyPost.setAttribute('disabled');
+      editPost(post.id, bodyPost.value);
+      saveCancelBtn.style.visibility = 'hidden';
+      editDeletePost.style.visibility = 'visible';
+    });
+  }
+
+  const cancelBtn = postContainer.querySelector('.cancel-btn');
+  console.log(cancelBtn);
+  if (cancelBtn) {
+    cancelBtn.addEventListener('click', () => {
+      bodyPost.setAttribute('disabled');
+      bodyPost.innerHTML = `${post.post}`;
+      saveCancelBtn.style.display = 'none';
+      saveCancelBtn.innerHTML = editDeletePost;
+    });
+  }
+
+  const deleteBtn = postContainer.querySelector('delete-btn');
+  console.log(deleteBtn);
+  if (deleteBtn) {
+    deleteBtn.addEventListener('click', () => {
+    // eslint-disable-next-line no-alert
+      if (window.confirm('Do you want to delet your post?')) {
+        deletePost(post.postId);
+        postContainer.remove();
+      }
+    });
+  }
+
   return postContainer;
 }
