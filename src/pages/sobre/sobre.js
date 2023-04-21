@@ -3,6 +3,8 @@ import devStella from '../../img/icones-sobre/devStella.png';
 import iconeGitHub from '../../img/icones-sobre/iconeGitHub.png';
 import { sairPerfil } from '../../servicesFirebase/firebaseAuth';
 
+import logoPequena from '../../img/logo-sem-escrita.png';
+
 export default () => {
   const container = document.createElement('div');
   const template = `
@@ -10,7 +12,7 @@ export default () => {
   <header>
   <section class="container-feed">
       <div class="header">
-            <a href="/#feed"><img class="logo-feed" src="./img/logo-sem-escrita.png"></a>
+            <a href="/#feed"><img class="logo-feed" src="${logoPequena}"></a>
             <div class='feed-display'>
             
             </div>
