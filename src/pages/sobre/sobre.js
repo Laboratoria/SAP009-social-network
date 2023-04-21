@@ -41,7 +41,7 @@ export default () => {
         <section class='main-sobre'>
                 <div>
                     <div class='description'>
-                        <p class='texto-sobre'>A Brúlle é uma rede social criada para os amantes da Gastronomia se conectarem e compartilharem receitas, dicas de restaurantes e tudo que envolve o mundo gastronôminco.</p>
+                        <p class='texto-sobre'>A Brúlle é uma rede social criada para os amantes da Gastronomia se conectarem e compartilharem receitas, dicas de restaurantes e tudo que envolve o mundo gastronômico.</p>
                     </div>
                     <p class='devs-sobre'>Conheça as Desenvolvedoras:</p>
                 </div>
