@@ -1,6 +1,6 @@
 import { getAuth } from 'firebase/auth';
 import { addDoc, collection } from 'firebase/firestore';
-import { getUserDate, newPost } from '../src/firebase/firestore';
+import { getUserData, newPost } from '../src/firebase/firestore';
 
 jest.mock('firebase/auth');
 
@@ -17,7 +17,7 @@ describe('newPost', () => {
     const mockCollection = 'collection';
     collection.mockReturnValueOnce(mockCollection);
 
-    const textPost = 'hey  there, test!';
+    const textPost = 'hey there, test!';
 
     await newPost(textPost);
 
@@ -28,17 +28,17 @@ describe('newPost', () => {
   });
 });
 
-describe('getUsername', () => {
-  it('should return the username of the logged user', () => {
+describe('getUserData', () => {
+  it('should return the users data', () => {
     const mockAuth = {
       currentUser: {
-        displayName: 'test',
+        uid: 12345,
       },
     };
     getAuth.mockReturnValueOnce(mockAuth);
 
-    expect(typeof getUsername).toBe('function');
-    expect(getUsername).toHaveBeenCalledTimes(1);
-    expect(getUsername).toHaveReturnedWith('test');
+    expect(typeof getUserData).toBe('function');
+    expect(getUserData).toHaveBeenCalledTimes(1);
+    expect(getUserData).toHaveReturnedWith('test');
   });
 });
