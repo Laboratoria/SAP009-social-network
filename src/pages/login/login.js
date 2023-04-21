@@ -3,6 +3,8 @@ import {
   googleLogin,
 } from '../../servicesFirebase/firebaseAuth';
 
+import logoClara from '../../img/logo-escrita-clara.png';
+
 export default () => {
   const container = document.createElement('div');
 
@@ -14,7 +16,7 @@ export default () => {
     <div class="coluna-2">
       <section class="container">
         <section class="imagem-logo">
-          <img class="logo-escrita-clara" src="./img/logo-escrita-clara.png">
+          <img class="logo-escrita-clara" src="${logoClara}">
         </section>
 
     <section class="fundo-form">
