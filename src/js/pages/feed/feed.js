@@ -6,6 +6,8 @@ import {
 
 import { postTemplate } from './posts.js';
 
+import userIcon from '../../../img/user-icon.png';
+
 export default () => {
   const feedContainer = document.createElement('section');
   feedContainer.classList.add('feed-section');
@@ -16,7 +18,7 @@ export default () => {
     <h2>Share your thoughts...</h2>
     <div class="user-post-area">
     <div class="user-area">  
-      <img src="img/user-icon.png" class="user-icon">
+      <img src="${userIcon}" class="user-icon">
       <div class="display-username"></div>
     </div>
       <div class="post-area">
