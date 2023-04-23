@@ -28,6 +28,7 @@ export function postTemplate(post) {
       <button type="button" class="footer-btn delete-btn">
         <img src="${trash}" class="delete-img post-img">
       </button>
+      <div class="number-like">${countLikes}</div>
     `;
     }
     return '';
@@ -100,6 +101,9 @@ export function postTemplate(post) {
     }
     return '';
   };
+
+  const postEditing = postContainer.querySelector(`#post-editing-${post.id}`);
+
 
   const saveBtn = postContainer.querySelector('.save-btn');
   const cancelBtn = postContainer.querySelector('.cancel-btn');
