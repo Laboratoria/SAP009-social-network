@@ -104,6 +104,7 @@ export function postTemplate(post) {
 
   const postEditing = postContainer.querySelector(`#post-editing-${post.id}`);
 
+
   const saveBtn = postContainer.querySelector('.save-btn');
   const cancelBtn = postContainer.querySelector('.cancel-btn');
 
