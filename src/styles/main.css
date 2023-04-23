@@ -6,6 +6,8 @@
 @import "./sign-up.css";
 @import "./header-feed.css";
 @import "./feed.css";
+@import "./about.css";
+@import "./faq.css";
 @import "./posts.css";
 
 html {

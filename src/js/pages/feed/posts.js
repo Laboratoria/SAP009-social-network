@@ -6,6 +6,12 @@ import {
   deletePost,
 } from '../../../firebase/firestore';
 
+import pen from '../../../img/pen-to-square-regular.png';
+import trash from '../../../img/trash-can-regular.png';
+import userIcon from '../../../img/user-icon.png';
+import heartEmpty from '../../../img/heart-regular.png';
+import heartFull from '../../../img/heart-solid.png';
+
 export function postTemplate(post) {
   const postContainer = document.createElement('section');
   postContainer.classList.add('post-section');
@@ -17,10 +23,10 @@ export function postTemplate(post) {
     if (isAuthor) {
       return `
       <button type="button" class="footer-btn edit-btn">
-        <img src="img/pen-to-square-regular.png" class="edit-img post-img">
+        <img src="${pen}" class="edit-img post-img">
       </button>
       <button type="button" class="footer-btn delete-btn">
-        <img src="img/trash-can-regular.png" class="delete-img post-img">
+        <img src="${trash}" class="delete-img post-img">
       </button>
     `;
     }
@@ -31,7 +37,7 @@ export function postTemplate(post) {
   <div class="post-list">
    <hr> 
    <header class="header-post">
-     <img src="img/user-icon.png" class="user-icon">
+     <img src="${userIcon}" class="user-icon">
      <div class="username-post">${post.username}</div>
    </header>
    <textarea disabled class="body-post" id="body-post-${post.id}">${post.post}</textarea>
@@ -41,8 +47,8 @@ export function postTemplate(post) {
      <div class="post-like">
       <div class="number-like">${countLikes}</div>
       <button type="button" class="like-btn footer-btn">
-       <img src="img/heart-regular.png" class="not-liked post-img">
-       <img src="img/heart-solid.png" class="liked post-img">
+       <img src="${heartEmpty}" class="not-liked post-img">
+       <img src="${heartFull}" class="liked post-img">
       </button>
      </div>
    </footer>
@@ -81,6 +87,7 @@ export function postTemplate(post) {
   const bodyPost = postContainer.querySelector(`#body-post-${post.id}`);
   const editDeletePost = postContainer.querySelector('.post-edit-delete');
   // const postEditing = postContainer.querySelector('.post-editing');
+  const editBtn = postContainer.querySelector('.edit-btn');
 
   const saveCancelBtn = () => {
     if (editBtn) {
@@ -94,7 +101,6 @@ export function postTemplate(post) {
     return '';
   };
 
-  const editBtn = postContainer.querySelector('.edit-btn');
   const saveBtn = postContainer.querySelector('.save-btn');
   const cancelBtn = postContainer.querySelector('.cancel-btn');
 

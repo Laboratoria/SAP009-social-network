@@ -1,17 +1,18 @@
 import { logout } from '../../../firebase/authentication.js';
 
+import logo from '../../../img/logo-icon-no-background.png';
+
 export default () => {
   const headerFeedContainer = document.createElement('header');
   headerFeedContainer.classList.add('header-feed');
 
   const headerFeedTemplate = `
 <nav id="nav-feed">
-    <a href="/#feed"><img src='./img/logo-icon-no-background.png' id="logo-feed" alt="Logo icon to timeline"></a>
+    <a href="/#feed"><img src="${logo}" id="logo-feed" alt="Logo icon to timeline"></a>
     <button aria-label='Open Menu' id="menu-btn" aria-expanded='false'>
         <div id="burger-btn"></div>
     </button>
     <ul id="menu-feed">
-        <li class="nav-item"><a class="menu-item" href="#communities">Communities</a></li>
         <li class="nav-item"><a class="menu-item" href="#faq" id="faq">FAQ</a></li>
         <li class="nav-item"><a class="menu-item" href="#about">About Us</a></li>
         <li class="nav-item"><button class="menu-item" type="button" id="logout" class="nav-item">Log out</button></li>
