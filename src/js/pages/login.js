@@ -1,6 +1,9 @@
 import { loginToFeed, loginWithGoogle, resetPassword } from '../../firebase/authentication.js';
 import { errorLogin } from '../../firebase/error.js';
 
+import logoComplete from '../../img/logo-s2s-transparent.png';
+import logoGoogle from '../../img/google-37.png';
+
 export default () => {
   const loginContainer = document.createElement('section');
   loginContainer.classList.add('login-section');
@@ -9,7 +12,7 @@ export default () => {
 <form class="form-login" action="">
   <div class="card-login">
     <div class="card-top">
-      <img class="logo-login" src="img/logo-s2s-transparent.png" alt="Logo image">
+      <img class="logo-login" src="${logoComplete}" alt="Logo image">
       <h1>LOGIN</h1>
     </div>
     <div class="input-group">
@@ -45,7 +48,7 @@ export default () => {
     <div class="btn-group">
       <button class="login-google">
         <span>
-         <img id="logo-google" src="./img/google-37.png" alt="google">
+         <img id="logo-google" src="${logoGoogle}" alt="google">
          Sign in with Google
         </span>
       </button>

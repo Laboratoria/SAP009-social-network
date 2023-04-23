@@ -1,0 +1,49 @@
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    padding: 25px;
+    text-align: center;
+    color: #004AAD;
+}
+.dev-pic {
+    width: 300px;
+    height: 300px;
+    border: 3px solid #EF681A;
+    border-radius: 30px;
+}
+.dev {
+    margin-left: 25px;
+} 
+@media screen and (min-width: 600px) {
+   .dev {
+        display: inline-block;
+        margin-left: 95px;
+    }
+}
+.dev-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    text-align: center;
+    color: #004AAD;
+}
+.linkedin-logo {
+    width: 30px;
+    height: 30px;
+}
+.github-cat {
+    width: 25px;
+    height: 25px;
+    padding: 5px;
+}
+.dev-links {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    text-decoration: none;
+    color: #004AAD;
+}
+.logo-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
