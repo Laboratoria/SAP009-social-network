@@ -13,7 +13,7 @@
 }
 
 /*logo principal*/
-#logo-complete{
+#logo-complete {
     width: 20em;
     height: 12em;
     margin-top: 93px;
@@ -136,6 +136,10 @@
 @media screen and (min-width: 1000px) {
     .icons-text-home {
         margin-left: 140px;
+    }
+    #logo-complete {
+        margin-left: 90px;
+        padding: 20px;
     }
 }
 
