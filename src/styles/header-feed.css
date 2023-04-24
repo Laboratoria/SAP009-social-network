@@ -46,9 +46,10 @@ body, ul {
 #logout {
     border: none;
     background: none;
+    cursor: pointer;
 }
 
-@media (max-width: 650px) {
+@media (max-width: 600px) {
     #menu-feed {
         display: block;
         position: absolute;

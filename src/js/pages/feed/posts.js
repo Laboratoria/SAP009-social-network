@@ -1,6 +1,5 @@
 import {
-  dislikePosts,
-  likePosts,
+  like,
   editPost,
   getUserData,
   deletePost,
@@ -15,7 +14,7 @@ import heartFull from '../../../img/heart-solid.png';
 export function postTemplate(post) {
   const postContainer = document.createElement('section');
   postContainer.classList.add('post-section');
-  let countLikes = post.likes.length;
+  const countLikes = post.likes.length;
   const userData = getUserData();
   const isAuthor = userData.uid === post.userId;
 
@@ -28,7 +27,6 @@ export function postTemplate(post) {
       <button type="button" class="footer-btn delete-btn">
         <img src="${trash}" class="delete-img post-img">
       </button>
-      <div class="number-like">${countLikes}</div>
     `;
     }
     return '';
@@ -41,7 +39,7 @@ export function postTemplate(post) {
      <img src="${userIcon}" class="user-icon">
      <div class="username-post">${post.username}</div>
    </header>
-   <textarea disabled class="body-post" id="body-post-${post.id}">${post.post}</textarea>
+   <textarea disabled class="body-post" id="body-post-${post.postId}">${post.post}</textarea>
    <footer class="footer-post">
      <div class="post-date">${post.date.toDate().toLocaleDateString('pt-BR')}</div>
      <div class="post-edit-delete edit-delete">${editUserPost()}</div>
@@ -68,69 +66,61 @@ export function postTemplate(post) {
     liked.style.display = 'flex';
   }
 
-  likeButton.addEventListener('click', () => {
-    if (likesCollection.includes(userData.uid)) {
-      dislikePosts(post.id, userData.uid);
-      disliked.style.display = 'flex';
-      liked.style.display = 'none';
-      countLikes -= 1;
-      likesCounter.innerHTML = countLikes;
-    } else {
-      likePosts(post.id, userData.uid);
+  likeButton.addEventListener('click', async () => {
+    const result = await like(post.postId, userData.uid);
+    likesCounter.innerHTML = result.count;
+    if (result.true) {
       disliked.style.display = 'none';
       liked.style.display = 'flex';
-      countLikes += 1;
-      likesCounter.innerHTML = countLikes;
-      likesCollection.push(userData.uid);
+    } else {
+      disliked.style.display = 'flex';
+      liked.style.display = 'none';
     }
   });
 
-  const bodyPost = postContainer.querySelector(`#body-post-${post.id}`);
+  const bodyPost = postContainer.querySelector(`#body-post-${post.postId}`);
   const editDeletePost = postContainer.querySelector('.post-edit-delete');
   // const postEditing = postContainer.querySelector('.post-editing');
   const editBtn = postContainer.querySelector('.edit-btn');
 
-  const saveCancelBtn = () => {
-    if (editBtn) {
-      return `
-    <div class="post-editing" id="post-editing-${post.id}">
+  const saveCancelBtn = `
+    <div class="post-editing" id="post-editing-${post.postId}">
       <button type="button" class="save-btn editing-buttons">SAVE</button>
       <button type="button" class="cancel-btn editing-buttons">CANCEL</button>
     </div>
   `;
+
+  function editingPost() {
+    const saveBtn = postContainer.querySelector('.save-btn');
+    const cancelBtn = postContainer.querySelector('.cancel-btn');
+
+    if (cancelBtn) {
+      cancelBtn.addEventListener('click', () => {
+        bodyPost.innerHTML = '';
+        bodyPost.innerHTML = post.post;
+        bodyPost.setAttribute('disabled', true);
+        editDeletePost.innerHTML = '';
+        editDeletePost.innerHTML = editUserPost();
+      });
     }
-    return '';
-  };
-
-  const postEditing = postContainer.querySelector(`#post-editing-${post.id}`);
-
-  const saveBtn = postContainer.querySelector('.save-btn');
-  const cancelBtn = postContainer.querySelector('.cancel-btn');
+    if (saveBtn) {
+      saveBtn.addEventListener('click', () => {
+        editPost(post.postId, bodyPost.value);
+        bodyPost.setAttribute('disabled', true);
+      });
+    }
+  }
 
   if (editBtn) {
     editBtn.addEventListener('click', () => {
       bodyPost.removeAttribute('disabled');
       editDeletePost.innerHTML = '';
-      editDeletePost.innerHTML = saveCancelBtn();
-    });
-  }
-  console.log(cancelBtn);
-  if (cancelBtn) {
-    cancelBtn.addEventListener('click', () => {
-      console.log('clicked');
-      bodyPost.setAttribute('disabled');
-      bodyPost.innerHTML = `${post.post}`;
-    });
-  }
-  if (saveBtn) {
-    saveBtn.addEventListener('click', () => {
-      editPost(post.id, bodyPost.value);
-      bodyPost.setAttribute('disabled');
+      editDeletePost.innerHTML = saveCancelBtn;
+      editingPost();
     });
   }
 
-  const deleteBtn = postContainer.querySelector('delete-btn');
-  console.log(deleteBtn);
+  const deleteBtn = postContainer.querySelector('.delete-btn');
   if (deleteBtn) {
     deleteBtn.addEventListener('click', () => {
     // eslint-disable-next-line no-alert

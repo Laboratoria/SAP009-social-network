@@ -12,7 +12,7 @@ export default () => {
     <img src="${logoGithub}" alt="cat icon" class="github-cat"><a href="https://github.com/marinacezario" class="footer-names">Marina Cezário</a>
   </div>
   <div class="git-name">
-    <img src="${logoGithub}" alt="cat icon" class="github-cat"><a href="https://github.com/silversantos" class="footer-names">Silver Santos</a><
+    <img src="${logoGithub}" alt="cat icon" class="github-cat"><a href="https://github.com/silversantos" class="footer-names">Silver Santos</a>
   </div>
 </div>
   `;

@@ -11,6 +11,7 @@ import {
   arrayRemove,
   query,
   deleteDoc,
+  getDoc,
 } from 'firebase/firestore';
 
 import { app } from './configuration.js';
@@ -40,9 +41,11 @@ const getUserData = () => auth.currentUser;
 async function findPosts(showPosts) {
   const queryOrder = query(collection(db, 'posts'), orderBy('date', 'desc'));
   onSnapshot(queryOrder, (querySnapshot) => {
+    const posts = [];
     querySnapshot.forEach((post) => {
-      showPosts({ ...post.data(), postId: post.id });
+      posts.push({ ...post.data(), postId: post.id });
     });
+    showPosts(posts);
   });
 }
 async function likePosts(postId, userId) {
@@ -54,6 +57,22 @@ async function dislikePosts(postId, userId) {
   await updateDoc(doc(db, 'posts', postId), {
     likes: arrayRemove(userId),
   });
+}
+
+async function getPostById(postId) {
+  const postRef = doc(db, 'posts', postId);
+  const post = await getDoc(postRef);
+  return post.data();
+}
+
+async function like(postId, userId) {
+  const post = await getPostById(postId);
+  if (post.likes.includes(userId)) {
+    await dislikePosts(postId, userId);
+    return { liked: false, count: post.likes.length - 1 };
+  }
+  await likePosts(postId, userId);
+  return { liked: true, count: post.likes.length + 1 };
 }
 
 async function editPost(postId, editContent) {
@@ -73,6 +92,5 @@ export {
   findPosts,
   editPost,
   deletePost,
-  likePosts,
-  dislikePosts,
+  like,
 };

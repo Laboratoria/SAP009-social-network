@@ -43,8 +43,11 @@ export default () => {
   const timeline = feedContainer.querySelector('#timeline');
 
   displayUsername.innerHTML = getUserData().displayName;
-  const showPosts = (post) => {
-    timeline.appendChild(postTemplate(post));
+  const showPosts = (posts) => {
+    timeline.innerHTML = '';
+    posts.forEach((post) => {
+      timeline.appendChild(postTemplate(post));
+    });
   };
 
   findPosts(showPosts);
