@@ -13,7 +13,7 @@
 }
 
 /*logo principal*/
-#logo-complete{
+#logo-complete {
     width: 20em;
     height: 12em;
     margin-top: 93px;
@@ -49,7 +49,7 @@
 
 /*título secundário em laranja*/
 .home-initial-text h2 {
-    position: absolute;
+    position: absolute; 
     height: 118px;
     top: 365px;
     font-size: 1.75em;
@@ -136,6 +136,25 @@
 @media screen and (min-width: 600px) {
     .icons-text-home {
         margin-left: 140px;
+    }
+    #logo-complete {
+        margin-left: 150px;
+        padding: 30px;
+    }
+    .home-initial-text h1 {
+        font-size: 25px;
+        margin-right: 600px;
+    }
+    .home-initial-text h2 {
+        font-size: 25px;
+        margin-right: 600px;
+    }
+    .main-content-home {
+        margin-left: 500px;
+    }
+    .home-main {
+        display: flex;
+        flex-direction: row;
     }
 }
 

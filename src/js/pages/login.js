@@ -37,7 +37,7 @@ export default () => {
       <button type="submit" id="login-btn">LET'S GO!</button>
       <div id="error-login"></div>
     </div>
-    <div class="login-links">
+    <div class="login-links forgot-password">
       <a href="/#signup">Click here if you still don't have an account.</a>
     </div>
   </div>
