@@ -39,9 +39,11 @@ const getUserData = () => auth.currentUser;
 async function findPosts(showPosts) {
   const queryOrder = query(collection(db, 'posts'), orderBy('date', 'desc'));
   onSnapshot(queryOrder, (querySnapshot) => {
+    const posts = [];
     querySnapshot.forEach((post) => {
-      showPosts({ ...post.data(), postId: post.id });
+      posts.push({ ...post.data(), postId: post.id });
     });
+    showPosts(posts);
   });
 }
 async function likePosts(postId, userId) {
