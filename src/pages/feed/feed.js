@@ -3,8 +3,8 @@ import { salvarPost, pegarPost, deletarPost } from '../../firebase/firestore.js'
 import { auth } from '../../firebase/firebase.js';
 
 export default () => {
-    const container = document.createElement('div');
-    const template = `
+  const container = document.createElement('div');
+  const template = `
   <header class="header">
   <div class="div-img-logo">
   <img class="logo-feed" src='./img/lofeedsemfundo.png' alt='logo HelParents' class='img-logo'>
@@ -41,11 +41,11 @@ export default () => {
      </main>
      `;
 
-    container.innerHTML = template;
+  container.innerHTML = template;
 
-    const printPost = async () => {
-        const arrayPosts = await pegarPost();
-        const postList = arrayPosts.map((posts) => `
+  const printPost = async () => {
+    const arrayPosts = await pegarPost();
+    const postList = arrayPosts.map((posts) => `
       <section class="areaPostado" id="${posts.id}">
         <div class="postado">
         <ul>
@@ -93,7 +93,21 @@ export default () => {
         };
       });
     });
-  }
+
+    arrayPosts.forEach(post => {
+      const btnEditar = document.getElementById(post.id + 'editar');
+      btnEditar.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (window.confirm('Tem certeza de que deseja editar a publicação?')) {
+          editarPosts(post.id)
+            .then(() => {
+              const areaPostado = document.getElementById(post.id);
+              areaPostado.remove();
+            });
+        }
+      });
+    });
+  };
   printPost();
 
   const textArea = container.querySelector('#txt-area');

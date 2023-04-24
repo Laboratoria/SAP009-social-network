@@ -7,6 +7,7 @@ import {
   query,
   orderBy,
   getDocs,
+  updateDoc
 } from 'firebase/firestore';
 
 import { app, auth } from './firebase.js';
@@ -36,6 +37,13 @@ export const pegarPost = async () => {
   return mensage;
 };
 
-export const deletarPost =  async (postId) => {
+export const deletarPost = async (postId) => {
   deleteDoc(doc(db, 'posts', postId));
+};
+
+export const editarPosts = async (postId, text) => {
+  const atualizarPostsEditados = doc(db, 'posts', postId);
+  await updateDoc(atualizarPostsEditados, {
+    text,
+  });
 };
