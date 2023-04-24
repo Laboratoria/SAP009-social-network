@@ -22,7 +22,7 @@ export default () => {
           <div> 
            <p class='msg-erro'><p> 
           </div>
-          <input type='text' placeholder='E-mail:' id='name'>
+          <input type='text' placeholder='E-mail:' id='email'>
           <input type='password' placeholder='Senha:' id='password'> 
           <div class="form-group">
             <button type="submit" class="btn-login" id="btn-login">LOGIN</button>
@@ -52,9 +52,9 @@ export default () => {
   const btnLogin = container.querySelector('#btn-login');
   btnLogin.addEventListener('click', (event) => {
     event.preventDefault();
-    const nome = container.querySelector('#name');
+    const email = container.querySelector('#email');
     const senha = container.querySelector('#password');
-    if (nome.value === '') {
+    if (email.value === '') {
       showErrorMessage('Você precisa preencher os dois campos abaixo', 4000);
       return;
     }
@@ -66,7 +66,7 @@ export default () => {
       showErrorMessage('Sua senha precisa ter pelo menos seis digitos', 4000);
       return;
     }
-    fazerLogin(nome.value, senha.value)
+    fazerLogin(email.value, senha.value)
       .then(() => {
         window.location.hash = '#feed';
       })

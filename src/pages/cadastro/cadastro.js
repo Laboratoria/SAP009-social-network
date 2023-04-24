@@ -35,9 +35,11 @@ export default () => {
   const btnCadastrar = registerContainer.querySelector('.btn-cadastro');
   btnCadastrar.addEventListener('click', (event) => {
     event.preventDefault();
-    const nome = registerContainer.querySelector('.email');
+    const email = registerContainer.querySelector('.email');
     const senha = registerContainer.querySelector('.password');
-    fazerCadastro(nome.value, senha.value)
+    const nomeUsuario = registerContainer.querySelector('#name-user');
+
+    fazerCadastro(email.value, senha.value, nomeUsuario.value)
       .then(() => {
         window.location.hash = '#feed';
       });

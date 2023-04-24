@@ -36,6 +36,6 @@ export const pegarPost = async () => {
   return mensage;
 };
 
-export const deletarPost = (postId) => {
+export const deletarPost =  async (postId) => {
   deleteDoc(doc(db, 'posts', postId));
 };
