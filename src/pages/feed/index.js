@@ -143,24 +143,24 @@ export default () => {
           <label class="date-and-hour">${post.date}</label>
           <label class="date-and-hour">às ${post.hour}</label>
         </div> 
-        <div class="group-buttons">       
-          <div class="delete">
-            <button class="btn-delete" id="${post.id}btn-delete">
-              <img src="./image/lixeira.png" alt="icone para deletar o post">
-            </button>
-          </div>
-          <div class="edit">
-            <button class="btn-edit" id="btn-edit">
-              <img src="./image/editar.png" alt="icone para deletar o post">
-            </button>
-          </div>
-        </div>
         <div class="like">
           <button class="like-post-user" id="like-post">
             <img class="like-heart" src="./image/like.png" alt="ícone de like com coração">
             <label id="likes-quantities">${post.like}</label>
-        </button>
-      </div>         
+          </button>
+        </div>
+      <div class="group-buttons">       
+        <div class="delete">
+          <button class="btn-delete" id="${post.id}btn-delete">
+            <img src="./image/lixeira.png" alt="icone para deletar o post">
+          </button>
+        </div>
+        <div class="edit">
+          <button class="btn-edit" id="btn-edit">
+            <img src="./image/editar.png" alt="icone para deletar o post">
+          </button>
+        </div>
+      </div>
     </section>
     `).join('');
     container.querySelector('.post-container').innerHTML = templatePublish;
