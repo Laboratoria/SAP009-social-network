@@ -53,7 +53,7 @@ footer {
     height: 20px;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 600px) {
     
     #div-footer {
         flex-direction: row;

@@ -6,6 +6,8 @@ import home from './pages/home.js';
 import login from './pages/login.js';
 import signUp from './pages/sign-up.js';
 import feed from './pages/feed/feed.js';
+import about from './pages/feed/about.js';
+import faq from './pages/feed/faq.js';
 import { isUserLogged } from '../firebase/authentication.js';
 
 const main = document.querySelector('#root');
@@ -27,6 +29,30 @@ const init = () => {
         main.appendChild(headerInitial());
         main.appendChild(signUp());
         main.appendChild(footer());
+        break;
+      case '#about':
+        isUserLogged((user) => {
+          if (user) {
+            main.appendChild(headerFeed());
+            main.appendChild(about());
+          } else {
+            main.appendChild(headerInitial());
+            main.appendChild(home());
+            main.appendChild(footer());
+          }
+        });
+        break;
+      case '#faq':
+        isUserLogged((user) => {
+          if (user) {
+            main.appendChild(headerFeed());
+            main.appendChild(faq());
+          } else {
+            main.appendChild(headerInitial());
+            main.appendChild(home());
+            main.appendChild(footer());
+          }
+        });
         break;
       case '#feed':
         isUserLogged((user) => {

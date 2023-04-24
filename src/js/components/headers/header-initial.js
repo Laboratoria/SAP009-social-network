@@ -1,3 +1,5 @@
+import logo from '../../../img/logo-icon-no-background.png';
+
 export default () => {
   const headerInitialContainer = document.createElement('header');
   headerInitialContainer.classList.add('header-initial');
@@ -6,7 +8,7 @@ export default () => {
 <div class="header-nav">
   <ul>
     <li id="header-link">
-      <a href="/#home"><img src="./img/logo-icon-no-background.png" alt="Logo Icon to Home" id="logo-icon"></a>
+      <a href="/#home"><img src="${logo}" alt="Logo Icon to Home" id="logo-icon"></a>
     </li>
     <li id="li-header-btn">
       <button id="header-btn">

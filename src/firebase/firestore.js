@@ -11,6 +11,7 @@ import {
   arrayRemove,
   query,
   deleteDoc,
+  getDoc,
 } from 'firebase/firestore';
 
 import { app } from './configuration.js';
@@ -57,6 +58,23 @@ async function dislikePosts(postId, userId) {
   });
 }
 
+async function getPostById(postId) {
+  const postRef = doc(db, 'posts', postId);
+  const post = await getDoc(postRef);
+  return post.data();
+}
+
+async function like(postId, userId) {
+  const post = await getPostById(postId);
+  if (post.likes.includes(userId)) {
+    await dislikePosts(postId, userId);
+    return {liked: false, count: post.likes.length -1}
+  } else {
+    await likePosts(postId, userId);
+    return {liked: true, count: post.likes.length +1}
+  }
+}
+
 async function editPost(postId, editContent) {
   const currentDate = new Date();
   const dateString = currentDate.toLocaleDateString('pt-BR');
@@ -74,6 +92,5 @@ export {
   findPosts,
   editPost,
   deletePost,
-  likePosts,
-  dislikePosts,
+  like,
 };

@@ -1,0 +1,20 @@
+.faq-container {
+   margin: 3rem;
+}
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    text-align: center;
+    color: #004AAD;
+}
+.questions {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: #004AAD;
+    text-align: justify;
+}
+h2 {
+    color: #EF681A;
+    font-size: 16px;
+}
+
