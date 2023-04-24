@@ -5,6 +5,8 @@ import {
   getFirestore,
   orderBy,
   query,
+  deleteDoc,
+  doc,
 } from 'firebase/firestore';
 import { app } from './firebase.js';
 import { async } from 'regenerator-runtime';
@@ -33,6 +35,10 @@ export const getPost = async () => {
     message.push(data);
   });
   return message;
+};
+
+export const deletePost =  async (postId) => {
+  deleteDoc(doc(db, 'Post', postId));
 };
 
 // edit

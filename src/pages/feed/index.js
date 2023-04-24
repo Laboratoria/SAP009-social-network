@@ -1,4 +1,4 @@
-import { newPost, getPost } from '../firebase/firebasestore.js';
+import { newPost, getPost, deletePost } from '../firebase/firebasestore.js';
 import { auth } from '../firebase/auth.js';
 
 export default () => {
@@ -143,27 +143,40 @@ export default () => {
           <label class="date-and-hour">${post.date}</label>
           <label class="date-and-hour">às ${post.hour}</label>
         </div> 
+        <div class="group-buttons">       
+          <div class="delete">
+            <button class="btn-delete" id="${post.id}btn-delete">
+              <img src="./image/lixeira.png" alt="icone para deletar o post">
+            </button>
+          </div>
+          <div class="edit">
+            <button class="btn-edit" id="btn-edit">
+              <img src="./image/editar.png" alt="icone para deletar o post">
+            </button>
+          </div>
+        </div>
         <div class="like">
           <button class="like-post-user" id="like-post">
             <img class="like-heart" src="./image/like.png" alt="ícone de like com coração">
             <label id="likes-quantities">${post.like}</label>
         </button>
-      </div> 
-      <div class="group-buttons">
-        <div class="delete">
-          <button class="btn-delete" id="btn-delete">
-            <img src="./image/lixeira.png" alt="icone para deletar o post">
-          </button>
-        </div>
-        <div class="edit">
-          <button class="btn-edit" id="btn-edit">
-            <img src="./image/editar.png" alt="icone para deletar o post">
-          </button>
-        </div>
-      </div>        
+      </div>         
     </section>
     `).join('');
     container.querySelector('.post-container').innerHTML = templatePublish;
+
+    arrayPost.forEach(post => {
+      const btnDelete = document.getElementById(post.id + 'btn-delete');
+      btnDelete.addEventListener('click', (e) => {
+        e.preventDefault();
+        if(window.confirm('Tem certeza que deseja excluir a publicação?')){
+          deletePost(post.id)
+          .then(() => {
+            templatePublish.remove();
+          });
+        }
+      })
+    })
   };
   printPost();
 
@@ -185,6 +198,7 @@ export default () => {
       alert("Por favor, escreva algo para publicar!");
     }
   });
+
 
   return container;
 };
