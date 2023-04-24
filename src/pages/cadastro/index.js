@@ -1,8 +1,8 @@
-import { createUser } from "../firebase/auth.js";
+import { createUser } from '../firebase/auth.js';
 
 export default () => {
-  const container = document.createElement("div");
-  container.classList.add("container-cadastro");
+  const container = document.createElement('div');
+  container.classList.add('container-cadastro');
 
   const template = `
     <img class = "icon" src="image/Rectangle 86.png" alt="imagem de menina lavando o rosto">
@@ -45,24 +45,20 @@ export default () => {
     `;
   container.innerHTML = template;
 
-  const form = container.querySelector(".form-cadastro");
-  form.addEventListener("submit", (e) => {
+  const form = container.querySelector('.form-cadastro');
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const name = form.name.value;
     const password = form.password.value;
     const email = form.email.value;
     createUser(email, password)
-      .then((userCredential) => {
-        window.location.hash = "#feed";
-        const user = userCredential.user;
-        // ...
-      })
-      .catch((error) => {
-        console.log(error);
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
+      .then(() => {
+        window.location.hash = '#feed';
       });
+    /* .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+    }); */
   });
 
   return container;
