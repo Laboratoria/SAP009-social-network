@@ -1,6 +1,5 @@
 import {
-  dislikePosts,
-  likePosts,
+  like,
   editPost,
   getUserData,
   deletePost,
@@ -68,7 +67,7 @@ export function postTemplate(post) {
     liked.style.display = 'flex';
   }
 
-  likeButton.addEventListener('click', () => {
+  likeButton.addEventListener('click', async () => {
     if (likesCollection.includes(userData.uid)) {
       dislikePosts(post.id, userData.uid);
       disliked.style.display = 'flex';
@@ -83,6 +82,8 @@ export function postTemplate(post) {
       likesCounter.innerHTML = countLikes;
       likesCollection.push(userData.uid);
     }
+    const result = await like(post.id, userData.uid);
+    likesCounter.innerHTML = result.count;
   });
 
   const bodyPost = postContainer.querySelector(`#body-post-${post.id}`);

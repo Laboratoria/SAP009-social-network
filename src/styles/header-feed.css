@@ -48,7 +48,7 @@ body, ul {
     background: none;
 }
 
-@media (max-width: 650px) {
+@media (max-width: 600px) {
     #menu-feed {
         display: block;
         position: absolute;
