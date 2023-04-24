@@ -22,17 +22,16 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 async function newPost(textpost) {
+  const authentication = getAuth(app);
   const currentDate = new Date();
   const createPosts = {
-    userId: auth.currentUser.uid,
-    username: auth.currentUser.displayName,
+    userId: authentication.currentUser.uid,
+    username: authentication.currentUser.displayName,
     date: currentDate,
     post: textpost,
     likes: [],
   };
-  const docRef = await addDoc(collection(db, 'posts'), createPosts);
-  createPosts.id = docRef.id;
-  return createPosts;
+  await addDoc(collection(db, 'posts'), createPosts);
 }
 
 const getUserData = () => auth.currentUser;
