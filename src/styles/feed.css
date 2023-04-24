@@ -1,6 +1,6 @@
 .feed-section{
     font-family: 'Montserrat', sans-serif;
-    background:  #F6F7F8;
+    background:  #F0EBE8;
 }
 .feed-container{
     display: flex;
@@ -71,7 +71,7 @@
     }
     .feed-container{
         width: 70vw;
-        background: #F6F7F8;
+        background: #F0EBE8;
         display: flex;
         margin-right: auto;
         margin-left: auto;

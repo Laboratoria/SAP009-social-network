@@ -22,9 +22,11 @@
     line-height: 1.4;
     outline: none;
     margin-left: 1em;
+    background: #F0EBE8;
+    color: black;
 }
 .footer-post{
-    background: #F6F7F8;
+    background: #F0EBE8;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -50,7 +52,7 @@
 .footer-btn{
     border: none;
     height: 32px;
-    background: #F6F7F8;
+    background: #F0EBE8;
 }
 .editing-buttons{
     width: 87px;
