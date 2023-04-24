@@ -40,9 +40,11 @@ const getUserData = () => auth.currentUser;
 async function findPosts(showPosts) {
   const queryOrder = query(collection(db, 'posts'), orderBy('date', 'desc'));
   onSnapshot(queryOrder, (querySnapshot) => {
+    const posts = [];
     querySnapshot.forEach((post) => {
-      showPosts({ ...post.data(), postId: post.id });
+      posts.push({ ...post.data(), postId: post.id });
     });
+    showPosts(posts);
   });
 }
 async function likePosts(postId, userId) {
@@ -66,11 +68,10 @@ async function like(postId, userId) {
   const post = await getPostById(postId);
   if (post.likes.includes(userId)) {
     await dislikePosts(postId, userId);
-    return {liked: false, count: post.likes.length -1}
-  } else {
-    await likePosts(postId, userId);
-    return {liked: true, count: post.likes.length +1}
+    return { liked: false, count: post.likes.length - 1 };
   }
+  await likePosts(postId, userId);
+  return { liked: true, count: post.likes.length + 1 };
 }
 
 async function editPost(postId, editContent) {

@@ -40,6 +40,8 @@ export default () => {
     <div class="login-links">
       <a href="/#signup">Click here if you still don't have an account.</a>
     </div>
+  </div>
+  <div class="login-with-google">
     <div class="separation-or">
       <hr>
       <h2>OR</h2>
