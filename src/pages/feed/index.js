@@ -126,26 +126,7 @@ export default () => {
     document.querySelector('.textarea').value = '';
   }
 
-  // pegar o post e armazenar no firabase
-  const text = container.querySelector('.textarea');
-  const buttonPublish = container.querySelector('.button-publish');
-  buttonPublish.addEventListener('click', () => {
-    if (text.value !== '') {
-      const today = new Date();
-      // const dataPostagem = today.toLocaleDateString();
-      const username = auth.currentUser.displayName;
-      const idUser = auth.currentUser.uid;
-      newPost(text.value, today, username, idUser).then(() => {
-        printPost();
-        cleanPost();
-      });
-    } else {
-      alert('Por favor, escreva algo para publicar!');
-    }
-  });
-  // criar uma função para acessar os posts
-
-  // responsável por criar
+  // printar os posts na tela para o usuário
 
   const printPost = async () => {
     const arrayPost = await getPost();
@@ -153,33 +134,41 @@ export default () => {
       .map(
         (post) => `
     <section class="posts-users">
-
-    <div class="text-and-likes">
-      <div class="name-and-date">
-        <label class="name-post-user">${post.username}</label>
-      </div>
-      <div>
-        <p class="text-post-user">${post.text}</p>
-        <label class="date-and-hour">${post.date}</label>
-        <label class="date-and-hour">às ${post.hour}</label>
-      </div>  
-      <div>
-        <span class="like-post-user">
-          <img class="like-heart" src="${post.like} "./image/liked-red.png" : "./image/like.png"
-          }" alt="ícone de like com coração">
-          <label id="likes-quantities">${post.like}</label>
-        </span>
-      </div>
-    </div>
-  </section>
-    `
-      )
-      .join('');
+      <div class="text-and-likes">
+        <div class="name-and-date">
+          <label class="name-post-user">${post.username}</label>
+        </div>
+        <div>
+          <p class="text-post-user">${post.text}</p>
+          <label class="date-and-hour">${post.date}</label>
+          <label class="date-and-hour">às ${post.hour}</label>
+        </div> 
+        <div class="like">
+          <button class="like-post-user" id="like-post">
+            <img class="like-heart" src="./image/like.png" alt="ícone de like com coração">
+            <label id="likes-quantities">${post.like}</label>
+        </button>
+      </div> 
+      <div class="group-buttons">
+        <div class="delete">
+          <button class="btn-delete" id="btn-delete">
+            <img src="./image/lixeira.png" alt="icone para deletar o post">
+          </button>
+        </div>
+        <div class="edit">
+          <button class="btn-edit" id="btn-edit">
+            <img src="./image/editar.png" alt="icone para deletar o post">
+          </button>
+        </div>
+      </div>        
+    </section>
+    `).join('');
     container.querySelector('.post-container').innerHTML = templatePublish;
   };
   printPost();
 
   // pegar o post e armazenar no firabase
+
   const text = container.querySelector(".textarea");
   const buttonPublish = container.querySelector(".button-publish");
   buttonPublish.addEventListener("click", () => {
