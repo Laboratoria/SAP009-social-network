@@ -136,3 +136,10 @@
     font-size: 15px;
     display: none;
 }
+@media (max-width: 600px){
+    .form-login {
+        display: flex;
+        flex-direction: row;
+    }
+    
+}

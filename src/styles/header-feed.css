@@ -46,6 +46,7 @@ body, ul {
 #logout {
     border: none;
     background: none;
+    cursor: pointer;
 }
 
 @media (max-width: 600px) {

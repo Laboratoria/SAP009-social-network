@@ -68,11 +68,10 @@ async function like(postId, userId) {
   const post = await getPostById(postId);
   if (post.likes.includes(userId)) {
     await dislikePosts(postId, userId);
-    return {liked: false, count: post.likes.length -1}
-  } else {
-    await likePosts(postId, userId);
-    return {liked: true, count: post.likes.length +1}
+    return { liked: false, count: post.likes.length - 1 };
   }
+  await likePosts(postId, userId);
+  return { liked: true, count: post.likes.length + 1 };
 }
 
 async function editPost(postId, editContent) {
