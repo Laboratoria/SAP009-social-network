@@ -99,7 +99,7 @@ export function postTemplate(post) {
         bodyPost.setAttribute('hidden', true);
         editDeletePost.innerHTML = editUserPost();
         // eslint-disable-next-line no-use-before-define
-        habilitarEdicao();
+        enableEdition();
       });
     }
     if (saveBtn) {
@@ -111,7 +111,7 @@ export function postTemplate(post) {
     }
   }
 
-  function habilitarEdicao() {
+  function enableEdition() {
     const editBtn = postContainer.querySelector('.edit-btn');
     if (editBtn) {
       editBtn.addEventListener('click', () => {
@@ -122,7 +122,7 @@ export function postTemplate(post) {
       });
     }
   }
-  habilitarEdicao();
+  enableEdition();
 
   const deleteBtn = postContainer.querySelector('.delete-btn');
   if (deleteBtn) {

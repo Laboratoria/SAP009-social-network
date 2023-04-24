@@ -15,7 +15,6 @@ import {
 } from 'firebase/firestore';
 
 import { app } from './configuration.js';
-// import { update } from 'lodash';
 
 const auth = getAuth(app);
 
@@ -90,5 +89,8 @@ export {
   findPosts,
   editPost,
   deletePost,
+  likePosts,
+  dislikePosts,
   like,
+  auth,
 };
