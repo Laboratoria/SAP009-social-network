@@ -39,7 +39,8 @@ export function postTemplate(post) {
      <img src="${userIcon}" class="user-icon">
      <div class="username-post">${post.username}</div>
    </header>
-   <textarea disabled class="body-post" id="body-post-${post.postId}">${post.post}</textarea>
+   <div id="div-body-post-${post.postId}">${post.post}</div>
+   <textarea hidden class="body-post" id="body-post-${post.postId}">${post.post}</textarea>
    <footer class="footer-post">
      <div class="post-date">${post.date.toDate().toLocaleDateString('pt-BR')}</div>
      <div class="post-edit-delete edit-delete">${editUserPost()}</div>
@@ -79,9 +80,8 @@ export function postTemplate(post) {
   });
 
   const bodyPost = postContainer.querySelector(`#body-post-${post.postId}`);
+  const divBodyPost = postContainer.querySelector(`#div-body-post-${post.postId}`);
   const editDeletePost = postContainer.querySelector('.post-edit-delete');
-  // const postEditing = postContainer.querySelector('.post-editing');
-  const editBtn = postContainer.querySelector('.edit-btn');
 
   const saveCancelBtn = `
     <div class="post-editing" id="post-editing-${post.postId}">
@@ -89,36 +89,40 @@ export function postTemplate(post) {
       <button type="button" class="cancel-btn editing-buttons">CANCEL</button>
     </div>
   `;
-
   function editingPost() {
     const saveBtn = postContainer.querySelector('.save-btn');
     const cancelBtn = postContainer.querySelector('.cancel-btn');
-
     if (cancelBtn) {
       cancelBtn.addEventListener('click', () => {
-        bodyPost.innerHTML = '';
         bodyPost.innerHTML = post.post;
-        bodyPost.setAttribute('disabled', true);
-        editDeletePost.innerHTML = '';
+        divBodyPost.removeAttribute('hidden');
+        bodyPost.setAttribute('hidden', true);
         editDeletePost.innerHTML = editUserPost();
+        // eslint-disable-next-line no-use-before-define
+        habilitarEdicao();
       });
     }
     if (saveBtn) {
       saveBtn.addEventListener('click', () => {
         editPost(post.postId, bodyPost.value);
-        bodyPost.setAttribute('disabled', true);
+        divBodyPost.removeAttribute('hidden');
+        bodyPost.setAttribute('hidden', true);
       });
     }
   }
 
-  if (editBtn) {
-    editBtn.addEventListener('click', () => {
-      bodyPost.removeAttribute('disabled');
-      editDeletePost.innerHTML = '';
-      editDeletePost.innerHTML = saveCancelBtn;
-      editingPost();
-    });
+  function habilitarEdicao() {
+    const editBtn = postContainer.querySelector('.edit-btn');
+    if (editBtn) {
+      editBtn.addEventListener('click', () => {
+        bodyPost.removeAttribute('hidden');
+        divBodyPost.setAttribute('hidden', true);
+        editDeletePost.innerHTML = saveCancelBtn;
+        editingPost();
+      });
+    }
   }
+  habilitarEdicao();
 
   const deleteBtn = postContainer.querySelector('.delete-btn');
   if (deleteBtn) {

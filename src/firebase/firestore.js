@@ -30,6 +30,7 @@ async function newPost(textpost) {
     post: textpost,
     likes: [],
   };
+
   const docRef = await addDoc(collection(db, 'posts'), createPosts);
   createPosts.id = docRef.id;
   return createPosts;
