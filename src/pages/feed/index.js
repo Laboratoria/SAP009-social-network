@@ -142,27 +142,7 @@ export default () => {
     document.querySelector(".textarea").value = "";
   }
 
-  // pegar o post e armazenar no firabase
-  const text = container.querySelector(".textarea");
-  const buttonPublish = container.querySelector(".button-publish");
-  buttonPublish.addEventListener("click", () => {
-    if (text.value !== "") {
-      const today = new Date();
-      //const dataPostagem = today.toLocaleDateString();
-      const username = auth.currentUser.displayName;
-      const idUser = auth.currentUser.uid;
-      newPost(text.value, today, username, idUser).then(() => {
-        printPost();
-        cleanPost();
-      });
-    } else {
-      alert("Por favor, escreva algo para publicar!");
-    }
-  });
-  //criar uma função para acessar os posts
-
-  //responsável por criar
-
+  // criar os posts
   const printPost = async () => {
     const arrayPost = await getPost();
     const template = arrayPost
@@ -194,5 +174,24 @@ export default () => {
     container.querySelector(".post-container").innerHTML = template;
   };
   printPost();
+
+  // pegar o post e armazenar no firabase
+  const text = container.querySelector(".textarea");
+  const buttonPublish = container.querySelector(".button-publish");
+  buttonPublish.addEventListener("click", () => {
+    if (text.value !== "") {
+      const today = new Date();
+      //const dataPostagem = today.toLocaleDateString();
+      const username = auth.currentUser.displayName;
+      const idUser = auth.currentUser.uid;
+      newPost(text.value, today, username, idUser).then(() => {
+        printPost();
+        cleanPost();
+      });
+    } else {
+      alert("Por favor, escreva algo para publicar!");
+    }
+  });
+
   return container;
 };
