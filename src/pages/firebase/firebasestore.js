@@ -9,7 +9,7 @@ import {
   doc,
 } from 'firebase/firestore';
 import { app } from './firebase.js';
-import { async } from 'regenerator-runtime';
+// import { async } from 'regenerator-runtime';
 
 const db = getFirestore(app);
 
