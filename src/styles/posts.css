@@ -14,6 +14,9 @@
     font-weight: 700;
     margin-left: 1em;
 }
+.div-body-post{
+    margin-left: 0.5em;
+}
 .body-post{
     width: 60vw;
     border: none;
@@ -21,7 +24,6 @@
     font-size: 16px;
     line-height: 1.4;
     outline: none;
-    margin-left: 1em;
     background: #F0EBE8;
     color: black;
 }

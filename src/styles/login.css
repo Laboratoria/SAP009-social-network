@@ -142,8 +142,11 @@
         display: flex;
         flex-direction: row;
     }
+    .card-login{
+        margin-left: 15vw;
+    }
     .input-group input{
-        width: 50vw;
+        width: 30vw;
     }
     .forgot-password{
         margin-bottom: 3em;

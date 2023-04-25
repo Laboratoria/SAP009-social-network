@@ -39,7 +39,7 @@ export function postTemplate(post) {
      <img src="${userIcon}" class="user-icon">
      <div class="username-post">${post.username}</div>
    </header>
-   <div id="div-body-post-${post.postId}">${post.post}</div>
+   <div class="div-body-post" id="div-body-post-${post.postId}">${post.post}</div>
    <textarea hidden class="body-post" id="body-post-${post.postId}">${post.post}</textarea>
    <footer class="footer-post">
      <div class="post-date">${post.date.toDate().toLocaleDateString('pt-BR')}</div>
