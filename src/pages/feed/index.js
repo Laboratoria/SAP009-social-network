@@ -1,4 +1,4 @@
-import { newPost, getPost } from '../firebase/firebasestore.js';
+import { newPost, getPost, deletePost } from '../firebase/firebasestore.js';
 import { auth } from '../firebase/auth.js';
 
 export default () => {
@@ -130,51 +130,86 @@ export default () => {
 
   const printPost = async () => {
     const arrayPost = await getPost();
+    const username = auth.currentUser.displayName;
     const templatePublish = arrayPost
       .map(
-        (post) => `
-    <section class="posts-users">
-
-    <div class="text-and-likes">
-      <div class="name-and-date">
-        <label class="name-post-user">${post.username}</label>
-      </div>
-      <div>
-        <p class="text-post-user">${post.text}</p>
-        <label class="date-and-hour">${post.date}</label>
-        <label class="date-and-hour">às ${post.hour}</label>
-      </div>  
-      <div>
-        <span class="like-post-user">
-          <img class="like-heart" src="${post.like} "./image/liked-red.png" : "./image/like.png"
-          }" alt="ícone de like com coração">
-          <label id="likes-quantities">${post.like}</label>
-        </span>
-      </div>
-    </div>
-  </section>
-  `).join('');
-
+        (post) => {
+          const isAuthor = post.username === username
+          return `
+            <section class="posts-users">
+              <div class="text-and-likes">
+                <div class="name-and-date">
+                  <label class="name-post-user">${post.username}</label>
+                </div>
+                <div>
+                  <p class="text-post-user">${post.text}</p>
+                  <label class="date-and-hour">${post.date}</label>
+                  <label class="date-and-hour">às ${post.hour}</label>
+                </div> 
+                <div class="like">
+                  <button class="like-post-user" id="like-post">
+                    <img class="like-heart" src="./image/like.png" alt="ícone de like com coração">
+                    <label id="likes-quantities">${post.like}</label>
+                  </button>
+                </div>
+                ${isAuthor ? `
+                <div class="group-buttons">       
+                  <div class="delete">
+                    <button class="btn-delete" id="${post.id}btn-delete">
+                      <img src="./image/lixeira.png" alt="icone para deletar o post">
+                    </button>
+                  </div>
+                  <div class="edit">
+                    <button class="btn-edit" id="btn-edit">
+                      <img src="./image/editar.png" alt="icone para deletar o post">
+                    </button>
+                  </div>
+                </div>
+                ` : "" }
+              
+            </section>
+          `
+    }).join('');
     container.querySelector('.post-container').innerHTML = templatePublish;
+
+    arrayPost.forEach(post => {
+      const isAuthor = post.username === username
+      const btnDelete = document.getElementById(post.id + 'btn-delete');
+      if(isAuthor){
+        const postSection = btnDelete.parentNode.parentNode.parentNode;
+        btnDelete.addEventListener('click', (e) => {
+          e.preventDefault();
+          if(window.confirm('Tem certeza que deseja excluir a publicação?')){
+            deletePost(post.id)
+            .then(() => {
+              postSection.remove();
+            });
+          }
+        })
+      }
+    })
   };
   printPost();
 
   // pegar o post e armazenar no firabase
-  const text = container.querySelector('.textarea');
-  const buttonPublish = container.querySelector('.button-publish');
-  buttonPublish.addEventListener('click', () => {
-    if (text.value !== '') {
+
+  const text = container.querySelector(".textarea");
+  const buttonPublish = container.querySelector(".button-publish");
+  buttonPublish.addEventListener("click", () => {
+    if (text.value !== "") {
       const today = new Date();
-      // const dataPostagem = today.toLocaleDateString();
+      //const dataPostagem = today.toLocaleDateString();
       const username = auth.currentUser.displayName;
       const idUser = auth.currentUser.uid;
       newPost(text.value, today, username, idUser).then(() => {
         printPost();
         cleanPost();
       });
-    } /* else {
-      alert('Por favor, escreva algo para publicar!');
-    } */
+    } else {
+      alert("Por favor, escreva algo para publicar!");
+    }
   });
+
+
   return container;
 };
