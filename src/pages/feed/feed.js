@@ -24,8 +24,7 @@ export default () => {
   <section class="feed-posts">
   <div class="postando">
   <div class="position-user-name">
-  <img class="img-user-name" src="./img/profile-user.png" alt="user-name">
-  <p class="user-name">username</p>
+  <p class="user-name">Compartilhe com a gente!</p>
   </div>
   <textarea name="" id="txt-area" cols="70" rows="5" placeholder= "Escreva seu post"></textarea>
               <div class="posição-botão-postar">
@@ -50,11 +49,15 @@ export default () => {
         <div class="postado">
         <ul>
         <li>
-                  <div> 
+                  <div class='li'> 
+                  <div class"position-username-data">
                   <div class="position-user-name">
                   <img class="img-user-name" src="./img/profile-user.png" alt="user-name">
                   <p class="user-name">${posts.username}</p>
+                  </div>
+                  <div class="position-data">
                   <p class ="dataPost">${posts.date}</p>
+                  </div>
                   </div>
                   <textarea disabled name="" id="txt-area-postado${posts.id}" cols="70" rows="5">${posts.text}</textarea>
                   <div class="position-btn-postar">
@@ -68,8 +71,7 @@ export default () => {
                     <button id="${posts.id}deletar" class="btn-postar delete">
                       <img class='excluir-img' src='./img/botao-apagar.png' alt='deletar'>
                       </button>` : ''}
-                
-                      <button id="${posts.id}like" class="btn-postar like">
+                    <button id="${posts.id}like" class="btn-postar like">
                      <img class='curtir-img' src='./img/ame.png' alt='logo-google'>
                      <label id="likes-quantities">${posts.like}</label>
                      </button>
@@ -108,12 +110,15 @@ export default () => {
         btnSalvar.addEventListener('click', (e) => {
           editarPosts(post.id, textPostado.value)
           textPostado.setAttribute('disabled', true)
+          btnEditar.removeAttribute('hidden')
+          
 
         })
 
         btnEditar.addEventListener('click', (e) => {
           e.preventDefault();
           if (window.confirm('Tem certeza de que deseja editar a publicação?')) {
+            btnEditar.setAttribute('hidden', true)
             textPostado.removeAttribute('disabled')
             
             //editarPosts(post.id)

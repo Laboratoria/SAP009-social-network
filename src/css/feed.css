@@ -68,13 +68,18 @@ textarea::placeholder {
   gap: 2%;
   margin-bottom: 2%;
   color: white;
-  
 }
+
+
+
 
 .user-name {
   margin-top: 0.8vh;
 }
 
+.dataPost {
+  margin-right: 50%;
+}
 
 #txt-area {
     background-color: #f9cccc;
@@ -101,7 +106,7 @@ textarea::placeholder {
 }
 
 .postar-img, .excluir-img, .editar-img, .curtir-img {
-  width: 55%;
+  width: 45%;
   position:relative;
   top:0;
   padding: 4%;
@@ -116,6 +121,8 @@ textarea::placeholder {
 
 .ilustration-feed {
   width: 33vw;
+  position: fixed;
+  margin-top: 0px;
 }
 
 #txt-area-postado {
@@ -127,6 +134,9 @@ textarea::placeholder {
     width: 35vw;
 }
 
+.li{
+  margin-bottom: 7%;
+}
 
 .container-img-feed {
     display: flex;
@@ -143,11 +153,6 @@ textarea::placeholder {
     
   }
 
-.div-img {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 1rem;
-  }
   
 ul, li {
     list-style-type: none;
