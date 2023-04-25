@@ -7,7 +7,7 @@ import {
   query,
   orderBy,
   getDocs,
-  updateDoc
+  updateDoc,
 } from 'firebase/firestore';
 
 import { app, auth } from './firebase.js';

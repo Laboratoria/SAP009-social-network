@@ -1,4 +1,4 @@
-import { salvarPost, pegarPost, deletarPost } from '../../firebase/firestore.js';
+import { salvarPost, pegarPost, deletarPost, editarPosts } from '../../firebase/firestore.js';
 
 import { auth } from '../../firebase/firebase.js';
 
@@ -56,14 +56,17 @@ export default () => {
                   <p class="user-name">${posts.username}</p>
                   <p class ="dataPost">${posts.date}</p>
                   </div>
-                  <textarea disabled name="" id="txt-area-postado" cols="70" rows="5">${posts.text}</textarea>
+                  <textarea disabled name="" id="txt-area-postado${posts.id}" cols="70" rows="5">${posts.text}</textarea>
                   <div class="position-btn-postar">
                   ${posts.userId === auth.currentUser.uid ? `  
                   <button id="${posts.id}editar" class="btn-postar editado">
-                  <img class='editar-img' src='./img/editar-informacao.png' alt='logo-google'>
+                  <img class='editar-img' src='./img/editar-informacao.png' alt='editar'>
+                    </button>
+                    <button id="${posts.id}salvar" class="btn-postar editado">
+                    <img class='editar-img' src='./img/checked.png' alt='salvar'>
                     </button>
                     <button id="${posts.id}deletar" class="btn-postar delete">
-                      <img class='excluir-img' src='./img/botao-apagar.png' alt='logo-google'>
+                      <img class='excluir-img' src='./img/botao-apagar.png' alt='deletar'>
                       </button>` : ''}
                 
                       <button id="${posts.id}like" class="btn-postar like">
@@ -81,31 +84,46 @@ export default () => {
     container.querySelector('.feed-postado').innerHTML = postList;
 
     arrayPosts.forEach(post => {
-      const btnDeletar = document.getElementById(post.id + 'deletar');
-      btnDeletar.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (window.confirm('Tem certeza de que deseja excluir a publicação?')) {
-          deletarPost(post.id)
-            .then(() => {
-              const areaPostado = document.getElementById(post.id);
-              areaPostado.remove();
-            });
-        };
-      });
+      if ( post.userId === auth.currentUser.uid ) {
+        const btnDeletar = document.getElementById(post.id + 'deletar');
+        btnDeletar.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (window.confirm('Tem certeza de que deseja excluir a publicação?')) {
+            deletarPost(post.id)
+              .then(() => {
+                const areaPostado = document.getElementById(post.id);
+                areaPostado.remove();
+              });
+          };
+        });
+      }
+     
     });
 
     arrayPosts.forEach(post => {
-      const btnEditar = document.getElementById(post.id + 'editar');
-      btnEditar.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (window.confirm('Tem certeza de que deseja editar a publicação?')) {
-          editarPosts(post.id)
-            .then(() => {
-              const areaPostado = document.getElementById(post.id);
-              areaPostado.remove();
-            });
-        }
-      });
+      if (post.userId === auth.currentUser.uid) {
+        const btnEditar = document.getElementById(post.id + 'editar');
+        const textPostado = document.getElementById('txt-area-postado' + post.id);
+        const btnSalvar = document.getElementById(post.id + 'salvar');
+        btnSalvar.addEventListener('click', (e) => {
+          editarPosts(post.id, textPostado.value)
+          textPostado.setAttribute('disabled', true)
+
+        })
+
+        btnEditar.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (window.confirm('Tem certeza de que deseja editar a publicação?')) {
+            textPostado.removeAttribute('disabled')
+            
+            //editarPosts(post.id)
+              //.then(() => {
+                //const areaPostado = document.getElementById(post.id);
+                //areaPostado.remove();
+              //});
+          }
+        });
+      }
     });
   };
   printPost();
