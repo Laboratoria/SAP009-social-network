@@ -130,52 +130,63 @@ export default () => {
 
   const printPost = async () => {
     const arrayPost = await getPost();
+    const username = auth.currentUser.displayName;
     const templatePublish = arrayPost
       .map(
-        (post) => `
-    <section class="posts-users">
-      <div class="text-and-likes">
-        <div class="name-and-date">
-          <label class="name-post-user">${post.username}</label>
-        </div>
-        <div>
-          <p class="text-post-user">${post.text}</p>
-          <label class="date-and-hour">${post.date}</label>
-          <label class="date-and-hour">às ${post.hour}</label>
-        </div> 
-        <div class="like">
-          <button class="like-post-user" id="like-post">
-            <img class="like-heart" src="./image/like.png" alt="ícone de like com coração">
-            <label id="likes-quantities">${post.like}</label>
-          </button>
-        </div>
-      <div class="group-buttons">       
-        <div class="delete">
-          <button class="btn-delete" id="${post.id}btn-delete">
-            <img src="./image/lixeira.png" alt="icone para deletar o post">
-          </button>
-        </div>
-        <div class="edit">
-          <button class="btn-edit" id="btn-edit">
-            <img src="./image/editar.png" alt="icone para deletar o post">
-          </button>
-        </div>
-      </div>
-    </section>
-    `).join('');
+        (post) => {
+          const isAuthor = post.username === username
+          return `
+            <section class="posts-users">
+              <div class="text-and-likes">
+                <div class="name-and-date">
+                  <label class="name-post-user">${post.username}</label>
+                </div>
+                <div>
+                  <p class="text-post-user">${post.text}</p>
+                  <label class="date-and-hour">${post.date}</label>
+                  <label class="date-and-hour">às ${post.hour}</label>
+                </div> 
+                <div class="like">
+                  <button class="like-post-user" id="like-post">
+                    <img class="like-heart" src="./image/like.png" alt="ícone de like com coração">
+                    <label id="likes-quantities">${post.like}</label>
+                  </button>
+                </div>
+                ${isAuthor ? `
+                <div class="group-buttons">       
+                  <div class="delete">
+                    <button class="btn-delete" id="${post.id}btn-delete">
+                      <img src="./image/lixeira.png" alt="icone para deletar o post">
+                    </button>
+                  </div>
+                  <div class="edit">
+                    <button class="btn-edit" id="btn-edit">
+                      <img src="./image/editar.png" alt="icone para deletar o post">
+                    </button>
+                  </div>
+                </div>
+                ` : "" }
+              
+            </section>
+          `
+    }).join('');
     container.querySelector('.post-container').innerHTML = templatePublish;
 
     arrayPost.forEach(post => {
+      const isAuthor = post.username === username
       const btnDelete = document.getElementById(post.id + 'btn-delete');
-      btnDelete.addEventListener('click', (e) => {
-        e.preventDefault();
-        if(window.confirm('Tem certeza que deseja excluir a publicação?')){
-          deletePost(post.id)
-          .then(() => {
-            templatePublish.remove();
-          });
-        }
-      })
+      if(isAuthor){
+        const postSection = btnDelete.parentNode.parentNode.parentNode;
+        btnDelete.addEventListener('click', (e) => {
+          e.preventDefault();
+          if(window.confirm('Tem certeza que deseja excluir a publicação?')){
+            deletePost(post.id)
+            .then(() => {
+              postSection.remove();
+            });
+          }
+        })
+      }
     })
   };
   printPost();
