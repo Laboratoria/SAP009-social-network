@@ -17,4 +17,5 @@ export default () => {
       <input type="button" value="cadastrar" id="button-register">
     </form>`;
   containerRegister.innerHTML = registerScreen;
+  return containerRegister;
 };
