@@ -1,5 +1,6 @@
 import { newPost, getPost, deletePost } from '../firebase/firebasestore.js';
 import { auth } from '../firebase/auth.js';
+import { getAuth } from 'firebase/auth';
 
 export default () => {
   const container = document.createElement('div');
@@ -214,18 +215,14 @@ export default () => {
 
   const logoutButton = container.querySelector('.logout');
   logoutButton.addEventListener('click', () => {
-    signOut(auth)
+    auth.signOut()
       .then(() => {
-        console.log("saiu");
-    // code for redirect user to Log-in page
-    // ...
+        window.location.hash = '#login';
     })
     .catch((error) => {
       console.log(error);
     });
   })
-
-  
 
 
   return container;

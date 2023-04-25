@@ -4,7 +4,6 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
-  signOut
 } from 'firebase/auth';
 import { app } from './firebase.js';
 
@@ -20,4 +19,4 @@ export const loginGoggle = () => {
 };
 
 
-signOut(auth);
+
