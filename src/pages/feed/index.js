@@ -1,8 +1,9 @@
-import data from './feed.js';
+import { newPost, getPost, deletePost } from '../firebase/firebasestore.js';
+import { auth } from '../firebase/auth.js';
 
 export default () => {
-  const container = document.createElement("div");
-  container.classList.add("container-feed");
+  const container = document.createElement('div');
+  container.classList.add('container-feed');
 
   const template = `
     <link rel="stylesheet" href="/pages/feed/feed.css">
@@ -90,140 +91,125 @@ export default () => {
             </div>
           </div>
         </form>
-        ${carregarPost()}
+        <section id="post-container" class="post-container"></section>
       </section>
   </main>
   `;
 
   container.innerHTML = template;
-  
-  function toggleMenu(){
-    const menuMobile = document.getElementById("menu-mobile")
-  
-    if(menuMobile.className === "menu-mobile-active"){
-      menuMobile.className = "menu-mobile";
-      menuMobile.setAttribute('src', 'close.png')
-      document.getElementsByClassName("button-hamburguer").display="none"
-      document.getElementsByClassName("img-close").display="block"
 
-    }
-    else{
-      menuMobile.className = "menu-mobile-active";
+  function toggleMenu() {
+    const menuMobile = document.getElementById('menu-mobile');
+
+    if (menuMobile.className === 'menu-mobile-active') {
+      menuMobile.className = 'menu-mobile';
+      menuMobile.setAttribute('src', 'close.png');
+      document.getElementsByClassName('button-hamburguer').display = 'none';
+      document.getElementsByClassName('img-close').display = 'block';
+    } else {
+      menuMobile.className = 'menu-mobile-active';
       menuMobile.setAttribute('src', 'menu-hamburguer.png');
-      document.getElementsByClassName("button-hamburguer").display="block"
-      document.getElementsByClassName("img-close").display="none"
-
+      document.getElementsByClassName('button-hamburguer').display = 'block';
+      document.getElementsByClassName('img-close').display = 'none';
     }
   }
 
-  function likePost(){
-    const menuMobile = document.getElementById("like-heart")
-  
-    if(menuMobile.className === "like-heart-active"){
-      menuMobile.className = "like-heart";
-      menuMobile.setAttribute('src', 'liked.png')
-      document.getElementsByClassName("button-hamburguer").display="none"
-      document.getElementsByClassName("img-close").display="block"
+  const menuOpen = container.querySelector('.button-hamburguer');
+  menuOpen.addEventListener('click', toggleMenu);
 
-    }
-    else{
-      menuMobile.className = "menu-mobile-active";
-      menuMobile.setAttribute('src', 'menu-hamburguer.png');
-      document.getElementsByClassName("button-hamburguer").display="block"
-      document.getElementsByClassName("img-close").display="none"
+  const menuClose = container.querySelector('.img-close');
+  menuClose.addEventListener('click', toggleMenu);
 
-    }
+  // limpar campo de post depois de postado
+
+  function cleanPost() {
+    document.querySelector('.textarea').value = '';
   }
 
-  const menuOpen = container.querySelector(".button-hamburguer");
-  menuOpen.addEventListener("click", toggleMenu)
+  // printar os posts na tela para o usuário
 
-  const menuClose = container.querySelector(".img-close");
-  menuClose.addEventListener("click", toggleMenu)
+  const printPost = async () => {
+    const arrayPost = await getPost();
+    const username = auth.currentUser.displayName;
+    const templatePublish = arrayPost
+      .map(
+        (post) => {
+          const isAuthor = post.username === username
+          return `
+            <section class="posts-users">
+              <div class="text-and-likes">
+                <div class="name-and-date">
+                  <label class="name-post-user">${post.username}</label>
+                </div>
+                <div>
+                  <p class="text-post-user">${post.text}</p>
+                  <label class="date-and-hour">${post.date}</label>
+                  <label class="date-and-hour">às ${post.hour}</label>
+                </div> 
+                <div class="like">
+                  <button class="like-post-user" id="like-post">
+                    <img class="like-heart" src="./image/like.png" alt="ícone de like com coração">
+                    <label id="likes-quantities">${post.like}</label>
+                  </button>
+                </div>
+                ${isAuthor ? `
+                <div class="group-buttons">       
+                  <div class="delete">
+                    <button class="btn-delete" id="${post.id}btn-delete">
+                      <img src="./image/lixeira.png" alt="icone para deletar o post">
+                    </button>
+                  </div>
+                  <div class="edit">
+                    <button class="btn-edit" id="btn-edit">
+                      <img src="./image/editar.png" alt="icone para deletar o post">
+                    </button>
+                  </div>
+                </div>
+                ` : "" }
+              
+            </section>
+          `
+    }).join('');
+    container.querySelector('.post-container').innerHTML = templatePublish;
 
-  const pressLike = container.querySelector(".like-heart");
-  pressLike.addEventListener("click", likePost)
-
-
-//faz a manipulação de dados do json
-function carregarPost(){
-  return data.results.map((post) => 
-    montaTemplate(post)
-  ).join("")
-}
-
-
-// const buttonPost = document.querySelector('#button-publish');
-// buttonPost.addEventListener('click', publicar)
-
-
-function publicar(){
-  const text = document.querySelector('.textarea');
-  if (text.value !== '') {
-    const timeElapsed = Date.now();
-    const today = new Date(timeElapsed);
-    const dataPostagem = today.toLocaleDateString();
-    const username = Auth.currentUser.displayName;
-    const idUser = Auth.currentUser.uid;
-    newPost(text.value, dataPostagem, username, idUser);
-    try {
-      if (text.value === '') {
-        const mensagemError = 'Por favor, escreva algo para publicar!';
-        throw new UserException(mensagemError);
+    arrayPost.forEach(post => {
+      const isAuthor = post.username === username
+      const btnDelete = document.getElementById(post.id + 'btn-delete');
+      if(isAuthor){
+        const postSection = btnDelete.parentNode.parentNode.parentNode;
+        btnDelete.addEventListener('click', (e) => {
+          e.preventDefault();
+          if(window.confirm('Tem certeza que deseja excluir a publicação?')){
+            deletePost(post.id)
+            .then(() => {
+              postSection.remove();
+            });
+          }
+        })
       }
-      alert('Publicação efetuada com sucesso!');
-      window.location.hash = '#Home';
-    } catch (error) {
-      alert(error.message);
+    })
+  };
+  printPost();
+
+  // pegar o post e armazenar no firabase
+
+  const text = container.querySelector(".textarea");
+  const buttonPublish = container.querySelector(".button-publish");
+  buttonPublish.addEventListener("click", () => {
+    if (text.value !== "") {
+      const today = new Date();
+      //const dataPostagem = today.toLocaleDateString();
+      const username = auth.currentUser.displayName;
+      const idUser = auth.currentUser.uid;
+      newPost(text.value, today, username, idUser).then(() => {
+        printPost();
+        cleanPost();
+      });
+    } else {
+      alert("Por favor, escreva algo para publicar!");
     }
-  } else {
-    alert('Por favor, escreva algo para publicar!');
-  }
-}
-
-    
-
-  //criar uma constante para o texto
-  //  para o botão
-  //addevent
-  //username puxa de quem está logado
-
-  //importar o firebase auth
-
-  //criar uma função para acessar os posts
+  });
 
 
-//responsável por criar
-function montaTemplate(post){
-  return `
-  <section class="posts-users">
-    <div class="photo-post-user">
-      <div>
-        <img class="img-post-user img-user" src="${post.photo_user}" alt="imagem de perfil do usuário">
-      </div>
-    </div>
-
-    <div class="text-and-likes">
-      <div>
-        <label class="name-post-user">${post.name}</label>
-      </div>
-      <div>
-        <p class="text-post-user">${post.post_content}</p>
-      </div>  
-      <div>
-        <span class="like-post-user">
-          <img class="like-heart" src="${post.liked == true ? './image/liked-red.png' : './image/like.png'}" alt="ícone de like com coração">
-          <label id="likes-quantities">${post.like_quantity}</label>
-        </span>
-      </div>
-    </div>
-  </section>
-`
-}
   return container;
-  
 };
-
-
-
-
