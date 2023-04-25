@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
+  signOut
 } from 'firebase/auth';
 import { app } from './firebase.js';
 
@@ -17,3 +18,6 @@ export const loginGoggle = () => {
   const provider = new GoogleAuthProvider();
   return signInWithPopup(auth, provider);
 };
+
+
+signOut(auth);

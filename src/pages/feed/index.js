@@ -29,7 +29,7 @@ export default () => {
         </button>
 
         <button class="hidden-when-mobile">
-          <span>
+          <span class="logout">
             <img src="./image/sair.png" alt="icone para sair do app"/>
             <span>Sair</span>
           </span>
@@ -209,6 +209,23 @@ export default () => {
       alert("Por favor, escreva algo para publicar!");
     }
   });
+
+  //logout
+
+  const logoutButton = container.querySelector('.logout');
+  logoutButton.addEventListener('click', () => {
+    signOut(auth)
+      .then(() => {
+        console.log("saiu");
+    // code for redirect user to Log-in page
+    // ...
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  })
+
+  
 
 
   return container;
