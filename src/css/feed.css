@@ -7,6 +7,16 @@
     width: 100%;
 }
 
+main {
+  justify-content: center;
+  text-align: center;
+}
+
+.feed-postado {
+  margin-left: 35%;
+  max-width: 60vw;
+}
+
 .div-img-logo {
   margin-top: 1%;
   margin-left: 4%;
@@ -16,22 +26,10 @@
   width: 25%;
 }
 
-   
-.feed-posts {
-    border-radius: 1rem;
-    padding-left: 2%;
-    padding-right: 2%;
-    padding-top: 2%;
-    padding-bottom: 2% ;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 35vw;
-}
-
 textarea::placeholder {
   color:#606060;
 }
+
 
 
 .btn-sair {
@@ -60,7 +58,7 @@ textarea::placeholder {
 
 .img-user-name {
   width: 5%;
-  margin-left: 3.5%;
+  
 }
 
 .position-user-name{
@@ -70,24 +68,27 @@ textarea::placeholder {
   color: white;
 }
 
-
-
-
 .user-name {
   margin-top: 0.8vh;
+  text-shadow: .2rem .3rem .2rem rgba(0, 0, 0, 0.664);
 }
 
 .dataPost {
-  margin-right: 50%;
+  color: white;
+  padding-top: 1%;
+  margin-right: 40%;
+  text-shadow: .2rem .3rem .2rem rgba(0, 0, 0, 0.664);
 }
 
 #txt-area {
     background-color: #f9cccc;
-    border-radius: 1rem;
+    margin-bottom: 3%;
+    margin-top: 3%;
     padding: 1rem;
     font-family: 'Roboto', sans-serif;
     box-shadow: .2rem .3rem .2rem rgba(0,0,0,0.25);
     width: 35vw;
+    margin-left: 10%;
 }
 
 .btn-postar {
@@ -119,11 +120,6 @@ textarea::placeholder {
   border-radius: 0.5rem;
  }
 
-.ilustration-feed {
-  width: 33vw;
-  position: fixed;
-  margin-top: 0px;
-}
 
 #txt-area-postado {
     background-color: #e1faf7;
@@ -131,29 +127,15 @@ textarea::placeholder {
     padding: 1rem;
     font-family: 'Roboto', sans-serif;
     box-shadow: .2rem .3rem .2rem rgba(0,0,0,0.25);
-    width: 35vw;
+  
 }
+
+
 
 .li{
-  margin-bottom: 7%;
+  margin-bottom: 5%;
 }
 
-.container-img-feed {
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    gap: 15%;
-    margin-left: 10%;
-    margin-right: 17%;
-  }
-
-  .posiçao-imagem-feed, .posiçao-post-feed {
-    flex-basis: 50%;
-    flex-grow: 0;
-    
-  }
-
-  
 ul, li {
     list-style-type: none;
     display: flex;
@@ -162,19 +144,6 @@ ul, li {
   
 
 @media (max-width: 600px) {
-    .container-img-feed {
-      display: flex;
-      flex-direction: column;
-    }
-
-    picture {
-    display: none;
-   }
-  
-    .div-img {
-      display: none;
-    }
-
     .header {
         display: flex;
         justify-content: space-between;
@@ -182,6 +151,7 @@ ul, li {
         padding: 1rem;
         margin-bottom: 20px;
         width: 100%;
+        background-color:#445864a2 ;
     }
       
     .logo-geral {

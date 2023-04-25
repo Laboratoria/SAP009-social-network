@@ -6,36 +6,22 @@ export default () => {
   const container = document.createElement('div');
   const template = `
   <header class="header">
-  <div class="div-img-logo">
-  <img class="logo-feed" src='./img/lofeedsemfundo.png' alt='logo HelParents' class='img-logo'>
-  </div>
-  <button class="btn-sair">
-  <img class="img-sair" src='./img/logout.png' alt='logo HelParents' class='img-logo'>
-  </button>
+   <div class="div-img-logo">
+     <img class="logo-feed" src='./img/lofeedsemfundo.png' alt='logo HelParents' class='img-logo'>
+   </div>
+   <button class="btn-sair">
+    <img class="img-sair" src='./img/logout.png' alt='logo HelParents' class='img-logo'>
+   </button>
   </header>
   <main>
-  <div class="container-img-feed"> 
-  <section class="posiçao-imagem-feed">
-  <picture class="div-img">
-  <img class= "ilustration-feed"src="./img/op15.png" alt="notebook">
-  </picture>
-  </section>
-  <section class="posição-posts-feed">
-  <section class="feed-posts">
-  <div class="postando">
-  <div class="position-user-name">
-  <p class="user-name">Compartilhe com a gente!</p>
-  </div>
-  <textarea name="" id="txt-area" cols="70" rows="5" placeholder= "Escreva seu post"></textarea>
-              <div class="posição-botão-postar">
-              <button class="btn-postar" id="bntPublicar">
-                  <img class='postar-img' src='./img/checked.png' alt='logo-google'>
-                  </button>
-              </div>
-          </div>
+    <div class="postando">
+        <textarea name="" id="txt-area" cols="69" rows="4" placeholder= "Escreva seu post"> Digite aqui seu post
+        </textarea>
+      <button class="btn-postar" id="bntPublicar">
+          <img class='postar-img' src='./img/checked.png' alt='logo-google'>
+      </button>
+      <section class="feed-postado">
       </section>
-      <section class="feed-postado"></section>
-     </section> 
      </div>
      </main>
      `;
@@ -55,12 +41,10 @@ export default () => {
                   <img class="img-user-name" src="./img/profile-user.png" alt="user-name">
                   <p class="user-name">${posts.username}</p>
                   </div>
-                  <div class="position-data">
-                  <p class ="dataPost">${posts.date}</p>
-                  </div>
                   </div>
                   <textarea disabled name="" id="txt-area-postado${posts.id}" cols="70" rows="5">${posts.text}</textarea>
                   <div class="position-btn-postar">
+                  <p class ="dataPost">${posts.date}</p>
                   ${posts.userId === auth.currentUser.uid ? `  
                   <button id="${posts.id}editar" class="btn-postar editado">
                   <img class='editar-img' src='./img/editar-informacao.png' alt='editar'>
