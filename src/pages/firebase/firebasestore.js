@@ -14,8 +14,12 @@ import {
   doc,
 } from 'firebase/firestore';
 import { app } from './firebase.js';
+<<<<<<< HEAD
 import { async } from 'regenerator-runtime';
 >>>>>>> 20a0622341f6f30a95a738dcaedcbf3524474721
+=======
+// import { async } from 'regenerator-runtime';
+>>>>>>> 315beecf9ed824886f832eb17f5c3026ecdb14ba
 
 const db = getFirestore(app);
 

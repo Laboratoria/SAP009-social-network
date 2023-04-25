@@ -66,9 +66,9 @@ export default () => {
       })
       .catch((error) => {
         if (error.message === 'Firebase: Error (auth/user-not-found).') {
-          alert('Usuário não encontrado');
+          // alert('Usuário não encontrado');
         } else if (error.message === 'Firebase: Error (auth/wrong-password).') {
-          alert('Senha incorreta');
+          // alert('Senha incorreta');
         }
       });
   });
@@ -80,7 +80,7 @@ export default () => {
         window.location.hash = '#feed';
       })
       .catch(() => {
-        alert('Erro ao efetuar login com o google');
+        // alert('Erro ao efetuar login com o google');
       });
   });
 
