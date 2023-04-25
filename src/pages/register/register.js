@@ -2,9 +2,9 @@ export default () => {
   const containerRegister = document.createElement('div');
 
   const registerScreen = `
-    <img src="imagens/duas-mulheres-pagina-de-cadastro.png" alt="duas-mulheres-negras">
+    <img src="imagens/duas-mulheres-pagina-de-cadastro.png" alt="duas-mulheres-negras" id="img_register">
     <h1>Quer as melhores dicas para cuidar dos seus cachos? Vem com a gente!</h1>
-    <form action="formulario-de-cadastro">
+    <form action="formulario-de-cadastro" id="form_register">
       <input type="nome" placeholder="Nome">
       <input type="sobrenome" placeholder="sobrenome">
       <input type="date" name="data" id="data-de-nascimento">
@@ -14,7 +14,7 @@ export default () => {
       <input type="email" placeholder="Email">
       <input type="senha" placeholder="Senha">
       <input type="repetir-a-senha" placeholder="Repita a senha">
-      <input type="button" value="cadastrar" id="button-register">
+      <input type="button" value="cadastrar" id="button_register">
     </form>`;
   containerRegister.innerHTML = registerScreen;
   return containerRegister;

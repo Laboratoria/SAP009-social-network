@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300&display=swap');
 
 body {
     background-color: #FAC8A5;
 }
 
-h1 {
+* {
     color: #35241D;
+    font-family:'Barlow', sans-serif;
 }
 
