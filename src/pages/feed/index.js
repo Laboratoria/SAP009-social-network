@@ -1,4 +1,4 @@
-import { newPost, getPost, deletePost } from '../firebase/firebasestore.js';
+import { newPost, getPost, deletePost, likePost } from '../firebase/firebasestore.js';
 import { auth } from '../firebase/auth.js';
 import { getAuth } from 'firebase/auth';
 
@@ -148,9 +148,9 @@ export default () => {
                   <label class="date-and-hour">às ${post.hour}</label>
                 </div> 
                 <div class="like">
-                  <button class="like-post-user" id="like-post">
+                  <button class="like-post-user" id="${post.id}like-post">
                     <img class="like-heart" src="./image/like.png" alt="ícone de like com coração">
-                    <label id="likes-quantities">${post.like}</label>
+                    <label id="likes-quantities">${post.like.length}</label>
                   </button>
                 </div>
                 ${isAuthor ? `
@@ -188,8 +188,23 @@ export default () => {
           }
         })
       }
-    })
-  };
+
+      //verificar se está recebendo os ids dos usuários
+      //refresh
+      //deslike = usar remove
+
+      //curtir
+      const btnLike = document.getElementById(post.id + 'like-post');
+        //const postSection = btnLike.parentNode.parentNode.parentNode;
+        btnLike.addEventListener('click', (e) => {
+          e.preventDefault();
+          const idUser = auth.currentUser.uid;
+          likePost(post.id, idUser)
+        })
+      }
+    )
+    }
+
   printPost();
 
   // pegar o post e armazenar no firabase
@@ -224,6 +239,9 @@ export default () => {
     });
   })
 
+  // curtir
+
+ 
 
   return container;
 };
