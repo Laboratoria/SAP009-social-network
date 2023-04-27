@@ -53,8 +53,6 @@ describe('createUser', () => {
 
   it('O usuário deve criar uma conta com email e senha', () => {
     createUserWithEmailAndPassword.mockResolvedValue();
-    const mockAuth = { currentUser: {} };
-    getAuth.mockReturnValue(mockAuth);
 
     const email = 'teste@email.com';
     const senha = 'senhaescolhida';
@@ -62,6 +60,6 @@ describe('createUser', () => {
     createUser(email, senha);
 
     expect(createUserWithEmailAndPassword).toHaveBeenCalledTimes(1);
-    expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(mockAuth, email, senha);
+    expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(undefined, email, senha);
   });
 });

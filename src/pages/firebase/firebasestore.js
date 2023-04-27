@@ -39,16 +39,19 @@ export const getPost = async () => {
   return message;
 };
 
-export const deletePost =  async (postId) => {
-  deleteDoc(doc(db, 'Post', postId));
-};
-
 export const likePost =  async (postId, userId) => {
   updateDoc(doc(db, 'Post', postId),{
     like: arrayUnion(userId)
   });
 };
 
+export const editPost = (postId, textArea) => updateDoc(doc(db, 'Post', postId), {
+  text: textArea,
+});
+
+export const deletePost =  async (postId) => {
+  deleteDoc(doc(db, 'Post', postId));
+};
 // edit
 // like/deslike
 // excluir
