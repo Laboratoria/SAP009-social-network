@@ -193,17 +193,18 @@ export default () => {
       //refresh
       //deslike = usar remove
 
-      //curtir
       const btnLike = document.getElementById(post.id + 'like-post');
         //const postSection = btnLike.parentNode.parentNode.parentNode;
         btnLike.addEventListener('click', (e) => {
           e.preventDefault();
           const idUser = auth.currentUser.uid;
           likePost(post.id, idUser)
+          window.location.hash = '#feed';
         })
       }
     )
     }
+    //curtir
 
   printPost();
 
