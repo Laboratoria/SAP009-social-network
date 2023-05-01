@@ -11,7 +11,9 @@ export const auth = getAuth(app);
 
 export const login = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
-export const createUser = (email, password) => createUserWithEmailAndPassword(auth, email, password);
+export function createUser (email, password) {
+    return createUserWithEmailAndPassword(auth, email, password);
+}
 
 export const loginGoggle = () => {
   const provider = new GoogleAuthProvider();

@@ -1,4 +1,4 @@
-import { newPost, getPost, deletePost, likePost } from '../firebase/firebasestore.js';
+import { newPost, getPost, deletePost, likePost, editPost } from '../firebase/firebasestore.js';
 import { auth } from '../firebase/auth.js';
 import { getAuth } from 'firebase/auth';
 
@@ -143,7 +143,7 @@ export default () => {
                   <label class="name-post-user">${post.username}</label>
                 </div>
                 <div>
-                  <p class="text-post-user">${post.text}</p>
+                  <textarea disabled class="text-post-user" id="${post.id}text-area">${post.text}</textarea>
                   <label class="date-and-hour">${post.date}</label>
                   <label class="date-and-hour">às ${post.hour}</label>
                 </div> 
@@ -161,9 +161,10 @@ export default () => {
                     </button>
                   </div>
                   <div class="edit">
-                    <button class="btn-edit" id="btn-edit">
+                    <button class="btn-edit" id="${post.id}btn-edit">
                       <img src="./image/editar.png" alt="icone para deletar o post">
                     </button>
+                    <button id="${post.id}btn-save" class="hidden">Salvar</button>
                   </div>
                 </div>
                 ` : "" }
@@ -189,9 +190,8 @@ export default () => {
         })
       }
 
-      //verificar se está recebendo os ids dos usuários
-      //refresh
-      //deslike = usar remove
+    
+      //curtir
 
       const btnLike = document.getElementById(post.id + 'like-post');
         //const postSection = btnLike.parentNode.parentNode.parentNode;
@@ -201,11 +201,29 @@ export default () => {
           likePost(post.id, idUser)
           window.location.hash = '#feed';
         })
-      }
-    )
-    }
-    //curtir
+    
+      const btnEdit = document.getElementById(`${post.id}btn-edit`);
+      console.log('entrei no if')
+      const textArea = document.getElementById(`${post.id}text-area`);
+      const btnSave = document.getElementById(`${post.id}btn-save`);
+      btnSave.addEventListener('click', () => {
+          editPost(post.id, textArea.value);
+          textArea.setAttribute('disabled', true);
+          btnEdit.removeAttribute('hidden');
+        });
 
+        btnEdit.addEventListener('click', (e) => {
+          e.preventDefault();
+          if(window.confirm('Tem certeza que deseja editar a publicação?')){
+            btnEdit.setAttribute('hidden', true);
+            textArea.removeAttribute('disabled');
+          }
+        });
+    });
+   
+      // deslike = usar remove
+
+  } 
   printPost();
 
   // pegar o post e armazenar no firabase
@@ -238,11 +256,7 @@ export default () => {
     .catch((error) => {
       console.log(error);
     });
-  })
-
-  // curtir
-
- 
+  }) 
 
   return container;
 };
