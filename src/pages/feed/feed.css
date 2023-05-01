@@ -139,6 +139,9 @@ div > .name-post-user{
 }
 
 .text-post-user{
+  background: none;
+  width: 100%;
+  border: none;
   margin: 10px 3px;
   font-size: 15px;
   color: #0F1419;
