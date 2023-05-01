@@ -1,6 +1,6 @@
 import { Home } from './pages/home/home.js';
-import { Cadastro } from './pages/cadastro/cadastro.js';
-import { Feed } from './pages/feed/feed.js';
+import { Cadastro } from './pages/Sign up/cadastro.js';
+import { Feed } from './pages/Post/post.js';
 
 const main = document.getElementById('root');
 const init = () => {
