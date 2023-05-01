@@ -15,11 +15,11 @@ import { app } from './firebase.js';
 
 const db = getFirestore(app);
 
-export const newPost = async (text, date, username, id) => addDoc(collection(db, 'Post'), {
+export const newPost = async (text, date, username, uid) => addDoc(collection(db, 'Post'), {
   username,
   date,
   text,
-  id,
+  uid,
   like: [],
 });
 

@@ -1,4 +1,4 @@
-import { login, loginGoggle } from '../firebase/auth.js';
+import { auth, login, loginGoggle } from '../firebase/auth.js';
 
 export default () => {
   const container = document.createElement('div');
@@ -61,7 +61,11 @@ export default () => {
     const username = form.username.value;
     const password = form.password.value;
     login(username, password)
-      .then(() => {
+      .then((userData) => {
+
+        //armazena dados na sessao
+        guardaSessaoUsuario(userData.user)
+        // redireciona
         window.location.hash = '#feed';
       })
       .catch((error) => {
@@ -76,7 +80,11 @@ export default () => {
   const gmail = container.querySelector('.btnGoogle');
   gmail.addEventListener('click', () => {
     loginGoggle()
-      .then(() => {
+      .then((userData) => {
+
+        //armazena dados na sessao
+        guardaSessaoUsuario(userData.user)
+        // redireciona
         window.location.hash = '#feed';
       })
       .catch(() => {
@@ -85,4 +93,20 @@ export default () => {
   });
 
   return container;
+
+
+  // Ao logar, guarda os dados do usuário logado em uma sessao para usar na navegação
+  function guardaSessaoUsuario(user) {
+    
+    sessionStorage.setItem('usuario_id', user.uid);
+    sessionStorage.setItem('usuario_nome', user.displayName);
+    sessionStorage.setItem('usuario_email', user.email);
+
+  }
+
+  // limpa a sessao do usuário, quando clica em sair
+  function limpaSessaoUsuario() {
+    sessionStorage.clear()
+  }
+
 };

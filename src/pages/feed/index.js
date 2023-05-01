@@ -1,5 +1,5 @@
 import { newPost, getPost, deletePost, likePost, editPost } from '../firebase/firebasestore.js';
-import { auth } from '../firebase/auth.js';
+import { auth, logout } from '../firebase/auth.js';
 import { getAuth } from 'firebase/auth';
 
 export default () => {
@@ -131,16 +131,17 @@ export default () => {
 
   const printPost = async () => {
     const arrayPost = await getPost();
-    const username = auth.currentUser.displayName;
+    const username = sessionStorage.getItem('usuario_nome');
     const templatePublish = arrayPost
       .map(
         (post) => {
-          const isAuthor = post.username === username
+          //ajustado para pegarverificar se o UID de quem escreveu o post bate com o UID logado
+          const isAuthor = post.uid == sessionStorage.getItem('usuario_id') //post.username === username
           return `
             <section class="posts-users">
               <div class="text-and-likes">
                 <div class="name-and-date">
-                  <label class="name-post-user">${post.username}</label>
+                  <label class="name-post-user">${post.username || sessionStorage.getItem('usuario_email')}</label>
                 </div>
                 <div>
                   <textarea disabled class="text-post-user" id="${post.id}text-area">${post.text}</textarea>
@@ -197,7 +198,7 @@ export default () => {
         //const postSection = btnLike.parentNode.parentNode.parentNode;
         btnLike.addEventListener('click', (e) => {
           e.preventDefault();
-          const idUser = auth.currentUser.uid;
+          const idUser = sessionStorage.getItem('usuario_id');
           likePost(post.id, idUser)
           window.location.hash = '#feed';
         })
@@ -234,8 +235,8 @@ export default () => {
     if (text.value !== "") {
       const today = new Date();
       //const dataPostagem = today.toLocaleDateString();
-      const username = auth.currentUser.displayName;
-      const idUser = auth.currentUser.uid;
+      const username = sessionStorage.getItem('usuario_nome') 
+      const idUser = sessionStorage.getItem('usuario_id') 
       newPost(text.value, today, username, idUser).then(() => {
         printPost();
         cleanPost();
@@ -250,13 +251,8 @@ export default () => {
   const logoutButtons = container.querySelectorAll('.logout');
   logoutButtons.forEach(logoutButton => {
     logoutButton.addEventListener('click', () => {
-      auth.signOut()
-        .then(() => {
-          window.location.hash = '#login';
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      //funçao dentro do auth.js
+      logout()
     }) 
   });
 
