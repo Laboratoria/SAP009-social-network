@@ -65,7 +65,7 @@ export default () => {
       </button>
 
       <button>
-        <span>
+        <span class="logout">
           <img src="./image/sair.png" alt="icone para sair do app"/>
           <span class="text-mobile">Sair</span>
         </span>
@@ -247,16 +247,18 @@ export default () => {
 
   //logout
 
-  const logoutButton = container.querySelector('.logout');
-  logoutButton.addEventListener('click', () => {
-    auth.signOut()
-      .then(() => {
-        window.location.hash = '#login';
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  }) 
+  const logoutButtons = container.querySelectorAll('.logout');
+  logoutButtons.forEach(logoutButton => {
+    logoutButton.addEventListener('click', () => {
+      auth.signOut()
+        .then(() => {
+          window.location.hash = '#login';
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    }) 
+  });
 
   return container;
 };

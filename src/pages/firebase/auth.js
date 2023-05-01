@@ -20,5 +20,8 @@ export const loginGoggle = () => {
   return signInWithPopup(auth, provider);
 };
 
+export const logout = () => {
+  auth.signOut()
+}
 
 
