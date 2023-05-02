@@ -1,5 +1,6 @@
-import { newPost, getPost, deletePost } from '../firebase/firebasestore.js';
-import { auth } from '../firebase/auth.js';
+import { newPost, getPost, deletePost, likePost, editPost, unlikePost } from '../firebase/firebasestore.js';
+import { auth, logout } from '../firebase/auth.js';
+import { getAuth } from 'firebase/auth';
 
 export default () => {
   const container = document.createElement('div');
@@ -29,7 +30,7 @@ export default () => {
         </button>
 
         <button class="hidden-when-mobile">
-          <span>
+          <span class="logout">
             <img src="./image/sair.png" alt="icone para sair do app"/>
             <span>Sair</span>
           </span>
@@ -64,7 +65,7 @@ export default () => {
       </button>
 
       <button>
-        <span>
+        <span class="logout">
           <img src="./image/sair.png" alt="icone para sair do app"/>
           <span class="text-mobile">Sair</span>
         </span>
@@ -130,26 +131,28 @@ export default () => {
 
   const printPost = async () => {
     const arrayPost = await getPost();
-    const username = auth.currentUser.displayName;
+    const username = auth.currentUser.displayName
     const templatePublish = arrayPost
       .map(
         (post) => {
-          const isAuthor = post.username === username
+          console.log(post)
+          //ajustado para pegarverificar se o UID de quem escreveu o post bate com o UID logado
+          const isAuthor = post.uid == auth.currentUser.uid //post.username === username
           return `
             <section class="posts-users">
               <div class="text-and-likes">
                 <div class="name-and-date">
-                  <label class="name-post-user">${post.username}</label>
+                  <label class="name-post-user">${post.username || auth.currentUser.email}</label>
                 </div>
                 <div>
-                  <p class="text-post-user">${post.text}</p>
+                  <textarea disabled class="text-post-user" id="${post.id}text-area">${post.text}</textarea>
                   <label class="date-and-hour">${post.date}</label>
                   <label class="date-and-hour">às ${post.hour}</label>
                 </div> 
                 <div class="like">
-                  <button class="like-post-user" id="like-post">
-                    <img class="like-heart" src="./image/like.png" alt="ícone de like com coração">
-                    <label id="likes-quantities">${post.like}</label>
+                  <button class="like-post-user" id="${post.id}like-post">
+                    <img class="like-heart" src="${post.like && post.like.includes(auth.currentUser.uid) ? './image/liked-red.png' : './image/like.png'}" alt="ícone de like com coração">
+                    <label id="likes-quantities">${post.like.length}</label>
                   </button>
                 </div>
                 ${isAuthor ? `
@@ -160,9 +163,10 @@ export default () => {
                     </button>
                   </div>
                   <div class="edit">
-                    <button class="btn-edit" id="btn-edit">
+                    <button class="btn-edit" id="${post.id}btn-edit">
                       <img src="./image/editar.png" alt="icone para deletar o post">
                     </button>
+                    <button id="${post.id}btn-save" class="hidden">Salvar</button>
                   </div>
                 </div>
                 ` : "" }
@@ -187,8 +191,73 @@ export default () => {
           }
         })
       }
-    })
-  };
+
+    
+      //curtir
+
+      const btnLike = document.getElementById(post.id + 'like-post');
+        //const postSection = btnLike.parentNode.parentNode.parentNode;
+        btnLike.addEventListener('click', (e) => {
+          e.preventDefault();
+          const idUser = auth.currentUser.uid
+
+          if(post.like && post.like.includes(idUser)) {
+            console.log('unlike')
+            unlikePost(post.id, idUser).then(() => {
+              //removendo da interface
+              post.like.splice(post.like.indexOf(idUser), 1)
+    
+              window.location.hash = '#feed';
+              atualizaDisplayLike(post.id + 'like-post', false)
+
+            })
+          } else {
+            console.log('like')
+            likePost(post.id, idUser).then(() => {
+              //add elemento no array
+              post.like.push(idUser)
+              window.location.hash = '#feed';
+              atualizaDisplayLike(post.id + 'like-post', true)
+            })
+          }
+          //window.location.reload()
+        })
+
+      function atualizaDisplayLike(postId, hasLiked) {
+        const imagem = document.querySelector('#'+postId+' img')
+        const contador = document.querySelector('#'+postId+' label')
+        console.log('hasLiked', hasLiked)
+        if(!hasLiked) {
+          imagem.src = imagem.src.replace('liked-red','like')
+          contador.innerText = parseInt(contador.innerText) - 1
+        } else {
+          imagem.src = imagem.src.replace('like','liked-red')
+          contador.innerText = parseInt(contador.innerText) + 1
+        }
+      }
+    
+      const btnEdit = document.getElementById(`${post.id}btn-edit`);
+      console.log('entrei no if')
+      const textArea = document.getElementById(`${post.id}text-area`);
+      const btnSave = document.getElementById(`${post.id}btn-save`);
+      btnSave.addEventListener('click', () => {
+          editPost(post.id, textArea.value);
+          textArea.setAttribute('disabled', true);
+          btnEdit.removeAttribute('hidden');
+        });
+
+        btnEdit.addEventListener('click', (e) => {
+          e.preventDefault();
+          if(window.confirm('Tem certeza que deseja editar a publicação?')){
+            btnEdit.setAttribute('hidden', true);
+            textArea.removeAttribute('disabled');
+          }
+        });
+    });
+   
+      // deslike = usar remove
+
+  } 
   printPost();
 
   // pegar o post e armazenar no firabase
@@ -199,8 +268,8 @@ export default () => {
     if (text.value !== "") {
       const today = new Date();
       //const dataPostagem = today.toLocaleDateString();
-      const username = auth.currentUser.displayName;
-      const idUser = auth.currentUser.uid;
+      const username = auth.currentUser.displayName 
+      const idUser = auth.currentUser.uid
       newPost(text.value, today, username, idUser).then(() => {
         printPost();
         cleanPost();
@@ -210,6 +279,15 @@ export default () => {
     }
   });
 
+  //logout
+
+  const logoutButtons = container.querySelectorAll('.logout');
+  logoutButtons.forEach(logoutButton => {
+    logoutButton.addEventListener('click', () => {
+      //funçao dentro do auth.js
+      logout()
+    }) 
+  });
 
   return container;
 };
