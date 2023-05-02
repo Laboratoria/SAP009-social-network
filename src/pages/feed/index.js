@@ -1,6 +1,8 @@
-import { newPost, getPost, deletePost, likePost, editPost, unlikePost } from '../firebase/firebasestore.js';
+// import { getAuth } from 'firebase/auth';
+import {
+  newPost, getPost, deletePost, likePost, editPost, unlikePost,
+} from '../firebase/firebasestore.js';
 import { auth, logout } from '../firebase/auth.js';
-import { getAuth } from 'firebase/auth';
 
 export default () => {
   const container = document.createElement('div');
@@ -131,13 +133,12 @@ export default () => {
 
   const printPost = async () => {
     const arrayPost = await getPost();
-    const username = auth.currentUser.displayName
+    const username = auth.currentUser.displayName;
     const templatePublish = arrayPost
       .map(
         (post) => {
-          console.log(post)
-          //ajustado para pegarverificar se o UID de quem escreveu o post bate com o UID logado
-          const isAuthor = post.uid == auth.currentUser.uid //post.username === username
+          // ajustado para pegarverificar se o UID de quem escreveu o post bate com o UID logado
+          const isAuthor = post.uid === auth.currentUser.uid; // post.username === username
           return `
             <section class="posts-users">
               <div class="text-and-likes">
@@ -169,124 +170,118 @@ export default () => {
                     <button id="${post.id}btn-save" class="hidden">Salvar</button>
                   </div>
                 </div>
-                ` : "" }
+                ` : ''}
               
             </section>
-          `
-    }).join('');
+          `;
+        },
+      ).join('');
     container.querySelector('.post-container').innerHTML = templatePublish;
 
-    arrayPost.forEach(post => {
-      const isAuthor = post.username === username
-      const btnDelete = document.getElementById(post.id + 'btn-delete');
-      if(isAuthor){
+    arrayPost.forEach((post) => {
+      const isAuthor = post.username === username;
+      const btnDelete = document.getElementById(`${post.id}btn-delete`);
+      if (isAuthor) {
         const postSection = btnDelete.parentNode.parentNode.parentNode;
         btnDelete.addEventListener('click', (e) => {
           e.preventDefault();
-          if(window.confirm('Tem certeza que deseja excluir a publicação?')){
+          if (window.confirm('Tem certeza que deseja excluir a publicação?')) {
             deletePost(post.id)
-            .then(() => {
-              postSection.remove();
-            });
+              .then(() => {
+                postSection.remove();
+              });
           }
-        })
+        });
       }
 
-    
-      //curtir
-
-      const btnLike = document.getElementById(post.id + 'like-post');
-        //const postSection = btnLike.parentNode.parentNode.parentNode;
-        btnLike.addEventListener('click', (e) => {
-          e.preventDefault();
-          const idUser = auth.currentUser.uid
-
-          if(post.like && post.like.includes(idUser)) {
-            console.log('unlike')
-            unlikePost(post.id, idUser).then(() => {
-              //removendo da interface
-              post.like.splice(post.like.indexOf(idUser), 1)
-    
-              window.location.hash = '#feed';
-              atualizaDisplayLike(post.id + 'like-post', false)
-
-            })
-          } else {
-            console.log('like')
-            likePost(post.id, idUser).then(() => {
-              //add elemento no array
-              post.like.push(idUser)
-              window.location.hash = '#feed';
-              atualizaDisplayLike(post.id + 'like-post', true)
-            })
-          }
-          //window.location.reload()
-        })
-
+      // curtir
       function atualizaDisplayLike(postId, hasLiked) {
-        const imagem = document.querySelector('#'+postId+' img')
-        const contador = document.querySelector('#'+postId+' label')
-        console.log('hasLiked', hasLiked)
-        if(!hasLiked) {
-          imagem.src = imagem.src.replace('liked-red','like')
-          contador.innerText = parseInt(contador.innerText) - 1
+        const imagem = document.querySelector(`#${postId} img`);
+        const contador = document.querySelector(`#${postId} label`);
+        if (!hasLiked) {
+          imagem.src = imagem.src.replace('liked-red', 'like');
+          contador.innerText = Number(contador.innerText) - 1;
         } else {
-          imagem.src = imagem.src.replace('like','liked-red')
-          contador.innerText = parseInt(contador.innerText) + 1
+          imagem.src = imagem.src.replace('like', 'liked-red');
+          contador.innerText = Number(contador.innerText) + 1;
         }
       }
-    
+
+      const btnLike = document.getElementById(`${post.id}like-post`);
+      // const postSection = btnLike.parentNode.parentNode.parentNode;
+      btnLike.addEventListener('click', (e) => {
+        e.preventDefault();
+        const idUser = auth.currentUser.uid;
+
+        if (post.like && post.like.includes(idUser)) {
+          unlikePost(post.id, idUser).then(() => {
+            // removendo da interface
+            post.like.splice(post.like.indexOf(idUser), 1);
+
+            window.location.hash = '#feed';
+            atualizaDisplayLike(`${post.id}like-post`, false);
+          });
+        } else {
+          likePost(post.id, idUser).then(() => {
+            // add elemento no array
+            post.like.push(idUser);
+            window.location.hash = '#feed';
+            atualizaDisplayLike(`${post.id}like-post`, true);
+          });
+        }
+        // window.location.reload()
+      });
+
       const btnEdit = document.getElementById(`${post.id}btn-edit`);
-      console.log('entrei no if')
+
       const textArea = document.getElementById(`${post.id}text-area`);
       const btnSave = document.getElementById(`${post.id}btn-save`);
       btnSave.addEventListener('click', () => {
-          editPost(post.id, textArea.value);
-          textArea.setAttribute('disabled', true);
-          btnEdit.removeAttribute('hidden');
-        });
+        editPost(post.id, textArea.value);
+        textArea.setAttribute('disabled', true);
+        btnEdit.removeAttribute('hidden');
+      });
 
-        btnEdit.addEventListener('click', (e) => {
-          e.preventDefault();
-          if(window.confirm('Tem certeza que deseja editar a publicação?')){
-            btnEdit.setAttribute('hidden', true);
-            textArea.removeAttribute('disabled');
-          }
-        });
+      btnEdit.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (window.confirm('Tem certeza que deseja editar a publicação?')) {
+          btnEdit.setAttribute('hidden', true);
+          textArea.removeAttribute('disabled');
+        }
+      });
     });
-   
-      // deslike = usar remove
 
-  } 
+    // deslike = usar remove
+  };
   printPost();
 
   // pegar o post e armazenar no firabase
 
-  const text = container.querySelector(".textarea");
-  const buttonPublish = container.querySelector(".button-publish");
-  buttonPublish.addEventListener("click", () => {
-    if (text.value !== "") {
+  const text = container.querySelector('.textarea');
+  const buttonPublish = container.querySelector('.button-publish');
+  buttonPublish.addEventListener('click', () => {
+    if (text.value !== '') {
       const today = new Date();
-      //const dataPostagem = today.toLocaleDateString();
-      const username = auth.currentUser.displayName 
-      const idUser = auth.currentUser.uid
+      // const dataPostagem = today.toLocaleDateString();
+      const username = auth.currentUser.displayName;
+      const idUser = auth.currentUser.uid;
       newPost(text.value, today, username, idUser).then(() => {
         printPost();
         cleanPost();
       });
     } else {
-      alert("Por favor, escreva algo para publicar!");
+      alert('Por favor, escreva algo para publicar!');
     }
   });
 
-  //logout
+  // logout
 
   const logoutButtons = container.querySelectorAll('.logout');
-  logoutButtons.forEach(logoutButton => {
+  logoutButtons.forEach((logoutButton) => {
     logoutButton.addEventListener('click', () => {
-      //funçao dentro do auth.js
-      logout()
-    }) 
+      // funçao dentro do auth.js
+      logout();
+    });
   });
 
   return container;

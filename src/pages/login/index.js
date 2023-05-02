@@ -1,4 +1,4 @@
-import { auth, login, loginGoggle } from '../firebase/auth.js';
+import { login, loginGoggle } from '../firebase/auth.js';
 
 export default () => {
   const container = document.createElement('div');
@@ -61,7 +61,7 @@ export default () => {
     const username = form.username.value;
     const password = form.password.value;
     login(username, password)
-      .then((userData) => {
+      .then(() => {
         // redireciona
         window.location.hash = '#feed';
       })
@@ -77,7 +77,7 @@ export default () => {
   const gmail = container.querySelector('.btnGoogle');
   gmail.addEventListener('click', () => {
     loginGoggle()
-      .then((userData) => {
+      .then(() => {
         // redireciona
         window.location.hash = '#feed';
       })
@@ -87,5 +87,4 @@ export default () => {
   });
 
   return container;
-
 };

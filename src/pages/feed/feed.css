@@ -22,7 +22,7 @@ body{
 }
 
 .button-hamburguer{
-  display: none;
+  display: flex;
   align-self: flex-start;
   align-items: center;
   margin: 15px;
@@ -38,9 +38,6 @@ body{
   padding-top: 10px;
 }
 
-.button-hamburguer{
-  display: flex;
-}
 
 .menu-mobile{
   display: none;
@@ -92,14 +89,14 @@ body{
   line-height: 1;
 }
 
-.menu button:hover > span{
-  background: rgba(255, 255, 255, 0.08);
-}
-
 .menu button > span > span{
   visibility: hidden;
   color: #0F1419;
   display: none;
+}
+
+.menu button:hover > span{
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .menu button img{

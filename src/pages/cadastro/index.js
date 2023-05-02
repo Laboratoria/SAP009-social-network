@@ -50,7 +50,7 @@ export default () => {
     e.preventDefault();
     const password = form.password.value;
     const email = form.email.value;
-    const userName = form.name.valeu
+    const userName = form.name.valeu;
     createUser(email, password, userName)
       .then(() => {
         window.location.hash = '#feed';
