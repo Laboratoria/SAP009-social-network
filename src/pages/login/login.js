@@ -3,13 +3,12 @@ export default () => {
 
   const loginScreen = `
   <body>
-  
   <header>
   <img src="imagens/logo-pagina-de-login.png" alt="imagem-logo" height=200px>
   <img src="imagens/connectCurls.png" alt="mulher-logo" height=150px>
   </header>
-  <h1>Seja bem-vinde!</h1>
   <div class= "wrapper">
+  <h1>Seja bem-vinde!</h1>
   <div class= "row">
   <div class= "form-group">
   <label for="input-digite-seu-email">Email</label>
