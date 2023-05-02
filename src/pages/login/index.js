@@ -62,9 +62,6 @@ export default () => {
     const password = form.password.value;
     login(username, password)
       .then((userData) => {
-
-        //armazena dados na sessao
-        guardaSessaoUsuario(userData.user)
         // redireciona
         window.location.hash = '#feed';
       })
@@ -81,9 +78,6 @@ export default () => {
   gmail.addEventListener('click', () => {
     loginGoggle()
       .then((userData) => {
-
-        //armazena dados na sessao
-        guardaSessaoUsuario(userData.user)
         // redireciona
         window.location.hash = '#feed';
       })
@@ -93,20 +87,5 @@ export default () => {
   });
 
   return container;
-
-
-  // Ao logar, guarda os dados do usuário logado em uma sessao para usar na navegação
-  function guardaSessaoUsuario(user) {
-    
-    sessionStorage.setItem('usuario_id', user.uid);
-    sessionStorage.setItem('usuario_nome', user.displayName);
-    sessionStorage.setItem('usuario_email', user.email);
-
-  }
-
-  // limpa a sessao do usuário, quando clica em sair
-  function limpaSessaoUsuario() {
-    sessionStorage.clear()
-  }
 
 };

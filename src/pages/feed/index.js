@@ -1,4 +1,4 @@
-import { newPost, getPost, deletePost, likePost, editPost } from '../firebase/firebasestore.js';
+import { newPost, getPost, deletePost, likePost, editPost, unlikePost } from '../firebase/firebasestore.js';
 import { auth, logout } from '../firebase/auth.js';
 import { getAuth } from 'firebase/auth';
 
@@ -131,17 +131,18 @@ export default () => {
 
   const printPost = async () => {
     const arrayPost = await getPost();
-    const username = sessionStorage.getItem('usuario_nome');
+    const username = auth.currentUser.displayName
     const templatePublish = arrayPost
       .map(
         (post) => {
+          console.log(post)
           //ajustado para pegarverificar se o UID de quem escreveu o post bate com o UID logado
-          const isAuthor = post.uid == sessionStorage.getItem('usuario_id') //post.username === username
+          const isAuthor = post.uid == auth.currentUser.uid //post.username === username
           return `
             <section class="posts-users">
               <div class="text-and-likes">
                 <div class="name-and-date">
-                  <label class="name-post-user">${post.username || sessionStorage.getItem('usuario_email')}</label>
+                  <label class="name-post-user">${post.username || auth.currentUser.email}</label>
                 </div>
                 <div>
                   <textarea disabled class="text-post-user" id="${post.id}text-area">${post.text}</textarea>
@@ -150,7 +151,7 @@ export default () => {
                 </div> 
                 <div class="like">
                   <button class="like-post-user" id="${post.id}like-post">
-                    <img class="like-heart" src="./image/like.png" alt="ícone de like com coração">
+                    <img class="like-heart" src="${post.like && post.like.includes(auth.currentUser.uid) ? './image/liked-red.png' : './image/like.png'}" alt="ícone de like com coração">
                     <label id="likes-quantities">${post.like.length}</label>
                   </button>
                 </div>
@@ -198,10 +199,42 @@ export default () => {
         //const postSection = btnLike.parentNode.parentNode.parentNode;
         btnLike.addEventListener('click', (e) => {
           e.preventDefault();
-          const idUser = sessionStorage.getItem('usuario_id');
-          likePost(post.id, idUser)
-          window.location.hash = '#feed';
+          const idUser = auth.currentUser.uid
+
+          if(post.like && post.like.includes(idUser)) {
+            console.log('unlike')
+            unlikePost(post.id, idUser).then(() => {
+              //removendo da interface
+              post.like.splice(post.like.indexOf(idUser), 1)
+    
+              window.location.hash = '#feed';
+              atualizaDisplayLike(post.id + 'like-post', false)
+
+            })
+          } else {
+            console.log('like')
+            likePost(post.id, idUser).then(() => {
+              //add elemento no array
+              post.like.push(idUser)
+              window.location.hash = '#feed';
+              atualizaDisplayLike(post.id + 'like-post', true)
+            })
+          }
+          //window.location.reload()
         })
+
+      function atualizaDisplayLike(postId, hasLiked) {
+        const imagem = document.querySelector('#'+postId+' img')
+        const contador = document.querySelector('#'+postId+' label')
+        console.log('hasLiked', hasLiked)
+        if(!hasLiked) {
+          imagem.src = imagem.src.replace('liked-red','like')
+          contador.innerText = parseInt(contador.innerText) - 1
+        } else {
+          imagem.src = imagem.src.replace('like','liked-red')
+          contador.innerText = parseInt(contador.innerText) + 1
+        }
+      }
     
       const btnEdit = document.getElementById(`${post.id}btn-edit`);
       console.log('entrei no if')
@@ -235,8 +268,8 @@ export default () => {
     if (text.value !== "") {
       const today = new Date();
       //const dataPostagem = today.toLocaleDateString();
-      const username = sessionStorage.getItem('usuario_nome') 
-      const idUser = sessionStorage.getItem('usuario_id') 
+      const username = auth.currentUser.displayName 
+      const idUser = auth.currentUser.uid
       newPost(text.value, today, username, idUser).then(() => {
         printPost();
         cleanPost();

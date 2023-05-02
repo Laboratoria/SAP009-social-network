@@ -25,7 +25,6 @@ export const loginGoggle = () => {
 export const logout = () => {
   return auth.signOut()
         .then(() => {
-          sessionStorage.clear()
           window.location.hash = '#login';
       })
       .catch((error) => {

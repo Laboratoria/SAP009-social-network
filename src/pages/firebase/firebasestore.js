@@ -9,6 +9,7 @@ import {
   doc,
   updateDoc,
   arrayUnion,
+  arrayRemove,
 } from 'firebase/firestore';
 import { app } from './firebase.js';
 // import { async } from 'regenerator-runtime';
@@ -42,6 +43,12 @@ export const getPost = async () => {
 export const likePost =  async (postId, userId) => {
   updateDoc(doc(db, 'Post', postId),{
     like: arrayUnion(userId)
+  });
+};
+
+export const unlikePost =  async (postId, userId) => {
+  updateDoc(doc(db, 'Post', postId),{
+    like: arrayRemove(userId)
   });
 };
 
