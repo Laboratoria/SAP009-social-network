@@ -81,14 +81,11 @@ describe('feed', () => {
     ];
 
     // Simula a chamada da função getDocs retornando o mockPosts
+    // Teve esse adicoinal do forach que é chamado durante o getPosts, que precisou ser mockado
     getDocs.mockResolvedValue({
-      collection: jest.fn(() => ({
-        get: jest.fn(() => Promise.resolve({ forEach: jest.fn() })),
-      })),
       forEach: jest.fn((callback) => {
         mockPosts.forEach((snapshot) => callback(snapshot));
       }),
-      query: jest.fn(),
     });
 
     const postList = await getPost();
