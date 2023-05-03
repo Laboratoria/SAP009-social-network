@@ -43,6 +43,7 @@
     "commit": "ffa75c8b2bede153844195479abeff01f3e34227"
   },
   "dependencies": {
+    "@jest/globals": "^29.5.0",
     "firebase": "^9.5.0"
   }
 }

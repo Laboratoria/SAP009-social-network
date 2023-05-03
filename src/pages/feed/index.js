@@ -265,6 +265,7 @@ export default () => {
       // const dataPostagem = today.toLocaleDateString();
       const username = auth.currentUser.displayName;
       const idUser = auth.currentUser.uid;
+
       newPost(text.value, today, username, idUser).then(() => {
         printPost();
         cleanPost();
