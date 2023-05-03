@@ -1,6 +1,7 @@
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  updateProfile,
   GoogleAuthProvider,
   signInWithPopup,
 } from 'firebase/auth';
@@ -51,7 +52,9 @@ describe('createUser', () => {
   });
 
   it('O usuário deve criar uma conta com email e senha', () => {
-    createUserWithEmailAndPassword.mockResolvedValue();
+    createUserWithEmailAndPassword.mockResolvedValue({
+      updateProfile: updateProfile.mockResolvedValue(),
+    });
 
     const email = 'teste@email.com';
     const senha = 'senhaescolhida';
