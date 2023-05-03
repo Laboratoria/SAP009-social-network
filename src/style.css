@@ -1,8 +1,9 @@
-body{
- background-color:#E4FDE1;
+body {
+    background-color: #E4FDE1;
 }
 
-.varal{
- text-align: center;
+.varal {
+    text-align: center;
+    width: "100px";
+    height: "50px";
 }
-
