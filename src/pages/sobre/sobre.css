@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+
+:root {
+    --fonte-logo: 'Montserrat', sans-serif;
+    --fonte-titulo: 'Noto Serif', serif;
+    --cor-de-fundo: #00172C;
+    --amarelinho: #F1CC9A;
+    --azul-botao: #034072;
+    --vermelho: #500B19;
+}
+
+body{
+    background-color: var(--cor-de-fundo);
+    height: 100%;
+}
+
+.menu-toggle {
+    width: 50px;
+    height: 6vh;
+    margin-right: 3em;
+    margin-top: 10px;
+    border: none;
+    background-color: transparent;
+   
+}
+
+.one,
+.two,
+.three {
+    background-color: var(--amarelinho);
+    height: 2px;
+    width: 70%;
+    margin: 8px auto;
+    transition-duration: 0.3s;
+}
+
+.position-nav {
+    display: none;
+}
+
+.menu-section.show {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 250px;
+    background-color: var(--vermelho);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 0 0 50px;
+    transition: 0.5s;
+}
+
+.menu-section.show .position-nav {
+    display: block;
+}
+
+.menu-section.show .menu-toggle {
+    position: absolute;
+    right: 0;
+    top: 2px;
+    box-shadow: none;
+}
+
+.menu-section.show .menu-toggle .one {
+    transform: rotate(45deg) translate(7px, 7px);
+}
+
+.menu-section.show .menu-toggle .two {
+    opacity: 0;
+}
+
+.menu-section.show .menu-toggle .three {
+    transform: rotate(-45deg) translate(6px, -7px);
+}
+
+.li-nav {
+    list-style-type: none;
+}
+
+.options-sair{
+    background-color: transparent;
+    border: none;
+}
+
+.options-sair:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.menu-section.show .position-nav .options-sair, .options-perfil {
+    text-align: center;
+    display: block;
+    font-size: 1.5em;
+    line-height: 6rem;
+    color: var(--amarelinho);
+    transition: 0.5s;
+}
+
+
+
+.options-perfil:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+li > a{
+    text-decoration: none;
+    font-family: var(--fonte-logo);
+}
+
+.main-sobre{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.texto-sobre, .devs-sobre{
+    margin-top: 30px;
+    text-align: center;
+    color:white;
+    font-family: var(--fonte-logo);
+    max-width: 500px;
+}
+
+.devs{
+    margin-bottom: 10px;
+    text-align: center;
+    color:var(--vermelho);
+    font-weight: bold;
+    font-family: var(--fonte-logo);
+}
+
+.devs-sobre{
+    margin-bottom: 20px;
+}
+
+.texto-sobre{
+    padding: 5px;
+}
+
+.cards-devs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 50px ;
+}
+
+.card-keila, .card-stella{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 220px;
+    height: 320px;
+    padding: 10px;
+    border: 1px solid var(--vermelho);
+    border-radius: 20px;
+    background-color: var(--amarelinho);
+    transition: 0.5s;
+}
+
+.card-keila:hover, .card-stella:hover{
+    transform: scale(1.1);
+}
+
+.img-sociais{
+    display: flex;
+    gap:50px;
+}
+
+.img-linkedin, .img-github{
+    width: 40px;
+}
+
+.img-linkedin:hover, .img-github:hover{
+    cursor: pointer;
+}
+
+.img-stella, .img-keila{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 200px;
+    border-radius: 50%;
+    border:2px solid var(--vermelho);
+}
+
+
+@media (min-width:900px){
+    .menu-toggle{
+        display: none;
+    }
+
+    .position-nav{
+        display: flex;
+        color: white;
+    }
+
+    .options-perfil, .options-sair{
+        color: var(--amarelinho);
+        font-family: var(--fonte-logo);
+        margin-right: 70px;
+        font-size: 1.5em;
+    }
+
+    .menu-section{
+        position: fixed;
+        left: 20px;
+        top:150px;
+    }
+
+    .logo-feed{
+        margin-left: 50px;
+        margin-top: 30px;
+        width: 120px;
+        height: 120px;
+        position: fixed;
+    }
+
+    .cards-devs{
+        margin-top: 20px;
+        display:flex;
+        flex-direction: row;
+        gap:100px;
+    }
+
+}
