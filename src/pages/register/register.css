@@ -1,11 +1,63 @@
 
-#img_register {
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /*incluir a borda no calculo do tamanho*/
+}
+
+section{
+    display: block;
+    margin-top: 150px;
+    border: 1px solid brown;
+}
+
+header{
     display: flex;
+    flex-direction: row;
+}
+
+#form_register {
+    border-radius: 4px;
+    width: 400px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 20px;
+    margin-left: 20px;
+}
+
+#img_register {
     align-items: center;
     width: 100px;
     height: 100px;
+    margin-left: 20px;
 }
 
 h1 {
-    font-size: 20px;
+    font-size: 15px;
+    margin: 15px;
+    margin-right: 20px;
+}
+
+#texto_curvatura{
+    font-size: 12px;
+   /* margin-left: 10px;*/
+}
+
+#texto_date{
+    font-size: 12px;
+   margin-left: 40px; 
+}
+
+input {
+    margin: 5px;
+    padding: 5px;
+    border: 0;
+    border-radius: 4px;
+}
+
+#button_register{
+    background-color: #7F472B;
+    color: white;
+    padding: 4px;
+    border: 0;
 }
