@@ -1,4 +1,4 @@
-import{signIn} from '../../firebase/auth.js'
+// import{ signIn } from '../../firebase/auth.js'
 export default () => {
   const containerLogin = document.createElement('div');
 
@@ -25,13 +25,13 @@ export default () => {
     `;
 
   containerLogin.innerHTML = loginScreen;
-  const inputEmail = containerLogin.querySelector('#input-digite-seu-email');
+  /* const inputEmail = containerLogin.querySelector('#input-digite-seu-email');
   const inputSenha = containerLogin.querySelector('#input-digite-sua-senha');
   const inputButton = containerLogin.querySelector('#button-login');
   inputButton.addEventListener('click', () => {
     signIn(inputEmail.value, inputSenha.value)
   .then((mensagem) => console.log(mensagem));
-  .catch((erro) => console.log(erro)); 
-  });
+  .catch((erro) => console.log(erro));
+  }); */
   return containerLogin;
 };
