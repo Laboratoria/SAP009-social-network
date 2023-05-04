@@ -129,11 +129,25 @@ export default () => {
     document.querySelector('.textarea').value = '';
   }
 
+  // curtir
+  function atualizaDisplayLike(postId, hasLiked) {
+    const imagem = document.getElementById(`${postId}`).getElementsByTagName('img')[0];
+    const contador = document.getElementById(`${postId}`).getElementsByTagName('label')[0];
+
+    if (!hasLiked) {
+      imagem.src = imagem.src.replace('liked-red', 'like');
+      contador.innerText = Number(contador.innerText) - 1;
+    } else {
+      imagem.src = imagem.src.replace('like', 'liked-red');
+      contador.innerText = Number(contador.innerText) + 1;
+    }
+  }
+
   // printar os posts na tela para o usuário
 
   const printPost = async () => {
     const arrayPost = await getPost();
-    const username = auth.currentUser.displayName;
+    const idUser = auth.currentUser.uid;
     const templatePublish = arrayPost
       .map(
         (post) => {
@@ -179,9 +193,9 @@ export default () => {
     container.querySelector('.post-container').innerHTML = templatePublish;
 
     arrayPost.forEach((post) => {
-      const isAuthor = post.username === username;
-      const btnDelete = document.getElementById(`${post.id}btn-delete`);
+      const isAuthor = post.uid === idUser;
       if (isAuthor) {
+        const btnDelete = document.getElementById(`${post.id}btn-delete`);
         const postSection = btnDelete.parentNode.parentNode.parentNode;
         btnDelete.addEventListener('click', (e) => {
           e.preventDefault();
@@ -192,26 +206,30 @@ export default () => {
               });
           }
         });
-      }
 
-      // curtir
-      function atualizaDisplayLike(postId, hasLiked) {
-        const imagem = document.querySelector(`#${postId} img`);
-        const contador = document.querySelector(`#${postId} label`);
-        if (!hasLiked) {
-          imagem.src = imagem.src.replace('liked-red', 'like');
-          contador.innerText = Number(contador.innerText) - 1;
-        } else {
-          imagem.src = imagem.src.replace('like', 'liked-red');
-          contador.innerText = Number(contador.innerText) + 1;
-        }
+        const btnEdit = document.getElementById(`${post.id}btn-edit`);
+        const textArea = document.getElementById(`${post.id}text-area`);
+        const btnSave = document.getElementById(`${post.id}btn-save`);
+        btnEdit.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (window.confirm('Tem certeza que deseja editar a publicação?')) {
+            btnEdit.setAttribute('hidden', true);
+            textArea.removeAttribute('disabled');
+          }
+        });
+
+        btnSave.addEventListener('click', (e) => {
+          e.preventDefault();
+          editPost(post.id, textArea.value);
+          textArea.setAttribute('disabled', true);
+          btnEdit.removeAttribute('hidden');
+        });
       }
 
       const btnLike = document.getElementById(`${post.id}like-post`);
       // const postSection = btnLike.parentNode.parentNode.parentNode;
       btnLike.addEventListener('click', (e) => {
         e.preventDefault();
-        const idUser = auth.currentUser.uid;
 
         if (post.like && post.like.includes(idUser)) {
           unlikePost(post.id, idUser).then(() => {
@@ -230,24 +248,6 @@ export default () => {
           });
         }
         // window.location.reload()
-      });
-
-      const btnEdit = document.getElementById(`${post.id}btn-edit`);
-
-      const textArea = document.getElementById(`${post.id}text-area`);
-      const btnSave = document.getElementById(`${post.id}btn-save`);
-      btnSave.addEventListener('click', () => {
-        editPost(post.id, textArea.value);
-        textArea.setAttribute('disabled', true);
-        btnEdit.removeAttribute('hidden');
-      });
-
-      btnEdit.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (window.confirm('Tem certeza que deseja editar a publicação?')) {
-          btnEdit.setAttribute('hidden', true);
-          textArea.removeAttribute('disabled');
-        }
       });
     });
 
