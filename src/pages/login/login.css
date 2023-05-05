@@ -24,9 +24,10 @@ margin: 0 auto;
 }
 
 #button-login {
-    background-color: #75584c;
-    color: #FAC8A5;
-    border-radius: 10%;
+    background-color: #7F472B;
+    color: white;
+    padding: 4px;
+    border: 0;
 }
 
 .wrapper {
