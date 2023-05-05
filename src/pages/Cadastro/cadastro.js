@@ -1,8 +1,6 @@
-// função que o elemento HTML da Home do site
 export function Cadastro() {
-  const containerCadastro = document.createElement("div");
-  containerCadastro.id = "containerCadastro"
-  containerCadastro.innerHTML = `<h1>Seja bem-vinda!</h1>
+  const containerCadastro = document.createElement('div');
+  const template = `<h1>Seja bem-vinda!</h1>
   <p>Faça o seu cadastro e comece agora a compartilhar suas leituras!</p>
   <form>
   <input type="text" id="name" name="name" placeholder="Nome e sobrenome"><br><br>
@@ -10,7 +8,8 @@ export function Cadastro() {
   <input type="email" id="email" name="email" placeholder="E-mail"><br><br>
   <input type="password" id="password" name="password" placeholder="Crie uma senha"><br><br>
   <button type="submit">CRIAR CONTA</button>
-  </form>`
-  return containerCadastro
-  }
-  
+  </form>`;
+  containerCadastro.innerHTML = template;
+
+  return containerCadastro;
+}
