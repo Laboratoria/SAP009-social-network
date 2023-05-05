@@ -26,14 +26,17 @@ export default () => {
     `;
 
   containerLogin.innerHTML = loginScreen;
-  /* const inputEmail = containerLogin.querySelector('#input-digite-seu-email');
-  const inputSenha = containerLogin.querySelector('#input-digite-sua-senha');
-  const inputButton = containerLogin.querySelector('#button-login');
-  const mensagemErro = containerLogin.querySelector('#erro');
-  inputButton.addEventListener('click', () => {
-    signIn(inputEmail.value, inputSenha.value)
-  .then((mensagem) => console.log(mensagem));
-  .catch((erro) => console.log(erro)); 
-  });
+
+
+
+
+
+
+
+
+
+
+
+  
   return containerLogin;
 };
