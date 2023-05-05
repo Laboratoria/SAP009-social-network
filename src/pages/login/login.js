@@ -1,4 +1,6 @@
-import{signIn} from '../../firebase/auth.js'
+import { signIn } from '../../firebase/auth.js';
+import { getErrors } from '../../firebase/erros.js';
+
 export default () => {
   const containerLogin = document.createElement('div');
 
@@ -26,17 +28,16 @@ export default () => {
     `;
 
   containerLogin.innerHTML = loginScreen;
-
-
-
-
-
-
-
-
-
-
-
-  
+  const inputEmail = containerLogin.querySelector('#input-digite-seu-email');
+  const inputSenha = containerLogin.querySelector('#input-digite-sua-senha');
+  const inputButton = containerLogin.querySelector('#button-login');
+  const mensagemErro = containerLogin.querySelector('#erro');
+  inputButton.addEventListener('click', () => {
+    signIn(inputEmail.value, inputSenha.value)
+      .then(() => { window.location.hash = '#feed'; })
+      .catch((erro) => {
+        mensagemErro.innerHTML = getErrors(erro);
+      });
+  });
   return containerLogin;
 };
