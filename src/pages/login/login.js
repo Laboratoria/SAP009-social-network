@@ -1,4 +1,6 @@
-import{signIn} from '../../firebase/auth.js'
+import { signIn } from '../../firebase/auth.js';
+import { getErrors } from '../../firebase/erros.js';
+
 export default () => {
   const containerLogin = document.createElement('div');
 
@@ -17,6 +19,7 @@ export default () => {
   <label for="input-digite-sua-senha">Senha</label>
   <input id="input-digite-sua-senha" type="password" placeholder="digite sua senha">
   <input type="button" value="Entrar" id="button-login">
+  <p id="erro"></p>
   </div>
   <p>Primeira vez aqui? <a href="/#register">Cadastre-se</a></p>
   </div>
@@ -28,10 +31,12 @@ export default () => {
   const inputEmail = containerLogin.querySelector('#input-digite-seu-email');
   const inputSenha = containerLogin.querySelector('#input-digite-sua-senha');
   const inputButton = containerLogin.querySelector('#button-login');
+  const mensagemErro = containerLogin.querySelector('#erro');
   inputButton.addEventListener('click', () => {
     signIn(inputEmail.value, inputSenha.value)
-  .then((mensagem) => console.log(mensagem));
-  .catch((erro) => console.log(erro)); 
+      .then(() => { window.location.hash = '#feed'; })
+      .catch((erro) => {
+        mensagemErro.innerHTML = getErrors(erro);
+      });
   });
-  return containerLogin;
 };
