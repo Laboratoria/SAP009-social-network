@@ -1,5 +1,5 @@
 // função que o elemento HTML da Home do site
-export function Feed() {
+export default function Feed() {
   const containerFeed = document.createElement("div");
   containerFeed.id = "containerFeed"
   containerFeed.innerHTML = `<title>A rede social para leitoras</title>
@@ -18,5 +18,3 @@ export function Feed() {
   </div>`
   return containerFeed
   }
-  
-  
