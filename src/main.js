@@ -1,29 +1,28 @@
-import { Home } from './pages/home/home.js';
-import { Cadastro } from './pages/cadastro/cadastro.js';
-import { Feed } from './pages/feed/feed.js';
+import Home from './pages/Home/home.js';
+import Cadastro from './pages/Cadastro/cadastro.js';
+import Feed from './pages/Feed/feed.js';
 
-const main = document.getElementById('root');
+const main = document.querySelector('#root');
 const init = () => {
-  window.addEventListener("hashchange", () => {
-    console.log(window.location.hash);
-    main.innerHTML = ""; //impede que a página se repita
-    switch(window.location.hash){
-      case "#":
+  window.addEventListener('hashchange', () => {
+    main.innerHTML = '';
+    switch (window.location.hash) {
+      case '#home':
         main.appendChild(Home());
         break;
-      case "#cadastro":
+      case '#cadastro':
         main.appendChild(Cadastro());
         break;
-      case "#feed":
+      case '#feed':
         main.appendChild(Feed());
         break;
       default:
-        main.appendChild(Home()); 
+        main.appendChild(Home());
     }
-  })
-}
+  });
+};
 
-window.addEventListener("load", () => {
+window.addEventListener('load', () => {
   main.appendChild(Home());
   init();
-})
+});
