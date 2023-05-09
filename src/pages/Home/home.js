@@ -1,6 +1,6 @@
-import login from '../../../Firebase/logincadastro.js';
+import { login } from '../../../Firebase/logincadastro.js';
 
-export function Home() {
+export default function Home() {
   const container = document.createElement('div');
   const template = `<h1>Faça o seu login</h1>
   <p>Junte-se à maior rede social para leitoras do Brasil. Descubra novos livros, autores, editoras e amigas!</p>
