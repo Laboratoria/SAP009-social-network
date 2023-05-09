@@ -3,27 +3,20 @@
 
 ## 1. Resumo do projeto
 
-Neste projeto você construirá uma Rede Social sobre o que você e sua equipe
-decidirem. Pode ser, por exemplo, sobre alimentação saudável, feminismo,
-educação, saúde, energias renováveis, amantes das
-[Empanadas](https://pt.wikipedia.org/wiki/Empanada), de
-[Tacos](https://pt.wikipedia.org/wiki/Taco_(culin%C3%A1ria)), de
-[Feijoada](https://pt.wikipedia.org/wiki/Feijoada), ou do que seja.
-
-Sua Rede Social terá que permitir à qualquer usuário criar uma conta de acesso,
-logar-se com ela, criar, editar, deletar e dar _likes_ em publicações.
-
-O objetivo principal de aprendizagem deste projeto é construir uma [Single-page
-Application
-(SPA)](https://pt.wikipedia.org/wiki/Aplicativo_de_p%C3%A1gina_%C3%BAnica)
-[_responsiva_](https://curriculum.laboratoria.la/pt/topics/css/02-responsive) (com mais de uma tela/ página) na
-qual seja possível **ler e escrever dados**.
+Nosso projeto é uma rede social que foi desenvolvido para o público alvo em geral com o foco para cuidados capilares e faciais. onde os usuário podem postar dúvidas, sugestões e dicas sobre o auto cuidado. Estamos vivendo uma gereção em que as pessoas estão se interessando, cada vez mais, com a estética, auto-estima e saúde. Portanto, a ideia do nosso projeto, foi suprir e acresentar tudo issa na vida dessas pessoas.
 
 ## 2. História de Usuário
  **Cadastro**
+ <p>Usuário se interessa pela ideia e pretende se cadastrar para dar dicas e tirar dúvidas no site. O cadastro tem a opção de ser via conta do Google ou via email, nome e senha.</p>
+ 
  **Post - Editar - Excluir**
+ <p>Usuário realiza suas postagens e caso queira, pode editar ou excluir seus posts.</p>
+ 
  **Curtir**
+ <p>Usuário gostou muito de uma postagem e pode mostrar o quanto ele gostou daquele post, curtindo o mesmo. O usuário também pode descurtir, caso curta sem querer.</p>
+ 
  **Sair**
+ <p>Usuário pode realizar o logout da sua conta</p>
 
 
 
