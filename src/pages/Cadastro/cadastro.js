@@ -1,4 +1,4 @@
-export function Cadastro() {
+export default function Cadastro() {
   const containerCadastro = document.createElement('div');
   const template = `<h1>Seja bem-vinda!</h1>
   <p>Faça o seu cadastro e comece agora a compartilhar suas leituras!</p>
