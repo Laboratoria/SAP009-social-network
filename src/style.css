@@ -10,7 +10,9 @@ body {
     align-items: center;
     min-height: 100vh;
     background:linear-gradient(45deg,#a5b6a3, #a0e099) 
+
 }
+
 
 .varal {
     text-align: center;
@@ -34,4 +36,7 @@ input{
 button{
     width: 100%;
     padding: 10px;
+
+    margin: 5px;
+   
 }
