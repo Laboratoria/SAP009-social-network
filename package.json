@@ -19,7 +19,8 @@
     "dev": "vite dev src",
     "start": "npm run dev",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "gh-pages -d src"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.19.4",
