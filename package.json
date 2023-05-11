@@ -20,11 +20,9 @@
     "start": "npm run dev",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "gh-pages -d src"
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
-    "@babel/core": "^7.6.2",
-    "@babel/plugin-transform-modules-commonjs": "^7.6.0",
     "@babel/preset-env": "^7.19.4",
     "eslint": "^8.3.0",
     "eslint-config-airbnb-base": "^15.0.0",

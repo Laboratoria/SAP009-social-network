@@ -4,7 +4,7 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
-} from '@firebase/auth';
+} from 'firebase/auth';
 import { app } from './firebase.js';
 
 export const auth = getAuth(app);
