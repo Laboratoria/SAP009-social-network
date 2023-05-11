@@ -1,31 +1,42 @@
-
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
 
 body {
-    background-color: #E4FDE1;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background:linear-gradient(45deg,#a5b6a3, #a0e099) 
+
 }
 
 
 .varal {
-    
-    width: "100px";
-    height: "50px";
+    text-align: center;
+    width: "100%";
+    height: "100%";
+}
+div {
+width: 300px;
+background-color: #E4FDE1;
+padding: 20px;
+border-radius: 5px;
 }
 
-#inputEmail #password{
-    border: 1px solid #6BA292 ;
-    border-radius: 5%;
+input{
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-color: rgb (181,184,181);
+}
+
+button{
+    width: 100%;
+    padding: 10px;
+
     margin: 5px;
    
-}
-
-#cabecalho{
-    display:flex;   
-    flex-direction:wrap;
-    width: 150px;  
-}
-a{
-    padding: 10%;
-    text-align: center;
-    
 }
