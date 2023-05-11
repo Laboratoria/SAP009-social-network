@@ -9,7 +9,7 @@ import {
     updateDoc,
     arrayUnion,
     arrayRemove, */
-} from 'firebase/firestore';
+} from '@firebase/firestore';
 import moment from 'moment';
 
 import {

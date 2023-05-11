@@ -1,0 +1,264 @@
+.icon {
+  padding: 4%;
+  width: 30%;
+}
+
+.container-login {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bloco-login {
+  width: 35%;
+  background-color: #fff;
+  height: 90vh;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.212);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 3rem;
+  border-radius: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1rem 0;
+  flex-direction: column;
+  width: 17rem;
+}
+
+.input-box {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.1rem;
+}
+
+.input-box input {
+  margin: 0.6rem 0;
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 1px 1px 6px #0000001c;
+}
+
+.label-password {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.welcome-title {
+  display: flex;
+  flex-direction: column;
+  padding: 0rem 1rem;
+}
+
+.button-enter button {
+  width: 100%;
+  margin-top: 2.2rem;
+  border: none;
+  background-color: #aee2ff;
+  padding: 0.62rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.other {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+/*botão esqueci senha*/
+
+.forgot-password a{
+  text-decoration: none;
+  color: #AD3113;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/*botão logar com Google*/
+
+.btnGoogle button {
+  width: 100%;
+  margin-top: 1rem;
+  border: none;
+  background-color: #aee2ff;
+  padding: 0.62rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logo-google {
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 1200px) {
+  .icon {
+    display: none;
+  }
+
+  .bloco-login {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 1064px) {
+  .bloco-login {
+    width: 90%;
+    height: auto;
+  }
+  
+}
+
+.icon {
+  padding: 4%;
+  width: 30%;
+}
+
+.container-cadastro {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bloco-cadastro {
+  background-color: #fff;
+  width: 35%;
+  height: 90vh;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.212);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 3rem;
+  border-radius: 20px;
+}
+
+.form-header {
+  margin-bottom: 3rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.return-button {
+  display: flex;
+  align-items: center;
+}
+
+.return-button a {
+  border: none;
+  background-color: #aee2ff;
+  padding: 0.4rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.return-button a:hover {
+  background-color: #b9f3fc;
+  text-decoration: none;
+  font-weight: 500;
+  color: #ff0000;
+}
+
+.input-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.input-box {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.1rem;
+}
+
+.input-box input {
+  margin: 0.6rem 0;
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 1px 1px 6px #0000001c;
+}
+
+.button-singnup button {
+  width: 100%;
+  margin-top: 2.2rem;
+  border: none;
+  background-color: #aee2ff;
+  padding: 0.62rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button-singnup button:hover {
+  background-color: #b9f3fc;
+  text-decoration: none;
+  font-weight: 500;
+  color: #ff0000;
+}
+
+@media screen and (max-width: 1200px) {
+  .icon {
+    display: none;
+  }
+
+  .bloco-cadastro {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 1064px) {
+  .bloco-cadastro {
+    width: 90%;
+    height: auto;
+  }
+  
+}
+
+/*laptop*/
+
+@media screen and (max-width: 1400px) {
+  .form-header {
+    margin-bottom: 0;
+  }
+  .button-singnup button {
+    margin-top: 0;
+  }
+  .bloco-cadastro {
+    height: 0 auto;
+  }
+}
+
+/*@import url("./pages/feed/feed.css");*/
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: #fedeff;
+}
+
+@media screen and (min-width: 1200px) {
+  body {
+    background: linear-gradient(
+      90deg,
+      rgba(254, 222, 255, 1) 50%,
+      rgba(255, 254, 249, 1) 50%
+    );
+  }
+}

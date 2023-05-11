@@ -4,7 +4,7 @@ import {
   updateProfile,
   GoogleAuthProvider,
   signInWithPopup,
-} from 'firebase/auth';
+} from '@firebase/auth';
 
 import { login, createUser, loginGoggle } from '../src/pages/firebase/auth.js';
 

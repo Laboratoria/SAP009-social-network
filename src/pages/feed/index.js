@@ -1,4 +1,4 @@
-// import { getAuth } from 'firebase/auth';
+// import { getAuth } from '@firebase/auth';
 import {
   newPost, getPost, deletePost, likePost, editPost, unlikePost,
 } from '../firebase/firebasestore.js';

@@ -10,7 +10,7 @@ import {
   updateDoc,
   arrayUnion,
   arrayRemove,
-} from 'firebase/firestore';
+} from '@firebase/firestore';
 import { app } from './firebase.js';
 // import { async } from 'regenerator-runtime';
 
