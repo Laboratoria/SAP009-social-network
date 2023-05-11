@@ -1,24 +1,22 @@
-import { signIn } from "../lib/auth-firebase.js";
+import { signIn, validateEmail } from "../../lib/login-firebase.js";
 
 export function home() {
   const container = document.createElement("div");
   container.id = "container"
   container.innerHTML = `  <h2>FEMILYCIRCLE</h2>
   <h3>LOGIN</h3>
-  <div class="textfield">
+  <div>
       <label for="usuario">E-mail</label>
       <input type="text" name="e-mail" placeholder="Digite seu e-mail" id="inputEmail">
-  </div>  
-  <div class="textfield">
+
+  
       <label for="senha">Senha</label>
       <input id="password" type="password" name="senha" placeholder="Digite sua senha">
   </div>   
  
   <button id="signin-button" class="botaologin">ENTRAR</button>
   <button id="cadastro">Faça seu cadastro</button>             
-</div>
-</div>     
-</div>
+
 <section id = "loginError"></section>
 <section id = "singIn"></section>
 `;
