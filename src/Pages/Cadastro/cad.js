@@ -1,34 +1,47 @@
+import { register } from '../../lib/firebase.js'
+
 export function cadastro() {
     const containerCadastro = document.createElement("div");
     containerCadastro.id = "containerCadastro"
-    containerCadastro.innerHTML =`
+    containerCadastro.innerHTML = `
     <form action="/pagina-processa-dados-do-form" method="post">
     <div>
         <label for="nome">Nome:</label>
-        <input type="nome" id="nome" name="Nome" />
-    </div>
-    <div>
+        <input type="nome" id="name-input" name="Nome" />
+
         <label for="email">E-mail:</label>
-        <input type="email" id="cademail" name="usuario_email" />
-    </div>
-    <div>
+        <input type="email" id="email-input" name="usuario_email" />
+    
         <label for="senha">Senha:</label>
-        <input type="senha" id="cadsenha" name="senha" />
+        <input type="password" id= "password-input" name="senha" />
+        
     </div>
-    <div>
-        <label for="tipo">Você é:</label>
-        <input type="tipo" id="tipo" name="tipo" />
-     </div>
 
-    <div>
-        <label for="msg">Sobre sua família:</label>
-        <textarea id="msg" name="usuario_msg"></textarea>
-    </div>
-   
-    <div class="btn">
-        <button type="submit">Cadastrar</button>
-</div>
-</form>`
+    <button type="submit" id="button">Cadastrar</button>
+    
+    <section id= "mensagem"></section>
+    
+    </form>`
 
-return containerCadastro
+    const cadastrar = containerCadastro.querySelector('#button');
+    const email = containerCadastro.querySelector('#email-input');
+    const senha = containerCadastro.querySelector('#password-input');
+    const nome = containerCadastro.querySelector('#name-input');
+    const mensagem = containerCadastro.querySelector('#mensagem');
+
+    cadastrar.addEventListener('click', (e) => {
+        e.preventDefault();
+        if ((email.value, nome.value, senha.value)) {
+            register(email.value, senha.value)
+                .then(mensagem.innerHTML = 'Cadastro realizado com sucesso!')
+                .catch(mensagem.innerHTML = 'Falha ao realizar o cadastro');
+        } else if (
+            email.vale === '' || nome.value === '' || senha.value === '') {
+            mensagem.innerHTML = ' Preencher todos os campos!';
+        }
+    });
+
+    return containerCadastro;
 }
+//  Limpar os campos do formulário
+// form.reset();
