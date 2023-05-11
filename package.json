@@ -46,6 +46,7 @@
   "dependencies": {
     "@jest/globals": "^29.5.0",
     "firebase": "^9.5.0",
+    "gh-pages": "^5.0.0",
     "moment": "^2.29.4"
   }
 }
