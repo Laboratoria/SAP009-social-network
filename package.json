@@ -1,6 +1,7 @@
 {
   "name": "social-network",
   "private": true,
+  "homepage": ".",
   "version": "1.0.0",
   "description": "Social Network @ Laboratoria",
   "main": "src/index.html",

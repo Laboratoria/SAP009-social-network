@@ -13,7 +13,7 @@ export default () => {
     <aside class="menu hidden-when-mobile color-menu">
       <header class="header-menu">
         <img class="img-user" src="./image/logo_c&h.jpg" alt="logo Care&Health"/>
-        <span>Fulano</span>
+        <span>${auth.currentUser.username || auth.currentUser.email}</span>
       </header>
 
       <nav>

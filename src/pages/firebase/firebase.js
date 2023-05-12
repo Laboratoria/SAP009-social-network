@@ -1,12 +1,13 @@
 import { initializeApp } from 'firebase/app';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyDuWA3A5PMhL2t93ize9fwfBmlPbt1b3zI',
-  authDomain: 'sap009-socialnetwork.firebaseapp.com',
-  projectId: 'sap009-socialnetwork',
-  storageBucket: 'sap009-socialnetwork.appspot.com',
-  messagingSenderId: '59162767221',
-  appId: '1:59162767221:web:fea24f277e616992c9ad3c',
+  apiKey: 'AIzaSyDHc5Sfgum92eW5dHdyUtZUyATfwFZCMxM',
+  authDomain: 'social-network-6f67b.firebaseapp.com',
+  projectId: 'social-network-6f67b',
+  storageBucket: 'social-network-6f67b.appspot.com',
+  messagingSenderId: '810034650302',
+  appId: '1:810034650302:web:140814ff6fa21285c392ef',
+  measurementId: 'G-30YYN58KVL',
 };
 
 // Initialize Firebase
