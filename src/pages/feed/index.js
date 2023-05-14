@@ -3,6 +3,17 @@ import {
   newPost, getPost, deletePost, likePost, editPost, unlikePost,
 } from '../firebase/firebasestore.js';
 import { auth, logout } from '../firebase/auth.js';
+import imgLogoSite from '../../image/logo_c&h.jpg';
+import imgLogoTitulo from '../../image/logo-titulo.png';
+import imgHome from '../../image/home.png';
+import imgClose from '../../image/close.png';
+import imgPublicar from '../../image/publicar.png';
+import imgSair from '../../image/sair.png';
+import imgHamburguer from '../../image/menu-hamburguer.png';
+import imgLike from '../../image/like.png';
+import imgLiked from '../../image/liked-red.png';
+import imgLixeira from '../../image/lixeira.png'
+import imgEditar from '../../image/editar.png';
 
 export default () => {
   const container = document.createElement('div');
@@ -12,28 +23,28 @@ export default () => {
     <link rel="stylesheet" href="/pages/feed/feed.css">
     <aside class="menu hidden-when-mobile color-menu">
       <header class="header-menu">
-        <img class="img-user" src="./image/logo_c&h.jpg" alt="logo Care&Health"/>
+        <img class="img-user" src="${imgLogoSite}" alt="logo Care&Health"/>
         <span>${auth.currentUser.username || auth.currentUser.email}</span>
       </header>
 
       <nav>
         <button class="hidden-when-mobile">
           <span>
-            <img src="./image/home.png" alt="icone de home" href="#" />
+            <img src="${imgHome}" alt="icone de home" href="#" />
             <span>Home</span>
           </span>
         </button>
 
         <button class="hidden-when-mobile">
           <span>
-            <img src="./image/publicar.png" src="ic_outline-add-circle-outline.png" alt="icone para publicar um post" href="#"/>
+            <img src="${imgPublicar}" alt="icone para publicar um post" href="#"/>
             <span>Publicar</span>
           </span>
         </button>
 
         <button class="hidden-when-mobile">
           <span class="logout">
-            <img src="./image/sair.png" alt="icone para sair do app"/>
+            <img src="${imgSair}" alt="icone para sair do app"/>
             <span>Sair</span>
           </span>
         </button>
@@ -42,33 +53,33 @@ export default () => {
 
   <!-- criando o menu hamburguer-->
     <button class="button-hamburguer">
-      <img src="./image/menu-hamburguer.png" alt="ícone do menu"/>
+      <img src="${imgHamburguer}" alt="ícone do menu"/>
     </button>
 
     <nav id="menu-mobile" class="menu-mobile">
       <button>
         <span class="img-close">
-          <img src="./image/close.png" alt="ícone de X para fechar"/>
+          <img src="${imgClose}" alt="ícone de X para fechar"/>
         </span>
       </button>
 
       <button>
         <span>
-          <img src="./image/home.png" alt="icone de home" href="#" />
+          <img src="${imgHome}" alt="icone de home" href="#" />
           <span class="text-mobile">Home</span>
         </span>
       </button>
 
       <button>
         <span>
-          <img src="./image/publicar.png" src="ic_outline-add-circle-outline.png" alt="icone para publicar um post" href="#"/>            
+          <img src="${imgPublicar}" alt="icone para publicar um post" href="#"/>            
           <span class="text-mobile">Publicar</span>
         </span>
       </button>
 
       <button>
         <span class="logout">
-          <img src="./image/sair.png" alt="icone para sair do app"/>
+          <img src="${imgSair}" alt="icone para sair do app"/>
           <span class="text-mobile">Sair</span>
         </span>
       </button>
@@ -79,7 +90,7 @@ export default () => {
   <main class="main">
       <section class="timeline">
         <section>
-          <img class="logo-feed" src="./image/logo-titulo.png">
+          <img class="logo-feed" src="${imgLogoTitulo}">
         </section>
 
         <form class="form-pots">
@@ -166,7 +177,7 @@ export default () => {
                 </div> 
                 <div class="like">
                   <button class="like-post-user" id="${post.id}like-post">
-                    <img class="like-heart" src="${post.like && post.like.includes(auth.currentUser.uid) ? './image/liked-red.png' : './image/like.png'}" alt="ícone de like com coração">
+                    <img class="like-heart" src="${post.like && post.like.includes(auth.currentUser.uid) ? imgLiked : imgLike }" alt="ícone de like com coração">
                     <label id="likes-quantities">${post.like.length}</label>
                   </button>
                 </div>
@@ -174,12 +185,12 @@ export default () => {
                 <div class="group-buttons">       
                   <div class="delete">
                     <button class="btn-delete" id="${post.id}btn-delete">
-                      <img src="./image/lixeira.png" alt="icone para deletar o post">
+                      <img src="${imgLixeira}" alt="icone para deletar o post">
                     </button>
                   </div>
                   <div class="edit">
                     <button class="btn-edit" id="${post.id}btn-edit">
-                      <img src="./image/editar.png" alt="icone para deletar o post">
+                      <img src="${imgEditar}" alt="icone para deletar o post">
                     </button>
                     <button id="${post.id}btn-save" class="hidden">Salvar</button>
                   </div>

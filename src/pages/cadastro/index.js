@@ -1,11 +1,13 @@
 import { createUser } from '../firebase/auth.js';
+import imgRetangle83 from '../../image/Rectangle83.png';
+import imgRetangle86 from '../../image/Rectangle86.png';
 
 export default () => {
   const container = document.createElement('div');
   container.classList.add('container-cadastro');
 
   const template = `
-    <img class = "icon" src="image/Rectangle 86.png" alt="imagem de menina lavando o rosto">
+    <img class = "icon" src="${imgRetangle86}" alt="imagem de menina lavando o rosto">
     <section class = "bloco-cadastro">
         <div class="form-header">
             <div class="title">
@@ -41,7 +43,7 @@ export default () => {
             </div>
         </form>
     </section>
-    <img class="icon" src="image/Rectangle 83.png" alt="imagem de menina mexendo no cabelo">
+    <img class="icon" src="${imgRetangle83}" alt="imagem de menina mexendo no cabelo">
     `;
   container.innerHTML = template;
 

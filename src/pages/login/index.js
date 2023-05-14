@@ -1,11 +1,14 @@
 import { login, loginGoggle } from '../firebase/auth.js';
+import imgRetangle83 from '../../image/Rectangle83.png';
+import imgRetangle86 from '../../image/Rectangle86.png';
+import imgGoogle from '../../image/google.png';
 
 export default () => {
   const container = document.createElement('div');
   container.classList.add('container-login');
 
   const template = `
-        <img class="icon" src="image/Rectangle 86.png" alt="imagem de menina mexendo no cabelo">
+        <img class="icon" src="${imgRetangle86}" alt="imagem de menina mexendo no cabelo">
         <section class="bloco-login">
             <header class="form-header">
                 <div class="welcome-title">
@@ -45,12 +48,12 @@ export default () => {
                     </div>
 
                     <div class="btnGoogle">                        
-                        <button id="google" class="btnGoogle" type="button" class="google" style="text-decoration:none"><img class="logo-google" src="image/google.png" alt="imagem com logo do Google">Entrar com Google</button>
+                        <button id="google" class="btnGoogle" type="button" class="google" style="text-decoration:none"><img class="logo-google" src="${imgGoogle}" alt="imagem com logo do Google">Entrar com Google</button>
                     </div>
                 </div>
             </form>
         </section>
-        <img class="icon" src="image/Rectangle 83.png" alt="imagem de menina mexendo no cabelo">
+        <img class="icon" src="${imgRetangle83}" alt="imagem de menina mexendo no cabelo">
     `;
 
   container.innerHTML = template;

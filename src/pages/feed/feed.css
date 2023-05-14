@@ -166,7 +166,7 @@ div > .name-post-user{
 }
 
 .liked{
-  background: url("./image/liked-red.png");
+  background: url("/assets/image/liked-red.png");
 }
 
 #likes-quantities{

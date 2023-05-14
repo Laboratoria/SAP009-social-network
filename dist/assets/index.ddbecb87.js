@@ -4789,6 +4789,63 @@ async function createUserWithEmailAndPassword(auth2, email, password) {
 function signInWithEmailAndPassword(auth2, email, password) {
   return signInWithCredential(getModularInstance(auth2), EmailAuthProvider.credential(email, password));
 }
+/**
+ * @license
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+async function updateProfile$1(auth2, request) {
+  return _performApiRequest(auth2, "POST", "/v1/accounts:update", request);
+}
+/**
+ * @license
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+async function updateProfile(user, { displayName, photoURL: photoUrl }) {
+  if (displayName === void 0 && photoUrl === void 0) {
+    return;
+  }
+  const userInternal = getModularInstance(user);
+  const idToken = await userInternal.getIdToken();
+  const profileRequest = {
+    idToken,
+    displayName,
+    photoUrl,
+    returnSecureToken: true
+  };
+  const response = await _logoutIfInvalidated(userInternal, updateProfile$1(userInternal.auth, profileRequest));
+  userInternal.displayName = response.displayName || null;
+  userInternal.photoURL = response.photoUrl || null;
+  const passwordProvider = userInternal.providerData.find(({ providerId }) => providerId === "password");
+  if (passwordProvider) {
+    passwordProvider.displayName = userInternal.displayName;
+    passwordProvider.photoURL = userInternal.photoURL;
+  }
+  await userInternal._updateTokensIfNecessary(response);
+}
 function onIdTokenChanged(auth2, nextOrObserver, error, completed) {
   return getModularInstance(auth2).onIdTokenChanged(nextOrObserver, error, completed);
 }
@@ -6767,20 +6824,23 @@ var version = "9.19.1";
  */
 registerVersion(name, version, "app");
 const firebaseConfig = {
-  apiKey: "AIzaSyDuWA3A5PMhL2t93ize9fwfBmlPbt1b3zI",
-  authDomain: "sap009-socialnetwork.firebaseapp.com",
-  projectId: "sap009-socialnetwork",
-  storageBucket: "sap009-socialnetwork.appspot.com",
-  messagingSenderId: "59162767221",
-  appId: "1:59162767221:web:fea24f277e616992c9ad3c"
+  apiKey: "AIzaSyDHc5Sfgum92eW5dHdyUtZUyATfwFZCMxM",
+  authDomain: "social-network-6f67b.firebaseapp.com",
+  projectId: "social-network-6f67b",
+  storageBucket: "social-network-6f67b.appspot.com",
+  messagingSenderId: "810034650302",
+  appId: "1:810034650302:web:140814ff6fa21285c392ef",
+  measurementId: "G-30YYN58KVL"
 };
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const login$1 = (email, password) => signInWithEmailAndPassword(auth, email, password);
-function createUser(email, password, username) {
-  return createUserWithEmailAndPassword(auth, email, password).then((user) => {
-    user.updateProfile({ displayName: username });
+async function createUser(email, password, username) {
+  const { user } = await createUserWithEmailAndPassword(auth, email, password);
+  await updateProfile(user, {
+    displayName: username
   });
+  return user;
 }
 const loginGoggle = () => {
   const provider = new GoogleAuthProvider();
@@ -6790,11 +6850,14 @@ const logout = () => auth.signOut().then(() => {
   window.location.hash = "#login";
 }).catch(() => {
 });
+const imgRetangle83 = "" + new URL("Rectangle83.62c1c62b.png", import.meta.url).href;
+const imgRetangle86 = "" + new URL("Rectangle86.9d3d0398.png", import.meta.url).href;
+const imgGoogle = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAINSURBVHgBtZPPa9NgGMe/75tUa9wgiAjDIelJUNAUCl4UUkERPKz2tovDf0DqxYuHxYN4E3sXt51EEKyCF2U0Nw8rmOnNy4JDHZRpRDdp8+MxSZvu7WqcDveFhDfP876f9/s87xvgP4plJdpGyYDMpkBMA0jtz7Z9n55NWC3rr2Arhq6OSbmn0dBAtoeGH3RvTFi2I0Zl8eOzoWs5KdckQMMfRRVZ2hcPrmTCRkAElxgWQIFN4BoDn2GMNAKzNwLl2vYtBmWuV0/Nht/2m1sc1I8sLtW2L2ifL9V+hGPzBctyM2Hd5/mVn82jWvftoTg4f3hxaWTnncTjl/dKNpgSaMrlD8ifW4MXSLexCyU9C8B0qR/In12zx81VR5y0egcm45jNpIQoTt6CnThj6T3qycU/ijiS9QksOh0RoGKXSmASyE4DDzaP6/pcZQjoe7jvAYX0iU66PJTvIFmf9Cx3wbe+vFTc+sZJ9UXnGGQFcxAuZMFMSh+4/3gXM9QfRyfv9PM9Z7Eurl+qxyD06q6UHld/2/DX98ZjkJl+E6GOLXBPcWnSAf6GgWlC0on62QgpXI42UDlnUwdDz7jebuHM5qck3+2gmDob+tH1RxVNYrwpArN09es7t/r9fXnyJgb95uIEe7rhBBSWI+sLO7Csh+qJoggacTbikqRadFlPpzEKscwYa7Smn1jYa/0CLtm2996dRX4AAAAASUVORK5CYII=";
 const login = () => {
   const container = document.createElement("div");
   container.classList.add("container-login");
   const template = `
-        <img class="icon" src="image/Rectangle 86.png" alt="imagem de menina mexendo no cabelo">
+        <img class="icon" src="${imgRetangle86}" alt="imagem de menina mexendo no cabelo">
         <section class="bloco-login">
             <header class="form-header">
                 <div class="welcome-title">
@@ -6834,12 +6897,12 @@ const login = () => {
                     </div>
 
                     <div class="btnGoogle">                        
-                        <button id="google" class="btnGoogle" type="button" class="google" style="text-decoration:none"><img class="logo-google" src="image/google.png" alt="imagem com logo do Google">Entrar com Google</button>
+                        <button id="google" class="btnGoogle" type="button" class="google" style="text-decoration:none"><img class="logo-google" src="${imgGoogle}" alt="imagem com logo do Google">Entrar com Google</button>
                     </div>
                 </div>
             </form>
         </section>
-        <img class="icon" src="image/Rectangle 83.png" alt="imagem de menina mexendo no cabelo">
+        <img class="icon" src="${imgRetangle83}" alt="imagem de menina mexendo no cabelo">
     `;
   container.innerHTML = template;
   const form = container.querySelector(".form-login");
@@ -6869,7 +6932,7 @@ const cadastro = () => {
   const container = document.createElement("div");
   container.classList.add("container-cadastro");
   const template = `
-    <img class = "icon" src="image/Rectangle 86.png" alt="imagem de menina lavando o rosto">
+    <img class = "icon" src="${imgRetangle86}" alt="imagem de menina lavando o rosto">
     <section class = "bloco-cadastro">
         <div class="form-header">
             <div class="title">
@@ -6905,7 +6968,7 @@ const cadastro = () => {
             </div>
         </form>
     </section>
-    <img class="icon" src="image/Rectangle 83.png" alt="imagem de menina mexendo no cabelo">
+    <img class="icon" src="${imgRetangle83}" alt="imagem de menina mexendo no cabelo">
     `;
   container.innerHTML = template;
   const form = container.querySelector(".form-cadastro");
@@ -17870,6 +17933,17 @@ const editPost = (postId, textArea) => rf(rh(db, "Post", postId), {
 const deletePost = async (postId) => {
   of(rh(db, "Post", postId));
 };
+const imgLogoSite = "" + new URL("logo_c_h.2262244a.jpg", import.meta.url).href;
+const imgLogoTitulo = "data:image/png;base64,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";
+const imgHome = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAVCAYAAACt4nWrAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHMSURBVHgBpVRdTttAEP5miWmrvtAbmBO0vUGO0CO0L20eXSGCkBIlVkAoERHhAWGeCCcAbpAjhBOw3MBvQJzsMEb8xPauA+GTLK1nd76Z3W9mCG/A3/pOQEBLvjUQD4FpGHVDvciPyjZrW50qGTpgwo/8HgMDouSwLAjZSfd8YHYqDFWUgrUQtI97zbOF5EHQWrvzKgGIWngXWDNRcNJtXFrJM++6LHJ6UNm7LotUjy+TJKww07lEjAGlxezjo2CMiBDcrXqxkgjrUa+5Lg80cjoYtD9Pkm9Rr0Ezpp9yYe06OgP9fzobvrx5rb6Titi2EUf7jXDelAp/u+pd2/RJE3heq9fr0A1smCaFMhsMwlgch8XDrOf/1NxiDAuigb1JRLS4aCQ7uVEqtpHUNjpVm100KthFyLGVPOpua2s2KzitbbX8TMDNTtvWvXn/SjYZkk3OiUQ+2Lv+V9+9UI+dKP3gGAucyzxHjrFE922OBP7FT+m5YEy2KFQutsYH8DWZaCe5IXdzLAIz4rREneQ0NVdYEmQp5Qx51G+O0tmAZcgNH5aSPyJZ+SOyD/FGpOUnA+f3cb95UQjockrnx7336TtKoIzRR/3GjWv/Ad9huhq0K1IFAAAAAElFTkSuQmCC";
+const imgClose = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAlCAYAAADFniADAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGfSURBVHgB7Za/TsJAHMd/J+rMI5Q3IKaLkmjgRexYJzsokhBjE3GQqSymm/IGOroogzr1AXSyj4CrUc47SkmR2t/96SDJfSbS3O/Hh99x3x6AwWAw/G8ItsD1fItsrh8SQuKry+4AFHHbF2cEaJV+fg3CwI+L1q4BxkbFowDehNLAPe5dgwLuCa+jPu/D+2HrcSkC48xnR1ZsKkTBmbdgE8dqKtiC6PlxZDeaNdauPhOr2zstK3p5uMNqfwuxaQ3D/mkHq0OlZmK3smJ/CDkggJCUrJiOkJSUqJiukLQUJlaGUNJSEbd9fsPK9zOtYiZhgaYQR3pSKUsTA6hCCUIc5UmlsKR+X5wQicN+twYa4OFZJJQktbX4lFqqyZ+ivH3Lf+ppUidbKBGweShNKv+U8S2jw/kjhVdSivSkio69SvJrS4nkUBliwlIywagrJiSlktQ6YqjUwVHPYw07MkKFYo0m4dehojr09FGi9+pI1mdOJc0mfz7opOzdvVeYEMJ+5T37AvQqmwef2NZ264Pd0d+g8h1ET6MxGAwGwwrzA4hHAeiYjaZ9AAAAAElFTkSuQmCC";
+const imgPublicar = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAIuSURBVHgB3VS9bhNBEP5mDUF0fgP8CEaIBpqQF4jp6EgKojM0RsSmsK27yHZjg3QUyIkoTJ4g4QVIGhAFSKGjNG+QLkoU7zC768OX8/mHkyjgk053tzu73+zONx/wr4PmTVYqfv7sxspjMFaJUARzYbzoRIOGCvqw323uZyIov2iVdI4GEpDHXPBQYoJZRCpt0Ku2Qs7Rgd2cccxEldwIhd1ug8wzYroNpk3JbyhPgUHvZU2AZU5gA4l8Bk5lk2CvV3+DOShvtytawTfJyJpwr9t4PpPAq3Y2QDwwm2umB+969RMsgSfVTlERHxkSOd7D/uvmYTSnEufx7VsyT9vcq7XZPMlxE6s0dsy3VjQw4pgisNnDqISHi64lDf1XjdDUS9SWP7suyksSyMS6OwQCZAQrcldDWJ0icNkDl6y+IyMI6oN76+JkbIzobo0Mk2OLkLYmGlP4y7g2+TRNw4Vn9fatt53Gz2Rmadkl8VTkqqXSEvRbgZMijwcvL6iEjNBAcZJsgkATjh0RZyaI+siY4BTBzfOLfWsPIrEtaX/8IbZqZo3ro7jxXbnLcq1VEuM6YBarQEarAG/ECXLxwK+fjn7cvb+WN6eQ4Ed37q2df/v88QsWZK4IztY1gt1e84oLpKrB2277cnmB+3N+bxowOpH30heLXlm39WLXtRIT9hNOOpPAbmKd1RTNdfgsmLqpEW/GHXQpgjgRi08pIeKYDK3WRXlGHGG4c4r/Fr8APVPuE/kacQsAAAAASUVORK5CYII=";
+const imgSair = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAZCAYAAAAv3j5gAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAF0SURBVHgB7ZVBTsJQEIZnkEjccQN7BI4gJ/AIlIVJ3dVFcYGkbSoxWhLZ0cQF5QieQI/gEXqE7owkdnzTKhZK6WtTWPEtgPfI8PHm/ekAHKkIbm7outn+bJ32kKidV0SIIcLy1Xu0A6giujLGnQbSm9hsFxUSQRgBdl/c4QdI0FxbIM2JJUQ+IAa5VYQKIqknRM9i1YWyIiHp8LvnjvpFhdrgXhX9uABJGnAgahNpxli9Hjg9qF1E2EcgdbWO7xd9zXCsWkWeO/RnT6PFaiMCKxGiuU3W3PVj3A7xT89BGk4qKb8yDpUlJeJ2QCkoVYumeLXkROIeSp5IjU/ERP+SQhHfA0gS3wuC8ifxJnd2+vvKYcjEOWnVVgnThKokceZPSfI47hjRbJJKYi2iDYrafLBH0PqJCN75QandOnPRiiC3ClHhOSHCLDUiMqJvwJsGiHlEHNMdJJIw4vhLkpmwmv6gUCu6LJqwZ1/LxXRqh3Bk3/wAHOmH+UlHHmEAAAAASUVORK5CYII=";
+const imgHamburguer = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAlCAYAAADFniADAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAD8SURBVHgB7dU7jsIwEAbg32az2nKPkBus9gbZG3CFbVaUi3iIgkekiIJHkTJ03ABuQLgBNyBHoERY2CSiAccIIbCr+co/kTyWx2OAEELIw5gprLWHAygVwDLFsZmNunXcK+qvEVV5hS3gipK/yaQ/v4y4/g9n2MGlikz1yHx8ndDH0Qtgm5JZMu2lIMSyUqPX/vMmf/dWeRf6sI5lHwfxHcfh1Y0vjQR4xa1zUVBB+XuPV/W0VNReiGWxAziRr2OYU4S8mvnta0YBGPdhmxBpEocZ7hV1nlNvW7gi1Y/+KN+YU+5Ijk89Mx9fK4rzT1+wjal1Mu6FIIQQ8rwT1qhDFuF8YrAAAAAASUVORK5CYII=";
+const imgLike = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGdSURBVHgBpZNNUsJAEIXfzISVLjgCNzCeQDiBsKOQKuEGyQGQKLomNyBUWegObiDegCPkCFnoRknG7vxYqVRMAN8m09M9X09PdwRy6ltOW0FeA8JkW0MvI0TbV9fx2e5aTvMMcqQhrgTQpDg/xH5J/m3GEFngOdRC05I2AvruEB8Ag/0IsDXCwIBa62Sf/QHFmoktvAb2tuc6FEM6gzGn23TJYX9g723Ikd64paDeJLAGFDgRQexnd/J7o6E1c+js9AuKE/XEkMrUdIiC71fuxEFBI7r9N/l5/YmwkyXL68Z6tOiB5iHQMTSMWzKCMhjLSwCXqBCV61HSqUTUpWp0K32Tk5UmpeeQF5JKZaOJ/ytmSAH9Tl+zb83aOFHcPMQd10vZQOSREShgzg3AkeKRU0nTfJ5ZyfXTKPQ4A3fzGGgy6DGsxbPKP4BkB88VXXd8DDQH41LHL+5kw/siHzSwHkYCYkHLXYNmziuZuTLYyr3zMp8oBtdBq2ClwCpoHexPYBmUiXWwSmARmm5VwmqBBSjqYAdrYD2ZwwP/pB8DQtqOEQqZrQAAAABJRU5ErkJggg==";
+const imgLiked = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAQCAYAAAAbBi9cAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEJSURBVHgBpdJBTsJQEAbgf6Zl34UhYccRuuke5AIeAU9QPYFyBE8AR8ADKF2adNMjsDMhmrz9SxlnDJoA7bPSP3kvaabzZdr3CId8zrJcgDtdY4I4gNa+9otRUW2t/j5JxwMePIDkRkAJCJXs8TR8LVdWJ9s+ZtlSgTnO44QxhffgKN58AydRYHX1Ut7S7jqbE2GJ9jidEE3IT2rh+5hI8sNgbUkkXEdM+5wVSdEz9l9Zd4f+cSyCZ/SMfviaa4kee02lvb6OFjwq3rZ6H6YXYdpjvWb8HsdukqXE2OicyX+QYVFW9nh0rp2xE+QM6oQ1II1QEGtBWqFGLIAEoSPMnADSKYbZ+uu9L1xmg775twSiAAAAAElFTkSuQmCC";
+const imgLixeira = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACdSURBVHgB7ZTrCYUwDIWTcge4I9S5XEIHUEQXcAldS0dwgxrxj896fKFCPyglIemhaRoixwaMBPlBVsmmx15TF3nsbeUydhjKXFTNQug4cK7cwnTrinhFNwMJdO/iB2m1Ztv4EYae9IMGG/AlJXIC3xaA2lS+aD0cBFP7tECZR57NtvFYiRpZ/z0Dz8ioXvKrleCwrzNMw8wJOY7QApMzNZ8jGRKDAAAAAElFTkSuQmCC";
+const imgEditar = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGQSURBVHgB7ZNPTsJAFMa/luq6R6gnkCPYG7D0X2I9gXVtsGBjXBnqCWAF3gK8Ad6g3qBLE0rH90pHAad/hrBw4Zc0nZR5v++bxxvgXzUysCed+WHHBG54fYD0ehT1470ZnPsPngFj+PNFxAdYumxi/d782M6Q2VVAE2Yyju7majjLcBZoTWlxtHGCSz+MRHHMMglKl1G6V0qnhq/tbRmOtVn8DZ+p4UgIfstw7jmlk/CEHns7yPi5+2GpEo6jexcV8qiNKbKhWO3vHWL5soDFLWlLQz4lL0xoqoBPCW4znML06c/kE7xLuICZt1DbQAXn7xd+OKLXlYTLAdAyKIPzYJTBGxtUwHvFYCjhjQw8P7Ar4ME63POfHBrdoZbBZw7ORzCpgy+QTuleOOv1FhqK0ienfnhCBR1VW1KkDr34iXcy4GQtgFuVKzOyzmTQndfVNTWYbbmNJoPgrUFdvUFxYVzsKO2b/OcMlC3iaYGuDBxD1BjQ77GcFmhKCMkQs1KDDJZrIg2M1Txri+HyMkp9AaRk5z3tVq7rAAAAAElFTkSuQmCC";
 const feed = () => {
   const container = document.createElement("div");
   container.classList.add("container-feed");
@@ -17877,28 +17951,28 @@ const feed = () => {
     <link rel="stylesheet" href="/pages/feed/feed.css">
     <aside class="menu hidden-when-mobile color-menu">
       <header class="header-menu">
-        <img class="img-user" src="./image/logo_c&h.jpg" alt="logo Care&Health"/>
-        <span>Fulano</span>
+        <img class="img-user" src="${imgLogoSite}" alt="logo Care&Health"/>
+        <span>${auth.currentUser.username || auth.currentUser.email}</span>
       </header>
 
       <nav>
         <button class="hidden-when-mobile">
           <span>
-            <img src="./image/home.png" alt="icone de home" href="#" />
+            <img src="${imgHome}" alt="icone de home" href="#" />
             <span>Home</span>
           </span>
         </button>
 
         <button class="hidden-when-mobile">
           <span>
-            <img src="./image/publicar.png" src="ic_outline-add-circle-outline.png" alt="icone para publicar um post" href="#"/>
+            <img src="${imgPublicar}" alt="icone para publicar um post" href="#"/>
             <span>Publicar</span>
           </span>
         </button>
 
         <button class="hidden-when-mobile">
           <span class="logout">
-            <img src="./image/sair.png" alt="icone para sair do app"/>
+            <img src="${imgSair}" alt="icone para sair do app"/>
             <span>Sair</span>
           </span>
         </button>
@@ -17907,33 +17981,33 @@ const feed = () => {
 
   <!-- criando o menu hamburguer-->
     <button class="button-hamburguer">
-      <img src="./image/menu-hamburguer.png" alt="\xEDcone do menu"/>
+      <img src="${imgHamburguer}" alt="\xEDcone do menu"/>
     </button>
 
     <nav id="menu-mobile" class="menu-mobile">
       <button>
         <span class="img-close">
-          <img src="./image/close.png" alt="\xEDcone de X para fechar"/>
+          <img src="${imgClose}" alt="\xEDcone de X para fechar"/>
         </span>
       </button>
 
       <button>
         <span>
-          <img src="./image/home.png" alt="icone de home" href="#" />
+          <img src="${imgHome}" alt="icone de home" href="#" />
           <span class="text-mobile">Home</span>
         </span>
       </button>
 
       <button>
         <span>
-          <img src="./image/publicar.png" src="ic_outline-add-circle-outline.png" alt="icone para publicar um post" href="#"/>            
+          <img src="${imgPublicar}" alt="icone para publicar um post" href="#"/>            
           <span class="text-mobile">Publicar</span>
         </span>
       </button>
 
       <button>
         <span class="logout">
-          <img src="./image/sair.png" alt="icone para sair do app"/>
+          <img src="${imgSair}" alt="icone para sair do app"/>
           <span class="text-mobile">Sair</span>
         </span>
       </button>
@@ -17944,7 +18018,7 @@ const feed = () => {
   <main class="main">
       <section class="timeline">
         <section>
-          <img class="logo-feed" src="./image/logo-titulo.png">
+          <img class="logo-feed" src="${imgLogoTitulo}">
         </section>
 
         <form class="form-pots">
@@ -18015,7 +18089,7 @@ const feed = () => {
                 </div> 
                 <div class="like">
                   <button class="like-post-user" id="${post.id}like-post">
-                    <img class="like-heart" src="${post.like && post.like.includes(auth.currentUser.uid) ? "./image/liked-red.png" : "./image/like.png"}" alt="\xEDcone de like com cora\xE7\xE3o">
+                    <img class="like-heart" src="${post.like && post.like.includes(auth.currentUser.uid) ? imgLiked : imgLike}" alt="\xEDcone de like com cora\xE7\xE3o">
                     <label id="likes-quantities">${post.like.length}</label>
                   </button>
                 </div>
@@ -18023,12 +18097,12 @@ const feed = () => {
                 <div class="group-buttons">       
                   <div class="delete">
                     <button class="btn-delete" id="${post.id}btn-delete">
-                      <img src="./image/lixeira.png" alt="icone para deletar o post">
+                      <img src="${imgLixeira}" alt="icone para deletar o post">
                     </button>
                   </div>
                   <div class="edit">
                     <button class="btn-edit" id="${post.id}btn-edit">
-                      <img src="./image/editar.png" alt="icone para deletar o post">
+                      <img src="${imgEditar}" alt="icone para deletar o post">
                     </button>
                     <button id="${post.id}btn-save" class="hidden">Salvar</button>
                   </div>
