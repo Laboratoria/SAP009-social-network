@@ -10,6 +10,8 @@ export function getErrors(error) {
       return 'Senha incorreta.';
     case 'auth/invalid-display-name':
       return 'O nome do usuário é inválido.';
+    case 'auth/missing-password':
+      return 'Por favor, digite a senha!';
     case 'auth/weak-password':
       return 'A senha deve ter 6 ou mais caracteres.';
     default:

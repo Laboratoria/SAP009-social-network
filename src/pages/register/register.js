@@ -1,4 +1,5 @@
 import { createUser } from '../../firebase/auth';
+import { getErrors } from '../../firebase/erros';
 
 export default () => {
   const containerRegister = document.createElement('div');
@@ -38,7 +39,7 @@ export default () => {
         confirmationMessage.innerHTML = `OLÁ ${inputName.value}! <br> <strong> SEU CADASTRO FOI REALIZADO! </strong><br> Agora, faça o <a href="/#login">LOGIN</a> para navegar!`;
       })
       .catch((error) => {
-        errorMessage.innerHTML = (error);
+        errorMessage.innerHTML = getErrors(error);
       });
   });
 
