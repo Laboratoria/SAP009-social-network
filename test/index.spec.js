@@ -1,8 +1,9 @@
 // importamos la funcion que vamos a testear
-import { myFunction } from '../src/lib/index';
+import { signIn } from '../src/firebase/auth.js';
 
-describe('myFunction', () => {
-  it('debería ser una función', () => {
-    expect(typeof myFunction).toBe('function');
-  });
+it('should execute firebase login function', () => {
+  const email = 'email@gmail.com';
+  const password = 'password';
+  signIn(email, password);
+  expect(typeof signIn).toBe('function');
 });
