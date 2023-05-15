@@ -1,5 +1,11 @@
 // Import the functions you need from the SDKs you need
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { initializeApp } from 'firebase/app';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import {
+  getFirestore, collection, addDoc, query, onSnapshot,
+} from 'firebase/firestore';
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -17,3 +23,25 @@ const firebaseConfig = {
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
+
+export const db = getFirestore(app);
+
+export function addPost(date, post, username) {
+  return addDoc(collection(db, 'posts'), {
+    date,
+    post,
+    username,
+  });
+}
+
+export function printPost() {
+  const q = query(collection(db, 'posts'));
+  onSnapshot(q, (querySnapshot) => {
+    const posts = [];
+    querySnapshot.forEach((doc) => {
+      posts.push(doc.data().name);
+    });
+  });
+}
+
+// criar template de cada post (foreach)
