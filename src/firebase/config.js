@@ -3,7 +3,7 @@
 import { initializeApp } from 'firebase/app';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import {
-  getFirestore, collection, addDoc,
+  getFirestore, collection, addDoc, query, onSnapshot,
 } from 'firebase/firestore';
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -34,15 +34,14 @@ export function addPost(date, post, username) {
   });
 }
 
-/* export function printPost() {
+export function printPost() {
   const q = query(collection(db, 'posts'));
-  const unsubscribe = onSnapshot(q, (querySnapshot) => {
+  onSnapshot(q, (querySnapshot) => {
     const posts = [];
     querySnapshot.forEach((doc) => {
       posts.push(doc.data().name);
     });
   });
-} */
+}
 
 // criar template de cada post (foreach)
-// importar query e onsnapshot
