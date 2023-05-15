@@ -1,5 +1,5 @@
-export function getErrors(erro) {
-  switch (erro.code) {
+export function getErrors(error) {
+  switch (error.code) {
     case 'auth/user-not-found':
       return 'Usuário não encontrado.';
     case 'auth/invalid-email':
@@ -13,6 +13,6 @@ export function getErrors(erro) {
     case 'auth/weak-password':
       return 'A senha deve ter 6 ou mais caracteres.';
     default:
-      return `Aconteceu um erro não identificado, por favor entre em contato com as desenvolvedoras e indique o código que aparecerá a seguir: ${erro.code}`;
+      return `Aconteceu um erro não identificado, por favor entre em contato com as desenvolvedoras e indique o código que aparecerá a seguir: ${error.code}`;
   }
 }
