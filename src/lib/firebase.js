@@ -1,6 +1,5 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyB9RFAjw0v_NQ0GPBK6Df5_QeV_SPjQ1r4',
@@ -12,10 +11,8 @@ const firebaseConfig = {
   measurementId: 'G-Y6V5ZM7DBD',
 };
 //  Inicializar o Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 // Inicializar a autenticação
-const auth = getAuth();
 
-export function register(email, password) {
-  return createUserWithEmailAndPassword(auth, email, password);
-}
+
+

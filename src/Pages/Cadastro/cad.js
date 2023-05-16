@@ -1,4 +1,4 @@
-import { register } from '../../lib/firebase.js'
+import { register } from '../../lib/firebase- cad.js'
 
 export function cadastro() {
     const containerCadastro = document.createElement("div");
