@@ -34,14 +34,15 @@ export function addPost(date, post, username) {
   });
 }
 
-export function printPost() {
+export async function printPost() {
   const q = query(collection(db, 'posts'));
-  onSnapshot(q, (querySnapshot) => {
-    const posts = [];
+  const posts = [];
+  await onSnapshot(q, (querySnapshot) => {
     querySnapshot.forEach((doc) => {
-      posts.push(doc.data().name);
+      posts.push(doc.data());
     });
   });
+  return posts;
 }
 
 // criar template de cada post (foreach)

@@ -21,15 +21,21 @@ export default () => {
    </section>
       `;
 
-  const templateFeed = printPost();
-
   containerFeed.innerHTML = feedScreen;
-  containerFeed.innerHTML = templateFeed;
+  // containerFeed.innerHTML = templateFeed;
   const textArea = containerFeed.querySelector('#text-area');
   const buttonPost = containerFeed.querySelector('#post-button');
   const imglogOut = containerFeed.querySelector('#logOut');
-  // const printFeed = containerFeed.querySelector('#post-screen');
+  const printFeed = containerFeed.querySelector('#post-screen');
 
+  // printFeed.innerHTML = '';
+
+  async function showPost() {
+    const templateFeed = await printPost();
+    console.log(templateFeed.map((post) => `<p>${post.post} </p>`));
+    printFeed.innerHTML = templateFeed.map((post) => `<p>${post.post} </p>`);
+  }
+  showPost();
   buttonPost.addEventListener('click', () => {
     const date = new Date();
     const username = 'Michele';
