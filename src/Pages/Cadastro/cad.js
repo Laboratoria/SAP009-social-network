@@ -1,5 +1,4 @@
-import { register } from '../../lib/firebase- cad.js'
-
+import { register } from '../../lib/firebase-cad.js';
 
 export function cadastro() {
   const containerCadastro = document.createElement('div');
@@ -42,6 +41,7 @@ export function cadastro() {
     }
   });
   return containerCadastro;
+}
 
 //  Limpar os campos do formulário
 // form.reset();
