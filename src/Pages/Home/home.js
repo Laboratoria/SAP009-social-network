@@ -1,9 +1,9 @@
-import { signIn, validateEmail } from "../../lib/login-firebase.js";
+import { signIn, validateEmail } from '../../lib/login-firebase.js';
 
 export function home() {
-  const container = document.createElement("div");
-  container.id = "container"
-  container.innerHTML = `  <h2>FEMILYCIRCLE</h2>
+  const container = document.createElement('div');
+  container.id = 'container'
+  container.innerHTML = `  <h2>FAMILYCIRCLE</h2>
   <h3>LOGIN</h3>
   <div>
       <label for="usuario">E-mail</label>
@@ -42,10 +42,8 @@ export function home() {
         .catch((error) => {
           const errorCode = error.code;
           if (errorCode === "email-already-in-use") {
-
             loginError.innerHTML = "Não há registro de usuário correspondente a este e-mail";
           } else if (errorCode === "auth/wrong-password") {
-
             loginError.innerHTML = "Senha inválida";
           }
         });
@@ -54,8 +52,4 @@ export function home() {
     }
   });
 
-
-
-  return container
-}
-
+  return container}
