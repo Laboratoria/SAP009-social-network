@@ -22,7 +22,7 @@ export default function Home() {
   botao.addEventListener('click', (event) => {
     event.preventDefault();
     login(email.value, password.value)
-      .then(response => {
+      .then(() => {
         window.location.hash = '#feed';
       })
       .catch((error) => {
