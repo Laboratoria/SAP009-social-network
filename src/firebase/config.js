@@ -3,7 +3,7 @@
 import { initializeApp } from 'firebase/app';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import {
-  getFirestore, collection, addDoc, query, onSnapshot,
+  getFirestore, collection, addDoc, query, onSnapshot, deleteDoc, doc, updateDoc,
 } from 'firebase/firestore';
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -36,13 +36,23 @@ export function addPost(date, post, username) {
 
 export async function printPost() {
   const q = query(collection(db, 'posts'));
-  const posts = [];
-  await onSnapshot(q, (querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      posts.push(doc.data());
-    });
+  return new Promise((resolve, reject) => {
+    onSnapshot(q, (querySnapshot) => {
+      const posts = [];
+      querySnapshot.forEach((post) => {
+        // eslint-disable-next-line max-len
+        posts.push({ ...post.data(), id: post.id }); // copiar as informações do objeto e adicionar o id
+      });
+      resolve(posts);
+    }, reject);
   });
-  return posts;
 }
 
-// criar template de cada post (foreach)
+export function deletePost(postId) {
+  return deleteDoc(doc(db, 'posts', postId));
+}
+
+export function editPost(postId, newPostData) {
+  const postRef = doc(db, 'posts', postId);
+  return updateDoc(postRef, newPostData);
+}
