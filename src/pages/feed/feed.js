@@ -1,5 +1,7 @@
 import { logOut } from '../../firebase/auth';
-import { addPost, printPost, deletePost } from '../../firebase/config';
+import {
+  addPost, printPost, deletePost, editPost,
+} from '../../firebase/config';
 
 export default () => {
   const containerFeed = document.createElement('div');
@@ -39,7 +41,7 @@ export default () => {
         const formattedDate = date.toLocaleDateString(); // Formatar a data como uma string legível
         return `<section class = 'content-post-feed'>
                 <div class='user-post'>${post.username}</div>
-                <div class='content-post'>${post.post}</div>
+                <div class='content-post' id='content-post${post.id}' contenteditable="false">${post.post}</div>
                 <div class='date-post'>${formattedDate}</div>
                 </section>
                 <div id="edit-delete-post-feed">
@@ -47,6 +49,7 @@ export default () => {
                  id=${post.userId} alt="Editar">
                 <img class="button-delete" src="imagens/excluir.png" data-post-id=${post.id} data-user- 
                  id=${post.userId} alt="Excluir">
+                 <button class="salvar" id='salvar${post.id}' hidden>Salvar</button>
           </div>`;
       })
       .join('');
@@ -57,6 +60,21 @@ export default () => {
   printFeed.addEventListener('click', (e) => {
     if (e.target.classList.contains('button-delete')) {
       deletePost(e.target.dataset.postId);
+    } else if (e.target.classList.contains('button-edit')) {
+      const contentPost = printFeed.querySelector(`#content-post${e.target.dataset.postId}`);
+      const salvarBtn = printFeed.querySelector(`#salvar${e.target.dataset.postId}`);
+      contentPost.setAttribute('contenteditable', true);
+      contentPost.focus();
+      salvarBtn.removeAttribute('hidden');
+
+      salvarBtn.addEventListener('click', () => {
+        const postId = e.target.dataset.postId;
+        const newPostData = contentPost.innerHTML || '';
+        editPost(postId, newPostData);
+        // Remover o atributo contenteditable e ocultar o botão de salvar após a edição
+        contentPost.removeAttribute('contenteditable');
+        salvarBtn.setAttribute('hidden', true);
+      });
     }
   });
 
