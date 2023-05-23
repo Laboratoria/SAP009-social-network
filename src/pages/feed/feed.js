@@ -8,9 +8,13 @@ export default () => {
 
   const feedScreen = `
   <section id="imagens">
-  <img src="imagens/logo-pagina-de-login.png" width="70px" alt="logo-connect">
-  <img src="imagens/web-content.png" width="30px" alt="feed">
-  <img src="imagens/sair.png" width="30px" alt="sair" id="logOut">
+    <div class="container">
+      <img src="imagens/logo-pagina-de-login.png" width="70px" alt="logo-connect">
+    </div>
+    <div class="container"> 
+      <img src="imagens/web-content.png" width="30px" alt="feed">
+      <img src="imagens/sair.png" width="30px" alt="sair" id="logOut">
+    </div>
   </section>
   <section id="postagem">
   <h1>O que você gostaria de compartilhar?</h1>
@@ -69,7 +73,7 @@ export default () => {
 
       salvarBtn.addEventListener('click', () => {
         const postId = e.target.dataset.postId;
-        const newPostData = contentPost.innerHTML || '';
+        const newPostData = contentPost.textContent || '';
         editPost(postId, newPostData);
         // Remover o atributo contenteditable e ocultar o botão de salvar após a edição
         contentPost.removeAttribute('contenteditable');

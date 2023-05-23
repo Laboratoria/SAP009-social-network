@@ -26,3 +26,19 @@
     padding: 4px;
     border: 0;
 }
+
+.salvar{
+    background-color: #7F472B;
+    color: white;
+    padding: 4px;
+    border: 0;
+}
+
+#imagens{
+    display: flex;
+    justify-content: space-between;
+}
+
+#logOut{
+    padding-top: 20px;
+}
