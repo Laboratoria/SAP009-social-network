@@ -54,5 +54,5 @@ export function deletePost(postId) {
 
 export function editPost(postId, newPostData) {
   const postRef = doc(db, 'posts', postId);
-  return updateDoc(postRef, newPostData);
+  return updateDoc(postRef, { post: newPostData });
 }
