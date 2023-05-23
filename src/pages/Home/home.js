@@ -1,4 +1,4 @@
-import { login } from '../../../Firebase/logincadastro.js';
+import { login } from '../../../Firebase/login.js';
 
 export default function Home() {
   const container = document.createElement('div');
@@ -22,7 +22,7 @@ export default function Home() {
   botao.addEventListener('click', (event) => {
     event.preventDefault();
     login(email.value, password.value)
-      .then(response => {
+      .then(() => {
         window.location.hash = '#feed';
       })
       .catch((error) => {

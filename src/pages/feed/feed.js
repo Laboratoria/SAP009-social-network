@@ -1,6 +1,6 @@
 // função que o elemento HTML da Home do site
 export default function Feed() {
-  const containerFeed = document.createElement("div");
+  const containerFeed = document.createElement("div")
   containerFeed.id = "containerFeed"
   containerFeed.innerHTML = `<title>A rede social para leitoras</title>
   <h1>Olá, !</h1>
@@ -11,10 +11,11 @@ export default function Feed() {
   <textarea></textarea><br>
   </div>
   <div class="buttons">
-  <button type="button">Gostei</button>
-  <button type="button">Não Gostei</button>
-  <button type="button">Lendo</button>
-  <button type="button">Salvar</button>
+  <button type="button">Postar</button>
   </div>`
-  return containerFeed
-  }
+
+  containerFeed.querySelector("button").addEventListener('click', function () {
+   console.log("funcionando");
+  });
+  return containerFeed;
+}
