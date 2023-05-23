@@ -1,0 +1,65 @@
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+    height: 100vh;
+    }
+    
+    html{
+    background-color: #A0522D; 
+    background-image: url(http://clipart-library.com/images_k/books-transparent-background/books-transparent-background-10.png);
+    background-position: right;
+    background-repeat: no-repeat, no-repeat;
+    background-attachment: fixed, scroll;
+    background-origin: content-box;
+    }
+
+
+    form {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    width: 50%;
+    max-width: 300px;
+    }
+    
+    header{
+        text-align: left;
+        font-size: 20px;
+    }
+
+    form label {
+    font-size: 16px;
+    margin-bottom: 10px;
+    }
+    
+    form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    button {
+    background-color: #2F4F4F;
+    color: #fff;
+    font-size: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    }
+    
+    button:hover {
+    background-color: #6B8E23;
+    }
+    
+    p {
+    margin-top: 20px;
+    text-align: left;
+    color:white;
+    }
+    
