@@ -3,7 +3,7 @@
 import { initializeApp } from 'firebase/app';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import {
-  getFirestore, collection, addDoc, query, onSnapshot, deleteDoc, doc, updateDoc,
+  getFirestore, collection, addDoc, query, onSnapshot, deleteDoc, doc, updateDoc, orderBy,
 } from 'firebase/firestore';
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -34,17 +34,13 @@ export function addPost(date, post, username) {
   });
 }
 
-export async function printPost() {
-  const q = query(collection(db, 'posts'));
-  return new Promise((resolve, reject) => {
-    onSnapshot(q, (querySnapshot) => {
-      const posts = [];
-      querySnapshot.forEach((post) => {
-        // eslint-disable-next-line max-len
-        posts.push({ ...post.data(), id: post.id }); // copiar as informações do objeto e adicionar o id
-      });
-      resolve(posts);
-    }, reject);
+export async function printPost(showPost) {
+  const q = query(collection(db, 'posts'), orderBy('date', 'desc'));
+  onSnapshot(q, (querySnapshot) => {
+    querySnapshot.forEach((post) => {
+      showPost({ ...post.data(), id: post.id });
+      // copiar as informações do objeto e adicionar o id
+    });
   });
 }
 
