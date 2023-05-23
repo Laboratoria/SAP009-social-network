@@ -83,7 +83,7 @@ export default async () => {
       messagePost.innerHTML = ' POST VAZIO! Por favor, digite algo!';
     } else {
       const date = new Date();
-      const username = 'Michele';
+      const username = '';
       addPost(date, textArea.value, username);
       textArea.value = ''; // Limpar o campo de texto após a postagem
       await showPost(); // Atualizar o feed de postagens

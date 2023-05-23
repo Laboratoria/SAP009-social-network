@@ -7,8 +7,8 @@ export default () => {
   const loginScreen = `
   <body>
   <header>
-  <img src="imagens/logo-pagina-de-login.png" alt="imagem-logo" height=200px>
-  <img src="imagens/connectCurls.png" alt="mulher-logo" height=150px>
+  <img src="imagens/logo-pagina-de-login.png" alt="imagem-logo" height=150px>
+  <img src="imagens/connectCurls.png" alt="mulher-logo" height=100px>
   </header>
   <div class= "wrapper">
   <h1>Seja bem-vinde!</h1>
