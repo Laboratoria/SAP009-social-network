@@ -4,7 +4,7 @@ import feed from './pages/feed/feed.js';
 
 const main = document.querySelector('#root');
 
-const init = () => {
+const init = async () => {
   switch (window.location.hash) {
     case '':
       main.appendChild(login());
@@ -16,7 +16,7 @@ const init = () => {
       main.appendChild(register());
       break;
     case '#feed':
-      main.appendChild(feed());
+      main.appendChild(await feed());
       break;
     default:
       main.appendChild(login());

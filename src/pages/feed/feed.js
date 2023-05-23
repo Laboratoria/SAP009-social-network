@@ -3,7 +3,7 @@ import {
   addPost, printPost, deletePost, editPost,
 } from '../../firebase/config';
 
-export default () => {
+export default async () => {
   const containerFeed = document.createElement('div');
 
   const feedScreen = `
@@ -35,15 +35,10 @@ export default () => {
   const printFeed = containerFeed.querySelector('#post-screen');
   const messagePost = containerFeed.querySelector('#post-message');
 
-  async function showPost() {
-    const templateFeed = await printPost();
-    // eslint-disable-next-line max-len
-    templateFeed.sort((a, b) => b.date - a.date); // Ordenar o array pelo campo 'date' em ordem cronológica
-    printFeed.innerHTML = templateFeed
-      .map((post) => {
-        const date = post.date.toDate(); // Converter o objeto Timestamp para um objeto Date
-        const formattedDate = date.toLocaleDateString(); // Formatar a data como uma string legível
-        return `<section class = 'content-post-feed'>
+  async function showPost(post) {
+    const date = post.date.toDate(); // Converter o objeto Timestamp para um objeto Date
+    const formattedDate = date.toLocaleDateString(); // Formatar a data como uma string legível
+    const templatePost = `<section class = 'content-post-feed'>
                 <div class='user-post'>${post.username}</div>
                 <div class='content-post' id='content-post${post.id}' contenteditable="false">${post.post}</div>
                 <div class='date-post'>${formattedDate}</div>
@@ -55,11 +50,10 @@ export default () => {
                  id=${post.userId} alt="Excluir">
                  <button class="salvar" id='salvar${post.id}' hidden>Salvar</button>
           </div>`;
-      })
-      .join('');
+    printFeed.innerHTML += templatePost;
   }
 
-  showPost();
+  await printPost(showPost);
 
   printFeed.addEventListener('click', (e) => {
     if (e.target.classList.contains('button-delete')) {
