@@ -7,7 +7,7 @@ export default async () => {
   const containerFeed = document.createElement('div');
 
   const feedScreen = `
-  <section id="imagens">
+  <header id="imagens_feed">
     <div class="container">
       <img src="imagens/logo-pagina-de-login.png" width="70px" alt="logo-connect">
     </div>
@@ -15,7 +15,7 @@ export default async () => {
       <img src="imagens/web-content.png" width="30px" alt="feed">
       <img src="imagens/sair.png" width="30px" alt="sair" id="logOut">
     </div>
-  </section>
+  </header>
   <section id="postagem">
   <h1>O que você gostaria de compartilhar?</h1>
   <textarea name="digitar-post" id="text-area" cols="30" rows="10" placeholder="Qual seu produto queridinho? 
@@ -39,8 +39,10 @@ export default async () => {
     const date = post.date.toDate(); // Converter o objeto Timestamp para um objeto Date
     const formattedDate = date.toLocaleDateString(); // Formatar a data como uma string legível
     const templatePost = `<section class = 'content-post-feed'>
-                <div class='user-post'>${post.username}</div>
-                <div class='content-post' id='content-post${post.id}' contenteditable="false">${post.post}</div>
+                <div class='user-post'> <img src="imagens/usuario-de-perfil.png" 
+                 alt="imagem_usuario">${post.username}</div>
+                <div class='content-post' id='content-post${post.id}' contenteditable="false">${post.post} 
+                </div>
                 <div class='date-post'>${formattedDate}</div>
                 </section>
                 <div id="edit-delete-post-feed">
@@ -48,7 +50,7 @@ export default async () => {
                  id=${post.userId} alt="Editar">
                 <img class="button-delete" src="imagens/excluir.png" data-post-id=${post.id} data-user- 
                  id=${post.userId} alt="Excluir">
-                 <button class="salvar" id='salvar${post.id}' hidden>Salvar</button>
+                 <button class="btn-salvar" id='salvar${post.id}' hidden>Salvar</button>
           </div>`;
     printFeed.innerHTML += templatePost;
   }
@@ -83,7 +85,7 @@ export default async () => {
       messagePost.innerHTML = ' POST VAZIO! Por favor, digite algo!';
     } else {
       const date = new Date();
-      const username = 'Michele';
+      const username = 'Usuario';
       addPost(date, textArea.value, username);
       textArea.value = ''; // Limpar o campo de texto após a postagem
       await showPost(); // Atualizar o feed de postagens

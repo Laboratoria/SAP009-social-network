@@ -8,15 +8,16 @@
 
 .content-post-feed{
     background-color: #fff;
-    border-radius: 10px;
+    border-radius:5px;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
     margin: 0;
 }
 
 
-#imagens, #postagem{
+#imagens_feed, #postagem{
     margin: 0;
+    align-items: center;
 }
 
 
@@ -27,18 +28,29 @@
     border: 0;
 }
 
-.salvar{
+.btn-salvar{
     background-color: #7F472B;
     color: white;
     padding: 4px;
     border: 0;
 }
 
-#imagens{
+#imagens_feed{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 #logOut{
     padding-top: 20px;
+}
+
+#text-area{
+    border: 0;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
+.content-post{
+    padding: 12px;
 }

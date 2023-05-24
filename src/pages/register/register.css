@@ -10,9 +10,15 @@ section{
     margin-top: 150px;
 }
 
-header{
+.container_register{
     display: flex;
     flex-direction: row;
+    margin-left: 20px;
+
+}
+
+.container_img{
+    padding: 1em;
 }
 
 #form_register {
@@ -21,30 +27,36 @@ header{
     flex-direction: column;
     flex-wrap: wrap;
     padding: 20px;
-    margin-left: 20px;
+    margin-left: 30px;
 }
 
 #img_register {
     align-items: center;
-    width: 100px;
-    height: 100px;
-    margin-left: 20px;
+    width: 150px;
+    height: 150px;
+    margin-left: 30px;
 }
 
-h1 {
-    font-size: 15px;
-    margin: 15px;
-    margin-right: 20px;
+#img_text{
+    margin-right: 40px;
+}
+
+#nome_register, #sobrenome_register{
+    width: 150px;
+    height: 38px;
+    font-size: 16px;
+}
+
+#input_curvatura, #email_register, #password_register, #confirm_password{
+    width: 310px;
+    height: 38px;
+    font-size: 16px;
+    
 }
 
 #texto_curvatura{
-    font-size: 12px;
-   /* margin-left: 10px;*/
-}
-
-#texto_date{
-    font-size: 12px;
-   margin-left: 40px; 
+    margin-left: 8px;
+    
 }
 
 input {
@@ -59,4 +71,21 @@ input {
     color: white;
     padding: 4px;
     border: 0;
+    width: 90px;
+    height: 25px;
+    font-size: 14px;
 }
+
+#cachinho_footer{
+    align-items: center;
+    margin-left: 100px;
+}
+
+@media screen and (max-width: 1024px){
+    
+    body{
+        padding: 0;
+        margin: 0;
+    }
+    
+        }
