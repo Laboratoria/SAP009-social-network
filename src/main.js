@@ -6,8 +6,6 @@ import { home } from './Pages/Home/home.js';
 import { cadastro } from './Pages/Cadastro/cad.js';
 import { timeline } from './Pages/TimeLine/time.js';
 
-
-
 const main = document.getElementById('root');
 const init = () => {
   window.addEventListener('hashchange', () => {
@@ -21,8 +19,7 @@ const init = () => {
       case '#timeline':
         main.replaceChildren(timeline());
         break;
-     
-      }
+    }
   });
 };
 
