@@ -19,8 +19,6 @@ const init = () => {
       case '#timeline':
         main.replaceChildren(timeline());
         break;
-      default:
-        main.replaceChildren(home());
     }
   });
 };

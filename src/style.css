@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap');
 
+
+
+
 :root{
 
     --fonteCabin: 'cabin', sans-serif;
@@ -49,6 +52,33 @@ nav a {
     display: inline-block;    
     margin: 30px;
 
+h2,h3{
+    color: #0e5207;
+}
+
+
+#container {
+    width: 400px;
+    background-color: #E4FDE1;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#containerCadastro {
+    width: 400px;
+    background-color: #E4FDE1;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#containertimeLine {
+    width: 400px;
+    background-color: #E4FDE1;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
 
 }
   
@@ -87,9 +117,11 @@ input{
 
     width: 100%;
     margin-bottom: 10px;
+
     padding: 10px;
     border-color: rgb (181,184,181);
-}
+       
+    }
 
 button{
 

@@ -13,6 +13,3 @@ const firebaseConfig = {
 //  Inicializar o Firebase
 export const app = initializeApp(firebaseConfig);
 // Inicializar a autenticação
-
-
-
