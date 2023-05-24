@@ -2,9 +2,11 @@ import { signIn } from '../../lib/login-firebase.js';
 
 export function home() {
   const container = document.createElement('div');
-  container.id = 'container';
-  container.innerHTML = `  <h2>FAMILYCIRCLE</h2>
-  <h3>LOGIN</h3>
+
+  container.id = 'container'
+  container.innerHTML = `  
+  <h2>LOGIN</h2>
+
   <div>
       <label for="usuario">E-MAIL</label>
       <input type="text" name="e-mail" placeholder="Digite seu e-mail" id="inputEmail">
