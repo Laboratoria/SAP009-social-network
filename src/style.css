@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap');
+
+:root{
+
+    --fonteCabin: 'cabin', sans-serif;
+
+}
+
+body {
+
+    padding: 0;
+    display:table-header-group;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+                    
+}
+
+header {
+
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+    width: 100%;
+    height: 150px;
+    flex-direction: column;
+    text-align: justify;
+    top: 0;
+}
+
+nav {
+
+    display:inline-flex;
+    justify-content: space-between;
+    align-items:baseline;
+    margin-left: 20px;
+    flex: 1 1 auto;  
+
+}
+  
+nav a {
+
+    color: #333;
+    text-decoration: none;
+    font-size: 20px;
+    width:min-content;
+    display: inline-block;    
+    margin: 30px;
+
+
+}
+  
+  nav a:hover {
+
+    color: #d63518;
+    text-decoration: underline;
+
+  }
+  
+  main {
+
+    height: 300PX;
+    width: 500px;
+    background-color: #f0e6e7;
+    margin-top: 0;
+    padding: 5px;
+    
+    
+}
+
+h1 {
+
+    font-family: var(--fonteCabin);
+    font-size:larger;
+
+    
+}
+
+h2{
+    font-family: var(--fonteCabin);
+    font-size: small;
+}
+
+input{
+
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-color: rgb (181,184,181);
+}
+
+button{
+
+    width: 100%;
+    padding: 10px;
+    margin: 5px;
+   
+}
+
