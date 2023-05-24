@@ -8,13 +8,12 @@ import {
   orderBy,
   addDoc,
   updateDoc,
- } from "firebase/firestore";
+
+} from "firebase/firestore";
 
  import{ app } from './firebase.js'
 
  import { auth } from './login-firebase.js'
-
-
 
 const db = getFirestore(app);
 

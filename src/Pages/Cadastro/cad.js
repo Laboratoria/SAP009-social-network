@@ -3,7 +3,8 @@ import { register } from '../../lib/firebase-cad.js';
 export function cadastro() {
   const containerCadastro = document.createElement('div');
   containerCadastro.id = 'containerCadastro';
-  containerCadastro.innerHTML = `
+  containerCadastro.innerHTML = ` 
+  <h2>CADASTRE-SE</h2>
     <form action="/pagina-processa-dados-do-form" method="post">
     <div>
         <label for="nome">Nome:</label>

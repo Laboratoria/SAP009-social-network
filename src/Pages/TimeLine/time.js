@@ -4,14 +4,12 @@ import{ creatPost } from '../../lib/firebase-firestone.js'
 export function timeline() {
     const containertimeLine = document.createElement("div");
     containertimeLine.id = "containertimeLine"
-    containertimeLine.innerHTML =`
+    containertimeLine.innerHTML =` 
+    <h2>O QUE ESTÁ PENSANDO?</h2>
     <form action="/pagina-processa-dados-do-form" method="post">
-  
-   
         
     <div id="new-post" class="section-new-post">
       <div class="new-post">
-        <div id="name" class="name-user">Olá,</div>
         <form class="form-post">
           
           <textarea name="textarea" id="menssagem" class="new-post-menssagem" placeholder="post"></textarea>
@@ -28,10 +26,6 @@ export function timeline() {
       <ul id="user-all-posts" class="ul-posts"></ul>
     </div>
     `;
-
-    
-
-
 
   const menssagem = containertimeLine.querySelector("#menssagem");
   const titleHQ = containertimeLine.querySelector("#title-post");
