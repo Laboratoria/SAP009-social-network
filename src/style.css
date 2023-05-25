@@ -51,11 +51,7 @@ nav a {
     width:min-content;
     display: inline-block;    
     margin: 30px;
-
-h2,h3{
-    color: #0e5207;
 }
-
 
 #container {
     width: 400px;
