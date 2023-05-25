@@ -1,51 +1,50 @@
 import { creatPost, deletePost, getPosts } from '../../lib/firebase-firestone.js';
 
 export function timeline() {
-
-    const containertimeLine = document.createElement("div");
-    containertimeLine.id = "containertimeLine"
-    containertimeLine.innerHTML =` 
+  const containertimeLine = document.createElement('div');
+  containertimeLine.id = containertimeLine;
+  containertimeLine.innerHTML = ` 
     <h2>O QUE ESTÁ PENSANDO?</h2>
-    <form action="/pagina-processa-dados-do-form" method="post">
+    <form action='/pagina-processa-dados-do-form' method='post'>
         
-    <div id="new-post" class="section-new-post">
-      <div class="new-post">
-        <form class="form-post">
+    <div id='new-post' class='section-new-post'>
+      <div class='new-post'>
+        <form class='form-post'>
           
-          <textarea name="textarea" id="menssagemtime" class="new-post-menssagemtime" placeholder="post"></textarea>
-          <span id="error-msg" class="error-msg"></span>
-          <div class="buttons-post-delete">
-            <button id="post-button" class="post-button">postar</button>
-            <button id="delete-button" class="delete-button">excluir</button>
+          <textarea name='textarea' id='menssagemtime' class='new-post-menssagemtime' placeholder='post'></textarea>
+          <span id='error-msg' class='error-msg'></span>
+          <div class='buttons-post-delete'>
+            <button id='post-button' class='post-button'>postar</button>
+            <button id='delete-button' class='delete-button'>excluir</button>
           </div>  
         </form>
       </div>
     </div>
 
-    <div class="posts-containertimeLine">
-      <ul id="user-all-posts" class="ul-posts"></ul>
+    <div class='posts-containertimeLine'>
+      <ul id='user-all-posts' class='ul-posts'></ul>
     </div>
     <div id='posts-templates'></div>
     `;
 
-    function posts() { 
-      const containerPosts = containertimeLine.querySelector('#posts-templates')
-      containerPosts.innerHTML = `
-      <div class="section-post-published">
-        <p class="username-post">Tali</p>
-        <p class="date-post">24/05/23</p>
-        <p class="menssagem-post">teste</p>
-        <div class="container-like">
-          <div class="buttons-edit-delete">
-          <button class="edit-button">editar</button>
-          <button class="post-delete-button">excluir</button>
+  function posts() {
+    const containerPosts = containertimeLine.querySelector('#posts-templates');
+    containerPosts.innerHTML = `
+      <div class='section-post-published'>
+        <p class='username-post'>Tali</p>
+        <p class='date-post'>24/05/23</p>
+        <p class='menssagem-post'>teste</p>
+        <div class='container-like'>
+          <div class='buttons-edit-delete'>
+          <button class='edit-button'>editar</button>
+          <button class='post-delete-button'>excluir</button>
         </div>
-        <span class="error-edit"></span>
+        <span class='error-edit'></span>
       </div>
            
     `;
   }
-    posts()
+  posts();
 
   const menssagemtime = containertimeLine.querySelector('#menssagemtime');
 
@@ -53,8 +52,8 @@ export function timeline() {
   const postButton = containertimeLine.querySelector('#post-button');
   postButton.addEventListener('click', (e) => {
     e.preventDefault();
-    if (menssagemtime.value !== '') {
-      creatPost(menssagemtime.value);           
+    if (menssagemtime.value) {
+      creatPost(menssagemtime.value);
       menssagemtime.value = '';
     } else {
       window.alert('Por favor digitar a mensagem');
@@ -68,31 +67,28 @@ export function timeline() {
     menssagemtime.value = '';
   });
 
-  const deleteButton = containerposts.querySelector('.post-delete-button');
-  deleteButton.addEventListener('click', () => {
-    deletePost(post.id).then(() => {
-      if (confirm('Você tem certeza?')) { // eslint-disable-line no-restricted-globals
-        containerposts.remove();
-      } else {
-        window.location.hash = 'posts';
-      }
-    }).catch(() => {
-      error.textContent = 'não foi possivel deletar o post.';
-    });
-  });
+  // const deleteButton = containerposts.querySelector('.post-delete-button');
+  // deleteButton.addEventListener('click', () => {
+  //   deletePost(post.id).then(() => {
+  //     if (confirm('Você tem certeza?')) { // eslint-disable-line no-restricted-globals
+  //       containerposts.remove();
+  //     } else {
+  //       window.location.hash = 'posts';
+  //     }
+  //   }).catch(() => {
+  //     error.textContent = 'não foi possivel deletar o post.';
+  //   });
+  // });
 
-  // Função que edita o post (editButton vai mandar para a pagina de edição)
-  const menssagem = containerposts.querySelector('.menssagem-post');
+  // // Função que edita o post (editButton vai mandar para a pagina de edição)
+  // const menssagem = containerposts.querySelector('.menssagem-post');
 
-  const editButton = containerposts.querySelector('.edit-button');
-  editButton.addEventListener('click', (e) => {
-    e.preventDefault();
-    containerposts.appendChild(edit(post, menssagem));
-  });
+  // const editButton = containerposts.querySelector('.edit-button');
+  // editButton.addEventListener('click', (e) => {
+  //   e.preventDefault();
+  //   containerposts.appendChild(edit(post, menssagem));
+  // });
 
   return containertimeLine;
-
-  
 }
-const teste = getPosts()
-
+// const teste = getPosts()

@@ -1,7 +1,6 @@
 import {
   getFirestore,
   collection,
-  
   deleteDoc,
   query,
   orderBy,
@@ -16,14 +15,14 @@ import { auth } from './login-firebase.js';
 
 const db = getFirestore(app);
 
-export const getPosts =  () => {
-  const arrayPosts = []
-  const queryOrder =  query(collection(db, 'posts'), orderBy('data', 'desc'));
-  onSnapshot(queryOrder, (querySnapshot) => {      
+export const getPosts = () => {
+  const arrayPosts = [];
+  const queryOrder = query(collection(db, 'posts'), orderBy('data', 'desc'));
+  onSnapshot(queryOrder, (querySnapshot) => {
     querySnapshot.forEach((item) => {
       const feed = item.data();
-      arrayPosts.push(feed) 
-      });
+      arrayPosts.push(feed);
+    });
   });
   return arrayPosts;
 };
