@@ -1,4 +1,3 @@
-import { login } from '../../../Firebase/login.js';
 
 export default function Home() {
   const container = document.createElement('div');
