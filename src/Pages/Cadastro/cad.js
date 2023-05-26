@@ -19,6 +19,7 @@ export function cadastro() {
     </div>
 
     <button type="submit" id="button">Cadastrar</button>
+    <button id="btn-login">Fazer login</button>   
     
     <section id= "mensagem"></section>
     
@@ -29,6 +30,12 @@ export function cadastro() {
   const senha = containerCadastro.querySelector('#password-input');
   const nome = containerCadastro.querySelector('#name-input');
   const mensagem = containerCadastro.querySelector('#mensagem');
+
+  const registerButton = containerCadastro.querySelector('#btn-login');
+  registerButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.hash = 'login';
+  });
 
   cadastrar.addEventListener('click', (e) => {
     e.preventDefault();
