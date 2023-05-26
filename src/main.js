@@ -2,9 +2,9 @@ import './lib/firebase.js';
 import './lib/login-firebase.js';
 import './lib/firebase-cad.js';
 
-import { login } from './Pages/login/login.js';
-import { cadastro } from './Pages/cadastro/cad.js';
-import { timeline } from './Pages/TimeLine/time.js';
+import { login } from './pages/login/login.js';
+import { cadastro } from './pages/cadastro/cad.js';
+import { timeline } from './pages/TimeLine/time.js';
 
 const main = document.getElementById('root');
 const init = () => {
