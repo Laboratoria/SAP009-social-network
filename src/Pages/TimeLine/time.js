@@ -2,11 +2,11 @@ import { creatPost, deletePost, getPosts } from '../../lib/firebase-firestone.js
 
 export function timeline() {
   const containertimeLine = document.createElement('div');
-  containertimeLine.id = "containertimeLine"
+  containertimeLine.id = 'containertimeLine';
   containertimeLine.innerHTML = ` 
+  <button id="logout">Sair</button>    
     <h2>O QUE ESTÁ PENSANDO?</h2>
     <form action='/pagina-processa-dados-do-form' method='post'>
-        
     <div id='new-post' class='section-new-post'>
       <div class='new-post'>
         <form class='form-post'>
@@ -26,8 +26,11 @@ export function timeline() {
     </div>
     <div id='posts-templates'></div>
     `;
-
-  
+  const registerButton = containertimeLine.querySelector('#logout');
+  registerButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.hash = 'login';
+  });
 
   const menssagemtime = containertimeLine.querySelector('#menssagemtime');
 
@@ -50,16 +53,15 @@ export function timeline() {
     menssagemtime.value = '';
   });
 
- getPosts();
+  getPosts();
 
   return containertimeLine;
 }
 
-export function posts(element) { 
-  console.log('posts')
-  const containertimeLine =document.querySelector('#containertimeLine')
-    const containerPosts = containertimeLine.querySelector('#posts-templates');
-    containerPosts.innerHTML  += `
+export function posts(element) {
+  const containertimeLine = document.querySelector('#containertimeLine');
+  const containerPosts = containertimeLine.querySelector('#posts-templates');
+  containerPosts.innerHTML += `
       <div class='section-post-published'>
         <p class='username-post'>${element.userName}</p>
         <p class='date-post'>${element.data.toDate().toLocaleDateString()}</p>
@@ -73,9 +75,4 @@ export function posts(element) {
       </div>
            
     `;
-    
-  
-   
 }
-
-

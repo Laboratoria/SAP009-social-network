@@ -4,7 +4,7 @@ import './lib/firebase-cad.js';
 
 import { login } from './pages/login/login.js';
 import { cadastro } from './pages/cadastro/cad.js';
-import { timeline } from './pages/TimeLine/time.js';
+import { timeline } from './pages/timeLine/time.js';
 
 const main = document.getElementById('root');
 const init = () => {

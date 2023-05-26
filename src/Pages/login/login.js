@@ -6,7 +6,7 @@ export function login() {
   container.id = 'container';
   container.innerHTML = ` 
   <h2>LOGIN</h2>
-
+  
   <div>
       <label for="usuario">E-MAIL</label>
       <input type="text" name="e-mail" placeholder="Digite seu e-mail" id="inputEmail">
@@ -36,21 +36,21 @@ export function login() {
 
   signInButton.addEventListener('click', (e) => {
     e.preventDefault();
-    if (email.value) {
+    if (email.value && password.value) {
       signIn(email.value, password.value)
         .then(() => {
           window.location.hash = 'timeline';
         })
         .catch((error) => {
           const errorCode = error.code;
-          if (errorCode === 'email-already-in-use') {
-            loginError.innerHTML = 'Não há registro de usuário correspondente a este e-mail';
-          } else if (errorCode === 'auth/wrong-password') {
+          if (errorCode === 'auth/wrong-password') {
             loginError.innerHTML = 'Senha inválida';
+          } else {
+            loginError.innerHTML = 'Não há registro de usuário correspondente a este e-mail';
           }
         });
     } else {
-      loginError.innerHTML = 'Preencha o campo de E-mail';
+      loginError.innerHTML = 'Preencha todos os campos';
     }
   });
 

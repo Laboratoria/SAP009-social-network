@@ -1,7 +1,10 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap');
 
-
-
+* { margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 :root{
 
@@ -9,14 +12,13 @@
 
 }
 
+
 body {
 
     padding: 0;
-    display:table-header-group;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-                    
+                       
 }
 
 header {
@@ -26,35 +28,22 @@ header {
     justify-content: center;
     align-items: center;
     padding: 3px;
-    width: 100%;
     height: 150px;
     flex-direction: column;
     text-align: justify;
     top: 0;
+    background-image: url(img/criancas.png);
+    background-position: center;
+    background-size:auto;
+   
 }
-
-nav {
-
-    display:inline-flex;
-    justify-content: space-between;
-    align-items:baseline;
-    margin-left: 20px;
-    flex: 1 1 auto;  
-
-}
-  
-nav a {
-
-    color: #333;
-    text-decoration: none;
-    font-size: 20px;
-    width:min-content;
-    display: inline-block;    
-    margin: 30px;
-}
+div {
+    margin-top: 20px; 
+    
+  }
 
 #container {
-    width: 400px;
+
     background-color: #E4FDE1;
     padding: 20px;
     border-radius: 5px;
@@ -62,33 +51,26 @@ nav a {
 }
 
 #containerCadastro {
-    width: 400px;
-    background-color: #E4FDE1;
+     
+    background-color: white;
     padding: 20px;
     border-radius: 5px;
     text-align: center;
 }
 
 #containertimeLine {
-    width: 400px;
+      
     background-color: #E4FDE1;
     padding: 20px;
     border-radius: 5px;
     text-align: center;
 
 }
-  
-  nav a:hover {
-
-    color: #d63518;
-    text-decoration: underline;
-
-  }
-  
+   
   main {
 
-    height: 300PX;
-    width: 500px;
+    height: 100%;
+    width: 100%;
     background-color: #f0e6e7;
     margin-top: 0;
     padding: 5px;
@@ -99,8 +81,7 @@ nav a {
 h1 {
 
     font-family: var(--fonteCabin);
-    font-size:larger;
-
+    font-size: larger;
     
 }
 
@@ -127,3 +108,5 @@ button{
    
 }
 
+
+  
