@@ -1,5 +1,5 @@
 import { register } from '../../lib/firebase-cad.js';
-import { login } from '../login/login.js';
+// import { login } from '../login/login.js';
 
 export function cadastro() {
   const containerCadastro = document.createElement('div');
@@ -41,7 +41,7 @@ export function cadastro() {
   cadastrar.addEventListener('click', (e) => {
     e.preventDefault();
     if ((email.value, nome.value, senha.value)) {
-      register(email.value, senha.value)
+      register(email.value, senha.value, nome.value)
         .then(mensagem.innerHTML = 'Cadastro realizado com sucesso!')
         .catch((erro) => { mensagem.innerHTML = `Falha ao realizar o cadastro: ${erro}`; });
     } else if (
@@ -51,4 +51,3 @@ export function cadastro() {
   });
   return containerCadastro;
 }
-
