@@ -2,7 +2,7 @@ import { creatPost, deletePost, getPosts } from '../../lib/firebase-firestone.js
 
 export function timeline() {
   const containertimeLine = document.createElement('div');
-  containertimeLine.id = containertimeLine;
+  containertimeLine.id = "containertimeLine"
   containertimeLine.innerHTML = ` 
     <h2>O QUE ESTÁ PENSANDO?</h2>
     <form action='/pagina-processa-dados-do-form' method='post'>
@@ -27,24 +27,7 @@ export function timeline() {
     <div id='posts-templates'></div>
     `;
 
-  function posts() {
-    const containerPosts = containertimeLine.querySelector('#posts-templates');
-    containerPosts.innerHTML = `
-      <div class='section-post-published'>
-        <p class='username-post'>Tali</p>
-        <p class='date-post'>24/05/23</p>
-        <p class='menssagem-post'>teste</p>
-        <div class='container-like'>
-          <div class='buttons-edit-delete'>
-          <button class='edit-button'>editar</button>
-          <button class='post-delete-button'>excluir</button>
-        </div>
-        <span class='error-edit'></span>
-      </div>
-           
-    `;
-  }
-  posts();
+  
 
   const menssagemtime = containertimeLine.querySelector('#menssagemtime');
 
@@ -67,28 +50,32 @@ export function timeline() {
     menssagemtime.value = '';
   });
 
-  // const deleteButton = containerposts.querySelector('.post-delete-button');
-  // deleteButton.addEventListener('click', () => {
-  //   deletePost(post.id).then(() => {
-  //     if (confirm('Você tem certeza?')) { // eslint-disable-line no-restricted-globals
-  //       containerposts.remove();
-  //     } else {
-  //       window.location.hash = 'posts';
-  //     }
-  //   }).catch(() => {
-  //     error.textContent = 'não foi possivel deletar o post.';
-  //   });
-  // });
-
-  // // Função que edita o post (editButton vai mandar para a pagina de edição)
-  // const menssagem = containerposts.querySelector('.menssagem-post');
-
-  // const editButton = containerposts.querySelector('.edit-button');
-  // editButton.addEventListener('click', (e) => {
-  //   e.preventDefault();
-  //   containerposts.appendChild(edit(post, menssagem));
-  // });
+ getPosts();
 
   return containertimeLine;
 }
-// const teste = getPosts()
+
+export function posts(element) { 
+  console.log('posts')
+  const containertimeLine =document.querySelector('#containertimeLine')
+    const containerPosts = containertimeLine.querySelector('#posts-templates');
+    containerPosts.innerHTML  += `
+      <div class='section-post-published'>
+        <p class='username-post'>${element.userName}</p>
+        <p class='date-post'>${element.data.toDate().toLocaleDateString()}</p>
+        <p class='menssagem-post'>${element.menssagem}</p>
+        <div class='container-like'>
+          <div class='buttons-edit-delete'>
+          <button class='edit-button'>editar</button>
+          <button class='post-delete-button'>excluir</button>
+        </div>
+        <span class='error-edit'></span>
+      </div>
+           
+    `;
+    
+  
+   
+}
+
+

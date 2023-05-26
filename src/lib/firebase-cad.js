@@ -1,7 +1,11 @@
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, updateProfile} from 'firebase/auth';
 
 const auth = getAuth();
 
-export function register(email, password) {
-  return createUserWithEmailAndPassword(auth, email, password);
+export async function register(email, password, userName) {
+  await createUserWithEmailAndPassword(auth, email, password);
+  return updateProfile(auth.currentUser, {
+    displayName: userName,
+  });
 }
+

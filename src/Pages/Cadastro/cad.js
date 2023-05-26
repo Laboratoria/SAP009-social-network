@@ -33,7 +33,7 @@ export function cadastro() {
   cadastrar.addEventListener('click', (e) => {
     e.preventDefault();
     if ((email.value, nome.value, senha.value)) {
-      register(email.value, senha.value)
+      register(email.value, senha.value, nome.value)
         .then(mensagem.innerHTML = 'Cadastro realizado com sucesso!')
         .catch((erro) => { mensagem.innerHTML = `Falha ao realizar o cadastro: ${erro}`; });
     } else if (
