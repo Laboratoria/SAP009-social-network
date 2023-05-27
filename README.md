@@ -17,7 +17,7 @@ Criar um espaço dedicado exclusivamente aos cuidados, dicas, inspiração e com
 Todes que tenham ou conheçam alguem com cabelos cacheados e crespos e queiram ajuda com os cuidados ou queiram compartilhar algo relacionado. 
 
 **Protótipo de alta fidelidade**: 
-<div align="center"> <img src="imagens/prototipo-figma.png"  width ="550px" height = "650px"/> </div> 
+<div align="center"> <img src="imagens/prototipo-figma.png"  width ="550px" height = "650px"> </div> 
 
 ***
 
@@ -69,6 +69,6 @@ melhorias.
 
 ***
 
-####  🪃 ESTE PROJETO FOI CRIADO E DESENVOLVIDO POR: [Michele Feitosa](https://github.com/MicheleFeitosa) & [Julia Garcia](https://github.com/JuAicrag/JuAicrag) 
+####  ESTE PROJETO FOI CRIADO E DESENVOLVIDO POR: [Michele Feitosa](https://github.com/MicheleFeitosa) & [Julia Garcia](https://github.com/JuAicrag/JuAicrag) 
 
 ***
