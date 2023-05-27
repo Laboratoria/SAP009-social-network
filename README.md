@@ -17,10 +17,9 @@ Criar um espaço dedicado exclusivamente aos cuidados, dicas, inspiração e com
 Todes que tenham ou conheçam alguem com cabelos cacheados e crespos e queiram ajuda com os cuidados ou queiram compartilhar algo relacionado. 
 
 **Protótipo de alta fidelidade**: 
-<div align="center"> <img src="imagens/prototipo-figma.png"  width ="550px" height = "650px"> </div> 
+<div align="center"> <img src="src\imagens\prototipo-figma.png"> </div> 
 
 ***
-
 ## HISTÓRIAS DOS USUÁRIOS
 
 Elaboramos quatro histórias baseadas na escolha do público-alvo:
