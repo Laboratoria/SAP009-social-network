@@ -81,7 +81,6 @@ export default async () => {
   buttonPost.addEventListener('click', async (e) => {
     e.preventDefault();
     if (textArea.value === '') {
-      // eslint-disable-next-line no-alert
       messagePost.innerHTML = ' POST VAZIO! Por favor, digite algo!';
     } else {
       const date = new Date();

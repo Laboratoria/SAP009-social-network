@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box; /*incluir a borda no calculo do tamanho*/
+    border: 0;
 }
 
 section{
@@ -41,7 +42,7 @@ section{
     margin-right: 40px;
 }
 
-#nome_register, #sobrenome_register{
+#name_register, #sobrenome_register{
     width: 150px;
     height: 38px;
     font-size: 16px;
