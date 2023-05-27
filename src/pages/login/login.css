@@ -15,7 +15,6 @@ padding: 0;
 margin: 0;
 margin-top: 100px;
 box-sizing: border-box;
-
 }
 
 
@@ -72,13 +71,11 @@ border: none;
     font-weight: bold;
     margin-left: 50px;
     padding: 15px;
-    border: 0;
+
 }
-
-
 @media screen and (max-width: 767px){
 .form-group{
-    min-width: 100%;
+    min-width: 50%;
     
        } 
 .row{
