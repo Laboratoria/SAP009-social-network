@@ -11,11 +11,11 @@ export function timeline() {
       <div class='new-post'>
         <form class='form-post'>
           
-          <textarea name='textarea' id='menssagemtime' class='new-post-menssagemtime' placeholder='post'></textarea>
+          <textarea name='textarea' id='messageTime' class='new-post-messageTime' placeholder='post'></textarea>
           <span id='error-msg' class='error-msg'></span>
           <div class='buttons-post-delete'>
-            <button id='post-button' class='post-button'>postar</button>
-            <button id='delete-button' class='delete-button'>excluir</button>
+            <button id='post-button' class='post-button'>Postar</button>
+            <button id='delete-button' class='delete-button'>Excluir</button>
           </div>  
         </form>
       </div>
@@ -32,15 +32,15 @@ export function timeline() {
     window.location.hash = 'login';
   });
 
-  const menssagemtime = containertimeLine.querySelector('#menssagemtime');
+  const messageTime = containertimeLine.querySelector('#messageTime');
 
   // Função para mandar os dados da nova postagem para o Clound Firestore
   const postButton = containertimeLine.querySelector('#post-button');
   postButton.addEventListener('click', (e) => {
     e.preventDefault();
-    if (menssagemtime.value) {
-      creatPost(menssagemtime.value);
-      menssagemtime.value = '';
+    if (messageTime.value) {
+      creatPost(messageTime.value);
+      messageTime.value = '';
     } else {
       window.alert('Por favor digitar a mensagem');
     }
@@ -50,7 +50,7 @@ export function timeline() {
   const deleteButton = containertimeLine.querySelector('#delete-button');
   deleteButton.addEventListener('click', (e) => {
     e.preventDefault();
-    menssagemtime.value = '';
+    messageTime.value = '';
   });
 
   getPosts();

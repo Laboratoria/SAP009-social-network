@@ -6,7 +6,9 @@ export function cadastro() {
   containerCadastro.id = 'containerCadastro';
   containerCadastro.innerHTML = ` 
   <h2>CADASTRE-SE</h2>
+
     <form action="/pagina-processa-dados-do-form" method="post">
+    
     <div>
         <label for="nome">Nome:</label>
         <input type="nome" id="name-input" name="Nome" />
@@ -22,7 +24,7 @@ export function cadastro() {
     <button type="submit" id="button">Cadastrar</button>
     <button id="btn-login">Fazer login</button>   
     
-    <section id= "mensagem"></section>
+    <section id= "message"></section>
     
     </form>`;
 
@@ -30,7 +32,7 @@ export function cadastro() {
   const email = containerCadastro.querySelector('#email-input');
   const senha = containerCadastro.querySelector('#password-input');
   const nome = containerCadastro.querySelector('#name-input');
-  const mensagem = containerCadastro.querySelector('#mensagem');
+  const message = containerCadastro.querySelector('#message');
 
   const registerButton = containerCadastro.querySelector('#btn-login');
   registerButton.addEventListener('click', (e) => {
@@ -42,11 +44,11 @@ export function cadastro() {
     e.preventDefault();
     if ((email.value, nome.value, senha.value)) {
       register(email.value, senha.value, nome.value)
-        .then(mensagem.innerHTML = 'Cadastro realizado com sucesso!')
-        .catch((erro) => { mensagem.innerHTML = `Falha ao realizar o cadastro: ${erro}`; });
+        .then(message.innerHTML = 'Cadastro realizado com sucesso!')
+        .catch((erro) => { message.innerHTML = `Falha ao realizar o cadastro: ${erro}`; });
     } else if (
       email.vale === '' || nome.value === '' || senha.value === '') {
-      mensagem.innerHTML = ' Preencher todos os campos!';
+      message.innerHTML = ' Preencher todos os campos!';
     }
   });
   return containerCadastro;

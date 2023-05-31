@@ -14,11 +14,12 @@ export function login() {
   
       <label for="senha">SENHA</label>
       <input id="password" type="password" name="senha" placeholder="Digite sua senha">
-  </div>   
  
   <button id="signin-button" class="botaologin">ENTRAR</button>
   <button id="cadastro">Faça seu cadastro</button>             
 
+  </div>
+  
 <section id = "loginError"></section>
 <section id = "singIn"></section>
 `;
