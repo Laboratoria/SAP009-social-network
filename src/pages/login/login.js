@@ -76,6 +76,7 @@ export default () => {
         redirect('#timeline');
         window.location.reload();
       })
+      // eslint-disable-next-line no-unused-vars
       .catch((error) => {
         redirect('#login');
       });

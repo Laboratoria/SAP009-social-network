@@ -40,7 +40,7 @@ export default () => {
   const registerEmail = containerRegister.querySelector('#register-email');
   const registerPassword = containerRegister.querySelector('#register-password');
   const errorMessage = containerRegister.querySelector('.msg-error');
-
+  /*
   registerButton.addEventListener('click', () => {
     const name = registerName.value;
     const email = registerEmail.value;
@@ -57,6 +57,27 @@ export default () => {
           const errorFirebase = errorsFirebase(error.code);
           errorMessage.innerHTML = errorFirebase;
         });
+    } else {
+      errorMessage.innerHTML = registerAccount;
+    }
+  });
+*/
+
+  registerButton.addEventListener('click', async () => {
+    const name = registerName.value;
+    const email = registerEmail.value;
+    const password = registerPassword.value;
+
+    const registerAccount = validateRegister(name, email, password);
+    if (registerAccount === '') {
+      try {
+        await createUserWithEmail(name, email, password);
+        redirect('#timeline');
+        window.location.reload();
+      } catch (error) {
+        const errorFirebase = errorsFirebase(error.code);
+        errorMessage.innerHTML = errorFirebase;
+      }
     } else {
       errorMessage.innerHTML = registerAccount;
     }

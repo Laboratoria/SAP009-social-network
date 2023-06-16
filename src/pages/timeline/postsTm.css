@@ -106,23 +106,7 @@ div#like.display {
     margin-left: 10%;
     margin-top: 10%;
   }
-/*
-  #empty-heart,
-  #heart-fill {
-    color: #D82934;
-    cursor: pointer;
-    margin-left: 75%;
-    animation: transitionLike 1s ease-in;
-  }
-  
-  #likes-counter {
-    color: #D82934;
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin-left: 5%;
-    margin-right: 8%;
-  }
-*/
+
   @keyframes transitionLike {
     0% {
       transform: scale(1);
@@ -134,22 +118,3 @@ div#like.display {
       transform: scale(1);
     }
   }
-/*
-  @media screen and (min-width: 950px) {
-    #empty-heart,
-    #heart-fill {
-      margin-left: 80%;
-    }   
-
-    #likes-counter {
-      margin-right: 8%;
-    }
-}
-*/
-/*
-@media screen and (min-width: 700px) {
-  #modal {
-    height: 50%;
-  }
-}
-*/

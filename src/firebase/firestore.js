@@ -3,7 +3,13 @@ import {
   addDoc,
   collection,
   getDocs,
-  doc, updateDoc, deleteDoc, query, orderBy, arrayUnion, arrayRemove,
+  doc,
+  updateDoc,
+  deleteDoc,
+  query,
+  orderBy,
+  arrayUnion,
+  arrayRemove,
 } from 'firebase/firestore';
 import { getAppAuth } from './auth';
 import { app } from './app';

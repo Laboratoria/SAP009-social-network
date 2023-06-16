@@ -16,7 +16,7 @@ export const getUserId = () => {
   const auth = getAppAuth();
   return auth.currentUser.uid;
 };
-
+/*
 export const createUserWithEmail = (name, email, password) => {
   const auth = getAppAuth();
   return createUserWithEmailAndPassword(auth, email, password)
@@ -24,7 +24,23 @@ export const createUserWithEmail = (name, email, password) => {
       updateProfile(auth.currentUser, {
         displayName: name,
       });
+    })
+    .catch((error) => {
+      console.log(error);
     });
+};
+*/
+
+export const createUserWithEmail = async (name, email, password) => {
+  try {
+    const auth = getAppAuth();
+    await createUserWithEmailAndPassword(auth, email, password);
+    await updateProfile(auth.currentUser, {
+      displayName: name,
+    });
+  } catch (error) {
+    throw new Error('Houve um erro. Favor rever as informações e tentar novamente');
+  }
 };
 
 export const signIn = (email, password) => {

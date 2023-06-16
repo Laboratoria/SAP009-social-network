@@ -129,7 +129,7 @@ div.single-input .input:valid ~ label {
 @media screen and (min-width: 700px) {
      #modal {
         width: 54%;
-        height: 70%;
+        height: 80%;
     }
 
     #post-area {
@@ -139,7 +139,6 @@ div.single-input .input:valid ~ label {
 }
 
 @media screen and (min-width: 600px) {
-
     #open-modal {
         width: 50%;
     } 
