@@ -16,20 +16,6 @@ export const getUserId = () => {
   const auth = getAppAuth();
   return auth.currentUser.uid;
 };
-/*
-export const createUserWithEmail = (name, email, password) => {
-  const auth = getAppAuth();
-  return createUserWithEmailAndPassword(auth, email, password)
-    .then(() => {
-      updateProfile(auth.currentUser, {
-        displayName: name,
-      });
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
-*/
 
 export const createUserWithEmail = async (name, email, password) => {
   try {
