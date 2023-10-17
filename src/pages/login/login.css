@@ -1,0 +1,107 @@
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: rgba(0, 9, 14, 0.9);
+} 
+
+img {
+    display: block;
+    margin: 20px auto;
+    margin-top: 6rem;
+    height: 5rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2.5vh;
+    margin: 4vh 0 5vh 0;
+}
+
+input, button {
+    padding: 0.7rem;
+    border-radius: 10px;
+    border: solid 1px;
+    border-color: #00B154;
+    outline-color: #00B154;
+    background-color: #FFF;
+    width: 15rem;
+    text-align: left;
+}
+
+#login-button {
+    background-color: #00B154;
+    border: none;
+    color: #FFF;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.msg-error {
+    margin-top: 0.6rem;
+    margin-bottom: -1rem;
+}
+ 
+#google-button {
+    display: flex;
+    height: 2.3rem;
+    color: #000;
+    font-weight: bolder;
+    align-items: center;
+    border: none;
+}
+
+#google-logo {
+    height: 1.8rem;
+    width: 1.8rem;
+    margin: 0 1rem;
+}
+
+#register-button {
+    background: none;
+    border: none;
+    color: #fff;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+#register-link {
+    color:#00B154;
+    font-weight: bolder;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+button:active {
+    opacity: 0.8;
+}
+
+p {
+    text-align: center;
+    color: #fff;
+    margin: 1rem 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.error {
+    background-color: red;
+    color: white;
+    display: none;
+}
+
+@media screen and (min-width: 650px) {
+    .form-wrapper {
+      margin: 0;
+      height: 100vh;
+      width: 50vw;
+    }
+}

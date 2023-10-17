@@ -1,0 +1,120 @@
+.post {
+    background-color: #fff;
+    max-width: 90%;
+    height: 30%;
+    border-radius: 10px;
+    border: solid 2px;
+    border-color: #D82934;
+    
+}
+
+#user {
+    color: #D82934;
+    font-weight: 700;
+    font-size: medium;
+}
+
+#anime-name, #anime-episodes, #post-description {
+    color: #431F01;
+}
+
+.view-description {
+    color: #00B154;
+    cursor: pointer;
+}
+
+.box-description {
+    background-color: #38EB8D;
+    width: 90%;
+    height: 90%;
+    padding: 5%;
+    border-radius: 10px;
+    margin-top: 1rem;
+} 
+
+#post-description {
+    text-align: left;
+}
+
+.btn-posts {
+    width: 5rem;
+    background-color: #00B154;
+    color: #fff;
+    border-radius: 10px;
+    padding: 0.5rem;
+    display: inline-block;
+    margin-bottom: 1rem;
+    margin-top: 1rem;   
+    text-align: center; 
+}
+
+.btns {
+    display: flex;
+    display: inline-flex;
+}
+
+.btn-edit, .btn-del {
+    background-color: #00B154;
+    color: #fff;
+    width: 5rem;
+    text-align: center;
+    margin-bottom: 5%;
+    font-weight: bold;
+}
+
+.btn-edit {
+    margin-left: -20%;
+}
+
+.btn-del {
+    margin-left: 12%;
+}
+
+.btn-edit:hover,
+.btn-del:hover {
+    opacity: 0.9;
+}
+
+.btn-edit:active ,
+.btn-del:active {
+    opacity: 0.8;
+}
+
+div#like.display {
+    display: flex;
+    display: inline-flex;
+    margin-left: 60%;
+    margin-top: -40%;
+}
+
+  #heart-fill.hidden,
+  #empty-heart.hidden {
+    display: none;
+  }
+
+  #empty-heart,
+  #heart-fill {
+    color: #D82934;
+    cursor: pointer;
+    animation: transitionLike 1s ease-in;
+  }
+  
+  #likes-counter {
+    color: #D82934;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-left: 10%;
+    margin-top: 10%;
+  }
+
+  @keyframes transitionLike {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.125);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }

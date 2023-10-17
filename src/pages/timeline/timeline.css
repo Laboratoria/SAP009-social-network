@@ -1,0 +1,137 @@
+.material-symbols-outlined {
+    color: #fff;
+    display: block;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+header {
+    background-color: #000000; 
+} 
+
+#logo-timeline {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 10px;
+}
+
+nav {
+    display: none;
+}
+
+nav > a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    text-align: center;
+    background-color: #000000;
+    color: #fff;
+    border-top: 1px solid #fff;
+}
+
+#open-modal:hover{
+    opacity: 0.9;
+}
+
+.black-bg {
+    background-color: rgba(0, 9, 14, 0.9);
+    margin: 1rem 1.5rem 1rem 1.5rem;
+    height: 100%;
+    border-radius: .5rem;
+}
+
+.post {
+    background-color: #fff;
+    max-width: 90%;
+    height: 30%;
+    border-radius: 10px;
+    border: solid 2px;
+    border-color: #D82934;
+    
+}
+
+#user {
+    color: #D82934;
+    font-weight: 700;
+    font-size: medium;
+}
+
+#anime-name, #anime-episodes, #post-description {
+    color: #431F01;
+}
+
+.view-description {
+    color: #00B154;
+    cursor: pointer;
+}
+
+.box-description {
+    background-color: #38EB8D;
+    width: 90%;
+    height: 90%;
+    padding: 5%;
+    border-radius: 10px;
+    margin-top: 1rem;
+}
+
+#post-description {
+    text-align: left;
+}
+
+.btn-posts {
+    width: 5rem;
+    background-color: #00B154;
+    color: #fff;
+    border-radius: 10px;
+    padding: 0.5rem;
+    display: inline-block;
+    margin-bottom: 1rem;
+    margin-top: 1rem;   
+    text-align: center; 
+}
+
+@media screen and (min-width: 900px) {
+    .black-bg {
+        background-color: rgba(0, 9, 14, 0.9);
+        margin: 2% 20% 2% 20%;
+        height: 100%;
+        margin-top: 4%;
+    }
+
+    #open-modal {
+        width: 50%;
+    }
+
+    .material-symbols-outlined {
+        display: none;
+    }
+
+    header {
+        height: 6rem;
+    }
+
+    nav {
+        display: block;
+        background-color: #000000;
+        text-align: right;
+    }
+    
+    nav > a {
+        color: #fff;
+        border-top: 1px solid #000000;
+        display: inline-block;
+        margin-left: 2%;
+        margin-right: 7%;
+        font-size: 1.2rem;
+    }
+
+    nav > a:hover{
+        color: #34D782;
+    }
+}
